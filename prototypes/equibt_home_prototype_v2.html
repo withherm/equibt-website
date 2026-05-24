@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EQUIBT | Operational Capability Advisory</title>
+<style>
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/montserrat-600-700-latin-ext.woff2') format('woff2');
+    font-weight: 600 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/montserrat-600-700-latin.woff2') format('woff2');
+    font-weight: 600 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  :root {
+    --pill-frame: #8B2252;
+    --pill-plan: #26245C;
+    --pill-solve: #0B6B82;
+    --pill-evolve: #2D7A3A;
+    --pill-govern: #7A3D00;
+    --pill-operationalise: #5C0A5C;
+    --navy: #26245C;
+    --terracotta: #C15F3C;
+    --off-white: #F5F3EE;
+    --warm-parchment: #F5EBD9;
+    --section-bg: #F5F5F5;
+    --body-text: #555555;
+    --near-black: #1A1A1A;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: var(--body-text); background: #fff; }
+
+  /* NAV */
+  .navbar { background: #fff; border-bottom: 1px solid #E8E5E0; position: sticky; top: 0; z-index: 100; }
+  .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-logo { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 20px; color: var(--navy); text-decoration: none; letter-spacing: 0.08em; }
+  .nav-links { display: flex; align-items: center; gap: 32px; }
+  .nav-link { font-size: 14px; color: #444; text-decoration: none; }
+  .nav-link:hover { color: var(--navy); }
+  .nav-cta { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 13px; background: var(--terracotta); color: #fff; padding: 10px 22px; border-radius: 4px; text-decoration: none; letter-spacing: 0.06em; }
+  .nav-dropdown { position: relative; }
+  .services-dropdown { display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #E8E5E0; border-radius: 6px; padding: 8px 0; min-width: 260px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); list-style: none; z-index: 200; }
+  .nav-dropdown:hover .services-dropdown { display: block; }
+  .services-dropdown li a { display: block; padding: 10px 20px; font-size: 13px; color: #444; text-decoration: none; }
+  .services-dropdown li a:hover { background: var(--off-white); color: var(--navy); }
+
+  /* HERO */
+  .hero { background: #fff; padding: 100px 40px; }
+  .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 460px; gap: 60px; align-items: center; }
+  .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; color: var(--terracotta); margin-bottom: 20px; text-transform: uppercase; }
+  .hero h1 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 56px; font-weight: 700; line-height: 1.1; color: var(--navy); margin-bottom: 24px; }
+  .hero-subhead { font-size: 20px; color: #555; line-height: 1.6; margin-bottom: 32px; max-width: 560px; }
+  .hero-ctas { display: flex; gap: 16px; }
+  .btn-primary { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 14px; background: var(--terracotta); color: #fff; padding: 14px 28px; border-radius: 4px; text-decoration: none; letter-spacing: 0.06em; }
+  .btn-outline { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 14px; border: 2px solid var(--navy); color: var(--navy); padding: 12px 28px; border-radius: 4px; text-decoration: none; letter-spacing: 0.06em; }
+  .hero-illustration { width: 100%; height: 360px; background: var(--off-white); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 14px; }
+
+  /* SECTION LABEL */
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; color: var(--terracotta); margin-bottom: 12px; text-transform: uppercase; }
+
+  /* DIFFERENCE SECTION */
+  .difference-section { background: #F0F0F0; padding: 80px 40px; }
+  .difference-inner { max-width: 1200px; margin: 0 auto; }
+  .difference-header { margin-bottom: 48px; }
+  .difference-header h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 40px; font-weight: 700; color: var(--navy); max-width: 700px; }
+  .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .proof-card { background: #fff; border-radius: 8px; padding: 32px; box-shadow: 0 2px 10px rgba(38,36,92,0.06); }
+  .proof-icon { width: 56px; height: 56px; border-radius: 50%; border: 2.5px solid var(--terracotta); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  .proof-title { font-family: 'Montserrat', system-ui, sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.3; }
+  .proof-body { font-size: 14px; color: var(--body-text); line-height: 1.7; }
+
+  /* HOW WE HELP */
+  .services-section { background: #fff; padding: 80px 40px; }
+  .services-inner { max-width: 1200px; margin: 0 auto; }
+  .services-header { margin-bottom: 48px; }
+  .services-header h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 40px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+  .services-header p { font-size: 18px; color: var(--body-text); max-width: 700px; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card { background: #fff; border-radius: 8px; padding: 32px; box-shadow: 0 2px 10px rgba(38,36,92,0.08); transition: transform 0.2s ease, box-shadow 0.2s ease; border: 1px solid #EEECEA; }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(38,36,92,0.18); }
+  .pill { display: inline-block; padding: 4px 12px; border-radius: 20px; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; font-family: 'Montserrat', system-ui, sans-serif; margin-bottom: 8px; }
+  .phase-tag { font-size: 11px; color: #999; margin-bottom: 14px; font-family: system-ui, -apple-system, sans-serif; letter-spacing: 0.05em; text-transform: uppercase; }
+  .service-card h3 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .service-card p { font-size: 14px; color: var(--body-text); line-height: 1.7; margin-bottom: 20px; }
+  .service-link { font-size: 13px; font-weight: 700; color: var(--terracotta); text-decoration: none; }
+  .service-link:hover { text-decoration: underline; }
+
+  /* PROOF STRIP */
+  .proof-strip { background: var(--navy); padding: 60px 40px; }
+  .proof-strip-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
+  .stat-callout { }
+  .stat-number { font-family: 'Montserrat', system-ui, sans-serif; font-size: 48px; font-weight: 700; color: var(--terracotta); line-height: 1; margin-bottom: 8px; }
+  .stat-arrow { font-size: 20px; color: rgba(255,255,255,0.5); margin: 0 4px; }
+  .stat-label { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.5; }
+  .stat-sublabel { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+
+  /* INDUSTRIES */
+  .industries-section { background: var(--section-bg); padding: 80px 40px; }
+  .industries-inner { max-width: 1200px; margin: 0 auto; }
+  .industries-header { margin-bottom: 48px; }
+  .industries-header h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 40px; font-weight: 700; color: var(--navy); }
+  .industries-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .industry-card { background: #fff; border-radius: 8px; padding-top: 46px; padding-left: 28px; padding-right: 28px; padding-bottom: 28px; box-shadow: 0 2px 10px rgba(38,36,92,0.06); position: relative; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .industry-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(38,36,92,0.18); }
+  .industry-bar { position: absolute; top: 0; left: 0; right: 0; height: 30px; background: var(--terracotta); border-radius: 8px 8px 0 0; }
+  .industry-icon { margin-bottom: 16px; }
+  .industry-card h3 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .industry-card p { font-size: 14px; color: var(--body-text); line-height: 1.7; margin-bottom: 16px; }
+  .explore-link { font-size: 13px; font-weight: 700; color: var(--terracotta); text-decoration: none; }
+
+  /* OUR WORK */
+  .work-section { background: #fff; padding: 80px 40px; }
+  .work-inner { max-width: 1200px; margin: 0 auto; }
+  .work-header { margin-bottom: 48px; }
+  .work-header h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 40px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+  .work-header p { font-size: 18px; color: var(--body-text); }
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .case-card { background: var(--off-white); border-radius: 8px; padding: 36px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .case-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(38,36,92,0.12); }
+  .case-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--terracotta); text-transform: uppercase; margin-bottom: 12px; }
+  .case-card h3 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 12px; line-height: 1.3; }
+  .case-card p { font-size: 15px; color: var(--body-text); line-height: 1.7; margin-bottom: 20px; }
+  .case-results { display: flex; gap: 24px; margin-bottom: 24px; }
+  .case-result { }
+  .case-result-number { font-family: 'Montserrat', system-ui, sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); }
+  .case-result-label { font-size: 12px; color: #888; }
+  .read-link { font-size: 14px; font-weight: 700; color: var(--terracotta); text-decoration: none; }
+
+  /* CTA */
+  .cta-section { background: var(--near-black); padding: 80px 40px; }
+  .cta-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+  .cta-inner h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 44px; font-weight: 700; color: #fff; margin-bottom: 16px; line-height: 1.15; }
+  .cta-inner p { font-size: 18px; color: rgba(255,255,255,0.7); margin-bottom: 36px; line-height: 1.6; }
+  .cta-btn { display: inline-block; font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 15px; background: var(--terracotta); color: #fff; padding: 16px 40px; border-radius: 4px; text-decoration: none; letter-spacing: 0.06em; }
+
+  @media (max-width: 768px) {
+    .hero-inner, .proof-grid, .services-grid, .industries-grid, .work-grid { grid-template-columns: 1fr; }
+    .proof-strip-inner { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 36px; }
+    .services-header h2, .industries-header h2, .work-header h2 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">EQUIBT</a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <a href="/services/" class="nav-link">Services</a>
+        <ul class="services-dropdown">
+          <li><a href="/services/frame/">FRAME | Define</a></li>
+          <li><a href="/services/plan/">PLAN | Measure</a></li>
+          <li><a href="/services/solve/">SOLVE | Analyse</a></li>
+          <li><a href="/services/evolve/">EVOLVE | Improve</a></li>
+          <li><a href="/services/govern/">GOVERN | Control</a></li>
+          <li><a href="/services/operationalise/">OPERATIONALISE | Operate</a></li>
+        </ul>
+      </div>
+      <a href="/industries/" class="nav-link">Industries</a>
+      <a href="/work/" class="nav-link">Our Work</a>
+      <a href="/about/" class="nav-link">About</a>
+      <a href="/contact/" class="nav-cta">Let's talk</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">· Operational Capability Advisory</p>
+      <h1>We build capability that holds.</h1>
+      <p class="hero-subhead">EQUIBT works with operations leaders to diagnose what is actually wrong, design solutions that address the real causes, and build the internal capability to sustain them. No external dependency. No regression.</p>
+      <div class="hero-ctas">
+        <a href="/services/" class="btn-primary">See how we work</a>
+        <a href="/work/" class="btn-outline">Our work</a>
+      </div>
+    </div>
+    <div class="hero-illustration">[Illustration: EQ-HOME-HERO.png]</div>
+  </div>
+</section>
+
+<!-- THE EQUIBT DIFFERENCE -->
+<section class="difference-section">
+  <div class="difference-inner">
+    <div class="difference-header">
+      <p class="section-label">· THE EQUIBT DIFFERENCE</p>
+      <h2>Why most operational improvements do not hold. And what we do differently.</h2>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-icon">
+          <svg width="40" height="40" viewBox="0 0 22 22" stroke="#C15F3C" stroke-width="1.5" fill="none">
+            <circle cx="11" cy="11" r="9"/><path d="M11 7v4l3 3"/>
+          </svg>
+        </div>
+        <div class="proof-title">We start with the problem, not the solution.</div>
+        <div class="proof-body">Most engagements begin with a predetermined tool or methodology. We begin with a structured problem definition. FRAME aligns your leadership team on what is actually broken before any resource is committed. Solving the right problem is the highest-leverage thing we do.</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-icon">
+          <svg width="40" height="40" viewBox="0 0 22 22" stroke="#C15F3C" stroke-width="1.5" fill="none">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="proof-title">We build capability inside your team, not dependency on ours.</div>
+        <div class="proof-body">Every EQUIBT engagement is designed to make itself unnecessary. We work alongside your people, transfer the analytical methods, install the management systems, and then step back deliberately. The test of our work is whether it holds after we leave.</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-icon">
+          <svg width="40" height="40" viewBox="0 0 22 22" stroke="#C15F3C" stroke-width="1.5" fill="none">
+            <path d="M3 17l5-5 4 4 6-8"/><line x1="3" y1="3" x2="3" y2="19"/><line x1="3" y1="19" x2="19" y2="19"/>
+          </svg>
+        </div>
+        <div class="proof-title">We measure what matters, not what is easy to measure.</div>
+        <div class="proof-body">Most operational metrics are activity measures. We establish outcome measures: what the process is actually producing against what it should produce. The PLAN diagnostic builds the measurement foundation that every subsequent phase is grounded in. Evidence, not assumption.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE HELP -->
+<section class="services-section">
+  <div class="services-inner">
+    <div class="services-header">
+      <p class="section-label">· HOW WE HELP</p>
+      <h2>Six services aligned to DMAICO. One focus: capability that holds.</h2>
+      <p>DMAICO is our operating framework: Define, Measure, Analyse, Improve, Control, Operate. Each service maps to a phase. Together, they move an organisation from problem definition to self-sustaining operational improvement.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="pill" style="background:var(--pill-frame);">FRAME</span>
+        <div class="phase-tag">Define</div>
+        <h3>Problem Framing</h3>
+        <p>Align stakeholders on the real problem before committing resources. Produces a signed project charter with defined success criteria. The starting point for every programme.</p>
+        <a href="/services/frame/" class="service-link">Explore FRAME →</a>
+      </div>
+      <div class="service-card">
+        <span class="pill" style="background:var(--pill-plan);">PLAN</span>
+        <div class="phase-tag">Measure</div>
+        <h3>Operations Diagnostic</h3>
+        <p>Establish the evidence base before any intervention. Process health, capability readiness, and measurement system assessment. The diagnostic that replaces instinct with data.</p>
+        <a href="/services/plan/" class="service-link">Explore PLAN →</a>
+      </div>
+      <div class="service-card">
+        <span class="pill" style="background:var(--pill-solve);">SOLVE</span>
+        <div class="phase-tag">Analyse</div>
+        <h3>Root Cause Analysis</h3>
+        <p>Move from symptoms to causes. Identify what is actually driving your performance gaps and design a costed future state that resolves them at the root.</p>
+        <a href="/services/solve/" class="service-link">Explore SOLVE →</a>
+      </div>
+      <div class="service-card">
+        <span class="pill" style="background:var(--pill-evolve);">EVOLVE</span>
+        <div class="phase-tag">Improve</div>
+        <h3>Rapid Pilot</h3>
+        <p>Validate the future state before committing the full operation. Structured pilot with real data, real metrics, and validated requirements before full-scale investment.</p>
+        <a href="/services/evolve/" class="service-link">Explore EVOLVE →</a>
+      </div>
+      <div class="service-card">
+        <span class="pill" style="background:var(--pill-govern);">GOVERN</span>
+        <div class="phase-tag">Control</div>
+        <h3>AI Governance</h3>
+        <p>Build the control infrastructure that prevents drift. Process architecture, control plans, monitoring dashboards, and AI governance frameworks that make improvements permanent.</p>
+        <a href="/services/govern/" class="service-link">Explore GOVERN →</a>
+      </div>
+      <div class="service-card">
+        <span class="pill" style="background:var(--pill-operationalise);">OPERATIONALISE</span>
+        <div class="phase-tag">Operate</div>
+        <h3>Full-Scale Deployment</h3>
+        <p>Scale the proven, governed solution across the organisation. Standardisation, automation, capability transfer, and continuous improvement systems. The phase DMAIC never had.</p>
+        <a href="/services/operationalise/" class="service-link">Explore OPERATIONALISE →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<section class="proof-strip">
+  <div class="proof-strip-inner">
+    <div class="stat-callout">
+      <div style="display:flex;align-items:baseline;justify-content:center;gap:4px;">
+        <div class="stat-number">18%</div>
+        <span class="stat-arrow">→</span>
+        <div class="stat-number">24%</div>
+      </div>
+      <div class="stat-label">First-pass yield improvement, FMCG client</div>
+      <div class="stat-sublabel">Six-month PLAN and SOLVE engagement</div>
+    </div>
+    <div class="stat-callout">
+      <div style="display:flex;align-items:baseline;justify-content:center;gap:4px;">
+        <div class="stat-number">52</div>
+        <span class="stat-arrow">→</span>
+        <div class="stat-number">31</div>
+      </div>
+      <div class="stat-label">Days average order-to-delivery, logistics client</div>
+      <div class="stat-sublabel">EVOLVE pilot, held 14 months post-engagement</div>
+    </div>
+    <div class="stat-callout">
+      <div style="display:flex;align-items:baseline;justify-content:center;gap:4px;">
+        <div class="stat-number">28%</div>
+        <span class="stat-arrow">→</span>
+        <div class="stat-number">9%</div>
+      </div>
+      <div class="stat-label">Rework rate, financial services operations</div>
+      <div class="stat-sublabel">SOLVE and GOVERN engagement, 8 months</div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="industries-section">
+  <div class="industries-inner">
+    <div class="industries-header">
+      <p class="section-label">· INDUSTRIES WE SERVE</p>
+      <h2>Where operational complexity is highest.</h2>
+    </div>
+    <div class="industries-grid">
+      <div class="industry-card">
+        <div class="industry-bar"></div>
+        <div class="industry-icon">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="20" width="40" height="28" rx="2" stroke="#26245C" stroke-width="1.5" fill="none"/>
+            <path d="M8 28h40" stroke="#26245C" stroke-width="1.5"/>
+            <path d="M18 20v-8a10 10 0 0 1 20 0v8" stroke="#26245C" stroke-width="1.5" fill="none"/>
+            <circle cx="28" cy="36" r="4" stroke="#26245C" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <h3>Financial Services</h3>
+        <p>High process volumes, regulatory complexity, and the growing role of AI in decision-making. We work with banks, insurers, and asset managers to reduce rework, establish AI governance, and build the internal capability to sustain both.</p>
+        <a href="/industries/financial-services/" class="explore-link">Explore →</a>
+      </div>
+      <div class="industry-card">
+        <div class="industry-bar"></div>
+        <div class="industry-icon">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="30" width="36" height="16" rx="2" stroke="#26245C" stroke-width="1.5" fill="none"/>
+            <path d="M16 30V18a6 6 0 0 1 6-6h12a6 6 0 0 1 6 6v12" stroke="#26245C" stroke-width="1.5" fill="none"/>
+            <circle cx="28" cy="38" r="3" stroke="#26245C" stroke-width="1.5" fill="none"/>
+            <path d="M22 18h12" stroke="#26245C" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Manufacturing and FMCG</h3>
+        <p>Yield, cycle time, and quality consistency under production pressure. We work with manufacturers and FMCG operations to establish measurement baselines, identify root causes, and deploy improvements that hold at full production volume.</p>
+        <a href="/industries/manufacturing/" class="explore-link">Explore →</a>
+      </div>
+      <div class="industry-card">
+        <div class="industry-bar"></div>
+        <div class="industry-icon">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 46 L28 12 L46 46" stroke="#26245C" stroke-width="1.5" fill="none"/>
+            <path d="M18 34 h20" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="28" cy="22" r="3" stroke="#26245C" stroke-width="1.5" fill="none"/>
+            <path d="M14 46 h28" stroke="#26245C" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Logistics and Supply Chain</h3>
+        <p>Order-to-delivery, warehouse throughput, and supplier performance. We work with logistics operations to reduce cycle times, establish real-time monitoring, and build the governance that keeps performance from regressing under demand variation.</p>
+        <a href="/industries/logistics/" class="explore-link">Explore →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR WORK -->
+<section class="work-section">
+  <div class="work-inner">
+    <div class="work-header">
+      <p class="section-label">· OUR WORK</p>
+      <h2>What sustained improvement looks like in practice.</h2>
+      <p>All clients are anonymous. Results are real.</p>
+    </div>
+    <div class="work-grid">
+      <div class="case-card">
+        <div class="case-tag">Financial Services · PLAN and SOLVE</div>
+        <h3>From 28% rework to 9% — and held for 18 months.</h3>
+        <p>A large financial services operation had a persistent rework problem that three previous improvement programmes had failed to resolve. We used PLAN to establish the true baseline, SOLVE to identify the root cause (a combination of unclear decision criteria and inconsistent training), and built the measurement system to monitor it permanently.</p>
+        <div class="case-results">
+          <div class="case-result">
+            <div class="case-result-number">28% → 9%</div>
+            <div class="case-result-label">Rework rate</div>
+          </div>
+          <div class="case-result">
+            <div class="case-result-number">18 months</div>
+            <div class="case-result-label">Sustained post-engagement</div>
+          </div>
+        </div>
+        <a href="/work/financial-services-rework/" class="read-link">Read case study →</a>
+      </div>
+      <div class="case-card">
+        <div class="case-tag">Logistics · EVOLVE and GOVERN</div>
+        <h3>Order-to-delivery from 52 days to 31. Pilot validated in 8 weeks.</h3>
+        <p>A national logistics operator needed to reduce order-to-delivery cycle time without adding headcount. We designed the future state in SOLVE, ran a structured 8-week pilot in EVOLVE with one business unit, validated the results, and then used GOVERN to build the control infrastructure before the national rollout.</p>
+        <div class="case-results">
+          <div class="case-result">
+            <div class="case-result-number">52 → 31 days</div>
+            <div class="case-result-label">Order-to-delivery</div>
+          </div>
+          <div class="case-result">
+            <div class="case-result-number">8 weeks</div>
+            <div class="case-result-label">Pilot to validated results</div>
+          </div>
+        </div>
+        <a href="/work/logistics-cycle-time/" class="read-link">Read case study →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <p class="section-label" style="text-align:center;color:rgba(255,255,255,0.4);">· GET STARTED</p>
+    <h2>Not sure where to start? That is what FRAME is for.</h2>
+    <p>Most organisations know something is wrong before they know what to do about it. A 30-minute conversation is enough to tell you whether FRAME, PLAN, or another starting point is the right next move.</p>
+    <a href="/contact/" class="cta-btn">Book a call</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#26245C;color:#fff;padding:40px 60px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+    <div>
+      <div style="font-family:Montserrat,sans-serif;font-weight:700;font-size:18px;margin-bottom:8px;">EQUIBT</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.7);">Operational Capability Advisory</div>
+    </div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.5);">© 2026 EQUIBT Group. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
