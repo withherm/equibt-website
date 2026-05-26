@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EQUIBT | Operational Capability Advisory</title>
+<style>
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/montserrat-600-700-latin-ext.woff2') format('woff2');
+    font-weight: 600 700; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/montserrat-600-700-latin.woff2') format('woff2');
+    font-weight: 600 700; font-style: normal; font-display: swap;
+  }
+
+  :root {
+    --navy: #26245C;
+    --terracotta: #C15F3C;
+    --terracotta-dark: #A04E30;
+    --off-white: #F5F3EE;
+    --warm-parchment: #F5EBD9;
+    --section-bg: #F7F7F7;
+    --body-text: #555555;
+    --near-black: #111111;
+    --white: #FFFFFF;
+    --border: rgba(0,0,0,0.08);
+    --navy-border: rgba(38,36,92,0.1);
+    --text-light: rgba(255,255,255,0.72);
+    --text-faint: rgba(255,255,255,0.44);
+    --pill-frame: #8B2252;
+    --pill-plan: #26245C;
+    --pill-solve: #0B6B82;
+    --pill-evolve: #2D7A3A;
+    --pill-govern: #7A3D00;
+    --pill-operationalise: #5C0A5C;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; color: var(--body-text); background: #fff; -webkit-font-smoothing: antialiased; }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: 0.08s; }
+  .reveal-d2 { transition-delay: 0.16s; }
+  .reveal-d3 { transition-delay: 0.24s; }
+  .reveal-d4 { transition-delay: 0.32s; }
+  .reveal-d5 { transition-delay: 0.40s; }
+
+  /* NAV */
+  .navbar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; transition: background 0.3s, backdrop-filter 0.3s; }
+  .navbar.scrolled { background: rgba(255,255,255,0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+  .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; height: 64px; }
+  .nav-logo { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 15px; color: var(--navy); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; }
+  .nav-logo span { color: var(--terracotta); }
+  .nav-links { display: flex; align-items: center; gap: 32px; margin-left: auto; }
+  .nav-link { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(38,36,92,0.5); text-decoration: none; transition: color 0.18s; }
+  .nav-link:hover { color: var(--navy); }
+  .nav-cta { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 11px; background: var(--navy); color: #fff; padding: 9px 20px; border-radius: 3px; text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; margin-left: 16px; transition: background 0.18s; }
+  .nav-cta:hover { background: var(--terracotta); }
+  .nav-dropdown { position: relative; }
+  .services-dropdown { display: none; position: absolute; top: calc(100% + 8px); left: -16px; background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 8px 0; min-width: 260px; box-shadow: 0 16px 40px rgba(0,0,0,0.1); list-style: none; z-index: 200; }
+  .nav-dropdown:hover .services-dropdown { display: block; }
+  .services-dropdown li a { display: block; padding: 10px 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--navy); text-decoration: none; transition: background 0.15s; }
+  .services-dropdown li a:hover { background: var(--off-white); color: var(--terracotta); }
+
+  /* ─────────────────────────────
+     HERO — white, editorial, left-aligned
+  ───────────────────────────────*/
+  .hero { background: var(--white); padding: 96px 48px 104px; border-bottom: 1px solid var(--border); }
+  .hero-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 480px; gap: 64px; align-items: center; }
+  .hero-left {}
+  .hero-eyebrow { display: flex; align-items: center; gap: 10px; font-family: 'Montserrat', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; color: var(--terracotta); text-transform: uppercase; margin-bottom: 28px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 2px; background: var(--terracotta); flex-shrink: 0; }
+  .hero h1 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 52px; font-weight: 500; line-height: 1.06; color: var(--near-black); letter-spacing: -0.03em; margin-bottom: 28px; }
+  .hero h1 em { font-style: normal; color: var(--navy); }
+  .hero-sub { font-size: 18px; color: #777; line-height: 1.7; margin-bottom: 44px; max-width: 540px; }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 11px; background: var(--navy); color: #fff; padding: 13px 26px; border-radius: 3px; text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.18s, transform 0.15s; }
+  .btn-primary:hover { background: var(--terracotta); transform: translateY(-1px); }
+  .btn-outline { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 11px; border: 1.5px solid var(--navy-border); color: var(--body-text); padding: 12px 26px; border-radius: 3px; text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: border-color 0.18s, color 0.18s; }
+  .btn-outline:hover { border-color: var(--navy); color: var(--navy); }
+
+  /* Hero diagram — Visible Method, sits directly on white, no boxing */
+  .hero-diagram { background: transparent; border: none; overflow: visible; }
+  .hero-diagram svg { display: block; width: 100%; height: auto; }
+
+  /* ─────────────────────────────
+     EDITORIAL STATEMENT
+  ───────────────────────────────*/
+  .statement-section { background: var(--white); padding: 72px 48px 80px; border-bottom: 1px solid var(--border); }
+  .statement-inner { max-width: 820px; margin: 0 auto; }
+  .statement-kicker { font-family: 'Montserrat', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; color: var(--terracotta); text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+  .statement-kicker::before { content: ''; display: block; width: 24px; height: 2px; background: var(--terracotta); }
+  .statement-text { font-family: 'Montserrat', system-ui, sans-serif; font-size: 52px; font-weight: 500; color: var(--near-black); line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 32px; }
+  .statement-text em { font-style: normal; color: var(--navy); }
+  .statement-sub { font-size: 17px; color: var(--body-text); line-height: 1.75; border-left: 3px solid rgba(193,95,60,0.25); padding-left: 24px; }
+
+  /* ─────────────────────────────
+     THE METHOD — process made visible
+  ───────────────────────────────*/
+  .method-section { background: var(--off-white); padding: 112px 48px; border-bottom: 1px solid var(--border); }
+  .method-inner { max-width: 1280px; margin: 0 auto; }
+  .method-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-bottom: 80px; align-items: end; }
+  .method-header h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 51px; font-weight: 600; color: var(--near-black); letter-spacing: -0.03em; line-height: 1.06; }
+  .method-header-right { padding-bottom: 8px; }
+  .method-header-right p { font-size: 17px; color: var(--body-text); line-height: 1.7; }
+
+  /* Phase tag pill — retained for pillar cards */
+  .method-phase-tag { display: inline-flex; align-items: center; color: var(--off-white); font-family: 'Montserrat', system-ui, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; height: 20px; padding: 0 10px; border-radius: 100px; width: fit-content; }
+  .method-phase-tag.frame          { background: var(--pill-frame); }
+  .method-phase-tag.plan           { background: var(--pill-plan); }
+  .method-phase-tag.solve          { background: var(--pill-solve); }
+  .method-phase-tag.evolve         { background: var(--pill-evolve); }
+  .method-phase-tag.govern         { background: var(--pill-govern); }
+  .method-phase-tag.operationalise { background: var(--pill-operationalise); }
+
+  /* Pillar grid — 3x2 connected card layout */
+  .method-pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(38,36,92,0.08); border: 1px solid rgba(38,36,92,0.08); margin-top: 64px; }
+  .method-pillar { background: var(--off-white); padding: 40px 36px 44px; position: relative; overflow: hidden; }
+  .method-pillar.pillar-frame          { border-top: 3px solid var(--pill-frame); }
+  .method-pillar.pillar-plan           { border-top: 3px solid var(--pill-plan); }
+  .method-pillar.pillar-solve          { border-top: 3px solid var(--pill-solve); }
+  .method-pillar.pillar-evolve         { border-top: 3px solid var(--pill-evolve); }
+  .method-pillar.pillar-govern         { border-top: 3px solid var(--pill-govern); }
+  .method-pillar.pillar-operationalise { border-top: 3px solid var(--pill-operationalise); }
+  .method-pillar-num { font-family: 'Montserrat', system-ui, sans-serif; font-size: 88px; font-weight: 700; color: rgba(38,36,92,0.045); line-height: 1; position: absolute; top: 18px; right: 20px; letter-spacing: -0.04em; user-select: none; pointer-events: none; }
+  .method-pillar-name { font-family: 'Montserrat', system-ui, sans-serif; font-size: 19px; font-weight: 600; color: var(--navy); letter-spacing: -0.01em; margin-top: 12px; margin-bottom: 12px; line-height: 1.2; }
+  .method-pillar-desc { font-size: 14px; color: var(--body-text); line-height: 1.75; margin-bottom: 20px; }
+  .method-pillar-delivers { display: flex; gap: 8px; align-items: baseline; margin-bottom: 20px; flex-wrap: wrap; }
+  .method-pillar-delivers-label { font-family: 'Montserrat', system-ui, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracotta); flex-shrink: 0; }
+  .method-pillar-delivers-text { font-size: 13px; color: var(--navy); line-height: 1.5; }
+  .method-pillar-link { font-family: 'Montserrat', system-ui, sans-serif; font-size: 10px; font-weight: 700; color: var(--terracotta); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.18s; }
+  .method-pillar-link:hover { gap: 10px; }
+
+  /* ─────────────────────────────
+     CASE EVIDENCE — editorial rows
+  ───────────────────────────────*/
+  .evidence-section { background: var(--white); padding: 112px 48px; border-bottom: 1px solid var(--border); }
+  .evidence-inner { max-width: 1280px; margin: 0 auto; }
+  .evidence-header { margin-bottom: 72px; }
+  .evidence-header h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 51px; font-weight: 600; color: var(--near-black); letter-spacing: -0.03em; line-height: 1.06; }
+  .section-label { display: flex; align-items: center; gap: 10px; font-family: 'Montserrat', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 20px; }
+  .section-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--terracotta); flex-shrink: 0; }
+  /* Evidence as editorial two-column rows */
+  .evidence-item { display: grid; grid-template-columns: 280px 1fr; gap: 64px; padding: 52px 0; border-top: 1px solid var(--border); align-items: start; }
+  .evidence-item:last-child { border-bottom: 1px solid var(--border); }
+  .evidence-meta { }
+  .evidence-sector { font-family: 'Montserrat', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; color: var(--terracotta); text-transform: uppercase; margin-bottom: 12px; }
+  .evidence-headline { font-family: 'Montserrat', system-ui, sans-serif; font-size: 22px; font-weight: 700; color: var(--navy); line-height: 1.3; letter-spacing: -0.01em; }
+  .evidence-content { }
+  .evidence-body { font-size: 16px; color: var(--body-text); line-height: 1.75; margin-bottom: 32px; }
+  .evidence-metrics { display: flex; gap: 40px; flex-wrap: wrap; }
+  .evidence-metric { }
+  .evidence-metric-num { font-family: 'Montserrat', system-ui, sans-serif; font-size: 36px; font-weight: 700; color: var(--navy); letter-spacing: -0.02em; line-height: 1; }
+  .evidence-metric-num span { font-size: 20px; color: var(--terracotta); margin-left: 4px; }
+  .evidence-metric-label { font-size: 12px; color: #999; margin-top: 4px; }
+
+  /* ─────────────────────────────
+     PROOF STRIP — stats on off-white
+  ───────────────────────────────*/
+  .proof-strip { background: var(--off-white); padding: 96px 48px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .proof-strip-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--navy-border); border: 1px solid var(--navy-border); }
+  .stat-block { background: var(--off-white); padding: 48px 40px; }
+  .stat-num { font-family: 'Montserrat', system-ui, sans-serif; font-size: 64px; font-weight: 700; color: var(--terracotta); letter-spacing: -0.04em; line-height: 1; margin-bottom: 16px; display: flex; align-items: baseline; gap: 8px; }
+  .stat-arrow { font-size: 28px; color: rgba(38,36,92,0.2); }
+  .stat-label { font-size: 16px; color: var(--near-black); line-height: 1.5; margin-bottom: 8px; }
+  .stat-sub { font-size: 14px; color: #777; line-height: 1.4; }
+
+  /* ─────────────────────────────
+     SOCIAL PROOF — client logo strip
+  ───────────────────────────────*/
+  .social-proof-section { background: var(--white); padding: 72px 48px; border-bottom: 1px solid var(--border); }
+  .social-proof-inner { max-width: 1280px; margin: 0 auto; }
+  .social-proof-label { font-family: 'Montserrat', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.20em; text-transform: uppercase; color: rgba(38,36,92,0.32); text-align: center; margin-bottom: 40px; }
+  .logo-row { display: flex; gap: 20px; align-items: stretch; justify-content: center; flex-wrap: wrap; }
+  .logo-block { border: 1px solid rgba(38,36,92,0.10); border-radius: 3px; padding: 0 28px; height: 68px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-width: 130px; background: var(--white); transition: border-color 0.2s; }
+  .logo-block:hover { border-color: rgba(38,36,92,0.22); }
+  .logo-block svg { display: block; opacity: 0.48; }
+  .logo-block-label { font-family: 'Montserrat', system-ui, sans-serif; font-size: 8px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(38,36,92,0.40); white-space: nowrap; }
+
+  /* ─────────────────────────────
+     INDUSTRIES — editorial 2x2 grid with architectural lineart
+  ───────────────────────────────*/
+  .industries-section { background: var(--white); padding: 112px 48px; border-bottom: 1px solid var(--border); }
+  .industries-inner { max-width: 1280px; margin: 0 auto; }
+  .industries-header { margin-bottom: 72px; }
+  .industries-header h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 51px; font-weight: 600; color: var(--near-black); letter-spacing: -0.03em; line-height: 1.06; }
+  .industries-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 80px; }
+  .industry-card { display: flex; flex-direction: column; }
+  .industry-visual { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(38,36,92,0.07); }
+  .industry-visual svg { display: block; width: 100%; height: auto; }
+  .industry-name { font-family: 'Montserrat', system-ui, sans-serif; font-size: 19px; font-weight: 600; color: var(--navy); letter-spacing: -0.01em; margin-bottom: 12px; }
+  .industry-desc { font-size: 15px; color: var(--body-text); line-height: 1.7; }
+
+  /* ─────────────────────────────
+     CLOSE CTA
+  ───────────────────────────────*/
+  .cta-section { background: var(--off-white); padding: 120px 48px; border-top: 1px solid var(--border); }
+  .cta-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+  .cta-label { font-family: 'Montserrat', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; color: var(--terracotta); text-transform: uppercase; margin-bottom: 28px; }
+  .cta-inner h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 48px; font-weight: 600; color: var(--near-black); letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 20px; }
+  .cta-inner p { font-size: 17px; color: var(--body-text); line-height: 1.65; margin-bottom: 44px; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .btn-cta { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 12px; background: var(--navy); color: #fff; padding: 16px 36px; border-radius: 3px; text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; display: inline-block; transition: background 0.18s, transform 0.15s; }
+  .btn-cta:hover { background: var(--terracotta); transform: translateY(-1px); }
+
+  /* ─────────────────────────────
+     FOOTER
+  ───────────────────────────────*/
+  .footer { background: var(--white); padding: 80px 48px 48px; border-top: 1px solid var(--border); }
+  .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 200px 1fr 1fr 1fr; gap: 64px; margin-bottom: 56px; }
+  .footer-brand { }
+  .footer-logo { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 14px; color: var(--navy); letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; display: block; margin-bottom: 12px; }
+  .footer-logo span { color: var(--terracotta); }
+  .footer-tagline { font-size: 12px; color: var(--body-text); line-height: 1.65; }
+  .footer-col h4 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(38,36,92,0.35); margin-bottom: 16px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a { font-size: 13px; color: var(--body-text); text-decoration: none; transition: color 0.18s; }
+  .footer-col ul li a:hover { color: var(--navy); }
+  .footer-bottom { max-width: 1280px; margin: 0 auto; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-size: 12px; color: #bbb; }
+  .footer-legal { display: flex; gap: 24px; }
+  .footer-legal a { font-size: 12px; color: #bbb; text-decoration: none; transition: color 0.18s; }
+  .footer-legal a:hover { color: var(--navy); }
+
+  /* MOBILE */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-diagram { display: none; }
+    .method-header { grid-template-columns: 1fr; gap: 24px; }
+    .method-pillar-grid { grid-template-columns: 1fr 1fr; }
+    .logo-row { gap: 12px; }
+    .logo-block { min-width: 110px; }
+    .industries-grid { grid-template-columns: 1fr; gap: 48px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+  @media (max-width: 768px) {
+    .hero { padding: 64px 24px 72px; }
+    .hero h1 { font-size: 36px; }
+    .hero-sub { font-size: 16px; }
+    .statement-section { padding: 52px 24px 60px; }
+    .statement-text { font-size: 32px; }
+    .method-section, .evidence-section, .industries-section, .proof-strip, .cta-section { padding: 72px 24px; }
+    .method-header h2, .evidence-header h2, .industries-header h2 { font-size: 32px; }
+    .method-pillar-grid { grid-template-columns: 1fr; }
+    .method-pillar { padding: 32px 28px 36px; }
+    .evidence-item { grid-template-columns: 1fr; gap: 24px; }
+    .proof-strip-inner { grid-template-columns: 1fr; background: none; border: none; }
+    .stat-block { padding: 40px 24px; border-bottom: 1px solid var(--border); }
+    .cta-inner h2 { font-size: 32px; }
+    .footer { padding: 56px 24px 40px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar" id="ref-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">EQUI<span>BT</span></a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <a href="/services/" class="nav-link">Services</a>
+        <ul class="services-dropdown">
+          <li><a href="/services/frame/">FRAME: Problem Framing</a></li>
+          <li><a href="/services/plan/">PLAN: Operations Diagnostic</a></li>
+          <li><a href="/services/solve/">SOLVE: Iterative Improvement</a></li>
+          <li><a href="/services/evolve/">EVOLVE: Rapid Pilot</a></li>
+          <li><a href="/services/govern/">GOVERN: Architecture &amp; Governance</a></li>
+          <li><a href="/services/operationalise/">OPERATIONALISE: Operational Embedding</a></li>
+        </ul>
+      </div>
+      <a href="/industries/" class="nav-link">Industries</a>
+      <a href="/our-work/" class="nav-link">Our Work</a>
+      <a href="/about/" class="nav-link">About</a>
+      <a href="/contact/" class="nav-cta">Let's Talk</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left reveal">
+      <div class="hero-eyebrow">Operations Advisory</div>
+      <h1>The system that holds<br><em>after we leave.</em></h1>
+      <p class="hero-sub">EQUIBT embeds operational capability into complex organisations. Six sequential phases, measurable outcomes, and one design principle that runs through every engagement: when we leave, your team runs it. No dependency. No retainer. No follow-on required.</p>
+      <div class="hero-ctas">
+        <a href="/contact/" class="btn-primary">Start a conversation</a>
+        <a href="/our-work/" class="btn-outline">See our work</a>
+      </div>
+    </div>
+
+    <!-- Visible Method illustration — low-poly geometric gem / capability architecture -->
+    <div class="hero-diagram reveal reveal-d2">
+      <svg viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg" aria-label="Capability Architecture — geometric polygon form">
+
+        <!--
+          Vertices (14 points):
+          T   = (220, 26)    top apex
+          TL  = (128, 102)   upper crown left
+          TR  = (312, 102)   upper crown right
+          IC  = (220, 122)   inner crown top
+          IL  = (162, 148)   inner left
+          IR  = (278, 148)   inner right
+          OL  = (52, 188)    outer left (girdle)
+          OR  = (388, 188)   outer right (girdle)
+          GC  = (220, 190)   girdle centre — terracotta
+          PL  = (162, 258)   pavilion left
+          PR  = (278, 258)   pavilion right
+          BL  = (100, 274)   outer pavilion left
+          BR  = (340, 274)   outer pavilion right
+          B   = (220, 352)   bottom apex
+        -->
+
+        <!-- Construction guide: girdle axis (very faint) -->
+        <line x1="28" y1="188" x2="412" y2="188" stroke="#26245C" stroke-width="0.5" stroke-dasharray="2 10" opacity="0.05"/>
+
+        <!-- CROWN FACES -->
+        <!-- F1: T, TL, IC -->
+        <path d="M 220 26 L 128 102 L 220 122 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- F2: T, IC, TR -->
+        <path d="M 220 26 L 220 122 L 312 102 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- F3: TL, OL, IL -->
+        <path d="M 128 102 L 52 188 L 162 148 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- F4: TL, IL, IC -->
+        <path d="M 128 102 L 162 148 L 220 122 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- F5: TR, IC, IR -->
+        <path d="M 312 102 L 220 122 L 278 148 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- F6: TR, IR, OR -->
+        <path d="M 312 102 L 278 148 L 388 188 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- F7: OL, GC, IL -->
+        <path d="M 52 188 L 220 190 L 162 148 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- F8: IL, GC, IR (central crown table) -->
+        <path d="M 162 148 L 220 190 L 278 148 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- F9: IR, GC, OR -->
+        <path d="M 278 148 L 220 190 L 388 188 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- F18: IC, IL, IR (upper table face) -->
+        <path d="M 220 122 L 162 148 L 278 148 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+
+        <!-- PAVILION FACES -->
+        <!-- F10: OL, PL, GC -->
+        <path d="M 52 188 L 162 258 L 220 190 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- F11: GC, PL, PR (central pavilion) -->
+        <path d="M 220 190 L 162 258 L 278 258 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- F12: GC, PR, OR -->
+        <path d="M 220 190 L 278 258 L 388 188 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- F13: OL, BL, PL -->
+        <path d="M 52 188 L 100 274 L 162 258 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- F14: PL, BL, B -->
+        <path d="M 162 258 L 100 274 L 220 352 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- F15: PL, B, PR (central lower pavilion) -->
+        <path d="M 162 258 L 220 352 L 278 258 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- F16: PR, B, BR -->
+        <path d="M 278 258 L 220 352 L 340 274 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- F17: PR, BR, OR -->
+        <path d="M 278 258 L 340 274 L 388 188 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+
+        <!-- VERTEX NODES — primary silhouette points -->
+        <circle cx="220" cy="26" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="52" cy="188" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="388" cy="188" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="220" cy="352" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="100" cy="274" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="340" cy="274" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="128" cy="102" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="312" cy="102" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+
+        <!-- TERRACOTTA: girdle centre — the intervention and capability point -->
+        <circle cx="220" cy="190" r="10" fill="#C15F3C"/>
+        <line x1="212" y1="190" x2="228" y2="190" stroke="#FFFFFF" stroke-width="1.5"/>
+        <line x1="220" y1="182" x2="220" y2="198" stroke="#FFFFFF" stroke-width="1.5"/>
+
+        <!-- CAPTION -->
+        <text x="220" y="372" font-family="system-ui,-apple-system,sans-serif" font-size="8" font-weight="600" letter-spacing="0.14em" fill="#C15F3C" text-anchor="middle" opacity="0.52">CAPABILITY ARCHITECTURE / STATE OF BECOMING</text>
+
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- BRIDGE STATEMENT -->
+<section class="statement-section">
+  <div class="statement-inner reveal">
+    <div class="statement-kicker">Why the system matters</div>
+    <div class="statement-text">Most improvements hold for <em>twelve months.</em> Then the team turns over and the operation drifts back.</div>
+    <p class="statement-sub">EQUIBT is built around one question: what would have to be true for this to still be working in three years? Every pillar in the system is designed around that answer, not around billable hours or dependency on our team.</p>
+  </div>
+</section>
+
+<!-- THE METHOD -->
+<section class="method-section">
+  <div class="method-inner">
+    <div class="method-header reveal">
+      <h2>Six pillars.<br>One system.</h2>
+      <div class="method-header-right">
+        <div class="section-label">The EQUIBT Method</div>
+        <p>Every engagement runs through the same architecture. The pillars are sequential by design, each one building the evidence and capability the next one requires. No pillar is optional.</p>
+      </div>
+    </div>
+
+    <div class="method-pillar-grid">
+
+      <!-- 01 FRAME -->
+      <div class="method-pillar pillar-frame reveal">
+        <div class="method-pillar-num">01</div>
+        <span class="method-phase-tag frame">FRAME</span>
+        <div class="method-pillar-name">Problem Framing</div>
+        <p class="method-pillar-desc">Align stakeholders on the real problem before committing resources. The right answer to the wrong problem wastes everything that follows.</p>
+        <div class="method-pillar-delivers">
+          <span class="method-pillar-delivers-label">Delivers</span>
+          <span class="method-pillar-delivers-text">Signed project charter with defined success criteria and agreed scope boundaries.</span>
+        </div>
+        <a href="/services/frame/" class="method-pillar-link">Explore FRAME →</a>
+      </div>
+
+      <!-- 02 PLAN -->
+      <div class="method-pillar pillar-plan reveal reveal-d1">
+        <div class="method-pillar-num">02</div>
+        <span class="method-phase-tag plan">PLAN</span>
+        <div class="method-pillar-name">Operations Diagnostic</div>
+        <p class="method-pillar-desc">Establish the evidence base before any intervention. Process health, capability readiness, and measurement system assessment replace instinct with data.</p>
+        <div class="method-pillar-delivers">
+          <span class="method-pillar-delivers-label">Delivers</span>
+          <span class="method-pillar-delivers-text">Diagnostic report showing where the system is broken and what is driving the gap.</span>
+        </div>
+        <a href="/services/plan/" class="method-pillar-link">Explore PLAN →</a>
+      </div>
+
+      <!-- 03 SOLVE -->
+      <div class="method-pillar pillar-solve reveal reveal-d2">
+        <div class="method-pillar-num">03</div>
+        <span class="method-phase-tag solve">SOLVE</span>
+        <div class="method-pillar-name">Iterative Improvement</div>
+        <p class="method-pillar-desc">Move from symptoms to verified causes. Design a costed future state that resolves root drivers, not visible effects. Evidence, not assumption.</p>
+        <div class="method-pillar-delivers">
+          <span class="method-pillar-delivers-label">Delivers</span>
+          <span class="method-pillar-delivers-text">Root cause report with a tested improvement design and implementation plan.</span>
+        </div>
+        <a href="/services/solve/" class="method-pillar-link">Explore SOLVE →</a>
+      </div>
+
+      <!-- 04 EVOLVE -->
+      <div class="method-pillar pillar-evolve reveal reveal-d1">
+        <div class="method-pillar-num">04</div>
+        <span class="method-phase-tag evolve">EVOLVE</span>
+        <div class="method-pillar-name">Rapid Pilot</div>
+        <p class="method-pillar-desc">Validate the solution before committing the full operation. Real data, real metrics, real conditions. Prevents expensive rollouts that work in theory but fail at scale.</p>
+        <div class="method-pillar-delivers">
+          <span class="method-pillar-delivers-label">Delivers</span>
+          <span class="method-pillar-delivers-text">Pilot results, validated requirements, and a confirmed go/no-go decision before full deployment.</span>
+        </div>
+        <a href="/services/evolve/" class="method-pillar-link">Explore EVOLVE →</a>
+      </div>
+
+      <!-- 05 GOVERN -->
+      <div class="method-pillar pillar-govern reveal reveal-d2">
+        <div class="method-pillar-num">05</div>
+        <span class="method-phase-tag govern">GOVERN</span>
+        <div class="method-pillar-name">Architecture &amp; Governance</div>
+        <p class="method-pillar-desc">Build the control infrastructure that prevents drift. Process architecture, control plans, and monitoring systems that keep performance locked in after we leave.</p>
+        <div class="method-pillar-delivers">
+          <span class="method-pillar-delivers-label">Delivers</span>
+          <span class="method-pillar-delivers-text">A governance framework your team runs independently, without ongoing external support.</span>
+        </div>
+        <a href="/services/govern/" class="method-pillar-link">Explore GOVERN →</a>
+      </div>
+
+      <!-- 06 OPERATIONALISE -->
+      <div class="method-pillar pillar-operationalise reveal reveal-d3">
+        <div class="method-pillar-num">06</div>
+        <span class="method-phase-tag operationalise">OPERATIONALISE</span>
+        <div class="method-pillar-name">Operational Embedding</div>
+        <p class="method-pillar-desc">Scale the proven, governed solution across the full operation. Standardisation, capability transfer, and performance monitoring at full load. Your team owns what we built.</p>
+        <div class="method-pillar-delivers">
+          <span class="method-pillar-delivers-label">Delivers</span>
+          <span class="method-pillar-delivers-text">An operating system embedded in your organisation's standard work, with no dependency on us.</span>
+        </div>
+        <a href="/services/operationalise/" class="method-pillar-link">Explore OPERATIONALISE →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="social-proof-section">
+  <div class="social-proof-inner">
+    <div class="social-proof-label reveal">Clients we work with</div>
+    <div class="logo-row reveal reveal-d1">
+
+      <!-- Financial Services -->
+      <div class="logo-block">
+        <svg viewBox="0 0 48 28" width="48" height="28" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="16" width="8" height="12" fill="none" stroke="#26245C" stroke-width="1.4"/>
+          <rect x="16" y="10" width="8" height="18" fill="none" stroke="#26245C" stroke-width="1.4"/>
+          <rect x="28" y="6" width="8" height="22" fill="none" stroke="#26245C" stroke-width="1.4"/>
+          <rect x="40" y="12" width="8" height="16" fill="none" stroke="#26245C" stroke-width="1.4"/>
+          <line x1="0" y1="28" x2="48" y2="28" stroke="#26245C" stroke-width="1"/>
+        </svg>
+        <div class="logo-block-label">Financial Services</div>
+      </div>
+
+      <!-- Banking -->
+      <div class="logo-block">
+        <svg viewBox="0 0 40 32" width="40" height="32" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 20 2 L 36 10 L 36 22 C 36 28 28 32 20 32 C 12 32 4 28 4 22 L 4 10 Z" fill="none" stroke="#26245C" stroke-width="1.4" stroke-linejoin="round"/>
+          <line x1="20" y1="12" x2="20" y2="24" stroke="#26245C" stroke-width="1.2"/>
+          <line x1="14" y1="18" x2="26" y2="18" stroke="#26245C" stroke-width="1.2"/>
+        </svg>
+        <div class="logo-block-label">Banking</div>
+      </div>
+
+      <!-- Government -->
+      <div class="logo-block">
+        <svg viewBox="0 0 48 28" width="48" height="28" xmlns="http://www.w3.org/2000/svg">
+          <line x1="8" y1="28" x2="8" y2="14" stroke="#26245C" stroke-width="1.4"/>
+          <line x1="16" y1="28" x2="16" y2="14" stroke="#26245C" stroke-width="1.4"/>
+          <line x1="24" y1="28" x2="24" y2="14" stroke="#26245C" stroke-width="1.4"/>
+          <line x1="32" y1="28" x2="32" y2="14" stroke="#26245C" stroke-width="1.4"/>
+          <line x1="40" y1="28" x2="40" y2="14" stroke="#26245C" stroke-width="1.4"/>
+          <line x1="4" y1="14" x2="44" y2="14" stroke="#26245C" stroke-width="1.8"/>
+          <polyline points="4,14 24,3 44,14" fill="none" stroke="#26245C" stroke-width="1.4" stroke-linejoin="round"/>
+          <line x1="0" y1="28" x2="48" y2="28" stroke="#26245C" stroke-width="1.2"/>
+        </svg>
+        <div class="logo-block-label">Government</div>
+      </div>
+
+      <!-- Utilities -->
+      <div class="logo-block">
+        <svg viewBox="0 0 32 36" width="32" height="36" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="20,2 10,18 18,18 12,34" fill="none" stroke="#26245C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="logo-block-label">Utilities</div>
+      </div>
+
+      <!-- Insurance -->
+      <div class="logo-block">
+        <svg viewBox="0 0 44 32" width="44" height="32" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 4 14 Q 4 4 22 4 Q 40 4 40 14 L 40 28 L 4 28 Z" fill="none" stroke="#26245C" stroke-width="1.4" stroke-linejoin="round"/>
+          <line x1="22" y1="4" x2="22" y2="28" stroke="#26245C" stroke-width="0.75" stroke-dasharray="3 4" opacity="0.40"/>
+        </svg>
+        <div class="logo-block-label">Insurance</div>
+      </div>
+
+      <!-- Logistics -->
+      <div class="logo-block">
+        <svg viewBox="0 0 48 28" width="48" height="28" xmlns="http://www.w3.org/2000/svg">
+          <line x1="4" y1="14" x2="44" y2="14" stroke="#26245C" stroke-width="1.8"/>
+          <polyline points="36,8 44,14 36,20" fill="none" stroke="#26245C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="4" y="8" width="18" height="12" fill="none" stroke="#26245C" stroke-width="1.4" stroke-linejoin="round"/>
+          <circle cx="10" cy="24" r="4" fill="none" stroke="#26245C" stroke-width="1.4"/>
+          <circle cx="22" cy="24" r="4" fill="none" stroke="#26245C" stroke-width="1.4"/>
+        </svg>
+        <div class="logo-block-label">Logistics</div>
+      </div>
+
+      <!-- Manufacturing -->
+      <div class="logo-block">
+        <svg viewBox="0 0 36 36" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="14" fill="none" stroke="#26245C" stroke-width="1.4"/>
+          <circle cx="18" cy="18" r="5" fill="none" stroke="#26245C" stroke-width="1.4"/>
+          <line x1="18" y1="4" x2="18" y2="8" stroke="#26245C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="18" y1="28" x2="18" y2="32" stroke="#26245C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4" y1="18" x2="8" y2="18" stroke="#26245C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="28" y1="18" x2="32" y2="18" stroke="#26245C" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div class="logo-block-label">Manufacturing</div>
+      </div>
+
+      <!-- Public Sector -->
+      <div class="logo-block">
+        <svg viewBox="0 0 36 36" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="28" height="28" fill="none" stroke="#26245C" stroke-width="1.4" stroke-linejoin="round"/>
+          <rect x="10" y="10" width="16" height="16" fill="none" stroke="#26245C" stroke-width="1.2" stroke-dasharray="4 3" stroke-linejoin="round"/>
+          <circle cx="18" cy="18" r="3" fill="#26245C" opacity="0.55"/>
+        </svg>
+        <div class="logo-block-label">Public Sector</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="industries-section">
+  <div class="industries-inner">
+    <div class="industries-header reveal">
+      <div class="section-label">Industries we serve</div>
+      <h2>Where operational complexity is highest.</h2>
+    </div>
+    <div class="industries-grid">
+
+      <!-- Financial Services -->
+      <div class="industry-card reveal">
+        <div class="industry-visual">
+          <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg">
+            <line x1="20" y1="72" x2="260" y2="72" stroke="#26245C" stroke-width="1" opacity="0.18"/>
+            <rect x="32" y="52" width="14" height="20" fill="none" stroke="#26245C" stroke-width="1.2"/>
+            <rect x="56" y="38" width="14" height="34" fill="none" stroke="#26245C" stroke-width="1.2"/>
+            <rect x="80" y="44" width="14" height="28" fill="none" stroke="#26245C" stroke-width="1.2"/>
+            <rect x="104" y="30" width="14" height="42" fill="none" stroke="#26245C" stroke-width="1.2"/>
+            <rect x="128" y="48" width="14" height="24" fill="none" stroke="#26245C" stroke-width="1.2"/>
+            <line x1="20" y1="26" x2="152" y2="26" stroke="#26245C" stroke-width="0.75" stroke-dasharray="4 4" opacity="0.35"/>
+            <text x="158" y="29" font-family="system-ui,sans-serif" font-size="7" fill="#26245C" opacity="0.45" letter-spacing="0.08em">CONTROL LIMIT</text>
+            <line x1="160" y1="18" x2="160" y2="72" stroke="#26245C" stroke-width="1" opacity="0.28"/>
+            <line x1="156" y1="26" x2="164" y2="26" stroke="#26245C" stroke-width="1" opacity="0.35"/>
+            <line x1="156" y1="44" x2="164" y2="44" stroke="#26245C" stroke-width="1" opacity="0.35"/>
+            <line x1="156" y1="60" x2="164" y2="60" stroke="#26245C" stroke-width="1" opacity="0.35"/>
+            <rect x="172" y="38" width="14" height="34" fill="none" stroke="#26245C" stroke-width="1.2" stroke-dasharray="5 3" opacity="0.45"/>
+            <rect x="196" y="46" width="14" height="26" fill="none" stroke="#26245C" stroke-width="1.2" stroke-dasharray="5 3" opacity="0.45"/>
+            <rect x="220" y="34" width="14" height="38" fill="none" stroke="#26245C" stroke-width="1.2" stroke-dasharray="5 3" opacity="0.45"/>
+            <circle cx="160" cy="72" r="5" fill="#C15F3C"/>
+            <path d="M 26 72 A 8 8 0 0 1 20 66" fill="none" stroke="#26245C" stroke-width="0.75" opacity="0.22"/>
+          </svg>
+        </div>
+        <div class="industry-name">Financial Services</div>
+        <p class="industry-desc">High process volumes, regulatory complexity, and the growing role of AI in decision-making. We work with banks, insurers, and asset managers to reduce rework, build governance architecture, and sustain the internal capability to hold it.</p>
+      </div>
+
+      <!-- Government & Public Sector -->
+      <div class="industry-card reveal reveal-d1">
+        <div class="industry-visual">
+          <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg">
+            <line x1="20" y1="74" x2="260" y2="74" stroke="#26245C" stroke-width="1" opacity="0.18"/>
+            <line x1="60" y1="74" x2="60" y2="42" stroke="#26245C" stroke-width="1.4"/>
+            <line x1="88" y1="74" x2="88" y2="42" stroke="#26245C" stroke-width="1.4"/>
+            <line x1="116" y1="74" x2="116" y2="42" stroke="#26245C" stroke-width="1.4"/>
+            <line x1="144" y1="74" x2="144" y2="42" stroke="#26245C" stroke-width="1.4"/>
+            <line x1="172" y1="74" x2="172" y2="42" stroke="#26245C" stroke-width="1.4"/>
+            <line x1="200" y1="74" x2="200" y2="42" stroke="#26245C" stroke-width="1.4"/>
+            <line x1="48" y1="42" x2="212" y2="42" stroke="#26245C" stroke-width="1.8"/>
+            <polyline points="48,42 130,16 212,42" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <line x1="48" y1="74" x2="212" y2="74" stroke="#26245C" stroke-width="1.8"/>
+            <line x1="88" y1="62" x2="172" y2="62" stroke="#26245C" stroke-width="0.75" stroke-dasharray="3 5" opacity="0.30"/>
+            <line x1="88" y1="52" x2="172" y2="52" stroke="#26245C" stroke-width="0.75" stroke-dasharray="3 5" opacity="0.20"/>
+            <circle cx="130" cy="16" r="5" fill="#C15F3C"/>
+            <line x1="212" y1="42" x2="244" y2="42" stroke="#26245C" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.32"/>
+            <line x1="228" y1="42" x2="228" y2="74" stroke="#26245C" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.32"/>
+            <line x1="244" y1="74" x2="244" y2="70" stroke="#26245C" stroke-width="1" opacity="0.28"/>
+          </svg>
+        </div>
+        <div class="industry-name">Government &amp; Public Sector</div>
+        <p class="industry-desc">Service delivery, budget constraint, and procedural rigour run in parallel. We help departments cut investigation cycles, reduce rework, and build lasting capability in compliance-heavy operations.</p>
+      </div>
+
+      <!-- Utilities -->
+      <div class="industry-card reveal">
+        <div class="industry-visual">
+          <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg">
+            <line x1="20" y1="72" x2="260" y2="72" stroke="#26245C" stroke-width="1" opacity="0.18"/>
+            <line x1="20" y1="45" x2="260" y2="45" stroke="#26245C" stroke-width="2"/>
+            <line x1="60" y1="39" x2="60" y2="51" stroke="#26245C" stroke-width="1.5"/>
+            <line x1="110" y1="39" x2="110" y2="51" stroke="#26245C" stroke-width="1.5"/>
+            <line x1="160" y1="39" x2="160" y2="51" stroke="#26245C" stroke-width="1.5"/>
+            <line x1="210" y1="39" x2="210" y2="51" stroke="#26245C" stroke-width="1.5"/>
+            <line x1="85" y1="45" x2="85" y2="64" stroke="#26245C" stroke-width="1.2"/>
+            <line x1="85" y1="64" x2="72" y2="64" stroke="#26245C" stroke-width="1.2"/>
+            <line x1="85" y1="64" x2="98" y2="64" stroke="#26245C" stroke-width="1.2"/>
+            <line x1="135" y1="45" x2="135" y2="64" stroke="#26245C" stroke-width="1.2"/>
+            <line x1="135" y1="64" x2="122" y2="64" stroke="#26245C" stroke-width="1.2"/>
+            <line x1="135" y1="64" x2="148" y2="64" stroke="#26245C" stroke-width="1.2"/>
+            <circle cx="60" cy="30" r="7" fill="none" stroke="#26245C" stroke-width="1.2"/>
+            <line x1="60" y1="37" x2="60" y2="39" stroke="#26245C" stroke-width="1.2"/>
+            <line x1="60" y1="27" x2="62" y2="30" stroke="#26245C" stroke-width="1" opacity="0.65"/>
+            <circle cx="160" cy="30" r="7" fill="none" stroke="#26245C" stroke-width="1.2"/>
+            <line x1="160" y1="37" x2="160" y2="39" stroke="#26245C" stroke-width="1.2"/>
+            <line x1="160" y1="27" x2="162" y2="30" stroke="#26245C" stroke-width="1" opacity="0.65"/>
+            <circle cx="210" cy="30" r="7" fill="none" stroke="#26245C" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.42"/>
+            <line x1="210" y1="37" x2="210" y2="39" stroke="#26245C" stroke-width="1.2" opacity="0.42"/>
+            <circle cx="160" cy="45" r="5" fill="#C15F3C"/>
+            <path d="M 26 72 A 8 8 0 0 1 20 66" fill="none" stroke="#26245C" stroke-width="0.75" opacity="0.22"/>
+          </svg>
+        </div>
+        <div class="industry-name">Utilities</div>
+        <p class="industry-desc">Uptime, safety, and compliance run simultaneously with no margin for variation. We work with energy and water providers to reduce process drift and sustain performance between regulatory reviews.</p>
+      </div>
+
+      <!-- Advanced Manufacturing -->
+      <div class="industry-card reveal reveal-d1">
+        <div class="industry-visual">
+          <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg">
+            <line x1="20" y1="74" x2="260" y2="74" stroke="#26245C" stroke-width="1" opacity="0.18"/>
+            <line x1="20" y1="52" x2="260" y2="52" stroke="#26245C" stroke-width="1" stroke-dasharray="2 8" opacity="0.20"/>
+            <rect x="28" y="40" width="28" height="24" fill="none" stroke="#26245C" stroke-width="1.4" stroke-linejoin="round"/>
+            <rect x="80" y="40" width="28" height="24" fill="none" stroke="#26245C" stroke-width="1.4" stroke-linejoin="round"/>
+            <rect x="132" y="40" width="28" height="24" fill="none" stroke="#26245C" stroke-width="1.4" stroke-linejoin="round"/>
+            <rect x="184" y="40" width="28" height="24" fill="none" stroke="#26245C" stroke-width="1.4" stroke-linejoin="round"/>
+            <rect x="236" y="40" width="28" height="24" fill="none" stroke="#26245C" stroke-width="1.4" stroke-dasharray="5 3" stroke-linejoin="round" opacity="0.45"/>
+            <line x1="56" y1="52" x2="74" y2="52" stroke="#26245C" stroke-width="1.2"/>
+            <polyline points="70,48 74,52 70,56" fill="none" stroke="#26245C" stroke-width="1.2"/>
+            <line x1="108" y1="52" x2="126" y2="52" stroke="#26245C" stroke-width="1.2"/>
+            <polyline points="122,48 126,52 122,56" fill="none" stroke="#26245C" stroke-width="1.2"/>
+            <line x1="160" y1="52" x2="178" y2="52" stroke="#26245C" stroke-width="1.2"/>
+            <polyline points="174,48 178,52 174,56" fill="none" stroke="#26245C" stroke-width="1.2"/>
+            <line x1="212" y1="52" x2="230" y2="52" stroke="#26245C" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.45"/>
+            <rect x="132" y="22" width="28" height="14" fill="none" stroke="#26245C" stroke-width="1" opacity="0.50"/>
+            <line x1="146" y1="36" x2="146" y2="40" stroke="#26245C" stroke-width="1" opacity="0.50"/>
+            <line x1="136" y1="29" x2="156" y2="29" stroke="#26245C" stroke-width="0.75" opacity="0.35"/>
+            <circle cx="146" cy="52" r="5" fill="#C15F3C"/>
+            <line x1="36" y1="52" x2="48" y2="52" stroke="#26245C" stroke-width="0.75" opacity="0.30"/>
+            <line x1="42" y1="46" x2="42" y2="58" stroke="#26245C" stroke-width="0.75" opacity="0.30"/>
+            <line x1="88" y1="52" x2="100" y2="52" stroke="#26245C" stroke-width="0.75" opacity="0.30"/>
+            <line x1="94" y1="46" x2="94" y2="58" stroke="#26245C" stroke-width="0.75" opacity="0.30"/>
+            <line x1="192" y1="52" x2="204" y2="52" stroke="#26245C" stroke-width="0.75" opacity="0.30"/>
+            <line x1="198" y1="46" x2="198" y2="58" stroke="#26245C" stroke-width="0.75" opacity="0.30"/>
+          </svg>
+        </div>
+        <div class="industry-name">Advanced Manufacturing</div>
+        <p class="industry-desc">Precision, throughput, and quality control at scale leave no room for drift. We work with manufacturers to cut cycle time, reduce defect rates, and build operating systems that hold under volume pressure.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CASE EVIDENCE -->
+<section class="evidence-section">
+  <div class="evidence-inner">
+    <div class="evidence-header reveal">
+      <div class="section-label">What this looks like in practice</div>
+      <h2>Results that hold.</h2>
+    </div>
+
+    <div class="evidence-item reveal">
+      <div class="evidence-meta">
+        <div class="evidence-sector">Financial Services</div>
+        <div class="evidence-headline">Reducing rework across a high-volume operations team</div>
+      </div>
+      <div class="evidence-content">
+        <p class="evidence-body">A large financial services operation was generating significant rework across its back-office processing team. Root cause analysis identified a combination of upstream handoff failures and an unclear accountability structure. SOLVE and GOVERN phases were deployed over eight months, redesigning the handoff process and establishing a monitoring system the team now runs independently.</p>
+        <div class="evidence-metrics">
+          <div class="evidence-metric">
+            <div class="evidence-metric-num">28%<span>→ 9%</span></div>
+            <div class="evidence-metric-label">Rework rate over 8 months</div>
+          </div>
+          <div class="evidence-metric">
+            <div class="evidence-metric-num">12 mo</div>
+            <div class="evidence-metric-label">Sustained post-engagement</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="evidence-item reveal">
+      <div class="evidence-meta">
+        <div class="evidence-sector">Logistics</div>
+        <div class="evidence-headline">Cutting order-to-delivery cycle time without adding headcount</div>
+      </div>
+      <div class="evidence-content">
+        <p class="evidence-body">A logistics client with a 12-day average order-to-delivery cycle engaged EQUIBT to identify where time was being lost and design a future state that could be held operationally. The PLAN diagnostic located three bottleneck processes. An EVOLVE pilot validated the redesign before full rollout. Fourteen months later the team reports the gains are holding without ongoing external support.</p>
+        <div class="evidence-metrics">
+          <div class="evidence-metric">
+            <div class="evidence-metric-num">47%</div>
+            <div class="evidence-metric-label">Cycle time reduction</div>
+          </div>
+          <div class="evidence-metric">
+            <div class="evidence-metric-num">14 mo</div>
+            <div class="evidence-metric-label">Held post-engagement</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<section class="proof-strip">
+  <div class="proof-strip-inner">
+    <div class="stat-block reveal">
+      <div class="stat-num">47%</div>
+      <div class="stat-label">Average cycle time reduction across logistics engagements</div>
+      <div class="stat-sub">EVOLVE pilot, held 14 months post-engagement</div>
+    </div>
+    <div class="stat-block reveal reveal-d1">
+      <div class="stat-num">28%<span class="stat-arrow">→</span>9%</div>
+      <div class="stat-label">Rework rate, financial services operations</div>
+      <div class="stat-sub">SOLVE and GOVERN engagement, 8 months</div>
+    </div>
+    <div class="stat-block reveal reveal-d2">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">Practitioners trained across regulated industries</div>
+      <div class="stat-sub">Lean, AI, and operational excellence programmes</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CLOSE CTA -->
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <div class="cta-label">Ready to start</div>
+    <h2>Tell us what you are trying to fix.</h2>
+    <p>Most conversations begin with a symptom. We help you work back to the cause, then build a programme around it. No proposal before diagnosis.</p>
+    <a href="/contact/" class="btn-cta">Start a conversation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo">EQUI<span>BT</span></a>
+      <p class="footer-tagline">Operational capability advisory. Melbourne, Australia. Serving ANZ corporate and government.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/services/frame/">FRAME</a></li>
+        <li><a href="/services/plan/">PLAN</a></li>
+        <li><a href="/services/solve/">SOLVE</a></li>
+        <li><a href="/services/evolve/">EVOLVE</a></li>
+        <li><a href="/services/govern/">GOVERN</a></li>
+        <li><a href="/services/operationalise/">OPERATIONALISE</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/industries/">Industries</a></li>
+        <li><a href="/our-work/">Our Work</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/how-we-work/">How We Work</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@equibt.com">hello@equibt.com</a></li>
+        <li><a href="/contact/">Start a conversation</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">&copy; 2025 EQUIBT Group. All rights reserved.</div>
+    <div class="footer-legal">
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Nav blur on scroll
+  const nav = document.getElementById('ref-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+</script>
+</body>
+</html>

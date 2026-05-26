@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DMAICO Methodology | EQUIBT</title>
+  <style>
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/montserrat-600-700-latin-ext.woff2') format('woff2');
+    font-weight: 600 700; font-style: normal; font-display: swap;
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/montserrat-600-700-latin.woff2') format('woff2');
+    font-weight: 600 700; font-style: normal; font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/montserrat-400-500-latin-ext.woff2') format('woff2');
+    font-weight: 400 500; font-style: normal; font-display: swap;
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/montserrat-400-500-latin.woff2') format('woff2');
+    font-weight: 400 500; font-style: normal; font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  :root {
+    color-scheme: light;
+    --navy:            #26245C;
+    --terracotta:      #C15F3C;
+    --terracotta-dark: #A04E30;
+    --section-bg:      #F5F5F5;
+    --white:           #FFFFFF;
+    --near-black:      #2C2C2C;
+    --off-white:       #F5F3EE;
+    --body-text:       #555;
+    --navy-wash:       #EEF0F8;
+    --dark-slate:      #2C3E50;
+    --warm-parchment:  #F5EBD9;
+    --pill-frame:           #8B2252;
+    --pill-plan:            #26245C;
+    --pill-solve:           #0B6B82;
+    --pill-evolve:          #2D7A3A;
+    --pill-govern:          #7A3D00;
+    --pill-operationalise:  #5C0A5C;
+    --navy-08: rgba(38,36,92,0.08);
+  }
+
+  h1, h2, h3,
+  .hero-h1, .section-h2,
+  .ref-logo, .section-label, .pillar-tag,
+  .phase-card-name, .phase-number-bg,
+  .cta-heading, .footer-logo { font-family: 'Montserrat', system-ui, sans-serif; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--section-bg); color: var(--near-black); -webkit-font-smoothing: antialiased; }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: 0.08s; }
+  .reveal-d2 { transition-delay: 0.16s; }
+  .reveal-d3 { transition-delay: 0.24s; }
+  .reveal-d4 { transition-delay: 0.32s; }
+  .reveal-d5 { transition-delay: 0.40s; }
+
+  /* ─── Nav ─── */
+  .ref-nav { background: var(--navy); padding: 15px 48px; display: flex; align-items: center; position: sticky; top: 0; z-index: 10; transition: background 0.3s ease, backdrop-filter 0.3s ease; }
+  .ref-nav.scrolled { background: rgba(38,36,92,0.90); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+  .ref-logo { font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--off-white); text-decoration: none; }
+  .ref-logo span { color: var(--terracotta); }
+  .ref-nav-links { display: flex; align-items: center; gap: 32px; margin-left: auto; }
+  .ref-nav-link { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,243,238,0.65); text-decoration: none; transition: color 0.18s; }
+  .ref-nav-link:hover { color: var(--off-white); }
+  .ref-nav-link.active { color: var(--off-white); }
+  .ref-nav-cta { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--off-white); background: var(--terracotta); padding: 8px 18px; border-radius: 4px; text-decoration: none; margin-left: 16px; transition: background 0.18s; }
+  .ref-nav-cta:hover { background: var(--terracotta-dark); }
+  .nav-hamburger { display: none; background: none; border: none; padding: 6px; cursor: pointer; flex-direction: column; gap: 5px; align-items: center; margin-left: auto; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: rgba(245,243,238,0.85); border-radius: 2px; }
+
+  /* ─── Section label ─── */
+  .section-label { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 16px; font-family: 'Montserrat', system-ui, sans-serif; }
+  .section-label::before { content: ''; display: block; width: 3px; height: 20px; background: var(--terracotta); border-radius: 2px; flex-shrink: 0; }
+  .section-h2 { font-size: 44px; font-weight: 500; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; }
+
+  /* ─── Pill tags ─── */
+  .pillar-tag { display: inline-flex; align-items: center; color: var(--off-white); font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; height: 22px; padding: 0 11px; border-radius: 100px; width: fit-content; line-height: 1; font-family: 'Montserrat', system-ui, sans-serif; }
+  .pillar-tag.frame          { background: var(--pill-frame); }
+  .pillar-tag.plan           { background: var(--pill-plan); }
+  .pillar-tag.solve          { background: var(--pill-solve); }
+  .pillar-tag.evolve         { background: var(--pill-evolve); }
+  .pillar-tag.govern         { background: var(--pill-govern); }
+  .pillar-tag.operationalise { background: var(--pill-operationalise); }
+
+  /* ─── Hero ─── */
+  .hero { background: var(--white); padding: 88px 48px 96px; border-bottom: 1px solid rgba(38,36,92,0.07); }
+  .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 420px; gap: 80px; align-items: center; }
+  .hero-kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 20px; font-family: 'Montserrat', system-ui, sans-serif; display: flex; align-items: center; gap: 8px; }
+  .hero-kicker::before { content: ''; display: block; width: 3px; height: 18px; background: var(--terracotta); border-radius: 2px; flex-shrink: 0; }
+  .hero-h1 { font-size: 72px; font-weight: 500; color: var(--navy); line-height: 1; letter-spacing: -0.04em; margin-bottom: 10px; }
+  .hero-h1-sub { font-size: 20px; font-weight: 500; color: rgba(38,36,92,0.45); letter-spacing: -0.01em; margin-bottom: 24px; font-family: 'Montserrat', system-ui, sans-serif; }
+  .hero-body { font-size: 17px; color: var(--body-text); line-height: 1.75; margin-bottom: 36px; max-width: 540px; }
+  .hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .btn-primary { display: inline-flex; align-items: center; background: var(--terracotta); color: var(--off-white); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; text-decoration: none; transition: background 0.18s, transform 0.15s; font-family: 'Montserrat', system-ui, sans-serif; }
+  .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+  .hero-visual { display: flex; align-items: center; justify-content: flex-end; }
+  .hero-visual svg { width: 100%; max-width: 420px; height: auto; }
+
+  /* ─── Statement ─── */
+  .statement { background: var(--off-white); padding: 96px 48px; border-bottom: 1px solid rgba(38,36,92,0.07); }
+  .statement-inner { max-width: 820px; margin: 0 auto; }
+  .statement-text { font-size: 52px; font-weight: 500; color: var(--navy); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 32px; font-family: 'Montserrat', system-ui, sans-serif; }
+  .statement-body { font-size: 17px; color: var(--body-text); line-height: 1.75; padding-left: 24px; border-left: 3px solid rgba(193,95,60,0.25); }
+
+  /* ─── DMAIC comparison ─── */
+  .comparison { background: var(--white); padding: 88px 48px; border-bottom: 1px solid rgba(38,36,92,0.07); }
+  .comparison-inner { max-width: 1100px; margin: 0 auto; }
+  .comparison-head { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 56px; }
+  .comparison-intro { font-size: 17px; color: var(--body-text); line-height: 1.75; }
+  .comparison-table-wrap { overflow-x: auto; }
+  .comparison-table { width: 100%; border-collapse: collapse; }
+  .comparison-table thead th { font-family: 'Montserrat', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(38,36,92,0.45); padding: 0 20px 16px; text-align: left; border-bottom: 2px solid rgba(38,36,92,0.1); }
+  .comparison-table thead th:first-child { padding-left: 0; width: 120px; }
+  .comparison-table tbody tr { border-bottom: 1px solid rgba(38,36,92,0.07); }
+  .comparison-table tbody tr.is-new { background: rgba(38,36,92,0.03); }
+  .comparison-table tbody tr.is-new td { border-bottom: none; }
+  .comparison-table tbody td { padding: 20px 20px; font-size: 15px; color: var(--body-text); line-height: 1.65; vertical-align: top; }
+  .comparison-table tbody td:first-child { padding-left: 0; }
+  .comparison-table .phase-label { font-family: 'Montserrat', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); }
+  .comparison-table .phase-label.is-new-label { color: var(--terracotta); }
+  .comparison-table .phase-label.is-new-label::after { content: ' NEW'; font-size: 8px; letter-spacing: 0.18em; vertical-align: middle; color: var(--terracotta); opacity: 0.7; }
+  .comparison-table .dmaic-col { color: #999; font-style: italic; }
+  .comparison-table .dmaico-col { color: var(--near-black); }
+  .comparison-table .is-new .dmaico-col { color: var(--navy); font-weight: 600; }
+
+  /* ─── Phase grid ─── */
+  .phases { background: var(--off-white); padding: 88px 48px; border-bottom: 1px solid rgba(38,36,92,0.07); }
+  .phases-inner { max-width: 1100px; margin: 0 auto; }
+  .phases-header { margin-bottom: 56px; }
+  .phase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(38,36,92,0.1); border-radius: 6px; overflow: hidden; }
+  .phase-card { background: var(--white); padding: 36px 32px 32px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 16px; transition: background 0.2s ease; }
+  .phase-card:hover { background: #fafafa; }
+  .phase-card-border { position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .phase-card-border.frame          { background: var(--pill-frame); }
+  .phase-card-border.plan           { background: var(--pill-plan); }
+  .phase-card-border.solve          { background: var(--pill-solve); }
+  .phase-card-border.evolve         { background: var(--pill-evolve); }
+  .phase-card-border.govern         { background: var(--pill-govern); }
+  .phase-card-border.operationalise { background: var(--pill-operationalise); }
+  .phase-number-bg { position: absolute; top: 12px; right: 20px; font-size: 80px; font-weight: 700; line-height: 1; letter-spacing: -0.05em; opacity: 0.038; color: var(--navy); pointer-events: none; font-family: 'Montserrat', system-ui, sans-serif; }
+  .phase-card-head { display: flex; flex-direction: column; gap: 10px; }
+  .phase-card-phase { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(38,36,92,0.4); font-family: 'Montserrat', system-ui, sans-serif; }
+  .phase-card-name { font-size: 22px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; line-height: 1.2; font-family: 'Montserrat', system-ui, sans-serif; }
+  .phase-card-desc { font-size: 15px; color: var(--body-text); line-height: 1.7; }
+  .phase-card-method { font-size: 13px; color: var(--body-text); line-height: 1.65; padding-top: 12px; border-top: 1px solid rgba(38,36,92,0.07); }
+  .phase-card-method strong { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(38,36,92,0.45); display: block; margin-bottom: 4px; font-family: 'Montserrat', system-ui, sans-serif; }
+  .phase-card-delivers { font-size: 13px; color: var(--body-text); line-height: 1.65; padding-top: 10px; }
+  .phase-card-delivers strong { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(38,36,92,0.45); display: block; margin-bottom: 4px; font-family: 'Montserrat', system-ui, sans-serif; }
+  .phase-card-link { margin-top: auto; padding-top: 16px; }
+  .phase-card-link a { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: gap 0.18s, color 0.18s; font-family: 'Montserrat', system-ui, sans-serif; }
+  .phase-card-link a:hover { color: var(--terracotta-dark); gap: 9px; }
+
+  /* ─── AI in the loop ─── */
+  .ai-section { background: var(--white); padding: 88px 48px; border-bottom: 1px solid rgba(38,36,92,0.07); }
+  .ai-section-inner { max-width: 1100px; margin: 0 auto; }
+  .ai-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 56px; }
+  .ai-intro { font-size: 17px; color: var(--body-text); line-height: 1.75; }
+  .ai-rows { display: flex; flex-direction: column; gap: 0; }
+  .ai-row { display: grid; grid-template-columns: 160px 1fr 1fr; gap: 0 40px; padding: 24px 0; border-bottom: 1px solid rgba(38,36,92,0.07); align-items: start; }
+  .ai-row:first-child { border-top: 1px solid rgba(38,36,92,0.07); }
+  .ai-row-phase { display: flex; flex-direction: column; gap: 6px; padding-top: 2px; }
+  .ai-row-pillar { font-size: 14px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; font-family: 'Montserrat', system-ui, sans-serif; }
+  .ai-row-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(38,36,92,0.4); font-family: 'Montserrat', system-ui, sans-serif; }
+  .ai-row-traditional { font-size: 14px; color: #999; line-height: 1.65; font-style: italic; }
+  .ai-row-dmaico { font-size: 14px; color: var(--near-black); line-height: 1.65; }
+  .ai-col-head { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(38,36,92,0.4); padding: 0 0 16px; font-family: 'Montserrat', system-ui, sans-serif; }
+  .ai-col-heads { display: grid; grid-template-columns: 160px 1fr 1fr; gap: 0 40px; padding-bottom: 0; border-bottom: 2px solid rgba(38,36,92,0.1); margin-bottom: 0; }
+  .ai-col-heads .ai-col-head:first-child { visibility: hidden; }
+
+  /* ─── Connections ─── */
+  .connections { background: var(--navy-wash); padding: 80px 48px; border-bottom: 1px solid rgba(38,36,92,0.07); }
+  .connections-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .connections-note { font-size: 17px; color: var(--body-text); line-height: 1.75; }
+  .connections-note p { margin-bottom: 20px; }
+  .connections-note p:last-child { margin-bottom: 0; }
+  .connections-note strong { color: var(--navy); font-weight: 600; }
+  .connections-items { display: flex; flex-direction: column; gap: 0; }
+  .connection-item { padding: 24px 0; border-bottom: 1px solid rgba(38,36,92,0.1); }
+  .connection-item:first-child { border-top: 1px solid rgba(38,36,92,0.1); padding-top: 24px; }
+  .connection-item-label { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(38,36,92,0.45); margin-bottom: 6px; font-family: 'Montserrat', system-ui, sans-serif; }
+  .connection-item-text { font-size: 14px; color: var(--body-text); line-height: 1.7; }
+
+  /* ─── CTA ─── */
+  .cta-panel { background: var(--dark-slate); padding: 80px 48px; }
+  .cta-panel-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 320px; gap: 64px; align-items: center; }
+  .cta-heading { font-size: 38px; font-weight: 700; color: var(--off-white); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+  .cta-body { font-size: 16px; color: rgba(245,243,238,0.7); line-height: 1.75; margin-bottom: 36px; }
+  .cta-button { display: inline-flex; align-items: center; background: var(--terracotta); color: var(--off-white); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 32px; border-radius: 4px; text-decoration: none; transition: background 0.18s, transform 0.15s; font-family: 'Montserrat', system-ui, sans-serif; }
+  .cta-button:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+  .cta-panel-right { background: rgba(255,255,255,0.07); border-radius: 8px; border: 1px solid rgba(245,243,238,0.15); padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+  .cta-detail-item { display: flex; flex-direction: column; gap: 3px; padding-bottom: 14px; border-bottom: 1px solid rgba(245,243,238,0.12); }
+  .cta-detail-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .cta-detail-label { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,243,238,0.4); font-family: 'Montserrat', system-ui, sans-serif; }
+  .cta-detail-title { font-size: 13px; font-weight: 600; color: var(--off-white); }
+  .cta-detail-value { font-size: 12px; color: rgba(245,243,238,0.65); line-height: 1.5; }
+
+  /* ─── Footer ─── */
+  footer { background: var(--white); padding: 80px 48px 48px; border-top: 1px solid rgba(38,36,92,0.08); }
+  .footer-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 200px 1fr 1fr 1fr; gap: 64px; margin-bottom: 56px; }
+  .footer-logo { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 14px; color: var(--navy); letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; display: block; margin-bottom: 12px; }
+  .footer-logo span { color: var(--terracotta); }
+  .footer-tagline { font-size: 12px; color: var(--body-text); line-height: 1.65; max-width: 180px; }
+  .footer-col h4 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(38,36,92,0.35); margin-bottom: 16px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a { font-size: 13px; color: var(--body-text); text-decoration: none; transition: color 0.18s; }
+  .footer-col ul li a:hover { color: var(--navy); }
+  .footer-bottom { max-width: 1120px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(38,36,92,0.08); display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-size: 12px; color: #bbb; }
+  .footer-legal { display: flex; gap: 24px; }
+  .footer-legal a { font-size: 12px; color: #bbb; text-decoration: none; transition: color 0.18s; }
+  .footer-legal a:hover { color: var(--navy); }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 1024px) {
+    .hero, .statement, .comparison, .phases, .ai-section, .connections, .cta-panel { padding-left: 32px; padding-right: 32px; }
+    .comparison-head { gap: 40px; }
+    .ai-header { gap: 40px; }
+  }
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+    .hero-visual { display: none; }
+    .comparison-head { grid-template-columns: 1fr; gap: 24px; }
+    .ai-header { grid-template-columns: 1fr; gap: 24px; }
+    .connections-inner { grid-template-columns: 1fr; gap: 48px; }
+    .cta-panel-inner { grid-template-columns: 1fr; }
+    .cta-panel-right { display: none; }
+    .phase-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .hero, .statement, .comparison, .phases, .ai-section, .connections, .cta-panel { padding-left: 24px; padding-right: 24px; padding-top: 56px; padding-bottom: 64px; }
+    .hero-h1 { font-size: 52px; }
+    .statement-text { font-size: 36px; }
+    .section-h2 { font-size: 32px; }
+    .cta-heading { font-size: 28px; }
+    .phase-grid { grid-template-columns: 1fr; }
+    .ai-row { grid-template-columns: 1fr; gap: 12px 0; }
+    .ai-col-heads { display: none; }
+    .ai-row-traditional { display: none; }
+    .ref-nav { padding: 14px 24px; flex-wrap: wrap; }
+    .ref-nav-links { display: none; width: 100%; flex-direction: column; padding: 12px 0 8px; gap: 0; margin-left: 0; border-top: 1px solid rgba(245,243,238,0.1); margin-top: 12px; }
+    .ref-nav-links.is-open { display: flex; }
+    .ref-nav-link { padding: 9px 0; font-size: 10px; }
+    .ref-nav-cta { margin-left: 0; margin-top: 8px; align-self: flex-start; }
+    .nav-hamburger { display: flex; }
+    footer { padding: 56px 24px 40px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    .comparison-table tbody td { padding: 16px 12px; font-size: 13px; }
+  }
+  @media (max-width: 480px) {
+    .footer-inner { grid-template-columns: 1fr; }
+  }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="ref-nav" id="main-nav">
+    <a href="/" class="ref-logo">EQ<span>U</span>IBT</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="ref-nav-links" id="nav-links">
+      <a href="/services/frame/" class="ref-nav-link">FRAME</a>
+      <a href="/services/plan/" class="ref-nav-link">PLAN</a>
+      <a href="/services/solve/" class="ref-nav-link">SOLVE</a>
+      <a href="/services/evolve/" class="ref-nav-link">EVOLVE</a>
+      <a href="/services/govern/" class="ref-nav-link">GOVERN</a>
+      <a href="/services/operationalise/" class="ref-nav-link">OPERATIONALISE</a>
+      <a href="/methodology/" class="ref-nav-link active">METHODOLOGY</a>
+      <a href="/contact/" class="ref-nav-cta">Let&rsquo;s talk</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text reveal">
+        <div class="hero-kicker">EQUIBT Method</div>
+        <h1 class="hero-h1">DMAICO</h1>
+        <p class="hero-h1-sub">Define. Measure. Analyse. Improve. Control. Operate.</p>
+        <p class="hero-body">Herman Chan&rsquo;s proprietary extension of DMAIC, built for the age of AI-assisted operations. Six phases. One continuous system. The phase DMAIC never had is now the most important one.</p>
+        <div class="hero-actions">
+          <a href="/services/frame/" class="btn-primary">Start with FRAME</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal reveal-d2">
+        <!-- Methodology gem: elongated crystalline topology -->
+        <svg viewBox="0 0 440 390" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Vertices:
+            T=(220,25)  TL=(125,88)  TR=(315,88)
+            IC=(220,108) IL=(158,142) IR=(282,142)
+            OL=(48,190) OR=(392,190) GC=(220,190)
+            PL=(158,238) PR=(282,238)
+            BL=(108,278) BR=(332,278) B=(220,365)
+          -->
+
+          <!-- Crown faces (10) -->
+          <!-- 1: T-TL-IC -->
+          <path d="M220,25 L125,88 L220,108 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- 2: T-IC-TR -->
+          <path d="M220,25 L220,108 L315,88 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- 3: TL-OL-IL -->
+          <path d="M125,88 L48,190 L158,142 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- 4: TL-IL-IC -->
+          <path d="M125,88 L158,142 L220,108 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- 5: TR-IC-IR -->
+          <path d="M315,88 L220,108 L282,142 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- 6: TR-IR-OR -->
+          <path d="M315,88 L282,142 L392,190 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- 7: OL-GC-IL -->
+          <path d="M48,190 L220,190 L158,142 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- 8: IL-GC-IR -->
+          <path d="M158,142 L220,190 L282,142 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- 9: IR-GC-OR -->
+          <path d="M282,142 L220,190 L392,190 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- 10: IC-IL-IR -->
+          <path d="M220,108 L158,142 L282,142 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+
+          <!-- Pavilion faces (8) -->
+          <!-- 11: OL-PL-GC -->
+          <path d="M48,190 L158,238 L220,190 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- 12: GC-PL-PR -->
+          <path d="M220,190 L158,238 L282,238 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- 13: GC-PR-OR -->
+          <path d="M220,190 L282,238 L392,190 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- 14: OL-BL-PL -->
+          <path d="M48,190 L108,278 L158,238 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- 15: PL-BL-B -->
+          <path d="M158,238 L108,278 L220,365 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- 16: PL-B-PR -->
+          <path d="M158,238 L220,365 L282,238 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- 17: PR-B-BR -->
+          <path d="M282,238 L220,365 L332,278 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- 18: PR-BR-OR -->
+          <path d="M282,238 L332,278 L392,190 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+
+          <!-- Terracotta accent at GC -->
+          <circle cx="220" cy="190" r="7" fill="#C15F3C" stroke="#26245C" stroke-width="1"/>
+
+          <!-- Open-circle nodes at key vertices -->
+          <circle cx="220" cy="25"  r="4" fill="white" stroke="#26245C" stroke-width="1.5"/>
+          <circle cx="125" cy="88"  r="4" fill="white" stroke="#26245C" stroke-width="1.5"/>
+          <circle cx="315" cy="88"  r="4" fill="white" stroke="#26245C" stroke-width="1.5"/>
+          <circle cx="48"  cy="190" r="4" fill="white" stroke="#26245C" stroke-width="1.5"/>
+          <circle cx="392" cy="190" r="4" fill="white" stroke="#26245C" stroke-width="1.5"/>
+          <circle cx="220" cy="365" r="4" fill="white" stroke="#26245C" stroke-width="1.5"/>
+
+          <!-- Caption -->
+          <text x="220" y="385" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="rgba(38,36,92,0.4)" letter-spacing="0.12em" text-transform="uppercase">DMAICO SYSTEM</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statement -->
+  <section class="statement">
+    <div class="statement-inner reveal">
+      <p class="statement-text">DMAIC assumes<br>the project ends.</p>
+      <p class="statement-body">Every improvement programme carries an implicit contract: fix this, then hand it back. That contract breaks at handover. The team turns over. The sponsor moves on. The process drifts back. DMAICO makes the sixth phase explicit, named, and owned. Operate is not a project phase. It is a permanent state.</p>
+    </div>
+  </section>
+
+  <!-- DMAIC comparison -->
+  <section class="comparison">
+    <div class="comparison-inner">
+      <div class="comparison-head reveal">
+        <div>
+          <div class="section-label">The gap</div>
+          <h2 class="section-h2">DMAIC stopped<br>one phase short.</h2>
+        </div>
+        <p class="comparison-intro">Traditional DMAIC ends at Control. That is where you document what worked, hand over the control plan, and close the project. DMAICO adds Operate: the phase that makes continuous governance, model performance monitoring, and ongoing improvement someone&rsquo;s explicit job.</p>
+      </div>
+      <div class="comparison-table-wrap reveal reveal-d1">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Traditional DMAIC</th>
+              <th>With AI in the loop (DMAICO)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="phase-label">Define</span></td>
+              <td class="dmaic-col">Static problem statement agreed at project kickoff.</td>
+              <td class="dmaico-col">Living problem statement. AI surfaces adjacent problems during scoping. SPIN workshop grounds the charter in evidence, not assumption.</td>
+            </tr>
+            <tr>
+              <td><span class="phase-label">Measure</span></td>
+              <td class="dmaic-col">Manual data collection, sampling, point-in-time baseline.</td>
+              <td class="dmaico-col">Real-time data streams available. Continuous measurement system analysis. Current state mapped with process mining, not interviews alone.</td>
+            </tr>
+            <tr>
+              <td><span class="phase-label">Analyse</span></td>
+              <td class="dmaic-col">Hypothesis-driven. Human pattern recognition from samples.</td>
+              <td class="dmaico-col">Pattern detection at scale. Model identifies root cause candidates. Practitioner confirms and validates before design begins.</td>
+            </tr>
+            <tr>
+              <td><span class="phase-label">Improve</span></td>
+              <td class="dmaic-col">Pilot one countermeasure. Document results. Proceed to full rollout.</td>
+              <td class="dmaico-col">Rapid simulation of multiple countermeasures before committing to a pilot. Pilot validates before requirements are written. Change management and service design included.</td>
+            </tr>
+            <tr>
+              <td><span class="phase-label">Control</span></td>
+              <td class="dmaic-col">Static control plan. Periodic audits. Assumed handover.</td>
+              <td class="dmaico-col">Real-time drift detection replaces periodic audits. AI governance framework documents ownership, retraining triggers, and escalation paths.</td>
+            </tr>
+            <tr class="is-new">
+              <td><span class="phase-label is-new-label">Operate</span></td>
+              <td class="dmaic-col">Does not exist. Assumed someone will own it.</td>
+              <td class="dmaico-col">Continuous model governance, explicit ownership, standardised deployment across business units, embedded capability. The system keeps learning after the project closes.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 Phases -->
+  <section class="phases">
+    <div class="phases-inner">
+      <div class="phases-header reveal">
+        <div class="section-label">The six phases</div>
+        <h2 class="section-h2">Six pillars.<br>One system.</h2>
+      </div>
+      <div class="phase-grid reveal reveal-d1">
+
+        <!-- FRAME | Define -->
+        <div class="phase-card">
+          <div class="phase-card-border frame"></div>
+          <span class="phase-number-bg">01</span>
+          <div class="phase-card-head">
+            <span class="phase-card-phase">Define</span>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span class="pillar-tag frame">FRAME</span>
+            </div>
+            <p class="phase-card-name">Problem framing and charter</p>
+          </div>
+          <p class="phase-card-desc">SPIN workshop. Stakeholder alignment. Project charter. Success criteria defined before any diagnostic begins. The problem you think you have is rarely the problem you have.</p>
+          <div class="phase-card-method">
+            <strong>Key method</strong>
+            SPIN: Situation, Problem, Implication, Non-Negotiable Needs and Payoffs. Not the traditional Rackham definition.
+          </div>
+          <div class="phase-card-delivers">
+            <strong>Delivers</strong>
+            Aligned problem statement, locked project charter, defined success criteria, stakeholder commitment.
+          </div>
+          <div class="phase-card-link"><a href="/services/frame/">FRAME service page &rsaquo;</a></div>
+        </div>
+
+        <!-- PLAN | Measure -->
+        <div class="phase-card">
+          <div class="phase-card-border plan"></div>
+          <span class="phase-number-bg">02</span>
+          <div class="phase-card-head">
+            <span class="phase-card-phase">Measure</span>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span class="pillar-tag plan">PLAN</span>
+            </div>
+            <p class="phase-card-name">Operations diagnostic</p>
+          </div>
+          <p class="phase-card-desc">Current state mapping. Data collection. Baseline measurement. Voice of customer, process, and business. Evidence-based picture of how the operation actually works, not how it is assumed to work.</p>
+          <div class="phase-card-method">
+            <strong>Key method</strong>
+            End-to-end process mapping with real data. VoC/VoP/VoB triangulation. Performance gap quantification against agreed baseline.
+          </div>
+          <div class="phase-card-delivers">
+            <strong>Delivers</strong>
+            Current state map, performance baseline, data collection plan, identified measurement gaps.
+          </div>
+          <div class="phase-card-link"><a href="/services/plan/">PLAN service page &rsaquo;</a></div>
+        </div>
+
+        <!-- SOLVE | Analyse -->
+        <div class="phase-card">
+          <div class="phase-card-border solve"></div>
+          <span class="phase-number-bg">03</span>
+          <div class="phase-card-head">
+            <span class="phase-card-phase">Analyse</span>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span class="pillar-tag solve">SOLVE</span>
+            </div>
+            <p class="phase-card-name">Root cause and solution design</p>
+          </div>
+          <p class="phase-card-desc">Root cause analysis. Process redesign. Operational reengineering. Future state design. Cost-benefit analysis. Move from symptoms to causes, and from causes to designed solutions.</p>
+          <div class="phase-card-method">
+            <strong>Key method</strong>
+            Five-Why and fishbone analysis. Business analysis spans both PLAN and SOLVE: diagnostic in PLAN, prescriptive in SOLVE.
+          </div>
+          <div class="phase-card-delivers">
+            <strong>Delivers</strong>
+            Confirmed root causes, future state design, cost-benefit analysis, solution ready for pilot.
+          </div>
+          <div class="phase-card-link"><a href="/services/solve/">SOLVE service page &rsaquo;</a></div>
+        </div>
+
+        <!-- EVOLVE | Improve -->
+        <div class="phase-card">
+          <div class="phase-card-border evolve"></div>
+          <span class="phase-number-bg">04</span>
+          <div class="phase-card-head">
+            <span class="phase-card-phase">Improve</span>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span class="pillar-tag evolve">EVOLVE</span>
+            </div>
+            <p class="phase-card-name">Pilot, validate, and specify</p>
+          </div>
+          <p class="phase-card-desc">Rapid pilot. Controlled testing. Change management. Service design. Requirements development. Validate the concept in a controlled scope before committing the full operation.</p>
+          <div class="phase-card-method">
+            <strong>Key method</strong>
+            Pilot with live KPI tracking against project charter targets. Requirements written after pilot validation, not before.
+          </div>
+          <div class="phase-card-delivers">
+            <strong>Delivers</strong>
+            Validated future state, change management plan, implementation-ready business and product requirements.
+          </div>
+          <div class="phase-card-link"><a href="/services/evolve/">EVOLVE service page &rsaquo;</a></div>
+        </div>
+
+        <!-- GOVERN | Control -->
+        <div class="phase-card">
+          <div class="phase-card-border govern"></div>
+          <span class="phase-number-bg">05</span>
+          <div class="phase-card-head">
+            <span class="phase-card-phase">Control</span>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span class="pillar-tag govern">GOVERN</span>
+            </div>
+            <p class="phase-card-name">Governance infrastructure</p>
+          </div>
+          <p class="phase-card-desc">Process architecture. Control plans. Monitoring dashboards. AI governance frameworks. SOPs. Escalation protocols. Build the systems that prevent drift and ensure compliance after project close.</p>
+          <div class="phase-card-method">
+            <strong>Key method</strong>
+            Control plan design with real-time triggers. AI governance: model ownership, retraining schedules, output validation, drift detection.
+          </div>
+          <div class="phase-card-delivers">
+            <strong>Delivers</strong>
+            Documented processes, control mechanisms, monitoring dashboards, AI governance framework, escalation paths.
+          </div>
+          <div class="phase-card-link"><a href="/services/govern/">GOVERN service page &rsaquo;</a></div>
+        </div>
+
+        <!-- OPERATIONALISE | Operate -->
+        <div class="phase-card">
+          <div class="phase-card-border operationalise"></div>
+          <span class="phase-number-bg">06</span>
+          <div class="phase-card-head">
+            <span class="phase-card-phase">Operate</span>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span class="pillar-tag operationalise">OPERATIONALISE</span>
+            </div>
+            <p class="phase-card-name">Scale, embed, sustain</p>
+          </div>
+          <p class="phase-card-desc">Standardisation across business units. Automation deployment. AI-powered autonomous operations. Organisation-wide rollout. Training and capability transfer. The phase DMAIC never had.</p>
+          <div class="phase-card-method">
+            <strong>Key method</strong>
+            Standard work playbooks with regional adaptations. Supervisor-led capability transfer. Continuous improvement cadence with embedded review.
+          </div>
+          <div class="phase-card-delivers">
+            <strong>Delivers</strong>
+            Scaled operations, deployed automation, trained teams, embedded CI systems, ongoing governance ownership.
+          </div>
+          <div class="phase-card-link"><a href="/services/operationalise/">OPERATIONALISE service page &rsaquo;</a></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AI in the loop -->
+  <section class="ai-section">
+    <div class="ai-section-inner">
+      <div class="ai-header reveal">
+        <div>
+          <div class="section-label">AI in the loop</div>
+          <h2 class="section-h2">What changes when<br>AI is in the process.</h2>
+        </div>
+        <p class="ai-intro">AI does not replace the practitioner at any phase. It changes the speed, scale, and nature of the work. The practitioner still owns the diagnosis, the design, and the decision. AI expands what is visible and how fast you can move.</p>
+      </div>
+      <div class="reveal reveal-d1">
+        <div class="ai-col-heads">
+          <div class="ai-col-head">&nbsp;</div>
+          <div class="ai-col-head">Traditional DMAIC approach</div>
+          <div class="ai-col-head">With AI in the loop (DMAICO)</div>
+        </div>
+        <div class="ai-rows">
+          <div class="ai-row">
+            <div class="ai-row-phase">
+              <span class="ai-row-pillar">FRAME</span>
+              <span class="ai-row-label">Define</span>
+            </div>
+            <div class="ai-row-traditional">Problem defined by whoever is loudest in the room. Adjacent issues surface later and reopen the charter.</div>
+            <div class="ai-row-dmaico">AI surfaces pattern matches from prior diagnostics during the SPIN workshop. Adjacent problems flagged before the charter is locked, not after.</div>
+          </div>
+          <div class="ai-row">
+            <div class="ai-row-phase">
+              <span class="ai-row-pillar">PLAN</span>
+              <span class="ai-row-label">Measure</span>
+            </div>
+            <div class="ai-row-traditional">Manual data collection. Sampling. Point-in-time baseline that is already stale by the time analysis begins.</div>
+            <div class="ai-row-dmaico">Real-time process data available. Current state mapped with process mining, not workshops alone. Baseline reflects actual behaviour, not reported behaviour.</div>
+          </div>
+          <div class="ai-row">
+            <div class="ai-row-phase">
+              <span class="ai-row-pillar">SOLVE</span>
+              <span class="ai-row-label">Analyse</span>
+            </div>
+            <div class="ai-row-traditional">Hypothesis-driven. Human pattern recognition from a sample. Root cause analysis limited by analyst experience and time.</div>
+            <div class="ai-row-dmaico">Pattern detection at scale across the full population. Model identifies root cause candidates. Practitioner confirms and validates before any design begins.</div>
+          </div>
+          <div class="ai-row">
+            <div class="ai-row-phase">
+              <span class="ai-row-pillar">EVOLVE</span>
+              <span class="ai-row-label">Improve</span>
+            </div>
+            <div class="ai-row-traditional">One countermeasure piloted. Results assessed manually. Proceed or iterate based on judgement.</div>
+            <div class="ai-row-dmaico">Rapid simulation of multiple countermeasures before committing to a live pilot. Pilot generates requirements for technology build, not assumptions.</div>
+          </div>
+          <div class="ai-row">
+            <div class="ai-row-phase">
+              <span class="ai-row-pillar">GOVERN</span>
+              <span class="ai-row-label">Control</span>
+            </div>
+            <div class="ai-row-traditional">Static control plan. Periodic audits on a calendar schedule. Drift detected after it has already caused damage.</div>
+            <div class="ai-row-dmaico">Real-time drift detection. Automated alerts replace audit calendars. AI governance framework documents who owns the model and what triggers retraining.</div>
+          </div>
+          <div class="ai-row">
+            <div class="ai-row-phase">
+              <span class="ai-row-pillar">OPERATIONALISE</span>
+              <span class="ai-row-label">Operate</span>
+            </div>
+            <div class="ai-row-traditional">Does not exist as a formal phase. Assumed to be ongoing business-as-usual after project close.</div>
+            <div class="ai-row-dmaico">AI-powered autonomous operations at scale. Continuous model performance monitoring. The system improves after the project team leaves, not in spite of them leaving.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillar connections -->
+  <section class="connections">
+    <div class="connections-inner">
+      <div class="reveal">
+        <div class="section-label">How the pillars connect</div>
+        <h2 class="section-h2" style="margin-bottom:24px;">Designed to work<br>as a system.</h2>
+        <div class="connections-note">
+          <p>Each pillar maps to one DMAICO phase, but the boundaries are deliberate. Some disciplines span phases because the work genuinely spans phases. That is not a gap in the framework. It is an honest description of how improvement work actually flows.</p>
+          <p>Most engagements do not start at FRAME and run sequentially to OPERATIONALISE. Organisations enter the system where they are. Some already have a defined problem and need PLAN. Some have a designed solution and need EVOLVE. The system accommodates entry at any point.</p>
+        </div>
+      </div>
+      <div class="connections-items reveal reveal-d1">
+        <div class="connection-item">
+          <div class="connection-item-label">Business analysis: PLAN and SOLVE</div>
+          <p class="connection-item-text">Business analysis is a cross-phase discipline. In PLAN it is diagnostic: understanding what the current state is. In SOLVE it is prescriptive: designing what the future state should be. Same discipline, different application.</p>
+        </div>
+        <div class="connection-item">
+          <div class="connection-item-label">Requirements development: EVOLVE, not SOLVE</div>
+          <p class="connection-item-text">Requirements are written after the pilot validates the concept. Not before. Writing requirements against an unvalidated design wastes the build. The pilot proves the direction; EVOLVE then specifies what needs to be built.</p>
+        </div>
+        <div class="connection-item">
+          <div class="connection-item-label">GOVERN: built for AI governance</div>
+          <p class="connection-item-text">GOVERN was named specifically for AI era relevance. As organisations deploy AI-assisted processes, the governance question becomes: who owns the model, who validates outputs, and what happens when the process changes but the model does not. GOVERN makes this explicit.</p>
+        </div>
+        <div class="connection-item">
+          <div class="connection-item-label">OPERATIONALISE: the phase DMAIC was missing</div>
+          <p class="connection-item-text">Traditional DMAIC ends at Control and assumes ongoing business-as-usual manages itself. OPERATIONALISE makes ongoing capability, standardisation, and automation deployment a named deliverable with a named owner.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-panel">
+    <div class="cta-panel-inner">
+      <div class="reveal">
+        <h2 class="cta-heading">Every engagement starts<br>with FRAME.</h2>
+        <p class="cta-body">Before any diagnostic, any design, any pilot: you need to know what problem you are actually solving. The FRAME workshop aligns your stakeholders and locks a project charter before any other work begins.</p>
+        <a href="/services/frame/" class="cta-button">Start with FRAME</a>
+      </div>
+      <div class="cta-panel-right reveal reveal-d2">
+        <div class="cta-detail-item">
+          <span class="cta-detail-label">Framework</span>
+          <span class="cta-detail-title">DMAICO</span>
+          <span class="cta-detail-value">Define, Measure, Analyse, Improve, Control, Operate</span>
+        </div>
+        <div class="cta-detail-item">
+          <span class="cta-detail-label">IP authority</span>
+          <span class="cta-detail-title">EQUIBT Group</span>
+          <span class="cta-detail-value">Herman Chan / Lean Methods Institute. dmaico.com</span>
+        </div>
+        <div class="cta-detail-item">
+          <span class="cta-detail-label">Extends</span>
+          <span class="cta-detail-title">Traditional DMAIC</span>
+          <span class="cta-detail-value">Adds the Operate phase for continuous AI-assisted governance</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">EQUI<span>BT</span></a>
+        <p class="footer-tagline">Operational capability advisory. Melbourne, Australia. Serving ANZ corporate and government.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services/frame/">FRAME</a></li>
+          <li><a href="/services/plan/">PLAN</a></li>
+          <li><a href="/services/solve/">SOLVE</a></li>
+          <li><a href="/services/evolve/">EVOLVE</a></li>
+          <li><a href="/services/govern/">GOVERN</a></li>
+          <li><a href="/services/operationalise/">OPERATIONALISE</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/methodology/">Methodology</a></li>
+          <li><a href="/our-work/">Our Work</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@equibt.com">hello@equibt.com</a></li>
+          <li><a href="/contact/">Start a conversation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2025 EQUIBT Group. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll-reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Nav scroll effect
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Mobile hamburger
+    const hamburger = document.getElementById('nav-hamburger');
+    const navLinks  = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('is-open');
+      hamburger.setAttribute('aria-expanded', open);
+    });
+  </script>
+</body>
+</html>

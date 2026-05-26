@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About EQUIBT | Who We Are and Why We Exist</title>
+  <style>
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/montserrat-600-700-latin-ext.woff2') format('woff2');
+    font-weight: 600 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/montserrat-600-700-latin.woff2') format('woff2');
+    font-weight: 600 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  :root {
+    color-scheme: light;
+    --navy:            #26245C;
+    --terracotta:      #C15F3C;
+    --terracotta-dark: #A04E30;
+    --section-bg:      #F5F5F5;
+    --white:           #FFFFFF;
+    --near-black:      #2C2C2C;
+    --off-white:       #F5F3EE;
+    --body-text:       #555;
+    --navy-wash:       #EEF0F8;
+    --dark-slate:      #1A1A1A;
+    --warm-parchment:  #F5EBD9;
+    /* 6-pillar colour tokens */
+    --pill-frame:           #8B2252;
+    --pill-plan:            #26245C;
+    --pill-solve:           #0B6B82;
+    --pill-evolve:          #2D7A3A;
+    --pill-govern:          #7A3D00;
+    --pill-operationalise:  #5C0A5C;
+    --pillar-accent: #26245C;
+    --pillar-accent-tint: rgba(38,36,92,0.05);
+  }
+
+  h1, h2, h3,
+  .hero-h1, .why-start-heading, .examine-heading, .examine-card-title,
+  .deliverables-heading, .case-studies-heading, .related-heading, .cta-heading,
+  .ref-logo, .btn-primary, .cta-button, .pillar-tag, .case-stat,
+  .hero-service-name, .section-label, .examine-card-number,
+  .related-card-name, .deliverable-title,
+  .proof-statement-title, .belief-card-title, .profile-name, .stat-number { font-family: 'Montserrat', system-ui, sans-serif; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--section-bg);
+    color: var(--near-black);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ════════════════════════════════════════
+     NAV
+  ════════════════════════════════════════ */
+  .ref-nav {
+    background: var(--navy);
+    padding: 15px 48px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .ref-logo {
+    font-size: 15px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--off-white);
+  }
+  .ref-logo span { color: var(--terracotta); }
+  .ref-nav-links {
+    display: flex; align-items: center; gap: 32px; margin-left: auto;
+  }
+  .ref-nav-link {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: rgba(245,243,238,0.65);
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+  .ref-nav-link:hover { color: var(--off-white); }
+  .ref-nav-cta {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--off-white);
+    background: var(--terracotta);
+    padding: 8px 18px; border-radius: 4px;
+    text-decoration: none; margin-left: 16px;
+    transition: background 0.18s;
+  }
+  .ref-nav-cta:hover { background: var(--terracotta-dark); }
+
+  /* ════════════════════════════════════════
+     SHARED UTILITIES
+  ════════════════════════════════════════ */
+  .section-label {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--terracotta);
+    margin-bottom: 13px;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 5px; height: 5px;
+    background: var(--terracotta); border-radius: 50%; flex-shrink: 0;
+  }
+  .section-inner {
+    max-width: 1120px; margin: 0 auto;
+  }
+
+  /* CTA buttons */
+  .cta-button {
+    display: inline-flex; align-items: center;
+    background: var(--terracotta); color: var(--off-white);
+    font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 14px 32px; border-radius: 4px; text-decoration: none;
+    transition: background 0.18s, transform 0.15s;
+  }
+  .cta-button:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+
+  /* Proof card */
+  .proof-card {
+    background: white; border-radius: 8px; padding: 28px 32px;
+    box-shadow: 0 2px 10px rgba(38,36,92,0.08);
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .proof-card-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--terracotta);
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 4px;
+  }
+  .proof-card-label::before {
+    content: ''; display: block; width: 5px; height: 5px;
+    background: var(--terracotta); border-radius: 50%; flex-shrink: 0;
+  }
+  .proof-statement {
+    padding: 20px 0; border-bottom: 1px solid rgba(38,36,92,0.07);
+  }
+  .proof-statement:first-of-type { padding-top: 20px; }
+  .proof-statement:last-of-type { border-bottom: none; padding-bottom: 0; }
+  .proof-statement-icon {
+    margin-bottom: 12px; width: 48px; height: 48px; border-radius: 50%;
+    border: 2px solid var(--terracotta); display: flex; align-items: center; justify-content: center;
+  }
+  .proof-statement-title {
+    font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.4;
+  }
+  .proof-statement-body { font-size: 13px; color: #555; line-height: 1.65; }
+
+  /* Two-col layout */
+  .two-col-inner {
+    max-width: 1120px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 42%; gap: 72px; align-items: start;
+  }
+
+  /* Belief card */
+  .belief-card {
+    background: white; border-radius: 8px; padding: 28px 28px 24px;
+    border-left: 4px solid var(--terracotta);
+    box-shadow: 0 2px 10px rgba(38,36,92,0.07);
+  }
+  .belief-card-title {
+    font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 10px;
+  }
+  .belief-card-body { font-size: 13px; color: #555; line-height: 1.75; }
+
+  /* ════════════════════════════════════════
+     1. HERO
+  ════════════════════════════════════════ */
+  .hero {
+    background: var(--white);
+    padding: 72px 48px 80px;
+    border-bottom: 1px solid rgba(38,36,92,0.08);
+  }
+  .hero-inner { max-width: 1120px; margin: 0 auto; }
+  .hero-h1 {
+    font-size: 52px; font-weight: 700; color: var(--navy);
+    line-height: 1.1; letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .hero-subhead {
+    font-size: 20px; color: var(--body-text);
+    line-height: 1.65; margin-bottom: 20px;
+    max-width: 700px;
+  }
+  .hero-body {
+    font-size: 14px; color: var(--body-text);
+    line-height: 1.8; max-width: 700px;
+  }
+
+  /* ════════════════════════════════════════
+     2. WHY WE EXIST (parchment)
+  ════════════════════════════════════════ */
+  .why-exist {
+    background: var(--warm-parchment);
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.06);
+  }
+  .why-exist-heading {
+    font-size: 34px; font-weight: 700; color: var(--navy);
+    line-height: 1.2; letter-spacing: -0.01em;
+    margin-bottom: 24px; max-width: 480px;
+  }
+  .why-exist-body p {
+    font-size: 14px; color: var(--body-text);
+    line-height: 1.8; margin-bottom: 16px;
+  }
+  .why-exist-body p:last-child { margin-bottom: 0; }
+
+  /* ════════════════════════════════════════
+     3. WHAT WE BELIEVE (white)
+  ════════════════════════════════════════ */
+  .what-we-believe {
+    background: var(--white);
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.06);
+  }
+  .what-we-believe-inner { max-width: 1120px; margin: 0 auto; }
+  .section-heading {
+    font-size: 34px; font-weight: 700; color: var(--navy);
+    line-height: 1.2; letter-spacing: -0.01em;
+    margin-bottom: 48px;
+  }
+  .belief-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  }
+
+  /* ════════════════════════════════════════
+     4. OUR PEOPLE (off-white)
+  ════════════════════════════════════════ */
+  .our-people {
+    background: var(--off-white);
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.06);
+  }
+  .our-people-inner { max-width: 1120px; margin: 0 auto; }
+  .our-people-heading {
+    font-size: 34px; font-weight: 700; color: var(--navy);
+    line-height: 1.2; letter-spacing: -0.01em;
+    margin-bottom: 40px; max-width: 560px;
+  }
+  .profile-card {
+    max-width: 720px;
+    background: white; border-radius: 10px; padding: 36px;
+    box-shadow: 0 2px 16px rgba(38,36,92,0.1);
+    border-left: 5px solid var(--terracotta);
+  }
+  .profile-name {
+    font-size: 22px; font-weight: 700; color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .profile-title {
+    font-size: 11px; color: var(--terracotta); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 16px;
+  }
+  .profile-bio {
+    font-size: 14px; color: #555; line-height: 1.8; margin-bottom: 0;
+  }
+  .profile-focus {
+    font-size: 12px; color: #555; line-height: 1.65;
+    padding-top: 16px; margin-top: 16px;
+    border-top: 1px solid rgba(38,36,92,0.08);
+  }
+  .team-note {
+    max-width: 720px; margin-top: 24px;
+    font-size: 14px; color: #555; line-height: 1.75;
+  }
+
+  /* ════════════════════════════════════════
+     5. TRACK RECORD (section-bg)
+  ════════════════════════════════════════ */
+  .track-record {
+    background: var(--section-bg);
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.06);
+  }
+  .track-record-inner { max-width: 1120px; margin: 0 auto; }
+  .track-heading {
+    font-size: 34px; font-weight: 700; color: var(--navy);
+    line-height: 1.2; letter-spacing: -0.01em;
+    margin-bottom: 48px; max-width: 560px;
+  }
+  .stat-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-bottom: 48px;
+  }
+  .stat-col {
+    background: white; padding: 32px; border-radius: 8px;
+  }
+  .stat-number {
+    font-size: 52px; font-weight: 700; color: var(--navy);
+    letter-spacing: -0.02em; line-height: 1.05;
+  }
+  .stat-label {
+    font-size: 13px; color: #555; line-height: 1.5; margin-top: 8px;
+  }
+  .track-body {
+    max-width: 720px; font-size: 14px; color: #555; line-height: 1.8;
+  }
+
+  /* ════════════════════════════════════════
+     6. CTA PANEL
+  ════════════════════════════════════════ */
+  .cta-panel {
+    background: var(--dark-slate);
+    padding: 88px 48px;
+  }
+  .cta-panel-inner {
+    max-width: 1120px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 340px;
+    gap: 64px; align-items: center;
+  }
+  .cta-heading {
+    font-size: 38px; font-weight: 700; color: var(--off-white);
+    line-height: 1.15; letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .cta-body {
+    font-size: 15px; color: rgba(245,243,238,0.7);
+    line-height: 1.75; margin-bottom: 36px;
+  }
+  .cta-panel-right {
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 28px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .cta-detail-item {
+    display: flex; flex-direction: column; gap: 2px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(245,243,238,0.12);
+  }
+  .cta-detail-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .cta-detail-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(245,243,238,0.5); margin-bottom: 4px;
+  }
+  .cta-detail-value {
+    font-size: 13px; font-weight: 600; color: var(--off-white); line-height: 1.4;
+  }
+
+  /* ════════════════════════════════════════
+     RESPONSIVE
+  ════════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .hero, .why-exist, .what-we-believe, .our-people, .track-record, .cta-panel {
+      padding-left: 32px; padding-right: 32px;
+    }
+    .cta-panel-inner { grid-template-columns: 1fr 280px; }
+  }
+  @media (max-width: 900px) {
+    .two-col-inner { grid-template-columns: 1fr; }
+    .cta-panel-inner { grid-template-columns: 1fr; }
+    .cta-panel-right { display: none; }
+    .stat-strip { grid-template-columns: 1fr; gap: 8px; }
+  }
+  @media (max-width: 768px) {
+    .hero, .why-exist, .what-we-believe, .our-people, .track-record, .cta-panel {
+      padding-left: 24px; padding-right: 24px;
+      padding-top: 56px; padding-bottom: 56px;
+    }
+    .hero-h1 { font-size: 36px; }
+    .hero-subhead { font-size: 17px; }
+    .why-exist-heading, .section-heading, .our-people-heading,
+    .track-heading, .cta-heading { font-size: 26px; }
+    .belief-grid { grid-template-columns: 1fr; }
+    .ref-nav-links { display: none; }
+  }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="ref-nav">
+    <div class="ref-logo">EQ<span>U</span>IBT</div>
+    <div class="ref-nav-links">
+      <a href="/services/frame/" class="ref-nav-link">FRAME</a>
+      <a href="/services/plan/" class="ref-nav-link">PLAN</a>
+      <a href="/services/solve/" class="ref-nav-link">SOLVE</a>
+      <a href="/services/evolve/" class="ref-nav-link">EVOLVE</a>
+      <a href="/services/govern/" class="ref-nav-link">GOVERN</a>
+      <a href="/services/operationalise/" class="ref-nav-link">OPERATIONALISE</a>
+      <a href="#" class="ref-nav-cta">Let&rsquo;s talk</a>
+    </div>
+  </nav>
+
+  <!-- 1. HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="section-label">About EQUIBT</div>
+      <h1 class="hero-h1">Operational improvement that holds.</h1>
+      <p class="hero-subhead">EQUIBT is an operational improvement advisory. We work with complex service organisations across ANZ to build the capability, systems, and governance that make improvement stick.</p>
+      <p class="hero-body">Most improvement programmes produce results. Fewer produce results that last. The difference is not methodology, it is whether the organisation has the capability, governance, and systems to maintain what was built after the engagement closes. That is the problem EQUIBT was created to solve.</p>
+    </div>
+  </section>
+
+  <!-- 2. WHY WE EXIST -->
+  <section class="why-exist">
+    <div class="two-col-inner">
+      <div class="why-exist-left">
+        <div class="section-label">Why We Exist</div>
+        <h2 class="why-exist-heading">The number one failure mode of operational improvement is not bad methodology. It is abandonment.</h2>
+        <div class="why-exist-body">
+          <p>Most improvement programmes follow the same arc. A consulting firm arrives, runs a diagnostic, identifies problems, designs solutions, runs a pilot. Results look good. The firm leaves. Twelve months later, the operation has drifted back to where it was. Sometimes further back, because the improvement programme disrupted existing stability without building what replaces it.</p>
+          <p>This is not a methodology problem. DMAIC is a rigorous framework. Lean is a rigorous framework. The problem is that neither was designed with exit in mind.</p>
+          <p>EQUIBT was built around a different model. DMAICO, Define, Measure, Analyse, Improve, Control, Operate, adds the phase that DMAIC never had. Operate makes sustainment someone's job, not everyone's assumption. Every engagement is designed from the outset to end with the organisation running the improved process independently, without us in the room.</p>
+        </div>
+      </div>
+      <div class="why-exist-right">
+        <div class="proof-card">
+          <div class="proof-card-label">Why EQUIBT?</div>
+
+          <div class="proof-statement">
+            <div class="proof-statement-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 12l2 2 4-4" stroke="#C15F3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="9" stroke="#C15F3C" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="proof-statement-title">Sustainment, not just delivery.</div>
+            <div class="proof-statement-body">Every EQUIBT engagement is scoped with an exit plan. The exit criteria are defined before the engagement begins. We do not move to the next phase until the current one is embedded.</div>
+          </div>
+
+          <div class="proof-statement">
+            <div class="proof-statement-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#C15F3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="9" cy="7" r="4" stroke="#C15F3C" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="proof-statement-title">Capability at the centre.</div>
+            <div class="proof-statement-body">We measure success by what the client team can do when we leave, not by what we delivered while we were there. Capability transfer is not an add-on. It is the point.</div>
+          </div>
+
+          <div class="proof-statement">
+            <div class="proof-statement-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="3" stroke="#C15F3C" stroke-width="1.5"/>
+                <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" stroke="#C15F3C" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="proof-statement-title">Governance that runs itself.</div>
+            <div class="proof-statement-body">Process architecture, control plans, dashboards, and escalation protocols are not post-engagement paperwork. They are the mechanism that keeps improvement alive.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. WHAT WE BELIEVE -->
+  <section class="what-we-believe">
+    <div class="what-we-believe-inner">
+      <div class="section-label">What We Believe</div>
+      <h2 class="section-heading">Four things we will not negotiate on.</h2>
+      <div class="belief-grid">
+        <div class="belief-card">
+          <div class="belief-card-title">Measurement before intervention.</div>
+          <div class="belief-card-body">We do not accept anecdotal accounts of where the problem is. We measure it. Every engagement begins with a quantified baseline. Opinion without data is not a starting point. It is a bias.</div>
+        </div>
+        <div class="belief-card">
+          <div class="belief-card-title">Root cause before solution.</div>
+          <div class="belief-card-body">Addressing symptoms is not improvement. It is maintenance. We do not design solutions until we have isolated the cause. A well-designed solution for the wrong problem wastes time, budget, and goodwill.</div>
+        </div>
+        <div class="belief-card">
+          <div class="belief-card-title">Context shapes method.</div>
+          <div class="belief-card-body">DMAICO does not change by sector. How we apply it does. The questions we ask in financial services are different from the questions we ask in government. Generic application is not rigour.</div>
+        </div>
+        <div class="belief-card">
+          <div class="belief-card-title">AI-ready, not AI-naive.</div>
+          <div class="belief-card-body">AI is not a replacement for operational rigour. It is an accelerant, when the process is stable, the governance is in place, and the team understands what the model is doing. We do not sell automation into unstable operations.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. OUR PEOPLE -->
+  <section class="our-people">
+    <div class="our-people-inner">
+      <div class="section-label">Our People</div>
+      <h2 class="our-people-heading">The work is done by people who have done this before.</h2>
+      <div class="profile-card">
+        <div class="profile-name">Herman Chan</div>
+        <div class="profile-title">Founder and Principal Advisor</div>
+        <p class="profile-bio">Herman is a Master Black Belt in Lean Six Sigma with over twenty years of operational improvement experience across ANZ corporate and government. He trained at GE, holds a business degree from AGSM, and is the creator of DMAICO, an extension of DMAIC designed for AI-assisted operations. He leads every EQUIBT engagement personally. Clients do not work with a team that has been briefed on their situation. They work with the person who built the methodology.</p>
+        <p class="profile-focus">Current focus: operational improvement in financial services, government, utilities, and advanced manufacturing. AI governance frameworks for regulated operations.</p>
+      </div>
+      <p class="team-note">EQUIBT engagements are led by Herman and supported by a network of specialist advisors. We do not deploy junior consultants as primary delivery. If you engage EQUIBT, you get the people you met in the discovery conversation.</p>
+    </div>
+  </section>
+
+  <!-- 5. TRACK RECORD -->
+  <section class="track-record">
+    <div class="track-record-inner">
+      <div class="section-label">Track Record</div>
+      <h2 class="track-heading">Twenty years of engagements across ANZ.</h2>
+      <div class="stat-strip">
+        <div class="stat-col">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Years of operational improvement practice</div>
+        </div>
+        <div class="stat-col">
+          <div class="stat-number">ANZ</div>
+          <div class="stat-label">Corporate and government engagements across Australia and New Zealand</div>
+        </div>
+        <div class="stat-col">
+          <div class="stat-number">6</div>
+          <div class="stat-label">DMAICO phases, built for AI-era operations</div>
+        </div>
+      </div>
+      <p class="track-body">EQUIBT has worked across financial services, government and public sector, utilities, and advanced manufacturing. Clients include large financial institutions, federal and state government agencies, energy and infrastructure operators, and precision manufacturers. All engagements are confidential. Proof is available through referenced outcomes and direct client conversations on request.</p>
+    </div>
+  </section>
+
+  <!-- 6. CTA PANEL -->
+  <section class="cta-panel">
+    <div class="cta-panel-inner">
+      <div class="cta-left">
+        <h2 class="cta-heading">Ready to talk? So are we.</h2>
+        <p class="cta-body">A fifteen-minute conversation is enough to tell you whether EQUIBT is the right fit for your operation. No obligation.</p>
+        <a href="#" class="cta-button">Let&rsquo;s Talk</a>
+      </div>
+      <div class="cta-panel-right">
+        <div class="cta-detail-item">
+          <div class="cta-detail-label">Engagement model</div>
+          <div class="cta-detail-value">Advisory and capability transfer. Not staff augmentation.</div>
+        </div>
+        <div class="cta-detail-item">
+          <div class="cta-detail-label">Typical engagement start</div>
+          <div class="cta-detail-value">2 to 3 weeks from first conversation</div>
+        </div>
+        <div class="cta-detail-item">
+          <div class="cta-detail-label">Geography</div>
+          <div class="cta-detail-value">Australia and New Zealand</div>
+        </div>
+        <div class="cta-detail-item">
+          <div class="cta-detail-label">All engagements led by</div>
+          <div class="cta-detail-value">Herman Chan, Principal Advisor</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#26245C;padding:28px 48px;text-align:center;font-size:11px;font-weight:600;letter-spacing:0.08em;color:rgba(245,243,238,0.4);text-transform:uppercase;">
+    &copy; 2025 EQUIBT. All rights reserved.
+  </footer>
+
+</body>
+</html>

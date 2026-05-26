@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About EQUIBT | Who We Are and Why We Exist</title>
+  <style>
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/montserrat-600-700-latin-ext.woff2') format('woff2');
+    font-weight: 600 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/montserrat-600-700-latin.woff2') format('woff2');
+    font-weight: 600 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  :root {
+    color-scheme: light;
+    --navy:            #26245C;
+    --terracotta:      #C15F3C;
+    --terracotta-dark: #A04E30;
+    --section-bg:      #F5F5F5;
+    --white:           #FFFFFF;
+    --near-black:      #2C2C2C;
+    --off-white:       #F5F3EE;
+    --body-text:       #555;
+    --navy-wash:       #EEF0F8;
+    --dark-slate:      #1A1A1A;
+    --warm-parchment:  #F5EBD9;
+    --pill-frame:           #8B2252;
+    --pill-plan:            #26245C;
+    --pill-solve:           #0B6B82;
+    --pill-evolve:          #2D7A3A;
+    --pill-govern:          #7A3D00;
+    --pill-operationalise:  #5C0A5C;
+    --pillar-accent: #26245C;
+    --pillar-accent-tint: rgba(38,36,92,0.05);
+    --text-light: rgba(255,255,255,0.72);
+    --text-faint: rgba(255,255,255,0.48);
+  }
+
+  h1, h2, h3,
+  .hero-h1, .why-exist-heading, .section-heading, .our-people-heading,
+  .track-heading, .cta-heading,
+  .ref-logo, .cta-button, .section-label,
+  .belief-card-title, .profile-name, .stat-number,
+  .why-row-num, .why-row-heading { font-family: 'Montserrat', system-ui, sans-serif; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--section-bg);
+    color: var(--near-black);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ════════════════════════════════════════
+     SCROLL REVEAL
+  ════════════════════════════════════════ */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: 0.08s; }
+  .reveal-d2 { transition-delay: 0.16s; }
+  .reveal-d3 { transition-delay: 0.24s; }
+  .reveal-d4 { transition-delay: 0.32s; }
+
+  /* ════════════════════════════════════════
+     NAV
+  ════════════════════════════════════════ */
+  .ref-nav {
+    background: var(--navy);
+    padding: 15px 48px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  }
+  .ref-nav.scrolled { background: rgba(38,36,92,0.90); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+  .ref-logo {
+    font-size: 15px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--off-white);
+    text-decoration: none;
+  }
+  .ref-logo span { color: var(--terracotta); }
+  .ref-nav-links {
+    display: flex; align-items: center; gap: 32px; margin-left: auto;
+  }
+  .ref-nav-link {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: rgba(245,243,238,0.65);
+    text-decoration: none; transition: color 0.18s;
+  }
+  .ref-nav-link:hover { color: var(--off-white); }
+  .ref-nav-cta {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--off-white);
+    background: var(--terracotta);
+    padding: 8px 18px; border-radius: 4px;
+    text-decoration: none; margin-left: 16px;
+    transition: background 0.18s;
+  }
+  .ref-nav-cta:hover { background: var(--terracotta-dark); }
+
+  /* ════════════════════════════════════════
+     SHARED UTILITIES
+  ════════════════════════════════════════ */
+  .section-label {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--terracotta);
+    margin-bottom: 16px;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 3px; height: 20px;
+    background: var(--terracotta); border-radius: 2px; flex-shrink: 0;
+  }
+
+  .cta-button {
+    display: inline-flex; align-items: center;
+    background: var(--terracotta); color: var(--off-white);
+    font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 14px 32px; border-radius: 4px; text-decoration: none;
+    transition: background 0.18s, transform 0.15s;
+  }
+  .cta-button:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+
+  .btn-secondary-light {
+    color: rgba(255,255,255,0.65);
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    transition: color 0.18s, gap 0.18s;
+  }
+  .btn-secondary-light:hover { color: #ffffff; gap: 10px; }
+
+  /* Two-col layout */
+  .two-col-inner {
+    max-width: 1120px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 42%; gap: 72px; align-items: start;
+  }
+
+  /* Why rows */
+  .why-rows { display: flex; flex-direction: column; }
+  .why-row {
+    display: grid; grid-template-columns: 64px 1fr; gap: 0 32px;
+    padding: 28px 0; border-bottom: 1px solid rgba(38,36,92,0.1); align-items: start;
+  }
+  .why-row:first-child { border-top: 1px solid rgba(38,36,92,0.1); }
+  .why-row-num { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: var(--terracotta); padding-top: 4px; }
+  .why-row-heading { font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 6px; }
+  .why-row-body { font-size: 15px; color: var(--body-text); line-height: 1.7; }
+
+  /* Belief card */
+  .belief-card {
+    background: white; border-radius: 8px; padding: 28px 28px 24px;
+    border-left: 4px solid var(--terracotta);
+    box-shadow: 0 2px 10px rgba(38,36,92,0.07);
+  }
+  .belief-card-title {
+    font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 10px;
+  }
+  .belief-card-body { font-size: 15px; color: var(--body-text); line-height: 1.75; }
+
+  /* ════════════════════════════════════════
+     1. HERO — navy centred
+  ════════════════════════════════════════ */
+  .hero {
+    background: var(--navy);
+    padding: 80px 48px 88px;
+  }
+  .hero-inner {
+    max-width: 720px; margin: 0 auto;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+  }
+  .hero-h1 {
+    font-size: 64px; font-weight: 700; color: #ffffff;
+    line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 20px;
+  }
+  .hero-subhead {
+    font-size: 20px; color: var(--text-light);
+    line-height: 1.6; margin-bottom: 16px; max-width: 600px;
+  }
+  .hero-body {
+    font-size: 16px; color: var(--text-faint);
+    line-height: 1.75; margin-bottom: 36px; max-width: 580px;
+  }
+  .hero-actions {
+    display: flex; align-items: center; gap: 24px; justify-content: center; flex-wrap: wrap;
+  }
+
+  /* ════════════════════════════════════════
+     2. WHY WE EXIST (parchment)
+  ════════════════════════════════════════ */
+  .why-exist {
+    background: var(--warm-parchment);
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.06);
+  }
+  .why-exist-heading {
+    font-size: 46px; font-weight: 700; color: var(--navy);
+    line-height: 1.1; letter-spacing: -0.025em;
+    margin-bottom: 24px;
+  }
+  .why-exist-body p {
+    font-size: 16px; color: var(--body-text);
+    line-height: 1.8; margin-bottom: 16px;
+  }
+  .why-exist-body p:last-child { margin-bottom: 0; }
+
+  /* ════════════════════════════════════════
+     3. WHAT WE BELIEVE (white)
+  ════════════════════════════════════════ */
+  .what-we-believe {
+    background: var(--white);
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.06);
+  }
+  .what-we-believe-inner { max-width: 1120px; margin: 0 auto; }
+  .section-heading {
+    font-size: 46px; font-weight: 700; color: var(--navy);
+    line-height: 1.1; letter-spacing: -0.025em;
+    margin-bottom: 48px;
+  }
+  .belief-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  }
+
+  /* ════════════════════════════════════════
+     4. OUR PEOPLE (off-white)
+  ════════════════════════════════════════ */
+  .our-people {
+    background: var(--off-white);
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.06);
+  }
+  .our-people-inner { max-width: 1120px; margin: 0 auto; }
+  .our-people-heading {
+    font-size: 46px; font-weight: 700; color: var(--navy);
+    line-height: 1.1; letter-spacing: -0.025em;
+    margin-bottom: 40px; max-width: 560px;
+  }
+  .profile-card {
+    max-width: 720px;
+    background: white; border-radius: 10px; padding: 36px;
+    box-shadow: 0 2px 16px rgba(38,36,92,0.1);
+    border-left: 5px solid var(--terracotta);
+  }
+  .profile-name {
+    font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 6px;
+  }
+  .profile-title {
+    font-size: 11px; color: var(--terracotta); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 16px;
+  }
+  .profile-bio {
+    font-size: 15px; color: var(--body-text); line-height: 1.8; margin-bottom: 0;
+  }
+  .profile-focus {
+    font-size: 13px; color: var(--body-text); line-height: 1.65;
+    padding-top: 16px; margin-top: 16px;
+    border-top: 1px solid rgba(38,36,92,0.08);
+  }
+  .team-note {
+    max-width: 720px; margin-top: 24px;
+    font-size: 15px; color: var(--body-text); line-height: 1.75;
+  }
+
+  /* ════════════════════════════════════════
+     5. TRACK RECORD (section-bg)
+  ════════════════════════════════════════ */
+  .track-record {
+    background: var(--section-bg);
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.06);
+  }
+  .track-record-inner { max-width: 1120px; margin: 0 auto; }
+  .track-heading {
+    font-size: 46px; font-weight: 700; color: var(--navy);
+    line-height: 1.1; letter-spacing: -0.025em;
+    margin-bottom: 48px; max-width: 560px;
+  }
+  .stat-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-bottom: 48px;
+  }
+  .stat-col {
+    background: white; padding: 32px; border-radius: 8px;
+  }
+  .stat-number {
+    font-size: 64px; font-weight: 700; color: var(--terracotta);
+    letter-spacing: -0.03em; line-height: 1;
+  }
+  .stat-label {
+    font-size: 14px; color: var(--body-text); line-height: 1.5; margin-top: 10px;
+  }
+  .track-body {
+    max-width: 720px; font-size: 16px; color: var(--body-text); line-height: 1.8;
+  }
+
+  /* ════════════════════════════════════════
+     6. CTA PANEL
+  ════════════════════════════════════════ */
+  .cta-panel {
+    background: var(--dark-slate);
+    padding: 88px 48px;
+  }
+  .cta-panel-inner {
+    max-width: 1120px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 340px;
+    gap: 64px; align-items: center;
+  }
+  .cta-heading {
+    font-size: 46px; font-weight: 700; color: var(--off-white);
+    line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 20px;
+  }
+  .cta-body {
+    font-size: 16px; color: rgba(245,243,238,0.7);
+    line-height: 1.75; margin-bottom: 36px;
+  }
+  .cta-panel-right {
+    background: rgba(255,255,255,0.08); border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15); padding: 28px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .cta-detail-item {
+    display: flex; flex-direction: column; gap: 2px;
+    padding-bottom: 14px; border-bottom: 1px solid rgba(245,243,238,0.12);
+  }
+  .cta-detail-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .cta-detail-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(245,243,238,0.5); margin-bottom: 4px;
+  }
+  .cta-detail-value {
+    font-size: 13px; font-weight: 600; color: var(--off-white); line-height: 1.4;
+  }
+
+  /* ════════════════════════════════════════
+     FOOTER
+  ════════════════════════════════════════ */
+  .site-footer {
+    background: var(--navy); padding: 32px 48px; text-align: center;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    color: rgba(245,243,238,0.45); text-transform: uppercase;
+  }
+
+  /* ════════════════════════════════════════
+     RESPONSIVE
+  ════════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .why-exist, .what-we-believe, .our-people, .track-record, .cta-panel {
+      padding-left: 32px; padding-right: 32px;
+    }
+    .cta-panel-inner { grid-template-columns: 1fr 280px; }
+  }
+  @media (max-width: 900px) {
+    .two-col-inner { grid-template-columns: 1fr; }
+    .cta-panel-inner { grid-template-columns: 1fr; }
+    .cta-panel-right { display: none; }
+    .stat-strip { grid-template-columns: 1fr; gap: 8px; }
+  }
+  @media (max-width: 768px) {
+    .hero { padding: 56px 24px 64px; }
+    .hero-h1 { font-size: 38px; }
+    .why-exist, .what-we-believe, .our-people, .track-record, .cta-panel {
+      padding-left: 24px; padding-right: 24px;
+      padding-top: 56px; padding-bottom: 56px;
+    }
+    .why-exist-heading, .section-heading, .our-people-heading,
+    .track-heading, .cta-heading { font-size: 30px; }
+    .belief-grid { grid-template-columns: 1fr; }
+    .stat-number { font-size: 48px; }
+    .ref-nav-links { display: none; }
+    .why-row { grid-template-columns: 40px 1fr; gap: 0 16px; }
+  }
+
+  /* === v2 patch: footer + mobile nav + why-row fixes === */
+  footer { background: var(--white); padding: 80px 48px 48px; border-top: 1px solid rgba(38,36,92,0.08); }
+  .footer-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 200px 1fr 1fr 1fr; gap: 64px; margin-bottom: 56px; }
+  .footer-logo { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 14px; color: var(--navy); letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; display: block; margin-bottom: 12px; }
+  .footer-logo span { color: var(--terracotta); }
+  .footer-tagline { font-size: 12px; color: var(--body-text); line-height: 1.65; max-width: 180px; }
+  .footer-col h4 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(38,36,92,0.35); margin-bottom: 16px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a { font-size: 13px; color: var(--body-text); text-decoration: none; transition: color 0.18s; }
+  .footer-col ul li a:hover { color: var(--navy); }
+  .footer-bottom { max-width: 1120px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(38,36,92,0.08); display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-size: 12px; color: #bbb; }
+  .footer-legal { display: flex; gap: 24px; }
+  .footer-legal a { font-size: 12px; color: #bbb; text-decoration: none; transition: color 0.18s; }
+  .footer-legal a:hover { color: var(--navy); }
+  .nav-hamburger { display: none; background: none; border: none; padding: 6px; cursor: pointer; flex-direction: column; gap: 5px; align-items: center; margin-left: auto; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: rgba(245,243,238,0.85); border-radius: 2px; }
+  @media (max-width: 768px) {
+    .ref-nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); padding: 16px 24px 24px; gap: 14px; z-index: 9; }
+    .ref-nav-links.is-open { display: flex; }
+    .ref-nav-cta { margin-left: 0; align-self: flex-start; }
+    .nav-hamburger { display: flex; }
+    footer { padding: 56px 24px 40px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  }
+  @media (max-width: 480px) {
+    .footer-inner { grid-template-columns: 1fr; }
+  }
+  /* Why-row editorial style */
+  .why-row-num { display: none !important; }
+  .why-row { grid-template-columns: 1fr !important; gap: 0 !important; }
+  .why-row-heading { font-size: 26px !important; font-weight: 500 !important; letter-spacing: -0.02em !important; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="ref-nav">
+    <a href="/" class="ref-logo">EQ<span>U</span>IBT</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="ref-nav-links">
+      <a href="/services/frame/" class="ref-nav-link">FRAME</a>
+      <a href="/services/plan/" class="ref-nav-link">PLAN</a>
+      <a href="/services/solve/" class="ref-nav-link">SOLVE</a>
+      <a href="/services/evolve/" class="ref-nav-link">EVOLVE</a>
+      <a href="/services/govern/" class="ref-nav-link">GOVERN</a>
+      <a href="/services/operationalise/" class="ref-nav-link">OPERATIONALISE</a>
+      <a href="/methodology/" class="ref-nav-link">METHODOLOGY</a>
+      <a href="#" class="ref-nav-cta">Let&rsquo;s talk</a>
+    </div>
+  </nav>
+
+  <!-- 1. HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="section-label reveal">About EQUIBT</div>
+      <h1 class="hero-h1 reveal reveal-d1">Operational improvement that holds.</h1>
+      <p class="hero-subhead reveal reveal-d2">EQUIBT is an operational improvement advisory. We work with complex service organisations across ANZ to build the capability, systems, and governance that make improvement stick.</p>
+      <p class="hero-body reveal reveal-d3">Most improvement programmes produce results. Fewer produce results that last. The difference is not methodology, it is whether the organisation has the capability, governance, and systems to maintain what was built after the engagement closes. That is the problem EQUIBT was created to solve.</p>
+      <div class="hero-actions reveal reveal-d4">
+        <a href="#" class="cta-button">Let&rsquo;s talk</a>
+        <a href="#why-exist" class="btn-secondary-light">Why we exist
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. WHY WE EXIST -->
+  <section class="why-exist" id="why-exist">
+    <div class="two-col-inner">
+      <div class="why-exist-left reveal">
+        <div class="section-label">Why We Exist</div>
+        <h2 class="why-exist-heading">The number one failure mode of operational improvement is not bad methodology. It is abandonment.</h2>
+        <div class="why-exist-body">
+          <p>Most improvement programmes follow the same arc. A consulting firm arrives, runs a diagnostic, identifies problems, designs solutions, runs a pilot. Results look good. The firm leaves. Twelve months later, the operation has drifted back to where it was. Sometimes further back, because the improvement programme disrupted existing stability without building what replaces it.</p>
+          <p>This is not a methodology problem. DMAIC is a rigorous framework. Lean is a rigorous framework. The problem is that neither was designed with exit in mind.</p>
+          <p>EQUIBT was built around a different model. DMAICO, Define, Measure, Analyse, Improve, Control, Operate, adds the phase that DMAIC never had. Operate makes sustainment someone's job, not everyone's assumption. Every engagement is designed from the outset to end with the organisation running the improved process independently, without us in the room.</p>
+        </div>
+      </div>
+      <div class="why-exist-right reveal reveal-d1">
+        <div class="section-label">Why EQUIBT?</div>
+        <div class="why-rows">
+          <div class="why-row">
+            <div class="why-row-num">01</div>
+            <div>
+              <div class="why-row-heading">Sustainment, not just delivery.</div>
+              <div class="why-row-body">Every EQUIBT engagement is scoped with an exit plan. The exit criteria are defined before the engagement begins. We do not move to the next phase until the current one is embedded.</div>
+            </div>
+          </div>
+          <div class="why-row">
+            <div class="why-row-num">02</div>
+            <div>
+              <div class="why-row-heading">Capability at the centre.</div>
+              <div class="why-row-body">We measure success by what the client team can do when we leave, not by what we delivered while we were there. Capability transfer is not an add-on. It is the point.</div>
+            </div>
+          </div>
+          <div class="why-row">
+            <div class="why-row-num">03</div>
+            <div>
+              <div class="why-row-heading">Governance that runs itself.</div>
+              <div class="why-row-body">Process architecture, control plans, dashboards, and escalation protocols are not post-engagement paperwork. They are the mechanism that keeps improvement alive.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. WHAT WE BELIEVE -->
+  <section class="what-we-believe">
+    <div class="what-we-believe-inner">
+      <div class="section-label reveal">What We Believe</div>
+      <h2 class="section-heading reveal reveal-d1">Four things we will not negotiate on.</h2>
+      <div class="belief-grid">
+        <div class="belief-card reveal reveal-d1">
+          <div class="belief-card-title">Measurement before intervention.</div>
+          <div class="belief-card-body">We do not accept anecdotal accounts of where the problem is. We measure it. Every engagement begins with a quantified baseline. Opinion without data is not a starting point. It is a bias.</div>
+        </div>
+        <div class="belief-card reveal reveal-d2">
+          <div class="belief-card-title">Root cause before solution.</div>
+          <div class="belief-card-body">Addressing symptoms is not improvement. It is maintenance. We do not design solutions until we have isolated the cause. A well-designed solution for the wrong problem wastes time, budget, and goodwill.</div>
+        </div>
+        <div class="belief-card reveal reveal-d1">
+          <div class="belief-card-title">Context shapes method.</div>
+          <div class="belief-card-body">DMAICO does not change by sector. How we apply it does. The questions we ask in financial services are different from the questions we ask in government. Generic application is not rigour.</div>
+        </div>
+        <div class="belief-card reveal reveal-d2">
+          <div class="belief-card-title">AI-ready, not AI-naive.</div>
+          <div class="belief-card-body">AI is not a replacement for operational rigour. It is an accelerant, when the process is stable, the governance is in place, and the team understands what the model is doing. We do not sell automation into unstable operations.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. OUR PEOPLE -->
+  <section class="our-people">
+    <div class="our-people-inner">
+      <div class="section-label reveal">Our People</div>
+      <h2 class="our-people-heading reveal reveal-d1">The work is done by people who have done this before.</h2>
+      <div class="profile-card reveal reveal-d2">
+        <div class="profile-name">Herman Chan</div>
+        <div class="profile-title">Founder and Principal Advisor</div>
+        <p class="profile-bio">Herman is a Master Black Belt in Lean Six Sigma with over twenty years of operational improvement experience across ANZ corporate and government. He trained at GE, holds a business degree from AGSM, and is the creator of DMAICO, an extension of DMAIC designed for AI-assisted operations. He leads every EQUIBT engagement personally. Clients do not work with a team that has been briefed on their situation. They work with the person who built the methodology.</p>
+        <p class="profile-focus">Current focus: operational improvement in financial services, government, utilities, and advanced manufacturing. AI governance frameworks for regulated operations.</p>
+      </div>
+      <p class="team-note reveal reveal-d3">EQUIBT engagements are led by Herman and supported by a network of specialist advisors. We do not deploy junior consultants as primary delivery. If you engage EQUIBT, you get the people you met in the discovery conversation.</p>
+    </div>
+  </section>
+
+  <!-- 5. TRACK RECORD -->
+  <section class="track-record">
+    <div class="track-record-inner">
+      <div class="section-label reveal">Track Record</div>
+      <h2 class="track-heading reveal reveal-d1">Twenty years of engagements across ANZ.</h2>
+      <div class="stat-strip">
+        <div class="stat-col reveal reveal-d1">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Years of operational improvement practice</div>
+        </div>
+        <div class="stat-col reveal reveal-d2">
+          <div class="stat-number">ANZ</div>
+          <div class="stat-label">Corporate and government engagements across Australia and New Zealand</div>
+        </div>
+        <div class="stat-col reveal reveal-d3">
+          <div class="stat-number">6</div>
+          <div class="stat-label">DMAICO phases, built for AI-era operations</div>
+        </div>
+      </div>
+      <p class="track-body reveal">EQUIBT has worked across financial services, government and public sector, utilities, and advanced manufacturing. Clients include large financial institutions, federal and state government agencies, energy and infrastructure operators, and precision manufacturers. All engagements are confidential. Proof is available through referenced outcomes and direct client conversations on request.</p>
+    </div>
+  </section>
+
+  <!-- 6. CTA PANEL -->
+  <section class="cta-panel">
+    <div class="cta-panel-inner">
+      <div class="cta-left reveal">
+        <h2 class="cta-heading">Ready to talk? So are we.</h2>
+        <p class="cta-body">A fifteen-minute conversation is enough to tell you whether EQUIBT is the right fit for your operation. No obligation.</p>
+        <a href="#" class="cta-button">Let&rsquo;s Talk</a>
+      </div>
+      <div class="cta-panel-right reveal reveal-d1">
+        <div class="cta-detail-item">
+          <div class="cta-detail-label">Engagement model</div>
+          <div class="cta-detail-value">Advisory and capability transfer. Not staff augmentation.</div>
+        </div>
+        <div class="cta-detail-item">
+          <div class="cta-detail-label">Typical engagement start</div>
+          <div class="cta-detail-value">2 to 3 weeks from first conversation</div>
+        </div>
+        <div class="cta-detail-item">
+          <div class="cta-detail-label">Geography</div>
+          <div class="cta-detail-value">Australia and New Zealand</div>
+        </div>
+        <div class="cta-detail-item">
+          <div class="cta-detail-label">All engagements led by</div>
+          <div class="cta-detail-value">Herman Chan, Principal Advisor</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">EQUI<span>BT</span></a>
+        <p class="footer-tagline">Operational capability advisory. Melbourne, Australia. Serving ANZ corporate and government.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services/frame/">FRAME</a></li>
+          <li><a href="/services/plan/">PLAN</a></li>
+          <li><a href="/services/solve/">SOLVE</a></li>
+          <li><a href="/services/evolve/">EVOLVE</a></li>
+          <li><a href="/services/govern/">GOVERN</a></li>
+          <li><a href="/services/operationalise/">OPERATIONALISE</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/industries/">Industries</a></li>
+          <li><a href="/methodology/">Methodology</a></li>
+          <li><a href="/our-work/">Our Work</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@equibt.com">hello@equibt.com</a></li>
+          <li><a href="/contact/">Start a conversation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2025 EQUIBT Group. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); revealObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    const nav = document.querySelector('.ref-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    const burger = document.getElementById('nav-hamburger');
+    const navLinks = document.querySelector('.ref-nav-links');
+    if (burger && navLinks) {
+      burger.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('is-open');
+        burger.setAttribute('aria-expanded', open);
+      });
+    }
+  </script>
+
+</body>
+</html>

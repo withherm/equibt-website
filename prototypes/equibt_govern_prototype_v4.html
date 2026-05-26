@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Governance and Process Compliance | GOVERN | Control | EQUIBT</title>
+  <style>
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/montserrat-600-700-latin-ext.woff2') format('woff2');
+    font-weight: 600 700; font-style: normal; font-display: swap;
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/montserrat-600-700-latin.woff2') format('woff2');
+    font-weight: 600 700; font-style: normal; font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+    :root {
+      color-scheme: light;
+      --navy:            #26245C;
+      --terracotta:      #C15F3C;
+      --terracotta-dark: #A04E30;
+      --section-bg:      #F5F5F5;
+      --white:           #FFFFFF;
+      --near-black:      #2C2C2C;
+      --off-white:       #F5F3EE;
+      --body-text:       #555;
+      --navy-wash:       #EEF0F8;
+      --dark-slate:      #2C3E50;
+      --warm-parchment:  #F5EBD9;
+      --pill-frame:           #8B2252;
+      --pill-plan:            #26245C;
+      --pill-solve:           #0B6B82;
+      --pill-evolve:          #2D7A3A;
+      --pill-govern:          #7A3D00;
+      --pill-operationalise:  #5C0A5C;
+      --pillar-accent: #7A3D00;
+      --pillar-accent-tint: rgba(122,61,0,0.05);
+      --terracotta-10: rgba(193,95,60,0.1);
+      --navy-08: rgba(38,36,92,0.08);
+      --navy-12: rgba(38,36,92,0.12);
+      --text-light: rgba(255,255,255,0.72);
+      --text-faint: rgba(255,255,255,0.48);
+    }
+
+  h1, h2, h3,
+  .hero-h1, .why-start-heading, .examine-heading, .examine-card-title,
+  .deliverables-heading, .case-studies-heading, .related-heading, .cta-heading,
+  .ref-logo, .btn-primary, .cta-button, .pillar-tag, .case-stat,
+  .hero-service-name, .section-label, .examine-card-number,
+  .related-card-name, .deliverable-title,
+  .why-row-num, .why-row-heading { font-family: 'Montserrat', system-ui, sans-serif; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--section-bg); color: var(--near-black); -webkit-font-smoothing: antialiased; }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
+
+    .ref-nav { background: var(--navy); padding: 15px 48px; display: flex; align-items: center; position: sticky; top: 0; z-index: 10; transition: background 0.3s ease, backdrop-filter 0.3s ease; }
+    .ref-nav.scrolled { background: rgba(38,36,92,0.90); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    .ref-logo { font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--off-white); }
+    .ref-logo span { color: var(--terracotta); }
+    .ref-nav-links { display: flex; align-items: center; gap: 32px; margin-left: auto; }
+    .ref-nav-link { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,243,238,0.65); text-decoration: none; transition: color 0.18s; }
+    .ref-nav-link:hover { color: var(--off-white); }
+    .ref-nav-link.active { color: var(--off-white); }
+    .ref-nav-cta { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--off-white); background: var(--terracotta); padding: 8px 18px; border-radius: 4px; text-decoration: none; margin-left: 16px; transition: background 0.18s; }
+    .ref-nav-cta:hover { background: var(--terracotta-dark); }
+
+    .section-label { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 16px; }
+    .section-label::before { content: ''; display: block; width: 3px; height: 20px; background: var(--terracotta); border-radius: 2px; flex-shrink: 0; }
+
+    .pillar-tag { display: inline-flex; align-items: center; color: var(--off-white); font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; height: 22px; padding: 0 11px; border-radius: 100px; width: fit-content; line-height: 1; }
+    .pillar-tag.frame          { background: var(--pill-frame); }
+    .pillar-tag.plan           { background: var(--pill-plan); }
+    .pillar-tag.solve          { background: var(--pill-solve); }
+    .pillar-tag.evolve         { background: var(--pill-evolve); }
+    .pillar-tag.govern         { background: var(--pill-govern); }
+    .pillar-tag.operationalise { background: var(--pill-operationalise); }
+
+    .btn-primary { display: inline-flex; align-items: center; background: var(--terracotta); color: var(--off-white); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; text-decoration: none; transition: background 0.18s, transform 0.15s; }
+    .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+    .btn-secondary-light { color: rgba(255,255,255,0.65); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.18s, gap 0.18s; }
+    .btn-secondary-light:hover { color: #ffffff; gap: 10px; }
+    .btn-secondary-light svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    .hero { background: var(--navy); padding: 80px 48px 88px; }
+    .hero-inner { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .hero-badge { margin-bottom: 24px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .hero-badge .pillar-tag { font-size: 10px; height: 26px; padding: 0 14px; }
+    .hero-service-name { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .hero-h1 { font-size: 64px; font-weight: 700; color: #ffffff; line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 20px; }
+    .hero-subhead { font-size: 20px; color: var(--text-light); line-height: 1.6; margin-bottom: 16px; max-width: 600px; }
+    .hero-body { font-size: 16px; color: var(--text-faint); line-height: 1.75; margin-bottom: 36px; max-width: 580px; }
+    .hero-actions { display: flex; align-items: center; gap: 24px; justify-content: center; flex-wrap: wrap; }
+
+    .why-start { background: var(--warm-parchment); padding: 88px 48px; border-bottom: 1px solid rgba(38,36,92,0.06); }
+    .why-start-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 45%; gap: 72px; align-items: start; }
+    .why-start-heading { font-size: 46px; font-weight: 700; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 24px; max-width: 480px; }
+    .why-start-body p { font-size: 16px; color: var(--body-text); line-height: 1.75; margin-bottom: 16px; }
+    .why-start-body p:last-child { margin-bottom: 0; }
+
+    .why-rows { display: flex; flex-direction: column; }
+    .why-row { display: grid; grid-template-columns: 64px 1fr; gap: 0 32px; padding: 28px 0; border-bottom: 1px solid rgba(38,36,92,0.1); align-items: start; }
+    .why-row:first-child { border-top: 1px solid rgba(38,36,92,0.1); }
+    .why-row-num { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: var(--terracotta); font-family: 'Montserrat', system-ui, sans-serif; padding-top: 4px; }
+    .why-row-heading { font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 6px; font-family: 'Montserrat', system-ui, sans-serif; }
+    .why-row-body { font-size: 15px; color: var(--body-text); line-height: 1.7; }
+
+    .what-we-examine { background: var(--white); padding: 88px 48px; border-bottom: 1px solid rgba(38,36,92,0.06); }
+    .what-we-examine-inner { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+    .examine-heading { font-size: 46px; font-weight: 700; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 44px; max-width: 480px; }
+    .examine-grid { display: flex; flex-direction: column; gap: 0; width: fit-content; }
+    .examine-card { display: flex; flex-direction: row; align-items: center; gap: 28px; padding: 36px 0 36px 20px; border-left: 5px solid var(--pillar-accent); transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease; }
+    .examine-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.10); border-color: var(--terracotta); }
+    .examine-card:nth-child(1) { margin-left: 0; }
+    .examine-card:nth-child(2) { margin-left: 72px; }
+    .examine-card:nth-child(3) { margin-left: 144px; }
+    .examine-card:nth-child(4) { margin-left: 72px; }
+    .examine-card-text { display: flex; flex-direction: column; gap: 10px; max-width: 440px; }
+    .examine-card-number { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracotta); }
+    .examine-card-title { font-size: 20px; font-weight: 700; color: var(--navy); line-height: 1.3; letter-spacing: -0.01em; }
+    .examine-card-body { font-size: 16px; color: var(--body-text); line-height: 1.75; max-width: 480px; }
+    .examine-card-image { width: 200px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .examine-card:nth-child(1) .examine-card-image { width: 320px; }
+    .examine-card:nth-child(2) .examine-card-image { width: 300px; }
+    .examine-card:nth-child(3) .examine-card-image { width: 370px; }
+    .examine-card:nth-child(4) .examine-card-image { width: 300px; }
+    .examine-card-image img { width: 100%; height: auto; display: block; mix-blend-mode: multiply; }
+
+    .what-you-receive { background: var(--navy-wash); padding: 88px 48px; border-bottom: 1px solid rgba(38,36,92,0.06); }
+    .what-you-receive-inner { max-width: 1120px; margin: 0 auto; }
+    .deliverables-heading { font-size: 46px; font-weight: 700; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 44px; max-width: 480px; }
+    .deliverables-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .deliverable-card-image { width: 100%; border-radius: 5px; overflow: hidden; margin-bottom: 4px; }
+    .deliverable-card-image img { width: 100%; height: auto; display: block; }
+    .deliverable-card { background: var(--white); border-radius: 8px; padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 2px 10px rgba(38,36,92,0.07), 0 1px 3px rgba(0,0,0,0.04); transition: transform 0.22s ease, box-shadow 0.22s ease; }
+    .deliverable-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.10); }
+    .deliverable-title { font-size: 16px; font-weight: 700; color: var(--navy); line-height: 1.3; }
+    .deliverable-body { font-size: 16px; color: var(--body-text); line-height: 1.75; }
+
+    .case-studies { background: var(--white); padding: 80px 48px; border-bottom: 1px solid rgba(38,36,92,0.08); }
+    .case-studies-inner { max-width: 1120px; margin: 0 auto; }
+    .case-studies-heading { font-size: 46px; font-weight: 700; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 44px; max-width: 500px; }
+    .case-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; align-items: start; }
+    .case-card.navy { background: var(--navy); border: none; border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 14px; transition: transform 0.22s ease, box-shadow 0.22s ease; }
+    .case-card.navy:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+    .case-card.navy .case-sector { color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.2); background: transparent; }
+    .case-card.navy .case-stat { color: var(--terracotta); }
+    .case-card.navy .case-outcome { color: #ffffff; }
+    .case-card.navy .case-situation { color: rgba(255,255,255,0.65); }
+    .case-card.navy .case-result { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.65); }
+    .case-card.light { background: #ffffff; border: 1px solid rgba(38,36,92,0.1); border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 14px; transition: transform 0.22s ease, box-shadow 0.22s ease; }
+    .case-card.light:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+    .case-tags { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .case-sector { display: inline-flex; align-items: center; background: rgba(38,36,92,0.07); border: 1px solid rgba(38,36,92,0.12); color: var(--navy); font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; height: 22px; padding: 0 10px; border-radius: 100px; }
+    .case-stat { font-size: 64px; font-weight: 700; color: var(--terracotta); line-height: 1; letter-spacing: -0.03em; font-family: 'Montserrat', system-ui, sans-serif; }
+    .case-outcome { font-size: 20px; font-weight: 600; color: var(--near-black); line-height: 1.5; }
+    .case-situation { font-size: 16px; color: var(--body-text); line-height: 1.75; }
+    .case-result { font-size: 16px; color: var(--body-text); line-height: 1.75; padding: 12px 16px; }
+    .case-artwork { width: calc(100% + 24px); margin-left: -12px; height: 100px; margin-top: 36px; border-radius: 6px 12px 8px 10px; overflow: hidden; position: relative; transform: rotate(-0.6deg); background: linear-gradient(135deg, rgba(38,36,92,0.06) 0%, rgba(193,95,60,0.08) 100%); }
+    .case-artwork img { width: 100%; height: 100%; object-fit: cover; object-position: center; mix-blend-mode: multiply; }
+
+    .related-services { background: var(--section-bg); padding: 80px 48px; border-bottom: 1px solid rgba(38,36,92,0.08); }
+    .related-services-inner { max-width: 1120px; margin: 0 auto; }
+    .related-heading { font-size: 46px; font-weight: 700; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 12px; max-width: 520px; }
+    .related-subhead { font-size: 16px; color: var(--body-text); line-height: 1.75; margin-bottom: 44px; max-width: 560px; }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .related-card { background: var(--white); border-radius: 8px; padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 12px; text-decoration: none; color: var(--near-black); box-shadow: 0 2px 10px rgba(38,36,92,0.08), 0 1px 3px rgba(0,0,0,0.04); transition: transform 0.22s ease, box-shadow 0.22s ease; }
+    .related-card:hover { box-shadow: 0 16px 40px rgba(0,0,0,0.10); transform: translateY(-4px); }
+    .related-card-name { font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.3; letter-spacing: -0.01em; }
+    .related-card-descriptor { font-size: 16px; color: var(--body-text); line-height: 1.75; flex: 1; }
+    .related-card-link { display: flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 700; color: var(--terracotta); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; transition: gap 0.18s ease, color 0.18s ease; }
+    .related-card:hover .related-card-link { gap: 9px; color: var(--terracotta-dark); }
+    .subway-pill.active { filter: drop-shadow(0 0 6px rgba(193,95,60,0.35)); }
+
+    .cta-panel { background: var(--dark-slate); padding: 80px 48px; }
+    .cta-panel-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 340px; gap: 64px; align-items: center; }
+    .cta-heading { font-size: 38px; font-weight: 700; color: var(--off-white); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+    .cta-body { font-size: 16px; color: rgba(245,243,238,0.7); line-height: 1.75; margin-bottom: 36px; }
+    .cta-button { display: inline-flex; align-items: center; background: var(--terracotta); color: var(--off-white); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 32px; border-radius: 4px; text-decoration: none; transition: background 0.18s, transform 0.15s; }
+    .cta-button:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+    .cta-panel-right { background: rgba(255,255,255,0.1); border-radius: 8px; border: 1px solid rgba(245,243,238,0.22); padding: 28px 28px; display: flex; flex-direction: column; gap: 16px; }
+    .cta-detail-label { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,243,238,0.5); margin-bottom: 4px; }
+    .cta-detail-item { display: flex; flex-direction: column; gap: 2px; padding-bottom: 14px; border-bottom: 1px solid rgba(245,243,238,0.15); }
+    .cta-detail-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .cta-detail-title { font-size: 13px; font-weight: 700; color: var(--off-white); }
+    .cta-detail-value { font-size: 12px; color: rgba(245,243,238,0.72); line-height: 1.5; }
+
+    @media (max-width: 1024px) {
+      .hero, .why-start, .what-we-examine, .what-you-receive, .case-studies, .related-services, .cta-panel { padding-left: 32px; padding-right: 32px; }
+      .cta-panel-inner { grid-template-columns: 1fr 280px; }
+    }
+    @media (max-width: 900px) {
+      .why-start-inner { grid-template-columns: 1fr; }
+      .examine-card { flex-direction: column; }
+      .deliverables-grid { grid-template-columns: 1fr; }
+      .cta-panel-inner { grid-template-columns: 1fr; }
+      .cta-panel-right { display: none; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 56px 24px 64px; }
+      .why-start, .what-we-examine, .what-you-receive, .case-studies, .related-services, .cta-panel { padding-left: 24px; padding-right: 24px; padding-top: 56px; padding-bottom: 64px; }
+      .hero-h1 { font-size: 38px; }
+      .examine-heading, .deliverables-heading, .case-studies-heading, .related-heading, .why-start-heading { font-size: 30px; }
+      .cta-heading { font-size: 26px; }
+      .case-grid { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .case-stat { font-size: 48px; }
+      .ref-nav-links { display: none; }
+      .why-row { grid-template-columns: 40px 1fr; gap: 0 16px; }
+    }
+  
+    /* ═══════════════════════════════════════════════════════════
+       ADDITIONS — v4 patch (footer, mobile nav, hero 2-col, fixes)
+       ═══════════════════════════════════════════════════════════ */
+
+    /* Footer */
+    footer { background: var(--white); padding: 80px 48px 48px; border-top: 1px solid rgba(38,36,92,0.08); }
+    .footer-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 200px 1fr 1fr 1fr; gap: 64px; margin-bottom: 56px; }
+    .footer-brand { }
+    .footer-logo { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 14px; color: var(--navy); letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; display: block; margin-bottom: 12px; }
+    .footer-logo span { color: var(--terracotta); }
+    .footer-tagline { font-size: 12px; color: var(--body-text); line-height: 1.65; max-width: 180px; }
+    .footer-col h4 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(38,36,92,0.35); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: 13px; color: var(--body-text); text-decoration: none; transition: color 0.18s; }
+    .footer-col ul li a:hover { color: var(--navy); }
+    .footer-bottom { max-width: 1120px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(38,36,92,0.08); display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: 12px; color: #bbb; }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal a { font-size: 12px; color: #bbb; text-decoration: none; transition: color 0.18s; }
+    .footer-legal a:hover { color: var(--navy); }
+
+    /* Hero 2-column override */
+    .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 400px; gap: 80px; align-items: center; text-align: left; }
+    .hero-text { }
+    .hero-visual { display: flex; align-items: center; justify-content: flex-end; }
+    .hero-visual svg { width: 100%; max-width: 400px; height: auto; }
+    .hero-badge { align-items: flex-start; }
+    .hero-actions { justify-content: flex-start; }
+
+    /* Mobile nav hamburger */
+    .nav-hamburger { display: none; background: none; border: none; padding: 6px; cursor: pointer; flex-direction: column; gap: 5px; align-items: center; margin-left: auto; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: rgba(245,243,238,0.85); border-radius: 2px; }
+
+    /* Examine-card staircase: reduce margins at medium widths */
+    @media (max-width: 1100px) {
+      .examine-card:nth-child(2) { margin-left: 36px; }
+      .examine-card:nth-child(3) { margin-left: 72px; }
+    }
+
+    @media (max-width: 768px) {
+      /* Footer */
+      footer { padding: 56px 24px 40px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+      .footer-brand { grid-column: 1 / -1; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      /* Mobile nav */
+      .ref-nav { padding: 14px 24px; flex-wrap: wrap; }
+      .ref-nav-links { display: none; width: 100%; flex-direction: column; padding: 12px 0 8px; gap: 0; margin-left: 0; border-top: 1px solid rgba(245,243,238,0.1); margin-top: 12px; }
+      .ref-nav-links.is-open { display: flex; }
+      .ref-nav-link { padding: 9px 0; font-size: 10px; }
+      .ref-nav-cta { margin-left: 0; margin-top: 8px; align-self: flex-start; }
+      .nav-hamburger { display: flex; }
+      /* Hero collapse */
+      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 32px; }
+      .hero-visual { display: none; }
+      .hero-badge { align-items: center; }
+      .hero-actions { justify-content: center; }
+      /* Examine card margins */
+      .examine-card:nth-child(2) { margin-left: 0; }
+      .examine-card:nth-child(3) { margin-left: 0; }
+      /* DMAICO subway hide */
+      .subway-nav { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+
+  
+    /* ═══════════════════════════════════════════════════════════
+       HERO COLOUR REVERT — back to white background / dark text
+       ═══════════════════════════════════════════════════════════ */
+
+    /* White hero background with subtle bottom border */
+    .hero { background: var(--white) !important; border-bottom: 1px solid rgba(38,36,92,0.07); }
+
+    /* Navy text on white background */
+    .hero-h1 {
+      font-size: 52px !important;
+      font-weight: 500 !important;
+      color: var(--navy) !important;
+      line-height: 1.06 !important;
+      letter-spacing: -0.03em !important;
+    }
+    .hero-subhead { color: var(--body-text) !important; font-size: 18px !important; }
+    .hero-body { color: var(--body-text) !important; font-size: 15px !important; }
+    .hero-service-name { color: var(--pillar-accent) !important; }
+
+    /* Dark secondary link (replaces btn-secondary-light on white bg) */
+    .btn-secondary-dark {
+      color: rgba(38,36,92,0.55);
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: color 0.18s, gap 0.18s;
+    }
+    .btn-secondary-dark:hover { color: var(--navy); gap: 10px; }
+    .btn-secondary-dark svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  
+    /* HARD RULE: No numbered labels in why-row or examine-card sections */
+    .why-row-num { display: none !important; }
+    .why-row { grid-template-columns: 1fr !important; gap: 0 !important; }
+    .examine-card-number { display: none !important; }
+    /* Why EQUIBT heading: editorial weight */
+    .why-row-heading { font-size: 26px !important; font-weight: 500 !important; letter-spacing: -0.02em !important; }
+    /* Remove case-result block styling — no background, no border box */
+    .case-card.navy .case-result { background: none !important; }
+    .case-result { padding: 0 !important; margin-top: 4px; }
+
+  </style>
+</head>
+<body>
+
+  <nav class="ref-nav">
+    <div class="ref-logo">EQ<span>U</span>IBT</div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="ref-nav-links">
+      <a href="/services/frame/" class="ref-nav-link">FRAME</a>
+      <a href="/services/plan/" class="ref-nav-link">PLAN</a>
+      <a href="/services/solve/" class="ref-nav-link">SOLVE</a>
+      <a href="/services/evolve/" class="ref-nav-link">EVOLVE</a>
+      <a href="/services/govern/" class="ref-nav-link active">GOVERN</a>
+      <a href="/services/operationalise/" class="ref-nav-link">OPERATIONALISE</a>
+      <a href="/methodology/" class="ref-nav-link">METHODOLOGY</a>
+      <a href="#" class="ref-nav-cta">Let&rsquo;s talk</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="pillar-tag govern">GOVERN</span>
+        <span class="hero-service-name">GOVERN | Control &nbsp;&middot;&nbsp; AI Governance and Process Compliance</span>
+      </div>
+      <h1 class="hero-h1">Build the infrastructure<br>that prevents drift.</h1>
+      <p class="hero-subhead reveal">Improvements fail when nobody owns the ongoing governance. GOVERN builds the control systems, process architecture, and AI governance frameworks that keep your operation running to standard after the project closes.</p>
+      <p class="hero-body reveal reveal-d1">Michael has seen this before. The improvement programme ran for twelve months. New processes were designed, piloted, deployed. For three months, everything held. Then slowly, quietly, the operation drifted back. People found workarounds. The new process became optional. The dashboard stopped being checked.<br><br>The problem is not that the improvement failed. The problem is that nobody built the governance infrastructure to sustain it. No control plans. No escalation protocols. No monitoring that catches drift before it compounds. In the AI era, the problem is worse - models degrade, training data goes stale, outputs drift, and nobody notices until something breaks visibly. GOVERN builds the infrastructure that prevents this.</p>
+      <div class="hero-actions reveal reveal-d2">
+        <a href="#" class="btn-primary">Let&rsquo;s talk</a>
+        <a href="#" class="btn-secondary-dark">View our work <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg" aria-label="Low-poly gem — governance and control">
+        <line x1="20" y1="192" x2="420" y2="192" stroke="#26245C" stroke-width="0.5" stroke-dasharray="2 10" opacity="0.05"/>
+        <path d="M 220 45 L 108 95 L 220 118 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 220 45 L 220 118 L 332 95 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 108 95 L 45 192 L 152 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 108 95 L 152 155 L 220 118 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 332 95 L 220 118 L 288 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 332 95 L 288 155 L 395 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 45 192 L 220 192 L 152 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 152 155 L 220 192 L 288 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 288 155 L 220 192 L 395 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 220 118 L 152 155 L 288 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 45 192 L 152 245 L 220 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 220 192 L 152 245 L 288 245 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 220 192 L 288 245 L 395 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 45 192 L 98 285 L 152 245 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 152 245 L 98 285 L 220 345 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 152 245 L 220 345 L 288 245 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 288 245 L 220 345 L 342 285 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 288 245 L 342 285 L 395 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <circle cx="220" cy="45" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="45" cy="192" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="395" cy="192" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="220" cy="345" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="108" cy="95" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="332" cy="95" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="98" cy="285" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="342" cy="285" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="220" cy="192" r="10" fill="#C15F3C"/>
+        <line x1="212" y1="192" x2="228" y2="192" stroke="#FFFFFF" stroke-width="1.5"/>
+        <line x1="220" y1="184" x2="220" y2="200" stroke="#FFFFFF" stroke-width="1.5"/>
+        <text x="220" y="374" font-family="system-ui,-apple-system,sans-serif" font-size="8" font-weight="600" letter-spacing="0.14em" fill="#C15F3C" text-anchor="middle" opacity="0.52">CONTROL / PROCESS ARCHITECTURE</text>
+      </svg>
+    </div>
+  </div>
+  </section>
+
+  <section class="why-start">
+    <div class="why-start-inner">
+      <div class="why-start-left">
+        <div class="section-label">Why start here</div>
+        <h2 class="why-start-heading reveal">Every improvement programme that failed to hold was missing governance.</h2>
+        <div class="why-start-body reveal reveal-d1">
+          <p>The most common failure point in operational improvement is not the design phase. It is not the pilot. It is what happens after the project closes. The project team disbands. The consultants leave. Day-to-day pressure builds. And gradually, the new process gets eroded by the path of least resistance.</p>
+          <p>This is not a people problem. It is an infrastructure problem. Without control plans, nobody knows when drift has started. Without dashboards, nobody sees the early warning signs. Without escalation protocols, nobody knows what to do when something breaks.</p>
+          <p>In the AI era, the governance gap is more acute. Organisations are deploying AI-assisted processes without clear ownership of the model lifecycle. Who retrains the model when the underlying process changes? Who validates outputs against ground truth? What happens when the model is right 95% of the time and wrong in ways nobody notices for months? GOVERN addresses all of this.</p>
+        </div>
+      </div>
+      <div class="why-start-right">
+        <div class="section-label">Why EQUIBT?</div>
+        <div class="why-rows">
+          <div class="why-row reveal">
+            <span class="why-row-num">01</span>
+            <div class="why-row-content">
+              <p class="why-row-heading">Process architecture, not documentation.</p>
+              <p class="why-row-body">Working process architecture that people follow because it matches how work actually happens. Not compliance wallpaper that sits in a folder.</p>
+            </div>
+          </div>
+          <div class="why-row reveal reveal-d1">
+            <span class="why-row-num">02</span>
+            <div class="why-row-content">
+              <p class="why-row-heading">Early drift detection, not retrospective review.</p>
+              <p class="why-row-body">Specific metrics, specific thresholds, specific actions when thresholds are breached. Drift gets caught in days, not months.</p>
+            </div>
+          </div>
+          <div class="why-row reveal reveal-d2">
+            <span class="why-row-num">03</span>
+            <div class="why-row-content">
+              <p class="why-row-heading">AI governance with ownership, not assumption of oversight.</p>
+              <p class="why-row-body">Who owns the model. Who validates outputs. What happens when the process changes and the model does not. Clear, owned, maintainable.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="what-we-examine">
+    <div class="what-we-examine-inner">
+      <div class="section-label">What we build</div>
+      <h2 class="examine-heading reveal">Four systems. Sustained governance.</h2>
+      <div class="examine-grid">
+        <div class="examine-card reveal">
+          <div class="examine-card-text">
+            <div class="examine-card-number">01</div>
+            <h3 class="examine-card-title">Process Architecture</h3>
+            <p class="examine-card-body">Integrated process flows, role definitions, decision rights, and accountability structures. Designed to match how work actually happens. Maintained by your team. Updated when things change.</p>
+          </div>
+          <div class="examine-card-image">
+            <img src="assets/lineart/SERVICE-GOVERN/EQ-GOVERN-ARCH.png" alt="Process Architecture illustration" style="mix-blend-mode:multiply;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;width:100%;aspect-ratio:4/3;background:rgba(38,36,92,0.04);border-radius:8px;border:1.5px dashed rgba(38,36,92,0.18);align-items:center;justify-content:center;"><p style="font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.3);text-align:center;padding:8px;">Process Architecture illustration</p></div>
+          </div>
+        </div>
+        <div class="examine-card reveal reveal-d1">
+          <div class="examine-card-text">
+            <div class="examine-card-number">02</div>
+            <h3 class="examine-card-title">Control Plans</h3>
+            <p class="examine-card-body">Specific metrics at specific points in the process. Clear thresholds. Clear actions when thresholds are breached. Escalation protocols that define who acts and when. Drift gets caught before it compounds.</p>
+          </div>
+          <div class="examine-card-image">
+            <img src="assets/lineart/SERVICE-GOVERN/EQ-GOVERN-CONTROL.png" alt="Control Plans illustration" style="mix-blend-mode:multiply;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;width:100%;aspect-ratio:4/3;background:rgba(38,36,92,0.04);border-radius:8px;border:1.5px dashed rgba(38,36,92,0.18);align-items:center;justify-content:center;"><p style="font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.3);text-align:center;padding:8px;">Control Plans illustration</p></div>
+          </div>
+        </div>
+        <div class="examine-card reveal reveal-d2">
+          <div class="examine-card-text">
+            <div class="examine-card-number">03</div>
+            <h3 class="examine-card-title">Monitoring Dashboards</h3>
+            <p class="examine-card-body">Real-time visibility into process performance. Leading indicators, not just lagging ones. Designed for the people who actually need to act on the information, not for quarterly board reporting.</p>
+          </div>
+          <div class="examine-card-image">
+            <img src="assets/lineart/SERVICE-GOVERN/EQ-GOVERN-DASH.png" alt="Monitoring Dashboards illustration" style="mix-blend-mode:multiply;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;width:100%;aspect-ratio:4/3;background:rgba(38,36,92,0.04);border-radius:8px;border:1.5px dashed rgba(38,36,92,0.18);align-items:center;justify-content:center;"><p style="font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.3);text-align:center;padding:8px;">Monitoring Dashboards illustration</p></div>
+          </div>
+        </div>
+        <div class="examine-card reveal reveal-d3">
+          <div class="examine-card-text">
+            <div class="examine-card-number">04</div>
+            <h3 class="examine-card-title">AI Governance Frameworks</h3>
+            <p class="examine-card-body">Model ownership. Retraining schedules. Output validation against ground truth. Drift detection. Clear decision rights for when the model needs human override. Built for the AI-assisted processes your organisation is deploying.</p>
+          </div>
+          <div class="examine-card-image">
+            <img src="assets/lineart/SERVICE-GOVERN/EQ-GOVERN-AI.png" alt="AI Governance Frameworks illustration" style="mix-blend-mode:multiply;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;width:100%;aspect-ratio:4/3;background:rgba(38,36,92,0.04);border-radius:8px;border:1.5px dashed rgba(38,36,92,0.18);align-items:center;justify-content:center;"><p style="font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.3);text-align:center;padding:8px;">AI Governance Frameworks illustration</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="what-you-receive">
+    <div class="what-you-receive-inner">
+      <div class="section-label">What you receive</div>
+      <h2 class="deliverables-heading reveal">Four deliverables. Infrastructure that holds.</h2>
+      <div class="deliverables-grid">
+        <div class="deliverable-card reveal">
+          <div class="deliverable-card-image">
+            <img src="assets/deliverables/GOVERN/GOVERN-DEL-1-ARCH.jpg" alt="A4 document — Process Architecture Document" style="width:100%;height:auto;display:block;border-radius:4px;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;width:100%;aspect-ratio:210/280;background:linear-gradient(160deg,#fafafa 0%,#f0f0f0 100%);border-radius:4px;border:1px solid rgba(38,36,92,0.12);align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:20px;"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" fill="rgba(38,36,92,0.07)" stroke="rgba(38,36,92,0.22)" stroke-width="1.5"/><line x1="7" y1="7" x2="17" y2="7" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="10" x2="17" y2="10" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="13" x2="14" y2="13" stroke="rgba(38,36,92,0.18)" stroke-width="1"/></svg><p style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.32);text-align:center;margin:0;">A4 document — Process Architecture Document</p></div>
+          </div>
+          <h3 class="deliverable-title">Process Architecture Document</h3>
+          <p class="deliverable-body">Integrated process flows, RACI matrices, decision rights, and accountability structures for your key processes. Designed to match how work actually happens. Formatted for maintenance by your team.</p>
+        </div>
+        <div class="deliverable-card reveal reveal-d1">
+          <div class="deliverable-card-image">
+            <img src="assets/deliverables/GOVERN/GOVERN-DEL-2-CONTROL.jpg" alt="A4 document — Control Plans" style="width:100%;height:auto;display:block;border-radius:4px;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;width:100%;aspect-ratio:210/280;background:linear-gradient(160deg,#fafafa 0%,#f0f0f0 100%);border-radius:4px;border:1px solid rgba(38,36,92,0.12);align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:20px;"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" fill="rgba(38,36,92,0.07)" stroke="rgba(38,36,92,0.22)" stroke-width="1.5"/><line x1="7" y1="7" x2="17" y2="7" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="10" x2="17" y2="10" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="13" x2="14" y2="13" stroke="rgba(38,36,92,0.18)" stroke-width="1"/></svg><p style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.32);text-align:center;margin:0;">A4 document — Control Plans</p></div>
+          </div>
+          <h3 class="deliverable-title">Control Plans</h3>
+          <p class="deliverable-body">Specific metrics at specific control points. Defined thresholds. Defined actions when thresholds are breached. Escalation protocols that define who acts and when. Formatted as working operational tools, not compliance documents.</p>
+        </div>
+        <div class="deliverable-card reveal reveal-d2">
+          <div class="deliverable-card-image">
+            <img src="assets/deliverables/GOVERN/GOVERN-DEL-3-DASH.jpg" alt="A4 document — Monitoring Dashboard Specification" style="width:100%;height:auto;display:block;border-radius:4px;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;width:100%;aspect-ratio:210/280;background:linear-gradient(160deg,#fafafa 0%,#f0f0f0 100%);border-radius:4px;border:1px solid rgba(38,36,92,0.12);align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:20px;"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" fill="rgba(38,36,92,0.07)" stroke="rgba(38,36,92,0.22)" stroke-width="1.5"/><line x1="7" y1="7" x2="17" y2="7" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="10" x2="17" y2="10" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="13" x2="14" y2="13" stroke="rgba(38,36,92,0.18)" stroke-width="1"/></svg><p style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.32);text-align:center;margin:0;">A4 document — Monitoring Dashboard Specification</p></div>
+          </div>
+          <h3 class="deliverable-title">Monitoring Dashboard Specification</h3>
+          <p class="deliverable-body">Dashboard design and specifications for your existing BI tooling. Leading indicators and lagging indicators, at the right level for the people who need to act on them. Includes data source mapping and refresh cadence.</p>
+        </div>
+        <div class="deliverable-card reveal reveal-d3">
+          <div class="deliverable-card-image">
+            <img src="assets/deliverables/GOVERN/GOVERN-DEL-4-AIFRAME.jpg" alt="A4 document — AI Governance Framework" style="width:100%;height:auto;display:block;border-radius:4px;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;width:100%;aspect-ratio:210/280;background:linear-gradient(160deg,#fafafa 0%,#f0f0f0 100%);border-radius:4px;border:1px solid rgba(38,36,92,0.12);align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:20px;"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" fill="rgba(38,36,92,0.07)" stroke="rgba(38,36,92,0.22)" stroke-width="1.5"/><line x1="7" y1="7" x2="17" y2="7" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="10" x2="17" y2="10" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="13" x2="14" y2="13" stroke="rgba(38,36,92,0.18)" stroke-width="1"/></svg><p style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.32);text-align:center;margin:0;">A4 document — AI Governance Framework</p></div>
+          </div>
+          <h3 class="deliverable-title">AI Governance Framework</h3>
+          <p class="deliverable-body">Documented model ownership, retraining schedules, output validation protocols, and drift detection thresholds. Decision rights for when human override is required. Built for the AI-assisted processes your organisation has deployed or is deploying.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section class="case-studies">
+    <div class="case-studies-inner">
+      <div class="section-label">The work</div>
+      <h2 class="case-studies-heading reveal">Recent engagements.</h2>
+      <div class="case-grid">
+        <div class="case-card navy reveal">
+          <div class="case-tags">
+            <span class="case-sector">Insurance</span>
+            <span class="pillar-tag govern">GOVERN</span>
+          </div>
+          <p class="case-stat">18 months</p>
+          <p class="case-outcome">Governance infrastructure built and handed to the internal team. Operational improvements sustained post-engagement without external support.</p>
+          <p class="case-situation">An insurance operations team had completed a process improvement programme but improvements were degrading. The team lacked governance infrastructure to catch and respond to drift.</p>
+          <div class="case-result">Built process architecture, control plans, and monitoring dashboards for the four key processes in scope. The governance system was owned and maintained by the internal team. At follow-up, all four processes were still operating within the control thresholds defined during the engagement.</div>
+        </div>
+        <div class="case-card light reveal reveal-d1">
+          <div class="case-tags">
+            <span class="case-sector">Financial Services</span>
+            <span class="pillar-tag govern">GOVERN</span>
+          </div>
+          <p class="case-stat">3 weeks</p>
+          <p class="case-outcome">Model drift caught before it reached customers. Detection and response managed by the internal team without external support.</p>
+          <p class="case-situation">A financial services firm had deployed an AI-assisted decision process. Three months after deployment, nobody was checking model performance. The governance framework had not been built.</p>
+          <div class="case-result">Deployed an AI governance framework with weekly validation checkpoints against ground truth data. The first model drift event was detected at week three - before it had affected any customer outcomes. The detection and response process was run by the internal team without external support.</div>
+        </div>
+      </div>
+      <div class="case-artwork"><img src="assets/lineart/shared/EQ-CASEWORK.png" alt="" style="mix-blend-mode:multiply;" onerror="this.style.display='none'"></div>
+    </div>
+  </section>
+
+  <section class="related-services">
+    <div class="related-services-inner">
+      <div class="section-label">Where it leads</div>
+      <h2 class="related-heading reveal">Governance before deployment.</h2>
+      <p class="related-subhead reveal reveal-d1">GOVERN builds the infrastructure that keeps improvements holding. It follows EVOLVE and precedes OPERATIONALISE.</p>
+      <div class="subway-nav" style="margin:40px 0 48px;overflow:hidden;">
+        <svg viewBox="0 0 960 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:960px;display:block;overflow:visible;">
+          <line x1="0" y1="58" x2="500" y2="58" stroke="#ddd" stroke-width="2"/>
+          <line x1="500" y1="58" x2="840" y2="58" stroke="#7A3D00" stroke-width="2"/>
+          <line x1="840" y1="58" x2="960" y2="58" stroke="#ddd" stroke-width="2"/>
+          <line x1="500" y1="71" x2="500" y2="96" stroke="#2D7A3A" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <line x1="840" y1="71" x2="840" y2="96" stroke="#5C0A5C" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="660" y="14" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" font-weight="700" letter-spacing="0.13em" fill="#C15F3C">YOU ARE HERE</text>
+          <line x1="660" y1="17" x2="660" y2="37" stroke="#C15F3C" stroke-width="1.5"/>
+          <polygon points="660,43 656,35 664,35" fill="#C15F3C"/>
+          <rect x="30" y="45" width="80" height="26" rx="13" fill="#ccc"/>
+          <text x="70" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#999">FRAME</text>
+          <rect x="176" y="45" width="68" height="26" rx="13" fill="#ccc"/>
+          <text x="210" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#999">PLAN</text>
+          <rect x="313" y="45" width="74" height="26" rx="13" fill="#ccc"/>
+          <text x="350" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#999">SOLVE</text>
+          <rect x="460" y="45" width="80" height="26" rx="13" fill="#2D7A3A" class="subway-pill"/>
+          <text x="500" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F5F3EE">EVOLVE</text>
+          <rect x="621" y="45" width="78" height="26" rx="13" fill="#7A3D00" class="subway-pill active"/>
+          <text x="660" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F5F3EE">GOVERN</text>
+          <rect x="780" y="45" width="120" height="26" rx="13" fill="#5C0A5C" class="subway-pill"/>
+          <text x="840" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F5F3EE">OPERATIONALISE</text>
+        </svg>
+      </div>
+      <div class="related-grid">
+        <a href="#" class="related-card">
+          <div class="case-tags">
+            <span class="pillar-tag evolve">EVOLVE</span>
+          </div>
+          <p class="related-card-name">Rapid Pilot and Requirements Development</p>
+          <p class="related-card-descriptor">GOVERN is most effective when it follows a validated solution. EVOLVE provides the validated future state and requirements that GOVERN then builds governance infrastructure around.</p>
+          <span class="related-card-link">Learn more <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a href="#" class="related-card">
+          <div class="case-tags">
+            <span class="pillar-tag operationalise">OPERATIONALISE</span>
+          </div>
+          <p class="related-card-name">Standardisation and Automation at Scale</p>
+          <p class="related-card-descriptor">Once governance systems are in place for the piloted scope, OPERATIONALISE deploys at scale across the full organisation.</p>
+          <span class="related-card-link">Learn more <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-panel">
+    <div class="cta-panel-inner">
+      <div class="cta-copy">
+        <h2 class="cta-heading">Improvements not holding?<br>Let&rsquo;s talk.</h2>
+        <p class="cta-body">If your operation keeps drifting back to the old way of working, you have a governance gap. A fifteen-minute conversation will identify what is missing. No obligation.</p>
+        <a href="#" class="cta-button">Book a discovery call</a>
+      </div>
+      <div class="cta-panel-right">
+        <div class="cta-detail-item">
+          <p class="cta-detail-label">Typical timeline</p>
+          <p class="cta-detail-title">4 to 8 weeks</p>
+          <p class="cta-detail-value">Scope agreed in the proposal before work starts</p>
+        </div>
+        <div class="cta-detail-item">
+          <p class="cta-detail-label">Typical investment</p>
+          <p class="cta-detail-title">A$18k to A$35k</p>
+          <p class="cta-detail-value">Depends on scope and complexity of your operation</p>
+        </div>
+        <div class="cta-detail-item">
+          <p class="cta-detail-label">What you get</p>
+          <p class="cta-detail-title">Four deliverables</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    
+    // Mobile nav toggle
+    const burger = document.getElementById('nav-hamburger');
+    const navLinks = document.querySelector('.ref-nav-links');
+    if (burger && navLinks) {
+      burger.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('is-open');
+        burger.setAttribute('aria-expanded', String(open));
+      });
+    }
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); revealObserver.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObserver.observe(el));
+    const nav = document.querySelector('.ref-nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); }, { passive: true });
+  </script>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">EQUI<span>BT</span></a>
+        <p class="footer-tagline">Operational capability advisory. Melbourne, Australia. Serving ANZ corporate and government.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services/frame/">FRAME</a></li>
+          <li><a href="/services/plan/">PLAN</a></li>
+          <li><a href="/services/solve/">SOLVE</a></li>
+          <li><a href="/services/evolve/">EVOLVE</a></li>
+          <li><a href="/services/govern/">GOVERN</a></li>
+          <li><a href="/services/operationalise/">OPERATIONALISE</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/industries/">Industries</a></li>
+          <li><a href="/methodology/">Methodology</a></li>
+          <li><a href="/our-work/">Our Work</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@equibt.com">hello@equibt.com</a></li>
+          <li><a href="/contact/">Start a conversation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2025 EQUIBT Group. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

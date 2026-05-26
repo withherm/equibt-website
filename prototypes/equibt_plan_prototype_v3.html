@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Problem Framing | FRAME | Define | EQUIBT</title>
+  <title>Operations Diagnostic | PLAN | Measure | EQUIBT</title>
   <style>
   @font-face {
     font-family: 'Montserrat';
@@ -42,17 +42,23 @@
       --pill-evolve:          #2D7A3A;
       --pill-govern:          #7A3D00;
       --pill-operationalise:  #5C0A5C;
-      --pillar-accent: #8B2252;
-      --pillar-accent-tint: rgba(139,34,82,0.05);
+      --pillar-accent: #26245C;
+      --pillar-accent-tint: rgba(38,36,92,0.05);
+      /* v3 additions */
+      --terracotta-10: rgba(193,95,60,0.1);
+      --navy-08: rgba(38,36,92,0.08);
+      --navy-12: rgba(38,36,92,0.12);
+      --text-light: rgba(255,255,255,0.72);
+      --text-faint: rgba(255,255,255,0.48);
     }
-
 
   h1, h2, h3,
   .hero-h1, .why-start-heading, .examine-heading, .examine-card-title,
   .deliverables-heading, .case-studies-heading, .related-heading, .cta-heading,
   .ref-logo, .btn-primary, .cta-button, .pillar-tag, .case-stat,
   .hero-service-name, .section-label, .examine-card-number,
-  .related-card-name, .deliverable-title { font-family: 'Montserrat', system-ui, sans-serif; }
+  .related-card-name, .deliverable-title,
+  .why-row-num, .why-row-heading { font-family: 'Montserrat', system-ui, sans-serif; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -62,6 +68,17 @@
       color: var(--near-black);
       -webkit-font-smoothing: antialiased;
     }
+
+    /* ════════════════════════════════════════
+       SCROLL REVEAL
+    ════════════════════════════════════════ */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
+    .reveal-d4 { transition-delay: 0.32s; }
+    .reveal-d5 { transition-delay: 0.40s; }
 
     /* ════════════════════════════════════════
        NAV
@@ -74,7 +91,9 @@
       position: sticky;
       top: 0;
       z-index: 10;
+      transition: background 0.3s ease, backdrop-filter 0.3s ease;
     }
+    .ref-nav.scrolled { background: rgba(38,36,92,0.90); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
     .ref-logo {
       font-size: 15px; font-weight: 700; letter-spacing: 0.14em;
       text-transform: uppercase; color: var(--off-white);
@@ -105,22 +124,24 @@
        SHARED UTILITIES
     ════════════════════════════════════════ */
     .section-label {
-      display: flex; align-items: center; gap: 8px;
+      display: flex; align-items: center; gap: 10px;
       font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--pillar-accent);
-      margin-bottom: 13px;
+      text-transform: uppercase; color: var(--terracotta); margin-bottom: 16px;
     }
     .section-label::before {
-      content: ''; display: block; width: 5px; height: 5px;
-      background: var(--pillar-accent); border-radius: 50%; flex-shrink: 0;
+      content: ''; display: block; width: 3px; height: 20px;
+      background: var(--terracotta); border-radius: 2px; flex-shrink: 0;
     }
+    .section-label.light { color: rgba(255,255,255,0.55); }
+    .section-label.light::before { background: var(--terracotta); }
     .section-inner {
       max-width: 1120px; margin: 0 auto;
     }
     .section-heading {
-      font-size: 34px; font-weight: 700; color: var(--navy);
-      line-height: 1.2; letter-spacing: -0.01em;
+      font-size: 46px; font-weight: 700; color: var(--navy);
+      line-height: 1.1; letter-spacing: -0.025em;
     }
+    .section-heading.light { color: #ffffff; }
 
     /* Pillar pills */
     .pillar-tag {
@@ -141,96 +162,59 @@
     .btn-primary {
       display: inline-flex; align-items: center;
       background: var(--terracotta); color: var(--off-white);
-      font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 12px 24px; border-radius: 4px; text-decoration: none;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 14px 28px; border-radius: 3px; text-decoration: none;
       transition: background 0.18s, transform 0.15s;
     }
     .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
-    .btn-secondary {
+    .btn-secondary-light {
+      color: rgba(255,255,255,0.65); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
       display: inline-flex; align-items: center; gap: 6px;
-      color: var(--navy);
-      font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-      text-decoration: none;
-      transition: gap 0.18s, color 0.18s;
+      transition: color 0.18s, gap 0.18s;
     }
-    .btn-secondary:hover { gap: 10px; color: var(--terracotta); }
-    .btn-secondary svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .btn-secondary-light:hover { color: #ffffff; gap: 10px; }
+    .btn-secondary-light svg { width: 14px; height: 14px; flex-shrink: 0; }
 
     /* ════════════════════════════════════════
-       1. HERO
+       1. HERO — navy full-bleed centred
     ════════════════════════════════════════ */
     .hero {
-      background: var(--white);
-      padding: 48px 48px 48px;
-      border-bottom: 1px solid rgba(38,36,92,0.08);
+      background: var(--navy);
+      padding: 80px 48px 88px;
     }
     .hero-inner {
-      max-width: 1440px; margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      align-items: center;
+      max-width: 720px; margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
     }
-    .hero-badge { margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; width: fit-content; }
-    .hero-badge .pillar-tag {
-      font-size: 10px; height: 26px; padding: 0 14px;
-    }
+    .hero-badge { margin-bottom: 24px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .hero-badge .pillar-tag { font-size: 10px; height: 26px; padding: 0 14px; }
     .hero-service-name {
       font-size: 13px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--pillar-accent);
+      text-transform: uppercase; color: rgba(255,255,255,0.55);
     }
     .hero-h1 {
-      font-size: 52px; font-weight: 700; color: var(--navy);
-      line-height: 1.1; letter-spacing: -0.02em;
-      margin-bottom: 20px;
+      font-size: 64px; font-weight: 700; color: #ffffff;
+      line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 20px;
     }
     .hero-subhead {
-      font-size: 18px; color: var(--body-text);
-      line-height: 1.65; margin-bottom: 16px;
-      max-width: 520px;
+      font-size: 20px; color: var(--text-light);
+      line-height: 1.6; margin-bottom: 16px; max-width: 600px;
     }
     .hero-body {
-      font-size: 14px; color: var(--body-text);
-      line-height: 1.75; margin-bottom: 36px;
-      max-width: 520px;
+      font-size: 16px; color: var(--text-faint);
+      line-height: 1.75; margin-bottom: 36px; max-width: 580px;
     }
     .hero-actions {
-      display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
-    }
-    /* Illustration panel */
-    .hero-illustration {
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-    }
-    .hero-illustration img {
-      width: 140%; height: auto;
-      mix-blend-mode: multiply;
-    }
-    .hero-illustration-placeholder {
-      width: 100%; aspect-ratio: 4/3;
-      background: rgba(38,36,92,0.04);
-      border-radius: 8px;
-      border: 1.5px dashed rgba(38,36,92,0.18);
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 8px;
-      padding: 24px;
-    }
-    .hero-illustration-placeholder p {
-      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: rgba(38,36,92,0.35);
-      text-align: center; line-height: 1.6;
-    }
-    .hero-illustration-placeholder span {
-      font-size: 9px; color: var(--terracotta); font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 24px; justify-content: center; flex-wrap: wrap;
     }
 
     /* ════════════════════════════════════════
-       2. WHY START HERE (How it works)
+       2. WHY START HERE
     ════════════════════════════════════════ */
     .why-start {
       background: var(--warm-parchment);
-      padding: 80px 48px;
+      padding: 88px 48px;
       border-bottom: 1px solid rgba(38,36,92,0.06);
     }
     .why-start-inner {
@@ -240,53 +224,41 @@
       gap: 72px;
       align-items: start;
     }
-    .why-start-left {}
     .why-start-heading {
-      font-size: 34px; font-weight: 700; color: var(--navy);
-      line-height: 1.2; letter-spacing: -0.01em;
+      font-size: 46px; font-weight: 700; color: var(--navy);
+      line-height: 1.1; letter-spacing: -0.025em;
       margin-bottom: 24px; max-width: 480px;
     }
     .why-start-body p {
-      font-size: 14px; color: var(--body-text);
-      line-height: 1.8; margin-bottom: 16px;
+      font-size: 16px; color: var(--body-text);
+      line-height: 1.75; margin-bottom: 16px;
     }
     .why-start-body p:last-child { margin-bottom: 0; }
-    /* Right column proof statements */
-    .why-start-right {
-      display: flex; flex-direction: column; gap: 0;
-      background: white;
-      border-radius: 8px;
-      padding: 28px 32px;
-      box-shadow: 0 2px 10px rgba(38,36,92,0.08);
+
+    /* Why rows — replaces proof-statement cards */
+    .why-rows { display: flex; flex-direction: column; }
+    .why-row {
+      display: grid; grid-template-columns: 64px 1fr; gap: 0 32px;
+      padding: 28px 0; border-bottom: 1px solid rgba(38,36,92,0.1); align-items: start;
     }
-    .proof-statement {
-      padding: 20px 0;
+    .why-row:first-child { border-top: 1px solid rgba(38,36,92,0.1); }
+    .why-row-num {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      color: var(--terracotta); font-family: 'Montserrat', system-ui, sans-serif; padding-top: 4px;
     }
-    .proof-statement:last-child { padding-bottom: 0; }
-    .section-label + .proof-statement { padding-top: 20px; }
-    .proof-statement-icon {
-      margin-bottom: 14px;
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      border: 2.5px solid #C15F3C;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+    .why-row-heading {
+      font-size: 20px; font-weight: 700; color: var(--navy);
+      letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 6px;
+      font-family: 'Montserrat', system-ui, sans-serif;
     }
-    .proof-statement-icon svg { display: block; }
-    .proof-statement-title {
-      font-size: 15px; font-weight: 700; color: var(--navy);
-      margin-bottom: 6px; line-height: 1.4;
-    }
-    .proof-statement-body {
-      font-size: 13px; color: var(--body-text); line-height: 1.65;
-    }
+    .why-row-body { font-size: 15px; color: var(--body-text); line-height: 1.7; }
 
     /* ════════════════════════════════════════
-       3. WHAT WE EXAMINE (What we do)
+       3. WHAT WE EXAMINE
     ════════════════════════════════════════ */
     .what-we-examine {
       background: var(--white);
-      padding: 80px 48px;
+      padding: 88px 48px;
       border-bottom: 1px solid rgba(38,36,92,0.06);
     }
     .what-we-examine-inner {
@@ -294,11 +266,10 @@
       display: flex; flex-direction: column; align-items: center;
     }
     .examine-heading {
-      font-size: 34px; font-weight: 700; color: var(--navy);
-      line-height: 1.2; letter-spacing: -0.01em;
+      font-size: 46px; font-weight: 700; color: var(--navy);
+      line-height: 1.1; letter-spacing: -0.025em;
       margin-bottom: 44px; max-width: 480px;
     }
-    /* Examine section — stacked indent layout, no card boxes */
     .examine-grid {
       display: flex;
       flex-direction: column;
@@ -310,8 +281,9 @@
       gap: 28px;
       padding: 36px 0 36px 20px;
       border-left: 5px solid var(--pillar-accent);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
-    /* Progressive indent: each row steps in */
+    .examine-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.10); border-color: var(--terracotta); }
     .examine-card:nth-child(1) { margin-left: 0; }
     .examine-card:nth-child(2) { margin-left: 72px; }
     .examine-card:nth-child(3) { margin-left: 144px; }
@@ -324,11 +296,11 @@
       text-transform: uppercase; color: var(--terracotta);
     }
     .examine-card-title {
-      font-size: 19px; font-weight: 700; color: var(--navy);
+      font-size: 20px; font-weight: 700; color: var(--navy);
       line-height: 1.3; letter-spacing: -0.01em;
     }
     .examine-card-body {
-      font-size: 13px; color: var(--body-text);
+      font-size: 16px; color: var(--body-text);
       line-height: 1.75; max-width: 480px;
     }
     .examine-card-image {
@@ -348,13 +320,13 @@
     ════════════════════════════════════════ */
     .what-you-receive {
       background: var(--navy-wash);
-      padding: 80px 48px;
+      padding: 88px 48px;
       border-bottom: 1px solid rgba(38,36,92,0.06);
     }
     .what-you-receive-inner { max-width: 1120px; margin: 0 auto; }
     .deliverables-heading {
-      font-size: 34px; font-weight: 700; color: var(--navy);
-      line-height: 1.2; letter-spacing: -0.01em;
+      font-size: 46px; font-weight: 700; color: var(--navy);
+      line-height: 1.1; letter-spacing: -0.025em;
       margin-bottom: 44px; max-width: 480px;
     }
     .deliverables-grid {
@@ -375,25 +347,19 @@
       padding: 28px 28px 24px;
       display: flex; flex-direction: column; gap: 10px;
       box-shadow: 0 2px 10px rgba(38,36,92,0.07), 0 1px 3px rgba(0,0,0,0.04);
-      transition: box-shadow 0.22s ease, transform 0.22s ease;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
-
-    .deliverable-index {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 28px; height: 28px; border-radius: 50%;
-      background: rgba(38,36,92,0.08);
-      font-size: 11px; font-weight: 700; color: var(--navy);
-    }
+    .deliverable-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.10); }
     .deliverable-title {
       font-size: 16px; font-weight: 700; color: var(--navy);
       line-height: 1.3;
     }
     .deliverable-body {
-      font-size: 13px; color: var(--body-text); line-height: 1.75;
+      font-size: 16px; color: var(--body-text); line-height: 1.75;
     }
 
     /* ════════════════════════════════════════
-       5. CASE STUDIES (Proof)
+       5. CASE STUDIES
     ════════════════════════════════════════ */
     .case-studies {
       background: var(--white);
@@ -402,8 +368,8 @@
     }
     .case-studies-inner { max-width: 1120px; margin: 0 auto; }
     .case-studies-heading {
-      font-size: 34px; font-weight: 700; color: var(--navy);
-      line-height: 1.2; letter-spacing: -0.01em;
+      font-size: 46px; font-weight: 700; color: var(--navy);
+      line-height: 1.1; letter-spacing: -0.025em;
       margin-bottom: 44px; max-width: 500px;
     }
     .case-grid {
@@ -412,16 +378,26 @@
       gap: 20px;
       align-items: start;
     }
-    .case-card {
-      background: var(--off-white);
-      border-radius: 10px;
-      overflow: hidden;
-      display: flex; flex-direction: column;
-    }
-    .case-card-body {
-      padding: 32px 36px;
+    /* Navy card */
+    .case-card.navy {
+      background: var(--navy); border: none; border-radius: 4px; padding: 40px;
       display: flex; flex-direction: column; gap: 14px;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
     }
+    .case-card.navy:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+    .case-card.navy .case-sector { color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.2); background: transparent; }
+    .case-card.navy .case-stat { color: var(--terracotta); }
+    .case-card.navy .case-outcome { color: #ffffff; }
+    .case-card.navy .case-situation { color: rgba(255,255,255,0.65); }
+    .case-card.navy .case-result { background: rgba(255,255,255,0.07); border-left-color: var(--terracotta); color: rgba(255,255,255,0.65); }
+    /* Light card */
+    .case-card.light {
+      background: #ffffff; border: 1px solid rgba(38,36,92,0.1);
+      border-left: 4px solid var(--terracotta); border-radius: 0 4px 4px 0; padding: 40px 40px 40px 36px;
+      display: flex; flex-direction: column; gap: 14px;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .case-card.light:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
     .case-tags {
       display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
     }
@@ -434,41 +410,33 @@
       height: 22px; padding: 0 10px; border-radius: 100px;
     }
     .case-stat {
-      font-size: 42px; font-weight: 700; color: var(--navy);
-      line-height: 1.1; letter-spacing: -0.02em;
+      font-size: 64px; font-weight: 700; color: var(--terracotta);
+      line-height: 1; letter-spacing: -0.03em;
+      font-family: 'Montserrat', system-ui, sans-serif;
     }
+    .case-stat-label { font-size: 13px; color: var(--body-text); letter-spacing: 0.04em; margin-top: 6px; }
     .case-outcome {
-      font-size: 14px; font-weight: 600; color: var(--near-black);
+      font-size: 20px; font-weight: 600; color: var(--near-black);
       line-height: 1.5;
     }
     .case-situation {
-      font-size: 13px; color: var(--body-text); line-height: 1.75;
+      font-size: 16px; color: var(--body-text); line-height: 1.75;
     }
     .case-result {
-      font-size: 13px; color: var(--body-text); line-height: 1.75;
+      font-size: 16px; color: var(--body-text); line-height: 1.75;
       padding: 12px 16px;
       background: var(--pillar-accent-tint);
       border-radius: 4px;
       border-left: 3px solid var(--pillar-accent);
     }
-
-    /* Artwork panel below case cards */
     .case-artwork {
-      width: calc(100% + 24px);
-      margin-left: -12px;
-      height: 100px;
-      margin-top: 36px;
-      border-radius: 6px 12px 8px 10px;
-      overflow: hidden;
-      position: relative;
-      transform: rotate(-0.6deg);
+      width: calc(100% + 24px); margin-left: -12px;
+      height: 100px; margin-top: 36px;
+      border-radius: 6px 12px 8px 10px; overflow: hidden;
+      position: relative; transform: rotate(-0.6deg);
       background: linear-gradient(135deg, rgba(38,36,92,0.06) 0%, rgba(193,95,60,0.08) 100%);
     }
-    .case-artwork img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center;
-      mix-blend-mode: multiply;
-    }
+    .case-artwork img { width: 100%; height: 100%; object-fit: cover; object-position: center; mix-blend-mode: multiply; }
 
     /* ════════════════════════════════════════
        6. RELATED SERVICES
@@ -480,12 +448,12 @@
     }
     .related-services-inner { max-width: 1120px; margin: 0 auto; }
     .related-heading {
-      font-size: 34px; font-weight: 700; color: var(--navy);
-      line-height: 1.2; letter-spacing: -0.01em;
+      font-size: 46px; font-weight: 700; color: var(--navy);
+      line-height: 1.1; letter-spacing: -0.025em;
       margin-bottom: 12px; max-width: 520px;
     }
     .related-subhead {
-      font-size: 14px; color: var(--body-text); line-height: 1.7;
+      font-size: 16px; color: var(--body-text); line-height: 1.75;
       margin-bottom: 44px; max-width: 560px;
     }
     .related-grid {
@@ -500,18 +468,18 @@
       display: flex; flex-direction: column; gap: 12px;
       text-decoration: none; color: var(--near-black);
       box-shadow: 0 2px 10px rgba(38,36,92,0.08), 0 1px 3px rgba(0,0,0,0.04);
-      transition: box-shadow 0.22s ease, transform 0.22s ease;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
     .related-card:hover {
-      box-shadow: 0 16px 40px rgba(38,36,92,0.18), 0 4px 12px rgba(0,0,0,0.07);
-      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.10);
+      transform: translateY(-4px);
     }
     .related-card-name {
       font-size: 18px; font-weight: 700; color: var(--navy);
       line-height: 1.3; letter-spacing: -0.01em;
     }
     .related-card-descriptor {
-      font-size: 13px; color: var(--body-text); line-height: 1.65; flex: 1;
+      font-size: 16px; color: var(--body-text); line-height: 1.75; flex: 1;
     }
     .related-card-link {
       display: flex; align-items: center; gap: 5px;
@@ -521,12 +489,15 @@
     }
     .related-card:hover .related-card-link { gap: 9px; color: var(--terracotta-dark); }
 
+    /* Subway pill glow */
+    .subway-pill.active { filter: drop-shadow(0 0 6px rgba(193,95,60,0.35)); }
+
     /* ════════════════════════════════════════
        7. CTA PANEL
     ════════════════════════════════════════ */
     .cta-panel {
       background: var(--dark-slate);
-      padding: 88px 48px;
+      padding: 80px 48px;
     }
     .cta-panel-inner {
       max-width: 1120px; margin: 0 auto;
@@ -541,7 +512,7 @@
       margin-bottom: 20px;
     }
     .cta-body {
-      font-size: 15px; color: rgba(245,243,238,0.7);
+      font-size: 16px; color: rgba(245,243,238,0.7);
       line-height: 1.75; margin-bottom: 36px;
     }
     .cta-button {
@@ -584,40 +555,36 @@
       .case-studies, .related-services, .cta-panel {
         padding-left: 32px; padding-right: 32px;
       }
-      .hero-inner { grid-template-columns: 1fr 340px; gap: 48px; }
       .cta-panel-inner { grid-template-columns: 1fr 280px; }
     }
 
     @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-illustration { display: none; }
       .why-start-inner { grid-template-columns: 1fr; }
-      .why-start-right { margin-top: 8px; }
       .examine-card { flex-direction: column; }
-      .examine-card-image-placeholder { width: 100%; height: 160px; }
       .deliverables-grid { grid-template-columns: 1fr; }
       .cta-panel-inner { grid-template-columns: 1fr; }
       .cta-panel-right { display: none; }
     }
 
     @media (max-width: 768px) {
-      .hero, .why-start, .what-we-examine, .what-you-receive,
+      .hero { padding: 56px 24px 64px; }
+      .why-start, .what-we-examine, .what-you-receive,
       .case-studies, .related-services, .cta-panel {
         padding-left: 24px; padding-right: 24px;
         padding-top: 56px; padding-bottom: 64px;
       }
       .hero-h1 { font-size: 38px; }
-      .hero-subhead { font-size: 16px; }
       .section-heading, .examine-heading, .deliverables-heading,
-      .case-studies-heading, .related-heading { font-size: 26px; }
-      .why-start-heading, .cta-heading { font-size: 26px; }
+      .case-studies-heading, .related-heading, .why-start-heading { font-size: 30px; }
+      .cta-heading { font-size: 26px; }
       .examine-grid { grid-template-columns: 1fr; }
       .case-grid { grid-template-columns: 1fr; }
       .related-grid { grid-template-columns: 1fr; }
-      .case-stat { font-size: 32px; }
+      .case-stat { font-size: 48px; }
       .ref-nav-links { display: none; }
+      .why-row { grid-template-columns: 40px 1fr; gap: 0 16px; }
     }
-  
+
   </style>
 </head>
 <body>
@@ -626,8 +593,8 @@
   <nav class="ref-nav">
     <div class="ref-logo">EQ<span>U</span>IBT</div>
     <div class="ref-nav-links">
-      <a href="/services/frame/" class="ref-nav-link active">FRAME</a>
-      <a href="/services/plan/" class="ref-nav-link">PLAN</a>
+      <a href="/services/frame/" class="ref-nav-link">FRAME</a>
+      <a href="/services/plan/" class="ref-nav-link active">PLAN</a>
       <a href="/services/solve/" class="ref-nav-link">SOLVE</a>
       <a href="/services/evolve/" class="ref-nav-link">EVOLVE</a>
       <a href="/services/govern/" class="ref-nav-link">GOVERN</a>
@@ -639,26 +606,16 @@
   <!-- ═══════ 1. HERO ═══════ -->
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-copy">
-        <div class="hero-badge">
-          <span class="pillar-tag frame">FRAME</span>
-          <span class="hero-service-name">FRAME | Define &nbsp;&middot;&nbsp; Problem Framing</span>
-        </div>
-        <h1 class="hero-h1">Align on the real problem<br>before anything else moves.</h1>
-        <p class="hero-subhead">Most operational improvement programmes fail because stakeholders never agreed on what the problem actually was. FRAME locks that alignment before a single diagnostic dollar gets spent.</p>
-        <p class="hero-body">Michael has been here before. His leadership team has three different views on what needs to change. The COO thinks it is a technology problem. The operations director thinks it is a people problem. Finance thinks it is a cost problem. They are all partly right and all partly wrong. Without alignment, any improvement initiative will face political resistance from the sponsors who disagree with the framing.<br><br>FRAME is the discipline of agreeing on the problem - specifically, precisely, and with commitment - before anything else happens. It uses a structured SPIN workshop to surface what is really going on, what the implications are if nothing changes, and what the non-negotiable outcomes must be. The output is a project charter that every stakeholder has signed off on. Nothing moves without it.</p>
-        <div class="hero-actions">
-          <a href="#" class="btn-primary">Let&rsquo;s talk</a>
-          <a href="#" class="btn-secondary">View our work <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
+      <div class="hero-badge">
+        <span class="pillar-tag plan">PLAN</span>
+        <span class="hero-service-name">PLAN | Measure &nbsp;&middot;&nbsp; Operations Diagnostic</span>
       </div>
-      <div class="hero-illustration">
-        <img src="assets/lineart/SERVICE-FRAME/EQ-FRAME-HERO.png" alt="Problem Framing illustration" style="mix-blend-mode:multiply;"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="hero-illustration-placeholder" style="display:none;">
-          <p>Illustration placeholder</p>
-          <span>Recraft lineart &mdash; Problem Framing</span>
-        </div>
+      <h1 class="hero-h1">See the full picture<br>before you act.</h1>
+      <p class="hero-subhead reveal">Most organisations act on instinct. PLAN replaces instinct with evidence, establishing a complete baseline before any intervention begins.</p>
+      <p class="hero-body reveal reveal-d1">You know something is wrong. Costs are climbing, cycle times are blowing out, or quality is inconsistent. But the symptoms you can see are rarely the whole picture. PLAN is the structured diagnostic that maps what is actually happening across your operation, where the gaps are, and what they are costing you.</p>
+      <div class="hero-actions reveal reveal-d2">
+        <a href="#" class="btn-primary">Let&rsquo;s talk</a>
+        <a href="#" class="btn-secondary-light">View our work <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
   </section>
@@ -668,42 +625,35 @@
     <div class="why-start-inner">
       <div class="why-start-left">
         <div class="section-label">Why start here</div>
-        <h2 class="why-start-heading">Most improvement programmes solve the wrong problem.</h2>
-        <div class="why-start-body">
-          <p>The pattern is predictable. A symptom surfaces - customer complaints increase, cycle times blow out, costs exceed budget. Someone forms a hypothesis about what is wrong. A project gets funded based on that hypothesis. The project runs for six months. At the end, the original symptom is still there because the hypothesis was wrong.</p><p>The root cause is not laziness or poor methodology. It is misalignment. Different stakeholders genuinely see different problems because they sit in different parts of the operation. Without a structured process to reconcile these views, the loudest voice wins - or worse, a compromise emerges that addresses nobody's real concern.</p><p>FRAME prevents this. It applies SPIN methodology - Situation analysis, Problem identification, Implication mapping, and Non-Negotiable Needs and Payoffs - to produce a project charter with clear scope boundaries, success criteria, and stakeholder commitment.</p>
+        <h2 class="why-start-heading reveal">Most organisations act before they measure.</h2>
+        <div class="why-start-body reveal reveal-d1">
+          <p>The pressure to act is real. Leadership wants solutions, not more analysis. But organisations that skip the diagnostic phase consistently solve the wrong problem, invest in the wrong interventions, and then wonder why improvements do not hold.</p><p>PLAN is the structured measurement phase that establishes what is actually happening, not what people think is happening. It produces a baseline, a capability assessment, and a performance gap analysis. These are the inputs that make everything after PLAN faster, cheaper, and more targeted.</p><p>Without PLAN, any improvement programme is guessing. With PLAN, every decision is grounded in evidence.</p>
         </div>
       </div>
       <div class="why-start-right">
         <div class="section-label">Why EQUIBT?</div>
-        <div class="proof-statement">
-          <div class="proof-statement-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="9" stroke="#C15F3C" stroke-width="1.5"/>
-              <path d="M9 12l2 2 4-4" stroke="#C15F3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+        <div class="why-rows">
+          <div class="why-row reveal">
+            <span class="why-row-num">01</span>
+            <div class="why-row-content">
+              <p class="why-row-heading">Evidence-based, not assumption-driven.</p>
+              <p class="why-row-body">We do not accept anecdotal accounts of where the problem is. We measure it. Every PLAN engagement produces a quantified baseline that separates opinion from fact and gives your programme a defensible starting point.</p>
+            </div>
           </div>
-          <p class="proof-statement-title">Aligned before acting, not aligned while doing.</p>
-          <p class="proof-statement-body">Every stakeholder contributes to the problem definition. Nobody gets surprised later. Nobody can say they were not consulted.</p>
-        </div>
-        <div class="proof-statement">
-          <div class="proof-statement-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="9" stroke="#C15F3C" stroke-width="1.5"/>
-              <path d="M9 12l2 2 4-4" stroke="#C15F3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+          <div class="why-row reveal reveal-d1">
+            <span class="why-row-num">02</span>
+            <div class="why-row-content">
+              <p class="why-row-heading">Capability readiness, not process alone.</p>
+              <p class="why-row-body">Process gaps and capability gaps are different problems with different solutions. PLAN assesses both. An organisation with strong processes but undertrained people will fail at implementation. We measure the full picture.</p>
+            </div>
           </div>
-          <p class="proof-statement-title">Structured facilitation, not open discussion.</p>
-          <p class="proof-statement-body">The N stands for Non-Negotiable Needs and Payoffs. Not the traditional Need-Payoff from Rackham's sales methodology. This version is built for internal operational alignment.</p>
-        </div>
-        <div class="proof-statement">
-          <div class="proof-statement-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="9" stroke="#C15F3C" stroke-width="1.5"/>
-              <path d="M9 12l2 2 4-4" stroke="#C15F3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+          <div class="why-row reveal reveal-d2">
+            <span class="why-row-num">03</span>
+            <div class="why-row-content">
+              <p class="why-row-heading">Roadmap, not recommendations.</p>
+              <p class="why-row-body">PLAN does not produce a list of suggestions. It produces a prioritised roadmap with sequenced interventions, grounded in the measurement data. Your leadership team leaves knowing exactly what to address, in what order, and why.</p>
+            </div>
           </div>
-          <p class="proof-statement-title">Charter, not recommendations.</p>
-          <p class="proof-statement-body">You get a locked project charter with success criteria, scope boundaries, and explicit exclusions. This is the governance document for everything that follows.</p>
         </div>
       </div>
     </div>
@@ -712,43 +662,43 @@
   <!-- ═══════ 3. WHAT WE DO ═══════ -->
   <section class="what-we-examine">
     <div class="what-we-examine-inner">
-      <div class="section-label">What we do</div>
-      <h2 class="examine-heading">Three outputs. Complete alignment.</h2>
+      <div class="section-label">What we examine</div>
+      <h2 class="examine-heading reveal">Three areas. Full picture.</h2>
       <div class="examine-grid">
-        <div class="examine-card">
+        <div class="examine-card reveal">
           <div class="examine-card-text">
             <div class="examine-card-number">01</div>
-            <h3 class="examine-card-title">Stakeholder Alignment</h3>
-            <p class="examine-card-body">We facilitate a structured SPIN workshop with your leadership team. Each stakeholder contributes their view of the situation, the problems they see, the implications of inaction, and their non-negotiable needs. Disagreements surface in the room, not six months into a project.</p>
+            <h3 class="examine-card-title">Process Health</h3>
+            <p class="examine-card-body">We map your core operational processes against their designed intent, measure actual cycle times and error rates, and identify where variance, rework, and waste are concentrated. The output is a quantified picture of where the process is and is not performing.</p>
           </div>
           <div class="examine-card-image">
-            <img src="assets/lineart/SERVICE-FRAME/EQ-FRAME-S1.png" alt="Stakeholder Alignment illustration" style="mix-blend-mode:multiply;"
+            <img src="assets/lineart/SERVICE-PLAN/EQ-PLAN-PROCESS.png" alt="Process Health illustration" style="mix-blend-mode:multiply;"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div style="display:none;width:100%;aspect-ratio:4/3;background:rgba(38,36,92,0.04);border-radius:8px;border:1.5px dashed rgba(38,36,92,0.18);align-items:center;justify-content:center;"><p style="font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.3);text-align:center;padding:8px;">Stakeholder Alignment illustration</p></div>
+            <div style="display:none;width:100%;aspect-ratio:4/3;background:rgba(38,36,92,0.04);border-radius:8px;border:1.5px dashed rgba(38,36,92,0.18);align-items:center;justify-content:center;"><p style="font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.3);text-align:center;padding:8px;">Process Health illustration</p></div>
           </div>
         </div>
-        <div class="examine-card">
+        <div class="examine-card reveal reveal-d1">
           <div class="examine-card-text">
             <div class="examine-card-number">02</div>
-            <h3 class="examine-card-title">Project Charter</h3>
-            <p class="examine-card-body">The workshop produces a locked project charter: problem statement, scope boundaries, what is explicitly excluded, success criteria, and timeline. Every stakeholder signs off. This document governs everything that follows - diagnostic, analysis, pilot, or implementation.</p>
+            <h3 class="examine-card-title">Capability Readiness</h3>
+            <p class="examine-card-body">We assess the skills, knowledge, and behaviours your team needs versus what they currently demonstrate. This covers both technical capability (can they execute the process?) and leadership capability (can they sustain and improve it?). Gaps are quantified and prioritised.</p>
           </div>
           <div class="examine-card-image">
-            <img src="assets/lineart/SERVICE-FRAME/EQ-FRAME-S2.png" alt="Project Charter illustration" style="mix-blend-mode:multiply;"
+            <img src="assets/lineart/SERVICE-PLAN/EQ-PLAN-CAPABILITY.png" alt="Capability Readiness illustration" style="mix-blend-mode:multiply;"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div style="display:none;width:100%;aspect-ratio:4/3;background:rgba(38,36,92,0.04);border-radius:8px;border:1.5px dashed rgba(38,36,92,0.18);align-items:center;justify-content:center;"><p style="font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.3);text-align:center;padding:8px;">Project Charter illustration</p></div>
+            <div style="display:none;width:100%;aspect-ratio:4/3;background:rgba(38,36,92,0.04);border-radius:8px;border:1.5px dashed rgba(38,36,92,0.18);align-items:center;justify-content:center;"><p style="font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.3);text-align:center;padding:8px;">Capability Readiness illustration</p></div>
           </div>
         </div>
-        <div class="examine-card">
+        <div class="examine-card reveal reveal-d2">
           <div class="examine-card-text">
             <div class="examine-card-number">03</div>
-            <h3 class="examine-card-title">Success Criteria</h3>
-            <p class="examine-card-body">Vague objectives kill projects. FRAME produces specific, measurable success criteria that the diagnostic (PLAN) phase will baseline against. You know what done looks like before anything starts. No scope creep. No goal drift.</p>
+            <h3 class="examine-card-title">Measurement System</h3>
+            <p class="examine-card-body">We audit your existing KPIs and data infrastructure: what you measure, how you measure it, whether the measures reflect performance or just activity, and whether they are visible at the right levels. A broken measurement system makes every other improvement invisible.</p>
           </div>
           <div class="examine-card-image">
-            <img src="assets/lineart/SERVICE-FRAME/EQ-FRAME-S3.png" alt="Success Criteria illustration" style="mix-blend-mode:multiply;"
+            <img src="assets/lineart/SERVICE-PLAN/EQ-PLAN-MEASURE.png" alt="Measurement System illustration" style="mix-blend-mode:multiply;"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div style="display:none;width:100%;aspect-ratio:4/3;background:rgba(38,36,92,0.04);border-radius:8px;border:1.5px dashed rgba(38,36,92,0.18);align-items:center;justify-content:center;"><p style="font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.3);text-align:center;padding:8px;">Success Criteria illustration</p></div>
+            <div style="display:none;width:100%;aspect-ratio:4/3;background:rgba(38,36,92,0.04);border-radius:8px;border:1.5px dashed rgba(38,36,92,0.18);align-items:center;justify-content:center;"><p style="font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.3);text-align:center;padding:8px;">Measurement System illustration</p></div>
           </div>
         </div>
       </div>
@@ -759,43 +709,55 @@
   <section class="what-you-receive">
     <div class="what-you-receive-inner">
       <div class="section-label">What you receive</div>
-      <h2 class="deliverables-heading">Three deliverables. Aligned from day one.</h2>
+      <h2 class="deliverables-heading reveal">Four deliverables. All actionable.</h2>
       <div class="deliverables-grid" style="grid-template-columns:repeat(2,1fr);">
-        <div class="deliverable-card">
+        <div class="deliverable-card reveal">
           <div class="deliverable-card-image">
-            <img src="assets/deliverables/FRAME/FRAME-DEL-1-SPINREPORT.jpg" alt="A4 document — SPIN Workshop Report" style="width:100%;height:auto;display:block;border-radius:4px;"
+            <img src="assets/deliverables/PLAN/PLAN-DEL-1-ASSESSMENT.jpg" alt="A4 document — Current-State Assessment" style="width:100%;height:auto;display:block;border-radius:4px;"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div style="display:none;width:100%;aspect-ratio:210/280;background:linear-gradient(160deg,#fafafa 0%,#f0f0f0 100%);border-radius:4px;border:1px solid rgba(38,36,92,0.12);align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:20px;">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" fill="rgba(38,36,92,0.07)" stroke="rgba(38,36,92,0.22)" stroke-width="1.5"/><line x1="7" y1="7" x2="17" y2="7" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="10" x2="17" y2="10" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="13" x2="14" y2="13" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="16" x2="15" y2="16" stroke="rgba(38,36,92,0.12)" stroke-width="1"/></svg>
-              <p style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.32);text-align:center;margin:0;">A4 document — SPIN Workshop Report</p>
+              <p style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.32);text-align:center;margin:0;">A4 document — Current-State Assessment</p>
             </div>
           </div>
-          <h3 class="deliverable-title">SPIN Workshop Report</h3>
-          <p class="deliverable-body">A structured summary of the stakeholder alignment session: the agreed problem statement, competing hypotheses that were surfaced and resolved, implications mapped, and the non-negotiables each stakeholder brought. The record of how alignment was reached.</p>
+          <h3 class="deliverable-title">Current-State Assessment</h3>
+          <p class="deliverable-body">A documented view of where your process is running today. Mapped with evidence: data, observation, and process mapping. The assessment identifies the specific failure points: where decisions take time, where rework happens, where quality falters. This is your baseline.</p>
         </div>
-        <div class="deliverable-card">
+        <div class="deliverable-card reveal reveal-d1">
           <div class="deliverable-card-image">
-            <img src="assets/deliverables/FRAME/FRAME-DEL-2-CHARTER.jpg" alt="A4 document — Project Charter" style="width:100%;height:auto;display:block;border-radius:4px;"
+            <img src="assets/deliverables/PLAN/PLAN-DEL-2-CAPGAP.jpg" alt="A4 document — Capability Gap Analysis" style="width:100%;height:auto;display:block;border-radius:4px;"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div style="display:none;width:100%;aspect-ratio:210/280;background:linear-gradient(160deg,#fafafa 0%,#f0f0f0 100%);border-radius:4px;border:1px solid rgba(38,36,92,0.12);align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:20px;">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" fill="rgba(38,36,92,0.07)" stroke="rgba(38,36,92,0.22)" stroke-width="1.5"/><line x1="7" y1="7" x2="17" y2="7" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="10" x2="17" y2="10" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="13" x2="14" y2="13" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="16" x2="15" y2="16" stroke="rgba(38,36,92,0.12)" stroke-width="1"/></svg>
-              <p style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.32);text-align:center;margin:0;">A4 document — Project Charter</p>
+              <p style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.32);text-align:center;margin:0;">A4 document — Capability Gap Analysis</p>
             </div>
           </div>
-          <h3 class="deliverable-title">Project Charter</h3>
-          <p class="deliverable-body">The governance document for everything that follows. Problem statement. Scope boundaries. What is explicitly excluded. Success criteria. Timeline. Signed off by all stakeholders. If scope creep happens later, this is what you point to.</p>
+          <h3 class="deliverable-title">Capability Gap Analysis</h3>
+          <p class="deliverable-body">An honest assessment of what your team can carry independently and where you would need external support. Where are the skills gaps. What training would unlock improvement. What change management capability exists in your organisation. This shapes the roadmap.</p>
         </div>
-        <div class="deliverable-card">
+        <div class="deliverable-card reveal reveal-d2">
           <div class="deliverable-card-image">
-            <img src="assets/deliverables/FRAME/FRAME-DEL-3-CRITERIA.jpg" alt="A4 document — Success Criteria Framework" style="width:100%;height:auto;display:block;border-radius:4px;"
+            <img src="assets/deliverables/PLAN/PLAN-DEL-3-ROADMAP.jpg" alt="A4 document — Prioritised Improvement Roadmap" style="width:100%;height:auto;display:block;border-radius:4px;"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div style="display:none;width:100%;aspect-ratio:210/280;background:linear-gradient(160deg,#fafafa 0%,#f0f0f0 100%);border-radius:4px;border:1px solid rgba(38,36,92,0.12);align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:20px;">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" fill="rgba(38,36,92,0.07)" stroke="rgba(38,36,92,0.22)" stroke-width="1.5"/><line x1="7" y1="7" x2="17" y2="7" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="10" x2="17" y2="10" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="13" x2="14" y2="13" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="16" x2="15" y2="16" stroke="rgba(38,36,92,0.12)" stroke-width="1"/></svg>
-              <p style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.32);text-align:center;margin:0;">A4 document — Success Criteria Framework</p>
+              <p style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.32);text-align:center;margin:0;">A4 document — Prioritised Improvement Roadmap</p>
             </div>
           </div>
-          <h3 class="deliverable-title">Success Criteria Framework</h3>
-          <p class="deliverable-body">Specific, measurable success criteria that the PLAN diagnostic will baseline against. Not vague outcome statements. Measurable targets that your team, your board, and your external partners can all read the same way.</p>
+          <h3 class="deliverable-title">Prioritised Improvement Roadmap</h3>
+          <p class="deliverable-body">A sequenced list of improvement opportunities, ranked by impact and readiness. Not a generic list of recommendations. A roadmap your team understands and can resource, starting with the highest-impact opportunity your capability can handle.</p>
+        </div>
+        <div class="deliverable-card reveal reveal-d3">
+          <div class="deliverable-card-image">
+            <img src="assets/deliverables/PLAN/PLAN-DEL-4-PATHWAY.jpg" alt="A4 document — Engagement Pathway Recommendation" style="width:100%;height:auto;display:block;border-radius:4px;"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;width:100%;aspect-ratio:210/280;background:linear-gradient(160deg,#fafafa 0%,#f0f0f0 100%);border-radius:4px;border:1px solid rgba(38,36,92,0.12);align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:20px;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" fill="rgba(38,36,92,0.07)" stroke="rgba(38,36,92,0.22)" stroke-width="1.5"/><line x1="7" y1="7" x2="17" y2="7" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="10" x2="17" y2="10" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="13" x2="14" y2="13" stroke="rgba(38,36,92,0.18)" stroke-width="1"/><line x1="7" y1="16" x2="15" y2="16" stroke="rgba(38,36,92,0.12)" stroke-width="1"/></svg>
+              <p style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(38,36,92,0.32);text-align:center;margin:0;">A4 document — Engagement Pathway Recommendation</p>
+            </div>
+          </div>
+          <h3 class="deliverable-title">Engagement Pathway Recommendation</h3>
+          <p class="deliverable-body">EQUIBT's honest view of what the right next step is for your situation: whether that is building continuous improvement capability, validating a direction with a pilot, or committing to a full redesign. Sometimes the team already has what it needs.</p>
         </div>
       </div>
     </div>
@@ -805,8 +767,8 @@
   <section style="background:var(--section-bg);padding:64px 48px;border-bottom:1px solid rgba(38,36,92,0.06);">
     <div style="max-width:720px;margin:0 auto;">
       <div class="section-label">DMAICO Progression</div>
-      <h2 style="font-size:28px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-0.01em;margin-bottom:16px;">FRAME locks the problem. PLAN measures it.</h2>
-      <p style="font-size:14px;color:var(--body-text);line-height:1.8;">Once stakeholders are aligned and the project charter is signed, the natural next step is PLAN (Measure) - the operations diagnostic that baselines the current state against the success criteria defined in FRAME. Without FRAME, the diagnostic has no agreed target to baseline against. With it, PLAN produces evidence your stakeholders already agree is relevant.</p>
+      <h2 class="reveal" style="font-size:28px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-0.01em;margin-bottom:16px;">PLAN sits in the Measure phase of DMAICO.</h2>
+      <p class="reveal reveal-d1" style="font-size:16px;color:var(--body-text);line-height:1.8;">FRAME (Define) aligns stakeholders on the problem. PLAN (Measure) establishes the evidence base. Without a measurement baseline, SOLVE has no data to analyse, and any solution it designs is built on assumption. The output of PLAN is a validated baseline and a prioritised gap analysis. This becomes the input to SOLVE, which uses root cause analysis to explain the gaps and designs interventions to close them. PLAN makes SOLVE faster, cheaper, and more targeted.</p>
     </div>
   </section>
 
@@ -814,31 +776,27 @@
   <section class="case-studies">
     <div class="case-studies-inner">
       <div class="section-label">The work</div>
-      <h2 class="case-studies-heading">Recent engagements.</h2>
+      <h2 class="case-studies-heading reveal">Recent engagements.</h2>
       <div class="case-grid">
-        <div class="case-card">
-          <div class="case-card-body">
-            <div class="case-tags">
-              <span class="case-sector">Government and Public Sector</span>
-              <span class="pillar-tag frame">FRAME</span>
-            </div>
-            <p class="case-stat">1 wk</p>
-            <p class="case-outcome">Three-directorate alignment achieved in five days. Project charter signed before diagnostic began.</p>
-            <p class="case-situation">A government agency had three directorates with competing hypotheses about the root cause of a cross-functional service failure. Each directorate had commissioned its own preliminary analysis. No shared problem definition existed.</p>
-            <div class="case-result">Ran a two-day SPIN workshop across all three directorates. Surfaced the three competing hypotheses and worked through each against available evidence. Produced a single agreed problem statement and a signed project charter within the week. The diagnostic that followed had clear targets and full stakeholder commitment.</div>
+        <div class="case-card navy reveal">
+          <div class="case-tags">
+            <span class="case-sector">Commercial Operations</span>
+            <span class="pillar-tag plan">PLAN</span>
           </div>
+          <p class="case-stat">60%</p>
+          <p class="case-outcome">Commercial planning standardised nationally. Ad-hoc reporting requests cut by 60%.</p>
+          <p class="case-situation">No consistent plan/do/review methodology across sales functions. Each state team running their own approach. Gaps in visibility. Inconsistent reporting. Ad-hoc requests consuming leadership time.</p>
+          <div class="case-result">Mapped the end-to-end commercial planning process and worked with the commercial leadership team to develop standardised forums, decision rights, and reporting outputs. The team sustained the improvement for two years post-engagement.</div>
         </div>
-        <div class="case-card">
-          <div class="case-card-body">
-            <div class="case-tags">
-              <span class="case-sector">Financial Services</span>
-              <span class="pillar-tag frame">FRAME</span>
-            </div>
-            <p class="case-stat">3 views</p>
-            <p class="case-outcome">Three competing views on the root cause aligned to one agreed problem statement before the diagnostic started.</p>
-            <p class="case-situation">A financial services operations team was about to commission a process redesign. Executive leadership had three different views on what was broken. The project had been approved on the assumption that the problem was understood.</p>
-            <div class="case-result">Used FRAME before the diagnostic was commissioned. The SPIN workshop revealed that all three views were describing symptoms of the same root cause - a missing decision right at the point of exception handling. The project charter was reframed accordingly. The diagnostic that followed confirmed the hypothesis.</div>
+        <div class="case-card light reveal reveal-d1">
+          <div class="case-tags">
+            <span class="case-sector">Government and Public Sector</span>
+            <span class="pillar-tag plan">PLAN</span>
           </div>
+          <p class="case-stat">32%</p>
+          <p class="case-outcome">183-category classification reduced to 30. 32% of inbound volume identified for IVR deflection.</p>
+          <p class="case-situation">1,770 enquiries per month. 183-category taxonomy driving inconsistency. 32% of inbound calls misdirected or out-of-jurisdiction, all handled manually. No agreed KPIs. Informal quality assurance.</p>
+          <div class="case-result">Delivered a prioritised 12-recommendation roadmap including IVR automation specification, simplified taxonomy of 30 categories, a quality assurance framework, and a revised workforce model. Clear sequenced roadmap for the team to implement without external support.</div>
         </div>
       </div>
       <div class="case-artwork"><img src="assets/lineart/shared/EQ-CASEWORK.png" alt="" style="mix-blend-mode:multiply;" onerror="this.style.display='none'"></div>
@@ -849,23 +807,23 @@
   <section class="related-services">
     <div class="related-services-inner">
       <div class="section-label">Where it leads</div>
-      <h2 class="related-heading">Define the problem. Then measure it.</h2>
-      <p class="related-subhead">FRAME is the first phase of DMAICO. Once the project charter is signed, the natural next step is PLAN - the diagnostic that establishes the evidence base against the success criteria FRAME defined.</p>
+      <h2 class="related-heading reveal">Clarity creates options.</h2>
+      <p class="related-subhead reveal reveal-d1">The diagnostic does not lead automatically to an EQUIBT engagement. Sometimes it shows your team can move forward independently. Sometimes it points to the next step.</p>
       <div style="margin:40px 0 48px;overflow:visible;">
         <svg viewBox="0 0 960 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:960px;display:block;overflow:visible;">
           <line x1="0" y1="58" x2="70" y2="58" stroke="#ddd" stroke-width="2"/>
-          <line x1="70" y1="58" x2="350" y2="58" stroke="#8B2252" stroke-width="2"/>
+          <line x1="70" y1="58" x2="350" y2="58" stroke="#26245C" stroke-width="2"/>
           <line x1="350" y1="58" x2="960" y2="58" stroke="#ddd" stroke-width="2"/>
-          <line x1="210" y1="71" x2="210" y2="96" stroke="#26245C" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <line x1="70" y1="71" x2="70" y2="96" stroke="#8B2252" stroke-width="1.5" stroke-dasharray="4 3"/>
           <line x1="350" y1="71" x2="350" y2="96" stroke="#0B6B82" stroke-width="1.5" stroke-dasharray="4 3"/>
-          <text x="70" y="14" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" font-weight="700" letter-spacing="0.13em" fill="#C15F3C">YOU ARE HERE</text>
-          <line x1="70" y1="17" x2="70" y2="37" stroke="#C15F3C" stroke-width="1.5"/>
-          <polygon points="70,43 66,35 74,35" fill="#C15F3C"/>
-          <rect x="30" y="45" width="80" height="26" rx="13" fill="#8B2252"/>
+          <text x="210" y="14" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" font-weight="700" letter-spacing="0.13em" fill="#C15F3C">YOU ARE HERE</text>
+          <line x1="210" y1="17" x2="210" y2="37" stroke="#C15F3C" stroke-width="1.5"/>
+          <polygon points="210,43 206,35 214,35" fill="#C15F3C"/>
+          <rect class="subway-pill" x="30" y="45" width="80" height="26" rx="13" fill="#8B2252"/>
           <text x="70" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F5F3EE">FRAME</text>
-          <rect x="176" y="45" width="68" height="26" rx="13" fill="#26245C"/>
+          <rect class="subway-pill active" x="176" y="45" width="68" height="26" rx="13" fill="#26245C"/>
           <text x="210" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F5F3EE">PLAN</text>
-          <rect x="313" y="45" width="74" height="26" rx="13" fill="#0B6B82"/>
+          <rect class="subway-pill" x="313" y="45" width="74" height="26" rx="13" fill="#0B6B82"/>
           <text x="350" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F5F3EE">SOLVE</text>
           <rect x="460" y="45" width="80" height="26" rx="13" fill="#ccc"/>
           <text x="500" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#999">EVOLVE</text>
@@ -873,23 +831,23 @@
           <text x="660" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#999">GOVERN</text>
           <rect x="780" y="45" width="120" height="26" rx="13" fill="#ccc"/>
           <text x="840" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#999">OPERATIONALISE</text>
-          </svg>
+        </svg>
       </div>
       <div class="related-grid">
-        <a href="#" class="related-card">
+        <a href="#" class="related-card reveal">
           <div class="case-tags">
-            <span class="pillar-tag plan">PLAN</span>
+            <span class="pillar-tag frame">FRAME</span>
           </div>
-          <p class="related-card-name">Operations Diagnostic</p>
-          <p class="related-card-descriptor">When stakeholders are aligned and the project charter is signed, PLAN (Measure) establishes the evidence base. Baseline measurement, capability assessment, prioritised roadmap.</p>
+          <p class="related-card-name">Problem Framing</p>
+          <p class="related-card-descriptor">When your leadership team disagrees on what the problem is. FRAME uses a structured SPIN workshop to align stakeholders and produce a locked project charter before any diagnostic dollar gets spent.</p>
           <span class="related-card-link">Learn more <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
-        <a href="#" class="related-card">
+        <a href="#" class="related-card reveal reveal-d1">
           <div class="case-tags">
             <span class="pillar-tag solve">SOLVE</span>
           </div>
           <p class="related-card-name">Root Cause Analysis and Solution Design</p>
-          <p class="related-card-descriptor">For teams that have completed the diagnostic and need to move from findings to designed solutions. SOLVE isolates causes and designs the future state.</p>
+          <p class="related-card-descriptor">When the diagnostic has identified where problems are, SOLVE isolates why they exist and designs the future state. Root cause analysis, operational reengineering, cost-benefit analysis.</p>
           <span class="related-card-link">Learn more <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
       </div>
@@ -900,28 +858,40 @@
   <section class="cta-panel">
     <div class="cta-panel-inner">
       <div class="cta-copy">
-        <h2 class="cta-heading">Not sure if alignment<br>is the issue? Let's talk.</h2>
-        <p class="cta-body">If your team has different views on what needs to change, a fifteen-minute conversation will clarify whether FRAME is the right starting point. No obligation.</p>
-        <a href="#" class="cta-button">Book a discovery call</a>
+        <h2 class="cta-heading reveal">Ready to understand<br>before you act?</h2>
+        <p class="cta-body reveal reveal-d1">A diagnostic is not a commitment to a transformation programme. It is a pathway to clarity. Four to six weeks. Clear output. A prioritised roadmap. An honest view of what your team can do independently. Fifteen minutes on a call to outline your situation. No obligation.</p>
+        <a href="#" class="cta-button reveal reveal-d2">Book a discovery call</a>
       </div>
       <div class="cta-panel-right">
         <div class="cta-detail-item">
           <p class="cta-detail-label">Typical timeline</p>
-          <p class="cta-detail-title">1 to 2 weeks</p>
+          <p class="cta-detail-title">4 to 6 weeks</p>
           <p class="cta-detail-value">Scope agreed in the proposal before work starts</p>
         </div>
         <div class="cta-detail-item">
           <p class="cta-detail-label">Typical investment</p>
-          <p class="cta-detail-title">A$8k to A$15k</p>
+          <p class="cta-detail-title">A$15k to A$35k</p>
           <p class="cta-detail-value">Depends on scope and complexity of your operation</p>
         </div>
         <div class="cta-detail-item">
           <p class="cta-detail-label">What you get</p>
-          <p class="cta-detail-title">Three deliverables</p>
+          <p class="cta-detail-title">Four deliverables</p>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); revealObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObserver.observe(el));
+    const nav = document.querySelector('.ref-nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); }, { passive: true });
+  </script>
 
 </body>
 </html>
