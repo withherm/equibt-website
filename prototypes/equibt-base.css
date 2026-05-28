@@ -7,18 +7,7 @@
 */
 
 /* ═══ 1. FONTS ══════════════════════════════════════════════════════════════ */
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../assets/fonts/montserrat-600-700-latin-ext.woff2') format('woff2');
-  font-weight: 600 700; font-style: normal; font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../assets/fonts/montserrat-600-700-latin.woff2') format('woff2');
-  font-weight: 600 700; font-style: normal; font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Montserrat:wght@600;700&family=Open+Sans:wght@500&display=swap');
 
 /* ═══ 2. VARIABLES ══════════════════════════════════════════════════════════ */
 :root {
@@ -26,11 +15,11 @@
   --navy:            #26245C;
   --terracotta:      #C15F3C;
   --terracotta-dark: #A04E30;
-  --section-bg:      #F4F3EF;
+  --section-bg:      #F5F3EE;
   --white:           #FFFFFF;
   --near-black:      #2C2C2C;
   --off-white:       #F2F1ED;
-  --body-text:       #555;
+  --body-text:       #2C2C2C;
   --navy-wash:       #EEF0F8;
   --dark-slate:      #2C3E50;
   --warm-parchment:  #F2F1ED;
@@ -62,7 +51,7 @@ h1, h2, h3,
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
   font-size: 17px;
   color: var(--near-black);
   background: var(--section-bg);
@@ -82,12 +71,12 @@ p { font-size: 17px; line-height: 1.75; }
 .reveal-d5 { transition-delay: 0.40s; }
 
 /* ═══ 5. NAVIGATION ═════════════════════════════════════════════════════════ */
-.ref-nav { background: var(--navy); padding: 15px 48px; display: flex; align-items: center; position: sticky; top: 0; z-index: 10; transition: background 0.3s ease, backdrop-filter 0.3s ease; }
-.ref-nav.scrolled { background: rgba(38,36,92,0.90); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.ref-nav { background: var(--navy); padding: 15px 48px; display: flex; align-items: center; position: sticky; top: 0; z-index: 10; transition: background 0.3s ease; }
+.ref-nav.scrolled { background: rgba(38,36,92,0.96); }
 .ref-logo { font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--off-white); text-decoration: none; display: block; }
 .ref-logo span { color: var(--terracotta); }
 .ref-nav-links { display: flex; align-items: center; gap: 32px; margin-left: auto; }
-.ref-nav-link { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,243,238,0.65); text-decoration: none; transition: color 0.18s; }
+.ref-nav-link { font-family: 'Open Sans', system-ui, sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0; text-transform: none; color: rgba(245,243,238,0.65); text-decoration: none; transition: color 0.18s; }
 .ref-nav-link:hover { color: var(--off-white); }
 .ref-nav-link.active { color: var(--off-white); }
 .ref-nav-cta { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--off-white); background: var(--terracotta); padding: 8px 18px; border-radius: 4px; text-decoration: none; margin-left: 16px; transition: background 0.18s; }
@@ -129,7 +118,7 @@ footer { background: var(--white); padding: 80px 48px 48px; border-top: 1px soli
 
 /* ═══ 9. BUTTON COMPONENTS ══════════════════════════════════════════════════ */
 /* Default: navy (hero, page-level CTAs) */
-.btn-primary { display: inline-flex; align-items: center; background: var(--navy); color: var(--off-white); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; border-radius: 6px; text-decoration: none; transition: background 0.18s, transform 0.15s; }
+.btn-primary { display: inline-flex; align-items: center; background: var(--navy); color: var(--off-white); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 26px; border-radius: 6px; text-decoration: none; transition: background 0.18s, transform 0.15s; }
 .btn-primary:hover { background: #1e1c4e; transform: translateY(-1px); }
 
 /* CTA panel context: terracotta (dark background) */
@@ -165,7 +154,7 @@ footer { background: var(--white); padding: 80px 48px 48px; border-top: 1px soli
 .why-row { display: grid; grid-template-columns: 1fr; gap: 0; padding: 28px 0; border-bottom: 1px solid rgba(38,36,92,0.1); align-items: start; }
 .why-row:first-child { border-top: 1px solid rgba(38,36,92,0.1); }
 .why-row-num { display: none; }
-.why-row-heading { font-size: 26px; font-weight: 600; color: var(--navy); letter-spacing: -0.02em; line-height: 1.3; margin-bottom: 6px; }
+.why-row-heading { font-size: 26px; font-weight: 700; color: var(--navy); letter-spacing: -0.02em; line-height: 1.3; margin-bottom: 6px; }
 .why-row-body { font-size: 15px; color: var(--body-text); line-height: 1.7; }
 
 /* Examine card: number label hidden */
@@ -174,11 +163,11 @@ footer { background: var(--white); padding: 80px 48px 48px; border-top: 1px soli
 /* ═══ 12. CASE CARD COMPONENTS (P/A/O structure) ════════════════════════════ */
 .case-studies { background: var(--white); padding: 80px 48px; border-bottom: 1px solid rgba(38,36,92,0.08); }
 .case-studies-inner { max-width: 1120px; margin: 0 auto; }
-.case-studies-heading { font-size: 44px; font-weight: 500; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 44px; max-width: 500px; }
+.case-studies-heading { font-size: 36px; font-weight: 700; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 44px; max-width: 500px; }
 .case-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; align-items: start; }
 
-.case-card.light { background: #ffffff; border: 1px solid rgba(38,36,92,0.1); border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 14px; transition: transform 0.22s ease, box-shadow 0.22s ease; }
-.case-card.light:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+.case-card.light { background: #ffffff; border: none; border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 2px 10px rgba(38,36,92,0.08); transition: transform 0.22s ease, box-shadow 0.22s ease; }
+.case-card.light:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(38,36,92,0.18); }
 .case-tags { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .case-sector { display: inline-flex; align-items: center; background: rgba(38,36,92,0.07); border: 1px solid rgba(38,36,92,0.12); color: var(--navy); font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; height: 22px; padding: 0 10px; border-radius: 100px; }
 .case-stat { font-size: 64px; font-weight: 700; color: var(--terracotta); line-height: 1; letter-spacing: -0.03em; }
@@ -194,8 +183,8 @@ footer { background: var(--white); padding: 80px 48px 48px; border-top: 1px soli
 
 /* ═══ 13. DELIVERABLE CARD ══════════════════════════════════════════════════ */
 .deliverables-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-.deliverable-card { background: var(--white); border-radius: 18px; padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 10px; border: 1px solid rgba(38,36,92,0.08); box-shadow: 0 1px 4px rgba(38,36,92,0.04); transition: transform 0.22s ease, box-shadow 0.22s ease; }
-.deliverable-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.10); }
+.deliverable-card { background: var(--white); border-radius: 8px; padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 10px; border: none; box-shadow: 0 2px 10px rgba(38,36,92,0.08); transition: transform 0.22s ease, box-shadow 0.22s ease; }
+.deliverable-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(38,36,92,0.18); }
 .deliverable-card-image { width: 100%; border-radius: 5px; overflow: hidden; margin-bottom: 4px; }
 .deliverable-card-image img { width: 100%; height: auto; display: block; }
 .deliverable-title { font-size: 16px; font-weight: 700; color: var(--navy); line-height: 1.3; }
@@ -216,18 +205,18 @@ footer { background: var(--white); padding: 80px 48px 48px; border-top: 1px soli
 /* ═══ 15. RELATED SERVICES ══════════════════════════════════════════════════ */
 .related-services { background: var(--section-bg); padding: 80px 48px; border-bottom: 1px solid rgba(38,36,92,0.08); }
 .related-services-inner { max-width: 1120px; margin: 0 auto; }
-.related-heading { font-size: 44px; font-weight: 500; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px; max-width: 520px; }
+.related-heading { font-size: 36px; font-weight: 700; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px; max-width: 520px; }
 .related-subhead { font-size: 17px; color: var(--body-text); line-height: 1.75; margin-bottom: 44px; max-width: 560px; }
 .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-.related-card { background: var(--white); border-radius: 18px; padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 12px; text-decoration: none; color: var(--near-black); border: 1px solid rgba(38,36,92,0.08); box-shadow: 0 1px 4px rgba(38,36,92,0.04); transition: transform 0.22s ease, box-shadow 0.22s ease; }
-.related-card:hover { box-shadow: 0 16px 40px rgba(0,0,0,0.10); transform: translateY(-4px); }
+.related-card { background: var(--white); border-radius: 8px; padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 12px; text-decoration: none; color: var(--near-black); border: none; box-shadow: 0 2px 10px rgba(38,36,92,0.08); transition: transform 0.22s ease, box-shadow 0.22s ease; }
+.related-card:hover { box-shadow: 0 16px 40px rgba(38,36,92,0.18); transform: translateY(-6px); }
 .related-card-name { font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.3; letter-spacing: -0.01em; }
 .related-card-descriptor { font-size: 17px; color: var(--body-text); line-height: 1.75; flex: 1; }
 .related-card-link { display: flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 700; color: var(--terracotta); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; transition: gap 0.18s ease, color 0.18s ease; }
 .related-card:hover .related-card-link { gap: 9px; color: var(--terracotta-dark); }
 
 /* ═══ 16. CARD AESTHETICS (ElevenLabs global — final state) ═════════════════ */
-/* All card components: white, 18px radius, subtle border and shadow */
+/* All card components: white, compact radius, brand shadow */
 .method-pillar,
 .stat-block,
 .logo-block,
@@ -242,11 +231,11 @@ footer { background: var(--white); padding: 80px 48px 48px; border-top: 1px soli
 .reason-card-lg, .reason-card-sm,
 .pattern-card, .result-block, .card-dark,
 .track-card {
-  border-radius: 18px;
+  border-radius: 8px;
   background: #ffffff;
-  border: 1px solid rgba(38,36,92,0.08);
+  border: none;
   border-top-width: 0;
-  box-shadow: 0 1px 4px rgba(38,36,92,0.04);
+  box-shadow: 0 2px 10px rgba(38,36,92,0.08);
 }
 
 /* Method pillar grid */
@@ -256,8 +245,8 @@ footer { background: var(--white); padding: 80px 48px 48px; border-top: 1px soli
 .proof-strip { background: transparent; border-top: none; border-bottom: none; padding: 80px 48px; }
 .proof-strip-inner { border: none; background: transparent; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 
-/* Scale pillar: terracotta border-top accent */
-.method-pillar.pillar-scale { border-top: 3px solid var(--pill-scale) !important; border-top-width: 3px !important; }
+/* Scale pillar: colour inherited from tag; no card accent strip */
+.method-pillar.pillar-scale { border-top: none !important; }
 
 /* Section backgrounds */
 .what-we-believe,

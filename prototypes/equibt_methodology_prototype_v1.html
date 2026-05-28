@@ -4,43 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DMAICO Methodology | EQUIBT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Montserrat:wght@600;700&family=Open+Sans:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="equibt-base.css">
   <style>
-  @font-face {
-    font-family: 'Montserrat';
-    src: url('../assets/fonts/montserrat-600-700-latin-ext.woff2') format('woff2');
-    font-weight: 600 700; font-style: normal; font-display: swap;
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  @font-face {
-    font-family: 'Montserrat';
-    src: url('../assets/fonts/montserrat-600-700-latin.woff2') format('woff2');
-    font-weight: 600 700; font-style: normal; font-display: swap;
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  @font-face {
-    font-family: 'Montserrat';
-    src: url('../assets/fonts/montserrat-400-500-latin-ext.woff2') format('woff2');
-    font-weight: 400 500; font-style: normal; font-display: swap;
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  @font-face {
-    font-family: 'Montserrat';
-    src: url('../assets/fonts/montserrat-400-500-latin.woff2') format('woff2');
-    font-weight: 400 500; font-style: normal; font-display: swap;
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
 
-  :root {
+
+
+:root {
     color-scheme: light;
     --navy:            #26245C;
     --terracotta:      #C15F3C;
     --terracotta-dark: #A04E30;
-    --section-bg:      #F4F3EF;
+    --section-bg:      #F5F3EE;
     --white:           #FFFFFF;
     --near-black:      #2C2C2C;
     --off-white:       #F2F1ED;
-    --body-text:       #555;
+    --body-text:       #2C2C2C;
     --navy-wash:       #EEF0F8;
     --dark-slate:      #2C3E50;
     --warm-parchment:  #F2F1ED;
@@ -60,7 +41,7 @@
   .cta-heading, .footer-logo { font-family: 'Montserrat', system-ui, sans-serif; }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--section-bg); color: var(--near-black); -webkit-font-smoothing: antialiased; }
+  body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--section-bg); color: var(--near-black); -webkit-font-smoothing: antialiased; }
 
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1); }
   .reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -71,12 +52,12 @@
   .reveal-d5 { transition-delay: 0.40s; }
 
   /* ─── Nav ─── */
-  .ref-nav { background: var(--navy); padding: 15px 48px; display: flex; align-items: center; position: sticky; top: 0; z-index: 10; transition: background 0.3s ease, backdrop-filter 0.3s ease; }
-  .ref-nav.scrolled { background: rgba(38,36,92,0.90); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+  .ref-nav { background: var(--navy); padding: 15px 48px; display: flex; align-items: center; position: sticky; top: 0; z-index: 10; transition: background 0.3s ease; }
+  .ref-nav.scrolled { background: rgba(38,36,92,0.96); }
   .ref-logo { font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--off-white); text-decoration: none; }
   .ref-logo span { color: var(--terracotta); }
   .ref-nav-links { display: flex; align-items: center; gap: 32px; margin-left: auto; }
-  .ref-nav-link { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,243,238,0.65); text-decoration: none; transition: color 0.18s; }
+  .ref-nav-link { font-family: 'Open Sans', system-ui, sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0; text-transform: none; color: rgba(245,243,238,0.65); text-decoration: none; transition: color 0.18s; }
   .ref-nav-link:hover { color: var(--off-white); }
   .ref-nav-link.active { color: var(--off-white); }
   .ref-nav-cta { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--off-white); background: var(--terracotta); padding: 8px 18px; border-radius: 4px; text-decoration: none; margin-left: 16px; transition: background 0.18s; }
@@ -87,7 +68,7 @@
   /* ─── Section label ─── */
   .section-label { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 16px; font-family: 'Montserrat', system-ui, sans-serif; }
   .section-label::before { content: ''; display: block; width: 3px; height: 20px; background: var(--terracotta); border-radius: 2px; flex-shrink: 0; }
-  .section-h2 { font-size: 44px; font-weight: 500; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; }
+  .section-h2 { font-size: 36px; font-weight: 700; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; }
 
   /* ─── Pill tags ─── */
   .pillar-tag { display: inline-flex; align-items: center; color: var(--off-white); font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; height: 22px; padding: 0 11px; border-radius: 100px; width: fit-content; line-height: 1; font-family: 'Montserrat', system-ui, sans-serif; }
@@ -107,7 +88,7 @@
   .hero-h1-sub { font-size: 20px; font-weight: 500; color: rgba(38,36,92,0.45); letter-spacing: -0.01em; margin-bottom: 24px; font-family: 'Montserrat', system-ui, sans-serif; }
   .hero-body { font-size: 17px; color: var(--body-text); line-height: 1.75; margin-bottom: 36px; max-width: 540px; }
   .hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-  .btn-primary { display: inline-flex; align-items: center; background: var(--navy); color: var(--off-white); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; border-radius: 6px; text-decoration: none; transition: background 0.18s, transform 0.15s; font-family: 'Montserrat', system-ui, sans-serif; }
+  .btn-primary { display: inline-flex; align-items: center; background: var(--navy); color: var(--off-white); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 26px; border-radius: 6px; text-decoration: none; transition: background 0.18s, transform 0.15s; font-family: 'Montserrat', system-ui, sans-serif; }
   .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
   .hero-visual { display: flex; align-items: center; justify-content: flex-end; }
   .hero-visual svg { width: 100%; max-width: 420px; height: auto; }
@@ -144,15 +125,8 @@
   .phases-inner { max-width: 1100px; margin: 0 auto; }
   .phases-header { margin-bottom: 56px; }
   .phase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(38,36,92,0.1); border-radius: 6px; overflow: hidden; }
-  .phase-card { background: var(--white); padding: 36px 32px 32px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 16px; transition: background 0.2s ease; }
-  .phase-card:hover { background: #fafafa; }
-  .phase-card-border { position: absolute; top: 0; left: 0; right: 0; height: 3px; }
-  .phase-card-border.frame          { background: var(--pill-frame); }
-  .phase-card-border.plan           { background: var(--pill-plan); }
-  .phase-card-border.solve          { background: var(--pill-solve); }
-  .phase-card-border.evolve         { background: var(--pill-evolve); }
-  .phase-card-border.govern         { background: var(--pill-govern); }
-  .phase-card-border.scale { background: var(--pill-scale); }
+  .phase-card { background: var(--white); padding: 36px 32px 32px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 2px 10px rgba(38,36,92,0.08); transition: transform 0.22s ease, box-shadow 0.22s ease; }
+  .phase-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(38,36,92,0.18); }
   .phase-card-head { display: flex; flex-direction: column; gap: 10px; }
   .phase-card-phase { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(38,36,92,0.4); font-family: 'Montserrat', system-ui, sans-serif; }
   .phase-card-name { font-size: 22px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; line-height: 1.2; font-family: 'Montserrat', system-ui, sans-serif; }
@@ -254,7 +228,7 @@
     .ref-nav { padding: 14px 24px; flex-wrap: wrap; }
     .ref-nav-links { display: none; width: 100%; flex-direction: column; padding: 12px 0 8px; gap: 0; margin-left: 0; border-top: 1px solid rgba(245,243,238,0.1); margin-top: 12px; }
     .ref-nav-links.is-open { display: flex; }
-    .ref-nav-link { padding: 9px 0; font-size: 10px; }
+    .ref-nav-link { font-family: 'Open Sans', system-ui, sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0; text-transform: none; color: rgba(245,243,238,0.65); text-decoration: none; transition: color 0.18s; }
     .ref-nav-cta { margin-left: 0; margin-top: 8px; align-self: flex-start; }
     .nav-hamburger { display: flex; }
     footer { padding: 56px 24px 40px; }
@@ -278,13 +252,13 @@
       <span></span><span></span><span></span>
     </button>
     <div class="ref-nav-links" id="nav-links">
-      <a href="/services/frame/" class="ref-nav-link">FRAME</a>
-      <a href="/services/plan/" class="ref-nav-link">PLAN</a>
-      <a href="/services/solve/" class="ref-nav-link">SOLVE</a>
-      <a href="/services/evolve/" class="ref-nav-link">EVOLVE</a>
-      <a href="/services/govern/" class="ref-nav-link">GOVERN</a>
-      <a href="/services/scale/" class="ref-nav-link">SCALE</a>
-      <a href="/methodology/" class="ref-nav-link active">METHODOLOGY</a>
+      <a href="/services/frame/" class="ref-nav-link">Frame</a>
+      <a href="/services/plan/" class="ref-nav-link">Plan</a>
+      <a href="/services/solve/" class="ref-nav-link">Solve</a>
+      <a href="/services/evolve/" class="ref-nav-link">Evolve</a>
+      <a href="/services/govern/" class="ref-nav-link">Govern</a>
+      <a href="/services/scale/" class="ref-nav-link">Scale</a>
+      <a href="/methodology/" class="ref-nav-link active">Methodology</a>
       <a href="/contact/" class="ref-nav-cta">Let&rsquo;s talk</a>
     </div>
   </nav>
@@ -445,11 +419,10 @@
 
         <!-- FRAME | Define -->
         <div class="phase-card">
-          <div class="phase-card-border frame"></div>
-          <div class="phase-card-head">
+                <div class="phase-card-head">
             <span class="phase-card-phase">Define</span>
             <div style="display:flex;align-items:center;gap:10px;">
-              <span class="pillar-tag frame">FRAME</span>
+              <span class="pillar-tag frame">Frame</span>
             </div>
             <p class="phase-card-name">Problem framing and charter</p>
           </div>
@@ -467,11 +440,10 @@
 
         <!-- PLAN | Measure -->
         <div class="phase-card">
-          <div class="phase-card-border plan"></div>
-          <div class="phase-card-head">
+                <div class="phase-card-head">
             <span class="phase-card-phase">Measure</span>
             <div style="display:flex;align-items:center;gap:10px;">
-              <span class="pillar-tag plan">PLAN</span>
+              <span class="pillar-tag plan">Plan</span>
             </div>
             <p class="phase-card-name">Operations diagnostic</p>
           </div>
@@ -489,11 +461,10 @@
 
         <!-- SOLVE | Analyse -->
         <div class="phase-card">
-          <div class="phase-card-border solve"></div>
-          <div class="phase-card-head">
+                <div class="phase-card-head">
             <span class="phase-card-phase">Analyse</span>
             <div style="display:flex;align-items:center;gap:10px;">
-              <span class="pillar-tag solve">SOLVE</span>
+              <span class="pillar-tag solve">Solve</span>
             </div>
             <p class="phase-card-name">Root cause and solution design</p>
           </div>
@@ -511,11 +482,10 @@
 
         <!-- EVOLVE | Improve -->
         <div class="phase-card">
-          <div class="phase-card-border evolve"></div>
-          <div class="phase-card-head">
+                <div class="phase-card-head">
             <span class="phase-card-phase">Improve</span>
             <div style="display:flex;align-items:center;gap:10px;">
-              <span class="pillar-tag evolve">EVOLVE</span>
+              <span class="pillar-tag evolve">Evolve</span>
             </div>
             <p class="phase-card-name">Pilot, validate, and specify</p>
           </div>
@@ -533,11 +503,10 @@
 
         <!-- GOVERN | Control -->
         <div class="phase-card">
-          <div class="phase-card-border govern"></div>
-          <div class="phase-card-head">
+                <div class="phase-card-head">
             <span class="phase-card-phase">Control</span>
             <div style="display:flex;align-items:center;gap:10px;">
-              <span class="pillar-tag govern">GOVERN</span>
+              <span class="pillar-tag govern">Govern</span>
             </div>
             <p class="phase-card-name">Governance infrastructure</p>
           </div>
@@ -555,11 +524,10 @@
 
         <!-- SCALE | Operate -->
         <div class="phase-card">
-          <div class="phase-card-border scale"></div>
-          <div class="phase-card-head">
+                <div class="phase-card-head">
             <span class="phase-card-phase">Operate</span>
             <div style="display:flex;align-items:center;gap:10px;">
-              <span class="pillar-tag scale">SCALE</span>
+              <span class="pillar-tag scale">Scale</span>
             </div>
             <p class="phase-card-name">Scale, embed, sustain</p>
           </div>
@@ -598,7 +566,7 @@
         <div class="ai-rows">
           <div class="ai-row">
             <div class="ai-row-phase">
-              <span class="ai-row-pillar">FRAME</span>
+              <span class="ai-row-pillar">Frame</span>
               <span class="ai-row-label">Define</span>
             </div>
             <div class="ai-row-traditional">Problem defined by whoever is loudest in the room. Adjacent issues surface later and reopen the charter.</div>
@@ -606,7 +574,7 @@
           </div>
           <div class="ai-row">
             <div class="ai-row-phase">
-              <span class="ai-row-pillar">PLAN</span>
+              <span class="ai-row-pillar">Plan</span>
               <span class="ai-row-label">Measure</span>
             </div>
             <div class="ai-row-traditional">Manual data collection. Sampling. Point-in-time baseline that is already stale by the time analysis begins.</div>
@@ -614,7 +582,7 @@
           </div>
           <div class="ai-row">
             <div class="ai-row-phase">
-              <span class="ai-row-pillar">SOLVE</span>
+              <span class="ai-row-pillar">Solve</span>
               <span class="ai-row-label">Analyse</span>
             </div>
             <div class="ai-row-traditional">Hypothesis-driven. Human pattern recognition from a sample. Root cause analysis limited by analyst experience and time.</div>
@@ -622,7 +590,7 @@
           </div>
           <div class="ai-row">
             <div class="ai-row-phase">
-              <span class="ai-row-pillar">EVOLVE</span>
+              <span class="ai-row-pillar">Evolve</span>
               <span class="ai-row-label">Improve</span>
             </div>
             <div class="ai-row-traditional">One countermeasure piloted. Results assessed manually. Proceed or iterate based on judgement.</div>
@@ -630,7 +598,7 @@
           </div>
           <div class="ai-row">
             <div class="ai-row-phase">
-              <span class="ai-row-pillar">GOVERN</span>
+              <span class="ai-row-pillar">Govern</span>
               <span class="ai-row-label">Control</span>
             </div>
             <div class="ai-row-traditional">Static control plan. Periodic audits on a calendar schedule. Drift detected after it has already caused damage.</div>
@@ -638,7 +606,7 @@
           </div>
           <div class="ai-row">
             <div class="ai-row-phase">
-              <span class="ai-row-pillar">SCALE</span>
+              <span class="ai-row-pillar">Scale</span>
               <span class="ai-row-label">Operate</span>
             </div>
             <div class="ai-row-traditional">Does not exist as a formal phase. Assumed to be ongoing business-as-usual after project close.</div>
@@ -719,12 +687,12 @@
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
-          <li><a href="/services/frame/">FRAME</a></li>
-          <li><a href="/services/plan/">PLAN</a></li>
-          <li><a href="/services/solve/">SOLVE</a></li>
-          <li><a href="/services/evolve/">EVOLVE</a></li>
-          <li><a href="/services/govern/">GOVERN</a></li>
-          <li><a href="/services/scale/">SCALE</a></li>
+          <li><a href="/services/frame/">Frame</a></li>
+          <li><a href="/services/plan/">Plan</a></li>
+          <li><a href="/services/solve/">Solve</a></li>
+          <li><a href="/services/evolve/">Evolve</a></li>
+          <li><a href="/services/govern/">Govern</a></li>
+          <li><a href="/services/scale/">Scale</a></li>
         </ul>
       </div>
       <div class="footer-col">

@@ -4,35 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Why EQUIBT | What Makes Us Different</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Montserrat:wght@600;700&family=Open+Sans:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="equibt-base.css">
   <style>
-  @font-face {
-    font-family: 'Montserrat';
-    src: url('../assets/fonts/montserrat-600-700-latin-ext.woff2') format('woff2');
-    font-weight: 600 700;
-    font-style: normal;
-    font-display: swap;
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  @font-face {
-    font-family: 'Montserrat';
-    src: url('../assets/fonts/montserrat-600-700-latin.woff2') format('woff2');
-    font-weight: 600 700;
-    font-style: normal;
-    font-display: swap;
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
 
-  :root {
+:root {
     color-scheme: light;
     --navy:            #26245C;
     --terracotta:      #C15F3C;
     --terracotta-dark: #A04E30;
-    --section-bg:      #F4F3EF;
+    --section-bg:      #F5F3EE;
     --white:           #FFFFFF;
     --near-black:      #2C2C2C;
     --off-white:       #F2F1ED;
-    --body-text:       #555;
+    --body-text:       #2C2C2C;
     --dark-slate:      #2C3E50;
     --warm-parchment:  #F2F1ED;
     --text-light: rgba(255,255,255,0.72);
@@ -47,7 +34,8 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
     background: var(--section-bg);
     color: var(--near-black);
     -webkit-font-smoothing: antialiased;
@@ -71,20 +59,16 @@
     padding: 15px 48px;
     display: flex; align-items: center;
     position: sticky; top: 0; z-index: 10;
-    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    transition: background 0.3s ease;
   }
-  .ref-nav.scrolled { background: rgba(38,36,92,0.90); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+  .ref-nav.scrolled { background: rgba(38,36,92,0.96); }
   .ref-logo {
     font-size: 15px; font-weight: 700; letter-spacing: 0.14em;
     text-transform: uppercase; color: var(--off-white); text-decoration: none;
   }
   .ref-logo span { color: var(--terracotta); }
   .ref-nav-links { display: flex; align-items: center; gap: 32px; margin-left: auto; }
-  .ref-nav-link {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
-    text-transform: uppercase; color: rgba(245,243,238,0.65);
-    text-decoration: none; transition: color 0.18s;
-  }
+  .ref-nav-link { font-family: 'Open Sans', system-ui, sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0; text-transform: none; color: rgba(245,243,238,0.65); text-decoration: none; transition: color 0.18s; }
   .ref-nav-link:hover { color: var(--off-white); }
   .ref-nav-cta {
     font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
@@ -162,7 +146,7 @@
   }
   .pattern-inner { max-width: 1120px; margin: 0 auto; }
   .pattern-heading {
-    font-size: 44px; font-weight: 500; color: var(--navy);
+    font-size: 36px; font-weight: 700; color: var(--navy);
     line-height: 1.1; letter-spacing: -0.025em;
     margin-bottom: 40px; max-width: 640px;
   }
@@ -179,7 +163,7 @@
   }
   .how-different-inner { max-width: 1120px; margin: 0 auto; }
   .how-different-heading {
-    font-size: 44px; font-weight: 500; color: var(--navy);
+    font-size: 36px; font-weight: 700; color: var(--navy);
     line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 56px;
   }
   .differentiator-list { max-width: 800px; }
@@ -203,7 +187,7 @@
   }
   .refuse-inner { max-width: 1120px; margin: 0 auto; }
   .refuse-heading {
-    font-size: 44px; font-weight: 500; color: var(--navy);
+    font-size: 36px; font-weight: 700; color: var(--navy);
     line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 48px;
   }
   .refuse-list { max-width: 800px; }
@@ -228,7 +212,7 @@
     display: grid; grid-template-columns: 1fr 340px; gap: 64px; align-items: center;
   }
   .cta-heading {
-    font-size: 44px; font-weight: 500; color: var(--off-white);
+    font-size: 36px; font-weight: 700; color: var(--off-white);
     line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 20px;
   }
   .cta-body {
@@ -292,13 +276,13 @@
       <span></span><span></span><span></span>
     </button>
     <div class="ref-nav-links">
-      <a href="/services/frame/" class="ref-nav-link">FRAME</a>
-      <a href="/services/plan/" class="ref-nav-link">PLAN</a>
-      <a href="/services/solve/" class="ref-nav-link">SOLVE</a>
-      <a href="/services/evolve/" class="ref-nav-link">EVOLVE</a>
-      <a href="/services/govern/" class="ref-nav-link">GOVERN</a>
-      <a href="/services/scale/" class="ref-nav-link">SCALE</a>
-      <a href="/methodology/" class="ref-nav-link">METHODOLOGY</a>
+      <a href="/services/frame/" class="ref-nav-link">Frame</a>
+      <a href="/services/plan/" class="ref-nav-link">Plan</a>
+      <a href="/services/solve/" class="ref-nav-link">Solve</a>
+      <a href="/services/evolve/" class="ref-nav-link">Evolve</a>
+      <a href="/services/govern/" class="ref-nav-link">Govern</a>
+      <a href="/services/scale/" class="ref-nav-link">Scale</a>
+      <a href="/methodology/" class="ref-nav-link">Methodology</a>
       <a href="#" class="ref-nav-cta">Let&rsquo;s talk</a>
     </div>
   </nav>
@@ -486,12 +470,12 @@
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
-          <li><a href="/services/frame/">FRAME</a></li>
-          <li><a href="/services/plan/">PLAN</a></li>
-          <li><a href="/services/solve/">SOLVE</a></li>
-          <li><a href="/services/evolve/">EVOLVE</a></li>
-          <li><a href="/services/govern/">GOVERN</a></li>
-          <li><a href="/services/scale/">SCALE</a></li>
+          <li><a href="/services/frame/">Frame</a></li>
+          <li><a href="/services/plan/">Plan</a></li>
+          <li><a href="/services/solve/">Solve</a></li>
+          <li><a href="/services/evolve/">Evolve</a></li>
+          <li><a href="/services/govern/">Govern</a></li>
+          <li><a href="/services/scale/">Scale</a></li>
         </ul>
       </div>
       <div class="footer-col">

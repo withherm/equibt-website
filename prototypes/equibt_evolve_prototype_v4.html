@@ -4,31 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rapid Pilot | EVOLVE | Improve | EQUIBT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Montserrat:wght@600;700&family=Open+Sans:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="equibt-base.css">
   <style>
-  @font-face {
-    font-family: 'Montserrat';
-    src: url('../assets/fonts/montserrat-600-700-latin-ext.woff2') format('woff2');
-    font-weight: 600 700; font-style: normal; font-display: swap;
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  @font-face {
-    font-family: 'Montserrat';
-    src: url('../assets/fonts/montserrat-600-700-latin.woff2') format('woff2');
-    font-weight: 600 700; font-style: normal; font-display: swap;
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
 
-    :root {
+:root {
       color-scheme: light;
       --navy:            #26245C;
       --terracotta:      #C15F3C;
       --terracotta-dark: #A04E30;
-      --section-bg:      #F4F3EF;
+      --section-bg:      #F5F3EE;
       --white:           #FFFFFF;
       --near-black:      #2C2C2C;
       --off-white:       #F2F1ED;
-      --body-text:       #555;
+      --body-text:       #2C2C2C;
       --navy-wash:       #EEF0F8;
       --dark-slate:      #2C3E50;
       --warm-parchment:  #F2F1ED;
@@ -55,7 +46,7 @@
   .related-card-name, .deliverable-title,
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--section-bg); color: var(--near-black); -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--section-bg); color: var(--near-black); -webkit-font-smoothing: antialiased; }
 
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1); }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -63,12 +54,12 @@
     .reveal-d2 { transition-delay: 0.16s; }
     .reveal-d3 { transition-delay: 0.24s; }
 
-    .ref-nav { background: var(--navy); padding: 15px 48px; display: flex; align-items: center; position: sticky; top: 0; z-index: 10; transition: background 0.3s ease, backdrop-filter 0.3s ease; }
-    .ref-nav.scrolled { background: rgba(38,36,92,0.90); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    .ref-nav { background: var(--navy); padding: 15px 48px; display: flex; align-items: center; position: sticky; top: 0; z-index: 10; transition: background 0.3s ease; }
+    .ref-nav.scrolled { background: rgba(38,36,92,0.96); }
     .ref-logo { font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--off-white); }
     .ref-logo span { color: var(--terracotta); }
     .ref-nav-links { display: flex; align-items: center; gap: 32px; margin-left: auto; }
-    .ref-nav-link { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,243,238,0.65); text-decoration: none; transition: color 0.18s; }
+    .ref-nav-link { font-family: 'Open Sans', system-ui, sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0; text-transform: none; color: rgba(245,243,238,0.65); text-decoration: none; transition: color 0.18s; }
     .ref-nav-link:hover { color: var(--off-white); }
     .ref-nav-link.active { color: var(--off-white); }
     .ref-nav-cta { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--off-white); background: var(--terracotta); padding: 8px 18px; border-radius: 4px; text-decoration: none; margin-left: 16px; transition: background 0.18s; }
@@ -85,40 +76,40 @@
     .pillar-tag.govern         { background: var(--pill-govern); }
     .pillar-tag.scale { background: var(--pill-scale); }
 
-    .btn-primary { display: inline-flex; align-items: center; background: var(--navy); color: var(--off-white); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; border-radius: 6px; text-decoration: none; transition: background 0.18s, transform 0.15s; }
+    .btn-primary { display: inline-flex; align-items: center; background: var(--navy); color: var(--off-white); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 26px; border-radius: 6px; text-decoration: none; transition: background 0.18s, transform 0.15s; }
     .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
     .btn-secondary-light { color: rgba(255,255,255,0.65); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.18s, gap 0.18s; }
     .btn-secondary-light:hover { color: #ffffff; gap: 10px; }
     .btn-secondary-light svg { width: 14px; height: 14px; flex-shrink: 0; }
 
     .hero { background: var(--white); border-bottom: 1px solid rgba(38,36,92,0.07); padding: 80px 48px 88px; }
-    .hero-inner { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .hero-inner { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
     .hero-badge { margin-bottom: 24px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
     .hero-badge .pillar-tag { font-size: 10px; height: 26px; padding: 0 14px; }
     .hero-service-name { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
     .hero-h1 { font-size: 60px; font-weight: 600; color: var(--navy); line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 20px; }
     .hero-subhead { font-size: 18px; color: var(--body-text); line-height: 1.6; margin-bottom: 16px; max-width: 600px; }
     .hero-body { font-size: 15px; color: var(--body-text); line-height: 1.75; margin-bottom: 36px; max-width: 580px; }
-    .hero-actions { display: flex; align-items: center; gap: 24px; justify-content: center; flex-wrap: wrap; }
+    .hero-actions { display: flex; align-items: center; gap: 24px; justify-content: flex-start; flex-wrap: wrap; }
 
     .why-start { background: var(--warm-parchment); padding: 88px 48px; border-bottom: 1px solid rgba(38,36,92,0.06); }
     .why-start-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 45%; gap: 72px; align-items: start; }
-    .why-start-heading { font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 24px; max-width: 480px; }
+    .why-start-heading { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 24px; max-width: 480px; }
     .why-start-body p { font-size: 17px; color: var(--body-text); line-height: 1.75; margin-bottom: 16px; }
     .why-start-body p:last-child { margin-bottom: 0; }
 
     .why-rows { display: flex; flex-direction: column; }
     .why-row { display: grid; grid-template-columns: 1fr; gap: 0 32px; padding: 28px 0; border-bottom: 1px solid rgba(38,36,92,0.1); align-items: start; }
     .why-row:first-child { border-top: 1px solid rgba(38,36,92,0.1); }
-    .why-row-heading { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; color: var(--navy);  line-height: 1.3; margin-bottom: 6px; font-family: 'Montserrat', system-ui, sans-serif; }
+    .why-row-heading { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--navy);  line-height: 1.3; margin-bottom: 6px; font-family: 'Montserrat', system-ui, sans-serif; }
     .why-row-body { font-size: 15px; color: var(--body-text); line-height: 1.7; }
 
     .what-we-examine { background: var(--white); padding: 88px 48px; border-bottom: 1px solid rgba(38,36,92,0.06); }
     .what-we-examine-inner { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
-    .examine-heading { font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 44px; max-width: 480px; }
+    .examine-heading { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 44px; max-width: 480px; }
     .examine-grid { display: flex; flex-direction: column; gap: 0; width: fit-content; }
-    .examine-card { display: flex; flex-direction: row; align-items: center; gap: 28px; padding: 36px 0 36px 20px; border-left: 5px solid var(--pillar-accent); transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease; }
-    .examine-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.10); border-color: var(--terracotta); }
+    .examine-card { display: flex; flex-direction: row; align-items: center; gap: 28px; padding: 36px 0 36px 20px; border-left: none; transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease; }
+    .examine-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(38,36,92,0.18); border-color: var(--terracotta); }
     .examine-card:nth-child(1) { margin-left: 0; }
     .examine-card:nth-child(2) { margin-left: 72px; }
     .examine-card:nth-child(3) { margin-left: 144px; }
@@ -134,18 +125,18 @@
 
     .what-you-receive { background: var(--navy-wash); padding: 88px 48px; border-bottom: 1px solid rgba(38,36,92,0.06); }
     .what-you-receive-inner { max-width: 1120px; margin: 0 auto; }
-    .deliverables-heading { font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 44px; max-width: 480px; }
+    .deliverables-heading { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 44px; max-width: 480px; }
     .deliverables-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
     .deliverable-card-image { width: 100%; border-radius: 5px; overflow: hidden; margin-bottom: 4px; }
     .deliverable-card-image img { width: 100%; height: auto; display: block; }
     .deliverable-card { background: var(--white); border-radius: 8px; padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 2px 10px rgba(38,36,92,0.07), 0 1px 3px rgba(0,0,0,0.04); transition: transform 0.22s ease, box-shadow 0.22s ease; }
-    .deliverable-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.10); }
+    .deliverable-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(38,36,92,0.18); }
     .deliverable-title { font-size: 16px; font-weight: 700; color: var(--navy); line-height: 1.3; }
     .deliverable-body { font-size: 16px; color: var(--body-text); line-height: 1.75; }
 
     .case-studies { background: var(--white); padding: 80px 48px; border-bottom: 1px solid rgba(38,36,92,0.08); }
     .case-studies-inner { max-width: 1120px; margin: 0 auto; }
-    .case-studies-heading { font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 44px; max-width: 500px; }
+    .case-studies-heading { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 44px; max-width: 500px; }
     .case-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; align-items: start; }
     .case-problem-label,
     .case-approach-label,
@@ -160,8 +151,8 @@
     }
     .case-problem, .case-approach { margin-bottom: 20px; }
     .case-outcomes { border-top: 1px solid rgba(38,36,92,0.08); padding-top: 20px; margin-top: 4px; }
-    .case-card.light { background: #ffffff; border: 1px solid rgba(38,36,92,0.1); border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 14px; transition: transform 0.22s ease, box-shadow 0.22s ease; }
-    .case-card.light:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+    .case-card.light { background: #ffffff; border: none; border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 14px; transition: transform 0.22s ease, box-shadow 0.22s ease; }
+    .case-card.light:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(38,36,92,0.18); }
     .case-tags { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .case-sector { display: inline-flex; align-items: center; background: rgba(38,36,92,0.07); border: 1px solid rgba(38,36,92,0.12); color: var(--navy); font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; height: 22px; padding: 0 10px; border-radius: 100px; }
     .case-stat { font-size: 64px; font-weight: 700; color: var(--terracotta); line-height: 1; letter-spacing: -0.03em; font-family: 'Montserrat', system-ui, sans-serif; }
@@ -171,11 +162,11 @@
 
     .related-services { background: var(--section-bg); padding: 80px 48px; border-bottom: 1px solid rgba(38,36,92,0.08); }
     .related-services-inner { max-width: 1120px; margin: 0 auto; }
-    .related-heading { font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 12px; max-width: 520px; }
+    .related-heading { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 12px; max-width: 520px; }
     .related-subhead { font-size: 16px; color: var(--body-text); line-height: 1.75; margin-bottom: 44px; max-width: 560px; }
     .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .related-card { background: var(--white); border-radius: 8px; padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 12px; text-decoration: none; color: var(--near-black); box-shadow: 0 2px 10px rgba(38,36,92,0.08), 0 1px 3px rgba(0,0,0,0.04); transition: transform 0.22s ease, box-shadow 0.22s ease; }
-    .related-card:hover { box-shadow: 0 16px 40px rgba(0,0,0,0.10); transform: translateY(-4px); }
+    .related-card:hover { box-shadow: 0 16px 40px rgba(38,36,92,0.18); transform: translateY(-6px); }
     .related-card-name { font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.3; letter-spacing: -0.01em; }
     .related-card-descriptor { font-size: 16px; color: var(--body-text); line-height: 1.75; flex: 1; }
     .related-card-link { display: flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 700; color: var(--terracotta); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; transition: gap 0.18s ease, color 0.18s ease; }
@@ -244,13 +235,13 @@
       <span></span><span></span><span></span>
     </button>
     <div class="ref-nav-links">
-      <a href="/services/frame/" class="ref-nav-link">FRAME</a>
-      <a href="/services/plan/" class="ref-nav-link">PLAN</a>
-      <a href="/services/solve/" class="ref-nav-link">SOLVE</a>
-      <a href="/services/evolve/" class="ref-nav-link active">EVOLVE</a>
-      <a href="/services/govern/" class="ref-nav-link">GOVERN</a>
-      <a href="/services/scale/" class="ref-nav-link">SCALE</a>
-      <a href="/methodology/" class="ref-nav-link">METHODOLOGY</a>
+      <a href="/services/frame/" class="ref-nav-link">Frame</a>
+      <a href="/services/plan/" class="ref-nav-link">Plan</a>
+      <a href="/services/solve/" class="ref-nav-link">Solve</a>
+      <a href="/services/evolve/" class="ref-nav-link active">Evolve</a>
+      <a href="/services/govern/" class="ref-nav-link">Govern</a>
+      <a href="/services/scale/" class="ref-nav-link">Scale</a>
+      <a href="/methodology/" class="ref-nav-link">Methodology</a>
       <a href="#" class="ref-nav-cta">Let&rsquo;s talk</a>
     </div>
   </nav>
@@ -259,7 +250,7 @@
     <div class="hero-inner">
     <div class="hero-text">
       <div class="hero-badge">
-        <span class="pillar-tag evolve">EVOLVE</span>
+        <span class="pillar-tag evolve">Evolve</span>
         <span class="hero-service-name">DMAICO &nbsp;&middot;&nbsp; Improve | Rapid Pilot and Requirements Development</span>
       </div>
       <h1 class="hero-h1">Validate the future state<br>before you commit the full operation.</h1>
@@ -411,7 +402,7 @@
           <h3 class="deliverable-title">Implementation and Change Management Plan</h3>
           <p class="deliverable-body">A phased implementation plan with risk mitigation built in. Change management approach, communication plan, training needs analysis, and resistance management strategy. Designed to give the operation the best chance of adoption and sustainability.</p>
         </div>
-      
+
         <div class="deliverable-card reveal reveal-d3">
           <div class="deliverable-card-image">
             <img src="assets/deliverables/EVOLVE/EVOLVE-DEL-4-AUTH.jpg" alt="A4 document — Deployment Authorisation Brief" style="width:100%;height:auto;display:block;border-radius:4px;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -424,7 +415,7 @@
     </div>
   </section>
 
-  
+
 
   <section class="case-studies">
     <div class="case-studies-inner">
@@ -434,7 +425,7 @@
         <div class="case-card light reveal">
           <div class="case-tags">
             <span class="case-sector">Energy and Utilities</span>
-            <span class="pillar-tag evolve">EVOLVE</span>
+            <span class="pillar-tag evolve">Evolve</span>
           </div>
           <div class="case-problem">
             <p class="case-problem-label">Problem</p>
@@ -453,7 +444,7 @@
         <div class="case-card light reveal reveal-d1">
           <div class="case-tags">
             <span class="case-sector">Banking and Financial Services</span>
-            <span class="pillar-tag evolve">EVOLVE</span>
+            <span class="pillar-tag evolve">Evolve</span>
           </div>
           <div class="case-problem">
             <p class="case-problem-label">Problem</p>
@@ -490,28 +481,28 @@
           <line x1="500" y1="17" x2="500" y2="37" stroke="#C15F3C" stroke-width="1.5"/>
           <polygon points="500,43 496,35 504,35" fill="#C15F3C"/>
           <rect x="30" y="45" width="80" height="26" rx="13" fill="#ccc"/>
-          <text x="70" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#999">FRAME</text>
+          <text x="70" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#999">Frame</text>
           <rect x="176" y="45" width="68" height="26" rx="13" fill="#ccc"/>
-          <text x="210" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#999">PLAN</text>
+          <text x="210" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#999">Plan</text>
           <rect x="313" y="45" width="74" height="26" rx="13" fill="#0B6B82"/>
-          <text x="350" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F2F1ED">SOLVE</text>
+          <text x="350" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F2F1ED">Solve</text>
           <rect class="subway-pill active" x="460" y="45" width="80" height="26" rx="13" fill="#2D7A3A"/>
-          <text x="500" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F2F1ED">EVOLVE</text>
+          <text x="500" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F2F1ED">Evolve</text>
           <rect x="621" y="45" width="78" height="26" rx="13" fill="#7A3D00"/>
-          <text x="660" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F2F1ED">GOVERN</text>
+          <text x="660" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F2F1ED">Govern</text>
           <rect x="780" y="45" width="120" height="26" rx="13" fill="#ccc"/>
-          <text x="840" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#999">SCALE</text>
+          <text x="840" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#999">Scale</text>
         </svg>
       </div>
       <div class="related-grid">
         <a href="#" class="related-card reveal">
-          <div class="case-tags"><span class="pillar-tag solve">SOLVE</span></div>
+          <div class="case-tags"><span class="pillar-tag solve">Solve</span></div>
           <p class="related-card-name">Root Cause Analysis and Solution Design</p>
           <p class="related-card-descriptor">EVOLVE begins where SOLVE ends. The designed future state comes from SOLVE - root cause analysis, future state design, cost-benefit analysis. No designed solution? SOLVE is the right starting point.</p>
           <span class="related-card-link">Learn more <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
         <a href="#" class="related-card reveal reveal-d1">
-          <div class="case-tags"><span class="pillar-tag govern">GOVERN</span></div>
+          <div class="case-tags"><span class="pillar-tag govern">Govern</span></div>
           <p class="related-card-name">AI Governance and Process Compliance</p>
           <p class="related-card-descriptor">Once the pilot validates and requirements are developed, GOVERN builds the control infrastructure that keeps the improved operation running to standard.</p>
           <span class="related-card-link">Learn more <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -547,7 +538,7 @@
   </section>
 
   <script>
-    
+
     // Mobile nav toggle
     const burger = document.getElementById('nav-hamburger');
     const navLinks = document.querySelector('.ref-nav-links');
@@ -576,12 +567,12 @@
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
-          <li><a href="/services/frame/">FRAME</a></li>
-          <li><a href="/services/plan/">PLAN</a></li>
-          <li><a href="/services/solve/">SOLVE</a></li>
-          <li><a href="/services/evolve/">EVOLVE</a></li>
-          <li><a href="/services/govern/">GOVERN</a></li>
-          <li><a href="/services/scale/">SCALE</a></li>
+          <li><a href="/services/frame/">Frame</a></li>
+          <li><a href="/services/plan/">Plan</a></li>
+          <li><a href="/services/solve/">Solve</a></li>
+          <li><a href="/services/evolve/">Evolve</a></li>
+          <li><a href="/services/govern/">Govern</a></li>
+          <li><a href="/services/scale/">Scale</a></li>
         </ul>
       </div>
       <div class="footer-col">

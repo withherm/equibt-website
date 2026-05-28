@@ -4,28 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EQUIBT | Operational Capability Advisory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Montserrat:wght@600;700&family=Open+Sans:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="equibt-base.css">
 <style>
-  @font-face {
-    font-family: 'Montserrat';
-    src: url('../assets/fonts/montserrat-600-700-latin-ext.woff2') format('woff2');
-    font-weight: 600 700; font-style: normal; font-display: swap;
-  }
-  @font-face {
-    font-family: 'Montserrat';
-    src: url('../assets/fonts/montserrat-600-700-latin.woff2') format('woff2');
-    font-weight: 600 700; font-style: normal; font-display: swap;
-  }
 
-  :root {
+:root {
     --navy: #26245C;
     --terracotta: #C15F3C;
     --terracotta-dark: #A04E30;
     --off-white: #F2F1ED;
     --warm-parchment: #F2F1ED;
-    --section-bg: #F7F7F7;
-    --body-text: #555555;
-    --near-black: #111111;
+    --section-bg: #F5F3EE;
+    --body-text: #2C2C2C;
+    --near-black: #2C2C2C;
     --white: #FFFFFF;
     --border: rgba(0,0,0,0.08);
     --navy-border: rgba(38,36,92,0.1);
@@ -41,7 +34,7 @@
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; color: var(--body-text); background: #fff; -webkit-font-smoothing: antialiased; }
+  body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; color: var(--body-text); background: var(--section-bg); -webkit-font-smoothing: antialiased; }
 
   /* REVEAL */
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
@@ -53,13 +46,13 @@
   .reveal-d5 { transition-delay: 0.40s; }
 
   /* NAV */
-  .navbar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; transition: background 0.3s, backdrop-filter 0.3s; }
-  .navbar.scrolled { background: rgba(255,255,255,0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+  .navbar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; transition: background 0.3s; }
+  .navbar.scrolled { background: rgba(255,255,255,0.96); }
   .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; height: 64px; }
   .nav-logo { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 15px; color: var(--navy); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; }
   .nav-logo span { color: var(--terracotta); }
   .nav-links { display: flex; align-items: center; gap: 32px; margin-left: auto; }
-  .nav-link { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(38,36,92,0.5); text-decoration: none; transition: color 0.18s; }
+  .nav-link { font-family: 'Open Sans', system-ui, sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0; text-transform: none; color: rgba(38,36,92,0.5); text-decoration: none; transition: color 0.18s; }
   .nav-link:hover { color: var(--navy); }
   .nav-cta { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 11px; background: var(--navy); color: #fff; padding: 9px 20px; border-radius: 3px; text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; margin-left: 16px; transition: background 0.18s; }
   .nav-cta:hover { background: var(--terracotta); }
@@ -107,7 +100,7 @@
   .method-section { background: var(--off-white); padding: 112px 48px; border-bottom: 1px solid var(--border); }
   .method-inner { max-width: 1280px; margin: 0 auto; }
   .method-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-bottom: 80px; align-items: end; }
-  .method-header h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--near-black); letter-spacing: -0.03em; line-height: 1.06; }
+  .method-header h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 36px; font-weight: 700; letter-spacing: -0.02em; color: var(--near-black); letter-spacing: -0.03em; line-height: 1.06; }
   .method-header-right { padding-bottom: 8px; }
   .method-header-right p { font-size: 17px; color: var(--body-text); line-height: 1.7; }
 
@@ -121,14 +114,14 @@
   .method-phase-tag.scale { background: var(--pill-scale); }
 
   /* Pillar grid — 3x2 connected card layout */
-  .method-pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(38,36,92,0.08); border: 1px solid rgba(38,36,92,0.08); margin-top: 64px; }
+  .method-pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(38,36,92,0.08); border: none; margin-top: 64px; }
   .method-pillar { background: var(--off-white); padding: 40px 36px 44px; position: relative; overflow: hidden; }
-  .method-pillar.pillar-frame          { border-top: 3px solid var(--pill-frame); }
-  .method-pillar.pillar-plan           { border-top: 3px solid var(--pill-plan); }
-  .method-pillar.pillar-solve          { border-top: 3px solid var(--pill-solve); }
-  .method-pillar.pillar-evolve         { border-top: 3px solid var(--pill-evolve); }
-  .method-pillar.pillar-govern         { border-top: 3px solid var(--pill-govern); }
-  .method-pillar.pillar-scale { border-top: 3px solid var(--pill-scale); }
+  .method-pillar.pillar-frame          { border-top: none; }
+  .method-pillar.pillar-plan           { border-top: none; }
+  .method-pillar.pillar-solve          { border-top: none; }
+  .method-pillar.pillar-evolve         { border-top: none; }
+  .method-pillar.pillar-govern         { border-top: none; }
+  .method-pillar.pillar-scale { border-top: none; }
   .method-pillar-num { font-family: 'Montserrat', system-ui, sans-serif; font-size: 88px; font-weight: 700; color: rgba(38,36,92,0.045); line-height: 1; position: absolute; top: 18px; right: 20px; letter-spacing: -0.04em; user-select: none; pointer-events: none; }
   .method-pillar-name { font-family: 'Montserrat', system-ui, sans-serif; font-size: 19px; font-weight: 600; color: var(--navy); letter-spacing: -0.01em; margin-top: 12px; margin-bottom: 12px; line-height: 1.2; }
   .method-pillar-desc { font-size: 14px; color: var(--body-text); line-height: 1.75; margin-bottom: 20px; }
@@ -144,7 +137,7 @@
   .evidence-section { background: var(--white); padding: 112px 48px; border-bottom: 1px solid var(--border); }
   .evidence-inner { max-width: 1280px; margin: 0 auto; }
   .evidence-header { margin-bottom: 72px; }
-  .evidence-header h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--near-black); letter-spacing: -0.03em; line-height: 1.06; }
+  .evidence-header h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 36px; font-weight: 700; letter-spacing: -0.02em; color: var(--near-black); letter-spacing: -0.03em; line-height: 1.06; }
   .section-label { display: flex; align-items: center; gap: 10px; font-family: 'Montserrat', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 20px; }
   .section-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--terracotta); flex-shrink: 0; }
   /* Evidence as editorial two-column rows */
@@ -178,7 +171,7 @@
   .social-proof-section { background: var(--white); padding: 72px 48px; border-bottom: 1px solid var(--border); }
   .social-proof-inner { max-width: 1280px; margin: 0 auto; }
   .social-proof-label { font-family: 'Montserrat', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.20em; text-transform: uppercase; color: rgba(38,36,92,0.32); text-align: center; margin-bottom: 40px; }
-  .logo-row { display: flex; gap: 20px; align-items: stretch; justify-content: center; flex-wrap: wrap; }
+  .logo-row { display: flex; gap: 20px; align-items: stretch; justify-content: flex-start; flex-wrap: wrap; }
   .logo-block { border: 1px solid rgba(38,36,92,0.10); border-radius: 3px; padding: 0 28px; height: 68px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-width: 130px; background: var(--white); transition: border-color 0.2s; }
   .logo-block:hover { border-color: rgba(38,36,92,0.22); }
   .logo-block svg { display: block; opacity: 0.48; }
@@ -190,7 +183,7 @@
   .industries-section { background: var(--white); padding: 112px 48px; border-bottom: 1px solid var(--border); }
   .industries-inner { max-width: 1280px; margin: 0 auto; }
   .industries-header { margin-bottom: 72px; }
-  .industries-header h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--near-black); letter-spacing: -0.03em; line-height: 1.06; }
+  .industries-header h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 36px; font-weight: 700; letter-spacing: -0.02em; color: var(--near-black); letter-spacing: -0.03em; line-height: 1.06; }
   .industries-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 80px; }
   .industry-card { display: flex; flex-direction: column; }
   .industry-visual { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(38,36,92,0.07); }
@@ -204,7 +197,7 @@
   .cta-section { background: var(--off-white); padding: 120px 48px; border-top: 1px solid var(--border); }
   .cta-inner { max-width: 800px; margin: 0 auto; text-align: center; }
   .cta-label { font-family: 'Montserrat', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; color: var(--terracotta); text-transform: uppercase; margin-bottom: 28px; }
-  .cta-inner h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--near-black); letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 20px; }
+  .cta-inner h2 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 36px; font-weight: 700; letter-spacing: -0.02em; color: var(--near-black); letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 20px; }
   .cta-inner p { font-size: 17px; color: var(--body-text); line-height: 1.65; margin-bottom: 44px; max-width: 520px; margin-left: auto; margin-right: auto; }
   .btn-cta { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 12px; background: var(--navy); color: #fff; padding: 16px 36px; border-radius: 3px; text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; display: inline-block; transition: background 0.18s, transform 0.15s; }
   .btn-cta:hover { background: var(--terracotta); transform: translateY(-1px); }
@@ -411,7 +404,7 @@
       <!-- 01 FRAME -->
       <div class="method-pillar pillar-frame reveal">
         <div class="method-pillar-num">01</div>
-        <span class="method-phase-tag frame">FRAME</span>
+        <span class="method-phase-tag frame">Frame</span>
         <div class="method-pillar-name">Problem Framing</div>
         <p class="method-pillar-desc">Align stakeholders on the real problem before committing resources. The right answer to the wrong problem wastes everything that follows.</p>
         <div class="method-pillar-delivers">
@@ -424,7 +417,7 @@
       <!-- 02 PLAN -->
       <div class="method-pillar pillar-plan reveal reveal-d1">
         <div class="method-pillar-num">02</div>
-        <span class="method-phase-tag plan">PLAN</span>
+        <span class="method-phase-tag plan">Plan</span>
         <div class="method-pillar-name">Operations Diagnostic</div>
         <p class="method-pillar-desc">Establish the evidence base before any intervention. Process health, capability readiness, and measurement system assessment replace instinct with data.</p>
         <div class="method-pillar-delivers">
@@ -437,7 +430,7 @@
       <!-- 03 SOLVE -->
       <div class="method-pillar pillar-solve reveal reveal-d2">
         <div class="method-pillar-num">03</div>
-        <span class="method-phase-tag solve">SOLVE</span>
+        <span class="method-phase-tag solve">Solve</span>
         <div class="method-pillar-name">Iterative Improvement</div>
         <p class="method-pillar-desc">Move from symptoms to verified causes. Design a costed future state that resolves root drivers, not visible effects. Evidence, not assumption.</p>
         <div class="method-pillar-delivers">
@@ -450,7 +443,7 @@
       <!-- 04 EVOLVE -->
       <div class="method-pillar pillar-evolve reveal reveal-d1">
         <div class="method-pillar-num">04</div>
-        <span class="method-phase-tag evolve">EVOLVE</span>
+        <span class="method-phase-tag evolve">Evolve</span>
         <div class="method-pillar-name">Rapid Pilot</div>
         <p class="method-pillar-desc">Validate the solution before committing the full operation. Real data, real metrics, real conditions. Prevents expensive rollouts that work in theory but fail at scale.</p>
         <div class="method-pillar-delivers">
@@ -463,7 +456,7 @@
       <!-- 05 GOVERN -->
       <div class="method-pillar pillar-govern reveal reveal-d2">
         <div class="method-pillar-num">05</div>
-        <span class="method-phase-tag govern">GOVERN</span>
+        <span class="method-phase-tag govern">Govern</span>
         <div class="method-pillar-name">Architecture &amp; Governance</div>
         <p class="method-pillar-desc">Build the control infrastructure that prevents drift. Process architecture, control plans, and monitoring systems that keep performance locked in after we leave.</p>
         <div class="method-pillar-delivers">
@@ -476,7 +469,7 @@
       <!-- 06 SCALE -->
       <div class="method-pillar pillar-scale reveal reveal-d3">
         <div class="method-pillar-num">06</div>
-        <span class="method-phase-tag scale">SCALE</span>
+        <span class="method-phase-tag scale">Scale</span>
         <div class="method-pillar-name">Operational Embedding</div>
         <p class="method-pillar-desc">Scale the proven, governed solution across the full operation. Standardisation, capability transfer, and performance monitoring at full load. Your team owns what we built.</p>
         <div class="method-pillar-delivers">
@@ -842,12 +835,12 @@
     <div class="footer-col">
       <h4>Services</h4>
       <ul>
-        <li><a href="/services/frame/">FRAME</a></li>
-        <li><a href="/services/plan/">PLAN</a></li>
-        <li><a href="/services/solve/">SOLVE</a></li>
-        <li><a href="/services/evolve/">EVOLVE</a></li>
-        <li><a href="/services/govern/">GOVERN</a></li>
-        <li><a href="/services/scale/">SCALE</a></li>
+        <li><a href="/services/frame/">Frame</a></li>
+        <li><a href="/services/plan/">Plan</a></li>
+        <li><a href="/services/solve/">Solve</a></li>
+        <li><a href="/services/evolve/">Evolve</a></li>
+        <li><a href="/services/govern/">Govern</a></li>
+        <li><a href="/services/scale/">Scale</a></li>
       </ul>
     </div>
     <div class="footer-col">
