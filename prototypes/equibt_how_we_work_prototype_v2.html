@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How We Work | EQUIBT Engagement Model</title>
+  <link rel="stylesheet" href="equibt-base.css">
   <style>
   @font-face {
     font-family: 'Montserrat';
@@ -27,13 +28,13 @@
     --navy:            #26245C;
     --terracotta:      #C15F3C;
     --terracotta-dark: #A04E30;
-    --section-bg:      #F5F5F5;
+    --section-bg:      #F4F3EF;
     --white:           #FFFFFF;
     --near-black:      #2C2C2C;
-    --off-white:       #F5F3EE;
+    --off-white:       #F2F1ED;
     --body-text:       #555;
-    --dark-slate:      #1A1A1A;
-    --warm-parchment:  #F5EBD9;
+    --dark-slate:      #2C3E50;
+    --warm-parchment:  #F2F1ED;
     --pill-frame:           #8B2252;
     --pill-plan:            #26245C;
     --pill-solve:           #0B6B82;
@@ -50,7 +51,6 @@
   .ref-logo, .cta-button, .section-label,
   .phase-title, .phase-covers-label, .resp-col-header,
   .ai-item-title, .pillar-tag,
-  .why-row-num, .why-row-heading { font-family: 'Montserrat', system-ui, sans-serif; }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -125,12 +125,12 @@
   .cta-button:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
 
   .btn-secondary-light {
-    color: rgba(255,255,255,0.65);
+    color: rgba(38,36,92,0.55);
     font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
     text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
     transition: color 0.18s, gap 0.18s;
   }
-  .btn-secondary-light:hover { color: #ffffff; gap: 10px; }
+  .btn-secondary-light:hover { color: var(--navy); gap: 10px; }
 
   /* Two-col layout */
   .two-col-inner {
@@ -155,36 +155,37 @@
   /* Why rows */
   .why-rows { display: flex; flex-direction: column; }
   .why-row {
-    display: grid; grid-template-columns: 64px 1fr; gap: 0 32px;
+    display: grid; grid-template-columns: 1fr; gap: 0 32px;
     padding: 28px 0; border-bottom: 1px solid rgba(38,36,92,0.1); align-items: start;
   }
   .why-row:first-child { border-top: 1px solid rgba(38,36,92,0.1); }
-  .why-row-num { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: var(--terracotta); padding-top: 4px; }
   .why-row-heading { font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 6px; }
   .why-row-body { font-size: 15px; color: var(--body-text); line-height: 1.7; }
 
   /* ════════════════════════════════════════
      1. HERO — navy centred
   ════════════════════════════════════════ */
-  .hero { background: var(--navy); padding: 80px 48px 88px; }
+  .hero { background: var(--white); border-bottom: 1px solid rgba(38,36,92,0.07); padding: 80px 48px 88px; }
   .hero-inner {
-    max-width: 720px; margin: 0 auto;
-    display: flex; flex-direction: column; align-items: center; text-align: center;
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 400px; gap: 80px; align-items: center; text-align: left;
   }
+  .hero-visual { display: flex; align-items: center; justify-content: flex-end; }
+  .hero-visual svg { width: 100%; max-width: 400px; height: auto; }
   .hero-h1 {
-    font-size: 64px; font-weight: 700; color: #ffffff;
-    line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 20px;
+    font-size: 60px; font-weight: 600; color: var(--navy);
+    line-height: 1.06; letter-spacing: -0.03em; margin-bottom: 20px;
   }
   .hero-subhead {
-    font-size: 20px; color: var(--text-light);
-    line-height: 1.6; margin-bottom: 16px; max-width: 600px;
+    font-size: 18px; color: var(--body-text);
+    line-height: 1.6; margin-bottom: 16px;
   }
   .hero-body {
-    font-size: 16px; color: var(--text-faint);
-    line-height: 1.75; margin-bottom: 36px; max-width: 580px;
+    font-size: 15px; color: var(--body-text);
+    line-height: 1.75; margin-bottom: 36px;
   }
   .hero-actions {
-    display: flex; align-items: center; gap: 24px; justify-content: center; flex-wrap: wrap;
+    display: flex; align-items: center; gap: 24px; justify-content: flex-start; flex-wrap: wrap;
   }
 
   /* ════════════════════════════════════════
@@ -196,11 +197,11 @@
     border-bottom: 1px solid rgba(38,36,92,0.06);
   }
   .before-commit-heading {
-    font-size: 46px; font-weight: 700; color: var(--navy);
+    font-size: 44px; font-weight: 500; color: var(--navy);
     line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 24px;
   }
   .before-commit-body p {
-    font-size: 16px; color: var(--body-text); line-height: 1.8; margin-bottom: 16px;
+    font-size: 17px; color: var(--body-text); line-height: 1.75; margin-bottom: 16px;
   }
   .before-commit-body p:last-child { margin-bottom: 0; }
 
@@ -214,7 +215,7 @@
   }
   .dmaico-inner { max-width: 1120px; margin: 0 auto; }
   .dmaico-heading {
-    font-size: 46px; font-weight: 700; color: var(--navy);
+    font-size: 44px; font-weight: 500; color: var(--navy);
     line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 12px;
   }
   .dmaico-intro {
@@ -279,7 +280,7 @@
   }
   .responsibilities-inner { max-width: 1120px; margin: 0 auto; }
   .responsibilities-heading {
-    font-size: 46px; font-weight: 700; color: var(--navy);
+    font-size: 44px; font-weight: 500; color: var(--navy);
     line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 40px;
   }
   .resp-split-card {
@@ -301,7 +302,7 @@
   .resp-col:first-child .resp-col-items { border-right: 1px solid rgba(38,36,92,0.08); }
   .resp-note {
     max-width: 720px; margin-top: 32px;
-    font-size: 15px; color: var(--body-text); line-height: 1.75;
+    font-size: 17px; color: var(--body-text); line-height: 1.75;
   }
 
   /* ════════════════════════════════════════
@@ -313,11 +314,11 @@
     border-bottom: 1px solid rgba(38,36,92,0.06);
   }
   .ai-section-heading {
-    font-size: 46px; font-weight: 700; color: var(--navy);
+    font-size: 44px; font-weight: 500; color: var(--navy);
     line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 24px;
   }
   .ai-body p {
-    font-size: 16px; color: var(--body-text); line-height: 1.8; margin-bottom: 16px;
+    font-size: 17px; color: var(--body-text); line-height: 1.75; margin-bottom: 16px;
   }
   .ai-body p:last-child { margin-bottom: 0; }
   .ai-lmi-note {
@@ -347,7 +348,7 @@
     border-bottom: 1px solid rgba(38,36,92,0.06);
   }
   .why-equibt-heading {
-    font-size: 46px; font-weight: 700; color: var(--navy);
+    font-size: 44px; font-weight: 500; color: var(--navy);
     line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 24px;
   }
   .why-equibt-body {
@@ -363,7 +364,7 @@
     display: grid; grid-template-columns: 1fr 340px; gap: 64px; align-items: center;
   }
   .cta-heading {
-    font-size: 46px; font-weight: 700; color: var(--off-white);
+    font-size: 44px; font-weight: 500; color: var(--off-white);
     line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 20px;
   }
   .cta-body {
@@ -420,44 +421,10 @@
     .ai-section-heading, .why-equibt-heading, .cta-heading { font-size: 30px; }
     .phase-list { padding-left: 32px; }
     .phase-row::before { left: -40px; }
-    .why-row { grid-template-columns: 40px 1fr; gap: 0 16px; }
+    .why-row { grid-template-columns: 1fr; gap: 0; }
     .ref-nav-links { display: none; }
   }
 
-  /* === v2 patch: footer + mobile nav + why-row fixes === */
-  footer { background: var(--white); padding: 80px 48px 48px; border-top: 1px solid rgba(38,36,92,0.08); }
-  .footer-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 200px 1fr 1fr 1fr; gap: 64px; margin-bottom: 56px; }
-  .footer-logo { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 14px; color: var(--navy); letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; display: block; margin-bottom: 12px; }
-  .footer-logo span { color: var(--terracotta); }
-  .footer-tagline { font-size: 12px; color: var(--body-text); line-height: 1.65; max-width: 180px; }
-  .footer-col h4 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(38,36,92,0.35); margin-bottom: 16px; }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .footer-col ul li a { font-size: 13px; color: var(--body-text); text-decoration: none; transition: color 0.18s; }
-  .footer-col ul li a:hover { color: var(--navy); }
-  .footer-bottom { max-width: 1120px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(38,36,92,0.08); display: flex; justify-content: space-between; align-items: center; }
-  .footer-copy { font-size: 12px; color: #bbb; }
-  .footer-legal { display: flex; gap: 24px; }
-  .footer-legal a { font-size: 12px; color: #bbb; text-decoration: none; transition: color 0.18s; }
-  .footer-legal a:hover { color: var(--navy); }
-  .nav-hamburger { display: none; background: none; border: none; padding: 6px; cursor: pointer; flex-direction: column; gap: 5px; align-items: center; margin-left: auto; }
-  .nav-hamburger span { display: block; width: 22px; height: 2px; background: rgba(245,243,238,0.85); border-radius: 2px; }
-  @media (max-width: 768px) {
-    .ref-nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); padding: 16px 24px 24px; gap: 14px; z-index: 9; }
-    .ref-nav-links.is-open { display: flex; }
-    .ref-nav-cta { margin-left: 0; align-self: flex-start; }
-    .nav-hamburger { display: flex; }
-    footer { padding: 56px 24px 40px; }
-    .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-    .footer-brand { grid-column: 1 / -1; }
-    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-  }
-  @media (max-width: 480px) {
-    .footer-inner { grid-template-columns: 1fr; }
-  }
-  /* Why-row editorial style */
-  .why-row-num { display: none !important; }
-  .why-row { grid-template-columns: 1fr !important; gap: 0 !important; }
-  .why-row-heading { font-size: 26px !important; font-weight: 500 !important; letter-spacing: -0.02em !important; }
   </style>
 </head>
 <body>
@@ -483,6 +450,7 @@
   <!-- 1. HERO -->
   <section class="hero">
     <div class="hero-inner">
+    <div class="hero-text">
       <div class="section-label reveal">How We Work</div>
       <h1 class="hero-h1 reveal reveal-d1">An engagement with EQUIBT has a defined start, defined phases, and a defined exit.</h1>
       <p class="hero-subhead reveal reveal-d2">Before you commit to anything, you will know exactly what you are committing to, what each phase covers, what we deliver, what you are responsible for, and what the exit looks like.</p>
@@ -494,6 +462,40 @@
         </a>
       </div>
     </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="20" y1="192" x2="420" y2="192" stroke="#26245C" stroke-width="0.5" stroke-dasharray="2 10" opacity="0.05"/>
+        <path d="M 220 45 L 108 95 L 220 118 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 220 45 L 220 118 L 332 95 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 108 95 L 45 192 L 152 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 108 95 L 152 155 L 220 118 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 332 95 L 220 118 L 288 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 332 95 L 288 155 L 395 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 45 192 L 220 192 L 152 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 152 155 L 220 192 L 288 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 288 155 L 220 192 L 395 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 220 118 L 152 155 L 288 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 45 192 L 152 245 L 220 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 220 192 L 152 245 L 288 245 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 220 192 L 288 245 L 395 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 45 192 L 98 285 L 152 245 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 152 245 L 98 285 L 220 345 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 152 245 L 220 345 L 288 245 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 288 245 L 220 345 L 342 285 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 288 245 L 342 285 L 395 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <circle cx="220" cy="45" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="45" cy="192" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="395" cy="192" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="220" cy="345" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="108" cy="95" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="332" cy="95" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="98" cy="285" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="342" cy="285" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="220" cy="192" r="10" fill="#C15F3C"/>
+        <text x="220" y="374" font-family="system-ui,-apple-system,sans-serif" font-size="8" font-weight="600" letter-spacing="0.14em" fill="#C15F3C" text-anchor="middle" opacity="0.52">DEFINED ENGAGEMENT MODEL</text>
+      </svg>
+    </div>
+  </div>
   </section>
 
   <!-- 2. BEFORE YOU COMMIT -->
@@ -512,21 +514,18 @@
         <div class="section-label">Why EQUIBT?</div>
         <div class="why-rows">
           <div class="why-row">
-            <div class="why-row-num">01</div>
             <div>
               <div class="why-row-heading">No proposal without a scoping conversation.</div>
               <div class="why-row-body">We do not send unsolicited proposals. We scope first, propose second. The proposal reflects a real conversation about your actual situation.</div>
             </div>
           </div>
           <div class="why-row">
-            <div class="why-row-num">02</div>
             <div>
               <div class="why-row-heading">Fixed price, defined scope.</div>
               <div class="why-row-body">EQUIBT engagements are priced on scope, not on hours. You know the cost before the engagement begins. Scope changes are discussed before they affect the price.</div>
             </div>
           </div>
           <div class="why-row">
-            <div class="why-row-num">03</div>
             <div>
               <div class="why-row-heading">No engagement that is not a fit.</div>
               <div class="why-row-body">If the problem is not one we can help with, we will tell you in the discovery conversation. We do not take on engagements we cannot deliver.</div>
@@ -697,24 +696,20 @@
         <p class="why-equibt-body">Larger firms have scale. EQUIBT has focus. The person who scopes your engagement leads your engagement. The methodology was built for the problem of sustainment, not just delivery. And the scope is fixed before work begins, not after.</p>
       </div>
       <div class="why-equibt-right reveal reveal-d1">
-        <div class="section-label">Why EQUIBT?</div>
         <div class="why-rows">
           <div class="why-row">
-            <div class="why-row-num">01</div>
             <div>
               <div class="why-row-heading">Defined scope, not open-ended retainer.</div>
               <div class="why-row-body">Every phase has defined deliverables and exit criteria. You know what you are committing to before the engagement begins. We do not scope engagements designed to perpetuate themselves.</div>
             </div>
           </div>
           <div class="why-row">
-            <div class="why-row-num">02</div>
             <div>
               <div class="why-row-heading">Client capability at exit, not consultant dependency.</div>
               <div class="why-row-body">The test of a successful engagement is what your team can do when we leave. We transfer capability at every phase. Governance and process ownership belong to your organisation before we close.</div>
             </div>
           </div>
           <div class="why-row">
-            <div class="why-row-num">03</div>
             <div>
               <div class="why-row-heading">Integrated AI, not AI as an afterthought.</div>
               <div class="why-row-body">AI opportunity identification and governance are built into the DMAICO engagement model, not added as a separate workstream after the fact. We identify what is automatable, build the governance for it, and train your team to run it.</div>

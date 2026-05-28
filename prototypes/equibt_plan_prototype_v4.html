@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Operations Diagnostic | PLAN | Measure | EQUIBT</title>
+  <link rel="stylesheet" href="equibt-base.css">
   <style>
   @font-face {
     font-family: 'Montserrat';
@@ -27,14 +28,14 @@
       --navy:            #26245C;
       --terracotta:      #C15F3C;
       --terracotta-dark: #A04E30;
-      --section-bg:      #F5F5F5;
+      --section-bg:      #F4F3EF;
       --white:           #FFFFFF;
       --near-black:      #2C2C2C;
-      --off-white:       #F5F3EE;
+      --off-white:       #F2F1ED;
       --body-text:       #555;
       --navy-wash:       #EEF0F8;
       --dark-slate:      #2C3E50;
-      --warm-parchment:  #F5EBD9;
+      --warm-parchment:  #F2F1ED;
       /* 6-pillar colour tokens */
       --pill-frame:           #8B2252;
       --pill-plan:            #26245C;
@@ -58,7 +59,6 @@
   .ref-logo, .btn-primary, .cta-button, .pillar-tag, .case-stat,
   .hero-service-name, .section-label, .examine-card-number,
   .related-card-name, .deliverable-title,
-  .why-row-num, .why-row-heading { font-family: 'Montserrat', system-ui, sans-serif; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -138,7 +138,7 @@
       max-width: 1120px; margin: 0 auto;
     }
     .section-heading {
-      font-size: 46px; font-weight: 700; color: var(--navy);
+      font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy);
       line-height: 1.1; letter-spacing: -0.025em;
     }
     .section-heading.light { color: #ffffff; }
@@ -161,9 +161,9 @@
     /* CTA buttons */
     .btn-primary {
       display: inline-flex; align-items: center;
-      background: var(--terracotta); color: var(--off-white);
+      background: var(--navy); color: var(--off-white);
       font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 14px 28px; border-radius: 3px; text-decoration: none;
+      padding: 14px 28px; border-radius: 6px; text-decoration: none;
       transition: background 0.18s, transform 0.15s;
     }
     .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
@@ -180,7 +180,7 @@
        1. HERO — navy full-bleed centred
     ════════════════════════════════════════ */
     .hero {
-      background: var(--navy);
+      background: var(--white); border-bottom: 1px solid rgba(38,36,92,0.07);
       padding: 80px 48px 88px;
     }
     .hero-inner {
@@ -194,15 +194,15 @@
       text-transform: uppercase; color: rgba(255,255,255,0.55);
     }
     .hero-h1 {
-      font-size: 64px; font-weight: 700; color: #ffffff;
+      font-size: 60px; font-weight: 600; color: var(--navy);
       line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 20px;
     }
     .hero-subhead {
-      font-size: 20px; color: var(--text-light);
+      font-size: 18px; color: var(--body-text);
       line-height: 1.6; margin-bottom: 16px; max-width: 600px;
     }
     .hero-body {
-      font-size: 16px; color: var(--text-faint);
+      font-size: 15px; color: var(--body-text);
       line-height: 1.75; margin-bottom: 36px; max-width: 580px;
     }
     .hero-actions {
@@ -225,12 +225,12 @@
       align-items: start;
     }
     .why-start-heading {
-      font-size: 46px; font-weight: 700; color: var(--navy);
+      font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy);
       line-height: 1.1; letter-spacing: -0.025em;
       margin-bottom: 24px; max-width: 480px;
     }
     .why-start-body p {
-      font-size: 16px; color: var(--body-text);
+      font-size: 17px; color: var(--body-text);
       line-height: 1.75; margin-bottom: 16px;
     }
     .why-start-body p:last-child { margin-bottom: 0; }
@@ -238,17 +238,13 @@
     /* Why rows — replaces proof-statement cards */
     .why-rows { display: flex; flex-direction: column; }
     .why-row {
-      display: grid; grid-template-columns: 64px 1fr; gap: 0 32px;
+      display: grid; grid-template-columns: 1fr; gap: 0 32px;
       padding: 28px 0; border-bottom: 1px solid rgba(38,36,92,0.1); align-items: start;
     }
     .why-row:first-child { border-top: 1px solid rgba(38,36,92,0.1); }
-    .why-row-num {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
-      color: var(--terracotta); font-family: 'Montserrat', system-ui, sans-serif; padding-top: 4px;
-    }
     .why-row-heading {
-      font-size: 20px; font-weight: 700; color: var(--navy);
-      letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 6px;
+      font-size: 26px; font-weight: 600; letter-spacing: -0.02em; color: var(--navy);
+       line-height: 1.3; margin-bottom: 6px;
       font-family: 'Montserrat', system-ui, sans-serif;
     }
     .why-row-body { font-size: 15px; color: var(--body-text); line-height: 1.7; }
@@ -266,7 +262,7 @@
       display: flex; flex-direction: column; align-items: center;
     }
     .examine-heading {
-      font-size: 46px; font-weight: 700; color: var(--navy);
+      font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy);
       line-height: 1.1; letter-spacing: -0.025em;
       margin-bottom: 44px; max-width: 480px;
     }
@@ -300,7 +296,7 @@
       line-height: 1.3; letter-spacing: -0.01em;
     }
     .examine-card-body {
-      font-size: 16px; color: var(--body-text);
+      font-size: 17px; color: var(--body-text);
       line-height: 1.75; max-width: 480px;
     }
     .examine-card-image {
@@ -325,7 +321,7 @@
     }
     .what-you-receive-inner { max-width: 1120px; margin: 0 auto; }
     .deliverables-heading {
-      font-size: 46px; font-weight: 700; color: var(--navy);
+      font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy);
       line-height: 1.1; letter-spacing: -0.025em;
       margin-bottom: 44px; max-width: 480px;
     }
@@ -368,7 +364,7 @@
     }
     .case-studies-inner { max-width: 1120px; margin: 0 auto; }
     .case-studies-heading {
-      font-size: 46px; font-weight: 700; color: var(--navy);
+      font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy);
       line-height: 1.1; letter-spacing: -0.025em;
       margin-bottom: 44px; max-width: 500px;
     }
@@ -379,17 +375,19 @@
       align-items: start;
     }
     /* Navy card */
-    .case-card.navy {
-      background: var(--navy); border: none; border-radius: 4px; padding: 40px;
-      display: flex; flex-direction: column; gap: 14px;
-      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    .case-problem-label,
+    .case-approach-label,
+    .case-outcomes-label {
+      font-family: 'Montserrat', system-ui, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 8px;
     }
-    .case-card.navy:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
-    .case-card.navy .case-sector { color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.2); background: transparent; }
-    .case-card.navy .case-stat { color: var(--terracotta); }
-    .case-card.navy .case-outcome { color: #ffffff; }
-    .case-card.navy .case-situation { color: rgba(255,255,255,0.65); }
-    .case-card.navy .case-result { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.65); }
+    .case-problem, .case-approach { margin-bottom: 20px; }
+    .case-outcomes { border-top: 1px solid rgba(38,36,92,0.08); padding-top: 20px; margin-top: 4px; }
     /* Light card */
     .case-card.light {
       background: #ffffff; border: 1px solid rgba(38,36,92,0.1);
@@ -419,13 +417,6 @@
       font-size: 20px; font-weight: 600; color: var(--near-black);
       line-height: 1.5;
     }
-    .case-situation {
-      font-size: 16px; color: var(--body-text); line-height: 1.75;
-    }
-    .case-result {
-      font-size: 16px; color: var(--body-text); line-height: 1.75;
-      padding: 12px 16px;
-      }
     .case-artwork {
       width: calc(100% + 24px); margin-left: -12px;
       height: 100px; margin-top: 36px;
@@ -445,7 +436,7 @@
     }
     .related-services-inner { max-width: 1120px; margin: 0 auto; }
     .related-heading {
-      font-size: 46px; font-weight: 700; color: var(--navy);
+      font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy);
       line-height: 1.1; letter-spacing: -0.025em;
       margin-bottom: 12px; max-width: 520px;
     }
@@ -579,31 +570,10 @@
       .related-grid { grid-template-columns: 1fr; }
       .case-stat { font-size: 48px; }
       .ref-nav-links { display: none; }
-      .why-row { grid-template-columns: 40px 1fr; gap: 0 16px; }
+      .why-row { grid-template-columns:  1fr; gap:  0; }
     }
 
-  
-    /* ═══════════════════════════════════════════════════════════
-       ADDITIONS — v4 patch (footer, mobile nav, hero 2-col, fixes)
-       ═══════════════════════════════════════════════════════════ */
-
-    /* Footer */
-    footer { background: var(--white); padding: 80px 48px 48px; border-top: 1px solid rgba(38,36,92,0.08); }
-    .footer-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 200px 1fr 1fr 1fr; gap: 64px; margin-bottom: 56px; }
-    .footer-brand { }
-    .footer-logo { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 14px; color: var(--navy); letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; display: block; margin-bottom: 12px; }
-    .footer-logo span { color: var(--terracotta); }
-    .footer-tagline { font-size: 12px; color: var(--body-text); line-height: 1.65; max-width: 180px; }
-    .footer-col h4 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(38,36,92,0.35); margin-bottom: 16px; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col ul li a { font-size: 13px; color: var(--body-text); text-decoration: none; transition: color 0.18s; }
-    .footer-col ul li a:hover { color: var(--navy); }
-    .footer-bottom { max-width: 1120px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(38,36,92,0.08); display: flex; justify-content: space-between; align-items: center; }
-    .footer-copy { font-size: 12px; color: #bbb; }
-    .footer-legal { display: flex; gap: 24px; }
-    .footer-legal a { font-size: 12px; color: #bbb; text-decoration: none; transition: color 0.18s; }
-    .footer-legal a:hover { color: var(--navy); }
-
+    /* Service layout */
     /* Hero 2-column override */
     .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 400px; gap: 80px; align-items: center; text-align: left; }
     .hero-text { }
@@ -612,86 +582,11 @@
     .hero-badge { align-items: flex-start; }
     .hero-actions { justify-content: flex-start; }
 
-    /* Mobile nav hamburger */
-    .nav-hamburger { display: none; background: none; border: none; padding: 6px; cursor: pointer; flex-direction: column; gap: 5px; align-items: center; margin-left: auto; }
-    .nav-hamburger span { display: block; width: 22px; height: 2px; background: rgba(245,243,238,0.85); border-radius: 2px; }
-
     /* Examine-card staircase: reduce margins at medium widths */
     @media (max-width: 1100px) {
       .examine-card:nth-child(2) { margin-left: 36px; }
       .examine-card:nth-child(3) { margin-left: 72px; }
     }
-
-    @media (max-width: 768px) {
-      /* Footer */
-      footer { padding: 56px 24px 40px; }
-      .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-      .footer-brand { grid-column: 1 / -1; }
-      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-      /* Mobile nav */
-      .ref-nav { padding: 14px 24px; flex-wrap: wrap; }
-      .ref-nav-links { display: none; width: 100%; flex-direction: column; padding: 12px 0 8px; gap: 0; margin-left: 0; border-top: 1px solid rgba(245,243,238,0.1); margin-top: 12px; }
-      .ref-nav-links.is-open { display: flex; }
-      .ref-nav-link { padding: 9px 0; font-size: 10px; }
-      .ref-nav-cta { margin-left: 0; margin-top: 8px; align-self: flex-start; }
-      .nav-hamburger { display: flex; }
-      /* Hero collapse */
-      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 32px; }
-      .hero-visual { display: none; }
-      .hero-badge { align-items: center; }
-      .hero-actions { justify-content: center; }
-      /* Examine card margins */
-      .examine-card:nth-child(2) { margin-left: 0; }
-      .examine-card:nth-child(3) { margin-left: 0; }
-      /* DMAICO subway hide */
-      .subway-nav { display: none; }
-    }
-
-    @media (max-width: 480px) {
-      .footer-inner { grid-template-columns: 1fr; }
-    }
-
-  
-    /* ═══════════════════════════════════════════════════════════
-       HERO COLOUR REVERT — back to white background / dark text
-       ═══════════════════════════════════════════════════════════ */
-
-    /* White hero background with subtle bottom border */
-    .hero { background: var(--white) !important; border-bottom: 1px solid rgba(38,36,92,0.07); }
-
-    /* Navy text on white background */
-    .hero-h1 {
-      font-size: 52px !important;
-      font-weight: 500 !important;
-      color: var(--navy) !important;
-      line-height: 1.06 !important;
-      letter-spacing: -0.03em !important;
-    }
-    .hero-subhead { color: var(--body-text) !important; font-size: 18px !important; }
-    .hero-body { color: var(--body-text) !important; font-size: 15px !important; }
-    .hero-service-name { color: var(--pillar-accent) !important; }
-
-    /* Dark secondary link (replaces btn-secondary-light on white bg) */
-    .btn-secondary-dark {
-      color: rgba(38,36,92,0.55);
-      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; text-decoration: none;
-      display: inline-flex; align-items: center; gap: 6px;
-      transition: color 0.18s, gap 0.18s;
-    }
-    .btn-secondary-dark:hover { color: var(--navy); gap: 10px; }
-    .btn-secondary-dark svg { width: 14px; height: 14px; flex-shrink: 0; }
-
-  
-    /* HARD RULE: No numbered labels in why-row or examine-card sections */
-    .why-row-num { display: none !important; }
-    .why-row { grid-template-columns: 1fr !important; gap: 0 !important; }
-    .examine-card-number { display: none !important; }
-    /* Why EQUIBT heading: editorial weight */
-    .why-row-heading { font-size: 26px !important; font-weight: 500 !important; letter-spacing: -0.02em !important; }
-    /* Remove case-result block styling — no background, no border box */
-    .case-card.navy .case-result { background: none !important; }
-    .case-result { padding: 0 !important; margin-top: 4px; }
 
   </style>
 </head>
@@ -721,7 +616,7 @@
     <div class="hero-text">
       <div class="hero-badge">
         <span class="pillar-tag plan">PLAN</span>
-        <span class="hero-service-name">PLAN | Measure &nbsp;&middot;&nbsp; Operations Diagnostic</span>
+        <span class="hero-service-name">DMAICO &nbsp;&middot;&nbsp; Measure | Operations Diagnostic</span>
       </div>
       <h1 class="hero-h1">See the full picture<br>before you act.</h1>
       <p class="hero-subhead reveal">Most organisations act on instinct. PLAN replaces instinct with evidence, establishing a complete baseline before any intervention begins.</p>
@@ -783,21 +678,18 @@
         <div class="section-label">Why EQUIBT?</div>
         <div class="why-rows">
           <div class="why-row reveal">
-            <span class="why-row-num">01</span>
             <div class="why-row-content">
               <p class="why-row-heading">Evidence-based, not assumption-driven.</p>
               <p class="why-row-body">We do not accept anecdotal accounts of where the problem is. We measure it. Every PLAN engagement produces a quantified baseline that separates opinion from fact and gives your programme a defensible starting point.</p>
             </div>
           </div>
           <div class="why-row reveal reveal-d1">
-            <span class="why-row-num">02</span>
             <div class="why-row-content">
               <p class="why-row-heading">Capability readiness, not process alone.</p>
               <p class="why-row-body">Process gaps and capability gaps are different problems with different solutions. PLAN assesses both. An organisation with strong processes but undertrained people will fail at implementation. We measure the full picture.</p>
             </div>
           </div>
           <div class="why-row reveal reveal-d2">
-            <span class="why-row-num">03</span>
             <div class="why-row-content">
               <p class="why-row-heading">Roadmap, not recommendations.</p>
               <p class="why-row-body">PLAN does not produce a list of suggestions. It produces a prioritised roadmap with sequenced interventions, grounded in the measurement data. Your leadership team leaves knowing exactly what to address, in what order, and why.</p>
@@ -816,7 +708,6 @@
       <div class="examine-grid">
         <div class="examine-card reveal">
           <div class="examine-card-text">
-            <div class="examine-card-number">01</div>
             <h3 class="examine-card-title">Process Health</h3>
             <p class="examine-card-body">We map your core operational processes against their designed intent, measure actual cycle times and error rates, and identify where variance, rework, and waste are concentrated. The output is a quantified picture of where the process is and is not performing.</p>
           </div>
@@ -828,7 +719,6 @@
         </div>
         <div class="examine-card reveal reveal-d1">
           <div class="examine-card-text">
-            <div class="examine-card-number">02</div>
             <h3 class="examine-card-title">Capability Readiness</h3>
             <p class="examine-card-body">We assess the skills, knowledge, and behaviours your team needs versus what they currently demonstrate. This covers both technical capability (can they execute the process?) and leadership capability (can they sustain and improve it?). Gaps are quantified and prioritised.</p>
           </div>
@@ -840,7 +730,6 @@
         </div>
         <div class="examine-card reveal reveal-d2">
           <div class="examine-card-text">
-            <div class="examine-card-number">03</div>
             <h3 class="examine-card-title">Measurement System</h3>
             <p class="examine-card-body">We audit your existing KPIs and data infrastructure: what you measure, how you measure it, whether the measures reflect performance or just activity, and whether they are visible at the right levels. A broken measurement system makes every other improvement invisible.</p>
           </div>
@@ -921,25 +810,43 @@
       <div class="section-label">The work</div>
       <h2 class="case-studies-heading reveal">Recent engagements.</h2>
       <div class="case-grid">
-        <div class="case-card navy reveal">
+        <div class="case-card light reveal">
           <div class="case-tags">
             <span class="case-sector">Commercial Operations</span>
             <span class="pillar-tag plan">PLAN</span>
           </div>
-          <p class="case-stat">60%</p>
-          <p class="case-outcome">Commercial planning standardised nationally. Ad-hoc reporting requests eliminated as a recurring drain on leadership time.</p>
-          <p class="case-situation">A national financial services group had no consistent plan/do/review methodology across its state-based sales functions. Each state team ran their own reporting approach and review cadence. Senior leadership was fielding ad-hoc reporting requests weekly because no standard output existed. The business had grown rapidly and the planning infrastructure had not kept pace.</p>
-          <div class="case-result">Mapped the end-to-end commercial planning process across all state teams. Identified where reporting diverged and where decisions were being made without consistent data. Worked with the commercial leadership team to design standardised forums, decision rights, and a single reporting pack. Piloted the new cadence with two state teams before national rollout. The team sustained the approach for two years without external support.</div>
+          <div class="case-problem">
+            <p class="case-problem-label">Problem</p>
+            <p class="case-problem-body">A national financial services group had no consistent plan/do/review methodology across its state-based sales functions. Each state team ran their own reporting approach and review cadence. Senior leadership was fielding ad-hoc reporting requests weekly because no standard output existed. The business had grown rapidly and the planning infrastructure had not kept pace.</p>
+          </div>
+          <div class="case-approach">
+            <p class="case-approach-label">Approach</p>
+            <p class="case-approach-body">Mapped the end-to-end commercial planning process across all state teams. Identified where reporting diverged and where decisions were being made without consistent data. Worked with the commercial leadership team to design standardised forums, decision rights, and a single reporting pack. Piloted the new cadence with two state teams before national rollout. The team sustained the approach for two years without external support.</p>
+          </div>
+          <div class="case-outcomes">
+            <p class="case-outcomes-label">Outcomes</p>
+            <p class="case-stat">60%</p>
+            <p class="case-outcome">Commercial planning standardised nationally. Ad-hoc reporting requests eliminated as a recurring drain on leadership time.</p>
+          </div>
         </div>
         <div class="case-card light reveal reveal-d1">
           <div class="case-tags">
             <span class="case-sector">Government and Public Sector</span>
             <span class="pillar-tag plan">PLAN</span>
           </div>
-          <p class="case-stat">32%</p>
-          <p class="case-outcome">Category taxonomy reduced from 183 to 30. High-volume inbound calls identified and specified for automation.</p>
-          <p class="case-situation">1,770 enquiries per month. 183-category taxonomy driving inconsistency. 32% of inbound calls misdirected or out-of-jurisdiction, all handled manually. No agreed KPIs. Informal quality assurance.</p>
-          <div class="case-result">Analysed enquiry volume across the full 183-category taxonomy to identify true call types versus classification noise. Ran structured root cause analysis on the out-of-jurisdiction volume to understand why it was arriving and being handled manually. Delivered a 12-recommendation roadmap including an IVR automation specification, simplified 30-category taxonomy, a quality assurance framework, and a revised workforce model. The roadmap was sequenced for the internal team to implement without ongoing external support.</div>
+          <div class="case-problem">
+            <p class="case-problem-label">Problem</p>
+            <p class="case-problem-body">1,770 enquiries per month. 183-category taxonomy driving inconsistency. More than a third of inbound calls misdirected or out-of-jurisdiction, all handled manually. No agreed KPIs. Informal quality assurance.</p>
+          </div>
+          <div class="case-approach">
+            <p class="case-approach-label">Approach</p>
+            <p class="case-approach-body">Analysed enquiry volume across the full 183-category taxonomy to identify true call types versus classification noise. Ran structured root cause analysis on the out-of-jurisdiction volume to understand why it was arriving and being handled manually. Delivered a 12-recommendation roadmap including an IVR automation specification, simplified 30-category taxonomy, a quality assurance framework, and a revised workforce model.</p>
+          </div>
+          <div class="case-outcomes">
+            <p class="case-outcomes-label">Outcomes</p>
+            <p class="case-stat">32%</p>
+            <p class="case-outcome">Category taxonomy reduced from 183 to 30. High-volume inbound calls identified and specified for automation.</p>
+          </div>
         </div>
       </div>
       <div class="case-artwork"><img src="assets/lineart/shared/EQ-CASEWORK.png" alt="" style="mix-blend-mode:multiply;" onerror="this.style.display='none'"></div>
@@ -963,11 +870,11 @@
           <line x1="210" y1="17" x2="210" y2="37" stroke="#C15F3C" stroke-width="1.5"/>
           <polygon points="210,43 206,35 214,35" fill="#C15F3C"/>
           <rect class="subway-pill" x="30" y="45" width="80" height="26" rx="13" fill="#8B2252"/>
-          <text x="70" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F5F3EE">FRAME</text>
+          <text x="70" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F2F1ED">FRAME</text>
           <rect class="subway-pill active" x="176" y="45" width="68" height="26" rx="13" fill="#26245C"/>
-          <text x="210" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F5F3EE">PLAN</text>
+          <text x="210" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F2F1ED">PLAN</text>
           <rect class="subway-pill" x="313" y="45" width="74" height="26" rx="13" fill="#0B6B82"/>
-          <text x="350" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F5F3EE">SOLVE</text>
+          <text x="350" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F2F1ED">SOLVE</text>
           <rect x="460" y="45" width="80" height="26" rx="13" fill="#ccc"/>
           <text x="500" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#999">EVOLVE</text>
           <rect x="621" y="45" width="78" height="26" rx="13" fill="#ccc"/>

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Root Cause Analysis | SOLVE | Analyse | EQUIBT</title>
+  <link rel="stylesheet" href="equibt-base.css">
   <style>
   @font-face {
     font-family: 'Montserrat';
@@ -27,14 +28,14 @@
       --navy:            #26245C;
       --terracotta:      #C15F3C;
       --terracotta-dark: #A04E30;
-      --section-bg:      #F5F5F5;
+      --section-bg:      #F4F3EF;
       --white:           #FFFFFF;
       --near-black:      #2C2C2C;
-      --off-white:       #F5F3EE;
+      --off-white:       #F2F1ED;
       --body-text:       #555;
       --navy-wash:       #EEF0F8;
       --dark-slate:      #2C3E50;
-      --warm-parchment:  #F5EBD9;
+      --warm-parchment:  #F2F1ED;
       --pill-frame:           #8B2252;
       --pill-plan:            #26245C;
       --pill-solve:           #0B6B82;
@@ -56,7 +57,6 @@
   .ref-logo, .btn-primary, .cta-button, .pillar-tag, .case-stat,
   .hero-service-name, .section-label, .examine-card-number,
   .related-card-name, .deliverable-title,
-  .why-row-num, .why-row-heading { font-family: 'Montserrat', system-ui, sans-serif; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--section-bg); color: var(--near-black); -webkit-font-smoothing: antialiased; }
@@ -84,7 +84,7 @@
     .section-label::before { content: ''; display: block; width: 3px; height: 20px; background: var(--terracotta); border-radius: 2px; flex-shrink: 0; }
     .section-label.light { color: rgba(255,255,255,0.55); }
     .section-label.light::before { background: var(--terracotta); }
-    .section-heading { font-size: 46px; font-weight: 700; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; }
+    .section-heading { font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; }
 
     .pillar-tag { display: inline-flex; align-items: center; color: var(--off-white); font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; height: 22px; padding: 0 11px; border-radius: 100px; width: fit-content; line-height: 1; }
     .pillar-tag.frame          { background: var(--pill-frame); }
@@ -94,38 +94,37 @@
     .pillar-tag.govern         { background: var(--pill-govern); }
     .pillar-tag.operationalise { background: var(--pill-operationalise); }
 
-    .btn-primary { display: inline-flex; align-items: center; background: var(--terracotta); color: var(--off-white); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; text-decoration: none; transition: background 0.18s, transform 0.15s; }
+    .btn-primary { display: inline-flex; align-items: center; background: var(--navy); color: var(--off-white); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; border-radius: 6px; text-decoration: none; transition: background 0.18s, transform 0.15s; }
     .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
     .btn-secondary-light { color: rgba(255,255,255,0.65); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.18s, gap 0.18s; }
     .btn-secondary-light:hover { color: #ffffff; gap: 10px; }
     .btn-secondary-light svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-    .hero { background: var(--navy); padding: 80px 48px 88px; }
+    .hero { background: var(--white); border-bottom: 1px solid rgba(38,36,92,0.07); padding: 80px 48px 88px; }
     .hero-inner { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
     .hero-badge { margin-bottom: 24px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
     .hero-badge .pillar-tag { font-size: 10px; height: 26px; padding: 0 14px; }
     .hero-service-name { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
-    .hero-h1 { font-size: 64px; font-weight: 700; color: #ffffff; line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 20px; }
-    .hero-subhead { font-size: 20px; color: var(--text-light); line-height: 1.6; margin-bottom: 16px; max-width: 600px; }
-    .hero-body { font-size: 16px; color: var(--text-faint); line-height: 1.75; margin-bottom: 36px; max-width: 580px; }
+    .hero-h1 { font-size: 60px; font-weight: 600; color: var(--navy); line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 20px; }
+    .hero-subhead { font-size: 18px; color: var(--body-text); line-height: 1.6; margin-bottom: 16px; max-width: 600px; }
+    .hero-body { font-size: 15px; color: var(--body-text); line-height: 1.75; margin-bottom: 36px; max-width: 580px; }
     .hero-actions { display: flex; align-items: center; gap: 24px; justify-content: center; flex-wrap: wrap; }
 
     .why-start { background: var(--warm-parchment); padding: 88px 48px; border-bottom: 1px solid rgba(38,36,92,0.06); }
     .why-start-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 45%; gap: 72px; align-items: start; }
-    .why-start-heading { font-size: 46px; font-weight: 700; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 24px; max-width: 480px; }
-    .why-start-body p { font-size: 16px; color: var(--body-text); line-height: 1.75; margin-bottom: 16px; }
+    .why-start-heading { font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 24px; max-width: 480px; }
+    .why-start-body p { font-size: 17px; color: var(--body-text); line-height: 1.75; margin-bottom: 16px; }
     .why-start-body p:last-child { margin-bottom: 0; }
 
     .why-rows { display: flex; flex-direction: column; }
-    .why-row { display: grid; grid-template-columns: 64px 1fr; gap: 0 32px; padding: 28px 0; border-bottom: 1px solid rgba(38,36,92,0.1); align-items: start; }
+    .why-row { display: grid; grid-template-columns: 1fr; gap: 0 32px; padding: 28px 0; border-bottom: 1px solid rgba(38,36,92,0.1); align-items: start; }
     .why-row:first-child { border-top: 1px solid rgba(38,36,92,0.1); }
-    .why-row-num { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: var(--terracotta); font-family: 'Montserrat', system-ui, sans-serif; padding-top: 4px; }
-    .why-row-heading { font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 6px; font-family: 'Montserrat', system-ui, sans-serif; }
+    .why-row-heading { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; color: var(--navy);  line-height: 1.3; margin-bottom: 6px; font-family: 'Montserrat', system-ui, sans-serif; }
     .why-row-body { font-size: 15px; color: var(--body-text); line-height: 1.7; }
 
     .what-we-examine { background: var(--white); padding: 88px 48px; border-bottom: 1px solid rgba(38,36,92,0.06); }
     .what-we-examine-inner { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
-    .examine-heading { font-size: 46px; font-weight: 700; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 44px; max-width: 480px; }
+    .examine-heading { font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 44px; max-width: 480px; }
     .examine-grid { display: flex; flex-direction: column; gap: 0; width: fit-content; }
     .examine-card { display: flex; flex-direction: row; align-items: center; gap: 28px; padding: 36px 0 36px 20px; border-left: 5px solid var(--pillar-accent); transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease; }
     .examine-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.10); border-color: var(--terracotta); }
@@ -135,7 +134,7 @@
     .examine-card-text { display: flex; flex-direction: column; gap: 10px; max-width: 440px; }
     .examine-card-number { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracotta); }
     .examine-card-title { font-size: 20px; font-weight: 700; color: var(--navy); line-height: 1.3; letter-spacing: -0.01em; }
-    .examine-card-body { font-size: 16px; color: var(--body-text); line-height: 1.75; max-width: 480px; }
+    .examine-card-body { font-size: 17px; color: var(--body-text); line-height: 1.75; max-width: 480px; }
     .examine-card-image { width: 200px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
     .examine-card:nth-child(1) .examine-card-image { width: 320px; }
     .examine-card:nth-child(2) .examine-card-image { width: 300px; }
@@ -144,7 +143,7 @@
 
     .what-you-receive { background: var(--navy-wash); padding: 88px 48px; border-bottom: 1px solid rgba(38,36,92,0.06); }
     .what-you-receive-inner { max-width: 1120px; margin: 0 auto; }
-    .deliverables-heading { font-size: 46px; font-weight: 700; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 44px; max-width: 480px; }
+    .deliverables-heading { font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 44px; max-width: 480px; }
     .deliverables-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
     .deliverable-card-image { width: 100%; border-radius: 5px; overflow: hidden; margin-bottom: 4px; }
     .deliverable-card-image img { width: 100%; height: auto; display: block; }
@@ -155,29 +154,33 @@
 
     .case-studies { background: var(--white); padding: 80px 48px; border-bottom: 1px solid rgba(38,36,92,0.08); }
     .case-studies-inner { max-width: 1120px; margin: 0 auto; }
-    .case-studies-heading { font-size: 46px; font-weight: 700; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 44px; max-width: 500px; }
+    .case-studies-heading { font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 44px; max-width: 500px; }
     .case-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; align-items: start; }
-    .case-card.navy { background: var(--navy); border: none; border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 14px; transition: transform 0.22s ease, box-shadow 0.22s ease; }
-    .case-card.navy:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
-    .case-card.navy .case-sector { color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.2); background: transparent; }
-    .case-card.navy .case-stat { color: var(--terracotta); }
-    .case-card.navy .case-outcome { color: #ffffff; }
-    .case-card.navy .case-situation { color: rgba(255,255,255,0.65); }
-    .case-card.navy .case-result { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.65); }
+    .case-problem-label,
+    .case-approach-label,
+    .case-outcomes-label {
+      font-family: 'Montserrat', system-ui, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 8px;
+    }
+    .case-problem, .case-approach { margin-bottom: 20px; }
+    .case-outcomes { border-top: 1px solid rgba(38,36,92,0.08); padding-top: 20px; margin-top: 4px; }
     .case-card.light { background: #ffffff; border: 1px solid rgba(38,36,92,0.1); border-radius: 4px; padding: 40px; display: flex; flex-direction: column; gap: 14px; transition: transform 0.22s ease, box-shadow 0.22s ease; }
     .case-card.light:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
     .case-tags { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .case-sector { display: inline-flex; align-items: center; background: rgba(38,36,92,0.07); border: 1px solid rgba(38,36,92,0.12); color: var(--navy); font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; height: 22px; padding: 0 10px; border-radius: 100px; }
     .case-stat { font-size: 64px; font-weight: 700; color: var(--terracotta); line-height: 1; letter-spacing: -0.03em; font-family: 'Montserrat', system-ui, sans-serif; }
     .case-outcome { font-size: 20px; font-weight: 600; color: var(--near-black); line-height: 1.5; }
-    .case-situation { font-size: 16px; color: var(--body-text); line-height: 1.75; }
-    .case-result { font-size: 16px; color: var(--body-text); line-height: 1.75; padding: 12px 16px; }
     .case-artwork { width: calc(100% + 24px); margin-left: -12px; height: 100px; margin-top: 36px; border-radius: 6px 12px 8px 10px; overflow: hidden; position: relative; transform: rotate(-0.6deg); background: linear-gradient(135deg, rgba(38,36,92,0.06) 0%, rgba(193,95,60,0.08) 100%); }
     .case-artwork img { width: 100%; height: 100%; object-fit: cover; object-position: center; mix-blend-mode: multiply; }
 
     .related-services { background: var(--section-bg); padding: 80px 48px; border-bottom: 1px solid rgba(38,36,92,0.08); }
     .related-services-inner { max-width: 1120px; margin: 0 auto; }
-    .related-heading { font-size: 46px; font-weight: 700; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 12px; max-width: 520px; }
+    .related-heading { font-size: 44px; font-weight: 500; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 12px; max-width: 520px; }
     .related-subhead { font-size: 16px; color: var(--body-text); line-height: 1.75; margin-bottom: 44px; max-width: 560px; }
     .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .related-card { background: var(--white); border-radius: 8px; padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 12px; text-decoration: none; color: var(--near-black); box-shadow: 0 2px 10px rgba(38,36,92,0.08), 0 1px 3px rgba(0,0,0,0.04); transition: transform 0.22s ease, box-shadow 0.22s ease; }
@@ -222,30 +225,10 @@
       .related-grid { grid-template-columns: 1fr; }
       .case-stat { font-size: 48px; }
       .ref-nav-links { display: none; }
-      .why-row { grid-template-columns: 40px 1fr; gap: 0 16px; }
+      .why-row { grid-template-columns:  1fr; gap:  0; }
     }
-  
-    /* ═══════════════════════════════════════════════════════════
-       ADDITIONS — v4 patch (footer, mobile nav, hero 2-col, fixes)
-       ═══════════════════════════════════════════════════════════ */
 
-    /* Footer */
-    footer { background: var(--white); padding: 80px 48px 48px; border-top: 1px solid rgba(38,36,92,0.08); }
-    .footer-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 200px 1fr 1fr 1fr; gap: 64px; margin-bottom: 56px; }
-    .footer-brand { }
-    .footer-logo { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 14px; color: var(--navy); letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; display: block; margin-bottom: 12px; }
-    .footer-logo span { color: var(--terracotta); }
-    .footer-tagline { font-size: 12px; color: var(--body-text); line-height: 1.65; max-width: 180px; }
-    .footer-col h4 { font-family: 'Montserrat', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(38,36,92,0.35); margin-bottom: 16px; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col ul li a { font-size: 13px; color: var(--body-text); text-decoration: none; transition: color 0.18s; }
-    .footer-col ul li a:hover { color: var(--navy); }
-    .footer-bottom { max-width: 1120px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(38,36,92,0.08); display: flex; justify-content: space-between; align-items: center; }
-    .footer-copy { font-size: 12px; color: #bbb; }
-    .footer-legal { display: flex; gap: 24px; }
-    .footer-legal a { font-size: 12px; color: #bbb; text-decoration: none; transition: color 0.18s; }
-    .footer-legal a:hover { color: var(--navy); }
-
+    /* Service layout */
     /* Hero 2-column override */
     .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 400px; gap: 80px; align-items: center; text-align: left; }
     .hero-text { }
@@ -254,86 +237,11 @@
     .hero-badge { align-items: flex-start; }
     .hero-actions { justify-content: flex-start; }
 
-    /* Mobile nav hamburger */
-    .nav-hamburger { display: none; background: none; border: none; padding: 6px; cursor: pointer; flex-direction: column; gap: 5px; align-items: center; margin-left: auto; }
-    .nav-hamburger span { display: block; width: 22px; height: 2px; background: rgba(245,243,238,0.85); border-radius: 2px; }
-
     /* Examine-card staircase: reduce margins at medium widths */
     @media (max-width: 1100px) {
       .examine-card:nth-child(2) { margin-left: 36px; }
       .examine-card:nth-child(3) { margin-left: 72px; }
     }
-
-    @media (max-width: 768px) {
-      /* Footer */
-      footer { padding: 56px 24px 40px; }
-      .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-      .footer-brand { grid-column: 1 / -1; }
-      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-      /* Mobile nav */
-      .ref-nav { padding: 14px 24px; flex-wrap: wrap; }
-      .ref-nav-links { display: none; width: 100%; flex-direction: column; padding: 12px 0 8px; gap: 0; margin-left: 0; border-top: 1px solid rgba(245,243,238,0.1); margin-top: 12px; }
-      .ref-nav-links.is-open { display: flex; }
-      .ref-nav-link { padding: 9px 0; font-size: 10px; }
-      .ref-nav-cta { margin-left: 0; margin-top: 8px; align-self: flex-start; }
-      .nav-hamburger { display: flex; }
-      /* Hero collapse */
-      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 32px; }
-      .hero-visual { display: none; }
-      .hero-badge { align-items: center; }
-      .hero-actions { justify-content: center; }
-      /* Examine card margins */
-      .examine-card:nth-child(2) { margin-left: 0; }
-      .examine-card:nth-child(3) { margin-left: 0; }
-      /* DMAICO subway hide */
-      .subway-nav { display: none; }
-    }
-
-    @media (max-width: 480px) {
-      .footer-inner { grid-template-columns: 1fr; }
-    }
-
-  
-    /* ═══════════════════════════════════════════════════════════
-       HERO COLOUR REVERT — back to white background / dark text
-       ═══════════════════════════════════════════════════════════ */
-
-    /* White hero background with subtle bottom border */
-    .hero { background: var(--white) !important; border-bottom: 1px solid rgba(38,36,92,0.07); }
-
-    /* Navy text on white background */
-    .hero-h1 {
-      font-size: 52px !important;
-      font-weight: 500 !important;
-      color: var(--navy) !important;
-      line-height: 1.06 !important;
-      letter-spacing: -0.03em !important;
-    }
-    .hero-subhead { color: var(--body-text) !important; font-size: 18px !important; }
-    .hero-body { color: var(--body-text) !important; font-size: 15px !important; }
-    .hero-service-name { color: var(--pillar-accent) !important; }
-
-    /* Dark secondary link (replaces btn-secondary-light on white bg) */
-    .btn-secondary-dark {
-      color: rgba(38,36,92,0.55);
-      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; text-decoration: none;
-      display: inline-flex; align-items: center; gap: 6px;
-      transition: color 0.18s, gap 0.18s;
-    }
-    .btn-secondary-dark:hover { color: var(--navy); gap: 10px; }
-    .btn-secondary-dark svg { width: 14px; height: 14px; flex-shrink: 0; }
-
-  
-    /* HARD RULE: No numbered labels in why-row or examine-card sections */
-    .why-row-num { display: none !important; }
-    .why-row { grid-template-columns: 1fr !important; gap: 0 !important; }
-    .examine-card-number { display: none !important; }
-    /* Why EQUIBT heading: editorial weight */
-    .why-row-heading { font-size: 26px !important; font-weight: 500 !important; letter-spacing: -0.02em !important; }
-    /* Remove case-result block styling — no background, no border box */
-    .case-card.navy .case-result { background: none !important; }
-    .case-result { padding: 0 !important; margin-top: 4px; }
 
   </style>
 </head>
@@ -361,7 +269,7 @@
     <div class="hero-text">
       <div class="hero-badge">
         <span class="pillar-tag solve">SOLVE</span>
-        <span class="hero-service-name">SOLVE | Analyse &nbsp;&middot;&nbsp; Root Cause Analysis and Solution Design</span>
+        <span class="hero-service-name">DMAICO &nbsp;&middot;&nbsp; Analyse | Root Cause Analysis and Solution Design</span>
       </div>
       <h1 class="hero-h1">Move from symptoms to causes.<br>From causes to costed solutions.</h1>
       <p class="hero-subhead reveal">Treating symptoms is why improvements do not hold. SOLVE identifies the real causes and designs a future state that resolves them at the root.</p>
@@ -422,21 +330,18 @@
         <div class="section-label">Why EQUIBT?</div>
         <div class="why-rows">
           <div class="why-row reveal">
-            <span class="why-row-num">01</span>
             <div class="why-row-content">
               <p class="why-row-heading">Causes, not symptoms.</p>
               <p class="why-row-body">We do not move to solutions until we have confirmed the causes. Structured root cause analysis using Ishikawa, 5-Why, and data stratification ensures the solution addresses what is actually driving the problem.</p>
             </div>
           </div>
           <div class="why-row reveal reveal-d1">
-            <span class="why-row-num">02</span>
             <div class="why-row-content">
               <p class="why-row-heading">Designed future state, not a list of actions.</p>
               <p class="why-row-body">SOLVE produces a designed future state: the specific process changes, capability investments, and system modifications required to close the performance gap. Not a slide deck of suggestions. A specification your team can build.</p>
             </div>
           </div>
           <div class="why-row reveal reveal-d2">
-            <span class="why-row-num">03</span>
             <div class="why-row-content">
               <p class="why-row-heading">Capability transfer, not dependency.</p>
               <p class="why-row-body">SOLVE is designed so your internal team can understand, own, and maintain the analytical methods we use. We work alongside your people, not instead of them, so the capability stays in the organisation after we leave.</p>
@@ -454,7 +359,6 @@
       <div class="examine-grid">
         <div class="examine-card reveal">
           <div class="examine-card-text">
-            <div class="examine-card-number">01</div>
             <h3 class="examine-card-title">Root Cause Analysis</h3>
             <p class="examine-card-body">Using structured analytical methods, we identify the causal chain behind your performance gaps. We do not stop at the first plausible cause. We use data stratification, fishbone analysis, and 5-Why to get to the actual driver. This is the work that separates a proper improvement from a temporary fix.</p>
           </div>
@@ -465,7 +369,6 @@
         </div>
         <div class="examine-card reveal reveal-d1">
           <div class="examine-card-text">
-            <div class="examine-card-number">02</div>
             <h3 class="examine-card-title">Future State Design</h3>
             <p class="examine-card-body">Based on confirmed root causes, we design the future state: the specific changes to process, capability, and system that will close the performance gap. The design is detailed enough to build from, not aspirational enough to argue about. It includes a prioritised improvement sequence.</p>
           </div>
@@ -476,7 +379,6 @@
         </div>
         <div class="examine-card reveal reveal-d2">
           <div class="examine-card-text">
-            <div class="examine-card-number">03</div>
             <h3 class="examine-card-title">Cost-Benefit Analysis</h3>
             <p class="examine-card-body">Every improvement has a cost and a return. We quantify both. The cost-benefit analysis maps the investment required against the value recovered, giving your leadership team the information they need to make a funding decision with confidence. Includes sensitivity analysis on key assumptions.</p>
           </div>
@@ -538,25 +440,43 @@
       <div class="section-label">The work</div>
       <h2 class="case-studies-heading reveal">Recent engagements.</h2>
       <div class="case-grid">
-        <div class="case-card navy reveal">
+        <div class="case-card light reveal">
           <div class="case-tags">
             <span class="case-sector">Financial Services</span>
             <span class="pillar-tag solve">SOLVE</span>
           </div>
-          <p class="case-stat">47%</p>
-          <p class="case-outcome">Root cause isolated to a missing decision gate in the exception handling process. Processing errors eliminated within four weeks of redesign.</p>
-          <p class="case-situation">High error rate in a claims processing function. Training had been deployed twice with no improvement. The problem was attributed to skill gaps.</p>
-          <div class="case-result">Root cause analysis identified that the decision gate for exception routing was missing - claims were being processed by whoever picked them up, not by the team qualified to handle exceptions. Process redesign added the decision gate. Error rate dropped within four weeks.</div>
+          <div class="case-problem">
+            <p class="case-problem-label">Problem</p>
+            <p class="case-problem-body">High error rate in a claims processing function. Training had been deployed twice with no improvement. The problem was attributed to skill gaps.</p>
+          </div>
+          <div class="case-approach">
+            <p class="case-approach-label">Approach</p>
+            <p class="case-approach-body">Root cause analysis identified that the decision gate for exception routing was missing - claims were being processed by whoever picked them up, not by the team qualified to handle exceptions. Process redesign added the decision gate. Error rate dropped within four weeks.</p>
+          </div>
+          <div class="case-outcomes">
+            <p class="case-outcomes-label">Outcomes</p>
+            <p class="case-stat">47%</p>
+            <p class="case-outcome">Root cause isolated to a missing decision gate in the exception handling process. Processing errors eliminated within four weeks of redesign.</p>
+          </div>
         </div>
         <div class="case-card light reveal reveal-d1">
           <div class="case-tags">
             <span class="case-sector">Government and Public Sector</span>
             <span class="pillar-tag solve">SOLVE</span>
           </div>
-          <p class="case-stat">3</p>
-          <p class="case-outcome">Root cause addressed across all processes. All designs sustained over 18 months post-engagement without external support.</p>
-          <p class="case-situation">A regulatory agency needed to redesign its three highest-volume processes after a diagnostic identified systemic rework. Previous improvement attempts had failed because root cause analysis was skipped.</p>
-          <div class="case-result">Structured root cause analysis using five-why methodology identified the common cause across all three processes: unclear decision rights at the point of exception. Future state design addressed decision rights first, then process flows. Capability was transferred to the internal team.</div>
+          <div class="case-problem">
+            <p class="case-problem-label">Problem</p>
+            <p class="case-problem-body">A regulatory agency needed to redesign its three highest-volume processes after a diagnostic identified systemic rework. Previous improvement attempts had failed because root cause analysis was skipped.</p>
+          </div>
+          <div class="case-approach">
+            <p class="case-approach-label">Approach</p>
+            <p class="case-approach-body">Structured root cause analysis using five-why methodology identified the common cause across all three processes: unclear decision rights at the point of exception. Future state design addressed decision rights first, then process flows. Capability was transferred to the internal team.</p>
+          </div>
+          <div class="case-outcomes">
+            <p class="case-outcomes-label">Outcomes</p>
+            <p class="case-stat">3</p>
+            <p class="case-outcome">Root cause addressed across all processes. All designs sustained over 18 months post-engagement without external support.</p>
+          </div>
         </div>
       </div>
       <div class="case-artwork"><img src="assets/lineart/shared/EQ-CASEWORK.png" alt="" style="mix-blend-mode:multiply;" onerror="this.style.display='none'"></div>
@@ -581,11 +501,11 @@
           <rect x="30" y="45" width="80" height="26" rx="13" fill="#ccc"/>
           <text x="70" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#999">FRAME</text>
           <rect x="176" y="45" width="68" height="26" rx="13" fill="#26245C"/>
-          <text x="210" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F5F3EE">PLAN</text>
+          <text x="210" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F2F1ED">PLAN</text>
           <rect class="subway-pill active" x="313" y="45" width="74" height="26" rx="13" fill="#0B6B82"/>
-          <text x="350" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F5F3EE">SOLVE</text>
+          <text x="350" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F2F1ED">SOLVE</text>
           <rect x="460" y="45" width="80" height="26" rx="13" fill="#2D7A3A"/>
-          <text x="500" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F5F3EE">EVOLVE</text>
+          <text x="500" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#F2F1ED">EVOLVE</text>
           <rect x="621" y="45" width="78" height="26" rx="13" fill="#ccc"/>
           <text x="660" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="0.13em" fill="#999">GOVERN</text>
           <rect x="780" y="45" width="120" height="26" rx="13" fill="#ccc"/>
