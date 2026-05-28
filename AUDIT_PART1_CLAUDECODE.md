@@ -14,7 +14,7 @@
 3. `equibt_solve_prototype_v4.html` — `.case-card.navy` same pattern.
 4. `equibt_evolve_prototype_v4.html` — `.case-card.navy` same pattern.
 5. `equibt_govern_prototype_v4.html` — `.case-card.navy` same pattern.
-6. `equibt_operationalise_prototype_v4.html` — `.case-card.navy` same pattern.
+6. `equibt_scale_prototype_v4.html` — `.case-card.navy` same pattern.
 7. `equibt_home_prototype_v4.html` — Injection block at line 494: `.stat-block:nth-child(2) { background: var(--navy) !important }`. Later injection at line 806 overrides `.stat-block:nth-child(2)` to `#ffffff !important` — but rule order makes the second `!important` win. Needs browser verification to confirm the later injection wins.
 
 **Rule 2 — Card backgrounds white (Hard Rule 2)**
@@ -29,7 +29,7 @@
 12. `equibt_solve_prototype_v4.html` — Same 64px/700 source, injection fix to 52px/600.
 13. `equibt_evolve_prototype_v4.html` — Same 64px/700 source, injection fix to 52px/600.
 14. `equibt_govern_prototype_v4.html` — Same 64px/700 source, injection fix to 52px/600.
-15. `equibt_operationalise_prototype_v4.html` — Same 64px/700 source, injection fix to 52px/600.
+15. `equibt_scale_prototype_v4.html` — Same 64px/700 source, injection fix to 52px/600.
 16. `equibt_methodology_prototype_v1.html` — Source `.hero-h1 { font-size: 72px; font-weight: 500 }` (line 105). Injection fixes to 52px via mobile breakpoint (line 246) — but that is a mobile-only override. Desktop source is 72px. Expected: 52px/600. Actual: 72px/500 on desktop. FAIL on both size and weight.
 
 **Rule 4 — Section H2 44px / weight 500 (Hard Rule 4)**
@@ -41,14 +41,14 @@
 21. `equibt_solve_prototype_v4.html` — Same.
 22. `equibt_evolve_prototype_v4.html` — Same.
 23. `equibt_govern_prototype_v4.html` — Same.
-24. `equibt_operationalise_prototype_v4.html` — Same.
+24. `equibt_scale_prototype_v4.html` — Same.
 
 **Rule 5 — No terracotta background fill (Hard Rule 5)**
 
 25. `equibt_home_prototype_v4.html` — `.btn-primary` not affected (navy). But injection at line 310 sets `.hero .btn-cta { background: var(--terracotta) !important }`. The `cta-section` itself uses off-white background, so the CTA button terracotta is not a section fill — this is spec-permitted (CTA panel button). However `.btn-primary:hover { background: var(--terracotta) }` (line 84) is hover state only — technically allowed as hover is not a background fill in context. PASS for section fills.
 26. `equibt_methodology_prototype_v1.html` — `.btn-primary { background: var(--terracotta) }` (line 109). Design system spec says `.btn-primary` should use navy background with terracotta only on CTA panels. This is used in the hero and general page context. FAIL: terracotta as primary button background on non-CTA-panel contexts.
 27. `equibt_frame_prototype_v4.html` — Same: `.btn-primary { background: var(--terracotta) }` (line 92). Service pages use terracotta for `btn-primary` globally, not just on CTA panel. FAIL on all 6 service pages (files 3–8).
-28–32. `equibt_plan_prototype_v4.html`, `equibt_solve_prototype_v4.html`, `equibt_evolve_prototype_v4.html`, `equibt_govern_prototype_v4.html`, `equibt_operationalise_prototype_v4.html` — same terracotta btn-primary issue.
+28–32. `equibt_plan_prototype_v4.html`, `equibt_solve_prototype_v4.html`, `equibt_evolve_prototype_v4.html`, `equibt_govern_prototype_v4.html`, `equibt_scale_prototype_v4.html` — same terracotta btn-primary issue.
 
 **Rule 9 — No CSS injection (Hard Rule 9)**
 
@@ -72,7 +72,7 @@
 2. `equibt_why_equibt_prototype_v2.html` — 343 `!important` declarations, 16 injection markers.
 3. `equibt_how_we_work_prototype_v2.html` — 256 `!important` declarations, 14 injection markers.
 4. `equibt_industries_prototype_v2.html` — 253 `!important` declarations, 13 injection markers.
-5. `equibt_frame_prototype_v4.html` through `equibt_operationalise_prototype_v4.html` — 238 `!important` each, 11 injection markers each. Consolidation needed (see Design System K).
+5. `equibt_frame_prototype_v4.html` through `equibt_scale_prototype_v4.html` — 238 `!important` each, 11 injection markers each. Consolidation needed (see Design System K).
 6. `equibt_methodology_prototype_v1.html` — 223 `!important` declarations, 23 injection markers.
 7. `equibt_home_prototype_v4.html` — 192 `!important` declarations, 19 injection markers.
 
@@ -88,14 +88,14 @@
 
 13. `equibt_methodology_prototype_v1.html` — `.hero-h1 { font-size: 72px; font-weight: 500 }` (line 105). Desktop renders at 72px/500. Expected 52px/600. The 52px injection at line 246 is inside `@media (max-width: 768px)` only — does not fix desktop. Weight 500 vs required 600 is also incorrect.
 14. `equibt_home_prototype_v4.html` — `.stat-num { font-size: 64px }` (line 169). Spec requires 56px. Home page stat numbers render larger than spec.
-15. `equibt_frame_prototype_v4.html` through `equibt_operationalise_prototype_v4.html` — `.case-stat { font-size: 64px }` (various lines). Case stat numbers at 64px. Spec stat number is 56px. These are case stats not proof strip stats, but they use the same role visually. Deviation flagged.
+15. `equibt_frame_prototype_v4.html` through `equibt_scale_prototype_v4.html` — `.case-stat { font-size: 64px }` (various lines). Case stat numbers at 64px. Spec stat number is 56px. These are case stats not proof strip stats, but they use the same role visually. Deviation flagged.
 16. `equibt_home_prototype_v4.html` — Section H2s at 51px/600 (method, evidence, industries headers) and 48px/600 (CTA). Spec: 44px/500.
 17. `equibt_frame_prototype_v4.html` — Section headings (why-start, examine, deliverables, case-studies) at 46px/700. Spec: 44px/500. Applies to all 6 service pages.
 18. `equibt_methodology_prototype_v1.html` — `.section-h2 { font-size: 44px; font-weight: 500 }` (line 89). Correct. PASS. This is the reference implementation.
 
 **Check 5 — Connected pillar grid**
 
-19. `equibt_methodology_prototype_v1.html` — Uses `.phase-grid` (not `.method-pillar-grid`) and `.phase-card-border` element for the top border stripe. Pillar border colours are correct via `.phase-card-border.frame/plan/solve/evolve/govern/operationalise` background rules (lines 149–154). The operationalise pillar in an injection block gets `border-top: 3px solid var(--terracotta) !important` (line 837) — this overrides the correct `var(--pill-operationalise)` colour to terracotta. FAIL on operationalise border colour.
+19. `equibt_methodology_prototype_v1.html` — Uses `.phase-grid` (not `.method-pillar-grid`) and `.phase-card-border` element for the top border stripe. Pillar border colours are correct via `.phase-card-border.frame/plan/solve/evolve/govern/scale` background rules (lines 149–154). The scale pillar in an injection block gets `border-top: 3px solid var(--terracotta) !important` (line 837) — this overrides the correct `var(--pill-scale)` colour to terracotta. FAIL on scale border colour.
 20. `equibt_home_prototype_v4.html` — Pillar grid border-top colours correct (lines 125–130), using `var(--pill-*)` variables. PASS.
 
 **Check 6 — Industry card SVGs (home)**
@@ -106,7 +106,7 @@
 
 **Check 7 — Service page gem SVGs**
 
-24. All 6 service pages — `viewBox="0 0 440 380"` confirmed (frame line 1034, plan line 1399, solve line 1039, evolve line 1030, govern line 1032, operationalise line 1032). PASS.
+24. All 6 service pages — `viewBox="0 0 440 380"` confirmed (frame line 1034, plan line 1399, solve line 1039, evolve line 1030, govern line 1032, scale line 1032). PASS.
 
 **Check 8 — Section background sequence**
 
@@ -124,16 +124,16 @@
 
 **Check 10 — Buttons**
 
-33. `equibt_frame_prototype_v4.html` through `equibt_operationalise_prototype_v4.html` — `.btn-primary { background: var(--terracotta) }` globally (not only on CTA panel). Spec says btn-primary should be navy by default, terracotta only on `.cta-panel .btn-primary`. The hero `btn-primary` on service pages ("Let's talk") is on a white background and renders terracotta — this is a semantic mismatch (terracotta is permitted only on dark CTA panels per spec). See also FAILS item 26–32.
+33. `equibt_frame_prototype_v4.html` through `equibt_scale_prototype_v4.html` — `.btn-primary { background: var(--terracotta) }` globally (not only on CTA panel). Spec says btn-primary should be navy by default, terracotta only on `.cta-panel .btn-primary`. The hero `btn-primary` on service pages ("Let's talk") is on a white background and renders terracotta — this is a semantic mismatch (terracotta is permitted only on dark CTA panels per spec). See also FAILS item 26–32.
 34. `equibt_about_prototype_v2.html` — `.btn-secondary-light { color: rgba(38,36,92,0.55) }` (line 138–143). The class name is `.btn-secondary-light` but it is styled with dark navy text — it has been repurposed as a light-bg button. This should be renamed `.btn-secondary-dark` per spec. The colour value is correct for light backgrounds but the class name is misleading.
 35. `equibt_how_we_work_prototype_v2.html`, `equibt_why_equibt_prototype_v2.html`, `equibt_industries_prototype_v2.html` — Same `.btn-secondary-light` misuse as about page (class name doesn't match use context).
 36. `equibt_home_prototype_v4.html` — `.btn-primary { border-radius: 3px }` (line 83). Spec: 6px. Deviation of 3px vs 6px.
-37. `equibt_frame_prototype_v4.html` through `equibt_operationalise_prototype_v4.html` — `.btn-primary { border-radius: 3px }` (line 92 etc.). Same 3px vs 6px deviation.
+37. `equibt_frame_prototype_v4.html` through `equibt_scale_prototype_v4.html` — `.btn-primary { border-radius: 3px }` (line 92 etc.). Same 3px vs 6px deviation.
 
 **Check 4 — Remaining hard rules**
 
 38. `equibt_home_prototype_v4.html` — `.method-pillar-num { color: rgba(38,36,92,0.045) }` (line 131). The number is visible but extremely faint (opacity ~4.5%). This is borderline — technically visible, not display:none. Hard Rule 6 says no numbered labels. Four pillar number divs are in the HTML (lines 991, 1004, 1017, 1030). Recommend setting `display:none` or `opacity:0`.
-39. `equibt_frame_prototype_v4.html` through `equibt_industries_prototype_v2.html` — Injection blocks contain `.method-pillar.pillar-operationalise .method-pillar-num { color: rgba(38,36,92,0.05) !important }` — pillar numbers exist in CSS but are set near-invisible. No HTML div with class `method-pillar-num` found in service pages outside home. PASS for service pages on Rule 6.
+39. `equibt_frame_prototype_v4.html` through `equibt_industries_prototype_v2.html` — Injection blocks contain `.method-pillar.pillar-scale .method-pillar-num { color: rgba(38,36,92,0.05) !important }` — pillar numbers exist in CSS but are set near-invisible. No HTML div with class `method-pillar-num` found in service pages outside home. PASS for service pages on Rule 6.
 
 **Check 10 — Deliverable cards**
 
@@ -161,7 +161,7 @@
 
 9. **Deliverable card count on service pages (8 vs 4):** Grep found 8 `<div class="deliverable-card">` per service page. If these are 8 separate cards (not nested), the grid renders as a 2-column, 4-row grid rather than the spec's 2x2. Decision needed: verify in browser whether 4 or 8 cards are visible in the deliverables section.
 
-10. **Methodology operationalise pillar border-top = terracotta:** An injection block overrides the operationalise pillar top border to `var(--terracotta)` (line 837). The spec says pillar colours only on `border-top` of pillar cards. Terracotta is the wrong colour for operationalise (should be `#5C0A5C` deep plum). Decision needed: fix injection to use `var(--pill-operationalise)`.
+10. **Methodology scale pillar border-top = terracotta:** An injection block overrides the scale pillar top border to `var(--terracotta)` (line 837). The spec says pillar colours only on `border-top` of pillar cards. Terracotta is the wrong colour for scale (should be `#5C0A5C` deep plum). Decision needed: fix injection to use `var(--pill-scale)`.
 
 11. **Small schematic icons inside home industry cards:** Lines 1079–1161 contain small SVG icons (bar charts, lightning bolt, process arrows, circles) that are not gem-style illustrations. They appear as decorative badges above the main gem SVG. Decision needed: are these intentional supplementary icons, or should they be removed/replaced with gem-style miniatures?
 
@@ -182,6 +182,6 @@
 3. Fix methodology hero H1 to 52px/600 in source.
 4. Decision on navy case-card (Flag 4) — needed before service page consolidation.
 5. Decision on home hero background (Flag 1) and CTA section (Flag 2) — needed before home consolidation.
-6. Fix methodology operationalise pillar border-top to `var(--pill-operationalise)`.
+6. Fix methodology scale pillar border-top to `var(--pill-scale)`.
 7. Fix `--dark-slate` on about-section pages from `#1A1A1A` to `#2C3E50`.
 8. Verify deliverable card count (Flag 9) in browser.

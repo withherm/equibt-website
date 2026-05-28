@@ -47,7 +47,7 @@
 | SOLVE | Analyse | `#0B6B82` Teal |
 | EVOLVE | Improve | `#2D7A3A` Forest Green |
 | GOVERN | Control | `#7A3D00` Dark Amber |
-| OPERATIONALISE | Operate | `#5C0A5C` Deep Plum |
+| SCALE | Operate | `#5C0A5C` Deep Plum |
 
 Each service page uses its pillar colour as the accent throughout: pill tags, left border stripes, section highlights.
 
@@ -102,8 +102,8 @@ When committing:
 - EQUIBT voice: "we". First person plural. Professional, direct, no corporate polish.
 - All clients are anonymous. No client names, no sector identifiers that narrow to one organisation.
 - Do not mention: CUBOROO, Emvisage, AUSQ by name, any certifying body by name.
-- DMAICO is EQUIBT's extension of DMAIC. Six phases. The sixth phase (Operate/OPERATIONALISE) is what distinguishes it from DMAIC.
-- Service names always all-caps: FRAME, PLAN, SOLVE, EVOLVE, GOVERN, OPERATIONALISE.
+- DMAICO is EQUIBT's extension of DMAIC. Six phases. The sixth phase (Operate/SCALE) is what distinguishes it from DMAIC.
+- Service names always all-caps: FRAME, PLAN, SOLVE, EVOLVE, GOVERN, SCALE.
 - No emojis. No hashtags. No lazy CTAs ("what do you think", "let's dive in").
 
 ---

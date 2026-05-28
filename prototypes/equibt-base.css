@@ -40,7 +40,7 @@
   --pill-solve:           #0B6B82;
   --pill-evolve:          #2D7A3A;
   --pill-govern:          #7A3D00;
-  --pill-operationalise:  #5C0A5C;
+  --pill-scale:  #5C0A5C;
   --pillar-accent:        #C15F3C;
   --pillar-accent-tint:   rgba(193,95,60,0.05);
   --text-light: rgba(255,255,255,0.72);
@@ -125,7 +125,7 @@ footer { background: var(--white); padding: 80px 48px 48px; border-top: 1px soli
 .pillar-tag.solve          { background: var(--pill-solve); }
 .pillar-tag.evolve         { background: var(--pill-evolve); }
 .pillar-tag.govern         { background: var(--pill-govern); }
-.pillar-tag.operationalise { background: var(--pill-operationalise); }
+.pillar-tag.scale { background: var(--pill-scale); }
 
 /* ═══ 9. BUTTON COMPONENTS ══════════════════════════════════════════════════ */
 /* Default: navy (hero, page-level CTAs) */
@@ -256,8 +256,8 @@ footer { background: var(--white); padding: 80px 48px 48px; border-top: 1px soli
 .proof-strip { background: transparent; border-top: none; border-bottom: none; padding: 80px 48px; }
 .proof-strip-inner { border: none; background: transparent; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 
-/* Operationalise pillar: terracotta border-top accent */
-.method-pillar.pillar-operationalise { border-top: 3px solid var(--pill-operationalise) !important; border-top-width: 3px !important; }
+/* Scale pillar: terracotta border-top accent */
+.method-pillar.pillar-scale { border-top: 3px solid var(--pill-scale) !important; border-top-width: 3px !important; }
 
 /* Section backgrounds */
 .what-we-believe,

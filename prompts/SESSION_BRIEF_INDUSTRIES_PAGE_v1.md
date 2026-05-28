@@ -22,7 +22,7 @@ Two entry paths: someone clicked "Explore" on a sector card from the home page, 
 Use the same design system as all other EQUIBT prototypes. Do not deviate.
 
 - **Font stack:** `system-ui, -apple-system, sans-serif` — no Google Fonts, no external imports
-- **Primary nav:** sticky, navy `#26245C` background, same 6-link nav as all pages (FRAME, PLAN, SOLVE, EVOLVE, GOVERN, OPERATIONALISE + Let's talk CTA). No active state on nav for this page.
+- **Primary nav:** sticky, navy `#26245C` background, same 6-link nav as all pages (FRAME, PLAN, SOLVE, EVOLVE, GOVERN, SCALE + Let's talk CTA). No active state on nav for this page.
 - **CSS custom properties:** copy the `:root` block from `equibt_plan_prototype_v2.html` exactly
 - **Self-contained:** all CSS inline in `<style>` block, no external stylesheets
 
@@ -115,7 +115,7 @@ Common entry points:
 - Operations diagnostic (PLAN) for claims, lending, or onboarding processes where rework rate is above threshold
 - Root cause analysis (SOLVE) for persistent error patterns that training programmes have failed to resolve
 - AI governance framework (GOVERN) for AI-assisted decision processes that lack clear ownership or drift detection
-- Standardisation and automation deployment (OPERATIONALISE) following a successful pilot
+- Standardisation and automation deployment (SCALE) following a successful pilot
 
 Proof point: "23% reduction in claims rework rate. 8-week pilot. EVOLVE and GOVERN engagement, financial services client, 2024."
 
@@ -131,7 +131,7 @@ Common entry points:
 - Operations diagnostic (PLAN) for service delivery processes with rising backlog or increasing complaint rates
 - Future state design (SOLVE) for processes where incremental improvement has failed and structural redesign is needed
 - Governance and control infrastructure (GOVERN) for processes where improvements have been made but do not hold
-- Capability transfer (OPERATIONALISE) where the team needs to run the improved process independently, without ongoing external support
+- Capability transfer (SCALE) where the team needs to run the improved process independently, without ongoing external support
 
 Proof point: "41% reduction in investigation cycle time. PLAN, SOLVE, and GOVERN engagement, state government client, 2025."
 
@@ -147,9 +147,9 @@ Common entry points:
 - Operations diagnostic (PLAN) for maintenance, inspection, or asset management processes where compliance gaps are emerging
 - Root cause analysis (SOLVE) for recurring incidents or near-misses that corrective action plans have not resolved
 - AI governance framework (GOVERN) for AI-assisted monitoring processes that require defined human override protocols
-- Continuous improvement systems (OPERATIONALISE) to sustain performance between regulatory review periods
+- Continuous improvement systems (SCALE) to sustain performance between regulatory review periods
 
-Proof point: "Sustained 18% improvement in first-time-fix rate, 14 months post-engagement. PLAN, SOLVE, and OPERATIONALISE engagement, energy sector client."
+Proof point: "Sustained 18% improvement in first-time-fix rate, 14 months post-engagement. PLAN, SOLVE, and SCALE engagement, energy sector client."
 
 ---
 
@@ -163,7 +163,7 @@ Common entry points:
 - Operations diagnostic (PLAN) for production processes where defect rates or cycle times are trending in the wrong direction
 - Future state and reengineering (SOLVE) where line redesign or process restructuring is needed to hit throughput targets
 - Pilot validation (EVOLVE) before committing a full production line to a redesigned process
-- Standardisation across shifts and sites (OPERATIONALISE) to ensure the improved process runs consistently under volume
+- Standardisation across shifts and sites (SCALE) to ensure the improved process runs consistently under volume
 
 Proof point: "14% cycle time reduction. 6-month PLAN and SOLVE engagement, precision manufacturer, ANZ operations."
 

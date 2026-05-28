@@ -16,7 +16,7 @@ Create new versions of all 11 files. Do not overwrite existing versions.
 | equibt_frame_prototype_v2.html | equibt_frame_prototype_v3.html |
 | equibt_evolve_prototype_v2.html | equibt_evolve_prototype_v3.html |
 | equibt_govern_prototype_v2.html | equibt_govern_prototype_v3.html |
-| equibt_operationalise_prototype_v2.html | equibt_operationalise_prototype_v3.html |
+| equibt_scale_prototype_v2.html | equibt_scale_prototype_v3.html |
 | equibt_home_prototype_v2.html | equibt_home_prototype_v3.html |
 | equibt_industries_prototype_v1.html | equibt_industries_prototype_v2.html |
 | equibt_about_prototype_v1.html | equibt_about_prototype_v2.html |
@@ -197,7 +197,7 @@ Cards that already use a top coloured bar (`.industry-card`): on hover, deepen t
 
 ## Hero redesign — ALL service pages and About section pages
 
-Apply to: plan, solve, frame, evolve, govern, operationalise, about, why-equibt, how-we-work.
+Apply to: plan, solve, frame, evolve, govern, scale, about, why-equibt, how-we-work.
 
 **Change from:** white 2-col grid with illustration placeholder.
 **Change to:** full navy background, centred content, no illustration panel.
@@ -581,7 +581,7 @@ All existing mobile breakpoints remain. Add these:
 ## What NOT to change
 
 - The colour tokens (keep all existing `--navy`, `--terracotta`, etc.)
-- The 6-pillar pill colours (keep all `--pill-frame` through `--pill-operationalise`)
+- The 6-pillar pill colours (keep all `--pill-frame` through `--pill-scale`)
 - The nav links and CTA label ("Let's talk")
 - Australian English throughout
 - No em dashes or en dashes anywhere
@@ -597,7 +597,7 @@ All existing mobile breakpoints remain. Add these:
 3. `equibt_frame_prototype_v3.html` — same
 4. `equibt_evolve_prototype_v3.html` — same
 5. `equibt_govern_prototype_v3.html` — same
-6. `equibt_operationalise_prototype_v3.html` — same
+6. `equibt_scale_prototype_v3.html` — same
 7. `equibt_home_prototype_v3.html` — keep 2-col hero, apply all other upgrades
 8. `equibt_industries_prototype_v2.html` — sector deep-dives, upgraded cards
 9. `equibt_about_prototype_v2.html` — navy hero, belief cards, stat strip in navy

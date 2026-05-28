@@ -29,7 +29,7 @@ The document is the PROJECT CHARTER. Bold heading at top left: PROJECT CHARTER i
 
 PROBLEM STATEMENT: left column contains two paragraphs of dense analytical text describing the operational issue; right column contains a numbered list with chevron arrows showing three root issues pointing to one agreed statement.
 SCOPE BOUNDARIES: left column lists in-scope and out-of-scope items in two sub-columns; right column contains a 2x2 matrix labelled Impact vs Effort with four quadrants and items plotted.
-SUCCESS CRITERIA: left column lists five measurable success conditions with checkbox fields; right column contains a horizontal timeline with FRAME, PLAN, SOLVE, EVOLVE, GOVERN, OPERATIONALISE nodes. Section label SUCCESS CRITERIA is in muted orange as the single accent.
+SUCCESS CRITERIA: left column lists five measurable success conditions with checkbox fields; right column contains a horizontal timeline with FRAME, PLAN, SOLVE, EVOLVE, GOVERN, SCALE nodes. Section label SUCCESS CRITERIA is in muted orange as the single accent.
 
 Typography is clean sans-serif, modern consulting style. Layout spacing is generous with balanced whitespace. Colour palette: black, white, light grey, muted orange accent on the third section label only. No people, no desk accessories, no laptop, no coffee cup, no stationery, no hands. Include the uploaded EQUIBT square logo exactly as provided. Logo appears lower right corner of the document only, small and understated, approximately 1/20th of page height. Left and bottom spacing equal to the logo width.
 

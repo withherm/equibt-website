@@ -1,6 +1,6 @@
-# OPERATIONALISE Deliverable Illustration Prompts
+# SCALE Deliverable Illustration Prompts
 **Model:** ChatGPT gpt-image-1 (Images tab — NOT DALL-E)
-**Page:** /services/operationalise/
+**Page:** /services/scale/
 **Date:** 2026-05-24
 **Status:** Ready to generate
 
@@ -14,13 +14,13 @@ The logo instruction alone is insufficient — ChatGPT will hallucinate a generi
 
 ## Image specs
 - Format: PNG
-- Save to: assets/Lineart/SERVICE-OPERATIONALISE/
-- Naming: EQ-OPERATIONALISE-CAP1.png, EQ-OPERATIONALISE-CAP2.png, EQ-OPERATIONALISE-CAP3.png, EQ-OPERATIONALISE-CAP4.png
+- Save to: assets/Lineart/SERVICE-SCALE/
+- Naming: EQ-SCALE-CAP1.png, EQ-SCALE-CAP2.png, EQ-SCALE-CAP3.png, EQ-SCALE-CAP4.png
 
 ---
 
 ## CAP1: Standard Work Documentation
-**Filename:** EQ-OPERATIONALISE-CAP1.png
+**Filename:** EQ-SCALE-CAP1.png
 
 **Prompt:**
 Minimal flat-lay photograph of a printed A4 landscape document placed on a clean matte white surface. Slightly angled top-down perspective with soft natural studio shadows and subtle realistic paper texture. Highly minimal, modern, and premium — resembling a real operational consulting deliverable, not a stock image.
@@ -38,7 +38,7 @@ Typography is clean sans-serif, modern consulting style. Layout spacing is gener
 ---
 
 ## CAP2: Automation Deployment Specification
-**Filename:** EQ-OPERATIONALISE-CAP2.png
+**Filename:** EQ-SCALE-CAP2.png
 
 **Prompt:**
 Minimal flat-lay photograph of a printed A4 landscape document placed on a clean matte white surface. Slightly angled top-down perspective with soft natural studio shadows and subtle realistic paper texture. Highly minimal, modern, and premium — resembling a real operational consulting deliverable, not a stock image.
@@ -56,7 +56,7 @@ Typography is clean sans-serif, modern consulting style. Layout spacing is gener
 ---
 
 ## CAP3: Capability Transfer Programme
-**Filename:** EQ-OPERATIONALISE-CAP3.png
+**Filename:** EQ-SCALE-CAP3.png
 
 **Prompt:**
 Minimal flat-lay photograph of a printed A4 landscape document placed on a clean matte white surface. Slightly angled top-down perspective with soft natural studio shadows and subtle realistic paper texture. Highly minimal, modern, and premium — resembling a real operational consulting deliverable, not a stock image.
@@ -74,7 +74,7 @@ Typography is clean sans-serif, modern consulting style. Layout spacing is gener
 ---
 
 ## CAP4: Continuous Improvement System
-**Filename:** EQ-OPERATIONALISE-CAP4.png
+**Filename:** EQ-SCALE-CAP4.png
 
 **Prompt:**
 Minimal flat-lay photograph of a printed A4 landscape document placed on a clean matte white surface. Slightly angled top-down perspective with soft natural studio shadows and subtle realistic paper texture. Highly minimal, modern, and premium — resembling a real operational consulting deliverable, not a stock image.

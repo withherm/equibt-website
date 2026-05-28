@@ -124,7 +124,7 @@ The document shows an AI governance framework. Title: "AI Governance Framework" 
 
 ---
 
-## OPERATIONALISE | Operate
+## SCALE | Operate
 
 ### OPS-DEL-1-PLAYBOOK.jpg
 **Document:** Standardisation Playbook

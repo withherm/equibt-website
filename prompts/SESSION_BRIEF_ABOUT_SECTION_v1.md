@@ -27,7 +27,7 @@ Together these three pages are the primary pre-call trust stack.
 Use the same design system as all other EQUIBT prototypes. Do not deviate.
 
 - **Font stack:** `system-ui, -apple-system, sans-serif` — no Google Fonts, no external imports
-- **Primary nav:** sticky, navy `#26245C` background, same 6-link nav (FRAME, PLAN, SOLVE, EVOLVE, GOVERN, OPERATIONALISE + Let's talk CTA). No active state on nav for these pages.
+- **Primary nav:** sticky, navy `#26245C` background, same 6-link nav (FRAME, PLAN, SOLVE, EVOLVE, GOVERN, SCALE + Let's talk CTA). No active state on nav for these pages.
 - **CSS custom properties:** copy the `:root` block from `equibt_plan_prototype_v2.html` exactly
 - **Self-contained:** all CSS inline in `<style>` block, no external stylesheets
 
@@ -279,7 +279,7 @@ DMAICO does not change by sector. How we apply it does. The questions we ask in 
 
 **Item 4:**
 **Sustained outcomes, not point-in-time results.**
-Most improvement programmes report results at the point of implementation. EQUIBT is designed around what holds twelve months later. Govern (Control) and Operationalise (Operate) are not optional phases. They are where the work either sustains or fails. We do not exit an engagement until the governance and capability to sustain it are in place.
+Most improvement programmes report results at the point of implementation. EQUIBT is designed around what holds twelve months later. Govern (Control) and Scale (Operate) are not optional phases. They are where the work either sustains or fails. We do not exit an engagement until the governance and capability to sustain it are in place.
 
 **Item 5:**
 **AI-ready governance, not AI-avoidant caution.**
@@ -396,7 +396,7 @@ Discovery conversations are led by Herman. They typically run thirty to forty-fi
 Every engagement follows DMAICO. Not every engagement uses every phase.
 
 **Intro paragraph (Inter, 16px, max-width 720px):**
-DMAICO is Herman Chan's extension of DMAIC — Define, Measure, Analyse, Improve, Control, Operate. It adds the phase DMAIC never had: Operate, which makes sustainment a designed outcome rather than an assumption. Most EQUIBT engagements begin at FRAME or PLAN. Not every engagement runs to OPERATIONALISE. Where you start and how far you go is determined by your situation, not by a fixed package.
+DMAICO is Herman Chan's extension of DMAIC — Define, Measure, Analyse, Improve, Control, Operate. It adds the phase DMAIC never had: Operate, which makes sustainment a designed outcome rather than an assumption. Most EQUIBT engagements begin at FRAME or PLAN. Not every engagement runs to SCALE. Where you start and how far you go is determined by your situation, not by a fixed package.
 
 **Layout:** 6 vertical phase rows. Each row has: phase pill (terracotta background, white text, e.g. "FRAME | Define"), timeline estimate, a bold "what this phase covers" heading, a body paragraph, and a "what the client gets at exit" line in a slightly recessed style. Use the same pill style as the subway strip on service pages but stacked vertically here.
 
@@ -452,7 +452,7 @@ What the client gets at exit: The governance infrastructure to sustain improveme
 
 ---
 
-**Phase 6 — OPERATIONALISE | Operate**
+**Phase 6 — SCALE | Operate**
 Timeline: Varies by scope
 
 What this phase covers:

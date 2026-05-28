@@ -32,7 +32,7 @@ Highest-priority failures:
 | 5 | `prototypes/equibt_solve_prototype_v4.html` | Service: SOLVE |
 | 6 | `prototypes/equibt_evolve_prototype_v4.html` | Service: EVOLVE |
 | 7 | `prototypes/equibt_govern_prototype_v4.html` | Service: GOVERN |
-| 8 | `prototypes/equibt_operationalise_prototype_v4.html` | Service: OPERATIONALISE |
+| 8 | `prototypes/equibt_scale_prototype_v4.html` | Service: SCALE |
 | 9 | `prototypes/equibt_about_prototype_v2.html` | About |
 | 10 | `prototypes/equibt_how_we_work_prototype_v2.html` | How we work |
 | 11 | `prototypes/equibt_why_equibt_prototype_v2.html` | Why EQUIBT |
@@ -51,7 +51,7 @@ Any injection is a hard-rule failure. Counts below use comment-marked patch, ove
 | `equibt_solve_prototype_v4.html` | 15 | 243 | Same service-page override stack; `.section-heading` remains divergent in source. |
 | `equibt_evolve_prototype_v4.html` | 15 | 243 | Same service-page override stack. |
 | `equibt_govern_prototype_v4.html` | 15 | 243 | Same service-page override stack. |
-| `equibt_operationalise_prototype_v4.html` | 15 | 243 | Same service-page override stack. |
+| `equibt_scale_prototype_v4.html` | 15 | 243 | Same service-page override stack. |
 | `equibt_about_prototype_v2.html` | 20 | 384 | Highest override load. Hero, cards, carousel, buttons, and background colours are all patched late. |
 | `equibt_how_we_work_prototype_v2.html` | 16 | 259 | Hero, buttons, cards, and numbered rows overridden. |
 | `equibt_why_equibt_prototype_v2.html` | 19 | 352 | Hero, differentiators, refuse items, buttons, and numbered rows overridden. |
@@ -114,7 +114,7 @@ Final injection fixes many card backgrounds to white, but source and mid-layer C
 | Status | File(s) | Selector / element | Actual | Expected |
 |---|---|---|---|---|
 | WARN | Service/about pages | `.pillar-tag.*` | Uses `--pill-*` variables | Spec names permitted pill selector as `.method-phase-tag`; `.pillar-tag` appears to be the local equivalent, but selector naming differs |
-| FAIL | Home | `.method-pillar.pillar-operationalise` final mid-layer | border-top changed to `var(--terracotta)` in one injection before last reset | Pillar top border should use `--pill-operationalise` |
+| FAIL | Home | `.method-pillar.pillar-scale` final mid-layer | border-top changed to `var(--terracotta)` in one injection before last reset | Pillar top border should use `--pill-scale` |
 
 ## Check 3: Typography
 
@@ -166,7 +166,7 @@ Service-page hero colour check: service page hero H1s are navy in final, which m
 | 8. Client references anonymous | FLAG | Case references are anonymous sectors. About bio names GE and AGSM as credentials/training, not clients, but they are named organisations and need Herman decision. |
 | 9. No CSS injection | FAIL | All 12 files contain injection/override blocks. |
 | 10. Service pages: 4 deliverables each | PASS | Each service file has exactly 4 `.deliverable-card` elements. |
-| 11. Case stat standalone | FAIL | Several outcome headlines restate or embed the stat concept: e.g. EVOLVE "6 weeks" and "week seven"; GOVERN "3 weeks" and "week three"; OPERATIONALISE "4" and "four regions/business units"; PLAN "32%" and 32% in situation/outcome area. |
+| 11. Case stat standalone | FAIL | Several outcome headlines restate or embed the stat concept: e.g. EVOLVE "6 weeks" and "week seven"; GOVERN "3 weeks" and "week three"; SCALE "4" and "four regions/business units"; PLAN "32%" and 32% in situation/outcome area. |
 | 12. Case study structure | FAIL | Current case cards use `.case-stat`, `.case-outcome`, `.case-situation`, `.case-result`, not Problem / Approach / Outcomes. |
 
 ## Check 5: Connected pillar grid
@@ -179,7 +179,7 @@ Service-page hero colour check: service page hero H1s are navy in final, which m
 | 1px gap | FAIL final | Source has `gap: 1px`; injection changes grid/card aesthetic to separated 12px gap and transparent background. |
 | Parent background `rgba(38,36,92,0.08)` | FAIL final | Source has correct value; injection changes `background: transparent !important`. |
 | 6 pillar cards | PASS | Six `.method-pillar` elements. |
-| Correct coloured top borders | WARN | Source uses correct pillar colours. Later injections temporarily alter OPERATIONALISE to terracotta and final all-card reset removes top borders via `border-top: none !important`; likely final fail. |
+| Correct coloured top borders | WARN | Source uses correct pillar colours. Later injections temporarily alter SCALE to terracotta and final all-card reset removes top borders via `border-top: none !important`; likely final fail. |
 | White cards | PASS final / FAIL source | Source cards are `var(--off-white)`; final injection makes them white. |
 | Background numbers non-visible | FLAG | `.method-pillar-num` colour `rgba(38,36,92,0.045)` is below the ~0.06 threshold, but visible labels still exist in DOM. |
 
@@ -208,7 +208,7 @@ Note: Home contains other non-industry SVGs with lines/rects/polylines, but the 
 | SOLVE | PASS | Hero SVG uses locked SOLVE coordinates/topology. |
 | EVOLVE | PASS | Hero SVG uses locked EVOLVE coordinates/topology. |
 | GOVERN | PASS | Hero SVG uses locked GOVERN coordinates/topology. |
-| OPERATIONALISE | PASS | Hero SVG uses locked OPER coordinates/topology. |
+| SCALE | PASS | Hero SVG uses locked OPER coordinates/topology. |
 
 Shared note: each service hero gem is placed in `.hero-visual`, has navy linework, unfilled triangular faces, terracotta focal circle, and white open-circle nodes. Some SVGs also include faint horizontal guide lines; these are not part of the locked topology and should be reviewed, but they do not break the vertex set.
 
