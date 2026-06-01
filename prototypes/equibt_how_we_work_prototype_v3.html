@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How We Work | EQUIBT Engagement Model</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:,">
+<link rel="stylesheet" href="equibt-base.css">
+  <style>
+
+:root {
+  --navy: #26245C;
+  --terracotta: #C15F3C;
+  --terracotta-dark: #A04E30;
+  --off-white: #F5F3EE;
+  --section-bg: #F5F3EE;
+  --white: #FFFFFF;
+  --light-grey: #F5F5F5;
+  --navy-wash: #E8ECF5;
+  --highlight-wash: #E8ECF8;
+  --dark-slate: #2C3E50;
+  --near-black: #2C2C2C;
+  --body-text: #2C2C2C;
+  --mid-grey: #555555;
+  --caption-grey: #7A8591;
+  --border: #D8DCE0;
+  --card-shadow: 0 2px 10px rgba(38,36,92,0.08);
+  --card-shadow-hover: 0 16px 40px rgba(38,36,92,0.18);
+  --pill-frame: #8B2252;
+  --pill-plan: #26245C;
+  --pill-solve: #0B6B82;
+  --pill-evolve: #2D7A3A;
+  --pill-govern: #7A3D00;
+  --pill-scale: #5C0A5C;
+}
+
+  h1, h2, h3,
+  .hero-h1, .before-commit-heading, .dmaico-heading, .responsibilities-heading,
+  .ai-section-heading, .why-equibt-heading, .cta-heading,
+  .ref-logo, .cta-button, .section-label,
+  .phase-title, .phase-covers-label, .resp-col-header,
+  .ai-item-title, .pillar-tag,
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--section-bg);
+    color: var(--near-black);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ════════════════════════════════════════
+     SCROLL REVEAL
+  ════════════════════════════════════════ */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: 0.08s; }
+  .reveal-d2 { transition-delay: 0.16s; }
+  .reveal-d3 { transition-delay: 0.24s; }
+  .reveal-d4 { transition-delay: 0.32s; }
+
+/* ════ NAV ════ */
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255,255,255,0.97);
+    border-bottom: 1px solid rgba(38,36,92,0.07);
+  }
+  .site-nav.scrolled { background: rgba(255,255,255,0.99); }
+  .nav-inner {
+    max-width: 1320px;
+    height: 78px;
+    margin: 0 auto;
+    padding: 0 56px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .nav-logo {
+    display: inline-flex; align-items: center;
+    width: 138px; text-decoration: none;
+  }
+  .nav-logo svg { display: block; width: 100%; height: auto; }
+  .nav-links {
+    margin-left: auto;
+    display: flex; align-items: center; gap: 30px;
+  }
+  .nav-link {
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: 14px; font-weight: 500; line-height: 1;
+    color: rgba(44,44,44,0.68); text-decoration: none;
+    transition: color 0.18s ease;
+  }
+  .nav-link:hover, .nav-link:focus { color: var(--navy); }
+  .nav-cta {
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 42px; padding: 13px 26px;
+    border-radius: 6px;
+    background: var(--navy); color: var(--off-white);
+    transition: background 0.18s ease, transform 0.18s ease;
+  }
+  .nav-cta:hover, .nav-cta:focus { background: #1e1c4e; transform: translateY(-1px); }
+  .nav-toggle {
+    display: none;
+    width: 42px; height: 42px;
+    margin-left: auto;
+    border: 0; background: transparent; cursor: pointer;
+    flex-direction: column; align-items: center; justify-content: center;
+  }
+  .nav-toggle span {
+    display: block; width: 22px; height: 2px;
+    margin: 5px auto; border-radius: 2px; background: var(--navy);
+  }
+
+/* ════════════════════════════════════════
+     SHARED UTILITIES
+  ════════════════════════════════════════ */
+  .section-label {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--terracotta); margin-bottom: 16px;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 3px; height: 20px;
+    background: var(--terracotta); border-radius: 2px; flex-shrink: 0;
+  }
+
+  .cta-button {
+    display: inline-flex; align-items: center;
+    background: var(--terracotta); color: var(--off-white);
+    font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 14px 32px; border-radius: 4px; text-decoration: none;
+    transition: background 0.18s, transform 0.15s;
+  }
+  .cta-button:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+
+  .btn-secondary-light {
+    color: rgba(38,36,92,0.55);
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    transition: color 0.18s, gap 0.18s;
+  }
+  .btn-secondary-light:hover { color: var(--navy); gap: 10px; }
+
+  /* Two-col layout */
+  .two-col-inner {
+    max-width: 1120px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 42%; gap: 72px; align-items: start;
+  }
+
+  /* Pillar tags */
+  .pillar-tag {
+    display: inline-flex; align-items: center;
+    color: var(--off-white);
+    font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+    height: 26px; padding: 0 14px; border-radius: 100px; width: fit-content; line-height: 1;
+  }
+  .pillar-tag.frame          { background: var(--pill-frame); }
+  .pillar-tag.plan           { background: var(--pill-plan); }
+  .pillar-tag.solve          { background: var(--pill-solve); }
+  .pillar-tag.evolve         { background: var(--pill-evolve); }
+  .pillar-tag.govern         { background: var(--pill-govern); }
+  .pillar-tag.scale { background: var(--pill-scale); }
+
+  /* Why rows */
+  .why-rows { display: flex; flex-direction: column; }
+  .why-row {
+    display: grid; grid-template-columns: 1fr; gap: 0 32px;
+    padding: 28px 0; border-bottom: 1px solid rgba(38,36,92,0.1); align-items: start;
+  }
+  .why-row:first-child { border-top: 1px solid rgba(38,36,92,0.1); }
+  .why-row-heading { font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 6px; }
+  .why-row-body { font-size: 15px; color: var(--body-text); line-height: 1.7; }
+
+  /* ════════════════════════════════════════
+     1. HERO
+  ════════════════════════════════════════ */
+  .hero { background: var(--white); border-bottom: 1px solid rgba(38,36,92,0.07); padding: 80px 48px 88px; }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 400px; gap: 80px; align-items: center; text-align: left;
+  }
+  .hero-visual { display: flex; align-items: center; justify-content: flex-end; }
+  .hero-visual svg { width: 100%; max-width: 400px; height: auto; }
+  .hero-h1 {
+    font-size: 52px; font-weight: 600; color: var(--navy);
+    line-height: 1.06; letter-spacing: -0.03em; margin-bottom: 20px;
+  }
+  .hero-subhead {
+    font-size: 18px; color: var(--body-text);
+    line-height: 1.6; margin-bottom: 16px;
+  }
+  .hero-body {
+    font-size: 15px; color: var(--body-text);
+    line-height: 1.75; margin-bottom: 36px;
+  }
+  .hero-actions {
+    display: flex; align-items: center; gap: 24px; justify-content: flex-start; flex-wrap: wrap;
+  }
+
+  /* ════════════════════════════════════════
+     2. BEFORE YOU COMMIT
+  ════════════════════════════════════════ */
+  .before-commit {
+    background: var(--off-white);
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.06);
+  }
+  .before-commit-heading {
+    font-size: 36px; font-weight: 700; color: var(--navy);
+    line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 24px;
+  }
+  .before-commit-body p {
+    font-size: 17px; color: var(--body-text); line-height: 1.75; margin-bottom: 16px;
+  }
+  .before-commit-body p:last-child { margin-bottom: 0; }
+
+  /* ════════════════════════════════════════
+     3. DMAICO MODEL (white) — vertical timeline
+  ════════════════════════════════════════ */
+  .dmaico-section {
+    background: var(--white);
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.06);
+  }
+  .dmaico-inner { max-width: 1120px; margin: 0 auto; }
+  .dmaico-heading {
+    font-size: 36px; font-weight: 700; color: var(--navy);
+    line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 12px;
+  }
+  .dmaico-intro {
+    font-size: 16px; color: var(--body-text); max-width: 720px;
+    line-height: 1.8; margin-bottom: 56px;
+  }
+  .phase-list {
+    max-width: 900px;
+    position: relative;
+    padding-left: 48px;
+    border-left: 2px solid rgba(193,95,60,0.2);
+  }
+  .phase-row {
+    padding: 0 0 40px;
+    position: relative;
+  }
+  .phase-row:last-child { padding-bottom: 0; }
+  .phase-row::before {
+    content: '';
+    position: absolute;
+    left: -56px;
+    top: 8px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 2px var(--terracotta);
+  }
+  .phase-header {
+    display: flex; align-items: baseline; gap: 16px; margin-bottom: 12px;
+  }
+  .phase-timeline {
+    font-size: 11px; color: var(--terracotta); font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .phase-title {
+    font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.3;
+  }
+  .phase-covers-label {
+    font-size: 11px; text-transform: uppercase; color: var(--terracotta);
+    letter-spacing: 0.14em; margin-bottom: 8px;
+  }
+  .phase-body {
+    font-size: 15px; color: var(--body-text); line-height: 1.8; margin-bottom: 12px;
+  }
+  .phase-exit {
+    font-size: 14px; color: var(--body-text); line-height: 1.65;
+    padding: 12px 16px;
+    background: rgba(38,36,92,0.04);
+    border-left: 3px solid rgba(38,36,92,0.2);
+    border-radius: 4px;
+  }
+  .phase-exit strong { font-weight: 600; color: var(--navy); }
+
+  /* ════════════════════════════════════════
+     4. RESPONSIBILITIES (off-white)
+  ════════════════════════════════════════ */
+  .responsibilities {
+    background: var(--off-white);
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.06);
+  }
+  .responsibilities-inner { max-width: 1120px; margin: 0 auto; }
+  .responsibilities-heading {
+    font-size: 36px; font-weight: 700; color: var(--navy);
+    line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 40px;
+  }
+  .resp-split-card {
+    background: white; border-radius: 10px; overflow: hidden;
+    box-shadow: 0 2px 10px rgba(38,36,92,0.08);
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .resp-col-header {
+    background: var(--navy); color: var(--off-white);
+    font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 16px 28px;
+  }
+  .resp-col-items { padding: 0 28px; }
+  .resp-item {
+    font-size: 15px; color: var(--body-text); line-height: 1.65;
+    padding: 14px 0; border-bottom: 1px solid rgba(38,36,92,0.07);
+  }
+  .resp-item:last-child { border-bottom: none; }
+  .resp-col:first-child .resp-col-items { border-right: 1px solid rgba(38,36,92,0.08); }
+  .resp-note {
+    max-width: 720px; margin-top: 32px;
+    font-size: 17px; color: var(--body-text); line-height: 1.75;
+  }
+
+  /* ════════════════════════════════════════
+     5. AI-READY APPROACH (section-bg)
+  ════════════════════════════════════════ */
+  .ai-section {
+    background: var(--section-bg);
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.06);
+  }
+  .ai-section-heading {
+    font-size: 36px; font-weight: 700; color: var(--navy);
+    line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 24px;
+  }
+  .ai-body p {
+    font-size: 17px; color: var(--body-text); line-height: 1.75; margin-bottom: 16px;
+  }
+  .ai-body p:last-child { margin-bottom: 0; }
+.ai-right-card {
+    background: white; border-radius: 8px; padding: 28px;
+    box-shadow: 0 2px 10px rgba(38,36,92,0.08);
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .ai-item-dot {
+    width: 6px; height: 6px; background: var(--terracotta); border-radius: 50%;
+    display: inline-block; margin-right: 8px; flex-shrink: 0; vertical-align: middle;
+  }
+  .ai-item-title {
+    font-size: 15px; font-weight: 700; color: var(--navy);
+    margin-bottom: 8px; display: flex; align-items: center;
+  }
+  .ai-item-body { font-size: 14px; color: var(--body-text); line-height: 1.75; }
+
+  /* ════════════════════════════════════════
+     6. WHY EQUIBT PANEL
+  ════════════════════════════════════════ */
+  .why-equibt-panel {
+    background: var(--off-white);
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.06);
+  }
+  .why-equibt-heading {
+    font-size: 36px; font-weight: 700; color: var(--navy);
+    line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 24px;
+  }
+  .why-equibt-body {
+    font-size: 16px; color: var(--body-text); line-height: 1.8;
+  }
+
+  /* ════════════════════════════════════════
+     7. CTA PANEL
+  ════════════════════════════════════════ */
+  .cta-panel { background: var(--dark-slate); padding: 88px 48px; }
+  .cta-panel-inner {
+    max-width: 1120px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 340px; gap: 64px; align-items: center;
+  }
+  .cta-heading {
+    font-size: 36px; font-weight: 700; color: var(--off-white);
+    line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 20px;
+  }
+  .cta-body {
+    font-size: 16px; color: rgba(245,243,238,0.7); line-height: 1.75; margin-bottom: 36px;
+  }
+  .cta-panel-right {
+    background: rgba(255,255,255,0.08); border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15); padding: 28px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .cta-detail-item {
+    display: flex; flex-direction: column; gap: 2px;
+    padding-bottom: 14px; border-bottom: 1px solid rgba(245,243,238,0.12);
+  }
+  .cta-detail-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .cta-detail-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(245,243,238,0.5); margin-bottom: 4px;
+  }
+  .cta-detail-value { font-size: 13px; font-weight: 600; color: var(--off-white); line-height: 1.4; }
+
+/* ════════════════════════════════════════
+     RESPONSIVE
+  ════════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .before-commit, .dmaico-section, .responsibilities,
+    .ai-section, .why-equibt-panel, .cta-panel {
+      padding-left: 32px; padding-right: 32px;
+    }
+    .cta-panel-inner { grid-template-columns: 1fr 280px; }
+  }
+  @media (max-width: 900px) {
+    .two-col-inner { grid-template-columns: 1fr; }
+    .cta-panel-inner { grid-template-columns: 1fr; }
+    .cta-panel-right { display: none; }
+    .resp-split-card { grid-template-columns: 1fr; }
+    .resp-col:first-child .resp-col-items { border-right: none; border-bottom: 1px solid rgba(38,36,92,0.08); }
+  }
+
+  @media (max-width: 820px) {
+    .nav-inner { height: 66px; padding-left: 24px; padding-right: 24px; }
+    .nav-logo { width: 124px; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      position: fixed; inset: 66px 0 auto 0;
+      display: none; flex-direction: column; align-items: flex-start; gap: 0;
+      padding: 20px 24px 28px;
+      background: #FFFFFF; box-shadow: 0 18px 40px rgba(38,36,92,0.12);
+    }
+    .nav-links.is-open { display: flex; }
+    .nav-link { width: 100%; padding: 13px 0; color: var(--near-black); }
+    .nav-cta { margin-top: 14px; }
+  }
+
+@media (max-width: 768px) {
+    .hero { padding: 56px 24px 64px; }
+    .hero-h1 { font-size: 38px; }
+    .before-commit, .dmaico-section, .responsibilities,
+    .ai-section, .why-equibt-panel, .cta-panel {
+      padding-left: 24px; padding-right: 24px;
+      padding-top: 56px; padding-bottom: 56px;
+    }
+    .before-commit-heading, .dmaico-heading, .responsibilities-heading,
+    .ai-section-heading, .why-equibt-heading, .cta-heading { font-size: 30px; }
+    .phase-list { padding-left: 32px; }
+    .phase-row::before { left: -40px; }
+    .why-row { grid-template-columns: 1fr; gap: 0; }
+  }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+    <nav class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="EQUIBT home">
+        <svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
+          <g id="equibt-wordmark-main" fill="#2C3E50">
+            <path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/>
+            <path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/>
+            <path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/>
+            <path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/>
+            <path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/>
+            <path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/>
+          </g>
+          <path id="equibt-icon-main" fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/>
+        </svg>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/services/" class="nav-link">Services</a>
+        <a href="/industries/" class="nav-link">Industries</a>
+        <a href="/our-work/" class="nav-link">Our Work</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-cta">Let&#x2019;s talk</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 1. HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+    <div class="hero-text">
+      <div class="section-label reveal">How We Work</div>
+      <h1 class="hero-h1 reveal reveal-d1">An engagement with EQUIBT has a defined start, defined phases, and a defined exit.</h1>
+      <p class="hero-subhead reveal reveal-d2">Before you commit to anything, you will know exactly what you are committing to, what each phase covers, what we deliver, what you are responsible for, and what the exit looks like.</p>
+      <p class="hero-body reveal reveal-d3">Most improvement programmes are scoped in broad terms and then defined in detail after the engagement begins. By the time the scope is clear, the budget is committed and the timeline is set. EQUIBT works differently. We define scope, deliverables, and exit criteria before the work begins. If the scope changes, and sometimes it does, we discuss it openly before acting on it. You do not discover the cost of scope changes at invoice time.</p>
+      <div class="hero-actions reveal reveal-d4">
+        <a href="#" class="cta-button">Book a discovery call</a>
+        <a href="#dmaico" class="btn-secondary-light">See the engagement model
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="20" y1="192" x2="420" y2="192" stroke="#26245C" stroke-width="0.5" stroke-dasharray="2 10" opacity="0.05"/>
+        <path d="M 220 45 L 108 95 L 220 118 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 220 45 L 220 118 L 332 95 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 108 95 L 45 192 L 152 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 108 95 L 152 155 L 220 118 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 332 95 L 220 118 L 288 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 332 95 L 288 155 L 395 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 45 192 L 220 192 L 152 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 152 155 L 220 192 L 288 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 288 155 L 220 192 L 395 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 220 118 L 152 155 L 288 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 45 192 L 152 245 L 220 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 220 192 L 152 245 L 288 245 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 220 192 L 288 245 L 395 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 45 192 L 98 285 L 152 245 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 152 245 L 98 285 L 220 345 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 152 245 L 220 345 L 288 245 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 288 245 L 220 345 L 342 285 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 288 245 L 342 285 L 395 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <circle cx="220" cy="45" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="45" cy="192" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="395" cy="192" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="220" cy="345" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="108" cy="95" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="332" cy="95" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="98" cy="285" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="342" cy="285" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="220" cy="192" r="10" fill="#C15F3C"/>
+        <text x="220" y="374" font-family="system-ui,-apple-system,sans-serif" font-size="8" font-weight="600" letter-spacing="0.14em" fill="#C15F3C" text-anchor="middle" opacity="0.52">DEFINED ENGAGEMENT MODEL</text>
+      </svg>
+    </div>
+  </div>
+  </section>
+
+  <!-- 2. BEFORE YOU COMMIT -->
+  <section class="before-commit">
+    <div class="two-col-inner">
+      <div class="before-commit-left reveal">
+        <div class="section-label">Before You Commit</div>
+        <h2 class="before-commit-heading">The discovery conversation is not a sales call. It is a scoping conversation.</h2>
+        <div class="before-commit-body">
+          <p>Most consulting firms use discovery calls to sell. EQUIBT uses them to scope. There is a difference.</p>
+          <p>A sales call is designed to produce a proposal. A scoping conversation is designed to determine whether the engagement makes sense, for both sides. We will ask about the problem, the scale, the timeline, what has already been tried, and what success looks like. If the engagement is not the right fit, we will tell you. If it is, we will scope it clearly and give you a fixed price.</p>
+          <p>Discovery conversations are led by Herman. They typically run thirty to forty-five minutes. You will leave knowing whether EQUIBT can help, what the engagement would involve, and what it would cost.</p>
+        </div>
+      </div>
+      <div class="before-commit-right reveal reveal-d1">
+        <div class="section-label">Why EQUIBT?</div>
+        <div class="why-rows">
+          <div class="why-row">
+            <div>
+              <div class="why-row-heading">No proposal without a scoping conversation.</div>
+              <div class="why-row-body">We do not send unsolicited proposals. We scope first, propose second. The proposal reflects a real conversation about your actual situation.</div>
+            </div>
+          </div>
+          <div class="why-row">
+            <div>
+              <div class="why-row-heading">Fixed price, defined scope.</div>
+              <div class="why-row-body">EQUIBT engagements are priced on scope, not on hours. You know the cost before the engagement begins. Scope changes are discussed before they affect the price.</div>
+            </div>
+          </div>
+          <div class="why-row">
+            <div>
+              <div class="why-row-heading">No engagement that is not a fit.</div>
+              <div class="why-row-body">If the problem is not one we can help with, we will tell you in the discovery conversation. We do not take on engagements we cannot deliver.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. DMAICO MODEL -->
+  <section class="dmaico-section" id="dmaico">
+    <div class="dmaico-inner">
+      <div class="section-label reveal">The Engagement Model</div>
+      <h2 class="dmaico-heading reveal reveal-d1">Every engagement follows the same six-phase model. Not every engagement uses every phase.</h2>
+      <p class="dmaico-intro reveal reveal-d2">The methodology extends DMAIC by one phase: Operate, which makes sustainment a designed outcome rather than an assumption. Most EQUIBT engagements begin at FRAME or PLAN. Not every engagement runs to SCALE. Where you start and how far you go is determined by your situation, not by a fixed package.</p>
+
+      <div class="phase-list">
+
+        <!-- FRAME -->
+        <div class="phase-row reveal">
+          <div class="phase-header">
+            <span class="pillar-tag frame">Frame</span>
+            <span class="phase-timeline">1 to 2 days</span>
+          </div>
+          <div class="phase-title">Define</div>
+          <div class="phase-covers-label">What This Phase Covers</div>
+          <p class="phase-body">Problem and objective definition using SPIN (Situation, Problem, Implication, Non-Negotiable Needs and Payoffs). Stakeholder alignment. Project charter. Success criteria definition. Scope lock.</p>
+          <div class="phase-exit"><strong>What the client gets at exit:</strong> A clear, agreed definition of the actual problem, not the presenting problem, with aligned stakeholders and a locked project charter before any diagnostic begins. This document governs the rest of the engagement.</div>
+        </div>
+
+        <!-- PLAN -->
+        <div class="phase-row reveal">
+          <div class="phase-header">
+            <span class="pillar-tag plan">Plan</span>
+            <span class="phase-timeline">3 to 6 weeks</span>
+          </div>
+          <div class="phase-title">Measure</div>
+          <div class="phase-covers-label">What This Phase Covers</div>
+          <p class="phase-body">Operations diagnostic. Current state mapping. Data collection and baseline measurement. Voice of customer, process, and business. Performance gap quantification. Business analysis of the current state.</p>
+          <div class="phase-exit"><strong>What the client gets at exit:</strong> An evidence-based picture of how the operation actually works, where the gaps are, and what the baseline performance looks like before any changes are made. The diagnostic is the foundation everything else is built on.</div>
+        </div>
+
+        <!-- SOLVE -->
+        <div class="phase-row reveal">
+          <div class="phase-header">
+            <span class="pillar-tag solve">Solve</span>
+            <span class="phase-timeline">4 to 8 weeks</span>
+          </div>
+          <div class="phase-title">Analyse</div>
+          <div class="phase-covers-label">What This Phase Covers</div>
+          <p class="phase-body">Root cause analysis. Business analysis of the future state. Process redesign and operational reengineering. Solution development. Cost-benefit analysis. Future state design.</p>
+          <div class="phase-exit"><strong>What the client gets at exit:</strong> Identified root causes (not symptoms), a designed future state, and a costed solution ready for pilot validation. Business analysis deliverables specify what needs to change and why.</div>
+        </div>
+
+        <!-- EVOLVE -->
+        <div class="phase-row reveal">
+          <div class="phase-header">
+            <span class="pillar-tag evolve">Evolve</span>
+            <span class="phase-timeline">6 to 12 weeks</span>
+          </div>
+          <div class="phase-title">Improve</div>
+          <div class="phase-covers-label">What This Phase Covers</div>
+          <p class="phase-body">Rapid pilot in a controlled scope. Change management. Implementation planning and risk mitigation. Pilot results validation. Service design. Business and product requirements development.</p>
+          <div class="phase-exit"><strong>What the client gets at exit:</strong> A validated future state, tested under real conditions, not modelled assumptions, with implementation plans, change management, and fully developed requirements ready for scale.</div>
+        </div>
+
+        <!-- GOVERN -->
+        <div class="phase-row reveal">
+          <div class="phase-header">
+            <span class="pillar-tag govern">Govern</span>
+            <span class="phase-timeline">4 to 6 weeks</span>
+          </div>
+          <div class="phase-title">Control</div>
+          <div class="phase-covers-label">What This Phase Covers</div>
+          <p class="phase-body">Process architecture. Control plans. Dashboards and performance monitoring. AI governance frameworks. Standard operating procedures. Escalation protocols.</p>
+          <div class="phase-exit"><strong>What the client gets at exit:</strong> The governance infrastructure to sustain improvements, documented processes, control mechanisms, monitoring systems, and clear escalation paths. This is where improvements either hold or drift. We do not exit an engagement until this infrastructure is in place and owned internally.</div>
+        </div>
+
+        <!-- SCALE -->
+        <div class="phase-row reveal">
+          <div class="phase-header">
+            <span class="pillar-tag scale">Scale</span>
+            <span class="phase-timeline">Varies by scope</span>
+          </div>
+          <div class="phase-title">Operate</div>
+          <div class="phase-covers-label">What This Phase Covers</div>
+          <p class="phase-body">Standardisation across business units. Automation deployment within approved corporate tooling. Organisation-wide rollout. Training and capability transfer. Continuous improvement systems embedding.</p>
+          <div class="phase-exit"><strong>What the client gets at exit:</strong> The improved operation running at scale, with automation deployed, teams trained, and continuous improvement systems embedded. This is the phase DMAIC never had. It makes ongoing governance someone's job, not everyone's assumption.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. RESPONSIBILITIES -->
+  <section class="responsibilities">
+    <div class="responsibilities-inner">
+      <div class="section-label reveal">What Each Side Is Responsible For</div>
+      <h2 class="responsibilities-heading reveal reveal-d1">This is a collaboration, not a handover.</h2>
+      <div class="resp-split-card reveal reveal-d2">
+        <div class="resp-col">
+          <div class="resp-col-header">EQUIBT Is Responsible For</div>
+          <div class="resp-col-items">
+            <div class="resp-item">Defining the scope clearly before the engagement begins</div>
+            <div class="resp-item">Measuring the current state with rigour before recommending any intervention</div>
+            <div class="resp-item">Isolating root causes before designing solutions</div>
+            <div class="resp-item">Running pilots under controlled conditions with defined go/no-go criteria</div>
+            <div class="resp-item">Building governance infrastructure that runs without ongoing external support</div>
+            <div class="resp-item">Transferring capability to the client team at every phase</div>
+            <div class="resp-item">Raising scope changes before acting on them</div>
+          </div>
+        </div>
+        <div class="resp-col">
+          <div class="resp-col-header">The Client Is Responsible For</div>
+          <div class="resp-col-items">
+            <div class="resp-item">Access to the people, data, and processes that need to be measured</div>
+            <div class="resp-item">Senior sponsor visibility, someone with authority over the problem space</div>
+            <div class="resp-item">Honest information about what has already been tried and why it did not work</div>
+            <div class="resp-item">Timely decisions at key phase gates</div>
+            <div class="resp-item">Allocating team time for capability transfer sessions</div>
+            <div class="resp-item">Owning the governance infrastructure after the engagement closes</div>
+          </div>
+        </div>
+      </div>
+      <p class="resp-note reveal">An EQUIBT engagement is not something that happens to your organisation. It is something your organisation participates in. The capability transfer only works if there are people on your side who are learning and building ownership throughout the engagement, not waiting for a handover at the end.</p>
+    </div>
+  </section>
+
+  <!-- 5. AI-READY APPROACH -->
+  <section class="ai-section">
+    <div class="two-col-inner">
+      <div class="ai-left reveal">
+        <div class="section-label">AI-Ready Operations</div>
+        <h2 class="ai-section-heading">AI that fits inside your corporate constraints, not around them.</h2>
+        <div class="ai-body">
+          <p>Most organisations in the sectors EQUIBT works in, financial services, government, utilities, manufacturing, operate inside a defined corporate technology stack. Microsoft Copilot for Microsoft 365 environments. Google Gemini for Workspace environments. These are not fringe tools. They are the tools your team is already licensed to use and already subject to your data governance policies.</p>
+          <p>EQUIBT identifies AI automation opportunities inside this existing stack. Not hypothetical automation that requires new vendor relationships, new data agreements, and new approval processes. Practical automation using the tools that are already approved, already deployed, and already familiar to your team.</p>
+        </div>
+      </div>
+      <div class="ai-right reveal reveal-d1">
+        <div class="ai-right-card">
+          <div class="ai-item">
+            <div class="ai-item-title"><span class="ai-item-dot"></span>Corporate stack, not fringe tools.</div>
+            <div class="ai-item-body">We identify automation opportunities inside Microsoft Copilot, Google Gemini, and other corporate-approved platforms. We do not recommend tools your IT governance function will block.</div>
+          </div>
+          <div class="ai-item">
+            <div class="ai-item-title"><span class="ai-item-dot"></span>Stable process first.</div>
+            <div class="ai-item-body">Automation accelerates whatever process you have. If the process is broken, automation makes it break faster. We do not recommend AI deployment until the process is stable and the governance is in place.</div>
+          </div>
+          <div class="ai-item">
+            <div class="ai-item-title"><span class="ai-item-dot"></span>Team capability, not tool dependency.</div>
+            <div class="ai-item-body">Your team learns to use the tools, not to depend on EQUIBT to operate them. When we leave, the capability stays.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. WHY EQUIBT PANEL -->
+  <section class="why-equibt-panel">
+    <div class="two-col-inner">
+      <div class="why-equibt-left reveal">
+        <div class="section-label">Why EQUIBT?</div>
+        <h2 class="why-equibt-heading">Three reasons clients choose EQUIBT over a larger firm.</h2>
+        <p class="why-equibt-body">Larger firms have scale. EQUIBT has focus. The person who scopes your engagement leads your engagement. The methodology was built for the problem of sustainment, not just delivery. And the scope is fixed before work begins, not after.</p>
+      </div>
+      <div class="why-equibt-right reveal reveal-d1">
+        <div class="why-rows">
+          <div class="why-row">
+            <div>
+              <div class="why-row-heading">Defined scope, not open-ended retainer.</div>
+              <div class="why-row-body">Every phase has defined deliverables and exit criteria. You know what you are committing to before the engagement begins. We do not scope engagements designed to perpetuate themselves.</div>
+            </div>
+          </div>
+          <div class="why-row">
+            <div>
+              <div class="why-row-heading">Client capability at exit, not consultant dependency.</div>
+              <div class="why-row-body">The test of a successful engagement is what your team can do when we leave. We transfer capability at every phase. Governance and process ownership belong to your organisation before we close.</div>
+            </div>
+          </div>
+          <div class="why-row">
+            <div>
+              <div class="why-row-heading">Integrated AI, not AI as an afterthought.</div>
+              <div class="why-row-body">AI opportunity identification and governance are built into the DMAICO engagement model, not added as a separate workstream after the fact. We identify what is automatable, build the governance for it, and train your team to run it.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CTA PANEL -->
+  <section class="cta-panel">
+    <div class="cta-panel-inner">
+      <div class="cta-left reveal">
+        <h2 class="cta-heading">Seen enough? Let's scope it.</h2>
+        <p class="cta-body">A thirty-minute scoping conversation will tell you whether the engagement makes sense, what it would involve, and what it would cost. No proposal without a conversation. No commitment without a clear scope.</p>
+        <a href="#" class="cta-button">Let&rsquo;s Talk</a>
+      </div>
+      <div class="cta-panel-right reveal reveal-d1">
+        <div class="cta-detail-item">
+          <div class="cta-detail-label">Discovery conversation</div>
+          <div class="cta-detail-value">30 to 45 minutes with Herman Chan</div>
+        </div>
+        <div class="cta-detail-item">
+          <div class="cta-detail-label">Typical engagement start</div>
+          <div class="cta-detail-value">2 to 3 weeks from scoping conversation</div>
+        </div>
+        <div class="cta-detail-item">
+          <div class="cta-detail-label">Pricing model</div>
+          <div class="cta-detail-value">Fixed price, scope and cost locked before work begins</div>
+        </div>
+        <div class="cta-detail-item">
+          <div class="cta-detail-label">Geography</div>
+          <div class="cta-detail-value">Australia and New Zealand</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="EQUIBT home">
+          <svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
+            <use href="#equibt-wordmark-main"></use>
+            <use href="#equibt-icon-main"></use>
+          </svg>
+        </a>
+        <p class="footer-tagline">We simplify the complex. We make it stick.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services/frame/">FRAME</a></li>
+          <li><a href="/services/plan/">PLAN</a></li>
+          <li><a href="/services/solve/">SOLVE</a></li>
+          <li><a href="/services/evolve/">EVOLVE</a></li>
+          <li><a href="/services/govern/">GOVERN</a></li>
+          <li><a href="/services/scale/">SCALE</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/our-work/">Our Work</a></li>
+          <li><a href="/insights/">Insights</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:hello@equibt.com">hello@equibt.com</a></li>
+          <li><a href="https://www.linkedin.com/company/equibt/">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 EQUIBT. All rights reserved.</div>
+    </div>
+  </footer>
+
+
+
+<script>
+const nav = document.getElementById("site-nav");
+const toggle = document.querySelector(".nav-toggle");
+const links = document.getElementById("nav-links");
+
+if (nav) {
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("scrolled", window.scrollY > 24);
+  }, { passive: true });
+}
+
+if (toggle && links) {
+  toggle.addEventListener("click", () => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!expanded));
+    links.classList.toggle("is-open");
+    document.body.classList.toggle("nav-open");
+  });
+}
+
+const revealEls = document.querySelectorAll(".reveal");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+revealEls.forEach((el) => observer.observe(el));
+</script>
+</body>
+</html>
