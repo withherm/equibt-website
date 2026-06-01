@@ -1038,7 +1038,7 @@ p {
 }
 
 .site-footer {
-  padding: 48px 56px;
+  padding: 120px 56px 48px;
   background: #FFFFFF;
   color: var(--near-black);
   border-top: 0;
@@ -1108,11 +1108,11 @@ p {
 
 .footer-bottom {
   max-width: 1200px;
-  margin: 0 auto;
-  padding-top: 0;
-  border-top: 0;
+  margin: 80px auto 0;
+  padding-top: 28px;
+  border-top: 1px solid rgba(38,36,92,0.12);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 24px;
   color: rgba(44,44,44,0.52);
   font-size: 12px;
@@ -1313,7 +1313,7 @@ p {
   }
 
   .site-footer {
-    padding: 38px 24px;
+    padding: 78px 24px 38px;
   }
 
   .footer-inner {
@@ -1323,7 +1323,7 @@ p {
 
   .footer-bottom {
     flex-direction: column;
-    margin-top: 0;
+    margin-top: 54px;
   }
 }
 </style>
@@ -1717,6 +1717,44 @@ p {
   </main>
 
   <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="EQUIBT home">
+          <svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
+            <use href="#equibt-wordmark-main"></use>
+            <use href="#equibt-icon-main"></use>
+          </svg>
+        </a>
+        <p class="footer-tagline">We simplify the complex. We make it stick.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services/frame/">FRAME</a></li>
+          <li><a href="/services/plan/">PLAN</a></li>
+          <li><a href="/services/solve/">SOLVE</a></li>
+          <li><a href="/services/evolve/">EVOLVE</a></li>
+          <li><a href="/services/govern/">GOVERN</a></li>
+          <li><a href="/services/scale/">SCALE</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/our-work/">Our Work</a></li>
+          <li><a href="/insights/">Insights</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:hello@equibt.com">hello@equibt.com</a></li>
+          <li><a href="https://www.linkedin.com/company/equibt/">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="footer-bottom">
       <div>&copy; 2026 EQUIBT. All rights reserved.</div>
     </div>
