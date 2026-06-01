@@ -16,6 +16,15 @@ Code agent for GOS build tasks. Codex operates from Linear issues and GitHub —
 
 ---
 
+## Repository discipline
+
+1. ONE working copy only: `REPOS/equibt-website`. Never create side clones, integration clones, or per-issue clones (e.g. equibt-website-integration, equibt-website-eqt207). All branches live inside the single canonical clone, which stays on main synced to origin/main. Do not work from a detached HEAD.
+2. Branch per Linear issue inside that clone; PR to withherm/equibt-website; merge to main.
+3. Do not commit or push without Herman's explicit approval.
+4. If you find uncommitted local changes or a stash, inspect before discarding. DESIGN_LEARNINGS_v5x.md spec edits have lived only in the working tree; preserve spec updates, never silently drop them.
+
+---
+
 ## Linear workflow — mandatory for all build work
 
 1. Read the assigned Linear issue. Understand scope and acceptance criteria.
@@ -24,7 +33,7 @@ Code agent for GOS build tasks. Codex operates from Linear issues and GitHub —
 4. Build only what the issue describes. Do not refactor unrelated files or add scope.
 5. Verify all acceptance criteria before completing.
 6. Create a pull request. Post the PR URL as a comment on the Linear issue.
-7. Update issue status: In Progress → Done.
+7. Update issue status: In Progress → In Review after the PR is open. Do NOT self-mark Done. An issue moves to Done only after its PR is merged to main, and Herman makes that move. "Done" = merged and live, not "code written."
 
 To pick up the next task: read the Linear board, take the highest-priority Backlog issue in the relevant project.
 

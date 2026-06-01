@@ -19,6 +19,15 @@
 
 ---
 
+## Repository discipline
+
+1. ONE working copy only: `REPOS/equibt-website`. Never create side clones, integration clones, or per-issue clones (e.g. equibt-website-integration, equibt-website-eqt207). All branches live inside the single canonical clone, which stays on main synced to origin/main. Do not work from a detached HEAD.
+2. Branch per Linear issue inside that clone; PR to withherm/equibt-website; merge to main.
+3. Do not commit or push without Herman's explicit approval.
+4. If you find uncommitted local changes or a stash, inspect before discarding. DESIGN_LEARNINGS_v5x.md spec edits have lived only in the working tree; preserve spec updates, never silently drop them.
+
+---
+
 ## Brand
 
 **Primary:** Deep Navy `#26245C`
