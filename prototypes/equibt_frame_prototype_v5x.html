@@ -1062,6 +1062,42 @@ p {
   color: rgba(245,243,238,0.74);
 }
 
+.cta-meta {
+  max-width: 860px;
+  margin: 0 0 42px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.cta-meta-item {
+  padding: 18px 20px;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+}
+
+.cta-meta-label {
+  display: block;
+  margin-bottom: 6px;
+  color: rgba(245,243,238,0.58);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.cta-meta-value {
+  display: block;
+  color: #FFFFFF;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
 .cta-panel .cta-button {
   background: #FFFFFF;
   color: var(--near-black);
@@ -1339,6 +1375,10 @@ p {
     justify-content: center;
   }
 
+  .cta-meta {
+    grid-template-columns: 1fr;
+  }
+
   .case-card {
     grid-template-columns: 1fr;
   }
@@ -1391,7 +1431,7 @@ p {
         <a href="/industries/" class="nav-link">Industries</a>
         <a href="/our-work/" class="nav-link">Our Work</a>
         <a href="/about/" class="nav-link">About</a>
-        <a href="/contact/" class="nav-cta">Let's talk</a>
+        <a href="/contact/" class="nav-cta">Get in touch</a>
       </div>
     </div>
   </nav>
@@ -1406,7 +1446,7 @@ p {
           <p class="hero-body">Michael has been here before. His leadership team has three different views on what needs to change. The COO thinks it is a technology problem. The operations director thinks it is a people problem. Finance thinks it is a cost problem. They are all partly right and all partly wrong. Without alignment, any improvement initiative will face political resistance from the sponsors who disagree with the framing.</p>
           <p class="hero-body">FRAME is the discipline of agreeing on the problem - specifically, precisely, and with commitment - before anything else happens. It uses a structured SPIN workshop to surface what is really going on, what the implications are if nothing changes, and what the non-negotiable outcomes must be. The output is a project charter that every stakeholder has signed off on. Nothing moves without it.</p>
           <div class="hero-actions">
-            <a href="/contact/" class="btn-primary">Let's talk</a>
+            <a href="/contact/" class="btn-primary">Get in touch</a>
             <a href="/our-work/" class="btn-outline">View our work</a>
           </div>
         </div>
@@ -1745,9 +1785,23 @@ p {
 
     <section class="section cta-panel">
       <div class="section-inner cta-box reveal">
-        <h2 class="section-title light">Not sure if alignment is the issue? Let's talk.</h2>
-        <p>If your team has different views on what needs to change, a fifteen-minute conversation will clarify whether FRAME is the right starting point. No obligation.</p>
-        <a href="/contact/" class="cta-button">Book a discovery call</a>
+        <h2 class="section-title light">Agree on the real problem first.</h2>
+        <p>If your team holds different views on what needs to change, that disagreement is the thing worth resolving before anything else. Send us a short note on where the views diverge. We will tell you whether FRAME is the right place to start and what it would involve.</p>
+        <div class="cta-meta" aria-label="Typical FRAME engagement details">
+          <div class="cta-meta-item">
+            <span class="cta-meta-label">Typical timeline</span>
+            <span class="cta-meta-value">From 1 day</span>
+          </div>
+          <div class="cta-meta-item">
+            <span class="cta-meta-label">How we work</span>
+            <span class="cta-meta-value">Embedded with your team</span>
+          </div>
+          <div class="cta-meta-item">
+            <span class="cta-meta-label">What you leave with</span>
+            <span class="cta-meta-value">An agreed problem and project charter</span>
+          </div>
+        </div>
+        <a href="/contact/" class="cta-button">Get in touch</a>
       </div>
     </section>
   </main>
