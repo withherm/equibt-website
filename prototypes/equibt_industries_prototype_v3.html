@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industries | EQUIBT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:,">
+<link rel="stylesheet" href="equibt-base.css">
+  <style>
+
+:root {
+  --navy: #26245C;
+  --terracotta: #C15F3C;
+  --terracotta-dark: #A04E30;
+  --off-white: #F5F3EE;
+  --section-bg: #F5F3EE;
+  --white: #FFFFFF;
+  --light-grey: #F5F5F5;
+  --navy-wash: #E8ECF5;
+  --highlight-wash: #E8ECF8;
+  --dark-slate: #2C3E50;
+  --near-black: #2C2C2C;
+  --body-text: #2C2C2C;
+  --mid-grey: #555555;
+  --caption-grey: #7A8591;
+  --border: #D8DCE0;
+  --card-shadow: 0 2px 10px rgba(38,36,92,0.08);
+  --card-shadow-hover: 0 16px 40px rgba(38,36,92,0.18);
+  --pill-frame: #8B2252;
+  --pill-plan: #26245C;
+  --pill-solve: #0B6B82;
+  --pill-evolve: #2D7A3A;
+  --pill-govern: #7A3D00;
+  --pill-scale: #5C0A5C;
+}
+
+  h1, h2, h3,
+  .hero-h1, .why-heading, .sector-heading, .case-studies-heading, .related-heading, .cta-heading,
+  .ref-logo, .btn-primary, .cta-button, .pillar-tag, .case-stat,
+  .section-label, .related-card-name,
+  .sector-card-title,
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--section-bg);
+    color: var(--near-black);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ════════════════════════════════════════
+     SCROLL REVEAL
+  ════════════════════════════════════════ */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: 0.08s; }
+  .reveal-d2 { transition-delay: 0.16s; }
+  .reveal-d3 { transition-delay: 0.24s; }
+  .reveal-d4 { transition-delay: 0.32s; }
+
+.ref-nav {
+    background: var(--navy);
+    padding: 15px 48px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    transition: background 0.3s ease;
+  }
+.ref-logo {
+    font-size: 15px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--off-white);
+    text-decoration: none;
+  }
+.ref-nav-links {
+    display: flex; align-items: center; gap: 32px; margin-left: auto;
+  }
+.ref-nav-link:hover { color: var(--off-white); }
+.ref-nav-cta {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--off-white);
+    background: var(--terracotta);
+    padding: 8px 18px; border-radius: 4px;
+    text-decoration: none; margin-left: 16px;
+    transition: background 0.18s;
+  }
+
+  /* ════ NAV ════ */
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255,255,255,0.97);
+    border-bottom: 1px solid rgba(38,36,92,0.07);
+  }
+  .site-nav.scrolled { background: rgba(255,255,255,0.99); }
+  .nav-inner {
+    max-width: 1320px;
+    height: 78px;
+    margin: 0 auto;
+    padding: 0 56px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .nav-logo {
+    display: inline-flex; align-items: center;
+    width: 138px; text-decoration: none;
+  }
+  .nav-logo svg { display: block; width: 100%; height: auto; }
+  .nav-links {
+    margin-left: auto;
+    display: flex; align-items: center; gap: 30px;
+  }
+  .nav-link {
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: 14px; font-weight: 500; line-height: 1;
+    color: rgba(44,44,44,0.68); text-decoration: none;
+    transition: color 0.18s ease;
+  }
+  .nav-link:hover, .nav-link:focus { color: var(--navy); }
+  .nav-cta {
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 42px; padding: 13px 26px;
+    border-radius: 6px;
+    background: var(--navy); color: var(--off-white);
+    transition: background 0.18s ease, transform 0.18s ease;
+  }
+  .nav-cta:hover, .nav-cta:focus { background: #1e1c4e; transform: translateY(-1px); }
+  .nav-toggle {
+    display: none;
+    width: 42px; height: 42px;
+    margin-left: auto;
+    border: 0; background: transparent; cursor: pointer;
+    flex-direction: column; align-items: center; justify-content: center;
+  }
+  .nav-toggle span {
+    display: block; width: 22px; height: 2px;
+    margin: 5px auto; border-radius: 2px; background: var(--navy);
+  }
+
+/* ════════════════════════════════════════
+     SHARED UTILITIES
+  ════════════════════════════════════════ */
+  .section-label {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--terracotta);
+    margin-bottom: 16px;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 3px; height: 20px;
+    background: var(--terracotta); border-radius: 2px; flex-shrink: 0;
+  }
+  .section-inner { max-width: 1120px; margin: 0 auto; }
+
+  .pillar-tag {
+    display: inline-flex; align-items: center;
+    color: var(--off-white);
+    font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+    height: 22px; padding: 0 11px; border-radius: 100px;
+    width: fit-content; line-height: 1;
+  }
+  .pillar-tag.frame          { background: var(--pill-frame); }
+  .pillar-tag.plan           { background: var(--pill-plan); }
+  .pillar-tag.solve          { background: var(--pill-solve); }
+  .pillar-tag.evolve         { background: var(--pill-evolve); }
+  .pillar-tag.govern         { background: var(--pill-govern); }
+  .pillar-tag.scale { background: var(--pill-scale); }
+
+  .btn-primary {
+    display: inline-flex; align-items: center;
+    background: var(--navy); color: var(--off-white);
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 12px 24px; border-radius: 6px; text-decoration: none;
+    transition: background 0.18s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+
+  .btn-secondary-light {
+    color: rgba(38,36,92,0.55);
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: color 0.18s, gap 0.18s;
+  }
+  .btn-secondary-light:hover { color: var(--navy); gap: 10px; }
+
+  /* ════════════════════════════════════════
+     1. HERO — navy centred
+  ════════════════════════════════════════ */
+  .hero {
+    background: var(--white);
+    border-bottom: 1px solid rgba(38,36,92,0.07);
+    padding: 80px 48px 88px;
+  }
+  .hero-inner {
+    max-width: 720px; margin: 0 auto;
+    display: flex; flex-direction: column; align-items: flex-start; text-align: left;
+  }
+  .hero-h1 {
+    font-size: 52px; font-weight: 600; color: var(--navy);
+    line-height: 1.06; letter-spacing: -0.03em;
+    margin-bottom: 20px;
+  }
+  .hero-subhead {
+    font-size: 18px; color: var(--body-text);
+    line-height: 1.6; margin-bottom: 16px; max-width: 600px;
+  }
+  .hero-body {
+    font-size: 15px; color: var(--body-text);
+    line-height: 1.75; margin-bottom: 36px; max-width: 580px;
+  }
+  .hero-body p + p { margin-top: 14px; }
+  .hero-actions {
+    display: flex; align-items: center; gap: 24px;
+    justify-content: flex-start; flex-wrap: wrap;
+  }
+
+  /* ════════════════════════════════════════
+     2. WHY SECTOR CONTEXT MATTERS
+  ════════════════════════════════════════ */
+  .why-sector {
+    background: var(--off-white);
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.06);
+  }
+  .why-sector-inner {
+    max-width: 1120px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 42%;
+    gap: 72px;
+    align-items: start;
+  }
+  .why-heading {
+    font-size: 36px; font-weight: 700; color: var(--navy);
+    line-height: 1.1; letter-spacing: -0.025em;
+    margin-bottom: 24px; max-width: 480px;
+  }
+  .why-body p {
+    font-size: 17px; color: var(--body-text);
+    line-height: 1.8; margin-bottom: 16px;
+  }
+  .why-body p:last-child { margin-bottom: 0; }
+
+  /* Why-rows (right column) */
+  .why-rows { display: flex; flex-direction: column; }
+  .why-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 32px;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(38,36,92,0.1);
+    align-items: start;
+  }
+  .why-row:first-child { border-top: 1px solid rgba(38,36,92,0.1); }
+  .why-row-heading {
+    font-size: 20px; font-weight: 700; color: var(--navy);
+    letter-spacing: -0.01em; line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .why-row-body {
+    font-size: 15px; color: var(--body-text); line-height: 1.7;
+  }
+
+  /* ════════════════════════════════════════
+     3. SECTOR DEEP-DIVES
+  ════════════════════════════════════════ */
+  .sectors {
+    background: var(--white);
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.06);
+  }
+  .sectors-inner { max-width: 1120px; margin: 0 auto; }
+  .sector-heading {
+    font-size: 36px; font-weight: 700; color: var(--navy);
+    line-height: 1.1; letter-spacing: -0.025em;
+    margin-bottom: 44px; max-width: 520px;
+  }
+  .sectors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .sector-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 54px 32px 32px;
+    box-shadow: 0 2px 10px rgba(38,36,92,0.07), 0 1px 3px rgba(0,0,0,0.04);
+    position: relative;
+    border: none;
+  }
+  .sector-bar { display: none; }
+  .sector-card-icon { margin-bottom: 20px; }
+  .sector-card-title {
+    font-size: 22px; font-weight: 700; color: var(--navy);
+    line-height: 1.2; margin-bottom: 12px;
+  }
+  .sector-card-problem {
+    font-size: 15px; color: var(--body-text);
+    line-height: 1.75; margin-bottom: 24px;
+  }
+  .sector-entry-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--terracotta);
+    margin-bottom: 10px;
+  }
+  .sector-entry-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 8px;
+    margin-bottom: 24px;
+    padding-left: 0;
+  }
+  .sector-entry-list li {
+    font-size: 14px; color: var(--body-text);
+    line-height: 1.55;
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+  }
+  .sector-entry-list li .pillar-tag {
+    flex-shrink: 0;
+    position: relative;
+    top: -1px;
+  }
+  .sector-proof {
+    background: var(--pillar-accent-tint);
+    border-left: none;
+    border-radius: 4px;
+    padding: 12px 16px;
+    font-size: 14px; color: var(--body-text);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ════════════════════════════════════════
+     4. CASE STUDIES
+  ════════════════════════════════════════ */
+  .case-studies {
+    background: #F9F7F4;
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.08);
+  }
+  .case-studies-inner { max-width: 1120px; margin: 0 auto; }
+  .case-studies-heading {
+    font-size: 36px; font-weight: 700; color: var(--navy);
+    line-height: 1.1; letter-spacing: -0.025em;
+    margin-bottom: 44px; max-width: 500px;
+  }
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+
+  .case-card.light {
+    background: #ffffff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    padding: 40px 40px 40px 36px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+
+  .case-tags {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+  .case-sector {
+    display: inline-flex; align-items: center;
+    background: rgba(38,36,92,0.07);
+    border: 1px solid rgba(38,36,92,0.12);
+    color: var(--navy);
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    height: 22px; padding: 0 10px; border-radius: 100px;
+  }
+  .case-stat {
+    font-size: 64px; font-weight: 700; color: var(--terracotta);
+    line-height: 1; letter-spacing: -0.03em;
+    font-family: 'Montserrat', system-ui, sans-serif;
+  }
+  .case-outcome {
+    font-size: 20px; font-weight: 600; color: var(--near-black); line-height: 1.5;
+  }
+  .case-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 10px; font-weight: 700; color: var(--terracotta);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: gap 0.18s, color 0.18s;
+    margin-top: 4px;
+  }
+  .case-link:hover { gap: 9px; color: var(--terracotta-dark); }
+
+  /* ════════════════════════════════════════
+     5. RELATED SERVICES
+  ════════════════════════════════════════ */
+  .related-services {
+    background: var(--section-bg);
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(38,36,92,0.08);
+  }
+  .related-services-inner { max-width: 1120px; margin: 0 auto; }
+  .related-heading {
+    font-size: 36px; font-weight: 700; color: var(--navy);
+    line-height: 1.1; letter-spacing: -0.025em;
+    margin-bottom: 12px; max-width: 520px;
+  }
+  .related-subhead {
+    font-size: 17px; color: var(--body-text); line-height: 1.75;
+    margin-bottom: 44px; max-width: 640px;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .related-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 28px 28px 24px;
+    display: flex; flex-direction: column; gap: 12px;
+    text-decoration: none; color: var(--near-black);
+    box-shadow: 0 2px 10px rgba(38,36,92,0.08), 0 1px 3px rgba(0,0,0,0.04);
+    transition: box-shadow 0.22s ease, transform 0.22s ease;
+  }
+  .related-card:hover {
+    box-shadow: 0 16px 40px rgba(38,36,92,0.18), 0 4px 12px rgba(0,0,0,0.07);
+    transform: translateY(-6px);
+  }
+  .related-card-name {
+    font-size: 18px; font-weight: 700; color: var(--navy);
+    line-height: 1.3; letter-spacing: -0.01em;
+  }
+  .related-card-descriptor {
+    font-size: 14px; color: var(--body-text); line-height: 1.65; flex: 1;
+  }
+  .related-card-link {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 10px; font-weight: 700; color: var(--terracotta);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px;
+    transition: gap 0.18s ease, color 0.18s ease;
+  }
+  .related-card:hover .related-card-link { gap: 9px; color: var(--terracotta-dark); }
+
+  /* ════════════════════════════════════════
+     6. CTA PANEL
+  ════════════════════════════════════════ */
+  .cta-panel {
+    background: var(--dark-slate);
+    padding: 88px 48px;
+  }
+  .cta-panel-inner {
+    max-width: 1120px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 64px;
+    align-items: center;
+  }
+  .cta-heading {
+    font-size: 36px; font-weight: 700; color: var(--off-white);
+    line-height: 1.1; letter-spacing: -0.025em;
+    margin-bottom: 20px;
+  }
+  .cta-body {
+    font-size: 16px; color: rgba(245,243,238,0.7);
+    line-height: 1.75; margin-bottom: 36px;
+  }
+  .cta-button {
+    display: inline-flex; align-items: center;
+    background: var(--terracotta); color: var(--off-white);
+    font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 14px 32px; border-radius: 4px; text-decoration: none;
+    transition: background 0.18s, transform 0.15s;
+  }
+  .cta-button:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+  .cta-panel-right {
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    border: 1px solid rgba(245,243,238,0.15);
+    padding: 28px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .cta-detail-item {
+    display: flex; flex-direction: column; gap: 3px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(245,243,238,0.12);
+  }
+  .cta-detail-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .cta-detail-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(245,243,238,0.45);
+  }
+  .cta-detail-value {
+    font-size: 13px; color: var(--off-white); line-height: 1.5; font-weight: 600;
+  }
+
+.site-footer {
+    background: var(--navy);
+    padding: 32px 48px;
+    text-align: center;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    color: rgba(245,243,238,0.45);
+    text-transform: uppercase;
+  }
+
+  /* ════════════════════════════════════════
+     RESPONSIVE
+  ════════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .hero, .why-sector, .sectors, .case-studies, .related-services, .cta-panel {
+      padding-left: 32px; padding-right: 32px;
+    }
+    .cta-panel-inner { grid-template-columns: 1fr 280px; }
+  }
+
+  @media (max-width: 900px) {
+    .why-sector-inner { grid-template-columns: 1fr; }
+    .cta-panel-inner { grid-template-columns: 1fr; }
+    .cta-panel-right { display: none; }
+  }
+
+
+  @media (max-width: 820px) {
+    .nav-inner { height: 66px; padding-left: 24px; padding-right: 24px; }
+    .nav-logo { width: 124px; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      position: fixed; inset: 66px 0 auto 0;
+      display: none; flex-direction: column; align-items: flex-start; gap: 0;
+      padding: 20px 24px 28px;
+      background: #FFFFFF; box-shadow: 0 18px 40px rgba(38,36,92,0.12);
+    }
+    .nav-links.is-open { display: flex; }
+    .nav-link { width: 100%; padding: 13px 0; color: var(--near-black); }
+    .nav-cta { margin-top: 14px; }
+  }
+
+@media (max-width: 768px) {
+    .hero { padding: 56px 24px 64px; }
+    .hero-h1 { font-size: 38px; }
+    .why-sector, .sectors, .case-studies, .related-services, .cta-panel {
+      padding-left: 24px; padding-right: 24px;
+      padding-top: 56px; padding-bottom: 64px;
+    }
+    .why-heading, .sector-heading, .case-studies-heading, .related-heading { font-size: 30px; }
+    .cta-heading { font-size: 26px; }
+    .sectors-grid { grid-template-columns: 1fr; }
+    .case-grid { grid-template-columns: 1fr; }
+    .related-grid { grid-template-columns: 1fr; }
+    .case-stat { font-size: 48px; }
+  .why-row { grid-template-columns: 1fr; gap: 0; }
+  }
+
+
+  /* ════ FOOTER ════ */
+  .site-footer {
+    background: #FFFFFF;
+    color: var(--near-black);
+    padding: 80px 56px 48px;
+    border-top: 1px solid var(--border);
+  }
+  .footer-inner {
+    max-width: 1320px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 56px;
+  }
+  .footer-logo { display: inline-flex; align-items: center; width: 120px; text-decoration: none; margin-bottom: 14px; }
+  .footer-logo svg { display: block; width: 100%; height: auto; }
+  .footer-tagline { font-size: 14px; color: var(--mid-grey); line-height: 1.65; max-width: 200px; }
+  .footer-col h4 {
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--near-black);
+    margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .site-footer .footer-col ul li a {
+    font-size: 14px; color: var(--mid-grey); text-decoration: none;
+    transition: color 0.18s ease;
+  }
+  .site-footer .footer-col ul li a:hover,
+  .site-footer .footer-col ul li a:focus { color: var(--navy); }
+  .footer-bottom {
+    max-width: 1320px; margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 13px; color: var(--caption-grey);
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+    <nav class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="EQUIBT home">
+        <svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
+          <g id="equibt-wordmark-main" fill="#2C3E50">
+            <path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/>
+            <path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/>
+            <path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/>
+            <path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/>
+            <path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/>
+            <path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/>
+          </g>
+          <path id="equibt-icon-main" fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/>
+        </svg>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/services/" class="nav-link">Services</a>
+        <a href="/industries/" class="nav-link">Industries</a>
+        <a href="/our-work/" class="nav-link">Our Work</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-cta">Let&#x2019;s talk</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 1. HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+    <div class="hero-text">
+      <div class="section-label reveal">Industries</div>
+      <h1 class="hero-h1 reveal reveal-d1">High-complexity service operations are what we know.</h1>
+      <p class="hero-subhead reveal reveal-d2">EQUIBT works in sectors where operational precision is not optional. High process volumes, regulatory constraint, AI adoption pressure, and zero tolerance for sustained underperformance.</p>
+      <div class="hero-body reveal reveal-d3">
+        <p>Most operational improvement programmes fail not because the methodology is wrong but because the firm applying it does not understand the sector. The regulatory environment, the political dynamics, the data constraints, the workforce profile, these shape which interventions work and which ones look right on paper but fail on implementation.</p>
+        <p>We do not apply generic frameworks to complex environments. We bring the DMAICO methodology and a track record in four sectors where complexity is structural, not exceptional.</p>
+      </div>
+      <div class="hero-actions reveal reveal-d4">
+        <a href="#" class="btn-primary">Book a discovery call</a>
+        <a href="#sectors" class="btn-secondary-light">Explore sectors
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="20" y1="192" x2="420" y2="192" stroke="#26245C" stroke-width="0.5" stroke-dasharray="2 10" opacity="0.05"/>
+        <path d="M 220 45 L 108 95 L 220 118 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 220 45 L 220 118 L 332 95 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 108 95 L 45 192 L 152 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 108 95 L 152 155 L 220 118 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 332 95 L 220 118 L 288 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 332 95 L 288 155 L 395 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 45 192 L 220 192 L 152 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 152 155 L 220 192 L 288 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 288 155 L 220 192 L 395 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 220 118 L 152 155 L 288 155 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 45 192 L 152 245 L 220 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 220 192 L 152 245 L 288 245 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 220 192 L 288 245 L 395 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 45 192 L 98 285 L 152 245 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 152 245 L 98 285 L 220 345 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 152 245 L 220 345 L 288 245 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 288 245 L 220 345 L 342 285 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 288 245 L 342 285 L 395 192 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+        <circle cx="220" cy="45" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="45" cy="192" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="395" cy="192" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="220" cy="345" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+        <circle cx="108" cy="95" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="332" cy="95" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="98" cy="285" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="342" cy="285" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+        <circle cx="220" cy="192" r="10" fill="#C15F3C"/>
+        <text x="220" y="374" font-family="system-ui,-apple-system,sans-serif" font-size="8" font-weight="600" letter-spacing="0.14em" fill="#C15F3C" text-anchor="middle" opacity="0.52">SECTOR EXPERTISE</text>
+      </svg>
+    </div>
+  </div>
+  </section>
+
+  <!-- 2. WHY SECTOR CONTEXT MATTERS -->
+  <section class="why-sector">
+    <div class="why-sector-inner">
+      <div class="why-left reveal">
+        <div class="section-label">Why sector context matters</div>
+        <h2 class="why-heading">The same problem looks different depending on where it lives.</h2>
+        <div class="why-body">
+          <p>A rework problem in a bank is shaped by regulatory documentation requirements, approval hierarchies, and the risk appetite of the compliance function. The same problem in a government department is shaped by ministerial accountability, public service enterprise agreements, and procurement constraints. The same problem in a manufacturer is shaped by shift patterns, machine uptime, and supplier variability.</p>
+          <p>Solving it the same way in all three is not rigour. It is ignorance.</p>
+          <p>EQUIBT's DMAICO methodology does not change by sector. The diagnostic tools, analytical methods, pilot structure, governance frameworks, and continuous improvement systems are the same. What changes is how we apply them, the questions we ask in the diagnostic, the benchmarks we use, the stakeholder dynamics we navigate, and the change management approach we take.</p>
+        </div>
+      </div>
+      <div class="why-right reveal reveal-d1">
+        <div class="section-label">Why EQUIBT?</div>
+        <div class="why-rows">
+          <div class="why-row">
+            <div>
+              <div class="why-row-heading">Sector-fluent, not sector-agnostic.</div>
+              <div class="why-row-body">We do not apply a generic framework to your operating environment. We have worked inside financial services, government, utilities, and manufacturing and we know what those environments actually require.</div>
+            </div>
+          </div>
+          <div class="why-row">
+            <div>
+              <div class="why-row-heading">Method consistent, application adapted.</div>
+              <div class="why-row-body">DMAICO does not change by sector. How we apply it does. The diagnostic questions, benchmarks, stakeholder approach, and change management design are calibrated for where you operate.</div>
+            </div>
+          </div>
+          <div class="why-row">
+            <div>
+              <div class="why-row-heading">Built for the environment, not retrofitted to it.</div>
+              <div class="why-row-body">Solutions designed for a generic organisation fail inside highly regulated, unionised, or operationally constrained environments. We build for the actual constraints, not an idealised version of them.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SECTOR DEEP-DIVES -->
+  <section class="sectors" id="sectors">
+    <div class="sectors-inner">
+      <div class="section-label reveal">Where we work</div>
+      <h2 class="sector-heading reveal reveal-d1">Four sectors. Structural complexity in each.</h2>
+      <div class="sectors-grid">
+
+        <!-- Financial Services -->
+        <div class="sector-card reveal reveal-d1">
+          <div class="sector-bar"></div>
+          <div class="sector-card-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+              <polyline points="17 6 23 6 23 12"/>
+            </svg>
+          </div>
+          <h3 class="sector-card-title">Financial Services</h3>
+          <p class="sector-card-problem">High transaction volumes, regulatory complexity, and the growing role of AI in credit decisions, fraud detection, and customer onboarding have made operational precision a compliance requirement, not just an efficiency goal. Rework compounds fast. Drift goes undetected until it is material.</p>
+          <div class="sector-entry-label">Common DMAICO entry points</div>
+          <ul class="sector-entry-list">
+            <li><span class="pillar-tag plan" style="font-size:8px;height:18px;padding:0 8px;vertical-align:middle;margin-right:8px;">Plan</span>Operations diagnostic for claims, lending, or onboarding processes where rework rate is above threshold</li>
+            <li><span class="pillar-tag solve" style="font-size:8px;height:18px;padding:0 8px;vertical-align:middle;margin-right:8px;">Solve</span>Root cause analysis for persistent error patterns that training programmes have failed to resolve</li>
+            <li><span class="pillar-tag govern" style="font-size:8px;height:18px;padding:0 8px;vertical-align:middle;margin-right:8px;">Govern</span>AI governance framework for AI-assisted decision processes that lack clear ownership or drift detection</li>
+            <li><span class="pillar-tag scale" style="font-size:8px;height:18px;padding:0 8px;vertical-align:middle;margin-right:8px;">Scale</span>Standardisation and automation deployment following a successful pilot</li>
+          </ul>
+          <div class="sector-proof">23% reduction in claims rework rate. 8-week pilot. EVOLVE and GOVERN engagement, financial services client, 2024.</div>
+        </div>
+
+        <!-- Government -->
+        <div class="sector-card reveal reveal-d2">
+          <div class="sector-bar"></div>
+          <div class="sector-card-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="22" x2="21" y2="22"/>
+              <line x1="6" y1="18" x2="6" y2="11"/>
+              <line x1="10" y1="18" x2="10" y2="11"/>
+              <line x1="14" y1="18" x2="14" y2="11"/>
+              <line x1="18" y1="18" x2="18" y2="11"/>
+              <polygon points="12 2 20 7 4 7"/>
+            </svg>
+          </div>
+          <h3 class="sector-card-title">Government &amp; Public Sector</h3>
+          <p class="sector-card-problem">Service delivery, budget constraint, and procedural rigour run simultaneously in an environment shaped by ministerial accountability, enterprise agreements, and procurement rules. Improvement programmes that work in private sector environments often stall here not because the methodology is wrong but because the change management was designed for a different operating context.</p>
+          <div class="sector-entry-label">Common DMAICO entry points</div>
+          <ul class="sector-entry-list">
+            <li><span class="pillar-tag plan" style="font-size:8px;height:18px;padding:0 8px;vertical-align:middle;margin-right:8px;">Plan</span>Operations diagnostic for service delivery processes with rising backlog or increasing complaint rates</li>
+            <li><span class="pillar-tag solve" style="font-size:8px;height:18px;padding:0 8px;vertical-align:middle;margin-right:8px;">Solve</span>Future state design for processes where incremental improvement has failed and structural redesign is needed</li>
+            <li><span class="pillar-tag govern" style="font-size:8px;height:18px;padding:0 8px;vertical-align:middle;margin-right:8px;">Govern</span>Governance and control infrastructure for processes where improvements have been made but do not hold</li>
+            <li><span class="pillar-tag scale" style="font-size:8px;height:18px;padding:0 8px;vertical-align:middle;margin-right:8px;">Scale</span>Capability transfer where the team needs to run the improved process independently</li>
+          </ul>
+          <div class="sector-proof">41% reduction in investigation cycle time. PLAN, SOLVE, and GOVERN engagement, state government client, 2025.</div>
+        </div>
+
+        <!-- Utilities -->
+        <div class="sector-card reveal reveal-d1">
+          <div class="sector-bar"></div>
+          <div class="sector-card-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+          <h3 class="sector-card-title">Utilities</h3>
+          <p class="sector-card-problem">Uptime, safety, and compliance run simultaneously with no margin for variation. Regulatory review cycles create pressure to demonstrate sustained improvement, not just point-in-time results. AI-assisted monitoring and predictive maintenance are being deployed into operations that often lack the governance infrastructure to detect when the model is wrong.</p>
+          <div class="sector-entry-label">Common DMAICO entry points</div>
+          <ul class="sector-entry-list">
+            <li><span class="pillar-tag plan" style="font-size:8px;height:18px;padding:0 8px;vertical-align:middle;margin-right:8px;">Plan</span>Operations diagnostic for maintenance, inspection, or asset management processes where compliance gaps are emerging</li>
+            <li><span class="pillar-tag solve" style="font-size:8px;height:18px;padding:0 8px;vertical-align:middle;margin-right:8px;">Solve</span>Root cause analysis for recurring incidents or near-misses that corrective action plans have not resolved</li>
+            <li><span class="pillar-tag govern" style="font-size:8px;height:18px;padding:0 8px;vertical-align:middle;margin-right:8px;">Govern</span>AI governance framework for AI-assisted monitoring processes that require defined human override protocols</li>
+            <li><span class="pillar-tag scale" style="font-size:8px;height:18px;padding:0 8px;vertical-align:middle;margin-right:8px;">Scale</span>Continuous improvement systems to sustain performance between regulatory review periods</li>
+          </ul>
+          <div class="sector-proof">Sustained 18% improvement in first-time-fix rate, 14 months post-engagement. PLAN, SOLVE, and SCALE engagement, energy sector client.</div>
+        </div>
+
+        <!-- Advanced Manufacturing -->
+        <div class="sector-card reveal reveal-d2">
+          <div class="sector-bar"></div>
+          <div class="sector-card-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </div>
+          <h3 class="sector-card-title">Advanced Manufacturing</h3>
+          <p class="sector-card-problem">Precision, throughput, and quality control at scale leave no room for drift. Cycle time, defect rate, and yield sit in constant tension. AI-assisted quality inspection and predictive maintenance are raising the capability floor, and also creating new governance challenges when the model drifts without detection.</p>
+          <div class="sector-entry-label">Common DMAICO entry points</div>
+          <ul class="sector-entry-list">
+            <li><span class="pillar-tag plan" style="font-size:8px;height:18px;padding:0 8px;vertical-align:middle;margin-right:8px;">Plan</span>Operations diagnostic for production processes where defect rates or cycle times are trending in the wrong direction</li>
+            <li><span class="pillar-tag solve" style="font-size:8px;height:18px;padding:0 8px;vertical-align:middle;margin-right:8px;">Solve</span>Future state and reengineering where line redesign or process restructuring is needed to hit throughput targets</li>
+            <li><span class="pillar-tag evolve" style="font-size:8px;height:18px;padding:0 8px;vertical-align:middle;margin-right:8px;">Evolve</span>Pilot validation before committing a full production line to a redesigned process</li>
+            <li><span class="pillar-tag scale" style="font-size:8px;height:18px;padding:0 8px;vertical-align:middle;margin-right:8px;">Scale</span>Standardisation across shifts and sites to ensure the improved process runs consistently under volume</li>
+          </ul>
+          <div class="sector-proof">14% cycle time reduction. 6-month PLAN and SOLVE engagement, precision manufacturer, ANZ operations.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CASE STUDIES -->
+  <section class="case-studies">
+    <div class="case-studies-inner">
+      <div class="section-label reveal">How it looks in practice</div>
+      <h2 class="case-studies-heading reveal reveal-d1">Two engagements. Different sectors. Same rigour.</h2>
+      <div class="case-grid">
+
+        <div class="case-card navy reveal reveal-d1">
+          <div class="case-tags">
+            <span class="case-sector">Financial Services</span>
+            <span class="pillar-tag plan">Plan</span>
+            <span class="pillar-tag solve">Solve</span>
+          </div>
+          <div class="case-stat">23%</div>
+          <p class="case-outcome">Persistent rework that three programmes had not resolved.</p>
+          <p class="case-situation">A large financial services operation had a rework problem in its lending operations that three previous improvement programmes had failed to fix. Each programme had treated the symptom, additional training, updated checklists, system modifications, without isolating the root cause. We ran a PLAN diagnostic to establish the true baseline and map where the rework was actually originating. SOLVE identified the root cause: a missing decision right at a specific point in the approval process, combined with inconsistent training across teams. The fix was structural, not procedural. The rework rate fell 23% within eight weeks of implementation.</p>
+          <a href="#" class="case-link">Read case study
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="case-card light reveal reveal-d2">
+          <div class="case-tags">
+            <span class="case-sector">Logistics</span>
+            <span class="pillar-tag evolve">Evolve</span>
+            <span class="pillar-tag govern">Govern</span>
+          </div>
+          <div class="case-stat">31%</div>
+          <p class="case-outcome">Cutting order-to-delivery cycle time without adding headcount.</p>
+          <p class="case-situation">A national logistics operator needed to reduce order-to-delivery cycle time under sustained volume growth. Adding headcount was not on the table. We designed the future state in SOLVE, ran a structured 8-week pilot through one business unit in EVOLVE with live metrics and a defined go/no-go decision, validated the results, and used GOVERN to build the control infrastructure before national rollout. The improved process is now running across four business units. Cycle time is down 31% against the pre-engagement baseline.</p>
+          <a href="#" class="case-link">Read case study
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. RELATED SERVICES -->
+  <section class="related-services">
+    <div class="related-services-inner">
+      <div class="section-label reveal">Where to start</div>
+      <h2 class="related-heading reveal reveal-d1">Most engagements in complex sectors begin with PLAN.</h2>
+      <p class="related-subhead reveal reveal-d2">If you know something is wrong but cannot pinpoint the source, an operations diagnostic is the right starting point. If you have a clear picture of the problem and need to design the solution, SOLVE is where to go. If you have a solution that is not holding, GOVERN builds the infrastructure that sustains it.</p>
+      <div class="related-grid">
+
+        <a href="/services/plan/" class="related-card reveal reveal-d1">
+          <span class="pillar-tag plan" style="width:fit-content;">Plan</span>
+          <div class="related-card-name">PLAN | Measure &mdash; Operations Diagnostic</div>
+          <p class="related-card-descriptor">See the full picture before you act. Evidence-based diagnostic that maps current state, establishes baselines, and identifies where to focus first.</p>
+          <div class="related-card-link">Learn about PLAN
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </a>
+
+        <a href="/services/solve/" class="related-card reveal reveal-d2">
+          <span class="pillar-tag solve" style="width:fit-content;">Solve</span>
+          <div class="related-card-name">SOLVE | Analyse &mdash; Root Cause and Solution Design</div>
+          <p class="related-card-descriptor">Move from symptoms to causes. From causes to costed solutions. Structured analysis that transfers capability to your team.</p>
+          <div class="related-card-link">Learn about SOLVE
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CTA PANEL -->
+  <section class="cta-panel">
+    <div class="cta-panel-inner">
+      <div class="cta-left reveal">
+        <h2 class="cta-heading">Working in one of these sectors? Let&rsquo;s talk.</h2>
+        <p class="cta-body">A fifteen-minute conversation is enough to tell you whether EQUIBT is the right fit for your operation, and which service is the right starting point. No obligation.</p>
+        <a href="#" class="cta-button">Book a discovery call</a>
+      </div>
+      <div class="cta-panel-right reveal reveal-d1">
+        <div class="cta-detail-item">
+          <span class="cta-detail-label">Typical engagement start</span>
+          <span class="cta-detail-value">2 to 3 weeks from first conversation</span>
+        </div>
+        <div class="cta-detail-item">
+          <span class="cta-detail-label">Sectors served</span>
+          <span class="cta-detail-value">Financial Services, Government, Utilities, Advanced Manufacturing</span>
+        </div>
+        <div class="cta-detail-item">
+          <span class="cta-detail-label">Geography</span>
+          <span class="cta-detail-value">Australia and New Zealand</span>
+        </div>
+        <div class="cta-detail-item">
+          <span class="cta-detail-label">Engagement type</span>
+          <span class="cta-detail-value">Advisory and capability transfer. Not staff augmentation.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="EQUIBT home">
+          <svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
+            <use href="#equibt-wordmark-main"></use>
+            <use href="#equibt-icon-main"></use>
+          </svg>
+        </a>
+        <p class="footer-tagline">We simplify the complex. We make it stick.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services/frame/">FRAME</a></li>
+          <li><a href="/services/plan/">PLAN</a></li>
+          <li><a href="/services/solve/">SOLVE</a></li>
+          <li><a href="/services/evolve/">EVOLVE</a></li>
+          <li><a href="/services/govern/">GOVERN</a></li>
+          <li><a href="/services/scale/">SCALE</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/our-work/">Our Work</a></li>
+          <li><a href="/insights/">Insights</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:hello@equibt.com">hello@equibt.com</a></li>
+          <li><a href="https://www.linkedin.com/company/equibt/">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 EQUIBT. All rights reserved.</div>
+    </div>
+  </footer>
+
+
+
+<script>
+const nav = document.getElementById("site-nav");
+const toggle = document.querySelector(".nav-toggle");
+const links = document.getElementById("nav-links");
+
+if (nav) {
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("scrolled", window.scrollY > 24);
+  }, { passive: true });
+}
+
+if (toggle && links) {
+  toggle.addEventListener("click", () => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!expanded));
+    links.classList.toggle("is-open");
+    document.body.classList.toggle("nav-open");
+  });
+}
+
+const revealEls = document.querySelectorAll(".reveal");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+revealEls.forEach((el) => observer.observe(el));
+</script>
+</body>
+</html>

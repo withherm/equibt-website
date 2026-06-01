@@ -200,6 +200,8 @@ v5x (Codex) is the chosen Home direction over v5 (Claude Code). These apply to v
 
 **No em dashes.** Use colon, comma, or restructure the sentence. This applies to all copy in all prototype files.
 
+**Summary / case-study titles are VERB-FIRST and active. HARD RULE (Herman 2026-06-01, preferred consulting style).** Every Our Work case-card headline (and any "what we did" summary title) must start with an action word, not end in a passive past participle. "Redesigned claims exception routing." NOT "Claims exception routing redesigned." "Standardised the investigation process across teams." NOT "Investigation process standardised across teams." "Validated the field operations redesign." NOT "Field operations redesign validated." Lead with the verb. This is a small detail that signals EQUIBT's action-oriented values, and it is non-negotiable across every page.
+
 ---
 
 ## File conventions
@@ -226,7 +228,7 @@ v5x (Codex) is the chosen Home direction over v5 (Claude Code). These apply to v
 
 **ONE "Our Work" pattern across every page (home + all six service pages). Locked 2026-06-01.** The home "Our Work" section and the service-page case section are the same component, not two designs. Unified structure:
 - Section eyebrow + title: LOCKED 2026-06-01 as eyebrow "OUR WORK", title "Recent engagements." on every page. Home and service pages identical.
-- Two-column card. Left rail (light grey #F5F5F5): SECTOR label, pillar badge (PILLAR | PHASE, full pillar colour), and the BIG STAT. Right column: descriptive headline (what was done) then PROBLEM / APPROACH / OUTCOMES.
+- Two-column card. Left rail (light grey #F5F5F5): SECTOR label, pillar badge (PILLAR | PHASE, full pillar colour), and the BIG STAT. Right column: descriptive headline (what was done) then PROBLEM / APPROACH / OUTCOMES. The headline is VERB-FIRST and active (see the action-oriented headline hard rule in Copy and voice): "Redesigned claims exception routing." not "Claims exception routing redesigned."
 - BIG STAT shows the improvement at a glance, "from X to Y" format wherever a before/after baseline exists: "18% to 24%", "52 to 31 days". Where only a single delta exists, a single improvement metric is allowed ("47% reduction", "errors eliminated"). NEVER a bare input count ("3"), never an abbreviation ("1 wk").
 - Full Problem / Approach / Outcomes body on EVERY card including home (Herman 2026-06-01). Home cards are not a condensed variant.
 - A consistent "View our work" link at the foot of each card (present on all pages, not just home). It needs clear vertical separation from the OUTCOMES paragraph above it: roughly 40px (about one extra blank line), not flush against the last line of body text.

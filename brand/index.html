@@ -1,0 +1,1040 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GOS Brand Guidelines v7.1 — LMI &amp; EQUIBT</title>
+<meta name="description" content="Shared brand system for Lean Methods Institute and EQUIBT. Logos, colour, typography, iconography, applications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Tokens ---------- */
+  :root {
+    --crimson: #A51C30;
+    --petrol: #004757;
+    --slate: #2C3E50;
+    --navy: #26245C;
+    --terracotta: #C15F3C;
+    --amber: #B8732F;
+    --forest: #2D5F3F;
+    --near-black: #2C2C2C;
+    --mid-grey: #7A8591;
+    --light-grey: #D8DCE0;
+    --border: #E5E7EB;
+    --offwhite-lmi: #F6F7F8;
+    --offwhite-eq: #F5F3EE;
+    --alt-lmi: #EDF0F3;
+    --alt-eq: #F5F5F5;
+    --slate-mist: #BFC1C3;
+    --font-display: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-nav: 'Open Sans', system-ui, sans-serif;
+    --max: 980px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--near-black);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5 { font-family: var(--font-display); color: var(--near-black); margin: 0; line-height: 1.15; letter-spacing: -0.02em; }
+  h1 { font-weight: 600; font-size: 64px; letter-spacing: -0.03em; }
+  h2 { font-weight: 700; font-size: 32px; }
+  h3 { font-weight: 700; font-size: 22px; }
+  h4 { font-weight: 700; font-size: 16px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--slate); }
+  p { margin: 0 0 16px; max-width: 70ch; }
+  code { font-family: 'SFMono-Regular', Menlo, Consolas, monospace; font-size: 0.92em; background: #F4F4F6; padding: 2px 6px; border-radius: 4px; color: var(--slate); }
+  a { color: var(--crimson); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---------- Layout ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: #fff; border-bottom: 1px solid var(--border);
+    padding: 14px 32px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .topbar .mark { width: 28px; height: 28px; background: var(--crimson); display: inline-block; }
+  .topbar .title { font-family: var(--font-display); font-weight: 700; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--near-black); }
+  .topbar .sub { font-family: var(--font-body); color: var(--mid-grey); font-size: 13px; margin-left: auto; }
+
+  .layout { display: grid; grid-template-columns: 240px 1fr; min-height: calc(100vh - 60px); }
+  nav.side {
+    border-right: 1px solid var(--border);
+    padding: 32px 0 64px;
+    position: sticky; top: 60px;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    background: #FBFBFC;
+  }
+  nav.side .group { padding: 0 24px; margin-bottom: 28px; }
+  nav.side h5 { font-family: var(--font-display); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mid-grey); margin: 0 0 12px; }
+  nav.side a { display: block; font-family: var(--font-nav); font-size: 14px; color: var(--slate); padding: 6px 0; font-weight: 500; }
+  nav.side a:hover { color: var(--crimson); text-decoration: none; }
+  nav.side a.active { color: var(--crimson); font-weight: 600; }
+
+  main { padding: 80px 64px 160px; max-width: 1100px; }
+  section { margin-bottom: 96px; scroll-margin-top: 80px; }
+  section > h2 { padding-bottom: 12px; border-bottom: 2px solid var(--near-black); margin-bottom: 28px; max-width: var(--max); }
+  section > h3 { margin: 40px 0 14px; max-width: var(--max); }
+  .lede { font-size: 20px; line-height: 1.5; max-width: 60ch; color: var(--slate); margin-bottom: 32px; }
+  .meta { font-family: var(--font-display); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mid-grey); margin-bottom: 12px; display: block; }
+
+  /* ---------- Cover ---------- */
+  .cover { padding: 96px 0 64px; border-bottom: 1px solid var(--border); margin-bottom: 64px; }
+  .cover .eyebrow { font-family: var(--font-display); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--crimson); margin-bottom: 24px; display: block; }
+  .cover h1 { max-width: 16ch; margin-bottom: 24px; }
+  .cover p.lede { font-size: 22px; color: var(--slate); }
+  .cover .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+  .cover .brand-card { padding: 32px; border-radius: 8px; background: #fff; box-shadow: 0 2px 10px rgba(38,36,92,0.06); transition: transform 0.2s, box-shadow 0.2s; }
+  .cover .brand-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(38,36,92,0.14); }
+  .cover .brand-card.lmi { background: var(--offwhite-lmi); }
+  .cover .brand-card.eq  { background: var(--offwhite-eq); }
+  .cover .brand-card h3 { margin-bottom: 6px; }
+  .cover .brand-card .tag { color: var(--mid-grey); font-size: 13px; font-family: var(--font-display); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* ---------- Swatches ---------- */
+  .palette { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 16px 0 28px; max-width: var(--max); }
+  .swatch { border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.18s, box-shadow 0.18s; background: #fff; box-shadow: 0 2px 10px rgba(38,36,92,0.06); }
+  .swatch:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(38,36,92,0.14); }
+  .swatch .chip { height: 96px; }
+  .swatch .meta-block { padding: 12px 14px; }
+  .swatch .name { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--near-black); }
+  .swatch .hex { font-family: 'SFMono-Regular', Menlo, monospace; font-size: 12px; color: var(--mid-grey); margin-top: 4px; }
+  .swatch .role { font-size: 11px; color: var(--mid-grey); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.06em; font-family: var(--font-display); font-weight: 600; }
+  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--near-black); color: #fff; padding: 10px 20px; border-radius: 4px; font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; opacity: 0; pointer-events: none; transition: opacity 0.18s; z-index: 100; }
+  .toast.show { opacity: 1; }
+
+  /* ---------- Logo blocks ---------- */
+  .logo-block { border-radius: 8px; padding: 56px 32px; background: #fff; box-shadow: 0 2px 10px rgba(38,36,92,0.06); margin: 16px 0; display: flex; align-items: center; justify-content: center; min-height: 200px; }
+  .logo-block.dark { background: var(--slate); box-shadow: none; }
+  .logo-block svg { max-width: 100%; max-height: 140px; }
+  .logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: var(--max); }
+  .logo-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: var(--max); margin: 24px 0; }
+
+  /* ---------- Type specimens ---------- */
+  .type-row { padding: 20px 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: baseline; }
+  .type-row:last-child { border-bottom: none; }
+  .type-row .label { font-family: var(--font-display); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mid-grey); }
+  .type-row .label .spec { display: block; font-weight: 500; letter-spacing: 0.04em; margin-top: 4px; font-size: 11px; text-transform: none; color: var(--mid-grey); }
+  .specimen { color: var(--near-black); }
+  .s-h1 { font-family: var(--font-display); font-weight: 600; font-size: 56px; line-height: 1.05; letter-spacing: -0.03em; }
+  .s-h2 { font-family: var(--font-display); font-weight: 700; font-size: 34px; letter-spacing: -0.02em; }
+  .s-h3 { font-family: var(--font-display); font-weight: 700; font-size: 22px; }
+  .s-h4 { font-family: var(--font-display); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--slate); }
+  .s-body { font-family: var(--font-body); font-weight: 400; font-size: 18px; line-height: 1.55; max-width: 60ch; }
+  .s-label { font-family: var(--font-display); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--crimson); }
+  .s-nav { font-family: var(--font-nav); font-weight: 500; font-size: 14px; color: var(--slate); }
+
+  /* ---------- Tables ---------- */
+  table { border-collapse: collapse; width: 100%; max-width: var(--max); font-family: var(--font-body); font-size: 14px; margin: 12px 0 28px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-family: var(--font-display); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mid-grey); font-weight: 700; background: #FBFBFC; }
+  td code { font-size: 12px; }
+
+  /* ---------- Callouts ---------- */
+  .callout { padding: 20px 24px; background: #FBF6F7; margin: 16px 0 24px; max-width: var(--max); border-radius: 8px; }
+  .callout.warn { background: #FBF6EE; }
+  .callout.fix { background: #F2F7F8; }
+  .callout h4 { color: var(--slate); margin-bottom: 8px; }
+  .callout p { margin-bottom: 0; }
+
+  /* ---------- Do / Don't ---------- */
+  .dodont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: var(--max); margin: 16px 0 28px; }
+  .dodont .box { border-radius: 8px; padding: 22px; background: #fff; box-shadow: 0 2px 10px rgba(38,36,92,0.06); }
+  .dodont .do { background: #F1F6F2; }
+  .dodont .dont { background: #FBF1F3; }
+  .dodont .tag { font-family: var(--font-display); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 10px; }
+  .dodont .do .tag { color: var(--forest); }
+  .dodont .dont .tag { color: var(--crimson); }
+  .dodont p { font-size: 14px; margin: 0; color: var(--near-black); }
+
+  /* ---------- Icon style spec ---------- */
+  .icon-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; max-width: var(--max); margin: 16px 0; }
+  .icon-row .icon-card { border-radius: 8px; padding: 22px 12px; text-align: center; background: #fff; box-shadow: 0 2px 10px rgba(38,36,92,0.06); }
+  .icon-row svg { width: 56px; height: 56px; margin-bottom: 10px; }
+  .icon-row .icon-card .label { font-family: var(--font-display); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--slate); }
+
+  /* ---------- Application examples ---------- */
+  .app-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: var(--max); margin: 24px 0; align-items: start; }
+  .app-card { border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 2px 10px rgba(38,36,92,0.06); }
+  .app-card .label-row { padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .app-card .label-row .tag { font-family: var(--font-display); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; }
+  .app-card .label-row .tag.bad { color: var(--crimson); }
+  .app-card .label-row .tag.good { color: var(--forest); }
+  .app-card img { width: 100%; display: block; }
+
+  /* ---------- Downloads ---------- */
+  .download-list { list-style: none; padding: 0; max-width: var(--max); }
+  .download-list li { padding: 14px 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .download-list .name { font-family: var(--font-display); font-weight: 600; font-size: 14px; color: var(--near-black); }
+  .download-list .path { font-family: 'SFMono-Regular', Menlo, monospace; font-size: 12px; color: var(--mid-grey); }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--border); padding: 32px 64px; margin-left: 240px; color: var(--mid-grey); font-size: 13px; }
+  footer .row { max-width: var(--max); }
+
+  /* ---------- Web design components ---------- */
+  .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: var(--max); margin: 24px 0 32px; }
+  .spec-block { border-radius: 8px; padding: 28px; background: #fff; box-shadow: 0 2px 10px rgba(38,36,92,0.06); }
+  .spec-block.tinted { background: var(--offwhite-lmi); }
+  .spec-block.tinted-eq { background: var(--offwhite-eq); }
+  .spec-block .render { padding: 28px 0 8px; }
+  .spec-block code.recipe { display: block; background: #F4F4F6; padding: 12px 14px; border-radius: 6px; font-size: 12px; line-height: 1.5; color: var(--slate); margin-top: 16px; white-space: pre-wrap; }
+  .spec-block h4 { margin-bottom: 6px; }
+  .spec-block p.note { font-size: 13px; color: var(--mid-grey); margin: 6px 0 0; }
+
+  /* Button specimens */
+  .btn { font-family: var(--font-display); font-weight: 700; font-size: 11px; padding: 13px 26px; border-radius: 6px; text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; display: inline-block; transition: background 0.18s, transform 0.15s; cursor: pointer; border: none; }
+  .btn-primary { background: var(--navy); color: #fff; }
+  .btn-primary:hover { background: #1a194a; }
+  .btn-outline { background: transparent; color: var(--near-black); border: 1.5px solid #C9CCD5; padding: 11.5px 24.5px; border-radius: 3px; }
+  .btn-outline:hover { border-color: var(--navy); }
+  .btn-lmi { background: var(--crimson); color: #fff; }
+  .btn-lmi:hover { background: #851725; }
+
+  /* Service / industry / content card specimens */
+  .card { background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(38,36,92,0.08); padding: 28px; transition: transform 0.22s, box-shadow 0.22s; overflow: hidden; }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(38,36,92,0.18); }
+  .card .pill { display: inline-block; font-family: var(--font-display); font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; padding: 5px 10px; border-radius: 100px; margin-bottom: 14px; }
+  .card .pill.solve { background: rgba(0,71,87,0.12); color: var(--petrol); }
+  .card .pill.plan { background: rgba(38,36,92,0.10); color: var(--navy); }
+  .card .pill.sustain { background: rgba(45,95,63,0.12); color: var(--forest); }
+  .card h3 { font-size: 20px; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .card p { font-size: 14px; color: var(--slate); margin-bottom: 16px; }
+  .card .more { font-family: var(--font-display); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--terracotta); text-decoration: none; }
+  .card.industry { padding: 0; }
+  .card.industry .top-block { background: var(--terracotta); height: 30px; }
+  .card.industry .inner { padding: 28px; padding-top: 22px; }
+  .card.industry .industry-icon { width: 56px; height: 56px; margin-bottom: 14px; }
+
+  /* Hero specimen */
+  .hero-demo { background: var(--offwhite-eq); padding: 64px 56px; border-radius: 8px; box-shadow: 0 2px 10px rgba(38,36,92,0.06); max-width: var(--max); margin: 16px 0 28px; }
+  .hero-demo .eyebrow { font-family: var(--font-display); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--terracotta); margin-bottom: 22px; display: block; }
+  .hero-demo h1 { font-family: var(--font-display); font-weight: 600; font-size: 48px; line-height: 1.06; letter-spacing: -0.03em; color: var(--near-black); margin-bottom: 20px; max-width: 18ch; }
+  .hero-demo p.sub { font-family: var(--font-body); font-size: 18px; color: var(--slate); max-width: 50ch; margin: 0 0 28px; }
+  .hero-demo .ctas { display: flex; gap: 12px; }
+
+  /* Anti-pattern compare */
+  .anti-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: var(--max); margin: 16px 0 24px; align-items: stretch; }
+  .anti-block { border-radius: 8px; padding: 22px; box-shadow: 0 2px 10px rgba(38,36,92,0.06); display: flex; flex-direction: column; }
+  .anti-block.bad { background: #FBF1F3; }
+  .anti-block.good { background: #F1F6F2; }
+  .anti-block .tag { font-family: var(--font-display); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 12px; }
+  .anti-block.bad .tag { color: var(--crimson); }
+  .anti-block.good .tag { color: var(--forest); }
+  .anti-block .demo { background: #fff; border-radius: 6px; padding: 20px; margin-bottom: 12px; flex: 1; display: flex; align-items: center; justify-content: center; }
+  .anti-block.bad .demo.border { border: 1px solid #D8DCE0; border-top: 3px solid #5B8DEF; }
+  .anti-block.good .demo.clean { box-shadow: 0 2px 10px rgba(38,36,92,0.08); }
+  .anti-block .demo .demo-card-title { font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--near-black); }
+  .anti-block code { font-size: 11.5px; background: rgba(0,0,0,0.04); padding: 2px 6px; border-radius: 4px; }
+  .anti-block p { font-size: 13px; margin: 4px 0 0; color: var(--near-black); }
+  .anti-list { max-width: var(--max); margin: 16px 0 32px; }
+  .anti-list .item { padding: 18px 22px; background: #fff; box-shadow: 0 2px 10px rgba(38,36,92,0.06); border-radius: 8px; margin-bottom: 12px; }
+  .anti-list .item h4 { color: var(--crimson); font-size: 13px; margin-bottom: 4px; letter-spacing: 0.1em; }
+  .anti-list .item p { font-size: 14px; margin: 0; color: var(--near-black); }
+  .anti-list .item p .fix { color: var(--forest); font-weight: 600; }
+
+  /* Spacing scale */
+  .scale-row { display: grid; grid-template-columns: 100px 1fr 80px; gap: 16px; align-items: center; padding: 10px 0; max-width: var(--max); }
+  .scale-row .name { font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--slate); }
+  .scale-row .bar { background: var(--navy); height: 12px; border-radius: 2px; }
+  .scale-row .px { font-family: 'SFMono-Regular', monospace; font-size: 12px; color: var(--mid-grey); text-align: right; }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    nav.side { display: none; }
+    main { padding: 40px 24px 80px; }
+    footer { margin-left: 0; padding: 32px 24px; }
+    .palette { grid-template-columns: repeat(2, 1fr); }
+    .icon-row { grid-template-columns: repeat(3, 1fr); }
+    .cover .pair, .logo-pair, .app-row, .dodont, .logo-grid, .spec-grid, .anti-row { grid-template-columns: 1fr; }
+    .hero-demo { padding: 36px 24px; }
+    .hero-demo h1 { font-size: 32px; }
+    h1, .s-h1 { font-size: 40px; }
+  }
+
+  a.path:hover { color: var(--crimson) !important; text-decoration: underline !important; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <span class="mark" aria-hidden="true"></span>
+  <span class="title">GOS Brand Guidelines</span>
+  <span class="sub">v7.1 &middot; Locked 28 May 2026 &middot; LMI &amp; EQUIBT</span>
+</header>
+
+<div class="layout">
+
+  <nav class="side" aria-label="Section navigation">
+    <div class="group">
+      <h5>System</h5>
+      <a href="#cover">Overview</a>
+      <a href="#architecture">Brand architecture</a>
+      <a href="#layers">The two layers</a>
+    </div>
+    <div class="group">
+      <h5>Identity</h5>
+      <a href="#logos">Logos</a>
+      <a href="#colour">Colour</a>
+      <a href="#typography">Typography</a>
+      <a href="#iconography">Iconography</a>
+      <a href="#layout">Layout &amp; spacing</a>
+    </div>
+    <div class="group">
+      <h5>Web build</h5>
+      <a href="#webdesign">Web design system</a>
+      <a href="#antipatterns">Anti-patterns to reject</a>
+    </div>
+    <div class="group">
+      <h5>Teaching layer</h5>
+      <a href="#framework">Framework Teaching Layer</a>
+      <a href="#applications">Applications</a>
+    </div>
+    <div class="group">
+      <h5>Reference</h5>
+      <a href="#voice">Voice &amp; tone</a>
+      <a href="#reconciliation">Reconciliation notes</a>
+      <a href="#downloads">Downloads &amp; files</a>
+      <a href="#changelog">Changelog</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ============ COVER ============ -->
+    <section id="cover" class="cover">
+      <span class="eyebrow">GOS Brand System &middot; v7.1</span>
+      <h1>One family. Two brands. A disciplined system underneath.</h1>
+      <p class="lede">This document is the canonical visual guideline for the GOS portfolio. It governs both Lean Methods Institute (LMI) and EQUIBT, defines the shared system underneath them, and sets the standards Skye, Max, and any external partner build against.</p>
+      <p>If a decision contradicts what is locked here, this document wins. If something is missing, it is a documentation gap, raise it rather than improvise.</p>
+
+      <div class="pair">
+        <div class="brand-card lmi">
+          <span class="tag">Training</span>
+          <h3>Lean Methods Institute</h3>
+          <p style="color:var(--slate); font-size:14px; margin:8px 0 0;"><em>Lean. Service Design. Business Analysis. Training with AI built in.</em></p>
+        </div>
+        <div class="brand-card eq">
+          <span class="tag">Advisory</span>
+          <h3>EQUIBT</h3>
+          <p style="color:var(--slate); font-size:14px; margin:8px 0 0;"><em>We simplify the complex. We make it stick.</em></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ARCHITECTURE ============ -->
+    <section id="architecture">
+      <span class="meta">01 &middot; Brand architecture</span>
+      <h2>How LMI and EQUIBT relate</h2>
+      <p>LMI and EQUIBT operate as a brand family inside the GOS portfolio. They share the typographic system, the grey scale, the wordmark colour, and the layout principles. They diverge on hero colour, accent colour, background warmth, and brand expression dosage.</p>
+      <p>LMI carries the training mission and runs slightly more colour expression. EQUIBT carries the advisory mission and stays leaner and more architectural. Same DNA, different posture.</p>
+
+      <h3 id="layers">The two-layer system</h3>
+      <p>Every visual artefact belongs to one of two layers. The layer dictates which palette, which typography behaviour, and which composition rules apply.</p>
+      <table>
+        <thead><tr><th>Layer</th><th>Purpose</th><th>Used on</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Corporate Layer</strong></td><td>Brand identity and positioning</td><td>Logos, website hero, decks, proposals, banners (corporate), social, email signatures, document chrome.</td></tr>
+          <tr><td><strong>Framework Teaching Layer</strong></td><td>Visual coding of methodology steps</td><td>Illustrations of DMAIC, DMAICO, 5S, 8 wastes, kano, VSM legends, training handouts, workshop slides.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <h4>Hard rule</h4>
+        <p>The Framework Teaching Layer palette may only appear inside framework illustrations. It does not appear on website chrome, hero sections, brand-facing banners, document headers, social tiles, or any positioning material.</p>
+      </div>
+    </section>
+
+    <!-- ============ LOGOS ============ -->
+    <section id="logos">
+      <span class="meta">02 &middot; Logos</span>
+      <h2>Logos</h2>
+      <p>Each brand has one primary lockup. Variants exist for specific surfaces (dark, square, favicon, small). All wordmarks across both brands use Dark Slate <code>#2C3E50</code>. The icon background is the brand hero colour.</p>
+
+      <h3>LMI primary lockup</h3>
+      <div class="logo-block" aria-label="LMI primary logo">
+        <svg viewBox="0 0 1700 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lean Methods Institute" style="max-height:160px;">
+          <g transform="matrix(1,0,0,1,2.03985,-1.676)">
+            <g transform="matrix(1,0,0,1,491.278,116.5003)">
+              <path d="M0,113.663L0,-0.854L24.922,-0.854L24.922,92.026L79.071,92.026L78.699,114.517L0,113.663Z" fill="#2c3e50"/>
+            </g>
+            <g transform="matrix(1,0,0,1,616.5521,212.1266)">
+              <path d="M0,-51.964C-10.453,-51.964 -18.245,-45.45 -20.335,-34.966L-20.587,-33.688L20.445,-33.688L20.187,-34.966C18.073,-45.45 10.336,-51.964 0,-51.964M2.937,19.333C-24.937,19.333 -44.403,0.701 -44.403,-25.982C-44.403,-52.241 -25.792,-71.297 -0.154,-71.297C25.263,-71.297 43.017,-52.529 43.017,-25.656C43.017,-24.249 42.863,-22.498 42.722,-20.801L42.556,-18.767L-20.292,-18.767L-19.923,-17.415C-17.164,-7.233 -8.382,-1.149 3.552,-1.149C12.088,-1.149 18.516,-3.761 24.384,-9.611L37.179,5.089L37.148,5.125C29.344,14.552 17.834,19.333 2.937,19.333" fill="#2c3e50"/>
+            </g>
+            <g transform="matrix(1,0,0,1,702.3645,178.9303)">
+              <path d="M0,14.429C-9.863,14.429 -14.859,17.889 -14.859,24.71C-14.859,31.255 -9.642,35.317 -1.235,35.317C7.362,35.317 13.821,31.033 16.488,23.567L16.549,14.429L0,14.429ZM-7.258,52.53C-25.786,52.53 -38.236,41.806 -38.236,25.853C-38.236,8.868 -25.589,-0.492 -2.624,-0.492L16.574,-0.492L16.531,-1.604C16.107,-12.192 9.482,-17.784 -2.624,-17.784C-11.369,-17.784 -20.519,-14.675 -26.523,-9.654L-35.163,-27.469L-35.139,-27.488C-26.332,-34.131 -12.966,-38.101 0.615,-38.101C26.738,-38.101 40.546,-24.581 40.546,1.002L40.546,51.221L18.098,51.221L18.098,40.571L16.18,43.041C11.375,49.248 3.269,52.53 -7.258,52.53" fill="#2c3e50"/>
+            </g>
+            <g transform="matrix(1,0,0,1,814.5032,140.83)">
+              <path d="M0,89.321L0,42.863C0,25.718 -9.169,22.116 -16.863,22.116C-29.54,22.116 -36.81,30.751 -36.81,45.806L-36.81,89.321L-60.801,89.321L-60.801,1.309L-37.892,1.309L-37.892,11.534L-36.073,9.74C-29.694,3.459 -20.574,0 -10.379,0C11.147,0 23.997,14.558 23.997,38.936L23.997,89.321L0,89.321Z" fill="#2c3e50"/>
+            </g>
+            <g transform="matrix(1,0,0,1,973.3519,115.646)">
+              <path d="M0,114.505L-0.154,45.678L-32.035,102.405L-43.213,102.405L-74.935,47.153L-74.935,114.505L-98.312,114.505L-98.312,0L-77.713,0L-37.24,71.206L2.618,0L23.063,0L23.37,114.505L0,114.505Z" fill="#2c3e50"/>
+            </g>
+            <g transform="matrix(1,0,0,1,1051.3168,212.1266)">
+              <path d="M0,-51.964C-10.459,-51.964 -18.251,-45.45 -20.341,-34.966L-20.593,-33.688L20.439,-33.688L20.181,-34.966C18.073,-45.45 10.336,-51.964 0,-51.964M2.931,19.333C-24.944,19.333 -44.412,0.701 -44.412,-25.982C-44.412,-52.241 -25.798,-71.297 -0.16,-71.297C25.263,-71.297 43.017,-52.529 43.017,-25.656C43.017,-24.31 42.875,-22.657 42.734,-21.035L42.55,-18.767L-20.298,-18.767L-19.929,-17.415C-17.157,-7.233 -8.382,-1.149 3.546,-1.149C12.088,-1.149 18.516,-3.761 24.378,-9.617L37.173,5.089L37.142,5.125C29.338,14.552 17.827,19.333 2.931,19.333" fill="#2c3e50"/>
+            </g>
+            <g transform="matrix(1,0,0,1,1141.4678,122.6769)">
+              <path d="M0,108.783C-19.978,108.783 -30.984,97.568 -30.984,77.203L-30.984,41.087L-43.791,41.087L-43.791,21.422L-30.984,21.422L-30.984,0L-6.987,0L-6.987,21.422L13.692,21.422L13.692,41.087L-6.987,41.087L-6.987,76.877C-6.987,84.245 -3.202,88.467 3.392,88.467C6.993,88.467 10.521,87.293 13.089,85.241L19.567,103.222L19.548,103.24C14.853,106.81 7.909,108.783 0,108.783" fill="#2c3e50"/>
+            </g>
+            <g transform="matrix(1,0,0,1,1231.6371,108.776)">
+              <path d="M0,121.375L0,74.917C0,57.772 -9.169,54.17 -16.863,54.17C-29.54,54.17 -36.81,62.805 -36.81,77.86L-36.81,121.375L-60.807,121.375L-60.807,0L-36.81,0L-36.81,42.47L-35.022,40.835C-28.723,35.089 -20.206,32.054 -10.379,32.054C11.141,32.054 23.991,46.612 23.991,70.99L23.991,121.375L0,121.375Z" fill="#2c3e50"/>
+            </g>
+            <g transform="matrix(1,0,0,1,1310.2842,210.4922)">
+              <path d="M0,-48.695C-12.764,-48.695 -21.336,-38.912 -21.336,-24.347C-21.336,-9.789 -12.764,-0.006 0,-0.006C12.672,-0.006 21.183,-9.789 21.183,-24.347C21.183,-38.912 12.672,-48.695 0,-48.695M0,20.968C-26.443,20.968 -45.641,1.911 -45.641,-24.347C-45.641,-50.606 -26.443,-69.663 0,-69.663C26.357,-69.663 45.487,-50.606 45.487,-24.347C45.487,1.911 26.357,20.968 0,20.968" fill="#2c3e50"/>
+            </g>
+            <g transform="matrix(1,0,0,1,1409.782,178.4392)">
+              <path d="M0,-16.642C-12.764,-16.642 -21.336,-6.859 -21.336,7.706C-21.336,22.264 -12.764,32.047 0,32.047C12.672,32.047 21.183,22.264 21.183,7.706C21.183,-6.859 12.672,-16.642 0,-16.642M-4.167,53.021C-28.588,53.021 -45.641,34.388 -45.641,7.706C-45.641,-18.977 -28.588,-37.61 -4.167,-37.61C5.217,-37.61 13.188,-34.592 18.897,-28.896L20.722,-27.07L20.722,-69.663L44.719,-69.663L44.719,51.712L21.803,51.712L21.803,41.67L19.954,43.643C14.116,49.862 6.004,53.021 -4.167,53.021" fill="#2c3e50"/>
+            </g>
+            <g transform="matrix(1,0,0,1,1500.8363,140.8299)">
+              <path d="M0,90.63C-13.378,90.63 -27.807,86.82 -35.907,81.154L-35.931,81.142L-27.906,62.829C-20.347,67.972 -9.04,71.291 0.928,71.291C11.24,71.291 16.248,68.679 16.248,63.302C16.248,57.716 8.388,56.493 -0.713,55.08C-14.73,52.91 -33.91,49.936 -33.91,28.471C-33.91,11.178 -18.841,0 4.48,0C16.383,0 28.901,3.011 36.38,7.675L36.398,7.687L28.366,25.841C21.035,21.459 13.218,19.333 4.48,19.333C-5.211,19.333 -10.994,22.381 -10.994,27.487C-10.994,33.436 -2.907,34.776 6.459,36.318C20.267,38.604 39.164,41.726 39.164,62.644C39.164,79.642 23.788,90.63 0,90.63" fill="#2c3e50"/>
+            </g>
+          </g>
+          <g transform="matrix(1,0,0,1,2.64585,15.463)">
+            <g transform="matrix(0.259881,0,0,0.376566,-54.513313,-298.68303)" fill="#2c3e50">
+              <rect x="2097.83" y="1464.815" width="44.02" height="163.584"/>
+              <path d="M2423.58,1464.815L2423.58,1575.585L2292.873,1464.815L2256.641,1464.815L2256.641,1628.399L2300.323,1628.399L2300.323,1517.629L2431.029,1628.399L2467.261,1628.399L2467.261,1464.815L2423.58,1464.815Z"/>
+              <path d="M2655.194,1630.736C2720.208,1630.736 2751.022,1608.301 2751.022,1582.128C2751.022,1522.069 2610.496,1544.737 2610.496,1509.917C2610.496,1497.532 2625.395,1487.717 2661.966,1487.717C2682.622,1487.717 2705.986,1491.923 2727.319,1500.57L2741.202,1476.967C2720.547,1467.619 2690.748,1462.478 2662.305,1462.478C2597.29,1462.478 2566.815,1484.912 2566.815,1511.32C2566.815,1572.079 2707.679,1548.944 2707.679,1584.231C2707.679,1596.383 2692.103,1605.497 2655.194,1605.497C2626.073,1605.497 2595.936,1598.019 2576.973,1587.503L2561.735,1611.106C2581.375,1622.79 2618.284,1630.736 2655.194,1630.736Z"/>
+              <path d="M2893.58,1628.399L2937.6,1628.399L2937.6,1490.521L3016.159,1490.521L3016.159,1464.815L2815.021,1464.815L2815.021,1490.521L2893.58,1490.521L2893.58,1628.399Z"/>
+              <rect x="3100.136" y="1464.815" width="44.02" height="163.584"/>
+              <path d="M3307.031,1628.399L3351.052,1628.399L3351.052,1490.521L3429.611,1490.521L3429.611,1464.815L3228.472,1464.815L3228.472,1490.521L3307.031,1490.521L3307.031,1628.399Z"/>
+              <path d="M3615.512,1630.736C3680.187,1630.736 3719.128,1604.796 3719.128,1557.123L3719.128,1464.815L3675.785,1464.815L3675.785,1555.955C3675.785,1589.606 3654.114,1604.095 3615.85,1604.095C3577.586,1604.095 3555.576,1589.606 3555.576,1555.955L3555.576,1464.815L3511.556,1464.815L3511.556,1557.123C3511.556,1604.796 3550.497,1630.736 3615.512,1630.736Z"/>
+              <path d="M3879.633,1628.399L3923.653,1628.399L3923.653,1490.521L4002.212,1490.521L4002.212,1464.815L3801.074,1464.815L3801.074,1490.521L3879.633,1490.521L3879.633,1628.399Z"/>
+              <path d="M4130.21,1602.926L4130.21,1557.824L4244.662,1557.824L4244.662,1532.819L4130.21,1532.819L4130.21,1490.287L4259.223,1490.287L4259.223,1464.815L4086.189,1464.815L4086.189,1628.399L4263.963,1628.399L4263.963,1602.926L4130.21,1602.926Z"/>
+            </g>
+          </g>
+          <g transform="matrix(1,0,0,1,3.95985,-1)">
+            <rect x="160" y="84.469" width="271.062" height="271.062" fill="#A51C30"/>
+          </g>
+          <g transform="matrix(1,0,0,1,374.78555,183.058)">
+            <path d="M0,-25.999L0,97.883L-55.349,97.883L-55.349,71.884L-26,71.884L-26,24.188C-39.209,35.646 -56.97,44.515 -75.83,44.515C-94.689,44.515 -111.381,35.646 -124.59,24.188L-124.59,71.884L-95.241,71.884L-95.241,97.883L-150.59,97.883L-150.59,-25.999L-124.138,-25.999C-122.702,-15.373 -117.864,-5.556 -110.152,2.156C-100.841,11.466 -88.462,16.594 -75.295,16.594C-62.128,16.594 -49.748,11.466 -40.438,2.156C-32.726,-5.556 -27.888,-15.373 -26.452,-25.999L0,-25.999Z" fill="#fff"/>
+          </g>
+        </svg>
+      </div>
+      <p style="font-size:13px; color: var(--mid-grey);">File: <code>GOS/Branding/Logos/LMI/LMI-LOGO-702_MAIN-R1.svg</code> &middot; Icon background: Crimson <code>#A51C30</code> &middot; Wordmark: Dark Slate <code>#2C3E50</code> &middot; Refined locked 28 May 2026 (INSTITUTE left-aligned).</p>
+
+      <h3>EQUIBT primary lockup</h3>
+      <div class="logo-block" aria-label="EQUIBT primary logo">
+        <svg viewBox="0 0 1900.02 441.3" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EQUIBT">
+          <g fill="#2c3e50">
+            <path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/>
+            <path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/>
+            <path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/>
+            <path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/>
+            <path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/>
+            <path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/>
+          </g>
+          <path fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/>
+        </svg>
+      </div>
+      <p style="font-size:13px; color: var(--mid-grey);">File: <code>GOS/Branding/Logos/EQUIBT/EQ-LOGO-701_EQ-MAIN-R1.svg</code> &middot; Icon background: Deep Navy <code>#26245C</code> &middot; Wordmark: Dark Slate <code>#2C3E50</code></p>
+
+      <h3>Clear space and sizing</h3>
+      <p>Minimum clear space around either logo equals the cap-height of the wordmark on all four sides. Minimum icon size 32px on screen, 9mm in print. Below those sizes use the wordmark-only or favicon variant.</p>
+
+      <h3>Misuse</h3>
+      <div class="dodont">
+        <div class="box do"><span class="tag">Do</span><p>Use the locked colour pairing: brand hero on the icon, Dark Slate on the wordmark. Place on the brand's locked off-white background or pure white.</p></div>
+        <div class="box dont"><span class="tag">Don't</span><p>Do not recolour the wordmark to <code>#434343</code> or any other grey. Do not place the icon on tinted backgrounds. Do not skew, rotate, or apply effects.</p></div>
+      </div>
+    </section>
+
+    <!-- ============ COLOUR ============ -->
+    <section id="colour">
+      <span class="meta">03 &middot; Colour</span>
+      <h2>Colour</h2>
+      <p>Three palettes operate in parallel. The two brand palettes (LMI and EQUIBT) live in the Corporate Layer. The Framework Teaching Layer palette is a separate, documented system used only inside framework illustrations. Click any hex to copy.</p>
+
+      <h3>LMI palette</h3>
+      <div class="palette">
+        <div class="swatch" data-hex="#A51C30"><div class="chip" style="background:#A51C30"></div><div class="meta-block"><div class="role">Hero</div><div class="name">Crimson</div><div class="hex">#A51C30</div></div></div>
+        <div class="swatch" data-hex="#004757"><div class="chip" style="background:#004757"></div><div class="meta-block"><div class="role">Contrast</div><div class="name">Petrol Teal</div><div class="hex">#004757</div></div></div>
+        <div class="swatch" data-hex="#2C3E50"><div class="chip" style="background:#2C3E50"></div><div class="meta-block"><div class="role">Structural</div><div class="name">Dark Slate</div><div class="hex">#2C3E50</div></div></div>
+        <div class="swatch" data-hex="#F6F7F8"><div class="chip" style="background:#F6F7F8; border-bottom:1px solid var(--border);"></div><div class="meta-block"><div class="role">Background</div><div class="name">Off-White</div><div class="hex">#F6F7F8</div></div></div>
+      </div>
+
+      <h3>EQUIBT palette</h3>
+      <div class="palette">
+        <div class="swatch" data-hex="#26245C"><div class="chip" style="background:#26245C"></div><div class="meta-block"><div class="role">Hero</div><div class="name">Deep Navy</div><div class="hex">#26245C</div></div></div>
+        <div class="swatch" data-hex="#C15F3C"><div class="chip" style="background:#C15F3C"></div><div class="meta-block"><div class="role">Accent</div><div class="name">Terracotta</div><div class="hex">#C15F3C</div></div></div>
+        <div class="swatch" data-hex="#2C3E50"><div class="chip" style="background:#2C3E50"></div><div class="meta-block"><div class="role">Structural</div><div class="name">Dark Slate</div><div class="hex">#2C3E50</div></div></div>
+        <div class="swatch" data-hex="#F5F3EE"><div class="chip" style="background:#F5F3EE; border-bottom:1px solid var(--border);"></div><div class="meta-block"><div class="role">Background</div><div class="name">Off-White</div><div class="hex">#F5F3EE</div></div></div>
+      </div>
+
+      <h3>Framework Teaching Layer palette</h3>
+      <p>Fixed order, used across every framework illustration. For five-step frameworks (5S, 8 wastes) use steps 1 to 5. For six-step frameworks (DMAICO) add Deep Navy as step 6.</p>
+      <div class="palette">
+        <div class="swatch" data-hex="#004757"><div class="chip" style="background:#004757"></div><div class="meta-block"><div class="role">Step 1</div><div class="name">Petrol Teal</div><div class="hex">#004757</div></div></div>
+        <div class="swatch" data-hex="#B8732F"><div class="chip" style="background:#B8732F"></div><div class="meta-block"><div class="role">Step 2</div><div class="name">Amber</div><div class="hex">#B8732F</div></div></div>
+        <div class="swatch" data-hex="#2C3E50"><div class="chip" style="background:#2C3E50"></div><div class="meta-block"><div class="role">Step 3</div><div class="name">Slate</div><div class="hex">#2C3E50</div></div></div>
+        <div class="swatch" data-hex="#A51C30"><div class="chip" style="background:#A51C30"></div><div class="meta-block"><div class="role">Step 4</div><div class="name">Crimson</div><div class="hex">#A51C30</div></div></div>
+        <div class="swatch" data-hex="#2D5F3F"><div class="chip" style="background:#2D5F3F"></div><div class="meta-block"><div class="role">Step 5</div><div class="name">Forest</div><div class="hex">#2D5F3F</div></div></div>
+        <div class="swatch" data-hex="#26245C"><div class="chip" style="background:#26245C"></div><div class="meta-block"><div class="role">Step 6 (DMAICO)</div><div class="name">Deep Navy</div><div class="hex">#26245C</div></div></div>
+      </div>
+
+      <h3>Shared neutrals</h3>
+      <div class="palette">
+        <div class="swatch" data-hex="#2C2C2C"><div class="chip" style="background:#2C2C2C"></div><div class="meta-block"><div class="role">Body text</div><div class="name">Near-Black</div><div class="hex">#2C2C2C</div></div></div>
+        <div class="swatch" data-hex="#7A8591"><div class="chip" style="background:#7A8591"></div><div class="meta-block"><div class="role">Captions / meta</div><div class="name">Mid Grey</div><div class="hex">#7A8591</div></div></div>
+        <div class="swatch" data-hex="#D8DCE0"><div class="chip" style="background:#D8DCE0"></div><div class="meta-block"><div class="role">Borders</div><div class="name">Light Grey</div><div class="hex">#D8DCE0</div></div></div>
+        <div class="swatch" data-hex="#BFC1C3"><div class="chip" style="background:#BFC1C3"></div><div class="meta-block"><div class="role">Dividers only</div><div class="name">Slate Mist</div><div class="hex">#BFC1C3</div></div></div>
+      </div>
+
+      <div class="callout warn">
+        <h4>Contrast rules</h4>
+        <p>Do not place small white text (under 18px / under 14px bold) on Terracotta <code>#C15F3C</code> or Amber <code>#B8732F</code>. Both score below WCAG AA contrast against white at body sizes. Use Near-Black <code>#2C2C2C</code> text instead, or restrict white text to heading sizes (24px+). Petrol Teal <code>#004757</code> passes AA for normal text against white (8.9:1).</p>
+      </div>
+    </section>
+
+    <!-- ============ TYPOGRAPHY ============ -->
+    <section id="typography">
+      <span class="meta">04 &middot; Typography</span>
+      <h2>Typography</h2>
+      <p>Both brands share one type system. Locked 13 May 2026 (supersedes the original Source Serif 4 + Lato pairing). Montserrat carries display and headings, Inter carries body, Open Sans handles navigation. Sentence case across H1 to H4. All-caps reserved for labels and badges only.</p>
+
+      <h3>Hierarchy and specimens</h3>
+      <div>
+        <div class="type-row"><div class="label">H1<span class="spec">Montserrat SemiBold 600 &middot; 48&ndash;64px &middot; sentence case</span></div><div class="specimen"><div class="s-h1">We simplify the complex.</div></div></div>
+        <div class="type-row"><div class="label">H2<span class="spec">Montserrat Bold 700 &middot; 32&ndash;38px &middot; sentence case</span></div><div class="specimen"><div class="s-h2">How LMI and EQUIBT relate</div></div></div>
+        <div class="type-row"><div class="label">H3<span class="spec">Montserrat Bold 700 &middot; 22&ndash;26px &middot; sentence case</span></div><div class="specimen"><div class="s-h3">The two-layer system</div></div></div>
+        <div class="type-row"><div class="label">H4<span class="spec">Montserrat Bold 700 &middot; 13&ndash;14px &middot; all-caps, letter-spacing 0.14em</span></div><div class="specimen"><div class="s-h4">CONTRAST RULES</div></div></div>
+        <div class="type-row"><div class="label">Body<span class="spec">Inter Regular 400 &middot; 17&ndash;18px &middot; #2C2C2C</span></div><div class="specimen"><div class="s-body">Lean Methods Institute trains teams to build operational capability that lasts after the engagement ends. Practitioner-led, AI-built-in, applied to the work that pays the bills.</div></div></div>
+        <div class="type-row"><div class="label">Label / badge<span class="spec">Montserrat Bold 700 &middot; 11&ndash;12px &middot; all-caps, letter-spacing 0.14em</span></div><div class="specimen"><div class="s-label">FRAMEWORK TEACHING LAYER</div></div></div>
+        <div class="type-row"><div class="label">Navigation<span class="spec">Open Sans Medium 500 &middot; 14px &middot; sentence case</span></div><div class="specimen"><div class="s-nav">Services &middot; Our work &middot; Resources &middot; About</div></div></div>
+      </div>
+
+      <h3>Casing rules</h3>
+      <table>
+        <thead><tr><th>Treatment</th><th>Where it applies</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>Sentence case</td><td>H1, H2, H3, H4, body, CTA labels, nav, breadcrumbs, footer links</td><td>"Build the capability to keep improving."</td></tr>
+          <tr><td>Title case</td><td>Framework names, proper nouns, product names</td><td>"5S Workplace", "DMAICO Method"</td></tr>
+          <tr><td>All-caps</td><td>Labels, badges, eyebrows, small metadata only. Never on body or H1-H4.</td><td>"FRAMEWORK TEACHING LAYER"</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============ ICONOGRAPHY ============ -->
+    <section id="iconography">
+      <span class="meta">05 &middot; Iconography</span>
+      <h2>Iconography</h2>
+      <p>Monoline, single colour, no fill. Architectural geometry, not generic stock icon-set style. Stroke-width 1.5 to 2 units on a 24-unit grid. Round line-caps acceptable.</p>
+
+      <div class="icon-row">
+        <div class="icon-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a1 1 0 011-1h6a1 1 0 011 1v2M5 6l1 14a2 2 0 002 2h8a2 2 0 002-2l1-14M10 11v6M14 11v6"/></svg>
+          <div class="label">Sort</div>
+        </div>
+        <div class="icon-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-7-7-12a7 7 0 0114 0c0 5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <div class="label">Locate</div>
+        </div>
+        <div class="icon-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l9-9M14 7l3-3 3 3-3 3-3-3z"/></svg>
+          <div class="label">Tool</div>
+        </div>
+        <div class="icon-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="1.5"/><rect x="9" y="2" width="6" height="3" rx="1"/><path d="M9 10l1.5 1.5L13 9M9 15l1.5 1.5L13 14"/></svg>
+          <div class="label">Standardise</div>
+        </div>
+        <div class="icon-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#26245C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12c0-4 3-6 5-6s4 2 4 6-2 6 4 6 5-2 5-6"/><path d="M19 12c0-4-3-6-5-6s-4 2-4 6 2 6-4 6-5-2-5-6"/></svg>
+          <div class="label">Sustain</div>
+        </div>
+      </div>
+
+      <h3>Style spec</h3>
+      <table>
+        <thead><tr><th>Property</th><th>Spec</th></tr></thead>
+        <tbody>
+          <tr><td>Style</td><td>Monoline outline, no fill</td></tr>
+          <tr><td>Stroke weight</td><td>1.5 to 2 units on a 24-unit grid</td></tr>
+          <tr><td>Line caps / joins</td><td>Round caps, round joins</td></tr>
+          <tr><td>Container</td><td>Optional circular outline at same stroke weight, same colour</td></tr>
+          <tr><td>Colour</td><td>Single colour per icon. Corporate Layer: navy (EQUIBT) or slate. Framework Teaching Layer: the step colour.</td></tr>
+          <tr><td>Banned</td><td>Multi-colour icons, gradients, drop shadows, sparkles layered on utility icons, hand-drawn strokes, generic Iconfinder / stock-set output.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============ LAYOUT ============ -->
+    <section id="layout">
+      <span class="meta">06 &middot; Layout &amp; spacing</span>
+      <h2>Layout &amp; spacing</h2>
+      <p>Off-white backgrounds carry both brands. Never pure white at full bleed. EQUIBT runs warmer (<code>#F5F3EE</code>), LMI runs cooler (<code>#F6F7F8</code>). Asymmetric editorial layouts preferred over centered "poster" compositions, except for vertical pull-up banners where stacked composition is fine.</p>
+
+      <h3>Card standard (EQUIBT, locked May 2026)</h3>
+      <table>
+        <thead><tr><th>Property</th><th>Service cards</th><th>Industry cards</th></tr></thead>
+        <tbody>
+          <tr><td>Background</td><td>White</td><td>White</td></tr>
+          <tr><td>Top accent bar</td><td>None</td><td>Terracotta, 30px</td></tr>
+          <tr><td>Icon stroke</td><td>n/a</td><td>Navy <code>#26245C</code>, 56×56px</td></tr>
+          <tr><td>Shadow (rest)</td><td><code>0 2px 10px rgba(38,36,92,0.08)</code></td><td>Same</td></tr>
+          <tr><td>Hover</td><td><code>translateY(-6px)</code> + <code>0 16px 40px rgba(38,36,92,0.18)</code></td><td>Same</td></tr>
+          <tr><td>Tint-on-hover</td><td>Rejected, reads as a stain on white</td><td>Rejected</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Document spacing</h3>
+      <table>
+        <thead><tr><th>Property</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Section spacer</td><td>320 DXA (~5.6mm)</td></tr>
+          <tr><td>Paragraph spacing</td><td>160 to 280 DXA</td></tr>
+          <tr><td>Table cell padding</td><td>80 DXA top/bottom, 120 DXA left/right</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============ WEB DESIGN SYSTEM ============ -->
+    <section id="webdesign">
+      <span class="meta">07 &middot; Web design system</span>
+      <h2>Web design system</h2>
+      <p>This section is the build reference for coding agents (Claude Code, Cowork, Codex). Match the components, recipes, and spacing on this page. If a pattern you need is not documented here, raise a documentation gap rather than improvise.</p>
+
+      <h3>Spacing scale</h3>
+      <p>One scale across both brands. Use multiples of 4px. Do not invent off-scale values.</p>
+      <div>
+        <div class="scale-row"><div class="name">3xs</div><div class="bar" style="width:4px"></div><div class="px">4px</div></div>
+        <div class="scale-row"><div class="name">2xs</div><div class="bar" style="width:8px"></div><div class="px">8px</div></div>
+        <div class="scale-row"><div class="name">xs</div><div class="bar" style="width:12px"></div><div class="px">12px</div></div>
+        <div class="scale-row"><div class="name">sm</div><div class="bar" style="width:16px"></div><div class="px">16px</div></div>
+        <div class="scale-row"><div class="name">md</div><div class="bar" style="width:24px"></div><div class="px">24px</div></div>
+        <div class="scale-row"><div class="name">lg</div><div class="bar" style="width:32px"></div><div class="px">32px</div></div>
+        <div class="scale-row"><div class="name">xl</div><div class="bar" style="width:48px"></div><div class="px">48px</div></div>
+        <div class="scale-row"><div class="name">2xl</div><div class="bar" style="width:64px"></div><div class="px">64px</div></div>
+        <div class="scale-row"><div class="name">3xl</div><div class="bar" style="width:96px"></div><div class="px">96px</div></div>
+        <div class="scale-row"><div class="name">4xl</div><div class="bar" style="width:128px"></div><div class="px">128px</div></div>
+      </div>
+
+      <h3>Breakpoints</h3>
+      <table>
+        <thead><tr><th>Name</th><th>Min-width</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>mobile</td><td>—</td><td>Default. Single column. Edge padding 24px.</td></tr>
+          <tr><td>tablet</td><td>768px</td><td>Two-column where the design supports it. Edge padding 32px.</td></tr>
+          <tr><td>desktop</td><td>1024px</td><td>Full layout. Container max-width 1200px. Edge padding 48-64px.</td></tr>
+          <tr><td>wide</td><td>1440px</td><td>Container caps at 1200px, gutters widen.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Buttons</h3>
+      <p>Three button treatments. No fourth invented. No ghost button with chevron icon. No gradient buttons.</p>
+      <div class="spec-grid">
+        <div class="spec-block">
+          <h4>Primary (EQUIBT)</h4>
+          <p class="note">Default CTA on EQUIBT surfaces. Navy fill, white text, 6px radius.</p>
+          <div class="render"><a class="btn btn-primary">Talk to us</a></div>
+          <code class="recipe">background: #26245C; color: #fff; font: 700 11px Montserrat; padding: 13px 26px; border-radius: 6px; letter-spacing: 0.1em; text-transform: uppercase;</code>
+        </div>
+        <div class="spec-block">
+          <h4>Primary (LMI)</h4>
+          <p class="note">Default CTA on LMI surfaces. Crimson fill, white text.</p>
+          <div class="render"><a class="btn btn-lmi">Enrol now</a></div>
+          <code class="recipe">background: #A51C30; color: #fff; (same dimensions as EQUIBT primary)</code>
+        </div>
+        <div class="spec-block">
+          <h4>Outline (secondary)</h4>
+          <p class="note">Secondary action. 1.5px slate border, near-black text, 3px radius. Border is on the button itself, not a card.</p>
+          <div class="render"><a class="btn btn-outline">See the work</a></div>
+          <code class="recipe">background: transparent; border: 1.5px solid #C9CCD5; color: #2C2C2C; border-radius: 3px; padding: 11.5px 24.5px;</code>
+        </div>
+        <div class="spec-block">
+          <h4>Text link (inline)</h4>
+          <p class="note">In-flow links. Brand colour, no underline at rest, underline on hover. No arrow icon by default.</p>
+          <div class="render"><a href="#" style="color:var(--terracotta); font-family:var(--font-display); font-weight:700; font-size:11px; letter-spacing:0.1em; text-transform:uppercase;">Read the article</a></div>
+          <code class="recipe">color: brand accent; text-decoration: none; hover: underline (no arrow).</code>
+        </div>
+      </div>
+
+      <h3>Cards</h3>
+      <p>The card is the highest-signal pattern on this site. Get this wrong and the brand looks generic.</p>
+
+      <div class="callout">
+        <h4>Card rule</h4>
+        <p><strong>No border on the side. No thin accent strip on the top.</strong> Cards live on white, separated from the page by a brand-tinted soft shadow and corner radius. If a card needs categorical signal, use a properly-sized graphic block (the EQUIBT industry-card 30px terracotta top block), never a 2-3px line.</p>
+      </div>
+
+      <h4 style="margin-top:24px;">Service card</h4>
+      <p>Used on the EQUIBT services list and the LMI training catalogue.</p>
+      <div class="spec-grid">
+        <div class="spec-block tinted-eq">
+          <div class="card">
+            <span class="pill solve">SOLVE</span>
+            <h3>Iterative continuous improvement</h3>
+            <p>Build the capability to keep improving after we leave the room.</p>
+            <a href="#" class="more">Read more &rarr;</a>
+          </div>
+        </div>
+        <div class="spec-block">
+          <h4>Service card recipe</h4>
+          <code class="recipe">background: #fff;
+border-radius: 8px;
+box-shadow: 0 2px 10px rgba(38,36,92,0.08);
+padding: 28px;
+hover: translateY(-6px) + 0 16px 40px rgba(38,36,92,0.18);
+NO border. NO border-top. NO outline.</code>
+          <p class="note">Pill tag carries the pillar colour. No top bar, no left accent.</p>
+        </div>
+      </div>
+
+      <h4 style="margin-top:24px;">Industry card</h4>
+      <p>Used for industry categories on EQUIBT. The 30px terracotta block is a categorical label at meaningful scale, not a thin accent line.</p>
+      <div class="spec-grid">
+        <div class="spec-block tinted-eq">
+          <div class="card industry">
+            <div class="top-block"></div>
+            <div class="inner">
+              <svg class="industry-icon" viewBox="0 0 24 24" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="12" rx="1"/><path d="M7 9V5a2 2 0 012-2h6a2 2 0 012 2v4"/><path d="M3 14h18"/></svg>
+              <h3 style="font-family:var(--font-display); font-weight:700; font-size:18px; color: var(--near-black); letter-spacing:-0.01em; margin-bottom:8px;">Financial services</h3>
+              <p style="font-size:13px; color: var(--slate); margin: 0 0 14px;">Operating models, regulatory uplift, and capability programs across retail and institutional banking.</p>
+              <a href="#" class="more">Explore &rarr;</a>
+            </div>
+          </div>
+        </div>
+        <div class="spec-block">
+          <h4>Industry card recipe</h4>
+          <code class="recipe">background: #fff;
+border-radius: 8px;
+box-shadow: 0 2px 10px rgba(38,36,92,0.08);
+overflow: hidden;
+Top block: 30px solid #C15F3C (terracotta), full width.
+Inner padding: 28px, padding-top 22px.
+Icon: 56x56 inline SVG, stroke #26245C (navy), no fill.
+hover: same lift as service card.
+NO border around the card. NO 2-3px line.</code>
+          <p class="note">Locked May 2026. Navy icons chosen over terracotta to avoid three terracotta hits per card.</p>
+        </div>
+      </div>
+
+      <h3>Navigation (top bar)</h3>
+      <div class="spec-block" style="padding:0; overflow:hidden;">
+        <div style="background: var(--offwhite-eq); padding: 16px 32px; display: flex; align-items: center; gap: 32px;">
+          <a href="#" style="font-family:var(--font-display); font-weight:700; font-size:15px; color: var(--navy); letter-spacing:0.12em; text-transform:uppercase;">EQUIBT</a>
+          <a href="#" style="font-family:var(--font-nav); font-size:14px; color: var(--slate); font-weight: 500;">Services</a>
+          <a href="#" style="font-family:var(--font-nav); font-size:14px; color: var(--slate); font-weight: 500;">Our work</a>
+          <a href="#" style="font-family:var(--font-nav); font-size:14px; color: var(--slate); font-weight: 500;">Resources</a>
+          <a href="#" style="font-family:var(--font-nav); font-size:14px; color: var(--slate); font-weight: 500;">About</a>
+          <a class="btn btn-primary" style="margin-left:auto; padding: 9px 20px; font-size: 11px;">Talk to us</a>
+        </div>
+      </div>
+      <p style="font-size:13px; color: var(--mid-grey); margin-top: 12px;">Logo wordmark in brand display font, all-caps, letter-spacing 0.12em. Nav links Open Sans Medium 14px in sentence case. Primary CTA right-aligned. No drop-shadow on the bar, no thin border below at rest, separation by background colour only.</p>
+
+      <h3>Hero section</h3>
+      <p>Eyebrow + H1 + supporting line + two CTAs. Asymmetric, left-aligned. No centered alternative on desktop.</p>
+      <div class="hero-demo">
+        <span class="eyebrow">EQUIBT &middot; ADVISORY</span>
+        <h1>We simplify the complex. We make it stick.</h1>
+        <p class="sub">Lean, AI-built-in advisory for regulated AU operations. We diagnose what is actually going on, then build the capability that holds.</p>
+        <div class="ctas">
+          <a class="btn btn-primary">Talk to us</a>
+          <a class="btn btn-outline">See the work</a>
+        </div>
+      </div>
+
+      <h3>Section pattern</h3>
+      <p>Every content section follows the same anatomy: eyebrow (label), H2 (sentence-case), short supporting paragraph, then the section content. No decorative dividers between sections. Background tone alternation does the separation work (off-white &rarr; #F5F5F5 &rarr; off-white).</p>
+    </section>
+
+    <!-- ============ ANTI-PATTERNS ============ -->
+    <section id="antipatterns">
+      <span class="meta">08 &middot; Anti-patterns to reject</span>
+      <h2>Anti-patterns: AI-default tells to reject</h2>
+      <p>The patterns below are the visual hallmarks of vibe-coded AI-generated UI. They are not GOS aesthetic. Coding agents producing GOS UI should treat these as failed output and rebuild on-spec. This section exists so the trap is documented, not implicit.</p>
+
+      <h3>Cards: the headline rule</h3>
+      <div class="anti-row">
+        <div class="anti-block bad">
+          <span class="tag">REJECT &middot; AI default</span>
+          <div class="demo border">
+            <div>
+              <div class="demo-card-title">Iterative CI</div>
+              <p style="font-size:13px; color: var(--mid-grey); margin: 4px 0 0;">Build improvement capability</p>
+            </div>
+          </div>
+          <p><code>border: 1px solid #D8DCE0</code> on every card. <code>border-top: 3px solid #5B8DEF</code> as a category cue. Grey "tag" pill. Generic SaaS look.</p>
+        </div>
+        <div class="anti-block good">
+          <span class="tag">USE &middot; GOS card</span>
+          <div class="demo clean">
+            <div>
+              <span class="pill solve" style="margin-bottom:10px;">SOLVE</span>
+              <div class="demo-card-title">Iterative continuous improvement</div>
+              <p style="font-size:13px; color: var(--slate); margin: 4px 0 0;">Build the capability to keep improving</p>
+            </div>
+          </div>
+          <p>White background, no border. <code>box-shadow: 0 2px 10px rgba(38,36,92,0.08)</code>. Pill tag carries the pillar colour at proper saturation. Hover lifts with translateY, never scale.</p>
+        </div>
+      </div>
+
+      <h3>Other tells</h3>
+      <div class="anti-list">
+        <div class="item">
+          <h4>GRADIENT TEXT</h4>
+          <p><code>background: linear-gradient(...); background-clip: text; color: transparent</code> on H1s. <span class="fix">Use solid brand colour.</span> Near-Black for body headings, brand hero for emphasis.</p>
+        </div>
+        <div class="item">
+          <h4>GRADIENT BACKGROUNDS</h4>
+          <p>Purple-to-blue gradients, animated mesh backgrounds, gradient buttons. <span class="fix">Solid surfaces only.</span> Off-white, brand hero, or pure white.</p>
+        </div>
+        <div class="item">
+          <h4>GLASSMORPHISM</h4>
+          <p><code>backdrop-filter: blur(...)</code> on semi-transparent surfaces. <span class="fix">Solid backgrounds only.</span> Tints from the locked palette if separation is needed.</p>
+        </div>
+        <div class="item">
+          <h4>SCALE-ON-HOVER</h4>
+          <p><code>transform: scale(1.05)</code> on cards or buttons. <span class="fix">Use translateY(-2 to -6px) only.</span> No scale anywhere.</p>
+        </div>
+        <div class="item">
+          <h4>EXCESSIVE ROUNDED CORNERS</h4>
+          <p><code>rounded-2xl</code>, <code>rounded-3xl</code>, <code>rounded-full</code> on cards and panels. <span class="fix">4-8px on cards, 3-6px on buttons.</span> Pills (100px radius) are fine.</p>
+        </div>
+        <div class="item">
+          <h4>DEFAULT LUCIDE / HEROICONS</h4>
+          <p>The same five icons (Sparkles, Rocket, Zap, ArrowRight, CheckCircle) used as default decoration. <span class="fix">Architectural custom icons or none.</span> If a Lucide icon ships, it has been chosen deliberately and matches the stroke spec.</p>
+        </div>
+        <div class="item">
+          <h4>CENTERED EVERYTHING</h4>
+          <p>Hero centered. Three feature cards centered. Section headings centered. <span class="fix">Asymmetric left-aligned editorial layout</span> where the format allows. Vertical pull-up banners are the exception.</p>
+        </div>
+        <div class="item">
+          <h4>AUTO-EMOJI DECORATION</h4>
+          <p>&#x1F680; next to "fast", &#x2728; next to "AI", &#x1F4A1; next to "ideas". <span class="fix">No emoji on any brand surface.</span> Words do the work.</p>
+        </div>
+        <div class="item">
+          <h4>LAZY CTAS</h4>
+          <p>"Get Started". "Learn More". "Click Here". <span class="fix">Specific, action-naming CTAs:</span> "Talk to us about your operation", "See how Lean&amp; Methods works", "Book a discovery call".</p>
+        </div>
+        <div class="item">
+          <h4>INSET SHADOWS ON INPUTS</h4>
+          <p><code>box-shadow: inset 0 1px 3px rgba(0,0,0,0.1)</code>. <span class="fix">Clean border at rest, brand-colour border on focus.</span> No inset depth simulation.</p>
+        </div>
+        <div class="item">
+          <h4>ANIMATED UNDERLINES, GROWING DOTS, SPINNING BORDERS</h4>
+          <p>Decorative interaction hover states with multi-keyframe animations. <span class="fix">Simple colour change, simple translateY, or nothing.</span> Motion serves understanding, not attention.</p>
+        </div>
+        <div class="item">
+          <h4>"AS SEEN ON" LOGO STRIPS WITH PLACEHOLDER LOGOS</h4>
+          <p>Greyscale logo strip with generic company marks as social proof. <span class="fix">Either real client logos with permission, or nothing.</span> Per the EQUIBT case study anonymisation rule, clients stay anonymous, so this strip is generally not used.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <h4>If you are not sure</h4>
+        <p>The default test: does this look like every AI-generated landing page from the last two years? If yes, the choice is wrong. Look at the card recipe and the EQUIBT v4 prototype for what on-system actually feels like.</p>
+      </div>
+    </section>
+
+    <!-- ============ FRAMEWORK TEACHING LAYER ============ -->
+    <section id="framework">
+      <span class="meta">09 &middot; Framework Teaching Layer</span>
+      <h2>Framework Teaching Layer</h2>
+      <p>Framework illustrations explain methodology. They live inside Corporate Layer chrome (a banner top and footer carry brand identity, the framework content inside uses the teaching palette). Use the same five colours in the same order across every framework so the visual sequencing builds recognition.</p>
+
+      <table>
+        <thead><tr><th>Step</th><th>Colour</th><th>Hex</th><th>5S</th><th>DMAIC</th><th>DMAICO</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Petrol Teal</td><td><code>#004757</code></td><td>Sort</td><td>Define</td><td>Define</td></tr>
+          <tr><td>2</td><td>Amber</td><td><code>#B8732F</code></td><td>Set in order</td><td>Measure</td><td>Measure</td></tr>
+          <tr><td>3</td><td>Slate</td><td><code>#2C3E50</code></td><td>Shine</td><td>Analyse</td><td>Analyse</td></tr>
+          <tr><td>4</td><td>Crimson</td><td><code>#A51C30</code></td><td>Standardise</td><td>Improve</td><td>Improve</td></tr>
+          <tr><td>5</td><td>Forest</td><td><code>#2D5F3F</code></td><td>Sustain</td><td>Control</td><td>Control</td></tr>
+          <tr><td>6</td><td>Deep Navy</td><td><code>#26245C</code></td><td>—</td><td>—</td><td>Operate / Scale</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <h4>Saturation rule</h4>
+        <p>Enterprise tones, not pastels. If a colour reads pastel on white at 100% opacity, the saturation is wrong. The 2024 and 2025 LMI training banners use pastel orange and bright leaf-green that read soft. Retired under v7.1.</p>
+      </div>
+    </section>
+
+    <!-- ============ APPLICATIONS ============ -->
+    <section id="applications">
+      <span class="meta">10 &middot; Applications</span>
+      <h2>Applications</h2>
+      <p>Worked example: the 5S Workplace pull-up banner, rebuilt on v7.1 alongside the 2025 original.</p>
+
+      <div class="app-row">
+        <div class="app-card">
+          <div class="label-row"><span class="tag bad">2025 — off-system</span><span style="font-size:12px; color:var(--mid-grey);">Pastel palette, generic sans, light body</span></div>
+          <img src="LMI_BANNER_5S_2025_orig.png" alt="2025 5S banner, off-spec under v7.1" onerror="this.onerror=null;this.src='../LMI_BANNER_5S_comparison.png';">
+        </div>
+        <div class="app-card">
+          <div class="label-row"><span class="tag good">v7.1 — on-system</span><span style="font-size:12px; color:var(--mid-grey);">Framework Teaching Layer + Montserrat + Inter</span></div>
+          <img src="LMI_BANNER_5S_v7-1.png" alt="5S banner rebuilt on v7.1">
+        </div>
+      </div>
+      <p style="font-size:13px; color: var(--mid-grey);">SVG source: <code>GOS/Branding/Guidelines/LMI_BANNER_5S_v7-1.svg</code></p>
+    </section>
+
+    <!-- ============ VOICE ============ -->
+    <section id="voice">
+      <span class="meta">11 &middot; Voice &amp; tone</span>
+      <h2>Voice &amp; tone</h2>
+      <p>Direct. Plain Australian business English. Practitioner-led, not thought-leader-led. Short sentences. No hedging. Plain words over technical terms where both work. No corporate polish.</p>
+
+      <h3>Words and phrases to avoid</h3>
+      <p>No em dashes or en dashes (use commas, colons, ellipses, or restructure). No AI tells: "game-changer", "unlock", "leverage", "unpack", "journey", "let's dive in", "in today's fast-paced world", "it's not just X, it's Y". No rhetorical triplets. No tidy bow endings. No lazy CTAs ("thoughts?", "what do you think?"), if there is a question, make it specific.</p>
+
+      <h3>Australian English spelling</h3>
+      <p>Organise, optimise, realise, colour, programme (UK -mme variant for ongoing programme of work; "program" acceptable for software). Standardise, analyse, recognise.</p>
+    </section>
+
+    <!-- ============ RECONCILIATION ============ -->
+    <section id="reconciliation">
+      <span class="meta">12 &middot; Reconciliation notes</span>
+      <h2>Reconciliation against legacy</h2>
+      <p>Two parts of v7.0 were stale at the time v7.1 was locked. Both are documented here so older artefacts and other docs can be brought into line.</p>
+
+      <h3>Typography supersession</h3>
+      <div class="callout fix">
+        <h4>Source Serif 4 + Lato → Montserrat + Inter</h4>
+        <p>BRAND_SYSTEM.md v7.0 still lists Source Serif 4 for display and Lato for body. Superseded 13 May 2026 by <code>GOS/Runtime/00_Meta/Docs/EQUIBT/EQUIBT_Website/Typography_Decision_v1.md</code>. Both brands now run on Montserrat (SemiBold for H1, Bold for H2+) plus Inter Regular for body, plus Open Sans Medium for nav. Source Serif 4 and Lato should be archived out of <code>GOS/Branding/Fonts/</code> to prevent accidental use.</p>
+      </div>
+
+      <h3>Petrol Teal value</h3>
+      <div class="callout fix">
+        <h4>Pacific Teal #008B9E → Petrol Teal #004757</h4>
+        <p>COLOUR_USAGE_RULES.md V7.1 lists the LMI contrast colour as Pacific Teal <code>#008B9E</code> and writes Rule 1 (white-text contrast failure) against that lighter value. BRAND_SYSTEM.md v7.0 already correctly lists Petrol Teal <code>#004757</code>. v7.1 confirms Petrol Teal <code>#004757</code> as the locked value. Petrol Teal passes WCAG AA for normal text on white (8.9:1) so the small-white-text restriction does not apply. The restriction remains in force for Terracotta and Amber.</p>
+      </div>
+
+      <h3>Retired collateral</h3>
+      <ol>
+        <li>The blue / pastel-orange / light-grey / coral / leaf-green palette on <code>LMI_BANNER_DMAIC-2024</code> and <code>LMI_BANNER_5S-2025</code>. Replaced by the Framework Teaching Layer palette.</li>
+        <li>Generic sans-serif headings on framework banners. Replaced by Montserrat SemiBold (titles) and Montserrat Bold (step names).</li>
+        <li>Light grey body text on framework banners. Replaced by Inter Regular at <code>#2C2C2C</code>.</li>
+        <li>Pale ghost decorative shapes used as filler on Corporate Layer banners. Removed.</li>
+        <li>Any per-step colour coding on Corporate Layer material. The Corporate Layer carries one brand accent only.</li>
+      </ol>
+      <p>Existing physical banners do not need to be reprinted immediately. Replacement happens at natural refresh, or when a new banner is commissioned.</p>
+    </section>
+
+    <!-- ============ DOWNLOADS ============ -->
+    <section id="downloads">
+      <span class="meta">13 &middot; Downloads &amp; files</span>
+      <h2>Downloads &amp; files</h2>
+
+      <h3>Logos &mdash; locked refined lockups (28 May 2026)</h3>
+      <p>These are the locked refined lockups for both brands as of 28 May 2026. SVG sources are the canonical vector files. PNG masters at multiple sizes are rendered into <code>exports/</code> subfolders for placement-ready use (decks, social, favicons, partner kits).</p>
+
+      <h4 style="margin-top: 24px;">LMI &mdash; SVG sources</h4>
+      <ul class="download-list">
+        <li><span class="name">LMI primary lockup (square icon + horizontal wordmark) &mdash; refined 28 May 2026</span><a class="path" href="assets/logos/lmi/LMI-LOGO-702_MAIN-R1.svg" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/LMI/LMI-LOGO-702_MAIN-R1.svg</a></li>
+        <li><span class="name">LMI horizontal-constrained variant</span><a class="path" href="assets/logos/lmi/LMI-LOGO-701_MAIN-R2.svg" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/LMI/LMI-LOGO-701_MAIN-R2.svg</a></li>
+        <li><span class="name">LMI on dark backgrounds &mdash; refined 28 May 2026</span><a class="path" href="assets/logos/lmi/LMI-LOGO-702_MAIN-R1-DARK.svg" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/LMI/LMI-LOGO-702_MAIN-R1-DARK.svg</a></li>
+        <li><span class="name">LMI wordmark only (icon too small)</span><a class="path" href="assets/logos/lmi/LMI-LOGO-701_MIN1-R1.svg" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/LMI/LMI-LOGO-701_MIN1-R1.svg</a></li>
+        <li><span class="name">LMI square icon (favicon, avatar, app icon)</span><a class="path" href="assets/logos/lmi/LMI-LOGO-701_FAV-R2.svg" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/LMI/LMI-LOGO-701_FAV-R2.svg</a></li>
+        <li><span class="name">LMI co-branded with EQUIBT</span><a class="path" href="assets/logos/lmi/LMI-LOGO-701_EQ LMI.svg" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/LMI/LMI-LOGO-701_EQ LMI.svg</a></li>
+      </ul>
+
+      <h4 style="margin-top: 24px;">LMI &mdash; PNG masters</h4>
+      <ul class="download-list">
+        <li><span class="name">Lockup, 2400px wide, transparent</span><a class="path" href="assets/logos/lmi/exports/LMI_lockup_2400w.png" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/LMI/exports/LMI_lockup_2400w.png</a></li>
+        <li><span class="name">Lockup, 1200px wide, transparent</span><a class="path" href="assets/logos/lmi/exports/LMI_lockup_1200w.png" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/LMI/exports/LMI_lockup_1200w.png</a></li>
+        <li><span class="name">Lockup on white, 2400px / 1200px</span><a class="path" href="assets/logos/lmi/exports/LMI_lockup_on-white_2400w.png" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/LMI/exports/LMI_lockup_on-white_2400w.png</a></li>
+        <li><span class="name">Lockup on dark, 2400px</span><a class="path" href="assets/logos/lmi/exports/LMI_lockup_on-dark_2400w.png" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/LMI/exports/LMI_lockup_on-dark_2400w.png</a></li>
+        <li><span class="name">Square icon, 1024 / 512 / 256 / 128 / 64</span><span class="path">GOS/Branding/Logos/LMI/exports/LMI_icon_{size}.png</span></li>
+        <li><span class="name">Co-branded with EQUIBT, 2400px</span><a class="path" href="assets/logos/lmi/exports/LMI_cobranded_with_EQUIBT_2400w.png" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/LMI/exports/LMI_cobranded_with_EQUIBT_2400w.png</a></li>
+      </ul>
+
+      <h4 style="margin-top: 24px;">EQUIBT &mdash; SVG sources</h4>
+      <ul class="download-list">
+        <li><span class="name">EQUIBT primary lockup (wordmark + square icon)</span><a class="path" href="assets/logos/equibt/EQ-LOGO-701_EQ-MAIN-R1.svg" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/EQUIBT/EQ-LOGO-701_EQ-MAIN-R1.svg</a></li>
+        <li><span class="name">EQUIBT reversed horizontal (on dark)</span><a class="path" href="assets/logos/equibt/EQ-LOGO-701_EQ-REV-R1.svg" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/EQUIBT/EQ-LOGO-701_EQ-REV-R1.svg</a></li>
+        <li><span class="name">EQUIBT reversed compact (on dark, tight)</span><a class="path" href="assets/logos/equibt/EQ-LOGO-701_EQ-REV-R2.svg" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/EQUIBT/EQ-LOGO-701_EQ-REV-R2.svg</a></li>
+        <li><span class="name">EQUIBT square (social, badge)</span><a class="path" href="assets/logos/equibt/EQ-LOGO-701_EQ-LOGO-SQ.svg" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/EQUIBT/EQ-LOGO-701_EQ-LOGO-SQ.svg</a></li>
+        <li><span class="name">EQUIBT favicon (icon only)</span><a class="path" href="assets/logos/equibt/EQ-LOGO-701_EQ-LOGO-FAV.svg" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/EQUIBT/EQ-LOGO-701_EQ-LOGO-FAV.svg</a></li>
+        <li><span class="name">EQUIBT small horizontal</span><a class="path" href="assets/logos/equibt/EQ-LOGO-701_EQ-SML-R1.svg" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/EQUIBT/EQ-LOGO-701_EQ-SML-R1.svg</a></li>
+      </ul>
+
+      <h4 style="margin-top: 24px;">EQUIBT &mdash; PNG masters</h4>
+      <ul class="download-list">
+        <li><span class="name">Lockup, 2400px wide, transparent</span><a class="path" href="assets/logos/equibt/exports/EQUIBT_lockup_2400w.png" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/EQUIBT/exports/EQUIBT_lockup_2400w.png</a></li>
+        <li><span class="name">Lockup, 1200px wide, transparent</span><a class="path" href="assets/logos/equibt/exports/EQUIBT_lockup_1200w.png" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/EQUIBT/exports/EQUIBT_lockup_1200w.png</a></li>
+        <li><span class="name">Lockup on white, 2400px / 1200px</span><a class="path" href="assets/logos/equibt/exports/EQUIBT_lockup_on-white_2400w.png" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/EQUIBT/exports/EQUIBT_lockup_on-white_2400w.png</a></li>
+        <li><span class="name">Lockup on dark, 2400px</span><a class="path" href="assets/logos/equibt/exports/EQUIBT_lockup_on-dark_2400w.png" download style="color:var(--mid-grey); text-decoration:none;">GOS/Branding/Logos/EQUIBT/exports/EQUIBT_lockup_on-dark_2400w.png</a></li>
+        <li><span class="name">Square (social, badge), 1024 / 512</span><span class="path">GOS/Branding/Logos/EQUIBT/exports/EQUIBT_square_{size}.png</span></li>
+        <li><span class="name">Favicon, 256 / 128</span><span class="path">GOS/Branding/Logos/EQUIBT/exports/EQUIBT_favicon_{size}.png</span></li>
+      </ul>
+
+      <h3>Fonts (Google Fonts)</h3>
+      <ul class="download-list">
+        <li><span class="name">Montserrat</span><span class="path">fonts.google.com/specimen/Montserrat</span></li>
+        <li><span class="name">Inter</span><span class="path">fonts.google.com/specimen/Inter</span></li>
+        <li><span class="name">Open Sans</span><span class="path">fonts.google.com/specimen/Open+Sans</span></li>
+      </ul>
+
+      <h3>Reference docs</h3>
+      <ul class="download-list">
+        <li><span class="name">BRAND_SYSTEM.md (v7.0, requires typography update)</span><span class="path">GOS/Branding/Guidelines/BRAND_SYSTEM.md</span></li>
+        <li><span class="name">BRAND_SYSTEM_v7.1_ADDENDUM.md</span><span class="path">GOS/Branding/Guidelines/BRAND_SYSTEM_v7.1_ADDENDUM.md</span></li>
+        <li><span class="name">COLOUR_USAGE_RULES.md (requires Petrol Teal reconciliation)</span><span class="path">GOS/Branding/Guidelines/COLOUR_USAGE_RULES.md</span></li>
+        <li><span class="name">Typography_Decision_v1.md</span><span class="path">GOS/Runtime/00_Meta/Docs/EQUIBT/EQUIBT_Website/Typography_Decision_v1.md</span></li>
+      </ul>
+    </section>
+
+    <!-- ============ CHANGELOG ============ -->
+    <section id="changelog">
+      <span class="meta">14 &middot; Changelog</span>
+      <h2>Changelog</h2>
+      <table>
+        <thead><tr><th>Version</th><th>Date</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td>v7.1</td><td>28 May 2026</td><td>Framework Teaching Layer introduced. Typography reconciled to Montserrat + Inter (per Typography_Decision_v1.md, 13 May 2026). Petrol Teal value reconciled. Visual brand guideline site built. Web design system and Anti-pattern sections added. All card chrome (1px borders, 2-3px top accent lines) removed in favour of brand-tinted soft shadow. Refined LMI and EQUIBT lockups locked: PNG masters rendered into <code>exports/</code> subfolders alongside the SVG sources.</td></tr>
+          <tr><td>v7.0</td><td>19 May 2026</td><td>Brand system formalised in markdown. LMI Crimson + Petrol Teal, EQUIBT Deep Navy + Terracotta. Logo lockups locked.</td></tr>
+          <tr><td>v6 and earlier</td><td>—</td><td>Archived. Not authoritative.</td></tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top:32px; font-size:13px; color: var(--mid-grey);">Maintained by Herman Chan. Questions route through Claire. This document supersedes any conflicting earlier guideline.</p>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="row">GOS Brand Guidelines &middot; v7.1 &middot; 28 May 2026 &middot; Canonical: <code>GOS/Branding/Guidelines/site/</code></div>
+</footer>
+
+<div class="toast" id="toast">Copied</div>
+
+<script>
+  // Click-to-copy hex
+  document.querySelectorAll('.swatch').forEach(el => {
+    el.addEventListener('click', () => {
+      const hex = el.getAttribute('data-hex');
+      navigator.clipboard?.writeText(hex);
+      const t = document.getElementById('toast');
+      t.textContent = 'Copied ' + hex;
+      t.classList.add('show');
+      clearTimeout(window._toast);
+      window._toast = setTimeout(() => t.classList.remove('show'), 1400);
+    });
+  });
+
+  // Active nav highlighting via IntersectionObserver
+  const links = document.querySelectorAll('nav.side a');
+  const sections = Array.from(links).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const byId = Object.fromEntries(Array.from(links).map(a => [a.getAttribute('href').slice(1), a]));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const a = byId[e.target.id];
+        if (a) a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => io.observe(s));
+</script>
+
+</body>
+</html>
