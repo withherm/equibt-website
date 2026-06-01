@@ -548,6 +548,36 @@ p {
   color: var(--mid-grey);
 }
 
+.examine .section-header {
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.examine .section-note {
+  max-width: 760px;
+}
+
+.related .section-header {
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.related .section-note {
+  max-width: 760px;
+}
+
+.deliverables .section-header {
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.deliverables .section-note {
+  max-width: 760px;
+}
+
 .examine-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -951,6 +981,8 @@ p {
   width: 100%;
   max-width: 1040px;
   min-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
   height: auto;
   overflow: visible;
 }
@@ -1738,8 +1770,8 @@ p {
             <text class="station-label" x="782" y="102" text-anchor="middle" fill="#7A8591">GOVERN</text>
             <rect x="875.8" y="70.7" width="156.4" height="50.6" rx="25.3" fill="#5C0A5C"/>
             <text class="station-label" x="954" y="102" text-anchor="middle" fill="#FFFFFF" font-size="16.1">SCALE</text>
-            <path d="M 954 134 C 840 190 210 190 86 134" fill="none" stroke="#C15F3C" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="7 7"/>
-            <polygon points="86,134 101,126 99,142" fill="#C15F3C"/>
+            <path d="M 954 134 L 954 188 L 86 188 L 86 134" fill="none" stroke="#C15F3C" stroke-width="2.5" stroke-linejoin="miter" stroke-dasharray="7 7"/>
+            <polygon points="86,126 78,142 94,142" fill="#C15F3C"/>
             <text class="station-marker" x="520" y="184" text-anchor="middle" fill="#C15F3C">THE CYCLE CONTINUES</text>
           </svg>
         </div>
