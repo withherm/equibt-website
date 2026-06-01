@@ -1090,6 +1090,51 @@ p {
   line-height: 1.2;
 }
 
+.cta-meta.cta-equation {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 14px;
+  max-width: 1000px;
+}
+.cta-meta.cta-equation .cta-meta-item {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cta-meta.cta-equation .cta-deliverables {
+  flex: 1.5 1 0;
+  justify-content: flex-start;
+}
+.cta-eq-op {
+  flex: 0 0 auto;
+  align-self: center;
+  color: rgba(245,243,238,0.45);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+}
+.cta-deliverable-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.cta-deliverable {
+  padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 6px;
+  background: rgba(255,255,255,0.04);
+  color: #FFFFFF;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
 .cta-panel .cta-button {
   background: #FFFFFF;
   color: var(--near-black);
@@ -1381,6 +1426,9 @@ p {
   .cta-meta {
     grid-template-columns: 1fr;
   }
+
+  .cta-meta.cta-equation { flex-direction: column; align-items: stretch; }
+  .cta-meta.cta-equation .cta-eq-op { align-self: center; }
 
   .case-card {
     grid-template-columns: 1fr;
@@ -1805,18 +1853,25 @@ p {
       <div class="section-inner cta-box reveal">
         <h2 class="section-title light">Scale what works, then step back.</h2>
         <p>A validated solution is only worth the rollout if the organisation can run it without you. Tell us what you have proven and we will scope a deployment that ends with your team independent, not dependent on us.</p>
-        <div class="cta-meta" aria-label="Typical SCALE engagement details">
+        <div class="cta-meta cta-equation" aria-label="Typical SCALE engagement details">
           <div class="cta-meta-item">
             <span class="cta-meta-label">Typical timeline</span>
             <span class="cta-meta-value">From 4 weeks</span>
           </div>
+          <span class="cta-eq-op" aria-hidden="true">+</span>
           <div class="cta-meta-item">
             <span class="cta-meta-label">How we work</span>
             <span class="cta-meta-value">Embedded with your team</span>
           </div>
-          <div class="cta-meta-item">
-            <span class="cta-meta-label">What you leave with</span>
-            <span class="cta-meta-value">Standard work your team owns</span>
+          <span class="cta-eq-op" aria-hidden="true">=</span>
+          <div class="cta-meta-item cta-deliverables">
+            <span class="cta-meta-label">What you get</span>
+            <ul class="cta-deliverable-list">
+              <li class="cta-deliverable">Standardisation Playbook</li>
+              <li class="cta-deliverable">Automation Deployment Package</li>
+              <li class="cta-deliverable">Capability Transfer Programme</li>
+              <li class="cta-deliverable">Continuous Improvement System</li>
+            </ul>
           </div>
         </div>
         <a href="/contact/" class="cta-button">Get in touch</a>
