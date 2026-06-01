@@ -479,19 +479,22 @@ p {
 .proof-list {
   margin-top: 46px;
   display: grid;
-  gap: 0;
+  gap: 18px;
 }
 
 .proof-item {
   display: grid;
   grid-template-columns: 64px 1fr;
   gap: 26px;
-  padding: 34px 0;
-  border-top: 1px solid rgba(38,36,92,0.12);
+  margin-right: calc(-1 * var(--content-left-offset));
+  padding: 32px calc(var(--content-left-offset) + 34px) 32px 34px;
+  border-radius: 8px 0 0 8px;
+  background: #FFFFFF;
+  box-shadow: var(--card-shadow);
 }
 
 .proof-item:last-child {
-  border-bottom: 1px solid rgba(38,36,92,0.12);
+  border-bottom: 0;
 }
 
 .proof-icon {
@@ -1301,7 +1304,8 @@ p {
   .proof-item {
     grid-template-columns: 1fr;
     gap: 16px;
-    padding: 34px 0;
+    margin-right: calc(-1 * var(--section-gutter));
+    padding: 26px calc(var(--section-gutter) + 24px) 26px 24px;
   }
 
   .examine-grid,
