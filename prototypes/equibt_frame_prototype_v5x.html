@@ -1062,6 +1062,42 @@ p {
   color: rgba(245,243,238,0.74);
 }
 
+.cta-meta {
+  max-width: 860px;
+  margin: 0 0 42px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.cta-meta-item {
+  padding: 18px 20px;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+}
+
+.cta-meta-label {
+  display: block;
+  margin-bottom: 6px;
+  color: rgba(245,243,238,0.58);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.cta-meta-value {
+  display: block;
+  color: #FFFFFF;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
 .cta-panel .cta-button {
   background: #FFFFFF;
   color: var(--near-black);
@@ -1337,6 +1373,10 @@ p {
 
   .carousel-controls {
     justify-content: center;
+  }
+
+  .cta-meta {
+    grid-template-columns: 1fr;
   }
 
   .case-card {
@@ -1747,6 +1787,20 @@ p {
       <div class="section-inner cta-box reveal">
         <h2 class="section-title light">Agree on the real problem first.</h2>
         <p>If your team holds different views on what needs to change, that disagreement is the thing worth resolving before anything else. Send us a short note on where the views diverge. We will tell you whether FRAME is the right place to start and what it would involve.</p>
+        <div class="cta-meta" aria-label="Typical FRAME engagement details">
+          <div class="cta-meta-item">
+            <span class="cta-meta-label">Typical timeline</span>
+            <span class="cta-meta-value">From 1 day</span>
+          </div>
+          <div class="cta-meta-item">
+            <span class="cta-meta-label">How we work</span>
+            <span class="cta-meta-value">Embedded with your team</span>
+          </div>
+          <div class="cta-meta-item">
+            <span class="cta-meta-label">What you leave with</span>
+            <span class="cta-meta-value">An agreed problem and project charter</span>
+          </div>
+        </div>
         <a href="/contact/" class="cta-button">Get in touch</a>
       </div>
     </section>
