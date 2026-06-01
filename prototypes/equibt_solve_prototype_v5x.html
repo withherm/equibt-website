@@ -1,0 +1,1858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Move from symptoms to causes, and from causes to costed solutions. EQUIBT's SOLVE service - the Analyse phase of DMAICO. Capability transfer built in.">
+<title>Iterative Improvement | SOLVE | Analyse | EQUIBT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="equibt-base.css">
+<style>
+:root {
+  --navy: #26245C;
+  --terracotta: #C15F3C;
+  --terracotta-dark: #A04E30;
+  --off-white: #F5F3EE;
+  --section-bg: #F5F3EE;
+  --light-grey: #F5F5F5;
+  --navy-wash: #E8ECF5;
+  --highlight-wash: #E8ECF5;
+  --dark-slate: #2C3E50;
+  --near-black: #2C2C2C;
+  --body-text: #2C2C2C;
+  --mid-grey: #555555;
+  --caption-grey: #7A8591;
+  --border: #D8DCE0;
+  --card-shadow: 0 2px 10px rgba(38,36,92,0.08);
+  --card-shadow-hover: 0 16px 40px rgba(38,36,92,0.18);
+  --section-gutter: 56px;
+  --wide-container: 1320px;
+  --content-left-offset: max(var(--section-gutter), calc((100vw - var(--wide-container)) / 2));
+  --pill-frame: #8B2252;
+  --pill-plan: #26245C;
+  --pill-solve: #0B6B82;
+  --pill-evolve: #2D7A3A;
+  --pill-govern: #7A3D00;
+  --pill-scale: #5C0A5C;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--off-white);
+  color: var(--near-black);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.page-shell {
+  overflow: hidden;
+}
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,0.97);
+}
+
+.site-nav.scrolled {
+  background: rgba(255,255,255,0.99);
+}
+
+.nav-inner {
+  max-width: 1320px;
+  height: 78px;
+  margin: 0 auto;
+  padding: 0 56px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  width: 138px;
+  text-decoration: none;
+}
+
+.nav-logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nav-links {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-link {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: rgba(44,44,44,0.68);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--navy);
+}
+
+.nav-cta,
+.btn-primary,
+.btn-outline,
+.cta-button,
+.card-link {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav-cta,
+.btn-primary,
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 13px 26px;
+  border-radius: 6px;
+  background: var(--navy);
+  color: var(--off-white);
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.nav-cta:hover,
+.btn-primary:hover,
+.cta-button:hover,
+.nav-cta:focus,
+.btn-primary:focus,
+.cta-button:focus {
+  background: #1e1c4e;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 11.5px 24.5px;
+  border: 1.5px solid #C9CCD5;
+  border-radius: 3px;
+  color: var(--near-black);
+  background: transparent;
+  transition: border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.btn-outline:hover,
+.btn-outline:focus {
+  border-color: var(--navy);
+  color: var(--navy);
+  transform: translateY(-1px);
+}
+
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 5px auto;
+  border-radius: 2px;
+  background: var(--navy);
+}
+
+.section {
+  padding: 140px var(--section-gutter);
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wide-inner {
+  max-width: var(--wide-container);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+  color: var(--terracotta);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  flex: 0 0 auto;
+  background: var(--terracotta);
+}
+
+.eyebrow.light {
+  color: rgba(245,243,238,0.72);
+}
+
+.section-title {
+  max-width: 820px;
+  margin: 0;
+  color: var(--near-black);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(36px, 3.2vw, 40px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.06;
+}
+
+.section-title.light {
+  color: var(--off-white);
+}
+
+.section-copy {
+  max-width: 680px;
+  margin: 26px 0 0;
+  color: var(--mid-grey);
+}
+
+.reveal,
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-d1 {
+  transition-delay: 0.08s;
+}
+
+.reveal-d2 {
+  transition-delay: 0.16s;
+}
+
+.reveal-d3 {
+  transition-delay: 0.24s;
+}
+
+.hero {
+  min-height: calc(90vh - 78px);
+  padding: 0 56px 76px;
+  background: #FFFFFF;
+  border-bottom: 1px solid rgba(38,36,92,0.07);
+  display: flex;
+  align-items: center;
+}
+
+.hero-inner {
+  position: relative;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 760px) minmax(320px, 1fr);
+  gap: 92px;
+  align-items: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 22px;
+}
+
+.hero-eyebrow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 80px;
+  padding-left: 24px;
+  margin-bottom: 30px;
+  color: var(--terracotta);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.hero-eyebrow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 80px;
+  background: var(--terracotta);
+}
+
+.pillar-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 11px;
+  border-radius: 100px;
+  color: var(--off-white);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.pillar-badge.frame {
+  background: var(--pill-frame);
+}
+
+.pillar-badge.plan {
+  background: var(--pill-plan);
+}
+
+.pillar-badge.solve {
+  background: var(--pill-solve);
+}
+
+.pillar-badge.evolve {
+  background: var(--pill-evolve);
+}
+
+.pillar-badge.govern {
+  background: var(--pill-govern);
+}
+
+.pillar-badge.scale {
+  background: var(--pill-scale);
+}
+
+.hero h1 {
+  max-width: 760px;
+  margin: 0 0 30px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 52px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.06;
+}
+
+.hero-subhead {
+  max-width: 670px;
+  margin: 0 0 24px;
+  color: var(--near-black);
+}
+
+.hero-body {
+  max-width: 690px;
+  margin: 0 0 22px;
+  color: var(--mid-grey);
+}
+
+.hero-body:last-of-type {
+  margin-bottom: 42px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-visual {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.hero-visual svg {
+  width: min(480px, 38vw);
+  height: auto;
+}
+
+.problem {
+  background: var(--light-grey);
+}
+
+.problem-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
+  gap: 92px;
+  align-items: start;
+}
+
+.problem-intro {
+  position: sticky;
+  top: 118px;
+}
+
+.highlight-callout {
+  display: inline-block;
+  margin-top: 44px;
+  margin-left: calc(-1 * var(--content-left-offset));
+  padding: 22px 24px 22px calc(var(--content-left-offset) + 24px);
+  border-radius: 0 8px 8px 0;
+  background: var(--highlight-wash);
+  box-shadow: 0 2px 10px rgba(38,36,92,0.05);
+}
+
+.highlight-callout strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+.highlight-callout span {
+  display: block;
+  color: var(--mid-grey);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.problem-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.problem-copy p {
+  margin: 0;
+  color: var(--near-black);
+}
+
+.proof-list {
+  margin-top: 46px;
+  display: grid;
+  gap: 0;
+}
+
+.proof-item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 26px;
+  padding: 34px 0;
+  border-top: 1px solid rgba(38,36,92,0.12);
+}
+
+.proof-item:last-child {
+  border-bottom: 1px solid rgba(38,36,92,0.12);
+}
+
+.proof-icon {
+  width: 58px;
+  height: 58px;
+  color: var(--navy);
+}
+
+.proof-icon svg,
+.service-icon svg,
+.deliverable-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.proof-item h3 {
+  margin: 0 0 8px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.proof-item p {
+  margin: 0;
+  color: var(--mid-grey);
+}
+
+.examine {
+  background: #FFFFFF;
+}
+
+.section-header {
+  display: grid;
+  grid-template-columns: minmax(0, 780px) minmax(220px, 1fr);
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 82px;
+}
+
+.section-note {
+  margin: 0;
+  color: var(--mid-grey);
+}
+
+.examine-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 32px;
+  align-items: stretch;
+}
+
+.examine-card {
+  min-height: 390px;
+  padding: 32px;
+  border-radius: 8px;
+  background: var(--navy-wash);
+  box-shadow: var(--card-shadow);
+  color: var(--near-black);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.examine-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.examine-card:nth-child(1) {
+  grid-column: 1 / span 2;
+}
+
+.examine-card:nth-child(2) {
+  grid-column: 3 / span 2;
+}
+
+.examine-card:nth-child(3) {
+  grid-column: 5 / span 2;
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.service-icon,
+.deliverable-icon {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 auto;
+  color: var(--navy);
+}
+
+.examine-card h3,
+.deliverable-card h3,
+.context-card h3 {
+  margin: 0 0 14px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.examine-card p,
+.deliverable-card p,
+.context-card p {
+  margin: 0;
+  color: var(--mid-grey);
+}
+
+.deliverables {
+  background: var(--navy-wash);
+}
+
+.deliverables-carousel {
+  position: relative;
+}
+
+.carousel-viewport {
+  position: relative;
+  overflow: hidden;
+}
+
+.deliverables-track {
+  display: flex;
+  gap: 28px;
+  align-items: stretch;
+  transition: transform 0.32s ease;
+  will-change: transform;
+}
+
+.deliverable-card {
+  flex: 0 0 88%;
+  min-height: 520px;
+  padding: 32px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  box-shadow: var(--card-shadow);
+  display: grid;
+  grid-template-columns: minmax(420px, 0.56fr) minmax(0, 0.44fr);
+  gap: 36px;
+  align-items: center;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.deliverable-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.deliverable-card-image {
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--highlight-wash);
+}
+
+.deliverable-card-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.deliverable-placeholder {
+  display: none;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(38,36,92,0.12);
+  background: var(--highlight-wash);
+}
+
+.deliverable-placeholder svg {
+  width: 52px;
+  height: 52px;
+  fill: none;
+  stroke: rgba(38,36,92,0.34);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.deliverable-placeholder p {
+  max-width: 220px;
+  margin: 0;
+  color: rgba(38,36,92,0.46);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.45;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.deliverable-card p {
+  margin-top: 0;
+}
+
+.deliverable-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.carousel-arrows {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  width: 52px;
+  height: 52px;
+  border: 1.5px solid rgba(38,36,92,0.2);
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: var(--navy);
+  box-shadow: 0 8px 24px rgba(38,36,92,0.16);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  transform: translateY(-50%);
+  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.carousel-arrow[data-carousel-prev] {
+  left: 12px;
+}
+
+.carousel-arrow[data-carousel-next] {
+  right: 12px;
+}
+
+.carousel-arrow:hover,
+.carousel-arrow:focus {
+  border-color: rgba(193,95,60,0.44);
+  background: var(--highlight-wash);
+  color: var(--terracotta);
+  box-shadow: 0 12px 30px rgba(38,36,92,0.2);
+}
+
+.carousel-arrow:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 3px;
+}
+
+.carousel-arrow svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.carousel-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(38,36,92,0.22);
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.carousel-dot.is-active {
+  background: var(--terracotta);
+  width: 22px;
+  border-radius: 100px;
+}
+
+.cases {
+  background: #FFFFFF;
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.case-card {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.34fr) minmax(0, 0.66fr);
+  min-height: 460px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  color: var(--near-black);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.case-card:hover,
+.case-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.case-metric {
+  padding: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--light-grey);
+}
+
+.case-metric > div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.case-sector {
+  display: block;
+  width: auto;
+  height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--terracotta);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.case-number {
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 0.95;
+}
+
+.case-content {
+  padding: 42px 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+.case-content h3 {
+  margin: 0 0 24px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.12;
+}
+
+.case-block {
+  margin-top: 24px;
+}
+
+.case-block:first-of-type {
+  margin-top: 0;
+}
+
+.case-label {
+  margin: 0 0 8px;
+  color: var(--case-pillar, var(--pill-plan));
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.case-card.pillar-frame {
+  --case-pillar: var(--pill-frame);
+}
+
+.case-card.pillar-plan {
+  --case-pillar: var(--pill-plan);
+}
+
+.case-card.pillar-solve {
+  --case-pillar: var(--pill-solve);
+}
+
+.case-card.pillar-evolve {
+  --case-pillar: var(--pill-evolve);
+}
+
+.case-card.pillar-govern {
+  --case-pillar: var(--pill-govern);
+}
+
+.case-card.pillar-scale {
+  --case-pillar: var(--pill-scale);
+}
+
+.case-block p:not(.case-label) {
+  margin: 0;
+  color: var(--mid-grey);
+}
+
+.case-content .card-link {
+  margin-top: 40px;
+}
+
+.related {
+  background: var(--off-white);
+}
+
+.station-map {
+  margin: 76px 0 58px;
+  overflow-x: auto;
+  padding: 10px 0 18px;
+}
+
+.station-map svg {
+  display: block;
+  width: 100%;
+  max-width: 1040px;
+  min-width: 820px;
+  height: auto;
+  overflow: visible;
+}
+
+.station-label {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.station-marker {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.context-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  align-items: stretch;
+}
+
+.context-card {
+  min-height: 336px;
+  padding: 32px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  box-shadow: var(--card-shadow);
+  color: var(--near-black);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.context-card:hover,
+.context-card:focus {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.card-link {
+  display: inline-flex;
+  margin-top: auto;
+  color: var(--terracotta);
+}
+
+.cta-panel {
+  background: var(--dark-slate);
+  color: var(--off-white);
+}
+
+.cta-box {
+  max-width: 1030px;
+}
+
+.cta-box .section-title {
+  max-width: 760px;
+}
+
+.cta-box p {
+  max-width: 690px;
+  margin: 26px 0 42px;
+  color: rgba(245,243,238,0.74);
+}
+
+.cta-meta {
+  max-width: 860px;
+  margin: 0 0 42px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.cta-meta-item {
+  padding: 18px 20px;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+}
+
+.cta-meta-label {
+  display: block;
+  margin-bottom: 6px;
+  color: rgba(245,243,238,0.58);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.cta-meta-value {
+  display: block;
+  color: #FFFFFF;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.cta-panel .cta-button {
+  background: #FFFFFF;
+  color: var(--near-black);
+}
+
+.cta-panel .cta-button:hover,
+.cta-panel .cta-button:focus {
+  background: var(--highlight-wash);
+}
+
+.site-footer {
+  padding: 48px 56px;
+  background: #FFFFFF;
+  color: var(--near-black);
+  border-top: 0;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.25fr 0.8fr 0.8fr 0.95fr;
+  gap: 72px;
+}
+
+.footer-logo {
+  display: inline-flex;
+  width: 142px;
+  margin-bottom: 28px;
+}
+
+.footer-logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.footer-tagline {
+  max-width: 310px;
+  margin: 0;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.12;
+}
+
+.footer-col h4 {
+  margin: 0 0 18px;
+  color: rgba(38,36,92,0.48);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer .footer-col ul li a {
+  color: rgba(44,44,44,0.72);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.site-footer .footer-col ul li a:hover,
+.site-footer .footer-col ul li a:focus {
+  color: var(--navy);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 0;
+  border-top: 0;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  color: rgba(44,44,44,0.52);
+  font-size: 12px;
+}
+
+.footer-bottom a {
+  color: rgba(44,44,44,0.62);
+  text-decoration: none;
+}
+
+@media (max-width: 1120px) {
+  :root {
+    --section-gutter: 36px;
+  }
+
+  .nav-inner,
+  .hero,
+  .section,
+  .site-footer {
+    padding-left: var(--section-gutter);
+    padding-right: var(--section-gutter);
+  }
+
+  .hero-inner,
+  .problem-layout,
+  .section-header {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .problem-intro {
+    position: static;
+  }
+
+  .hero-visual {
+    min-height: 240px;
+    justify-content: flex-start;
+  }
+
+  .hero-visual svg {
+    width: 360px;
+  }
+
+  .examine-card,
+  .examine-card:nth-child(n),
+  .context-card,
+  .context-card:nth-child(n) {
+    grid-column: auto;
+  }
+
+  .examine-grid,
+  .context-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .deliverable-card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 52px;
+  }
+}
+
+@media (max-width: 900px) {
+  .station-map svg {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 820px) {
+  :root {
+    --section-gutter: 24px;
+  }
+
+  .site-nav {
+    position: sticky;
+  }
+
+  .nav-inner {
+    height: 66px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .nav-logo {
+    width: 124px;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    inset: 66px 0 auto 0;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 20px 24px 28px;
+    background: #FFFFFF;
+    box-shadow: 0 18px 40px rgba(38,36,92,0.12);
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .nav-link {
+    width: 100%;
+    padding: 13px 0;
+    color: var(--near-black);
+  }
+
+  .nav-cta {
+    margin-top: 14px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 72px 24px 88px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .hero-subhead,
+  .hero-body,
+  p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .hero-visual {
+    display: none;
+  }
+
+  .section {
+    padding: 86px var(--section-gutter);
+  }
+
+  .section-title {
+    font-size: 34px;
+  }
+
+  .proof-item {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 34px 0;
+  }
+
+  .examine-grid,
+  .case-grid,
+  .context-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .examine-card,
+  .deliverable-card,
+  .context-card {
+    min-height: auto;
+  }
+
+  .deliverables-track {
+    gap: 16px;
+  }
+
+  .deliverable-card {
+    flex-basis: 88%;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .carousel-arrow {
+    top: 30%;
+    width: 40px;
+    height: 40px;
+  }
+
+  .carousel-arrow[data-carousel-prev] {
+    left: 8px;
+  }
+
+  .carousel-arrow[data-carousel-next] {
+    right: 8px;
+  }
+
+  .carousel-arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .carousel-controls {
+    justify-content: center;
+  }
+
+  .cta-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .case-card {
+    grid-template-columns: 1fr;
+  }
+
+  .case-metric,
+  .case-content {
+    padding: 32px 28px;
+  }
+
+  .site-footer {
+    padding: 38px 24px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    margin-top: 0;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page-shell">
+  <nav class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="EQUIBT home">
+        <svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
+          <g id="equibt-wordmark-main" fill="#2C3E50">
+            <path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/>
+            <path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/>
+            <path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/>
+            <path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/>
+            <path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/>
+            <path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/>
+          </g>
+          <path id="equibt-icon-main" fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/>
+        </svg>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/services/" class="nav-link">Services</a>
+        <a href="/industries/" class="nav-link">Industries</a>
+        <a href="/our-work/" class="nav-link">Our Work</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-cta">Let's talk</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-content reveal">
+          <div class="hero-eyebrow">SOLVE | Analyse</div>
+          <h1>Move from symptoms to causes. From causes to costed solutions.</h1>
+          <p class="hero-subhead">The diagnostic told you what is broken. SOLVE tells you why - and designs what to do about it. Root cause analysis, process redesign, and future state design. Built to transfer capability.</p>
+          <p class="hero-body">Michael has the diagnostic results. He knows where the friction is. But knowing where is not the same as knowing why. The bottleneck in claims processing might be caused by a missing decision right, a broken system handoff, an unclear escalation path, or all three. Treating symptoms without isolating causes means the improvement does not hold.</p>
+          <p class="hero-body">SOLVE is the discipline of analysis - structured, evidence-based, working from data not assumption. We work with your team through root cause analysis, operational reengineering where needed, and future state design. The output is a costed solution with clear trade-offs, ready for pilot validation. Your team does this work alongside us. They learn the analytical method. Next time, they do it without us in the room.</p>
+          <div class="hero-actions">
+            <a href="/contact/" class="btn-primary">Let's talk</a>
+            <a href="/our-work/" class="btn-outline">View our work</a>
+          </div>
+        </div>
+        <div class="hero-visual reveal reveal-d2" aria-hidden="true">
+          <svg viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 205 38 L 112 112 L 210 135 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 205 38 L 210 135 L 318 112 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 112 112 L 38 195 L 148 165 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 112 112 L 148 165 L 210 135 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 318 112 L 210 135 L 290 165 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 318 112 L 290 165 L 402 195 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 38 195 L 215 195 L 148 165 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 148 165 L 215 195 L 290 165 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 290 165 L 215 195 L 402 195 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 210 135 L 148 165 L 290 165 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 38 195 L 145 255 L 215 195 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 215 195 L 145 255 L 298 255 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 215 195 L 298 255 L 402 195 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 38 195 L 78 280 L 145 255 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 145 255 L 78 280 L 208 355 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 145 255 L 208 355 L 298 255 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 298 255 L 208 355 L 355 275 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 298 255 L 355 275 L 402 195 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <circle cx="205" cy="38" r="4" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="38" cy="195" r="4" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="402" cy="195" r="4" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="208" cy="355" r="4" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="112" cy="112" r="4" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="318" cy="112" r="4" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="78" cy="280" r="4" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="355" cy="275" r="4" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="215" cy="195" r="10" fill="#C15F3C"/>
+            <line x1="207" y1="195" x2="223" y2="195" stroke="#FFFFFF" stroke-width="1.5"/>
+            <line x1="215" y1="187" x2="215" y2="203" stroke="#FFFFFF" stroke-width="1.5"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="section problem">
+      <div class="section-inner wide-inner problem-layout">
+        <div class="problem-intro reveal">
+          <div class="eyebrow">WHY THIS MATTERS</div>
+          <h2 class="section-title">Treating symptoms is why improvements do not hold.</h2>
+          <div class="highlight-callout">
+            <strong>Causes, not symptoms.</strong>
+            <span>Structured analysis isolates why the problem exists, not just where it shows up.</span>
+          </div>
+        </div>
+        <div>
+          <div class="problem-copy reveal reveal-d1">
+            <p>The most common failure mode in operational improvement is fixing symptoms rather than causes. A process is slow, so automation gets added. The automation speeds up the wrong thing. A team has high rework, so training gets deployed. The rework continues because the root cause is a missing decision right upstream, not a skill gap.</p>
+            <p>SOLVE prevents this. It applies structured analytical methods - fishbone diagrams, five-why analysis, value stream mapping, statistical process control - to isolate what is actually causing the problem. Then it designs the future state: what the process should look like, what roles and decision rights need to change, what technology enablement is needed, and what it will cost.</p>
+            <p>Where fundamental redesign is needed - not incremental improvement but structural change to how work flows - SOLVE includes operational reengineering. New process flows. New decision rights. New accountability structures. Designed with your team, costed with clear trade-offs, ready for pilot validation in EVOLVE.</p>
+          </div>
+          <div class="proof-list">
+            <div class="proof-item reveal">
+              <span class="proof-icon" aria-hidden="true">
+                <svg viewBox="0 0 58 58"><path d="M 14 8 H 44 M 50 14 V 44 M 44 50 H 14 M 8 44 V 14"/><path d="M 20 29 H 38 M 29 20 V 38"/><circle cx="29" cy="29" r="14"/></svg>
+              </span>
+              <div>
+                <h3>Causes, not symptoms.</h3>
+                <p>Structured root cause analysis that isolates why the problem exists, not just where it shows up. No guessing. No assumption-based solutions.</p>
+              </div>
+            </div>
+            <div class="proof-item reveal reveal-d1">
+              <span class="proof-icon" aria-hidden="true">
+                <svg viewBox="0 0 58 58"><circle cx="18" cy="18" r="7"/><circle cx="40" cy="18" r="7"/><circle cx="29" cy="40" r="7"/><path d="M 24 21 L 35 21 M 21 24 L 26 35 M 37 24 L 32 35"/></svg>
+              </span>
+              <div>
+                <h3>Designed future state.</h3>
+                <p>A complete picture of what the improved operation looks like - process flows, roles, decision rights, technology requirements, cost-benefit analysis. Ready for pilot validation.</p>
+              </div>
+            </div>
+            <div class="proof-item reveal reveal-d2">
+              <span class="proof-icon" aria-hidden="true">
+                <svg viewBox="0 0 58 58"><path d="M 29 8 L 46 15 V 28 C 46 39 39 47 29 51 C 19 47 12 39 12 28 V 15 Z"/><path d="M 21 28 L 27 34 L 39 22"/></svg>
+              </span>
+              <div>
+                <h3>Capability transfer.</h3>
+                <p>Your team works alongside us through the analysis. They learn the method. Next time a problem surfaces, they can run the analysis independently.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section examine">
+      <div class="section-inner wide-inner">
+        <div class="section-header reveal">
+          <div>
+            <div class="eyebrow">WHAT WE EXAMINE</div>
+            <h2 class="section-title">Three disciplines. Causes to solutions.</h2>
+          </div>
+          <p class="section-note">SOLVE turns diagnostic findings into isolated causes, designed future states, and costed implementation choices.</p>
+        </div>
+        <div class="examine-grid">
+          <article class="examine-card reveal">
+            <div class="card-top">
+              <span class="pillar-badge solve">SOLVE | Analyse</span>
+              <span class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 58 58"><path d="M 14 8 H 44 M 50 14 V 44 M 44 50 H 14 M 8 44 V 14"/><path d="M 20 29 H 38 M 29 20 V 38"/><circle cx="29" cy="29" r="14"/></svg>
+              </span>
+            </div>
+            <h3>Root Cause Analysis</h3>
+            <p>Structured analytical methods applied to the problems identified in the diagnostic. Five-why analysis, fishbone diagrams, statistical process control, data analysis. We isolate what is actually causing each problem - not what it looks like on the surface.</p>
+          </article>
+          <article class="examine-card reveal reveal-d1">
+            <div class="card-top">
+              <span class="pillar-badge solve">SOLVE | Analyse</span>
+              <span class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 58 58"><path d="M 12 46 H 48"/><path d="M 16 38 V 46 M 26 28 V 46 M 36 18 V 46 M 46 10 V 46"/><path d="M 14 18 L 24 26 L 34 15 L 46 10"/></svg>
+              </span>
+            </div>
+            <h3>Future State Design</h3>
+            <p>Once causes are identified, we design the target state. Process flows, role definitions, decision rights, technology requirements, and performance targets. Where operational reengineering is needed - fundamental redesign rather than incremental improvement - the future state reflects that.</p>
+          </article>
+          <article class="examine-card reveal reveal-d2">
+            <div class="card-top">
+              <span class="pillar-badge solve">SOLVE | Analyse</span>
+              <span class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 58 58"><path d="M 16 35 C 16 24 24 16 35 16 H 44"/><path d="M 38 10 L 44 16 L 38 22"/><path d="M 42 25 C 42 36 34 44 23 44 H 14"/><path d="M 20 50 L 14 44 L 20 38"/><circle cx="29" cy="30" r="5"/></svg>
+              </span>
+            </div>
+            <h3>Cost-Benefit Analysis</h3>
+            <p>Every designed solution comes with a clear cost-benefit picture. What it costs to implement, what it saves or generates, what the payback period looks like, and what the risks are. Your leadership team makes decisions with evidence, not hope.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section deliverables">
+      <div class="section-inner wide-inner">
+        <div class="section-header reveal">
+          <div>
+            <div class="eyebrow">WHAT YOU RECEIVE</div>
+            <h2 class="section-title">Four deliverables. Analysis to design.</h2>
+          </div>
+          <p class="section-note">These are the outputs that move your team from diagnostic findings to a costed future state ready for validation.</p>
+        </div>
+        <div class="deliverables-carousel reveal" data-carousel>
+          <div class="carousel-viewport">
+            <div class="deliverables-track">
+          <article class="deliverable-card" aria-label="Root Cause Analysis Report">
+            <div class="deliverable-card-image">
+              <img src="assets/deliverables/SOLVE/SOLVE-DEL-1-RCA.jpg" alt="A4 document - Root Cause Analysis Report" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="deliverable-placeholder">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="13" y2="15"/></svg>
+                <p>A4 document - Root Cause Analysis Report</p>
+              </div>
+            </div>
+            <div class="deliverable-copy">
+              <h3>Root Cause Analysis Report</h3>
+              <p>A documented root cause analysis for each priority problem identified in the diagnostic. Methodology, evidence, and conclusions. No guessing. No assumptions. A clear statement of why each problem exists, with the supporting data.</p>
+            </div>
+          </article>
+          <article class="deliverable-card" aria-label="Future State Design">
+            <div class="deliverable-card-image">
+              <img src="assets/deliverables/SOLVE/SOLVE-DEL-2-DESIGN.jpg" alt="A4 document - Future State Design" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="deliverable-placeholder">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="16" y2="11"/><path d="M 8 16 L 10.5 18.5 L 16 13"/></svg>
+                <p>A4 document - Future State Design</p>
+              </div>
+            </div>
+            <div class="deliverable-copy">
+              <h3>Future State Design</h3>
+              <p>A complete operational design: process flows, role definitions, decision rights, technology requirements, and performance targets. Where operational reengineering is needed, the design documents both the incremental improvement path and the full redesign option. Ready for pilot validation.</p>
+            </div>
+          </article>
+          <article class="deliverable-card" aria-label="Cost-Benefit Analysis">
+            <div class="deliverable-card-image">
+              <img src="assets/deliverables/SOLVE/SOLVE-DEL-3-CBA.jpg" alt="A4 document - Cost-Benefit Analysis" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="deliverable-placeholder">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M 8 16 L 11 12 L 14 14 L 17 8"/><path d="M 8 18 H 17"/></svg>
+                <p>A4 document - Cost-Benefit Analysis</p>
+              </div>
+            </div>
+            <div class="deliverable-copy">
+              <h3>Cost-Benefit Analysis</h3>
+              <p>Every designed solution costed with clear trade-offs. What it costs to implement. What it saves or generates. What the payback period looks like. What the risks are if the project is delayed or descoped. Evidence for your investment committee, not hope.</p>
+            </div>
+          </article>
+          <article class="deliverable-card" aria-label="Implementation Readiness Assessment">
+            <div class="deliverable-card-image">
+              <img src="assets/deliverables/SOLVE/SOLVE-DEL-4-READINESS.jpg" alt="A4 document - Implementation Readiness Assessment" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="deliverable-placeholder">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="18" rx="2"/><path d="M 8 2 V 7 M 16 2 V 7"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="16" y2="15"/></svg>
+                <p>A4 document - Implementation Readiness Assessment</p>
+              </div>
+            </div>
+            <div class="deliverable-copy">
+              <h3>Implementation Readiness Assessment</h3>
+              <p>An honest view of whether the organisation is ready to pilot the designed solution. Team capability against requirements, data availability, technology prerequisites, and stakeholder commitment. Surfaces blockers before the pilot starts, not during it.</p>
+            </div>
+          </article>
+            </div>
+            <div class="carousel-arrows">
+              <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Previous deliverable">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M 15 5 L 8 12 L 15 19"/></svg>
+              </button>
+              <button class="carousel-arrow" type="button" data-carousel-next aria-label="Next deliverable">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M 9 5 L 16 12 L 9 19"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="carousel-controls" aria-label="Deliverable carousel controls">
+            <div class="carousel-dots" aria-label="Deliverable slide position">
+              <button class="carousel-dot is-active" type="button" data-carousel-dot="0" aria-label="Show Root Cause Analysis Report"></button>
+              <button class="carousel-dot" type="button" data-carousel-dot="1" aria-label="Show Future State Design"></button>
+              <button class="carousel-dot" type="button" data-carousel-dot="2" aria-label="Show Cost-Benefit Analysis"></button>
+              <button class="carousel-dot" type="button" data-carousel-dot="3" aria-label="Show Implementation Readiness Assessment"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cases">
+      <div class="section-inner wide-inner">
+        <div class="section-header reveal">
+          <div>
+            <div class="eyebrow">OUR WORK</div>
+            <h2 class="section-title">Recent engagements.</h2>
+          </div>
+        </div>
+        <div class="case-grid">
+          <article class="case-card pillar-solve reveal">
+            <div class="case-metric">
+              <div>
+                <div class="case-sector">Financial Services</div>
+                <span class="pillar-badge solve">SOLVE | Analyse</span>
+              </div>
+              <div class="case-number">47% reduction</div>
+            </div>
+            <div class="case-content">
+              <h3>Claims exception routing redesigned.</h3>
+              <div class="case-block">
+                <p class="case-label">Problem</p>
+                <p>High error rate in a claims processing function. Training had been deployed twice with no improvement. The problem was attributed to skill gaps.</p>
+              </div>
+              <div class="case-block">
+                <p class="case-label">Approach</p>
+                <p>Root cause analysis identified that the decision gate for exception routing was missing - claims were being processed by whoever picked them up, not by the team qualified to handle exceptions. Process redesign added the decision gate.</p>
+              </div>
+              <div class="case-block">
+                <p class="case-label">Outcomes</p>
+                <p>Processing errors eliminated within four weeks of redesign.</p>
+              </div>
+              <a href="/our-work/" class="card-link">View our work</a>
+            </div>
+          </article>
+          <article class="case-card pillar-solve reveal reveal-d1">
+            <div class="case-metric">
+              <div>
+                <div class="case-sector">Government and Public Sector</div>
+                <span class="pillar-badge solve">SOLVE | Analyse</span>
+              </div>
+              <div class="case-number">Sustained 18 months</div>
+            </div>
+            <div class="case-content">
+              <h3>High-volume regulatory processes redesigned.</h3>
+              <div class="case-block">
+                <p class="case-label">Problem</p>
+                <p>A regulatory agency needed to redesign its highest-volume processes after a diagnostic identified systemic rework. Previous improvement attempts had failed because root cause analysis was skipped.</p>
+              </div>
+              <div class="case-block">
+                <p class="case-label">Approach</p>
+                <p>Structured root cause analysis using five-why methodology identified the common cause: unclear decision rights at the point of exception. Future state design addressed decision rights first, then process flows. Capability was transferred to the internal team.</p>
+              </div>
+              <div class="case-block">
+                <p class="case-label">Outcomes</p>
+                <p>The redesigned processes held after handover, with the internal team able to operate and improve them without external support.</p>
+              </div>
+              <a href="/our-work/" class="card-link">View our work</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section related">
+      <div class="section-inner wide-inner">
+        <div class="section-header reveal">
+          <div>
+            <div class="eyebrow">WHERE IT LEADS</div>
+            <h2 class="section-title">Where it leads.</h2>
+          </div>
+          <p class="section-note">SOLVE designs the future state. EVOLVE validates it in a controlled pilot before the full operation is asked to change.</p>
+        </div>
+        <div class="station-map reveal reveal-d1" aria-label="Service progression">
+          <svg viewBox="0 0 1040 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FRAME, PLAN, SOLVE, EVOLVE, GOVERN, SCALE service progression">
+            <line x1="86" y1="96" x2="954" y2="96" stroke="rgba(38,36,92,0.16)" stroke-width="4" stroke-linecap="round"/>
+            <text class="station-marker" x="434" y="22" text-anchor="middle" fill="#C15F3C">YOU ARE HERE</text>
+            <line x1="434" y1="32" x2="434" y2="56" stroke="#C15F3C" stroke-width="2.5"/>
+            <polygon points="434,66 426,52 442,52" fill="#C15F3C"/>
+            <rect x="18" y="74" width="136" height="44" rx="22" fill="#D8DCE0"/>
+            <text class="station-label" x="86" y="102" text-anchor="middle" fill="#7A8591">FRAME</text>
+            <rect x="192" y="74" width="136" height="44" rx="22" fill="#D8DCE0"/>
+            <text class="station-label" x="260" y="102" text-anchor="middle" fill="#7A8591">PLAN</text>
+            <rect x="362" y="71" width="145" height="51" rx="25.5" fill="#0B6B82"/>
+            <text class="station-label" x="434" y="102" text-anchor="middle" fill="#FFFFFF" font-size="16.1">SOLVE</text>
+            <rect x="540" y="74" width="136" height="44" rx="22" fill="#2D7A3A"/>
+            <text class="station-label" x="608" y="102" text-anchor="middle" fill="#FFFFFF">EVOLVE</text>
+            <rect x="714" y="74" width="136" height="44" rx="22" fill="#D8DCE0"/>
+            <text class="station-label" x="782" y="102" text-anchor="middle" fill="#7A8591">GOVERN</text>
+            <rect x="876" y="74" width="156" height="44" rx="22" fill="#D8DCE0"/>
+            <text class="station-label" x="954" y="102" text-anchor="middle" fill="#7A8591">SCALE</text>
+          </svg>
+        </div>
+        <div class="context-grid">
+          <article class="context-card reveal">
+            <div class="card-top">
+              <span class="pillar-badge solve">SOLVE | Analyse</span>
+              <span class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 58 58"><circle cx="18" cy="18" r="7"/><circle cx="40" cy="18" r="7"/><circle cx="29" cy="40" r="7"/><path d="M 24 21 L 35 21 M 21 24 L 26 35 M 37 24 L 32 35"/></svg>
+              </span>
+            </div>
+            <h3>Iterative Improvement.</h3>
+            <p>SOLVE isolates the root causes behind your performance gaps and designs a costed future state your team can build and own.</p>
+          </article>
+          <a href="/services/evolve/" class="context-card reveal reveal-d1">
+            <div class="card-top">
+              <span class="pillar-badge evolve">EVOLVE | Improve</span>
+              <span class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 58 58"><circle cx="18" cy="18" r="7"/><circle cx="40" cy="18" r="7"/><circle cx="29" cy="40" r="7"/><path d="M 24 21 L 35 21 M 21 24 L 26 35 M 37 24 L 32 35"/></svg>
+              </span>
+            </div>
+            <h3>Rapid Pilot.</h3>
+            <p>Once the future state is designed and costed, EVOLVE tests the solution in a controlled scope before the full operation commits to change.</p>
+            <span class="card-link">Explore EVOLVE</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-panel">
+      <div class="section-inner cta-box reveal">
+        <h2 class="section-title light">Ready to move from symptoms to solutions? Let's talk.</h2>
+        <p>If you have diagnostic findings and need to design the future state, a fifteen-minute conversation will scope the work. No obligation.</p>
+        <div class="cta-meta" aria-label="Typical SOLVE engagement details">
+          <div class="cta-meta-item">
+            <span class="cta-meta-label">Typical timeline</span>
+            <span class="cta-meta-value">6 to 12 weeks</span>
+          </div>
+          <div class="cta-meta-item">
+            <span class="cta-meta-label">Typical investment</span>
+            <span class="cta-meta-value">A$20k to A$45k</span>
+          </div>
+          <div class="cta-meta-item">
+            <span class="cta-meta-label">What you receive</span>
+            <span class="cta-meta-value">Four deliverables</span>
+          </div>
+        </div>
+        <a href="/contact/" class="cta-button">Book a discovery call</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      <div>&copy; 2026 EQUIBT. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+const nav = document.getElementById("site-nav");
+const toggle = document.querySelector(".nav-toggle");
+const links = document.getElementById("nav-links");
+
+window.addEventListener("scroll", () => {
+  nav.classList.toggle("scrolled", window.scrollY > 24);
+}, { passive: true });
+
+toggle.addEventListener("click", () => {
+  const expanded = toggle.getAttribute("aria-expanded") === "true";
+  toggle.setAttribute("aria-expanded", String(!expanded));
+  links.classList.toggle("is-open");
+  document.body.classList.toggle("nav-open");
+});
+
+const revealEls = document.querySelectorAll(".reveal");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+revealEls.forEach((el) => observer.observe(el));
+
+document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+  const track = carousel.querySelector(".deliverables-track");
+  const slides = Array.from(carousel.querySelectorAll(".deliverable-card"));
+  const previous = carousel.querySelector("[data-carousel-prev]");
+  const next = carousel.querySelector("[data-carousel-next]");
+  const dots = Array.from(carousel.querySelectorAll("[data-carousel-dot]"));
+  let current = 0;
+
+  const updateCarousel = () => {
+    const offset = slides[current].offsetLeft;
+    track.style.transform = `translateX(${-offset}px)`;
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("is-active", index === current);
+      dot.setAttribute("aria-current", index === current ? "true" : "false");
+    });
+  };
+
+  previous.addEventListener("click", () => {
+    current = current === 0 ? slides.length - 1 : current - 1;
+    updateCarousel();
+  });
+
+  next.addEventListener("click", () => {
+    current = current === slides.length - 1 ? 0 : current + 1;
+    updateCarousel();
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      current = index;
+      updateCarousel();
+    });
+  });
+
+  window.addEventListener("resize", updateCarousel, { passive: true });
+  updateCarousel();
+});
+</script>
+</body>
+</html>
