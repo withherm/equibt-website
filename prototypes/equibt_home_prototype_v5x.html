@@ -282,11 +282,8 @@ p {
 }
 
 .hero {
-  min-height: calc(90vh - 78px);
-  padding: 0 56px 76px;
+  padding: 72px 56px 76px;
   background: #FFFFFF;
-  display: flex;
-  align-items: center;
 }
 
 .hero-inner {
@@ -295,15 +292,15 @@ p {
   max-width: 1320px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 820px) minmax(260px, 1fr);
+  grid-template-columns: minmax(0, 760px) minmax(320px, 1fr);
   gap: 72px;
-  align-items: center;
+  align-items: start;
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  padding-top: 22px;
+  padding-top: 0;
 }
 
 .hero-eyebrow {
@@ -361,17 +358,15 @@ p {
 
 .hero-geometry {
   position: relative;
-  min-height: 520px;
   opacity: 0.95;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
 }
 
 .hero-geometry svg {
-  position: absolute;
-  right: -24px;
-  top: 50%;
-  width: min(520px, 42vw);
+  width: min(480px, 38vw);
   height: auto;
-  transform: translateY(-48%);
 }
 
 .difference {
@@ -1029,6 +1024,7 @@ p {
   .services-header {
     grid-template-columns: 1fr;
     gap: 44px;
+    align-items: start;
   }
 
   .difference-intro {
@@ -1036,14 +1032,13 @@ p {
   }
 
   .hero-geometry {
-    min-height: 220px;
+    min-height: 0;
+    justify-content: flex-start;
   }
 
   .hero-geometry svg {
-    right: 0;
-    top: 0;
     width: 360px;
-    transform: none;
+    max-width: 100%;
   }
 
   .service-card,
@@ -1124,8 +1119,7 @@ p {
   }
 
   .hero {
-    min-height: auto;
-    padding: 72px 24px 88px;
+    padding: 56px 24px 80px;
   }
 
   .hero h1 {
@@ -1139,7 +1133,11 @@ p {
   }
 
   .hero-geometry {
-    display: none;
+    display: flex;
+  }
+
+  .hero-geometry svg {
+    width: min(100%, 340px);
   }
 
   .section {
@@ -1456,7 +1454,7 @@ p {
         <div class="section-header reveal">
           <div>
             <div class="eyebrow">OUR WORK</div>
-            <h2 class="section-title">Recent engagements.</h2>
+            <h2 class="section-title">Proven in practice.</h2>
           </div>
         </div>
         <div class="case-grid">
