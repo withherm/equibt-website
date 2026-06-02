@@ -504,6 +504,7 @@ p {
   background: #FFFFFF;
   box-shadow: var(--card-shadow);
   color: inherit;
+  text-decoration: none;
   text-align: left;
   cursor: pointer;
   display: flex;
@@ -1109,6 +1110,34 @@ p {
   background: var(--highlight-wash);
 }
 
+.lmi-handover {
+  background: var(--off-white);
+}
+
+.lmi-handover .section-inner {
+  max-width: 860px;
+}
+
+.lmi-handover .section-title {
+  max-width: 700px;
+}
+
+.lmi-handover p {
+  max-width: 760px;
+  margin: 22px 0 0;
+}
+
+.lmi-logo {
+  display: block;
+  width: min(285px, 100%);
+  height: auto;
+  margin: 30px 0 18px;
+}
+
+.lmi-handover .card-link {
+  margin-top: 0;
+}
+
 .site-footer {
   padding: 120px 56px 48px;
   background: #FFFFFF;
@@ -1600,48 +1629,48 @@ p {
           </div>
         </div>
         <div class="service-grid" role="list">
-          <button class="service-card reveal is-active" type="button" data-service-card data-pillar="frame" aria-expanded="true" aria-controls="service-panel" data-title="FRAME: define the pressure before it becomes a project." data-copy="Use FRAME when the operational pressure is visible but the scope, stakeholders, success criteria or decision point are still contested." data-description="Clarify the problem, boundary, stakeholders and success measures before the fix is designed." data-challenges="Approval hierarchy|Risk appetite|Customer impact" data-deliverables="SPIN Workshop Report|Project Charter|Success Criteria Framework|SPIN Workshop Record">
+          <a class="service-card reveal is-active" href="equibt_frame_prototype_v5x.html" data-service-card data-pillar="frame" aria-expanded="true" aria-controls="service-panel" data-title="FRAME: define the pressure before it becomes a project." data-copy="Use FRAME when the operational pressure is visible but the scope, stakeholders, success criteria or decision point are still contested." data-description="Clarify the problem, boundary, stakeholders and success measures before the fix is designed." data-challenges="Approval hierarchy|Risk appetite|Customer impact" data-deliverables="SPIN Workshop Report|Project Charter|Success Criteria Framework|SPIN Workshop Record">
             <span class="service-card-header">
               <span class="pillar-badge frame">FRAME | Define</span>
               <span class="icon-box" aria-hidden="true"><svg viewBox="0 0 58 58"><path d="M 12 18 H 46 V 42 H 12 Z"/><path d="M 19 26 H 39"/><path d="M 19 34 H 31"/></svg></span>
             </span>
             <h3>Problem Framing.</h3>
-          </button>
-          <button class="service-card reveal reveal-d1" type="button" data-service-card data-pillar="plan" aria-expanded="false" aria-controls="service-panel" data-title="PLAN: baseline the real source of the rework." data-copy="Use PLAN when claims, lending or onboarding processes show rework above threshold and leaders cannot yet prove where the problem starts." data-description="Map the current state, establish baselines and identify the highest-value starting point." data-challenges="Documentation burden|High-volume handoffs|Customer impact" data-deliverables="Current-State Assessment|Capability Gap Analysis|Prioritised Improvement Roadmap|Engagement Pathway Recommendation">
+          </a>
+          <a class="service-card reveal reveal-d1" href="equibt_plan_prototype_v5x.html" data-service-card data-pillar="plan" aria-expanded="false" aria-controls="service-panel" data-title="PLAN: baseline the real source of the rework." data-copy="Use PLAN when claims, lending or onboarding processes show rework above threshold and leaders cannot yet prove where the problem starts." data-description="Map the current state, establish baselines and identify the highest-value starting point." data-challenges="Documentation burden|High-volume handoffs|Customer impact" data-deliverables="Current-State Assessment|Capability Gap Analysis|Prioritised Improvement Roadmap|Engagement Pathway Recommendation">
             <span class="service-card-header">
               <span class="pillar-badge plan">PLAN | Measure</span>
               <span class="icon-box" aria-hidden="true"><svg viewBox="0 0 58 58"><path d="M 12 42 H 48"/><path d="M 18 42 V 26"/><path d="M 29 42 V 16"/><path d="M 40 42 V 32"/></svg></span>
             </span>
             <h3>Operations Diagnostic.</h3>
-          </button>
-          <button class="service-card reveal reveal-d2" type="button" data-service-card data-pillar="solve" aria-expanded="false" aria-controls="service-panel" data-title="SOLVE: isolate the structural cause." data-copy="Use SOLVE when prior training, checklist or system changes have failed because the missing decision right or process break has not been isolated." data-description="Move from symptoms to causes, and from causes to costed solution options." data-challenges="Approval hierarchy|Risk appetite|High-volume handoffs" data-deliverables="Root Cause Analysis Report|Future State Design|Cost-Benefit Analysis|Implementation Readiness Assessment">
+          </a>
+          <a class="service-card reveal reveal-d2" href="equibt_solve_prototype_v5x.html" data-service-card data-pillar="solve" aria-expanded="false" aria-controls="service-panel" data-title="SOLVE: isolate the structural cause." data-copy="Use SOLVE when prior training, checklist or system changes have failed because the missing decision right or process break has not been isolated." data-description="Move from symptoms to causes, and from causes to costed solution options." data-challenges="Approval hierarchy|Risk appetite|High-volume handoffs" data-deliverables="Root Cause Analysis Report|Future State Design|Cost-Benefit Analysis|Implementation Readiness Assessment">
             <span class="service-card-header">
               <span class="pillar-badge solve">SOLVE | Analyse</span>
               <span class="icon-box" aria-hidden="true"><svg viewBox="0 0 58 58"><circle cx="23" cy="24" r="10"/><path d="M 31 32 L 44 45"/><path d="M 18 24 H 28"/></svg></span>
             </span>
             <h3>Iterative Improvement.</h3>
-          </button>
-          <button class="service-card reveal" type="button" data-service-card data-pillar="evolve" aria-expanded="false" aria-controls="service-panel" data-title="EVOLVE: test the fix inside live work." data-copy="Use EVOLVE when the redesigned decision point, handoff or control needs to be piloted in a contained book of work before broader change." data-description="Validate the redesigned process with real work, live metrics and a go or no-go decision." data-challenges="High-volume handoffs|Customer impact|Risk appetite" data-deliverables="Pilot Results Report|Business Requirements Document|Implementation and Change Management Plan|Deployment Authorisation Brief">
+          </a>
+          <a class="service-card reveal" href="equibt_evolve_prototype_v5x.html" data-service-card data-pillar="evolve" aria-expanded="false" aria-controls="service-panel" data-title="EVOLVE: test the fix inside live work." data-copy="Use EVOLVE when the redesigned decision point, handoff or control needs to be piloted in a contained book of work before broader change." data-description="Validate the redesigned process with real work, live metrics and a go or no-go decision." data-challenges="High-volume handoffs|Customer impact|Risk appetite" data-deliverables="Pilot Results Report|Business Requirements Document|Implementation and Change Management Plan|Deployment Authorisation Brief">
             <span class="service-card-header">
               <span class="pillar-badge evolve">EVOLVE | Improve</span>
               <span class="icon-box" aria-hidden="true"><svg viewBox="0 0 58 58"><path d="M 14 42 C 18 26 30 16 46 14"/><path d="M 30 14 H 46 V 30"/><path d="M 16 44 L 30 30"/></svg></span>
             </span>
             <h3>Rapid Pilot.</h3>
-          </button>
-          <button class="service-card reveal reveal-d1" type="button" data-service-card data-pillar="govern" aria-expanded="false" aria-controls="service-panel" data-title="GOVERN: lock ownership and controls." data-copy="Use GOVERN when AI-assisted decisions, manual controls or operating standards need ownership, escalation and drift detection that people actually use." data-description="Build control plans, AI governance and monitoring infrastructure so the gain holds." data-challenges="AI-assisted decisions|Documentation burden|Risk appetite" data-deliverables="Process Architecture Document|Control Plans|Monitoring Dashboard Specification|AI Governance Framework">
+          </a>
+          <a class="service-card reveal reveal-d1" href="equibt_govern_prototype_v5x.html" data-service-card data-pillar="govern" aria-expanded="false" aria-controls="service-panel" data-title="GOVERN: lock ownership and controls." data-copy="Use GOVERN when AI-assisted decisions, manual controls or operating standards need ownership, escalation and drift detection that people actually use." data-description="Build control plans, AI governance and monitoring infrastructure so the gain holds." data-challenges="AI-assisted decisions|Documentation burden|Risk appetite" data-deliverables="Process Architecture Document|Control Plans|Monitoring Dashboard Specification|AI Governance Framework">
             <span class="service-card-header">
               <span class="pillar-badge govern">GOVERN | Control</span>
               <span class="icon-box" aria-hidden="true"><svg viewBox="0 0 58 58"><path d="M 29 8 L 46 16 V 28 C 46 40 38 48 29 52 C 20 48 12 40 12 28 V 16 Z"/><path d="M 22 30 L 27 35 L 38 23"/></svg></span>
             </span>
             <h3>Architecture & Governance.</h3>
-          </button>
-          <button class="service-card reveal reveal-d2" type="button" data-service-card data-pillar="scale" aria-expanded="false" aria-controls="service-panel" data-title="SCALE: standardise what has proven itself." data-copy="Use SCALE when a governed improvement is ready to move across teams, channels or business units without losing control." data-description="Deploy the validated, governed way of working across the operation." data-challenges="High-volume handoffs|Documentation burden|Customer impact" data-deliverables="Standardisation Playbook|Automation Deployment Package|Capability Transfer Programme|Continuous Improvement System">
+          </a>
+          <a class="service-card reveal reveal-d2" href="equibt_scale_prototype_v5x.html" data-service-card data-pillar="scale" aria-expanded="false" aria-controls="service-panel" data-title="SCALE: standardise what has proven itself." data-copy="Use SCALE when a governed improvement is ready to move across teams, channels or business units without losing control." data-description="Deploy the validated, governed way of working across the operation." data-challenges="High-volume handoffs|Documentation burden|Customer impact" data-deliverables="Standardisation Playbook|Automation Deployment Package|Capability Transfer Programme|Continuous Improvement System">
             <span class="service-card-header">
               <span class="pillar-badge scale">SCALE | Operate</span>
               <span class="icon-box" aria-hidden="true"><svg viewBox="0 0 58 58"><path d="M 12 42 H 46"/><path d="M 18 36 L 28 26 L 36 32 L 46 18"/><path d="M 46 18 V 30"/><path d="M 34 18 H 46"/></svg></span>
             </span>
             <h3>Operational Embedding.</h3>
-          </button>
+          </a>
         </div>
         <div class="service-reveal-panel reveal" id="service-panel" aria-live="polite">
           <div class="service-panel-grid">
@@ -1775,34 +1804,34 @@ p {
         <div class="station-map reveal reveal-d1" aria-label="Financial services service pathway">
           <svg viewBox="0 0 1040 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FRAME, PLAN, SOLVE, EVOLVE, GOVERN, SCALE service progression">
             <line x1="86" y1="96" x2="954" y2="96" stroke="rgba(38,36,92,0.16)" stroke-width="4" stroke-linecap="round"/>
-            <a href="/services/frame/" aria-label="FRAME service">
+            <a href="equibt_frame_prototype_v5x.html" aria-label="FRAME service">
               <rect x="18" y="74" width="136" height="44" rx="22" fill="#D8DCE0"/>
               <text class="station-label" x="86" y="102" text-anchor="middle" fill="#7A8591">FRAME</text>
             </a>
-            <a href="/services/plan/" aria-label="PLAN service">
+            <a href="equibt_plan_prototype_v5x.html" aria-label="PLAN service">
               <rect x="181.8" y="70.7" width="156.4" height="50.6" rx="25.3" fill="#26245C"/>
               <text class="station-label" x="260" y="102" text-anchor="middle" fill="#FFFFFF" font-size="16.1">PLAN</text>
             </a>
-            <a href="/services/solve/" aria-label="SOLVE service">
+            <a href="equibt_solve_prototype_v5x.html" aria-label="SOLVE service">
               <rect x="366" y="74" width="136" height="44" rx="22" fill="#D8DCE0"/>
               <text class="station-label" x="434" y="102" text-anchor="middle" fill="#7A8591">SOLVE</text>
             </a>
-            <a href="/services/evolve/" aria-label="EVOLVE service">
+            <a href="equibt_evolve_prototype_v5x.html" aria-label="EVOLVE service">
               <rect x="540" y="74" width="136" height="44" rx="22" fill="#D8DCE0"/>
               <text class="station-label" x="608" y="102" text-anchor="middle" fill="#7A8591">EVOLVE</text>
             </a>
-            <a href="/services/govern/" aria-label="GOVERN service">
+            <a href="equibt_govern_prototype_v5x.html" aria-label="GOVERN service">
               <rect x="703.8" y="70.7" width="156.4" height="50.6" rx="25.3" fill="#7A3D00"/>
               <text class="station-label" x="782" y="102" text-anchor="middle" fill="#FFFFFF" font-size="16.1">GOVERN</text>
             </a>
-            <a href="/services/scale/" aria-label="SCALE service">
+            <a href="equibt_scale_prototype_v5x.html" aria-label="SCALE service">
               <rect x="876" y="74" width="156" height="44" rx="22" fill="#D8DCE0"/>
               <text class="station-label" x="954" y="102" text-anchor="middle" fill="#7A8591">SCALE</text>
             </a>
           </svg>
         </div>
         <div class="context-grid">
-          <a href="/services/plan/" class="context-card reveal">
+          <a href="equibt_plan_prototype_v5x.html" class="context-card reveal">
             <div class="card-top">
               <span class="pillar-badge plan">PLAN | Measure</span>
               <span class="service-icon" aria-hidden="true">
@@ -1813,7 +1842,7 @@ p {
             <p>PLAN maps the current state, establishes baselines, and clarifies the highest-value improvement opportunities before solution design begins.</p>
             <span class="card-link">Explore PLAN</span>
           </a>
-          <a href="/services/govern/" class="context-card reveal reveal-d1">
+          <a href="equibt_govern_prototype_v5x.html" class="context-card reveal reveal-d1">
             <div class="card-top">
               <span class="pillar-badge govern">GOVERN | Control</span>
               <span class="service-icon" aria-hidden="true">
@@ -1833,6 +1862,16 @@ p {
         <h2 class="section-title light">Put a financial services operation on a firmer footing.</h2>
         <p>Tell us where the rework or the handle time is building. We will tell you whether there is a process fix worth scoping.</p>
         <a href="/contact/" class="cta-button">Get in touch</a>
+      </div>
+    </section>
+
+    <section class="section lmi-handover">
+      <div class="section-inner reveal">
+        <div class="eyebrow">BUILD THE CAPABILITY</div>
+        <h2 class="section-title">Train your team in your own context.</h2>
+        <p>Lean Methods Institute contextualises our training to financial services operations, not generic case studies or simulations. Your team learns the methods and tools relevant to the problems they actually face, so the capability stays with them.</p>
+        <img class="lmi-logo" src="../brand/assets/logos/lmi/LMI-LOGO-701_MAIN-R2.svg" alt="Lean Methods Institute">
+        <a href="https://leanmethodsinstitute.com" class="card-link">Explore the training</a>
       </div>
     </section>
   </main>
