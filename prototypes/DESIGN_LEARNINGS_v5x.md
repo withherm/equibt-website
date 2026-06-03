@@ -185,6 +185,12 @@ v5x (Codex) is the chosen Home direction over v5 (Claude Code). These apply to v
 
 **14. Drop DMAICO jargon from the home hero copy.** DMAICO is not established enough to lead with. No "Six services aligned to DMAICO" in the hero; reference the six services plainly. DMAICO may stay in the SEO/AEO block and on deeper pages.
 
+**15. No decorative vertical left-rule on text, quote, or callout blocks.** A coloured vertical bar down the left of a text block reads as a generic-template / AI-generated look. Do not use it. Weighted text, a tint, or whitespace carries emphasis instead. Real component borders (card edges) are fine; this bans the left-accent line on prose/quotes/takeaways. Locked 2026-06-03 (EQT-232, Herman).
+
+**16. Earn the box. Default to fewer cards and panels.** Do not wrap every block in a card or panel. Boxes are for genuinely discrete, parallel items (e.g. the sector cards, the equation panels). A single statement, takeaway, or piece of prose sits on the section background, not in its own card. When a section starts accumulating boxes-within-boxes, strip back. Locked 2026-06-03 (EQT-232, Herman: "too many boxes/cards").
+
+**17. Interactive pathway-selector pattern (reusable).** Established on the Industries Hub (EQT-232): a row of selector cards drives a shared detail panel + the DMAICO train-line station map. Behaviour: one item selected by default; hover/focus previews (moves the navy selection outline, swaps the panel content, and re-lights the train-line stations together); mouse-leave/blur reverts to the sticky clicked selection; keyboard-accessible. Selected card = navy outline (not terracotta, which is reserved for the top bar + links/CTAs). Train-line stations carry the links to their target pages. Reuse this component for any future industry/segment filtering (e.g. Our Work, Resources) rather than rebuilding. Locked 2026-06-03.
+
 **Consequence for the six service pages:** mostly fine under these rules. Their dark-slate CTA panels stay (rules 2, 3); their footers go pure white (rule 3, no LMI line). The navy `.ref-nav` is already replaced by the light Home nav in the v5x service pages, so nav is done. Remaining touch-ups: (a) any service-page hero that is navy must go pure white, (b) warm-parchment SECTION backgrounds become light grey or off-white, with no parchment highlight either (callouts use highlight-wash #E8ECF8). A light touch-up, not a rebuild.
 
 ---
