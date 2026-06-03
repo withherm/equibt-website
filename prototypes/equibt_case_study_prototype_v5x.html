@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="EQUIBT case study template for a financial services mortgage lead leakage improvement.">
+<title>Cut mortgage lead leakage from 30% to 10% | EQUIBT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<style>
+:root {
+  --navy: #26245C;
+  --terracotta: #C15F3C;
+  --terracotta-dark: #A04E30;
+  --off-white: #F5F3EE;
+  --section-bg: #F5F3EE;
+  --light-grey: #F5F5F5;
+  --navy-wash: #E8ECF5;
+  --highlight-wash: #E8ECF8;
+  --dark-slate: #2C3E50;
+  --near-black: #2C2C2C;
+  --body-text: #2C2C2C;
+  --mid-grey: #555555;
+  --caption-grey: #7A8591;
+  --border: #D8DCE0;
+  --card-shadow: 0 2px 10px rgba(38,36,92,0.08);
+  --card-shadow-hover: 0 16px 40px rgba(38,36,92,0.18);
+  --section-gutter: 56px;
+  --wide-container: 1320px;
+  --content-left-offset: max(var(--section-gutter), calc((100vw - var(--wide-container)) / 2));
+  --pill-frame: #8B2252;
+  --pill-plan: #26245C;
+  --pill-solve: #0B6B82;
+  --pill-evolve: #2D7A3A;
+  --pill-govern: #7A3D00;
+  --pill-scale: #5C0A5C;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--off-white);
+  color: var(--near-black);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.page-shell {
+  overflow: hidden;
+}
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,0.97);
+}
+
+.site-nav.scrolled {
+  background: rgba(255,255,255,0.99);
+}
+
+.nav-inner {
+  max-width: 1320px;
+  height: 78px;
+  margin: 0 auto;
+  padding: 0 56px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  width: 138px;
+  text-decoration: none;
+}
+
+.nav-logo svg,
+.footer-logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nav-links {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-link {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: rgba(44,44,44,0.68);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--navy);
+}
+
+.nav-cta,
+.btn-primary,
+.cta-button,
+.card-link {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav-cta,
+.btn-primary,
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 13px 26px;
+  border-radius: 6px;
+  background: var(--navy);
+  color: var(--off-white);
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.nav-cta:hover,
+.btn-primary:hover,
+.cta-button:hover,
+.nav-cta:focus,
+.btn-primary:focus,
+.cta-button:focus {
+  background: #1e1c4e;
+  transform: translateY(-1px);
+}
+
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 5px auto;
+  border-radius: 2px;
+  background: var(--navy);
+}
+
+.section {
+  padding: 140px var(--section-gutter);
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wide-inner {
+  max-width: var(--wide-container);
+}
+
+.section-header {
+  display: block;
+  margin-bottom: 72px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+  color: var(--terracotta);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  flex: 0 0 auto;
+  background: var(--terracotta);
+}
+
+.section-title {
+  max-width: 820px;
+  margin: 0;
+  color: var(--near-black);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(36px, 3.2vw, 40px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.06;
+}
+
+.section-title.light {
+  color: var(--off-white);
+}
+
+.section-note {
+  max-width: 680px;
+  margin: 20px 0 0;
+  color: var(--mid-grey);
+}
+
+.hero {
+  padding: 72px 56px 76px;
+  background: #FFFFFF;
+  border-bottom: 1px solid rgba(38,36,92,0.07);
+}
+
+.hero-inner {
+  position: relative;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 760px) minmax(320px, 1fr);
+  gap: 72px;
+  align-items: start;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 0;
+}
+
+.hero-eyebrow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 80px;
+  padding-left: 24px;
+  margin-bottom: 30px;
+  color: var(--terracotta);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.hero-eyebrow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 80px;
+  background: var(--terracotta);
+}
+
+.hero h1 {
+  max-width: 760px;
+  margin: 0 0 30px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(52px, 4.15vw, 56px);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.08;
+}
+
+.hero-subhead {
+  max-width: 670px;
+  margin: 0 0 42px;
+  color: var(--near-black);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.hero-visual svg {
+  width: min(480px, 38vw);
+  height: auto;
+}
+
+.why-exist {
+  background: var(--light-grey);
+}
+
+.why-layout {
+  display: block;
+}
+
+.why-intro {
+  max-width: 520px;
+}
+
+.highlight-callout {
+  display: inline-block;
+  margin-left: calc(-1 * var(--content-left-offset));
+  padding: 26px 28px 26px calc(var(--content-left-offset) + 24px);
+  border-radius: 0 8px 8px 0;
+  background: var(--highlight-wash);
+  box-shadow: 0 2px 10px rgba(38,36,92,0.05);
+}
+
+.highlight-callout strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+.highlight-callout span {
+  display: block;
+  max-width: 430px;
+  color: var(--mid-grey);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.why-body-row {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
+  gap: 92px;
+  align-items: start;
+}
+
+.why-copy {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.why-copy > p {
+  margin: 0;
+  margin-left: 34px;
+  color: var(--near-black);
+}
+
+.answer-box {
+  width: calc(100% + var(--content-left-offset));
+  margin-top: 18px;
+  margin-right: calc(-1 * var(--content-left-offset));
+  padding: 30px calc(var(--content-left-offset) + 34px) 30px 34px;
+  border-radius: 8px 0 0 8px;
+  background: #FFFFFF;
+  box-shadow: var(--card-shadow);
+}
+
+.answer-box p {
+  max-width: 720px;
+  margin: 0 0 14px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+.answer-box p:last-child {
+  margin-bottom: 0;
+}
+
+.differentiators {
+  background: var(--navy-wash);
+}
+
+.challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 24px;
+}
+
+.challenge-card,
+.service-card {
+  --offset-x: 0px;
+  --offset-y: 0px;
+  position: relative;
+  min-height: 270px;
+  padding: 32px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.challenge-card:hover,
+.challenge-card:focus-within,
+.service-card:hover,
+.service-card:focus-within {
+  transform: translate(var(--offset-x), calc(var(--offset-y) - 6px));
+  box-shadow: var(--card-shadow-hover);
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--navy);
+}
+
+.service-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.pillar-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 11px;
+  border-radius: 100px;
+  background: var(--navy);
+  color: var(--off-white);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.icon-box {
+  display: block;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 28px;
+  color: var(--navy);
+  flex-shrink: 0;
+}
+
+.service-card .icon-box {
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  margin: 0;
+}
+
+.icon-box svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.challenge-card h3,
+.service-card h3 {
+  margin: 0;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.challenge-card p,
+.service-card p {
+  margin: 16px 0 0;
+  color: var(--mid-grey);
+}
+
+.beliefs {
+  background: #FFFFFF;
+}
+
+.belief-stack {
+  width: 80%;
+  display: grid;
+  gap: 18px;
+}
+
+.belief-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 58px;
+  padding: 30px 0 30px 28px;
+  border-left: 3px solid rgba(193,95,60,0.25);
+}
+
+.belief-row h3 {
+  margin: 0;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.belief-row p {
+  margin: 0;
+  color: var(--mid-grey);
+}
+
+.story {
+  background: var(--off-white);
+}
+
+.story-list {
+  max-width: 1120px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 50px 76px;
+}
+
+.story-item {
+  padding-top: 24px;
+  border-top: 1px solid rgba(38,36,92,0.12);
+}
+
+.story-hook {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--terracotta);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.story-item p {
+  max-width: 820px;
+  margin: 0;
+  color: var(--mid-grey);
+}
+
+
+
+.nav-link[aria-current="page"] {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-d1 {
+  transition-delay: 0.08s;
+}
+
+.reveal-d2 {
+  transition-delay: 0.16s;
+}
+
+.reveal-d3 {
+  transition-delay: 0.24s;
+}
+
+
+.work-hero .hero-inner,
+.case-hero .hero-inner {
+  max-width: 1320px;
+  display: grid;
+  grid-template-columns: minmax(0, 760px) minmax(320px, 1fr);
+  gap: 72px;
+  align-items: center;
+}
+
+.work-hero .hero-content,
+.case-hero .hero-content {
+  max-width: 900px;
+}
+
+.work-hero .hero-subhead,
+.case-hero .hero-subhead {
+  max-width: 820px;
+  margin-bottom: 0;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.work-hero .hero-body {
+  max-width: 820px;
+  margin: 22px 0 0;
+  color: var(--mid-grey);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.work-hero h1,
+.case-hero h1 {
+  max-width: 920px;
+}
+
+.cases {
+  background: #FFFFFF;
+}
+
+.pillar-section {
+  margin-top: 78px;
+}
+
+.pillar-section:first-child {
+  margin-top: 0;
+}
+
+.pillar-section-header {
+  max-width: 760px;
+  margin-bottom: 30px;
+}
+
+.pillar-title {
+  margin: 0;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(30px, 2.6vw, 36px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.12;
+}
+
+.pillar-intro {
+  max-width: 640px;
+  margin: 12px 0 0;
+  color: var(--mid-grey);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 28px;
+}
+
+.case-card {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  border-radius: 8px;
+  background: #FFFFFF;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  color: var(--near-black);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.case-card:hover,
+.case-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.case-content {
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.case-card-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.case-industry {
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.case-number {
+  margin-bottom: 20px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(30px, 2.6vw, 42px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 0.98;
+}
+
+.case-content h3 {
+  margin: 0 0 22px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.16;
+}
+
+.case-block {
+  margin-top: 22px;
+}
+
+.case-block:first-of-type {
+  margin-top: 0;
+}
+
+.case-label {
+  margin: 0 0 8px;
+  color: var(--case-pillar, var(--pill-plan));
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pillar-badge.plan {
+  background: var(--pill-plan);
+}
+
+.pillar-badge.solve {
+  background: var(--pill-solve);
+}
+
+.pillar-badge.evolve {
+  background: var(--pill-evolve);
+}
+
+.pillar-badge.govern {
+  background: var(--pill-govern);
+}
+
+.case-card.pillar-plan {
+  --case-pillar: var(--pill-plan);
+}
+
+.case-card.pillar-solve {
+  --case-pillar: var(--pill-solve);
+}
+
+.case-card.pillar-evolve {
+  --case-pillar: var(--pill-evolve);
+}
+
+.case-card.pillar-govern {
+  --case-pillar: var(--pill-govern);
+}
+
+.case-block p:not(.case-label) {
+  margin: 0;
+  color: var(--mid-grey);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.case-disclosure {
+  margin-top: auto;
+  padding-top: 2px;
+}
+
+.case-disclosure summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  color: var(--terracotta);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  list-style: none;
+  cursor: pointer;
+}
+
+.case-disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.case-disclosure summary::after {
+  content: "+";
+  color: var(--case-pillar, var(--pill-plan));
+  font-size: 15px;
+  line-height: 1;
+}
+
+.case-disclosure[open] summary::after {
+  content: "";
+}
+
+.summary-open {
+  display: none;
+}
+
+.case-disclosure[open] .summary-closed {
+  display: none;
+}
+
+.case-disclosure[open] .summary-open {
+  display: inline;
+}
+
+.case-expanded {
+  margin-top: 20px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(38,36,92,0.12);
+}
+
+.full-case-link {
+  display: inline-flex;
+  margin-top: 24px;
+  color: rgba(44,44,44,0.68);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.full-case-link:hover,
+.full-case-link:focus {
+  color: var(--navy);
+}
+.stat-band {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 46px;
+  background: rgba(38,36,92,0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.stat-cell {
+  min-height: 170px;
+  padding: 30px;
+  background: var(--light-grey);
+  display: flex;
+  align-items: flex-end;
+}
+
+.stat-cell .case-number {
+  margin-bottom: 0;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1;
+}
+
+.case-detail {
+  background: #FFFFFF;
+}
+
+.case-body {
+  max-width: 880px;
+  display: grid;
+  gap: 44px;
+}
+
+.case-section {
+  padding-left: 28px;
+  border-left: 3px solid rgba(193,95,60,0.28);
+}
+
+.case-section h2,
+.related-card h3 {
+  margin: 0 0 14px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.case-section p {
+  margin: 0;
+  color: var(--mid-grey);
+}
+
+.related {
+  background: var(--navy-wash);
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 900px;
+}
+
+.related-card {
+  min-height: 220px;
+  padding: 30px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: var(--near-black);
+  text-decoration: none;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.related-card:hover,
+.related-card:focus {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.related-card span {
+  display: block;
+  margin-bottom: 16px;
+  color: var(--terracotta);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.related-card p {
+  margin: 0;
+  color: var(--mid-grey);
+}
+
+@media (max-width: 1180px) {
+  .work-hero .hero-inner,
+  .case-hero .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .case-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .case-grid,
+  .stat-band,
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-content {
+    padding: 28px;
+  }
+}
+
+
+.cta-panel {
+  background: var(--dark-slate);
+  color: var(--off-white);
+}
+
+.cta-box {
+  max-width: 1030px;
+}
+
+.cta-box .section-title {
+  max-width: 760px;
+}
+
+.cta-box p {
+  max-width: 690px;
+  margin: 26px 0 42px;
+  color: rgba(245,243,238,0.74);
+}
+
+.cta-panel .cta-button {
+  background: #FFFFFF;
+  color: var(--near-black);
+}
+
+.cta-panel .cta-button:hover,
+.cta-panel .cta-button:focus {
+  background: var(--highlight-wash);
+}
+
+.site-footer {
+  padding: 120px 56px 48px;
+  background: #FFFFFF;
+  color: var(--near-black);
+  border-top: 0;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.25fr 0.8fr 0.8fr 0.95fr;
+  gap: 72px;
+}
+
+.footer-logo {
+  display: inline-flex;
+  width: 142px;
+  margin-bottom: 28px;
+}
+
+.footer-tagline {
+  max-width: 310px;
+  margin: 0;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.12;
+}
+
+.footer-col h4 {
+  margin: 0 0 18px;
+  color: rgba(38,36,92,0.48);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer .footer-col ul li a {
+  color: rgba(44,44,44,0.72);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.site-footer .footer-col ul li a:hover,
+.site-footer .footer-col ul li a:focus {
+  color: var(--navy);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 80px auto 0;
+  padding-top: 28px;
+  border-top: 1px solid rgba(38,36,92,0.12);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  color: rgba(44,44,44,0.52);
+  font-size: 12px;
+}
+
+@media (max-width: 1180px) {
+  :root {
+    --section-gutter: 36px;
+  }
+
+  .nav-inner,
+  .hero {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .hero-visual {
+    justify-content: flex-start;
+  }
+
+  .hero-visual svg {
+    width: min(380px, 80vw);
+  }
+
+  .why-body-row {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .challenge-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .belief-stack {
+    width: 100%;
+  }
+
+  .belief-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .story-list {
+    max-width: 100%;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --section-gutter: 22px;
+  }
+
+  body {
+    font-size: 17px;
+  }
+
+  p {
+    font-size: 17px;
+  }
+
+  .nav-inner {
+    height: 70px;
+    padding: 0 22px;
+  }
+
+  .nav-logo {
+    width: 124px;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    inset: 70px 0 auto 0;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    padding: 28px 22px 34px;
+    background: #FFFFFF;
+    border-bottom: 1px solid rgba(38,36,92,0.08);
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .section {
+    padding: 90px 22px;
+  }
+
+  .section-header {
+    margin-bottom: 44px;
+  }
+
+  .section-title {
+    font-size: clamp(36px, 10vw, 40px);
+  }
+
+  .hero {
+    padding: 72px 22px 64px;
+  }
+
+  .hero-inner {
+    gap: 42px;
+  }
+
+  .hero h1 {
+    font-size: clamp(52px, 14vw, 56px);
+  }
+
+  .hero-subhead {
+    margin-bottom: 34px;
+  }
+
+  .highlight-callout {
+    display: block;
+    margin-left: -22px;
+    padding-left: 46px;
+  }
+
+  .answer-box {
+    width: calc(100% + 22px);
+    margin-right: -22px;
+    padding-right: 46px;
+  }
+
+  .challenge-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .challenge-card,
+  .service-card {
+    min-height: 0;
+  }
+
+  .belief-row {
+    padding: 28px 0 28px 22px;
+  }
+
+  .story-list {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .story-item {
+    padding-top: 22px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .site-footer {
+    padding: 90px 22px 42px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    margin-top: 54px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page-shell">
+  <nav class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="EQUIBT home">
+        <svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
+          <g fill="#2C3E50">
+            <path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/>
+            <path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/>
+            <path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/>
+            <path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/>
+            <path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/>
+            <path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/>
+          </g>
+          <path fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/>
+        </svg>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/services/" class="nav-link">Services</a>
+        <a href="/industries/" class="nav-link">Industries</a>
+        <a href="/our-work/" class="nav-link" aria-current="page">Our Work</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-cta">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero case-hero">
+      <div class="hero-inner">
+        <div class="hero-content reveal">
+          <div class="hero-eyebrow">FINANCIAL SERVICES · EVOLVE | Improve</div>
+          <h1>Cut mortgage lead leakage across direct and broker channels.</h1>
+          <p class="hero-subhead">30% to 10% lead leakage · +13 points unconditional approvals in three months · Board-approved digital roadmap</p>
+          <div class="stat-band" aria-label="Case results">
+            <div class="stat-cell"><div class="case-number">30% to 10% lead leakage</div></div>
+            <div class="stat-cell"><div class="case-number">+13 points unconditional approvals in three months</div></div>
+            <div class="stat-cell"><div class="case-number">Board-approved digital roadmap</div></div>
+          </div>
+        </div>
+        <div class="hero-visual reveal reveal-d1" aria-hidden="true">
+          <!-- PLACEHOLDER hero motif: replace before launch -->
+          <svg viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 52 256 L 142 92 L 248 260 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 142 92 L 344 126 L 248 260 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 52 256 L 178 314 L 248 260 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 248 260 L 344 126 L 388 286 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 178 314 L 248 260 L 388 286 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 142 92 L 210 52 L 344 126 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <circle cx="142" cy="92" r="6" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="248" cy="260" r="10" fill="#C15F3C"/>
+            <circle cx="344" cy="126" r="6" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="52" cy="256" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="388" cy="286" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <line x1="238" y1="260" x2="258" y2="260" stroke="#FFFFFF" stroke-width="1.6"/>
+            <line x1="248" y1="250" x2="248" y2="270" stroke="#FFFFFF" stroke-width="1.6"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="section case-detail">
+      <div class="section-inner wide-inner">
+        <div class="case-body">
+          <section class="case-section reveal">
+            <h2>The problem</h2>
+            <p>The mortgage business was losing 30% of inbound leads before an application was lodged, and conversion from lead to settlement sat at 27% with unclear drop-out reasons. Unconditional approval decisions were taking more than five days, the origination platform had defects limiting straight-through processing, and a competitor had already reached a 60-minute approval, so the gap was widening.</p>
+          </section>
+          <section class="case-section reveal reveal-d1">
+            <h2>What we did</h2>
+            <p>The team mapped the end-to-end mortgage process from lead through to settlement across direct and broker channels, credit, origination, and the workflow platform. They identified 92 improvement opportunities and activated 50 in the first phase, redesigned the lead-to-application process to cut leakage, and defined action-based reason codes so drop-out could be analysed and targeted. They worked with the credit and origination teams to prioritise and resolve the platform defects affecting home loans, then delivered a Board-approved digital roadmap for online application and straight-through processing.</p>
+          </section>
+          <section class="case-section reveal reveal-d2">
+            <h2>The result</h2>
+            <p>Lead leakage fell from 30% to 10%. The unconditional decision rate lifted roughly 13 points within three months, and the digital mortgage roadmap was approved at Board level. The teams now run the redesigned process and the improvement backlog themselves.</p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="section related">
+      <div class="section-inner wide-inner">
+        <div class="section-header reveal">
+          <div>
+            <div class="eyebrow">RELATED</div>
+            <h2 class="section-title">Follow the workstream.</h2>
+          </div>
+        </div>
+        <div class="related-grid">
+          <a href="/services/evolve/" class="related-card reveal">
+            <span>Service pillar</span>
+            <h3>EVOLVE | Improve</h3>
+            <p>Redesign the operation so the improved way of working can run without external support.</p>
+          </a>
+          <a href="/industries/financial-services/" class="related-card reveal reveal-d1">
+            <span>Industry</span>
+            <h3>Financial Services</h3>
+            <p>Operational improvement for complex financial-services teams, channels, and controls.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-panel">
+      <div class="section-inner cta-box reveal">
+        <h2 class="section-title light">Put a complex operation on firmer footing.</h2>
+        <p>Tell us where the operation is under strain. We will tell you straight whether it is a fixable process gap, and whether we are the right firm for it.</p>
+        <a href="/contact/" class="cta-button">Get in touch</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="EQUIBT home">
+          <svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
+            <g fill="#2C3E50">
+              <path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/>
+              <path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/>
+              <path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/>
+              <path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/>
+              <path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/>
+              <path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/>
+            </g>
+            <path fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/>
+          </svg>
+        </a>
+        <p class="footer-tagline">We simplify the complex. We make it stick.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services/frame/">FRAME</a></li>
+          <li><a href="/services/plan/">PLAN</a></li>
+          <li><a href="/services/solve/">SOLVE</a></li>
+          <li><a href="/services/evolve/">EVOLVE</a></li>
+          <li><a href="/services/govern/">GOVERN</a></li>
+          <li><a href="/services/scale/">SCALE</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/our-work/">Our Work</a></li>
+          <li><a href="/insights/">Insights</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:hello@equibt.com">hello@equibt.com</a></li>
+          <li><a href="https://www.linkedin.com/company/equibt/">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; EQUIBT. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+const nav = document.getElementById("site-nav");
+const toggle = document.querySelector(".nav-toggle");
+const links = document.getElementById("nav-links");
+
+window.addEventListener("scroll", () => {
+  nav.classList.toggle("scrolled", window.scrollY > 10);
+});
+
+toggle.addEventListener("click", () => {
+  const isOpen = links.classList.toggle("is-open");
+  document.body.classList.toggle("nav-open", isOpen);
+  toggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+const revealEls = document.querySelectorAll(".reveal");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach((el) => observer.observe(el));
+
+</script>
+</body>
+</html>
