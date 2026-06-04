@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Problem framing resource from EQUIBT: define the operational problem before choosing a fix.">
+<title>Problem Framing | EQUIBT Resource</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<style>
+:root {
+  --navy: #26245C;
+  --terracotta: #C15F3C;
+  --terracotta-dark: #A04E30;
+  --off-white: #F5F3EE;
+  --section-bg: #F5F3EE;
+  --light-grey: #F5F5F5;
+  --navy-wash: #E8ECF5;
+  --highlight-wash: #E8ECF8;
+  --dark-slate: #2C3E50;
+  --near-black: #2C2C2C;
+  --body-text: #2C2C2C;
+  --mid-grey: #555555;
+  --caption-grey: #7A8591;
+  --border: #D8DCE0;
+  --card-shadow: 0 2px 10px rgba(38,36,92,0.08);
+  --card-shadow-hover: 0 16px 40px rgba(38,36,92,0.18);
+  --section-gutter: 56px;
+  --wide-container: 1320px;
+  --content-left-offset: max(var(--section-gutter), calc((100vw - var(--wide-container)) / 2));
+  --pill-frame: #8B2252;
+  --pill-plan: #26245C;
+  --pill-solve: #0B6B82;
+  --pill-evolve: #2D7A3A;
+  --pill-govern: #7A3D00;
+  --pill-scale: #5C0A5C;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--off-white);
+  color: var(--near-black);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.page-shell {
+  overflow: hidden;
+}
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,0.97);
+}
+
+.site-nav.scrolled {
+  background: rgba(255,255,255,0.99);
+}
+
+.nav-inner {
+  max-width: 1320px;
+  height: 78px;
+  margin: 0 auto;
+  padding: 0 56px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  width: 138px;
+  text-decoration: none;
+}
+
+.nav-logo svg,
+.footer-logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nav-links {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-link {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: rgba(44,44,44,0.68);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--navy);
+}
+
+.nav-cta,
+.btn-primary,
+.cta-button,
+.card-link {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav-cta,
+.btn-primary,
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 13px 26px;
+  border-radius: 6px;
+  background: var(--navy);
+  color: var(--off-white);
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.nav-cta:hover,
+.btn-primary:hover,
+.cta-button:hover,
+.nav-cta:focus,
+.btn-primary:focus,
+.cta-button:focus {
+  background: #1e1c4e;
+  transform: translateY(-1px);
+}
+
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 5px auto;
+  border-radius: 2px;
+  background: var(--navy);
+}
+
+.section {
+  padding: 140px var(--section-gutter);
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wide-inner {
+  max-width: var(--wide-container);
+}
+
+.section-header {
+  display: block;
+  margin-bottom: 72px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+  color: var(--terracotta);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  flex: 0 0 auto;
+  background: var(--terracotta);
+}
+
+.section-title {
+  max-width: 820px;
+  margin: 0;
+  color: var(--near-black);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(36px, 3.2vw, 40px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.06;
+}
+
+.section-title.light {
+  color: var(--off-white);
+}
+
+.section-note {
+  max-width: 680px;
+  margin: 20px 0 0;
+  color: var(--mid-grey);
+}
+
+.hero {
+  padding: 72px 56px 76px;
+  background: #FFFFFF;
+  border-bottom: 1px solid rgba(38,36,92,0.07);
+}
+
+.hero-inner {
+  position: relative;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 760px) minmax(320px, 1fr);
+  gap: 72px;
+  align-items: start;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 0;
+}
+
+.hero-eyebrow {
+  display: block;
+  margin-bottom: 30px;
+  color: var(--terracotta);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 760px;
+  margin: 0 0 30px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(52px, 4.15vw, 56px);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.08;
+}
+
+.hero-subhead {
+  max-width: 700px;
+  margin: 0 0 42px;
+  color: var(--near-black);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.quiet-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--terracotta);
+}
+
+.quiet-link::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.hero-visual svg {
+  width: min(480px, 38vw);
+  height: auto;
+}
+
+.selector {
+  background: var(--light-grey);
+}
+
+.wizard-shell {
+  display: grid;
+  gap: 34px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.wizard-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 8px;
+}
+
+.step-indicator {
+  color: var(--terracotta);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.reset-link,
+.breadcrumb button {
+  border: 0;
+  background: transparent;
+  color: var(--terracotta);
+  font: inherit;
+  cursor: pointer;
+}
+
+.reset-link {
+  padding: 0;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-height: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--caption-grey);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb li + li::before {
+  content: ">";
+  color: rgba(44,44,44,0.4);
+}
+
+.breadcrumb button {
+  padding: 0;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wizard-step {
+  display: none;
+}
+
+.wizard-step.is-active,
+.recommendation.is-active {
+  display: block;
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.sector-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  padding: 52px 24px 24px;
+  border: 0;
+  border-radius: 8px;
+  background: #FFFFFF;
+  box-shadow: var(--card-shadow);
+  color: var(--near-black);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, outline-color 0.22s ease;
+}
+
+.sector-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: var(--terracotta);
+}
+
+.sector-card:hover,
+.sector-card:focus,
+.sector-card.is-selected {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.sector-card.is-selected {
+  outline: 2px solid var(--navy);
+  outline-offset: 4px;
+}
+
+.sector-card h3 {
+  margin: 0 0 14px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.sector-card p {
+  margin: 0;
+  color: var(--mid-grey);
+  font-size: 16px;
+}
+
+.step-question {
+  max-width: 760px;
+  margin: 0 0 28px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.18;
+}
+
+.recommendation {
+  display: none;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.pathway-panel {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  padding: 34px;
+  border-radius: 8px;
+  background: var(--highlight-wash);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+.panel-eyebrow {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--terracotta);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.pathway-panel h3 {
+  margin: 0 0 18px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.18;
+}
+
+.pathway-panel p {
+  margin: 0;
+  color: var(--mid-grey);
+}
+
+.framed-problem {
+  max-width: 900px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.22;
+}
+
+.path-section {
+  margin-top: 42px;
+  min-width: 0;
+}
+
+.path-copy {
+  max-width: 820px;
+  margin: 0;
+  color: var(--mid-grey);
+}
+
+.reveal-box-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 42px;
+}
+
+.reveal-card {
+  min-height: 100%;
+  padding: 30px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  box-shadow: var(--card-shadow);
+}
+
+.reveal-card h3 {
+  margin: 0 0 14px;
+  color: var(--navy);
+}
+
+.reveal-card p {
+  margin: 0 0 20px;
+}
+
+.diy-list {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding-left: 20px;
+  color: var(--near-black);
+}
+
+.diy-list li {
+  padding-left: 4px;
+}
+
+.pathway-start {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.pathway-start p {
+  margin: 0 0 22px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.28;
+}
+
+.pathway-start .card-link {
+  margin-top: auto;
+}
+
+.pillar-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  width: fit-content;
+  margin-bottom: 18px;
+  padding: 0 11px;
+  border-radius: 100px;
+  color: var(--off-white);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.pillar-badge.plan { background: var(--pill-plan); }
+.pillar-badge.frame { background: var(--pill-frame); }
+.pillar-badge.solve { background: var(--pill-solve); }
+.pillar-badge.evolve { background: var(--pill-evolve); }
+.pillar-badge.govern { background: var(--pill-govern); }
+.pillar-badge.scale { background: var(--pill-scale); }
+
+.station-map {
+  display: none;
+  width: 100%;
+  margin: 22px 0 0;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 0 0 18px;
+}
+
+.station-map.is-active {
+  display: block;
+}
+
+.station-map svg {
+  display: block;
+  width: 100%;
+  max-width: 1040px;
+  min-width: 880px;
+  margin: 0 auto;
+  height: auto;
+  overflow: visible;
+}
+
+.station-map a {
+  text-decoration: none;
+}
+
+.station-label {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  pointer-events: none;
+}
+
+.station-pill rect,
+.station-pill text,
+.station-start-marker {
+  transition: fill 0.2s ease, opacity 0.2s ease;
+}
+
+.station-anchor-label,
+.station-start-marker {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.station-anchor-label {
+  fill: var(--caption-grey);
+}
+
+.education {
+  background: #FFFFFF;
+}
+
+.education .section-inner {
+  max-width: var(--wide-container);
+}
+
+.education-copy {
+  max-width: 790px;
+}
+
+.education-copy p {
+  margin: 26px 0 0;
+  color: var(--mid-grey);
+}
+
+.cta-panel {
+  background: var(--dark-slate);
+  color: var(--off-white);
+}
+
+.cta-box {
+  max-width: var(--wide-container);
+}
+
+.cta-box .section-title {
+  max-width: 760px;
+}
+
+.cta-box p {
+  max-width: 690px;
+  margin: 26px 0 42px;
+  color: rgba(245,243,238,0.74);
+}
+
+.cta-panel .cta-button {
+  background: #FFFFFF;
+  color: var(--near-black);
+}
+
+.cta-panel .cta-button:hover,
+.cta-panel .cta-button:focus {
+  background: var(--highlight-wash);
+}
+
+.site-footer {
+  padding: 120px 56px 48px;
+  background: #FFFFFF;
+  color: var(--near-black);
+  border-top: 0;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.25fr 0.8fr 0.8fr 0.95fr;
+  gap: 72px;
+}
+
+.footer-logo {
+  display: inline-flex;
+  width: 142px;
+  margin-bottom: 28px;
+}
+
+.footer-tagline {
+  max-width: 310px;
+  margin: 0;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.12;
+}
+
+.footer-col h4 {
+  margin: 0 0 18px;
+  color: rgba(38,36,92,0.48);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer .footer-col ul li a {
+  color: rgba(44,44,44,0.72);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.site-footer .footer-col ul li a:hover,
+.site-footer .footer-col ul li a:focus {
+  color: var(--navy);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 80px auto 0;
+  padding-top: 28px;
+  border-top: 1px solid rgba(38,36,92,0.12);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  color: rgba(44,44,44,0.52);
+  font-size: 12px;
+}
+
+.card-link {
+  display: inline-flex;
+  margin-top: auto;
+  color: var(--terracotta);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-d1 { transition-delay: 0.08s; }
+
+@media (max-width: 1180px) {
+  :root {
+    --section-gutter: 36px;
+  }
+
+  .nav-inner,
+  .hero,
+  .section,
+  .site-footer {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .hero-visual {
+    justify-content: flex-start;
+  }
+
+  .hero-visual svg {
+    width: min(380px, 80vw);
+  }
+
+  .choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .reveal-box-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --section-gutter: 22px;
+  }
+
+  body {
+    font-size: 17px;
+  }
+
+  p {
+    font-size: 17px;
+  }
+
+  .nav-inner {
+    height: 70px;
+    padding: 0 22px;
+  }
+
+  .nav-logo {
+    width: 124px;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    inset: 70px 0 auto 0;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    padding: 28px 22px 34px;
+    background: #FFFFFF;
+    border-bottom: 1px solid rgba(38,36,92,0.08);
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .section {
+    padding: 90px 22px;
+  }
+
+  .section-header {
+    margin-bottom: 44px;
+  }
+
+  .section-title {
+    font-size: clamp(36px, 10vw, 40px);
+  }
+
+  .hero {
+    padding: 72px 22px 64px;
+  }
+
+  .hero-inner {
+    gap: 42px;
+  }
+
+  .hero h1 {
+    font-size: clamp(52px, 14vw, 56px);
+  }
+
+  .hero-subhead {
+    margin-bottom: 34px;
+  }
+
+  .choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sector-card {
+    min-height: 0;
+  }
+
+  .pathway-panel {
+    padding: 28px 22px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .site-footer {
+    padding: 90px 22px 42px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    margin-top: 54px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page-shell">
+  <nav class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="EQUIBT home">
+        <svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
+          <g fill="#2C3E50">
+            <path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/>
+            <path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/>
+            <path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/>
+            <path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/>
+            <path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/>
+            <path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/>
+          </g>
+          <path fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/>
+        </svg>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/services/" class="nav-link">Services</a>
+        <a href="/industries/" class="nav-link">Industries</a>
+        <a href="/our-work/" class="nav-link">Our Work</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-cta">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-content reveal">
+          <div class="hero-eyebrow">START HERE</div>
+          <h1>Frame the problem before you fix it.</h1>
+          <p class="hero-subhead">Most failed improvement work goes wrong at the start, on a problem that was never properly defined. Use this to get clear on what you are actually trying to solve, then go straight to the part of our work that fits. No form, no pitch.</p>
+          <div class="hero-actions">
+            <a href="#problem-selector" class="card-link quiet-link">Frame your problem</a>
+          </div>
+        </div>
+        <div class="hero-visual reveal reveal-d1" aria-hidden="true">
+          <svg viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 220 58 L 105 108 L 220 132 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 220 58 L 220 132 L 335 108 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 105 108 L 32 190 L 148 162 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 105 108 L 148 162 L 220 132 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 335 108 L 220 132 L 292 162 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 335 108 L 292 162 L 408 190 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 32 190 L 220 190 L 148 162 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 148 162 L 220 190 L 292 162 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 292 162 L 220 190 L 408 190 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 220 132 L 148 162 L 292 162 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 32 190 L 148 218 L 220 190 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 220 190 L 148 218 L 292 218 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 220 190 L 292 218 L 408 190 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 32 190 L 92 268 L 148 218 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 148 218 L 92 268 L 220 328 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 148 218 L 220 328 L 292 218 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 292 218 L 220 328 L 348 268 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M 292 218 L 348 268 L 408 190 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <circle cx="220" cy="58" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="32" cy="190" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="408" cy="190" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="220" cy="328" r="5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="105" cy="108" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+            <circle cx="335" cy="108" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+            <circle cx="92" cy="268" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+            <circle cx="348" cy="268" r="3.5" fill="#FFFFFF" stroke="#26245C" stroke-width="1.25"/>
+            <circle cx="220" cy="190" r="10" fill="#C15F3C"/>
+            <line x1="212" y1="190" x2="228" y2="190" stroke="#FFFFFF" stroke-width="1.5"/>
+            <line x1="220" y1="182" x2="220" y2="198" stroke="#FFFFFF" stroke-width="1.5"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="section selector" id="problem-selector">
+      <div class="section-inner wide-inner">
+        <div class="section-header reveal">
+          <div class="eyebrow">WHERE ARE YOU</div>
+          <h2 class="section-title">Let's narrow it down.</h2>
+          <p class="section-note">Pick the concern first, then the situation, then the detail that makes it sharper. We will frame what that usually means and point you to where to start.</p>
+        </div>
+        <div class="wizard-shell reveal reveal-d1">
+          <div class="wizard-meta">
+            <div>
+              <div class="step-indicator" data-step-indicator>Step 1 of 3</div>
+              <ol class="breadcrumb" data-breadcrumb aria-label="Selected problem path"></ol>
+            </div>
+            <button class="reset-link" type="button" data-start-over>Start over</button>
+          </div>
+          <div class="wizard-step is-active" data-step="1">
+            <p class="step-question">What pressure are you trying to understand?</p>
+            <div class="choice-grid" data-concern-options></div>
+          </div>
+          <div class="wizard-step" data-step="2">
+            <p class="step-question">Which of these sounds like your situation?</p>
+            <div class="choice-grid" data-situation-options></div>
+          </div>
+          <div class="wizard-step" data-step="3">
+            <p class="step-question" data-sharpener-question></p>
+            <div class="choice-grid" data-sharpener-options></div>
+          </div>
+          <div class="recommendation" data-recommendation>
+            <div class="pathway-panel">
+              <span class="panel-eyebrow">WHAT THIS USUALLY MEANS</span>
+              <p class="framed-problem" data-framed-problem></p>
+              <div class="path-section">
+                <span class="panel-eyebrow">THE PATH</span>
+                <p class="path-copy">Improvement work runs left to right, from naming the problem to making it hold. You are entering it at the highlighted stage. The stages to its right are what usually follow.</p>
+                <div class="station-map" data-station-map aria-label="Service pathway station map">
+                  <svg viewBox="0 0 1040 220" role="img" aria-label="Problem Framing, Operations Diagnostic, Iterative Improvement, Rapid Pilot, Architecture and Governance, Operational Embedding service progression">
+                    <defs>
+                      <marker id="station-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 Z" fill="#D8DCE0"/>
+                      </marker>
+                    </defs>
+                    <line x1="82" y1="122" x2="960" y2="122" stroke="#D8DCE0" stroke-width="4" stroke-linecap="round" marker-end="url(#station-arrow)"/>
+                    <text class="station-start-marker" data-start-marker x="82" y="48" text-anchor="middle" fill="#8B2252">You start here</text>
+                    <a class="station-pill" href="equibt_frame_prototype_v5x.html" aria-label="Problem Framing" data-station="frame" data-colour="#8B2252" data-x="18" data-y="82" data-w="128" data-h="80" data-cx="82">
+                      <rect x="18" y="82" width="128" height="80" rx="40" fill="#8B2252"/>
+                      <text class="station-label" x="82" y="116" text-anchor="middle" fill="#FFFFFF"><tspan x="82" dy="0">Problem</tspan><tspan x="82" dy="18">Framing</tspan></text>
+                    </a>
+                    <a class="station-pill" href="equibt_plan_prototype_v5x.html" aria-label="Operations Diagnostic" data-station="plan" data-colour="#26245C" data-x="180" data-y="82" data-w="140" data-h="80" data-cx="250">
+                      <rect x="180" y="82" width="140" height="80" rx="40" fill="#26245C"/>
+                      <text class="station-label" x="250" y="116" text-anchor="middle" fill="#FFFFFF"><tspan x="250" dy="0">Operations</tspan><tspan x="250" dy="18">Diagnostic</tspan></text>
+                    </a>
+                    <a class="station-pill" href="equibt_solve_prototype_v5x.html" aria-label="Iterative Improvement" data-station="solve" data-colour="#0B6B82" data-x="354" data-y="82" data-w="140" data-h="80" data-cx="424">
+                      <rect x="354" y="82" width="140" height="80" rx="40" fill="#0B6B82"/>
+                      <text class="station-label" x="424" y="116" text-anchor="middle" fill="#FFFFFF"><tspan x="424" dy="0">Iterative</tspan><tspan x="424" dy="18">Improvement</tspan></text>
+                    </a>
+                    <a class="station-pill" href="equibt_evolve_prototype_v5x.html" aria-label="Rapid Pilot" data-station="evolve" data-colour="#2D7A3A" data-x="532" data-y="82" data-w="128" data-h="80" data-cx="596">
+                      <rect x="532" y="82" width="128" height="80" rx="40" fill="#2D7A3A"/>
+                      <text class="station-label" x="596" y="116" text-anchor="middle" fill="#FFFFFF"><tspan x="596" dy="0">Rapid</tspan><tspan x="596" dy="18">Pilot</tspan></text>
+                    </a>
+                    <a class="station-pill" href="equibt_govern_prototype_v5x.html" aria-label="Architecture and Governance" data-station="govern" data-colour="#7A3D00" data-x="694" data-y="82" data-w="152" data-h="80" data-cx="770">
+                      <rect x="694" y="82" width="152" height="80" rx="40" fill="#7A3D00"/>
+                      <text class="station-label" x="770" y="107" text-anchor="middle" fill="#FFFFFF"><tspan x="770" dy="0">Architecture</tspan><tspan x="770" dy="18">and</tspan><tspan x="770" dy="18">Governance</tspan></text>
+                    </a>
+                    <a class="station-pill" href="equibt_scale_prototype_v5x.html" aria-label="Operational Embedding" data-station="scale" data-colour="#5C0A5C" data-x="880" data-y="82" data-w="152" data-h="80" data-cx="956">
+                      <rect x="880" y="82" width="152" height="80" rx="40" fill="#5C0A5C"/>
+                      <text class="station-label" x="956" y="116" text-anchor="middle" fill="#FFFFFF"><tspan x="956" dy="0">Operational</tspan><tspan x="956" dy="18">Embedding</tspan></text>
+                    </a>
+                    <text class="station-anchor-label" x="82" y="200" text-anchor="middle">Name the problem</text>
+                    <text class="station-anchor-label" x="956" y="200" text-anchor="middle">Runs without you</text>
+                  </svg>
+                </div>
+              </div>
+              <div class="reveal-box-grid">
+                <article class="reveal-card">
+                  <h3>What you can do</h3>
+                  <p>Start here before you choose a fix.</p>
+                  <ol class="diy-list" data-diy-list></ol>
+                </article>
+                <article class="reveal-card">
+                  <span class="pillar-badge frame" data-pillar-badge>FRAME</span>
+                  <h3>What we do</h3>
+                  <p data-we-do-output></p>
+                  <a href="equibt_frame_prototype_v5x.html" class="card-link" data-pathway-link>Explore Problem Framing</a>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section education">
+      <div class="section-inner reveal">
+        <div class="education-copy">
+          <div class="eyebrow">WHY THIS MATTERS</div>
+          <h2 class="section-title">A clear problem is half the work.</h2>
+          <p>A well-framed problem is specific, measurable, and agreed. It says what is happening, where, how big it is, and why it matters, without naming a solution. Get that right and the rest of the work has somewhere to aim. Get it wrong and even good execution solves the wrong thing.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-panel">
+      <div class="section-inner cta-box reveal">
+        <h2 class="section-title light">Rather just talk it through?</h2>
+        <p>If you would rather describe the problem to someone than work through it alone, get in touch. Send the problem in plain words, not a polished brief. That is enough to start.</p>
+        <a href="/contact/" class="cta-button">Get in touch</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="EQUIBT home">
+          <svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
+            <g fill="#2C3E50">
+              <path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/>
+              <path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/>
+              <path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/>
+              <path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/>
+              <path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/>
+              <path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/>
+            </g>
+            <path fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/>
+          </svg>
+        </a>
+        <p class="footer-tagline">We simplify the complex. We make it stick.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services/frame/">FRAME</a></li>
+          <li><a href="/services/plan/">PLAN</a></li>
+          <li><a href="/services/solve/">SOLVE</a></li>
+          <li><a href="/services/evolve/">EVOLVE</a></li>
+          <li><a href="/services/govern/">GOVERN</a></li>
+          <li><a href="/services/scale/">SCALE</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/our-work/">Our Work</a></li>
+          <li><a href="/insights/">Insights</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:hello@equibt.com">hello@equibt.com</a></li>
+          <li><a href="https://www.linkedin.com/company/equibt/">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 EQUIBT. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+const nav = document.getElementById("site-nav");
+const toggle = document.querySelector(".nav-toggle");
+const links = document.getElementById("nav-links");
+
+window.addEventListener("scroll", () => {
+  nav.classList.toggle("scrolled", window.scrollY > 10);
+});
+
+toggle.addEventListener("click", () => {
+  const isOpen = links.classList.toggle("is-open");
+  document.body.classList.toggle("nav-open", isOpen);
+  toggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+const stepIndicator = document.querySelector("[data-step-indicator]");
+const breadcrumb = document.querySelector("[data-breadcrumb]");
+const startOver = document.querySelector("[data-start-over]");
+const steps = Array.from(document.querySelectorAll("[data-step]"));
+const concernOptions = document.querySelector("[data-concern-options]");
+const situationOptions = document.querySelector("[data-situation-options]");
+const sharpenerQuestion = document.querySelector("[data-sharpener-question]");
+const sharpenerOptions = document.querySelector("[data-sharpener-options]");
+const recommendation = document.querySelector("[data-recommendation]");
+const stationMap = document.querySelector("[data-station-map]");
+const stationPills = Array.from(document.querySelectorAll("[data-station]"));
+const framedProblem = document.querySelector("[data-framed-problem]");
+const diyList = document.querySelector("[data-diy-list]");
+const weDo = document.querySelector("[data-we-do-output]");
+const pathwayLink = document.querySelector("[data-pathway-link]");
+const pillarBadge = document.querySelector("[data-pillar-badge]");
+const startMarker = document.querySelector("[data-start-marker]");
+
+let currentStep = 1;
+let selectedConcern = null;
+let selectedSituation = null;
+let selectedSharpener = null;
+
+const concerns = [
+  {
+    id: "cost",
+    label: "Cost",
+    helper: "Margins, cost to serve, rework, waste.",
+    phrase: "a cost problem"
+  },
+  {
+    id: "time",
+    label: "Time",
+    helper: "Cycle time, delays, backlogs, slow turnaround.",
+    phrase: "a speed problem"
+  },
+  {
+    id: "quality",
+    label: "Quality",
+    helper: "Errors, defects, inconsistency, variation.",
+    phrase: "a quality problem"
+  },
+  {
+    id: "risk",
+    label: "Risk",
+    helper: "Compliance, control, audit, safety.",
+    phrase: "a risk and control problem"
+  },
+  {
+    id: "growth",
+    label: "Growth",
+    helper: "Capacity, throughput, scaling demand.",
+    phrase: "a growth problem"
+  },
+  {
+    id: "people",
+    label: "People",
+    helper: "Capability, reliance on key people, turnover.",
+    phrase: "a capability problem"
+  }
+];
+
+const situations = [
+  {
+    id: "frame",
+    label: "We do not agree on what the problem is.",
+    pillar: "FRAME",
+    publicName: "Problem Framing",
+    station: "frame",
+    route: "equibt_frame_prototype_v5x.html",
+    clause: "have not yet defined",
+    firstJob: "The first job is to agree on the real problem, in one sentence everyone signs up to, before any solution is on the table.",
+    diy: [
+      "Get the people who see it differently in one room and write a single problem statement: what is happening, where, how big, and why it matters, with no solution named.",
+      "Test it: can everyone restate it the same way? If not, it is not framed yet.",
+      "Park every proposed solution on a separate list until the problem is agreed."
+    ],
+    weDo: "We run the framing with your team and leave you with a problem everyone owns."
+  },
+  {
+    id: "plan",
+    label: "We cannot see what is really happening.",
+    pillar: "PLAN",
+    publicName: "Operations Diagnostic",
+    station: "plan",
+    route: "equibt_plan_prototype_v5x.html",
+    clause: "cannot yet see clearly",
+    firstJob: "The first job is to measure the operation as it actually runs, end to end, so the problem is located before anyone acts.",
+    diy: [
+      "Map the process as it actually runs, step by step, with the people who do the work.",
+      "Put a number on each step: time, volume, rework, hand-offs. Walk it end to end.",
+      "Look for where work waits or loops back. The problem usually sits there."
+    ],
+    weDo: "We run the diagnostic and hand you the full picture of where the problem sits."
+  },
+  {
+    id: "solve",
+    label: "We know the problem but not the fix.",
+    pillar: "SOLVE",
+    publicName: "Iterative Improvement",
+    station: "solve",
+    route: "equibt_solve_prototype_v5x.html",
+    clause: "can name but have not solved",
+    firstJob: "The first job is root cause analysis and solution design, with your team building the capability to keep improving after.",
+    diy: [
+      "Find the root cause before designing anything: keep asking why until you reach something you can act on.",
+      "Design the smallest change that fixes the cause, not the symptom.",
+      "Decide up front how you will know it worked: the measure and the baseline."
+    ],
+    weDo: "We run root cause and solution design with you, and build the capability to keep improving."
+  },
+  {
+    id: "evolve",
+    label: "We have a fix but it is risky to commit.",
+    pillar: "EVOLVE",
+    publicName: "Rapid Pilot",
+    station: "evolve",
+    route: "equibt_evolve_prototype_v5x.html",
+    clause: "have a fix for but cannot yet safely commit to",
+    firstJob: "The first job is to validate the fix small and fast, so you commit on evidence rather than hope.",
+    diy: [
+      "Run the fix in one team or one slice first, with a clear before-and-after measure.",
+      "Set the success bar, and a stop rule, before you start.",
+      "Let the pilot result decide the rollout, not opinion."
+    ],
+    weDo: "We design and run the pilot so you commit on evidence."
+  },
+  {
+    id: "govern",
+    label: "It works, but it keeps drifting back.",
+    pillar: "GOVERN",
+    publicName: "Architecture and Governance",
+    station: "govern",
+    route: "equibt_govern_prototype_v5x.html",
+    clause: "keep solving but cannot make hold",
+    firstJob: "The first job is the governance that holds the gain: process architecture, control plans, dashboards, and clear escalation.",
+    diy: [
+      "Name an owner for the improved process and the measure that proves it is holding.",
+      "Build the control in: a standard, a simple dashboard, and a trigger for stepping in.",
+      "Review it on a set rhythm until holding the gain is just how the work runs."
+    ],
+    weDo: "We build the governance that holds the gain after we leave."
+  },
+  {
+    id: "scale",
+    label: "It works in one place, we need it everywhere.",
+    pillar: "SCALE",
+    publicName: "Operational Embedding",
+    station: "scale",
+    route: "equibt_scale_prototype_v5x.html",
+    clause: "have proven in one place but not yet scaled",
+    firstJob: "The first job is to embed and scale the proven way of working so it runs the same everywhere, without you.",
+    diy: [
+      "Write the proven way of working down as a clear standard others can follow.",
+      "Roll it out team by team: adapt the edges, keep the core fixed.",
+      "Build in onboarding and a check so new teams run it the same way."
+    ],
+    weDo: "We embed and scale the proven way so it runs without us."
+  }
+];
+
+const sharpeners = {
+  frame: {
+    question: "Why is the problem unclear?",
+    options: [
+      {
+        id: "different-teams",
+        label: "Different teams describe it differently.",
+        qualifier: "because each team sees a different piece of it"
+      },
+      {
+        id: "jump-to-solutions",
+        label: "We jump to solutions before defining it.",
+        qualifier: "because the conversation keeps jumping to solutions"
+      }
+    ]
+  },
+  plan: {
+    question: "Is it one part of the process, or all of it?",
+    options: [
+      {
+        id: "one-step",
+        label: "One step or team.",
+        qualifier: "and it sits in one step you can point to"
+      },
+      {
+        id: "end-to-end",
+        label: "The whole process, start to finish.",
+        qualifier: "and it runs across the whole process, not one step"
+      }
+    ]
+  },
+  solve: {
+    question: "What happened with past fixes?",
+    options: [
+      {
+        id: "no-fix",
+        label: "We have not tried a fix yet.",
+        qualifier: "and no fix has been tried yet"
+      },
+      {
+        id: "did-not-hold",
+        label: "Past fixes did not hold.",
+        qualifier: "and past fixes did not hold"
+      }
+    ]
+  },
+  evolve: {
+    question: "What makes it risky to roll out?",
+    options: [
+      {
+        id: "cost-disruption",
+        label: "Rolling it out is costly or disruptive.",
+        qualifier: "because a full rollout is costly or disruptive"
+      },
+      {
+        id: "scale-unclear",
+        label: "We're not sure it will work everywhere.",
+        qualifier: "because you are not yet sure it will work everywhere"
+      }
+    ]
+  },
+  govern: {
+    question: "Why doesn't it stick?",
+    options: [
+      {
+        id: "attention-moves",
+        label: "Attention moves on.",
+        qualifier: "because attention moves on once the project ends"
+      },
+      {
+        id: "no-owner",
+        label: "No clear owner or control.",
+        qualifier: "because no one owns the control that keeps it in place"
+      }
+    ]
+  },
+  scale: {
+    question: "What's stopping it spreading to other teams?",
+    options: [
+      {
+        id: "sites-differ",
+        label: "Each site does it differently.",
+        qualifier: "because each site does it its own way"
+      },
+      {
+        id: "no-standard",
+        label: "No standard way of working.",
+        qualifier: "because there is no standard way of working yet"
+      }
+    ]
+  }
+};
+
+function setStationState(station, isActive, isMuted) {
+  const rect = station.querySelector("rect");
+  const label = station.querySelector("text");
+  const x = Number(station.dataset.x);
+  const y = Number(station.dataset.y);
+  const width = Number(station.dataset.w);
+  const height = Number(station.dataset.h);
+  const centre = Number(station.dataset.cx);
+  const activeWidth = width * 1.1;
+  const activeHeight = height * 1.1;
+  const nextX = isActive ? centre - activeWidth / 2 : x;
+  const nextY = isActive ? y - (activeHeight - height) / 2 : y;
+  const nextWidth = isActive ? activeWidth : width;
+  const nextHeight = isActive ? activeHeight : height;
+  const fill = isMuted ? "#D8DCE0" : station.dataset.colour;
+  const textFill = isMuted ? "#7A8591" : "#FFFFFF";
+
+  rect.setAttribute("x", String(nextX));
+  rect.setAttribute("y", String(nextY));
+  rect.setAttribute("width", String(nextWidth));
+  rect.setAttribute("height", String(nextHeight));
+  rect.setAttribute("rx", String(nextHeight / 2));
+  rect.setAttribute("fill", fill);
+  label.setAttribute("fill", textFill);
+  label.setAttribute("font-size", isActive ? "13.2" : "12");
+
+  if (isActive && startMarker) {
+    startMarker.setAttribute("x", String(centre));
+    startMarker.setAttribute("fill", station.dataset.colour);
+    startMarker.setAttribute("opacity", "1");
+  }
+}
+
+function makeChoiceCard(item, kind, isSelected = false) {
+  const card = document.createElement("button");
+  card.className = "sector-card";
+  card.type = "button";
+  card.dataset.choiceKind = kind;
+  card.setAttribute("aria-pressed", String(isSelected));
+  if (isSelected) {
+    card.classList.add("is-selected");
+  }
+
+  Object.entries(item).forEach(([key, value]) => {
+    if (typeof value === "string") {
+      card.dataset[key] = value;
+    }
+  });
+
+  const heading = document.createElement("h3");
+  heading.textContent = item.label;
+  card.appendChild(heading);
+
+  if (item.helper) {
+    const helper = document.createElement("p");
+    helper.textContent = item.helper;
+    card.appendChild(helper);
+  }
+
+  return card;
+}
+
+function renderConcernOptions() {
+  concernOptions.innerHTML = "";
+  concerns.forEach((concern) => {
+    const card = makeChoiceCard(concern, "concern", selectedConcern && selectedConcern.id === concern.id);
+    card.addEventListener("click", () => {
+      selectedConcern = {
+        id: card.dataset.id,
+        label: card.dataset.label,
+        phrase: card.dataset.phrase
+      };
+      selectedSituation = null;
+      selectedSharpener = null;
+      showStep(2);
+    });
+    concernOptions.appendChild(card);
+  });
+}
+
+function renderSituationOptions() {
+  situationOptions.innerHTML = "";
+  situations.forEach((situation) => {
+    const card = makeChoiceCard(situation, "situation", selectedSituation && selectedSituation.id === situation.id);
+    card.addEventListener("click", () => {
+      selectedSituation = situation;
+      selectedSharpener = null;
+      renderSharpenerOptions();
+      showStep(3);
+    });
+    situationOptions.appendChild(card);
+  });
+}
+
+function renderSharpenerOptions() {
+  sharpenerOptions.innerHTML = "";
+  if (!selectedSituation || !sharpeners[selectedSituation.id]) {
+    sharpenerQuestion.textContent = "";
+    return;
+  }
+
+  const sharpener = sharpeners[selectedSituation.id];
+  sharpenerQuestion.textContent = sharpener.question;
+  sharpener.options.forEach((option) => {
+    const card = makeChoiceCard(option, "sharpener", selectedSharpener && selectedSharpener.id === option.id);
+    card.addEventListener("click", () => {
+      selectedSharpener = {
+        id: card.dataset.id,
+        label: card.dataset.label,
+        qualifier: card.dataset.qualifier
+      };
+      showRecommendation();
+    });
+    sharpenerOptions.appendChild(card);
+  });
+}
+
+function updateStepIndicator() {
+  if (!stepIndicator) {
+    return;
+  }
+  stepIndicator.textContent = `Step ${currentStep} of 3`;
+}
+
+function updateBreadcrumb() {
+  breadcrumb.innerHTML = "";
+  const crumbs = [
+    selectedConcern && { label: selectedConcern.label, step: 1 },
+    selectedSituation && { label: selectedSituation.label, step: 2 },
+    selectedSharpener && { label: selectedSharpener.label, step: 3 }
+  ].filter(Boolean);
+
+  crumbs.forEach((crumb) => {
+    const item = document.createElement("li");
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = crumb.label;
+    button.addEventListener("click", () => {
+      if (crumb.step === 1) {
+        selectedSituation = null;
+        selectedSharpener = null;
+      }
+      if (crumb.step === 2) {
+        selectedSharpener = null;
+      }
+      showStep(crumb.step);
+    });
+    item.appendChild(button);
+    breadcrumb.appendChild(item);
+  });
+}
+
+function setActiveStation(activeStation = "") {
+  const hasActiveStation = Boolean(activeStation);
+  if (startMarker) {
+    startMarker.setAttribute("opacity", hasActiveStation ? "1" : "0");
+  }
+  let activeCentre = 0;
+  stationPills.forEach((station) => {
+    const isActive = station.dataset.station === activeStation;
+    if (isActive) {
+      activeCentre = Number(station.dataset.cx);
+    }
+    setStationState(station, isActive, !hasActiveStation || !isActive);
+  });
+  if (hasActiveStation && stationMap) {
+    stationMap.scrollLeft = Math.max(0, activeCentre - stationMap.clientWidth / 2);
+  }
+}
+
+function clearRecommendation() {
+  framedProblem.textContent = "";
+  diyList.innerHTML = "";
+  weDo.textContent = "";
+  pathwayLink.removeAttribute("href");
+  pathwayLink.textContent = "";
+  pillarBadge.textContent = "";
+  pillarBadge.className = "pillar-badge frame";
+}
+
+function showStep(step) {
+  currentStep = step;
+  steps.forEach((item) => {
+    item.classList.toggle("is-active", Number(item.dataset.step) === currentStep);
+  });
+  recommendation.classList.remove("is-active");
+  stationMap.classList.remove("is-active");
+  setActiveStation("");
+  clearRecommendation();
+  updateStepIndicator();
+  updateBreadcrumb();
+  renderConcernOptions();
+  renderSituationOptions();
+  if (currentStep === 3) {
+    renderSharpenerOptions();
+  }
+}
+
+function showRecommendation() {
+  if (!selectedConcern || !selectedSituation || !selectedSharpener) {
+    return;
+  }
+
+  currentStep = 3;
+  steps.forEach((item) => item.classList.remove("is-active"));
+  recommendation.classList.add("is-active");
+  stationMap.classList.add("is-active");
+
+  framedProblem.textContent = `You have ${selectedConcern.phrase} you ${selectedSituation.clause}, ${selectedSharpener.qualifier}.`;
+  diyList.innerHTML = "";
+  selectedSituation.diy.forEach((step) => {
+    const item = document.createElement("li");
+    item.textContent = step;
+    diyList.appendChild(item);
+  });
+  weDo.textContent = selectedSituation.weDo;
+  pathwayLink.href = selectedSituation.route;
+  pathwayLink.textContent = `Explore ${selectedSituation.publicName}`;
+  pillarBadge.textContent = selectedSituation.pillar;
+  pillarBadge.className = `pillar-badge ${selectedSituation.station}`;
+  setActiveStation(selectedSituation.station);
+  updateStepIndicator();
+  updateBreadcrumb();
+}
+
+function resetWizard() {
+  selectedConcern = null;
+  selectedSituation = null;
+  selectedSharpener = null;
+  showStep(1);
+}
+
+if (startOver) {
+  startOver.addEventListener("click", resetWizard);
+}
+
+renderConcernOptions();
+renderSituationOptions();
+showStep(1);
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+</script>
+</body>
+</html>
