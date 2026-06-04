@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="After a diagnostic, identify root causes driving multiple symptoms. A 47-item problem list usually contains 6 real causes. Fix those first.">
+<title>How to prioritise operational improvements after diagnostic | EQUIBT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<style>
+:root {
+  --navy: #26245C;
+  --terracotta: #C15F3C;
+  --terracotta-dark: #A04E30;
+  --off-white: #F5F3EE;
+  --section-bg: #F5F3EE;
+  --light-grey: #F5F5F5;
+  --navy-wash: #E8ECF5;
+  --highlight-wash: #E8ECF8;
+  --dark-slate: #2C3E50;
+  --near-black: #2C2C2C;
+  --body-text: #2C2C2C;
+  --mid-grey: #555555;
+  --caption-grey: #7A8591;
+  --border: #D8DCE0;
+  --card-shadow: 0 2px 10px rgba(38,36,92,0.08);
+  --card-shadow-hover: 0 16px 40px rgba(38,36,92,0.18);
+  --section-gutter: 56px;
+  --wide-container: 1320px;
+  --content-left-offset: max(var(--section-gutter), calc((100vw - var(--wide-container)) / 2));
+  --pill-frame: #8B2252;
+  --pill-plan: #26245C;
+  --pill-solve: #0B6B82;
+  --pill-evolve: #2D7A3A;
+  --pill-govern: #7A3D00;
+  --pill-scale: #5C0A5C;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--off-white);
+  color: var(--near-black);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.page-shell {
+  overflow: hidden;
+}
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,0.97);
+}
+
+.site-nav.scrolled {
+  background: rgba(255,255,255,0.99);
+}
+
+.nav-inner {
+  max-width: 1320px;
+  height: 78px;
+  margin: 0 auto;
+  padding: 0 56px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  width: 138px;
+  text-decoration: none;
+}
+
+.nav-logo svg,
+.footer-logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nav-links {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-link {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: rgba(44,44,44,0.68);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--navy);
+}
+
+.nav-cta,
+.btn-primary,
+.btn-secondary,
+.cta-button {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav-cta,
+.btn-primary,
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 13px 26px;
+  border-radius: 6px;
+  background: var(--navy);
+  color: var(--off-white);
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.nav-cta:hover,
+.btn-primary:hover,
+.cta-button:hover,
+.nav-cta:focus,
+.btn-primary:focus,
+.cta-button:focus {
+  background: #1e1c4e;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 12px 24px;
+  border: 1px solid rgba(38,36,92,0.28);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--navy);
+  transition: border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  border-color: var(--navy);
+  color: var(--terracotta);
+  transform: translateY(-1px);
+}
+
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 5px auto;
+  border-radius: 2px;
+  background: var(--navy);
+}
+
+.section {
+  padding: 140px var(--section-gutter);
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wide-inner {
+  max-width: var(--wide-container);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+  color: var(--terracotta);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  flex: 0 0 auto;
+  background: var(--terracotta);
+}
+
+.section-title {
+  max-width: 820px;
+  margin: 0;
+  color: var(--near-black);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(36px, 3.2vw, 40px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.06;
+}
+
+.section-title.light {
+  color: var(--off-white);
+}
+
+.post-hero {
+  padding: 72px 56px 76px;
+  background: #FFFFFF;
+}
+
+.post-hero-inner {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 760px) minmax(260px, 1fr);
+  gap: 72px;
+  align-items: start;
+}
+
+.post-hero h1 {
+  max-width: 850px;
+  margin: 0 0 22px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(52px, 4.15vw, 56px);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.08;
+}
+
+.post-meta {
+  margin: 0;
+  color: var(--caption-grey);
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.post-motif {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+
+.post-motif svg {
+  width: min(260px, 100%);
+  height: auto;
+}
+
+.post-body {
+  background: #FFFFFF;
+}
+
+.post-content {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.post-content p {
+  margin: 0 0 24px;
+  color: var(--mid-grey);
+}
+
+.lede {
+  margin-bottom: 48px;
+}
+
+.lede p {
+  color: var(--near-black);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.lede p:last-child {
+  margin-bottom: 0;
+}
+
+.tldr {
+  margin: 0 0 54px;
+  padding: 34px 36px;
+  border-radius: 8px;
+  background: var(--highlight-wash);
+}
+
+.tldr h2 {
+  margin: 0 0 18px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.tldr ul {
+  margin: 0;
+  padding-left: 22px;
+  color: var(--mid-grey);
+}
+
+.tldr li {
+  margin: 12px 0 0;
+  padding-left: 4px;
+}
+
+.tldr li:first-child {
+  margin-top: 0;
+}
+
+.takeaway {
+  margin: 12px 0 54px;
+  padding: 34px 36px;
+  border-radius: 8px;
+  background: var(--highlight-wash);
+}
+
+.takeaway h2 {
+  margin: 0 0 18px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.takeaway p:last-child {
+  margin-bottom: 0;
+}
+
+.aeo-answer {
+  margin: 0 0 54px;
+  color: var(--near-black);
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.post-section-heading {
+  margin: 52px 0 22px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.descriptor {
+  color: var(--near-black);
+  font-weight: 600;
+}
+
+.closing-line {
+  max-width: 820px;
+  margin: 40px auto 0;
+  color: var(--mid-grey);
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.related-service {
+  background: var(--navy-wash);
+}
+
+.related-service .section-inner {
+  max-width: var(--wide-container);
+}
+
+.related-box {
+  max-width: 760px;
+}
+
+.related-label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--terracotta);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.related-box a {
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(28px, 2.6vw, 36px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.12;
+  text-decoration: none;
+}
+
+.related-box a:hover,
+.related-box a:focus {
+  color: var(--terracotta);
+}
+
+.post-cta .section-inner {
+  max-width: var(--wide-container);
+}
+
+.post-cta {
+  background: var(--dark-slate);
+  color: var(--off-white);
+}
+
+.post-cta-box .section-title {
+  max-width: 760px;
+  color: var(--off-white);
+}
+
+.post-cta-box p {
+  max-width: 690px;
+  margin: 26px 0 42px;
+  color: rgba(245,243,238,0.74);
+}
+
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.post-cta .btn-primary {
+  background: #FFFFFF;
+  color: var(--near-black);
+}
+
+.post-cta .btn-primary:hover,
+.post-cta .btn-primary:focus {
+  background: var(--highlight-wash);
+}
+
+.post-cta .btn-secondary {
+  border-color: rgba(255,255,255,0.34);
+  color: var(--off-white);
+}
+
+.post-cta .btn-secondary:hover,
+.post-cta .btn-secondary:focus {
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
+.site-footer {
+  padding: 120px 56px 48px;
+  background: #FFFFFF;
+  color: var(--near-black);
+  border-top: 0;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.25fr 0.8fr 0.8fr 0.95fr;
+  gap: 72px;
+}
+
+.footer-logo {
+  display: inline-flex;
+  width: 142px;
+  margin-bottom: 28px;
+}
+
+.footer-tagline {
+  max-width: 310px;
+  margin: 0;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.12;
+}
+
+.footer-col h4 {
+  margin: 0 0 18px;
+  color: rgba(38,36,92,0.48);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer .footer-col ul li a {
+  color: rgba(44,44,44,0.72);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.site-footer .footer-col ul li a:hover,
+.site-footer .footer-col ul li a:focus {
+  color: var(--navy);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 80px auto 0;
+  padding-top: 28px;
+  border-top: 1px solid rgba(38,36,92,0.12);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  color: rgba(44,44,44,0.52);
+  font-size: 12px;
+}
+
+@media (max-width: 1180px) {
+  :root {
+    --section-gutter: 36px;
+  }
+
+  .nav-inner,
+  .post-hero {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+
+  .post-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .post-motif {
+    justify-content: flex-start;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --section-gutter: 22px;
+  }
+
+  body,
+  p {
+    font-size: 17px;
+  }
+
+  .nav-inner {
+    height: 70px;
+    padding: 0 22px;
+  }
+
+  .nav-logo {
+    width: 124px;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    inset: 70px 0 auto 0;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    padding: 28px 22px 34px;
+    background: #FFFFFF;
+    border-bottom: 1px solid rgba(38,36,92,0.08);
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .section {
+    padding: 90px 22px;
+  }
+
+  .post-hero {
+    padding: 72px 22px 64px;
+  }
+
+  .post-hero h1 {
+    font-size: clamp(44px, 13vw, 52px);
+  }
+
+  .tldr,
+  .takeaway {
+    padding: 28px 24px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .site-footer {
+    padding: 90px 22px 42px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    margin-top: 54px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page-shell">
+  <nav class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="EQUIBT home">
+        <svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
+          <g fill="#2C3E50">
+            <path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/>
+            <path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/>
+            <path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/>
+            <path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/>
+            <path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/>
+            <path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/>
+          </g>
+          <path fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/>
+        </svg>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/services/" class="nav-link">Services</a>
+        <a href="/industries/" class="nav-link">Industries</a>
+        <a href="/our-work/" class="nav-link">Our Work</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-cta">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="post-hero">
+      <div class="post-hero-inner">
+        <div class="post-hero-content">
+          <div class="eyebrow">PLAN | Measure</div>
+          <h1>The diagnostic found 47 problems. The real number was 6.</h1>
+          <p class="post-meta">4 min read</p>
+        </div>
+        <div class="post-motif" aria-hidden="true">
+          <!-- PLACEHOLDER post motif: replace before launch -->
+          <svg viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+            <path d="M130 24 L58 58 L130 78 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M130 24 L130 78 L202 58 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M58 58 L24 116 L88 98 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M58 58 L88 98 L130 78 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M130 78 L88 98 L130 190 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M130 78 L172 98 L130 190 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M202 58 L172 98 L130 78 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M202 58 L236 116 L172 98 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M24 116 L130 190 L88 98 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M236 116 L172 98 L130 190 Z" fill="none" stroke="#26245C" stroke-width="1.5" stroke-linejoin="round"/>
+            <circle cx="130" cy="78" r="7" fill="#C15F3C"/>
+            <circle cx="58" cy="58" r="4" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="202" cy="58" r="4" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="24" cy="116" r="4" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="236" cy="116" r="4" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+            <circle cx="130" cy="190" r="4" fill="#FFFFFF" stroke="#26245C" stroke-width="1.5"/>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <article class="section post-body">
+      <div class="post-content">
+        <div class="lede">
+          <p>Forty-seven issues. Six operational areas. The natural response was a 47-item project plan.</p>
+          <p>We spent a week mapping cause and effect chains instead.</p>
+        </div>
+
+        <section class="tldr" aria-labelledby="tldr-heading">
+          <h2 id="tldr-heading">TL;DR</h2>
+          <ul>
+            <li>Root causes drive multiple symptoms. Fixing one root cause dissolves 5-8 related problems without separate work.</li>
+            <li>Diagnostics reveal cause and effect chains. Most problems cluster around 3-6 structural issues.</li>
+            <li>Treating symptoms individually is slow. Identifying causes first changes the scale of the remediation effort by 70 percent.</li>
+            <li>Quick wins build momentum. Start with the root causes that dissolve the most symptoms.</li>
+            <li>Project scope based on causes is smaller, faster, and more targeted than scope based on the symptom list.</li>
+          </ul>
+        </section>
+
+        <p class="aeo-answer"><em>A diagnostic is a map of causes and symptoms, not a priority list. When you identify which problems are root causes and which are symptoms of those causes, a 47-item project plan usually becomes 6 items. The prioritisation question is not "what is most important" but "what generates the most other problems when left unfixed".</em></p>
+
+        <p>An energy retailer received a diagnostic report with 47 identified issues across 6 operational areas. The instinct was straightforward: build a 47-item project plan and resource it proportionally. The leadership team asked a different question. Which of the 47 problems were symptoms of a smaller set of root causes?</p>
+
+        <p>We spent a week mapping cause and effect chains. Each problem statement became a question: is this a cause or a symptom? For every symptom, we traced it back to its source. The pattern became clear. Six root cause issues were driving 38 of the 47 problems. Fixing those six would dissolve 38 issues without additional work. The remaining 9 were independent problems requiring direct fixes.</p>
+
+        <p>The project plan became 6 items, not 47. Delivered in 14 weeks instead of the estimated 18 months.</p>
+
+        <h2 class="post-section-heading">The pattern behind this:</h2>
+
+        <p class="descriptor">Most diagnostic findings are symptoms. The causes are the ones worth finding first.</p>
+
+        <p>Diagnostic findings look like a checklist of independent problems. They are actually a map of causes and symptoms stacked on top of each other. A single data quality issue causes problems in reporting, in decision making, in reconciliation, and in customer facing systems. Each of those appears as a separate problem in the diagnostic. Fix the data quality issue and all four problems improve without additional work.</p>
+
+        <p>Most leaders see the list and count the items. Experienced diagnosticians see the list and count the causes. Those two numbers are almost never the same. A government agency's diagnostic found 34 issues in their grants administration process. Mapping the cause and effect chains revealed that 28 of those issues were caused by a single upstream problem: applications could not be classified into the correct grant category until after they were submitted, which created rerouting, reassessment, and queue backlogs throughout the process. Fixing the classification step at intake resolved 28 issues. The remaining 6 required direct attention.</p>
+
+        <p>Treating symptoms individually is expensive and slow. You fix one problem and another one emerges because you have not addressed the underlying cause. You improve a process and six months later the backlog is back because the cause of the backlog is still there. Identifying causes first is harder work upfront. It requires looking past the problem statement to the system condition that created it. But it changes the scale of the remediation effort. A 47-item project plan compresses to 6 items. A 12 month timeline becomes 3 months. A team burns out trying to fix 47 things. A team builds momentum fixing 6 things and seeing 38 problems disappear as a side effect.</p>
+
+        <section class="takeaway">
+          <h2>One thing to try:</h2>
+          <p class="descriptor">For each finding, ask: is this a cause or a symptom?</p>
+          <p>Take your diagnostic findings and for each one, ask: is this a cause or a symptom? For every symptom, trace it back to the root cause that generates it. You will find that most symptoms cluster around a small number of causes. Fix the causes first and track how many symptoms dissolve without additional work.</p>
+        </section>
+
+        <p class="closing-line"><em>A 47-item remediation plan usually contains about 6 real problems and 41 consequences of them.</em></p>
+      </div>
+    </article>
+
+    <section class="section related-service">
+      <div class="section-inner">
+        <div class="related-box">
+          <span class="related-label">Related service</span>
+          <a href="/services/plan/">This thinking sits inside our Operations Diagnostic.</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section post-cta">
+      <div class="section-inner">
+        <div class="post-cta-box">
+          <h2 class="section-title">Need to shrink the real problem list?</h2>
+          <p>Bring us the diagnostic. We will help separate root causes from symptoms and turn the work into a plan your team can actually execute.</p>
+          <div class="cta-actions">
+            <a href="/contact/" class="btn-primary">Get in touch</a>
+            <!-- PLACEHOLDER resource link: wire when Resources/EQT-235 lands -->
+            <a href="#" class="btn-secondary">Download the related resource</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="EQUIBT home">
+          <svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
+            <g fill="#2C3E50">
+              <path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/>
+              <path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/>
+              <path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/>
+              <path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/>
+              <path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/>
+              <path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/>
+            </g>
+            <path fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/>
+          </svg>
+        </a>
+        <p class="footer-tagline">We simplify the complex. We make it stick.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services/frame/">FRAME</a></li>
+          <li><a href="/services/plan/">PLAN</a></li>
+          <li><a href="/services/solve/">SOLVE</a></li>
+          <li><a href="/services/evolve/">EVOLVE</a></li>
+          <li><a href="/services/govern/">GOVERN</a></li>
+          <li><a href="/services/scale/">SCALE</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/our-work/">Our Work</a></li>
+          <li><a href="/insights/">Insights</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:hello@equibt.com">hello@equibt.com</a></li>
+          <li><a href="https://www.linkedin.com/company/equibt/">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 EQUIBT. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+const nav = document.getElementById("site-nav");
+const toggle = document.querySelector(".nav-toggle");
+const links = document.getElementById("nav-links");
+
+window.addEventListener("scroll", () => {
+  nav.classList.toggle("scrolled", window.scrollY > 10);
+});
+
+toggle.addEventListener("click", () => {
+  const isOpen = links.classList.toggle("is-open");
+  document.body.classList.toggle("nav-open", isOpen);
+  toggle.setAttribute("aria-expanded", String(isOpen));
+});
+</script>
+</body>
+</html>
