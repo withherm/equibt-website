@@ -893,27 +893,32 @@ p {
   color: var(--navy);
 }
 .stat-band {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 34px 42px;
   margin-top: 46px;
-  background: rgba(38,36,92,0.12);
-  border-radius: 8px;
-  overflow: hidden;
+  padding-top: 26px;
+  border-top: 1px solid rgba(38,36,92,0.12);
 }
 
 .stat-cell {
-  min-height: 170px;
-  padding: 30px;
-  background: var(--light-grey);
-  display: flex;
-  align-items: flex-end;
+  flex: 1 1 190px;
 }
 
-.stat-cell .case-number {
-  margin-bottom: 0;
-  font-size: clamp(28px, 3.2vw, 44px);
-  line-height: 1;
+.stat-figure {
+  margin-bottom: 8px;
+  color: var(--navy);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+
+.stat-caption {
+  color: var(--mid-grey);
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .case-detail {
@@ -927,8 +932,7 @@ p {
 }
 
 .case-section {
-  padding-left: 28px;
-  border-left: 3px solid rgba(193,95,60,0.28);
+  padding-left: 0;
 }
 
 .case-section h2,
@@ -1331,9 +1335,18 @@ p {
           <h1>Cut mortgage lead leakage across direct and broker channels.</h1>
           <p class="hero-subhead">30% to 10% lead leakage · +13 points unconditional approvals in three months · Board-approved digital roadmap</p>
           <div class="stat-band" aria-label="Case results">
-            <div class="stat-cell"><div class="case-number">30% to 10% lead leakage</div></div>
-            <div class="stat-cell"><div class="case-number">+13 points unconditional approvals in three months</div></div>
-            <div class="stat-cell"><div class="case-number">Board-approved digital roadmap</div></div>
+            <div class="stat-cell">
+              <div class="stat-figure">30% to 10%</div>
+              <div class="stat-caption">lead leakage</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-figure">+13 pts</div>
+              <div class="stat-caption">unconditional approvals in three months</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-figure">Board-approved</div>
+              <div class="stat-caption">digital roadmap</div>
+            </div>
           </div>
         </div>
         <div class="hero-visual reveal reveal-d1" aria-hidden="true">
