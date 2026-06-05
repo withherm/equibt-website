@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EQUIBT v6x — Direction Exploration v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;500;600&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<style>
+:root{
+  --navy:#26245C; --terracotta:#C15F3C; --terracotta-dark:#A04E30;
+  --off-white:#F5F3EE; --dark-slate:#2C3E50; --near-black:#161616;
+  --mid-grey:#2B2B2B; --caption:#7A8591; --hairline:rgba(38,36,92,0.13);
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:#fff;color:var(--near-black);
+  font-family:"Lora",Georgia,serif;font-size:20px;font-weight:500;line-height:1.45;-webkit-font-smoothing:antialiased;}
+p{font-family:"Lora",Georgia,serif;font-size:20px;font-weight:500;line-height:1.45;}
+a{color:inherit;}
+
+.exp-banner{background:var(--navy);color:var(--off-white);font-family:"Montserrat",sans-serif;
+  font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+  padding:9px 56px;display:flex;gap:16px;align-items:center;justify-content:center;text-align:center;}
+.exp-banner span{color:rgba(245,243,238,0.6);font-weight:500;text-transform:none;letter-spacing:0;font-family:"Lora",serif;font-size:13px;}
+
+/* nav */
+.site-nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--hairline);}
+.nav-inner{max-width:1320px;height:80px;margin:0 auto;padding:0 56px;display:flex;align-items:center;gap:32px;}
+.nav-logo{display:inline-flex;align-items:center;width:138px;}
+.nav-logo svg{display:block;width:100%;height:auto;}
+.nav-links{margin-left:auto;display:flex;align-items:center;gap:30px;}
+.nav-link{font-family:"Open Sans",sans-serif;font-size:14px;font-weight:500;color:rgba(44,44,44,0.68);text-decoration:none;}
+.nav-link:hover{color:var(--navy);}
+.nav-cta{font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:13px 26px;
+  border-radius:6px;background:var(--navy);color:var(--off-white);transition:background .18s;}
+.nav-cta:hover{background:#1e1c4e;}
+
+.btn-primary{font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:14px 30px;
+  border-radius:6px;background:var(--navy);color:var(--off-white);transition:background .18s;}
+.btn-primary:hover{background:#1e1c4e;}
+.btn-text{font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  text-decoration:none;color:var(--navy);display:inline-flex;align-items:center;gap:8px;}
+.btn-text .ar{transition:transform .18s;}
+.btn-text:hover .ar{transform:translateX(4px);}
+
+/* eyebrows */
+.eyebrow{display:flex;align-items:center;gap:11px;margin-bottom:22px;color:var(--terracotta);
+  font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.16em;line-height:1.2;text-transform:uppercase;}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;flex:0 0 auto;background:var(--terracotta);}
+.eyebrow.light{color:rgba(245,243,238,0.85);}
+
+h1,h2,h3{font-family:"Montserrat",sans-serif;letter-spacing:-0.012em;}
+
+/* hand-drawn stroke */
+.hd{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.hd-acc{fill:none;stroke:var(--terracotta);stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;}
+.hd-f1{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0.55;}
+.hd-f2{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0.28;}
+.hd-f3{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0.16;}
+
+/* ===== HERO ===== */
+.hero{padding:124px 56px 116px;background:#fff;}
+.hero-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(380px,0.98fr);gap:36px;align-items:center;}
+.hero-eyebrow{position:relative;margin-bottom:32px;}
+.hero h1{max-width:680px;margin:0 0 36px;color:var(--navy);font-weight:700;
+  font-size:clamp(50px,4vw,56px);line-height:1.07;}
+.hero h1 span{display:block;}
+.hero-sub{max-width:540px;margin:0 0 42px;color:var(--near-black);font-size:22px;line-height:1.4;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:24px;align-items:center;}
+.hero-art{display:flex;justify-content:flex-end;align-items:center;}
+.hero-art svg{width:min(540px,48vw);height:auto;overflow:visible;}
+
+/* ===== STATEMENT ===== */
+.statement{padding:130px 56px;background:var(--off-white);}
+.statement-inner{max-width:1100px;margin:0 auto;}
+.statement h2{margin:0;max-width:900px;color:var(--navy);font-weight:700;font-size:clamp(34px,3.4vw,46px);line-height:1.12;}
+.statement-rows{margin-top:72px;display:flex;flex-direction:column;}
+.statement-row{display:grid;grid-template-columns:minmax(220px,300px) minmax(0,1fr);gap:56px;
+  padding:42px 0;border-top:1px solid var(--hairline);max-width:1000px;}
+.statement-row:last-child{border-bottom:1px solid var(--hairline);}
+.statement-row h3{margin:0;color:var(--navy);font-weight:700;font-size:23px;line-height:1.2;}
+.statement-row p{margin:0;color:var(--mid-grey);font-size:19px;}
+
+/* ===== SERVICES ===== */
+.services{padding:130px 56px;background:#fff;}
+.services-inner{max-width:1100px;margin:0 auto;}
+.services-head{max-width:760px;margin-bottom:30px;}
+.services-head h2{margin:0;color:var(--navy);font-weight:700;font-size:clamp(36px,3.2vw,40px);line-height:1.06;}
+.services-note{max-width:520px;margin:18px 0 0;color:var(--mid-grey);font-size:19px;}
+.svc-list{margin-top:36px;}
+.svc-row{display:grid;grid-template-columns:104px minmax(0,1fr);gap:44px;align-items:start;
+  padding:48px 0;border-top:1px solid var(--hairline);}
+.svc-row:last-child{border-bottom:1px solid var(--hairline);}
+.svc-icon{width:80px;height:80px;}
+.svc-icon svg{width:100%;height:100%;overflow:visible;}
+.svc-kicker{margin-bottom:12px;color:var(--terracotta);font-family:"Montserrat",sans-serif;
+  font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
+.svc-body h3{margin:0 0 10px;color:var(--navy);font-weight:700;font-size:26px;line-height:1.16;}
+.svc-body p{margin:0 0 18px;color:var(--mid-grey);max-width:580px;font-size:19px;}
+
+/* ===== THE WORK (evidence rows + one flagship dark card) ===== */
+.work{padding:130px 56px;background:var(--off-white);}
+.work-inner{max-width:1100px;margin:0 auto;}
+.work-head{max-width:820px;margin-bottom:30px;}
+.work-head h2{margin:0;color:var(--navy);font-weight:700;font-size:clamp(36px,3.2vw,40px);line-height:1.06;}
+.evidence{max-width:940px;}
+.ev-row{padding:24px 0;border-top:1px solid var(--hairline);}
+.ev-row:last-of-type{border-bottom:1px solid var(--hairline);}
+.ev-act{margin:0;font-family:"Montserrat",sans-serif;font-weight:600;font-size:20px;color:var(--near-black);line-height:1.35;}
+.ev-act .m{color:var(--terracotta);font-weight:700;}
+.ev-sec{margin:6px 0 0;font-family:"Lora",serif;font-size:16px;color:#5A5A5A;}
+.flagship{margin-top:60px;background:var(--dark-slate);border-radius:22px;padding:56px 56px;}
+.flagship h3{margin:0;max-width:560px;color:var(--off-white);font-weight:700;font-size:clamp(26px,2.6vw,30px);line-height:1.12;}
+.flag-copy{max-width:580px;margin:18px 0 0;color:rgba(245,243,238,0.82);font-weight:400;font-size:19px;line-height:1.5;}
+.flag-metric{display:flex;align-items:baseline;gap:14px;margin-top:28px;}
+.flag-metric strong{font-family:"Montserrat",sans-serif;font-weight:700;font-size:clamp(34px,3.4vw,42px);color:var(--terracotta);letter-spacing:-0.02em;}
+.flag-metric span{font-family:"Lora",serif;font-size:16px;color:rgba(245,243,238,0.7);}
+.flag-link{display:inline-flex;gap:8px;margin-top:30px;color:var(--off-white);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;}
+.flag-link .ar{transition:transform .18s;}
+.flag-link:hover .ar{transform:translateX(4px);}
+
+/* ===== CTA (light) ===== */
+.cta{padding:124px 56px 130px;background:#fff;}
+.cta-inner{max-width:1100px;margin:0 auto;}
+.cta h2{margin:0;max-width:740px;color:var(--navy);font-weight:700;font-size:clamp(38px,3.4vw,46px);line-height:1.06;}
+.cta p{max-width:660px;margin:24px 0 40px;color:var(--mid-grey);}
+
+footer.note{padding:44px 56px;background:var(--off-white);color:rgba(44,44,44,0.5);font-size:13px;text-align:center;border-top:1px solid var(--hairline);font-family:"Open Sans",sans-serif;}
+
+@media(max-width:1020px){
+  .hero{padding:72px 30px 60px;}
+  .hero-inner{grid-template-columns:1fr;gap:48px;}
+  .hero-art{justify-content:flex-start;}
+  .hero-art svg{width:min(100%,420px);}
+  .statement,.services,.work,.cta{padding:80px 30px;}
+  .statement-row{grid-template-columns:1fr;gap:12px;}
+  .svc-row{grid-template-columns:60px 1fr;gap:26px;padding:38px 0;}
+  .svc-icon{width:56px;height:56px;}
+  .flagship{padding:34px 26px;}
+  .exp-banner{padding:9px 18px;flex-direction:column;gap:4px;}
+  .nav-inner{padding:0 18px;}
+  .nav-links{display:none;}
+  .hero h1{font-size:38px;}
+}
+</style>
+</head>
+<body>
+
+<div class="exp-banner">EQUIBT v6x · direction exploration v2 <span>Montserrat + Lora · white &amp; beige only · single-line hero · icons on one axis. Home only, not the final prototype.</span></div>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="EQUIBT home">
+      <svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
+        <g fill="#2C3E50">
+          <path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/>
+          <path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/>
+          <path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/>
+          <path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/>
+          <path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/>
+          <path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/>
+        </g>
+        <path fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="#" class="nav-link">Services</a>
+      <a href="#" class="nav-link">Industries</a>
+      <a href="#" class="nav-link">Our Work</a>
+      <a href="#" class="nav-link">About</a>
+      <a href="#" class="nav-cta">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="eyebrow hero-eyebrow">OPERATIONAL CAPABILITY ADVISORY</div>
+      <h1>
+        <span>Most transformation</span>
+        <span>delivers a report.</span>
+        <span>We leave behind capability.</span>
+      </h1>
+      <p class="hero-sub">We embed inside your operations, build the capability in your team, and exit when the work is yours. Six services, from first diagnosis to embedded capability.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">Get in touch</a>
+        <a href="#" class="btn-text">Download capability statement <span class="ar">&rarr;</span></a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <!-- single-line illustration: complexity resolving into a clear path -->
+      <svg viewBox="0 0 520 470" xmlns="http://www.w3.org/2000/svg">
+        <!-- ground line -->
+        <path class="hd-f3" d="M40 452 L490 452"/>
+        <!-- the tangle (complexity) -->
+        <path class="hd-f1" d="M250 150 C228 112 268 78 300 100 C330 121 322 70 352 82 C386 95 360 132 392 142 C422 151 402 188 372 182 C346 177 362 208 336 212 C312 216 322 186 296 190 C268 194 286 218 258 217 C231 216 246 180 224 179 C204 178 232 152 250 150 Z"/>
+        <path class="hd-f2" d="M272 122 C302 102 292 152 322 142 C352 132 342 172 372 162 C396 154 382 122 356 120 C336 118 352 96 326 100 C302 104 314 130 286 124 C276 122 274 123 272 122 Z"/>
+        <path class="hd-f3" d="M240 168 C262 178 250 200 278 198"/>
+        <path class="hd-f3" d="M362 102 C388 96 398 118 382 134"/>
+        <path class="hd-f3" d="M300 78 C318 70 332 80 330 96"/>
+        <!-- resolution: clean lines gathering and fanning to the base -->
+        <path class="hd-f1" d="M300 212 C300 264 150 300 70 450"/>
+        <path class="hd-f1" d="M310 214 C310 272 240 322 205 450"/>
+        <path class="hd-f1" d="M320 214 C320 286 330 360 332 450"/>
+        <!-- the clear terracotta path threading out of the tangle -->
+        <path class="hd-acc" d="M322 158 C342 198 332 224 322 250 C314 294 432 318 470 450"/>
+        <circle cx="470" cy="450" r="0" />
+        <path class="hd-acc" d="M462 436 L472 451 L460 456"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== STATEMENT ===================== -->
+<section class="statement">
+  <div class="statement-inner">
+    <div class="eyebrow">THE EQUIBT DIFFERENCE</div>
+    <h2>We build capability, not dependency. The work is only finished when your team can run it without us.</h2>
+    <div class="statement-rows">
+      <div class="statement-row">
+        <h3>We embed inside your operations.</h3>
+        <p>Most consultants parachute in and hand over a document. We sit in your workshops, work through your data, and stay until your team can run the process without us.</p>
+      </div>
+      <div class="statement-row">
+        <h3>We build your team's capability.</h3>
+        <p>The engagement succeeds or fails on what your people can do when we leave. Training is not an add-on, it is the centre of the work.</p>
+      </div>
+      <div class="statement-row">
+        <h3>We exit when the work is yours.</h3>
+        <p>A successful engagement means less of us over time, not more. The outcome is an operation that runs independently.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICES ===================== -->
+<section class="services">
+  <div class="services-inner">
+    <div class="services-head">
+      <div class="eyebrow">HOW WE HELP</div>
+      <h2>Six services. One focus: capability that holds.</h2>
+      <p class="services-note">Each service stands alone. The system is strongest when evidence, capability and control build together.</p>
+    </div>
+    <div class="svc-list">
+
+      <div class="svc-row">
+        <div class="svc-icon"><svg viewBox="0 0 64 64">
+          <path class="hd" d="M13 26 Q12 14 14 13 Q16 12 26 12.4"/>
+          <path class="hd" d="M38 12.4 Q50 12 51 14 Q52 16 51.6 26"/>
+          <path class="hd" d="M51.6 38 Q52 50 50 51 Q48 52 38 51.6"/>
+          <path class="hd" d="M26 51.6 Q14 52 13 50 Q12 48 13 38"/>
+          <circle cx="32" cy="32" r="11" fill="none" stroke="#26245C" stroke-width="2"/>
+          <circle cx="32" cy="32" r="3.6" fill="#C15F3C"/>
+        </svg></div>
+        <div class="svc-body">
+          <div class="svc-kicker">FRAME · DEFINE</div>
+          <h3>Problem Framing.</h3>
+          <p>Align on the real problem before anything else moves.</p>
+          <a href="#" class="btn-text">Explore FRAME <span class="ar">&rarr;</span></a>
+        </div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-icon"><svg viewBox="0 0 64 64">
+          <path class="hd" d="M11 51 Q32 52 53 50.4"/>
+          <path class="hd" d="M18 50 Q17.5 44 18 38"/>
+          <path class="hd" d="M28 50 Q27.5 41 28 33"/>
+          <path class="hd" d="M38 50 Q37.5 36 38 27"/>
+          <path class="hd-acc" d="M48 50 Q47.4 32 48 20"/>
+          <path class="hd-f2" d="M14 36 Q28 28 40 22 Q47 18 52 15"/>
+        </svg></div>
+        <div class="svc-body">
+          <div class="svc-kicker">PLAN · MEASURE</div>
+          <h3>Operations Diagnostic.</h3>
+          <p>See the full picture before you act.</p>
+          <a href="#" class="btn-text">Explore PLAN <span class="ar">&rarr;</span></a>
+        </div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-icon"><svg viewBox="0 0 64 64">
+          <path class="hd" d="M21 18 Q32 13 41 18"/>
+          <path class="hd" d="M18 22 Q24 33 30 41"/>
+          <path class="hd" d="M44 22 Q38 33 34 41"/>
+          <circle cx="16" cy="18" r="5.5" fill="none" stroke="#26245C" stroke-width="2"/>
+          <circle cx="46" cy="18" r="5.5" fill="none" stroke="#26245C" stroke-width="2"/>
+          <circle cx="32" cy="46" r="6.5" fill="none" stroke="#C15F3C" stroke-width="2.3"/>
+        </svg></div>
+        <div class="svc-body">
+          <div class="svc-kicker">SOLVE · ANALYSE</div>
+          <h3>Iterative Improvement.</h3>
+          <p>Root cause analysis, solution design, and the capability to keep improving independently.</p>
+          <a href="#" class="btn-text">Explore SOLVE <span class="ar">&rarr;</span></a>
+        </div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-icon"><svg viewBox="0 0 64 64">
+          <path class="hd" d="M49 26 Q51 14 39 11 Q21 6 14 23 Q10 35 22 45 Q35 53 47 42"/>
+          <path class="hd-acc" d="M40 40 L48 43 L45 35"/>
+          <circle cx="31" cy="29" r="3.4" fill="#26245C"/>
+        </svg></div>
+        <div class="svc-body">
+          <div class="svc-kicker">EVOLVE · IMPROVE</div>
+          <h3>Rapid Pilot.</h3>
+          <p>Validate the future state before you commit.</p>
+          <a href="#" class="btn-text">Explore EVOLVE <span class="ar">&rarr;</span></a>
+        </div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-icon"><svg viewBox="0 0 64 64">
+          <path class="hd" d="M32 10 Q44 15 50 16 Q51.5 31 48 41 Q43 51 32 55 Q21 51 16 41 Q12.5 31 14 16 Q20 15 32 10 Z"/>
+          <path class="hd-acc" d="M24 31 Q28 36 30 38 Q36 28 42 22"/>
+        </svg></div>
+        <div class="svc-body">
+          <div class="svc-kicker">GOVERN · CONTROL</div>
+          <h3>Architecture &amp; Governance.</h3>
+          <p>Build the infrastructure that prevents drift.</p>
+          <a href="#" class="btn-text">Explore GOVERN <span class="ar">&rarr;</span></a>
+        </div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-icon"><svg viewBox="0 0 64 64">
+          <path class="hd" d="M12 38 L27 38 L27 23 L12 23 Z"/>
+          <path class="hd" d="M21 47 L38 47 L38 30 L21 30 Z"/>
+          <path class="hd-acc" d="M31 55 L52 55 L52 35 L31 35 Z"/>
+          <path class="hd-f2" d="M40 30 Q47 24 52 20 M46 20 L53 19 L53 26"/>
+        </svg></div>
+        <div class="svc-body">
+          <div class="svc-kicker">SCALE · OPERATE</div>
+          <h3>Operational Embedding.</h3>
+          <p>Scale the proven solution and make it self-sustaining.</p>
+          <a href="#" class="btn-text">Explore SCALE <span class="ar">&rarr;</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== THE WORK (single dark card) ===================== -->
+<section class="work">
+  <div class="work-inner">
+    <div class="work-head">
+      <div class="eyebrow">THE WORK</div>
+      <h2>Operational gains that stay visible after the project ends.</h2>
+    </div>
+    <div class="evidence">
+      <div class="ev-row">
+        <p class="ev-act">Redesigned customer retention routing. Save rate moved <span class="m">18% to 24%</span>.</p>
+        <p class="ev-sec">Energy retailer · Utilities</p>
+      </div>
+      <div class="ev-row">
+        <p class="ev-act">Standardised investigation across five teams. Cycle time fell <span class="m">52 to 31 days</span>.</p>
+        <p class="ev-sec">Utilities ombudsman · Government</p>
+      </div>
+      <div class="ev-row">
+        <p class="ev-act">Rebuilt quality checks at the source. Rework dropped <span class="m">28% to 9%</span>.</p>
+        <p class="ev-sec">Government department</p>
+      </div>
+    </div>
+
+    <div class="flagship">
+      <div class="eyebrow light">OUR WORK · FLAGSHIP</div>
+      <h3>Redesigned customer retention across five call-centre partners.</h3>
+      <p class="flag-copy">Churn was high and each partner ran its own retention method with no shared data. We mapped the end-to-end process, fixed the failure points, and handed the teams a model they now run without us.</p>
+      <div class="flag-metric"><strong>18% to 24%</strong><span>retention save rate</span></div>
+      <a href="#" class="flag-link">Read the case <span class="ar">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="cta">
+  <div class="cta-inner">
+    <div class="eyebrow">START HERE</div>
+    <h2>Start where the work actually is.</h2>
+    <p>Most operations leaders know something needs to change. Fewer know where to start. Tell us what you are seeing and we will point you to the right starting point, even if that turns out not to be us. You will hear back from us, not an auto-responder.</p>
+    <a href="#" class="btn-primary">Get in touch</a>
+  </div>
+</section>
+
+<footer class="note">Direction exploration v2. Sections shown: hero, statement, six services, The Work (dark card), CTA. Industries, Our Work and the full footer carry through from v5x in the build.</footer>
+
+</body>
+</html>

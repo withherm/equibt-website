@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EQUIBT v6x — Component Translations (v6)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;500;600&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<style>
+:root{
+  --navy:#26245C; --terracotta:#C15F3C; --terracotta-dark:#A04E30;
+  --off-white:#F5F3EE; --dark-slate:#2C3E50; --near-black:#161616;
+  --mid-grey:#2B2B2B; --caption:#5A5A5A; --hairline:rgba(38,36,92,0.13);
+}
+*,*::before,*::after{box-sizing:border-box;}
+body{margin:0;background:var(--off-white);color:var(--near-black);
+  font-family:"Lora",Georgia,serif;font-size:20px;font-weight:500;line-height:1.45;-webkit-font-smoothing:antialiased;}
+p{font-family:"Lora",Georgia,serif;}
+h1,h2,h3{font-family:"Montserrat",sans-serif;letter-spacing:-0.012em;margin:0;color:var(--navy);}
+a{color:inherit;}
+
+.page-head{padding:64px 48px 26px;max-width:1180px;margin:0 auto;}
+.page-head .eyebrow{margin-bottom:18px;}
+.page-head h1{font-weight:700;font-size:clamp(34px,3.4vw,42px);line-height:1.08;}
+.page-head p{max-width:680px;margin:18px 0 0;color:var(--mid-grey);font-size:19px;}
+
+.eyebrow{display:flex;width:fit-content;align-items:center;gap:9px;margin-bottom:14px;color:var(--terracotta);
+  font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--terracotta);flex:0 0 auto;}
+.eyebrow.light{color:var(--terracotta);}
+
+.btn-text{font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  text-decoration:none;color:var(--navy);display:inline-flex;align-items:center;gap:8px;}
+.btn-primary{font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:14px 30px;
+  border-radius:6px;background:var(--navy);color:var(--off-white);}
+
+/* hand-drawn */
+.hd{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.hd-acc{fill:none;stroke:var(--terracotta);stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;}
+.hd-f1{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0.55;}
+.hd-f2{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0.28;}
+.hd-f3{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0.16;}
+
+/* library scaffold */
+.block{max-width:1180px;margin:0 auto;padding:18px 48px 64px;}
+.label{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:14px 0;border-top:2px solid var(--navy);margin-bottom:0;}
+.label .num{font-family:"Montserrat",sans-serif;font-weight:700;font-size:13px;color:var(--terracotta);letter-spacing:0.1em;}
+.label .name{font-family:"Montserrat",sans-serif;font-weight:700;font-size:17px;color:var(--navy);}
+.label .note{font-family:"Lora",serif;font-weight:500;font-size:15px;color:var(--caption);font-style:italic;}
+.stage{margin-top:22px;padding:44px 46px;border-radius:16px;border:1px solid var(--hairline);}
+.stage.white{background:#fff;}
+.stage.beige{background:var(--off-white);}
+.stage-h2{font-weight:700;font-size:28px;line-height:1.1;margin-bottom:10px;}
+.stage-note{color:var(--mid-grey);font-size:18px;max-width:560px;margin:0 0 26px;}
+
+/* 03 service row */
+.svc-row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:40px;align-items:start;
+  padding:36px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
+.svc-icon{width:78px;height:78px;}
+.svc-kicker{margin-bottom:10px;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
+.svc-row h3{font-size:26px;line-height:1.16;margin-bottom:8px;}
+.svc-row p{margin:0 0 16px;color:var(--mid-grey);max-width:560px;}
+
+/* 04 examine editorial trio */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;}
+.trio .col{border-top:1px solid var(--hairline);padding-top:22px;}
+.trio .ic{width:54px;height:54px;margin-bottom:16px;}
+.trio h3{font-size:20px;line-height:1.2;margin-bottom:10px;}
+.trio p{margin:0;color:var(--mid-grey);font-size:17px;line-height:1.5;}
+
+/* 05 carousel */
+.carousel{position:relative;}
+.track{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:none;}
+.track::-webkit-scrollbar{display:none;}
+.slide{flex:0 0 78%;scroll-snap-align:start;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;}
+.slide .img{aspect-ratio:4/3;border-radius:8px;background:var(--off-white);border:1px solid var(--hairline);
+  display:flex;align-items:center;justify-content:center;}
+.slide .img svg{width:46px;height:46px;fill:none;stroke:rgba(38,36,92,0.34);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.slide h3{font-size:22px;margin-bottom:10px;}
+.slide p{margin:0;color:var(--mid-grey);font-size:17px;line-height:1.5;}
+.car-ctrl{display:flex;align-items:center;gap:14px;margin-top:24px;justify-content:flex-end;}
+.car-arrow{width:46px;height:46px;border:1px solid var(--hairline);border-radius:50%;background:#fff;color:var(--navy);
+  cursor:pointer;display:inline-flex;align-items:center;justify-content:center;}
+.car-arrow svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.car-dots{display:flex;gap:9px;margin-right:6px;}
+.dot{width:9px;height:9px;border-radius:50%;background:rgba(38,36,92,0.22);border:0;padding:0;}
+.dot.on{background:var(--terracotta);width:22px;border-radius:100px;}
+
+/* 06 evidence + flagship */
+.ev-row{padding:22px 0;border-top:1px solid var(--hairline);}
+.ev-row:last-of-type{border-bottom:1px solid var(--hairline);}
+.ev-act{margin:0;font-family:"Montserrat",sans-serif;font-weight:600;font-size:19px;color:var(--near-black);line-height:1.35;}
+.ev-act .m{color:var(--terracotta);font-weight:700;}
+.ev-sec{margin:6px 0 0;font-size:16px;font-style:italic;color:var(--caption);}
+.flagship{margin-top:40px;background:var(--dark-slate);border-radius:20px;padding:48px;}
+.flagship h3{max-width:560px;color:var(--off-white);font-weight:700;font-size:27px;line-height:1.12;}
+.flag-copy{max-width:560px;margin:16px 0 0;color:rgba(245,243,238,0.82);font-weight:400;font-size:18px;line-height:1.5;}
+.flag-metric{display:flex;align-items:baseline;gap:14px;margin-top:24px;}
+.flag-metric strong{font-family:"Montserrat",sans-serif;font-weight:700;font-size:36px;color:var(--terracotta);letter-spacing:-0.02em;}
+.flag-metric span{font-size:16px;font-style:italic;color:rgba(245,243,238,0.7);}
+.flag-link{display:inline-flex;gap:8px;margin-top:26px;color:var(--off-white);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;}
+
+/* 07 case editorial */
+.case{display:grid;grid-template-columns:minmax(0,0.34fr) minmax(0,0.66fr);gap:48px;border-top:1px solid var(--hairline);padding-top:30px;}
+.case .meta .sec{color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
+.case .meta .num{margin-top:14px;font-family:"Montserrat",sans-serif;font-weight:700;font-size:clamp(34px,4vw,48px);color:var(--navy);line-height:0.98;letter-spacing:-0.01em;}
+.case h3{font-size:26px;line-height:1.14;margin-bottom:18px;}
+.case .blk{margin-top:16px;}
+.case .blk .l{margin:0 0 5px;color:var(--navy);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
+.case .blk p{margin:0;color:var(--mid-grey);font-size:17px;line-height:1.5;}
+
+/* 08 industry rows */
+.ind-row{display:grid;grid-template-columns:84px minmax(0,1fr);gap:36px;align-items:start;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:32px 0;}
+.ind-row .ic{width:70px;height:70px;}
+.ind-row h3{font-size:24px;margin-bottom:6px;}
+.ind-row .hook{margin:0 0 8px;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:13px;font-weight:700;letter-spacing:0.04em;}
+.ind-row p{margin:0;color:var(--mid-grey);font-size:17px;line-height:1.5;max-width:600px;}
+
+/* 09 pathway */
+.pathway svg{width:100%;height:auto;overflow:visible;}
+
+/* 10 next step */
+.next{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+.next .col{border-top:1px solid var(--hairline);padding-top:22px;}
+#track2 .slide{border:1px solid var(--hairline);border-radius:14px;background:#fff;padding:28px 30px;}
+.next .ic{width:50px;height:50px;margin-bottom:14px;}
+.next .k{margin-bottom:8px;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
+.next h3{font-size:21px;margin-bottom:8px;}
+.next p{margin:0 0 14px;color:var(--mid-grey);font-size:17px;line-height:1.5;}
+
+/* 11 insights list */
+.ins{border-top:1px solid var(--hairline);}
+.ins a{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:20px 0;border-bottom:1px solid var(--hairline);text-decoration:none;}
+.ins a:hover h3{color:var(--terracotta);}
+.ins h3{font-size:20px;font-weight:600;line-height:1.25;max-width:760px;}
+.ins .cat{color:var(--caption);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;}
+
+/* 12 chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px;}
+.chip{font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  padding:9px 18px;border-radius:100px;border:1px solid var(--hairline);background:#fff;color:var(--navy);cursor:pointer;}
+.chip.on{background:var(--terracotta);border-color:var(--terracotta);color:#fff;}
+
+/* 13 buttons */
+.btnrow{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.retired{font-family:"Lora",serif;font-style:italic;color:var(--caption);font-size:15px;}
+
+/* service selector (master-detail) */
+.sel{display:grid;grid-template-columns:minmax(260px,0.42fr) minmax(0,0.58fr);gap:52px;align-items:start;}
+.sel-list{display:flex;flex-direction:column;}
+.sel-item{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:center;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--hairline);padding:18px 4px;cursor:pointer;position:relative;}
+.sel-item:last-child{border-bottom:1px solid var(--hairline);}
+.sel-item .si{width:40px;height:40px;}
+.sel-item .sk{font-family:"Montserrat",sans-serif;font-weight:700;font-size:18px;color:var(--navy);}
+.sel-item .ss{font-family:"Lora",serif;font-size:15px;color:var(--caption);}
+.sel-item.on{background:var(--off-white);}
+.sel-item.on::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;background:var(--terracotta);border-radius:2px;}
+.sel-item.on .sk{color:var(--terracotta-dark);}
+.panel-title{font-family:"Montserrat",sans-serif;font-weight:700;font-size:23px;color:var(--navy);line-height:1.18;}
+.panel-copy{margin:14px 0 0;color:var(--mid-grey);font-size:18px;line-height:1.5;}
+.panel-lab{margin:26px 0 10px;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
+.panel-chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0;}
+.panel-chips li{font-family:"Montserrat",sans-serif;font-size:12px;font-weight:600;color:var(--navy);border:1px solid var(--hairline);border-radius:100px;padding:7px 14px;}
+.panel-del{margin:0;padding:0;list-style:none;}
+.panel-del li{padding:10px 0;border-top:1px solid var(--hairline);font-size:17px;color:var(--mid-grey);}
+
+/* case study */
+.cs h1{font-weight:700;font-size:clamp(32px,3.2vw,40px);line-height:1.08;max-width:780px;}
+.cs-sub{max-width:600px;margin:18px 0 0;color:var(--mid-grey);font-size:19px;line-height:1.45;}
+.cs-metrics{display:flex;flex-wrap:wrap;gap:44px;margin-top:30px;padding-top:24px;border-top:1px solid var(--hairline);}
+.cs-metrics .fig{font-family:"Montserrat",sans-serif;font-weight:700;font-size:clamp(26px,3vw,34px);color:var(--terracotta);letter-spacing:-0.02em;line-height:1;}
+.cs-metrics .cap{margin-top:8px;font-size:15px;font-style:italic;color:var(--caption);max-width:190px;}
+.cs-blocks{margin-top:14px;}
+.cs-block{display:grid;grid-template-columns:minmax(160px,220px) minmax(0,1fr);gap:44px;padding:30px 0;border-top:1px solid var(--hairline);}
+.cs-block:last-child{border-bottom:1px solid var(--hairline);}
+.cs-block h2{font-size:17px;font-weight:700;letter-spacing:0.04em;color:var(--navy);}
+.cs-block p{margin:0;color:var(--mid-grey);font-size:18px;line-height:1.55;}
+
+/* CTA equation (dark) */
+.ctaf{background:var(--dark-slate);border-radius:20px;padding:48px;}
+.ctaf h2{color:var(--off-white);font-weight:700;font-size:clamp(28px,3vw,36px);line-height:1.08;}
+.ctaf p{max-width:560px;margin:16px 0 0;color:rgba(245,243,238,0.78);font-size:18px;line-height:1.5;}
+.ctaf-eq{display:flex;align-items:stretch;gap:18px;flex-wrap:wrap;margin:32px 0 30px;}
+.ctaf-box{flex:1 1 200px;border:1px solid rgba(245,243,238,0.22);border-radius:12px;padding:24px;}
+.ctaf-box .lab{color:rgba(245,243,238,0.55);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;}
+.ctaf-box .val{margin-top:10px;color:var(--off-white);font-family:"Montserrat",sans-serif;font-weight:600;font-size:20px;line-height:1.2;}
+.ctaf-box ul{margin:8px 0 0;padding:0;list-style:none;}
+.ctaf-box ul li{padding:7px 0;border-top:1px solid rgba(245,243,238,0.16);color:rgba(245,243,238,0.85);font-size:15px;}
+.ctaf-op{display:flex;align-items:center;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-weight:700;font-size:24px;}
+.ctaf .btn-primary{background:#fff;color:var(--near-black);}
+
+/* side-bleed highlights */
+.hl{padding:30px 36px;border-radius:14px;max-width:560px;}
+.hl .big{font-family:"Montserrat",sans-serif;font-weight:700;font-size:21px;line-height:1.25;color:var(--navy);margin:0;}
+.hl .small{margin:10px 0 0;color:var(--near-black);}
+.hl-blue{background:#E8ECF5;margin-left:-44px;border-radius:0 14px 14px 0;}
+.hl-white{background:#fff;border:1px solid var(--hairline);margin-left:auto;margin-right:-44px;border-radius:14px 0 0 14px;text-align:left;}
+.hl-white .big{color:var(--terracotta-dark);}
+
+/* beliefs → hanging-label editorial rows on hairlines (no left rule) */
+.beliefs{display:flex;flex-direction:column;}
+.belief{display:grid;grid-template-columns:minmax(220px,320px) minmax(0,1fr);gap:44px;padding:28px 0;border-top:1px solid var(--hairline);}
+.belief:last-child{border-bottom:1px solid var(--hairline);}
+.belief h3{font-size:21px;color:var(--navy);}
+.belief p{margin:0;color:var(--mid-grey);font-size:17px;line-height:1.5;}
+
+/* why-sector formula */
+.secf-eq{display:flex;align-items:stretch;gap:18px;flex-wrap:wrap;margin:24px 0 0;}
+.secf-box{flex:1 1 220px;background:#fff;border:1px solid var(--hairline);border-radius:14px;padding:26px;}
+.secf-box .lab{color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;}
+.secf-box h3{margin:8px 0 10px;font-size:21px;color:var(--navy);}
+.secf-box p{margin:0;color:var(--mid-grey);font-size:16px;line-height:1.5;}
+.secf-op{display:flex;align-items:center;color:var(--navy);font-family:"Montserrat",sans-serif;font-weight:700;font-size:22px;}
+.shapes{margin-top:18px;border-top:1px solid var(--hairline);padding-top:22px;}
+.shapes h4{font-family:"Montserrat",sans-serif;font-size:16px;color:var(--navy);margin:0 0 16px;}
+.shapes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+.shape{padding:0 22px;border-left:1px solid var(--hairline);}
+.shape:first-child{padding-left:0;border-left:0;}
+.shape .s-lab{font-family:"Montserrat",sans-serif;font-weight:700;font-size:13px;color:var(--navy);}
+.shape .s-val{margin-top:6px;color:var(--mid-grey);font-size:15px;font-style:italic;line-height:1.4;}
+
+@media(max-width:900px){
+  .ctaf-eq,.secf-eq{flex-direction:column;}
+  .ctaf-op,.secf-op{justify-content:center;}
+  .belief{grid-template-columns:1fr;gap:8px;}
+  .shapes-grid{grid-template-columns:1fr 1fr;gap:18px;}
+  .shape{border-left:0;padding:0;}
+  .hl-blue,.hl-white{margin-left:0;margin-right:0;border-radius:14px;}
+}
+@media(max-width:900px){
+  .block,.page-head{padding-left:24px;padding-right:24px;}
+  .stage{padding:28px 22px;}
+  .trio,.next,.sel,.cs-block{grid-template-columns:1fr;gap:26px;}
+  .slide{flex:0 0 88%;grid-template-columns:1fr;}
+  .case{grid-template-columns:1fr;gap:22px;}
+  .ins a{flex-direction:column;gap:6px;}
+}
+</style>
+</head>
+<body>
+
+<div class="page-head">
+  <div class="eyebrow">V6X COMPONENT TRANSLATIONS</div>
+  <h1>One example of each pattern, in real content.</h1>
+  <p>Each block names the v5x pattern, what changes, and shows the v6x version using the actual page copy. Same rules throughout: Montserrat headings, Lora body, white and beige only, thin-lined boxes and hairlines (no drop shadows), one terracotta accent, hand-drawn line-art. The divider above each block is the contained bisection line.</p>
+</div>
+
+<!-- 01 PILLAR IDENTITY -->
+<section class="block">
+  <div class="label"><span class="num">01</span><span class="name">Pillar identity</span><span class="note">was: six-colour FRAME | Define pill → now: hand-drawn icon + monochrome dotted eyebrow</span></div>
+  <div class="stage white">
+    <div style="display:flex;align-items:center;gap:28px;">
+      <span style="width:72px;height:72px;flex:0 0 auto;"><svg viewBox="0 0 64 64" style="width:100%;height:100%">
+        <path class="hd" d="M13 26 Q12 14 14 13 Q16 12 26 12.4"/><path class="hd" d="M38 12.4 Q50 12 51 14 Q52 16 51.6 26"/>
+        <path class="hd" d="M51.6 38 Q52 50 50 51 Q48 52 38 51.6"/><path class="hd" d="M26 51.6 Q14 52 13 50 Q12 48 13 38"/>
+        <circle cx="32" cy="32" r="11" fill="none" stroke="#26245C" stroke-width="2"/><circle cx="32" cy="32" r="3.6" fill="#C15F3C"/>
+      </svg></span>
+      <div>
+        <div class="eyebrow">FRAME · DEFINE</div>
+        <h3 style="font-size:27px;">Problem Framing.</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 SERVICE ROW -->
+<section class="block">
+  <div class="label"><span class="num">02</span><span class="name">Service cards → editorial rows</span><span class="note">was: white box, shadow, 3x2 grid → now: open row on hairlines, icon on one left axis</span></div>
+  <div class="stage white">
+    <div class="svc-row">
+      <span class="svc-icon"><svg viewBox="0 0 64 64" style="width:100%;height:100%">
+        <path class="hd" d="M13 26 Q12 14 14 13 Q16 12 26 12.4"/><path class="hd" d="M38 12.4 Q50 12 51 14 Q52 16 51.6 26"/>
+        <path class="hd" d="M51.6 38 Q52 50 50 51 Q48 52 38 51.6"/><path class="hd" d="M26 51.6 Q14 52 13 50 Q12 48 13 38"/>
+        <circle cx="32" cy="32" r="11" fill="none" stroke="#26245C" stroke-width="2"/><circle cx="32" cy="32" r="3.6" fill="#C15F3C"/>
+      </svg></span>
+      <div>
+        <div class="svc-kicker">FRAME · DEFINE</div>
+        <h3>Problem Framing.</h3>
+        <p>Align on the real problem before anything else moves.</p>
+        <a href="#" class="btn-text">Explore FRAME &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 EXAMINE TRIO -->
+<section class="block">
+  <div class="label"><span class="num">03</span><span class="name">Examine / context cards → editorial trio</span><span class="note">was: 3 filled navy-wash boxes with shadow → now: open columns on hairlines</span></div>
+  <div class="stage white">
+    <div class="eyebrow">WHAT WE DO</div>
+    <h2 class="stage-h2" style="margin-top:12px;">Three outputs. Complete alignment.</h2>
+    <p class="stage-note">FRAME covers the disciplines that make the next service worth funding: stakeholder alignment, a locked charter, and specific success criteria.</p>
+    <div class="trio">
+      <div class="col">
+        <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M21 18 Q32 13 41 18"/><path class="hd" d="M18 22 Q24 33 30 41"/><path class="hd" d="M44 22 Q38 33 34 41"/><circle cx="16" cy="18" r="5.5" class="hd"/><circle cx="46" cy="18" r="5.5" class="hd"/><circle cx="32" cy="46" r="6.5" fill="none" stroke="#C15F3C" stroke-width="2.3"/></svg></span>
+        <h3>Stakeholder Alignment</h3>
+        <p>A structured SPIN workshop with your leadership team. Disagreements surface in the room, not six months into a project.</p>
+      </div>
+      <div class="col">
+        <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M11 51 Q32 52 53 50.4"/><path class="hd" d="M18 50 Q17.5 44 18 38"/><path class="hd" d="M28 50 Q27.5 41 28 33"/><path class="hd" d="M38 50 Q37.5 36 38 27"/><path class="hd-acc" d="M48 50 Q47.4 32 48 20"/></svg></span>
+        <h3>Project Charter</h3>
+        <p>A locked charter: problem statement, scope boundaries, exclusions, success criteria, timeline. Every stakeholder signs off.</p>
+      </div>
+      <div class="col">
+        <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M49 26 Q51 14 39 11 Q21 6 14 23 Q10 35 22 45 Q35 53 47 42"/><path class="hd-acc" d="M40 40 L48 43 L45 35"/><circle cx="31" cy="29" r="3.4" fill="#26245C"/></svg></span>
+        <h3>Success Criteria</h3>
+        <p>Specific, measurable criteria the PLAN diagnostic baselines against. You know what done looks like before anything starts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 CAROUSEL -->
+<section class="block">
+  <div class="label"><span class="num">04</span><span class="name">Deliverables carousel → de-weighted scroll-snap</span><span class="note">was: 88% white slides, shadowed circle arrows → now: hairline controls, terracotta dot, no shadow</span></div>
+  <div class="stage white">
+    <div class="eyebrow">WHAT YOU RECEIVE</div>
+    <h2 class="stage-h2" style="margin-top:12px;">Four deliverables. Aligned from day one.</h2>
+    <p class="stage-note">Each deliverable is a practical working asset, not a slide deck for the shelf.</p>
+    <div class="carousel">
+      <div class="track" id="track">
+        <article class="slide"><div class="img"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="13" y2="15"/></svg></div><div><h3>SPIN Workshop Report</h3><p>The agreed problem statement, competing hypotheses surfaced and resolved, implications mapped, and the non-negotiables each stakeholder brought.</p></div></article>
+        <article class="slide"><div class="img"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><path d="M 8 16 L 10.5 18.5 L 16 13"/></svg></div><div><h3>Project Charter</h3><p>The governance document for everything that follows. Scope boundaries, exclusions, success criteria, timeline, signed off by all stakeholders.</p></div></article>
+        <article class="slide"><div class="img"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M 8 16 L 11 12 L 14 14 L 17 8"/></svg></div><div><h3>Success Criteria Framework</h3><p>Specific, measurable success criteria the PLAN diagnostic will baseline against. Measurable targets everyone reads the same way.</p></div></article>
+        <article class="slide"><div class="img"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="18" rx="2"/><path d="M 8 2 V 7 M 16 2 V 7"/><line x1="8" y1="11" x2="16" y2="11"/></svg></div><div><h3>SPIN Workshop Record</h3><p>A complete facilitated record: all hypotheses explored, evidence tested, the reasoning behind the agreed problem statement.</p></div></article>
+      </div>
+      <div class="car-ctrl">
+        <div class="car-dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <button class="car-arrow" id="prev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5 L8 12 L15 19"/></svg></button>
+        <button class="car-arrow" id="next" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5 L16 12 L9 19"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 THE WORK -->
+<section class="block">
+  <div class="label"><span class="num">05</span><span class="name">Proof stats → evidence rows + one flagship dark card</span><span class="note">was: 3 bare numbers in a dark box (claims) → now: number tied to the action that earned it</span></div>
+  <div class="stage beige">
+    <div class="eyebrow">THE WORK</div>
+    <h2 class="stage-h2" style="margin-top:12px;">Operational gains that stay visible after the project ends.</h2>
+    <div style="max-width:880px;margin-top:14px;">
+      <div class="ev-row"><p class="ev-act">Redesigned customer retention routing. Save rate moved <span class="m">18% to 24%</span>.</p><p class="ev-sec">Energy retailer · Utilities</p></div>
+      <div class="ev-row"><p class="ev-act">Standardised investigation across five teams. Cycle time fell <span class="m">52 to 31 days</span>.</p><p class="ev-sec">Utilities ombudsman · Government</p></div>
+      <div class="ev-row"><p class="ev-act">Rebuilt quality checks at the source. Rework dropped <span class="m">28% to 9%</span>.</p><p class="ev-sec">Government department</p></div>
+    </div>
+    <div class="flagship">
+      <div class="eyebrow">OUR WORK · FLAGSHIP</div>
+      <h3>Redesigned customer retention across five call-centre partners.</h3>
+      <p class="flag-copy">Churn was high and each partner ran its own retention method with no shared data. We mapped the end-to-end process, fixed the failure points, and handed the teams a model they now run without us.</p>
+      <div class="flag-metric"><strong>18% to 24%</strong><span>retention save rate</span></div>
+      <a href="#" class="flag-link">Read the case &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- 06 CASE CARD -->
+<section class="block">
+  <div class="label"><span class="num">06</span><span class="name">Case cards → de-boxed editorial</span><span class="note">was: 2-col box, shadow, coloured pill → now: hairline-framed, Problem / Approach / Outcome kept</span></div>
+  <div class="stage white">
+    <div class="case">
+      <div class="meta">
+        <div class="sec">Government &amp; Public Sector</div>
+        <div class="num">5 days</div>
+      </div>
+      <div>
+        <h3>Reached alignment across all three directorates.</h3>
+        <div class="blk"><p class="l">Problem</p><p>Three directorates held competing hypotheses about a cross-functional service failure. No shared problem definition existed.</p></div>
+        <div class="blk"><p class="l">Approach</p><p>Ran a two-day SPIN workshop across all three. Surfaced the competing hypotheses, tested each against evidence, and produced a single agreed problem statement and a signed charter within the week.</p></div>
+        <div class="blk"><p class="l">Outcome</p><p>Project charter signed before the diagnostic began.</p></div>
+        <a href="#" class="btn-text" style="margin-top:22px;">View our work &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 INDUSTRY ROWS -->
+<section class="block">
+  <div class="label"><span class="num">07</span><span class="name">Industry / sector cards → editorial rows</span><span class="note">was: 452px box, terracotta top bar, shadow → now: hairline row, hand-drawn sector motif</span></div>
+  <div class="stage white">
+    <div class="ind-row">
+      <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%">
+        <path class="hd" d="M11 50 Q32 51 53 49.6"/>
+        <path class="hd" d="M14 24 Q32 14 50 24"/>
+        <path class="hd" d="M19 26 Q18.6 38 19 47"/>
+        <path class="hd" d="M28 26 Q27.6 38 28 47"/>
+        <path class="hd-acc" d="M37 26 Q36.6 38 37 47"/>
+        <path class="hd" d="M46 26 Q45.6 38 46 47"/>
+      </svg></span>
+      <div>
+        <h3>Financial Services</h3>
+        <p class="hook">Fix the process, not the symptom.</p>
+        <p>Rework, rising handle times, and control gaps in a regulated operation are rarely a people problem. They are a process problem, and process problems are fixable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 STATION PATHWAY -->
+<section class="block">
+  <div class="label"><span class="num">08</span><span class="name">Station pathway → hand-drawn line</span><span class="note">was: geometric subway map with coloured pills → now: single hand-drawn line, one terracotta "you are here"</span></div>
+  <div class="stage white pathway">
+    <div class="eyebrow">WHERE IT LEADS</div>
+    <h2 class="stage-h2" style="margin:12px 0 30px;">Define the problem. Then measure it.</h2>
+    <svg viewBox="0 0 1040 150" role="img" aria-label="FRAME to SCALE progression">
+      <path class="hd-f2" d="M70 100 Q300 90 520 99 Q760 109 970 98"/>
+      <text x="70" y="34" text-anchor="middle" fill="#C15F3C" font-family="Montserrat,sans-serif" font-size="12" font-weight="700" letter-spacing="1.4">YOU ARE HERE</text>
+      <path class="hd-acc" d="M70 44 L70 78"/>
+      <circle cx="70" cy="100" r="11" fill="#fff" stroke="#C15F3C" stroke-width="2.6"/>
+      <circle cx="70" cy="100" r="4" fill="#C15F3C"/>
+      <circle cx="250" cy="97" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
+      <circle cx="430" cy="99" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
+      <circle cx="610" cy="101" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
+      <circle cx="790" cy="98" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
+      <circle cx="970" cy="98" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
+      <g font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">
+        <text x="70" y="138" fill="#26245C">FRAME</text>
+        <text x="250" y="138" fill="#26245C">PLAN</text>
+        <text x="430" y="138" fill="#7A8591">SOLVE</text>
+        <text x="610" y="138" fill="#7A8591">EVOLVE</text>
+        <text x="790" y="138" fill="#7A8591">GOVERN</text>
+        <text x="970" y="138" fill="#7A8591">SCALE</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- 09 NEXT STEP -->
+<section class="block">
+  <div class="label"><span class="num">09</span><span class="name">Next-step / related cards → hairline columns</span><span class="note">was: filled boxes with shadow → now: open columns, current step + the natural next one</span></div>
+  <div class="stage white">
+    <div class="next">
+      <div class="col">
+        <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M13 26 Q12 14 14 13 Q16 12 26 12.4"/><path class="hd" d="M38 12.4 Q50 12 51 14 Q52 16 51.6 26"/><path class="hd" d="M51.6 38 Q52 50 50 51 Q48 52 38 51.6"/><path class="hd" d="M26 51.6 Q14 52 13 50 Q12 48 13 38"/><circle cx="32" cy="32" r="11" class="hd"/><circle cx="32" cy="32" r="3.6" fill="#C15F3C"/></svg></span>
+        <div class="k">FRAME · DEFINE</div>
+        <h3>Problem Framing and Stakeholder Alignment.</h3>
+        <p>When your leadership team disagrees on what the problem is. A SPIN workshop aligns stakeholders and produces a locked charter before any diagnostic dollar gets spent.</p>
+      </div>
+      <div class="col">
+        <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M11 51 Q32 52 53 50.4"/><path class="hd" d="M18 50 Q17.5 44 18 38"/><path class="hd" d="M28 50 Q27.5 41 28 33"/><path class="hd" d="M38 50 Q37.5 36 38 27"/><path class="hd-acc" d="M48 50 Q47.4 32 48 20"/></svg></span>
+        <div class="k">PLAN · MEASURE</div>
+        <h3>Operations Diagnostic.</h3>
+        <p>When the charter is signed, PLAN establishes the evidence base. Baseline measurement, capability assessment, prioritised roadmap.</p>
+        <a href="#" class="btn-text">Explore PLAN &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 INSIGHTS -->
+<section class="block">
+  <div class="label"><span class="num">10</span><span class="name">Insight / blog cards → hairline list</span><span class="note">was: filled card grid → now: editorial list, pillar as caption not colour</span></div>
+  <div class="stage white">
+    <div class="ins">
+      <a href="#"><h3>Prioritising after the diagnostic: where to start when everything looks broken.</h3><span class="cat">PLAN</span></a>
+      <a href="#"><h3>What a rapid pilot should actually test before a full rollout.</h3><span class="cat">EVOLVE</span></a>
+      <a href="#"><h3>Why continuous improvement programmes fail, and what makes them stick.</h3><span class="cat">SOLVE</span></a>
+      <a href="#"><h3>Capability transfer: how to make improvement outlast the engagement.</h3><span class="cat">SCALE</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 11 FILTER CHIPS -->
+<section class="block">
+  <div class="label"><span class="num">11</span><span class="name">Filter chips → hairline pills</span><span class="note">was: filled chips → now: hairline pills, terracotta fill on active (one accent only)</span></div>
+  <div class="stage white">
+    <div class="chips">
+      <button class="chip on">All work</button>
+      <button class="chip">FRAME</button>
+      <button class="chip">PLAN</button>
+      <button class="chip">SOLVE</button>
+      <button class="chip">EVOLVE</button>
+      <button class="chip">GOVERN</button>
+      <button class="chip">SCALE</button>
+    </div>
+  </div>
+</section>
+
+<!-- 12 BUTTONS -->
+<section class="block">
+  <div class="label"><span class="num">12</span><span class="name">Buttons</span><span class="note">keep: navy solid primary + terracotta-arrow text link · retire: bordered outline button</span></div>
+  <div class="stage white">
+    <div class="btnrow">
+      <a href="#" class="btn-primary">Get in touch</a>
+      <a href="#" class="btn-text">Download capability statement &rarr;</a>
+      <span class="retired">(the v5x bordered "outline" button is dropped in favour of the lighter text link)</span>
+    </div>
+  </div>
+</section>
+
+<!-- 13 SERVICE SELECTOR -->
+<section class="block">
+  <div class="label"><span class="num">13</span><span class="name">Industry service selector → master-detail (interactive)</span><span class="note">was: 6 colour-coded pillar cards + panel → now: hairline list on a left axis, terracotta active rule, no colour-coding · click a pillar</span></div>
+  <div class="stage white">
+    <div class="eyebrow">HOW WE HELP IN UTILITIES</div>
+    <h2 class="stage-h2">Pick the pressure you are under.</h2>
+    <div class="sel" style="margin-top:24px;">
+      <div class="sel-list" id="sel-list">
+        <button class="sel-item on" data-title="FRAME: define the operating pressure before it becomes a reliability risk." data-copy="Use FRAME when the pressure is visible but scope, asset constraints, reporting needs or reliability risk are still contested." data-ch="Reliability pressure|Asset constraints|Regulatory reporting" data-del="SPIN Workshop Report|Project Charter|Success Criteria Framework|SPIN Workshop Record">
+          <span class="si"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M13 26 Q12 14 14 13 Q16 12 26 12.4"/><path class="hd" d="M38 12.4 Q50 12 51 14 Q52 16 51.6 26"/><path class="hd" d="M51.6 38 Q52 50 50 51 Q48 52 38 51.6"/><path class="hd" d="M26 51.6 Q14 52 13 50 Q12 48 13 38"/><circle cx="32" cy="32" r="11" class="hd"/><circle cx="32" cy="32" r="3.4" fill="#C15F3C"/></svg></span>
+          <span><span class="sk">FRAME</span> <span class="ss">· Define</span></span>
+        </button>
+        <button class="sel-item" data-title="PLAN: baseline the process under load." data-copy="Use PLAN when high-volume work drifts off standard and leaders need to prove where the variation starts." data-ch="Process drift|Field handoffs|Manual reporting" data-del="Current-State Assessment|Capability Gap Analysis|Prioritised Improvement Roadmap|Engagement Pathway Recommendation">
+          <span class="si"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M11 51 Q32 52 53 50.4"/><path class="hd" d="M18 50 Q17.5 44 18 38"/><path class="hd" d="M28 50 Q27.5 41 28 33"/><path class="hd" d="M38 50 Q37.5 36 38 27"/><path class="hd-acc" d="M48 50 Q47.4 32 48 20"/></svg></span>
+          <span><span class="sk">PLAN</span> <span class="ss">· Measure</span></span>
+        </button>
+        <button class="sel-item" data-title="SOLVE: isolate the cause of operational drift." data-copy="Use SOLVE when the process has been trained or automated before the structural cause of variation is understood." data-ch="SLA pressure|Data loss|Handoff delay" data-del="Root Cause Analysis Report|Future State Design|Cost-Benefit Analysis|Implementation Readiness Assessment">
+          <span class="si"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M21 18 Q32 13 41 18"/><path class="hd" d="M18 22 Q24 33 30 41"/><path class="hd" d="M44 22 Q38 33 34 41"/><circle cx="16" cy="18" r="5" class="hd"/><circle cx="46" cy="18" r="5" class="hd"/><circle cx="32" cy="46" r="6" fill="none" stroke="#C15F3C" stroke-width="2.3"/></svg></span>
+          <span><span class="sk">SOLVE</span> <span class="ss">· Analyse</span></span>
+        </button>
+        <button class="sel-item" data-title="EVOLVE: test the fix without making reliability the test subject." data-copy="Use EVOLVE when the redesigned workflow needs a contained pilot that protects live service continuity." data-ch="Contained pilots|Service continuity|Operational evidence" data-del="Pilot Results Report|Business Requirements Document|Implementation and Change Management Plan|Deployment Authorisation Brief">
+          <span class="si"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M49 26 Q51 14 39 11 Q21 6 14 23 Q10 35 22 45 Q35 53 47 42"/><path class="hd-acc" d="M40 40 L48 43 L45 35"/><circle cx="31" cy="29" r="3.2" fill="#26245C"/></svg></span>
+          <span><span class="sk">EVOLVE</span> <span class="ss">· Improve</span></span>
+        </button>
+        <button class="sel-item" data-title="GOVERN: lock the reporting, controls and ownership." data-copy="Use GOVERN when regulatory reporting, AI use or manual controls need ownership and monitoring that people actually use." data-ch="Regulatory evidence|AI governance|Control ownership" data-del="Process Architecture Document|Control Plans|Monitoring Dashboard Specification|AI Governance Framework">
+          <span class="si"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M32 10 Q44 15 50 16 Q51.5 31 48 41 Q43 51 32 55 Q21 51 16 41 Q12.5 31 14 16 Q20 15 32 10 Z"/><path class="hd-acc" d="M24 31 Q28 36 30 38 Q36 28 42 22"/></svg></span>
+          <span><span class="sk">GOVERN</span> <span class="ss">· Control</span></span>
+        </button>
+        <button class="sel-item" data-title="SCALE: standardise what has proven reliable." data-copy="Use SCALE when a governed improvement is ready to move across crews, teams or regions without eroding." data-ch="Standard work|Capability transfer|Sustained performance" data-del="Standardisation Playbook|Automation Deployment Package|Capability Transfer Programme|Continuous Improvement System">
+          <span class="si"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M12 38 L27 38 L27 23 L12 23 Z"/><path class="hd" d="M21 47 L38 47 L38 30 L21 30 Z"/><path class="hd-acc" d="M31 55 L52 55 L52 35 L31 35 Z"/></svg></span>
+          <span><span class="sk">SCALE</span> <span class="ss">· Operate</span></span>
+        </button>
+      </div>
+      <div id="panel" aria-live="polite">
+        <div class="panel-title" id="p-title"></div>
+        <p class="panel-copy" id="p-copy"></p>
+        <p class="panel-lab">Sector challenges addressed</p>
+        <ul class="panel-chips" id="p-ch"></ul>
+        <p class="panel-lab">Deliverables</p>
+        <ul class="panel-del" id="p-del"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 PROOF CAROUSEL -->
+<section class="block">
+  <div class="label"><span class="num">14</span><span class="name">Industry proof carousel → evidence slides</span><span class="note">was: stat slides in a carousel → now: de-weighted scroll-snap, controls bottom-right, each slide an evidence row</span></div>
+  <div class="stage beige">
+    <div class="eyebrow">CLIENT RESULTS</div>
+    <h2 class="stage-h2">Restoration improves when the process holds under load.</h2>
+    <div class="track" id="track2" style="margin-top:24px;">
+      <article class="slide" style="display:block;flex-basis:62%;"><p class="ev-act" style="font-size:22px;">Cut unplanned outage restoration time by <span class="m">27%</span> across the network.</p><p class="ev-sec" style="margin-top:10px;">Energy distribution operator · PLAN, GOVERN and SCALE engagement · anonymised, illustrative pending a confirmed metric.</p></article>
+      <article class="slide" style="display:block;flex-basis:62%;"><p class="ev-act" style="font-size:22px;">Mapped where process drift and asset constraints interacted. <span class="m">PLAN</span></p><p class="ev-sec" style="margin-top:10px;">The diagnostic located the real starting point under load.</p></article>
+      <article class="slide" style="display:block;flex-basis:62%;"><p class="ev-act" style="font-size:22px;">Embedded a reporting standard owners actually use. <span class="m">GOVERN</span></p><p class="ev-sec" style="margin-top:10px;">Regulatory evidence became easier to sustain.</p></article>
+    </div>
+    <div class="car-ctrl">
+      <div class="car-dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div>
+      <button class="car-arrow" id="prev2" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5 L8 12 L15 19"/></svg></button>
+      <button class="car-arrow" id="next2" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5 L16 12 L9 19"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- 15 CASE STUDY -->
+<section class="block">
+  <div class="label"><span class="num">15</span><span class="name">Case study page → one-page summary + blocks</span><span class="note">was: boxed stat cells + plain prose → now: hairline metric band + hanging-label editorial blocks</span></div>
+  <div class="stage white">
+    <div class="cs">
+      <div class="eyebrow">FINANCIAL SERVICES · RAPID PILOT</div>
+      <h1>Cut mortgage lead leakage across direct and broker channels.</h1>
+      <p class="cs-sub">A redesigned lead-to-application process and a Board-approved digital roadmap, run by the client's own teams.</p>
+      <div class="cs-metrics">
+        <div><div class="fig">30% to 10%</div><div class="cap">lead leakage</div></div>
+        <div><div class="fig">+13 pts</div><div class="cap">unconditional approvals in three months</div></div>
+        <div><div class="fig">Board-approved</div><div class="cap">digital mortgage roadmap</div></div>
+      </div>
+      <div class="cs-blocks">
+        <div class="cs-block"><h2>The problem</h2><p>The mortgage business was losing 30% of inbound leads before an application was lodged, unconditional decisions took more than five days, and a competitor had already reached a 60-minute approval. The gap was widening.</p></div>
+        <div class="cs-block"><h2>What we did</h2><p>Mapped the end-to-end process across direct and broker channels, credit, and origination. Identified 92 improvement opportunities, activated 50 in the first phase, redesigned the lead-to-application flow, and defined reason codes so drop-out could be targeted. Then delivered a Board-approved digital roadmap.</p></div>
+        <div class="cs-block"><h2>The result</h2><p>Lead leakage fell from 30% to 10%, the unconditional decision rate lifted roughly 13 points within three months, and the roadmap was approved at Board level. The teams now run the redesigned process and the improvement backlog themselves.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 CTA EQUATION -->
+<section class="block">
+  <div class="label"><span class="num">16</span><span class="name">CTA equation → dark panel, thin-lined boxes</span><span class="note">was: heavy dark band + filled meta → now: contained dark card, hairline boxes, terracotta operators</span></div>
+  <div class="stage beige">
+    <div class="ctaf">
+      <div class="eyebrow">START HERE</div>
+      <h2>Make the improvement hold.</h2>
+      <p>If gains keep slipping back, the improvement was never embedded. That is a governance gap, and it is fixable. Tell us where the operation is drifting and we will identify what is missing.</p>
+      <div class="ctaf-eq">
+        <div class="ctaf-box"><div class="lab">Typical timeline</div><div class="val">From 4 weeks</div></div>
+        <div class="ctaf-op">+</div>
+        <div class="ctaf-box"><div class="lab">How we work</div><div class="val">Embedded with your team</div></div>
+        <div class="ctaf-op">=</div>
+        <div class="ctaf-box"><div class="lab">What you get</div><ul><li>Process Architecture Document</li><li>Control Plans</li><li>Monitoring Dashboard Specification</li><li>AI Governance Framework</li></ul></div>
+      </div>
+      <a href="#" class="btn-primary">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- 17 SIDE-BLEED HIGHLIGHTS -->
+<section class="block">
+  <div class="label"><span class="num">17</span><span class="name">Side-bleed highlights → blue and white</span><span class="note">callout statements that run off the side edge · navy-wash and white, rounded on the inner side only</span></div>
+  <div class="stage white">
+    <div class="eyebrow">THE PROBLEM WE SOLVE</div>
+    <h2 class="stage-h2">Most improvement programmes produce results. Fewer produce results that last.</h2>
+    <div class="hl hl-blue" style="margin-top:26px;">
+      <p class="big">The number one failure mode of operational improvement is not bad methodology.</p>
+      <p class="small">It is abandonment.</p>
+    </div>
+    <p style="max-width:620px;margin:30px 0 0;color:var(--mid-grey);font-size:18px;">Most programmes follow the same arc. A firm arrives, runs a diagnostic, designs solutions, runs a pilot, then leaves. Twelve months later the operation has drifted back, because the programme disrupted a stable operation without building what replaces it.</p>
+    <div class="hl hl-white" style="margin-top:30px;">
+      <p class="big">We built EQUIBT around a different model.</p>
+      <p class="small">Every engagement is scoped from the outset to end with your team running the improved operation, without us in the room.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 18 VERTICAL TERRACOTTA LINE LIST -->
+<section class="block">
+  <div class="label"><span class="num">18</span><span class="name">Beliefs list (the vertical terracotta lines)</span><span class="note">was: terracotta left-rule on each item → now: drop the rule, hanging-label editorial rows on hairlines</span></div>
+  <div class="stage beige">
+    <div class="eyebrow">WHAT WE BELIEVE</div>
+    <h2 class="stage-h2">Four things we will not negotiate on.</h2>
+    <div class="beliefs" style="margin-top:30px;">
+      <div class="belief"><h3>Measurement before intervention.</h3><p>We do not accept anecdotes about where the problem is. We measure it. Every engagement starts with a quantified baseline. Opinion without data is not a starting point, it is a bias.</p></div>
+      <div class="belief"><h3>Root cause before solution.</h3><p>We do not design solutions until we have isolated the cause. Addressing symptoms is maintenance, not improvement, and a good solution to the wrong problem wastes budget and goodwill.</p></div>
+      <div class="belief"><h3>Context shapes method.</h3><p>We keep the method constant and change how we apply it. The questions we ask in financial services are not the questions we ask in government. Generic application is not rigour.</p></div>
+      <div class="belief"><h3>AI-ready, not AI-naive.</h3><p>We treat AI as an accelerant, not a replacement for operational rigour, and only when the process is stable, the governance is in place, and the team understands what the model is doing.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 19 WHY SECTOR MATTERS FORMULA -->
+<section class="block">
+  <div class="label"><span class="num">19</span><span class="name">Why sector matters → formula + shape boxes</span><span class="note">was: filled boxes + heavy panel → now: thin-lined boxes, navy operators, hairline shape row</span></div>
+  <div class="stage white">
+    <div class="eyebrow">WHY SECTOR CONTEXT MATTERS</div>
+    <h2 class="stage-h2">One method. Calibrated to your sector.</h2>
+    <p class="stage-note">The fix survives contact with your operating reality because the method is constant and its application is tuned to your sector.</p>
+    <div class="secf-eq">
+      <div class="secf-box"><div class="lab">What stays constant</div><h3>Method rigour.</h3><p>The diagnostic tools, analytical methods, pilot structure, governance frameworks, and improvement systems.</p></div>
+      <div class="secf-op">&times;</div>
+      <div class="secf-box"><div class="lab">What changes by sector</div><h3>Operating context.</h3><p>The questions we ask, the benchmarks we use, the stakeholder dynamics, and the change approach the environment demands.</p></div>
+      <div class="secf-op">=</div>
+      <div class="secf-box"><div class="lab">What holds</div><h3>A fix that survives.</h3><p>The method stays disciplined. The application changes enough to work where the operation actually runs.</p></div>
+    </div>
+    <div class="shapes">
+      <h4>One method, four different shapes.</h4>
+      <div class="shapes-grid">
+        <div class="shape"><div class="s-lab">Bank</div><div class="s-val">First-time-right increased</div></div>
+        <div class="shape"><div class="s-lab">Government agency</div><div class="s-val">Backlog reduced</div></div>
+        <div class="shape"><div class="s-lab">Telco</div><div class="s-val">Retention rate increased</div></div>
+        <div class="shape"><div class="s-lab">Production line</div><div class="s-val">Unscheduled downtime reduced</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="max-width:1180px;margin:0 auto;padding:8px 48px 70px;color:var(--caption);font-family:'Open Sans',sans-serif;font-size:13px;">
+  Notes: thin-lined boxes (1px hairline, no shadow) contain each pattern; the contained bisection line divides them. Client results (block 14) is the proof carousel and can sit on a contained dark panel when it is the page's one dark moment. Phase timeline and belief cards from older v2/v3 pages stay out of scope. Contact form and Our Work &lt;details&gt; accordion follow the same hairline rule.
+</div>
+
+<script>
+function carousel(trackId,prevId,nextId){
+  var t=document.getElementById(trackId); if(!t)return;
+  var p=document.getElementById(prevId), n=document.getElementById(nextId);
+  var dots=t.parentNode.querySelectorAll('.car-dots .dot'), s=t.querySelector('.slide');
+  function step(){return s?s.getBoundingClientRect().width+26:t.clientWidth*0.7;}
+  function sync(){var i=Math.round(t.scrollLeft/step());dots.forEach(function(d,k){d.classList.toggle('on',k===i);});}
+  p.addEventListener('click',function(){t.scrollBy({left:-step(),behavior:'smooth'});});
+  n.addEventListener('click',function(){t.scrollBy({left:step(),behavior:'smooth'});});
+  t.addEventListener('scroll',sync,{passive:true});
+}
+carousel('track','prev','next'); carousel('track2','prev2','next2');
+
+(function(){
+  var list=document.getElementById('sel-list'); if(!list)return;
+  var T=document.getElementById('p-title'),C=document.getElementById('p-copy'),CH=document.getElementById('p-ch'),D=document.getElementById('p-del');
+  function render(b){
+    T.textContent=b.dataset.title; C.textContent=b.dataset.copy;
+    CH.innerHTML=b.dataset.ch.split('|').map(function(x){return '<li>'+x+'</li>';}).join('');
+    D.innerHTML=b.dataset.del.split('|').map(function(x){return '<li>'+x+'</li>';}).join('');
+  }
+  list.querySelectorAll('.sel-item').forEach(function(b){
+    b.addEventListener('click',function(){
+      list.querySelectorAll('.sel-item').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on'); render(b);
+    });
+  });
+  render(list.querySelector('.sel-item.on'));
+})();
+</script>
+</body>
+</html>
