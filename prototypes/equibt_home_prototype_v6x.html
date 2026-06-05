@@ -358,26 +358,42 @@ h1,h2,h3,p{margin-top:0;}
 .logo-marks{
   display:grid;
   grid-template-columns:repeat(5,minmax(0,1fr));
-  gap:18px 24px;
-  padding:34px 0 38px;
+  gap:30px 24px;
+  padding:38px 0 40px;
   border-top:1px solid var(--hairline);
   border-bottom:1px solid var(--hairline);
-}
-.client-mark{
-  min-height:48px;
-  border:1px solid rgba(38,36,92,0.16);
-  border-radius:8px;
-  display:flex;
   align-items:center;
-  justify-content:center;
-  color:rgba(22,22,22,0.46);
-  font-family:"Montserrat",Arial,sans-serif;
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:0.11em;
-  text-transform:uppercase;
-  background:#fff;
+  justify-items:center;
 }
+.client-logo{
+  display:block;
+  width:auto;
+  height:auto;
+  max-height:38px;
+  max-width:135px;
+  margin:0 auto;
+  object-fit:contain;
+  filter:grayscale(100%);
+  opacity:1;
+  transition:filter .2s ease;
+}
+.client-logo:hover{filter:grayscale(100%) brightness(0.3) contrast(1.1);}
+/* optical weight balance by grid position: reduce heavy/bold marks, enlarge light/thin marks so the band reads evenly. Positional, no client names. */
+.logo-marks .client-logo:nth-child(4),
+.logo-marks .client-logo:nth-child(8),
+.logo-marks .client-logo:nth-child(9),
+.logo-marks .client-logo:nth-child(12),
+.logo-marks .client-logo:nth-child(13),
+.logo-marks .client-logo:nth-child(17){max-height:29px;max-width:115px;}
+.logo-marks .client-logo:nth-child(7){max-height:33px;}
+.logo-marks .client-logo:nth-child(1),
+.logo-marks .client-logo:nth-child(3),
+.logo-marks .client-logo:nth-child(10),
+.logo-marks .client-logo:nth-child(11),
+.logo-marks .client-logo:nth-child(15),
+.logo-marks .client-logo:nth-child(19){max-height:47px;max-width:150px;}
+.logo-marks .client-logo:nth-child(16),
+.logo-marks .client-logo:nth-child(20){max-height:44px;}
 
 .industry-list{display:flex;flex-direction:column;}
 .ind-row{
@@ -818,27 +834,27 @@ h1,h2,h3,p{margin-top:0;}
       <div class="logo-strip">
         <div class="eyebrow">CLIENTS</div>
         <h2>Worked across complex, regulated operating environments.</h2>
-        <div class="logo-marks" aria-label="Generic client logo placeholders">
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
-          <div class="client-mark">Client mark</div>
+        <div class="logo-marks" aria-label="Selected client logos">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-01.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-02.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-03.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-04.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-05.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-06.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-07.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-08.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-09.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-10.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-11.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-12.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-13.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-14.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-15.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-16.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-17.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-18.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-19.svg" alt="" loading="lazy">
+          <img class="client-logo" src="../brand/assets/logos/clients/logo-20.svg" alt="" loading="lazy">
         </div>
       </div>
     </div>
@@ -962,25 +978,25 @@ h1,h2,h3,p{margin-top:0;}
             <circle class="station-hit" cx="430" cy="99" r="34"/>
             <circle class="station-ring" cx="430" cy="99" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
             <circle class="station-core" cx="430" cy="99" r="0" fill="#fff"/>
-            <text x="430" y="138" fill="#7A8591" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">SOLVE</text>
+            <text x="430" y="138" fill="#26245C" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">SOLVE</text>
           </g>
           <g class="station" tabindex="0" data-key="EVOLVE" data-x="610" data-y="101" data-label="PROVE IT WITH A PILOT">
             <circle class="station-hit" cx="610" cy="101" r="34"/>
             <circle class="station-ring" cx="610" cy="101" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
             <circle class="station-core" cx="610" cy="101" r="0" fill="#fff"/>
-            <text x="610" y="138" fill="#7A8591" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">EVOLVE</text>
+            <text x="610" y="138" fill="#26245C" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">EVOLVE</text>
           </g>
           <g class="station" tabindex="0" data-key="GOVERN" data-x="790" data-y="98" data-label="LOCK IN THE CONTROLS">
             <circle class="station-hit" cx="790" cy="98" r="34"/>
             <circle class="station-ring" cx="790" cy="98" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
             <circle class="station-core" cx="790" cy="98" r="0" fill="#fff"/>
-            <text x="790" y="138" fill="#7A8591" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">GOVERN</text>
+            <text x="790" y="138" fill="#26245C" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">GOVERN</text>
           </g>
           <g class="station" tabindex="0" data-key="SCALE" data-x="970" data-y="98" data-label="EMBED THE NEW STANDARD">
             <circle class="station-hit" cx="970" cy="98" r="34"/>
             <circle class="station-ring" cx="970" cy="98" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
             <circle class="station-core" cx="970" cy="98" r="0" fill="#fff"/>
-            <text x="970" y="138" fill="#7A8591" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">SCALE</text>
+            <text x="970" y="138" fill="#26245C" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">SCALE</text>
           </g>
         </svg>
       </div>
@@ -1089,7 +1105,7 @@ h1,h2,h3,p{margin-top:0;}
     </div>
   </div>
   <div class="footer-bottom">
-    <div>&copy; EQUIBT. All rights reserved.</div>
+    <div>&copy; EQUIBT Group Pty Ltd. All Rights Reserved. ABN 50 044 179 771</div>
   </div>
 </footer>
 
