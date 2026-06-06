@@ -16,6 +16,13 @@ a{color:inherit;}
 h1,h2,h3{font-family:"Montserrat",Arial,sans-serif;letter-spacing:-0.012em;color:var(--navy);}
 h1,h2,h3,p{margin-top:0;}
 
+/* v6x hand-drawn line-art strokes (EQT-251 icon library, src/components/icons/). Shared site-wide; moved from home.css. */
+.hd{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.hd-acc{fill:none;stroke:var(--terracotta);stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;}
+.hd-f1{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0.55;}
+.hd-f2{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0.28;}
+.hd-f3{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0.16;}
+
 .site-nav{
   position:sticky;
   top:0;

@@ -1,8 +1,4 @@
-.hd{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-.hd-acc{fill:none;stroke:var(--terracotta);stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;}
-.hd-f1{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0.55;}
-.hd-f2{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0.28;}
-.hd-f3{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0.16;}
+/* .hd / .hd-acc / .hd-f1..f3 stroke classes moved to base.css (EQT-251): the icon library is shared site-wide. */
 
 .hero{padding:124px 56px 112px;background:#fff;}
 .hero-inner{
