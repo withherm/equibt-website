@@ -2,10 +2,11 @@
   "name": "equibt-website",
   "version": "1.0.0",
   "description": "EQUIBT Group website build",
-  "main": "index.js",
+  "type": "commonjs",
   "scripts": {
-    "serve": "npx serve . -p 3000",
-    "screenshot": "node screenshot.js"
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview"
   },
   "repository": {
     "type": "git",
@@ -14,12 +15,17 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/withherm/equibt-website/issues"
   },
   "homepage": "https://github.com/withherm/equibt-website#readme",
   "dependencies": {
-    "puppeteer": "^25.0.4"
+    "@astrojs/cloudflare": "13.5.4",
+    "@fontsource/lora": "5.2.8",
+    "@fontsource/montserrat": "5.2.8",
+    "astro": "6.3.7"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
   }
 }

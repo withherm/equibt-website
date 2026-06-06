@@ -3,3 +3,7 @@ temp_screenshots/
 .DS_Store
 graphify-out/
 .claude/
+.astro/
+.wrangler/
+dist/
+.vscode/
