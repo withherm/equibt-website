@@ -1,0 +1,15 @@
+:root{
+  --navy:#26245C;
+  --terracotta:#C15F3C;
+  --terracotta-dark:#A04E30;
+  --off-white:#F5F3EE;
+  --dark-slate:#2C3E50;
+  --near-black:#161616;
+  --mid-grey:#2B2B2B;
+  --caption:#5A5A5A;
+  --muted:#7A8591;
+  --hairline:rgba(38,36,92,0.13);
+  --max:1180px;
+  --wide:1320px;
+  --link-gap:22px;
+}
