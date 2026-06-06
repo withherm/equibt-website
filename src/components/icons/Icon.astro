@@ -1,0 +1,48 @@
+---
+/**
+ * EQUIBT v6x icon library dispatcher (EQT-251).
+ *
+ * Single-weight hand-drawn line-art, navy #26245C, one terracotta #C15F3C
+ * accent each, 110px uniform (sized by the page wrapper, e.g. .svc-icon / .ic).
+ * Stroke classes .hd / .hd-acc / .hd-f1..f3 live in src/styles/base.css.
+ *
+ * SVG paths are exact lifts from the merged v6x home. Do not redraw here:
+ * idiom changes happen as a side-by-side under EQT-251 and swap in only
+ * if they clearly beat the originals (Linear comment trail).
+ *
+ * Usage: <Icon name="frame" />  ·  <Icon name="financial-services" />
+ */
+import Evolve from "./Evolve.astro";
+import FinancialServices from "./FinancialServices.astro";
+import Frame from "./Frame.astro";
+import Government from "./Government.astro";
+import Govern from "./Govern.astro";
+import HeroMotif from "./HeroMotif.astro";
+import Manufacturing from "./Manufacturing.astro";
+import Plan from "./Plan.astro";
+import Scale from "./Scale.astro";
+import Solve from "./Solve.astro";
+import Utilities from "./Utilities.astro";
+
+const icons = {
+  frame: Frame,
+  plan: Plan,
+  solve: Solve,
+  evolve: Evolve,
+  govern: Govern,
+  scale: Scale,
+  "financial-services": FinancialServices,
+  government: Government,
+  utilities: Utilities,
+  manufacturing: Manufacturing,
+  "hero-motif": HeroMotif,
+} as const;
+
+interface Props {
+  name: keyof typeof icons;
+}
+
+const { name } = Astro.props;
+const Svg = icons[name];
+---
+<Svg />

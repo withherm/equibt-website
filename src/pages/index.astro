@@ -1,5 +1,6 @@
 ---
 import Footer from "../components/Footer.astro";
+import Icon from "../components/icons/Icon.astro";
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import "../styles/home.css";
@@ -27,19 +28,7 @@ import "../styles/home.css";
         </div>
       </div>
       <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 520 470" xmlns="http://www.w3.org/2000/svg">
-          <path class="hd-f3" d="M40 452 L490 452"/>
-          <path class="hd-f1" d="M250 150 C228 112 268 78 300 100 C330 121 322 70 352 82 C386 95 360 132 392 142 C422 151 402 188 372 182 C346 177 362 208 336 212 C312 216 322 186 296 190 C268 194 286 218 258 217 C231 216 246 180 224 179 C204 178 232 152 250 150 Z"/>
-          <path class="hd-f2" d="M272 122 C302 102 292 152 322 142 C352 132 342 172 372 162 C396 154 382 122 356 120 C336 118 352 96 326 100 C302 104 314 130 286 124 C276 122 274 123 272 122 Z"/>
-          <path class="hd-f3" d="M240 168 C262 178 250 200 278 198"/>
-          <path class="hd-f3" d="M362 102 C388 96 398 118 382 134"/>
-          <path class="hd-f3" d="M300 78 C318 70 332 80 330 96"/>
-          <path class="hd-f1" d="M300 212 C300 264 150 300 70 450"/>
-          <path class="hd-f1" d="M310 214 C310 272 240 322 205 450"/>
-          <path class="hd-f1" d="M320 214 C320 286 330 360 332 450"/>
-          <path class="hd-acc" d="M322 158 C342 198 332 224 322 250 C314 294 432 318 470 450"/>
-          <path class="hd-acc" d="M462 436 L472 451 L460 456"/>
-        </svg>
+        <Icon name="hero-motif" />
       </div>
     </div>
   </section>
@@ -77,7 +66,7 @@ import "../styles/home.css";
       </div>
       <div class="svc-list">
         <a href="/services/frame/" class="svc-row">
-          <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="hd" d="M13 26 Q12 14 14 13 Q16 12 26 12.4"/><path class="hd" d="M38 12.4 Q50 12 51 14 Q52 16 51.6 26"/><path class="hd" d="M51.6 38 Q52 50 50 51 Q48 52 38 51.6"/><path class="hd" d="M26 51.6 Q14 52 13 50 Q12 48 13 38"/><circle cx="32" cy="32" r="11" class="hd"/><circle cx="32" cy="32" r="3.4" fill="#C15F3C"/></svg></span>
+          <span class="svc-icon" aria-hidden="true"><Icon name="frame" /></span>
           <span class="svc-body">
             <span class="svc-kicker">FRAME · DEFINE</span>
             <h3>Problem Framing.</h3>
@@ -86,7 +75,7 @@ import "../styles/home.css";
           </span>
         </a>
         <a href="/services/plan/" class="svc-row">
-          <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="hd" d="M11 51 Q32 52 53 50.4"/><path class="hd" d="M18 50 Q17.5 44 18 38"/><path class="hd" d="M28 50 Q27.5 41 28 33"/><path class="hd" d="M38 50 Q37.5 36 38 27"/><path class="hd-acc" d="M48 50 Q47.4 32 48 20"/></svg></span>
+          <span class="svc-icon" aria-hidden="true"><Icon name="plan" /></span>
           <span class="svc-body">
             <span class="svc-kicker">PLAN · MEASURE</span>
             <h3>Operations Diagnostic.</h3>
@@ -95,7 +84,7 @@ import "../styles/home.css";
           </span>
         </a>
         <a href="/services/solve/" class="svc-row">
-          <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="hd" d="M21 18 Q32 13 41 18"/><path class="hd" d="M18 22 Q24 33 30 41"/><path class="hd" d="M44 22 Q38 33 34 41"/><circle cx="16" cy="18" r="5" class="hd"/><circle cx="46" cy="18" r="5" class="hd"/><circle cx="32" cy="46" r="6" fill="none" stroke="#C15F3C" stroke-width="2.3"/></svg></span>
+          <span class="svc-icon" aria-hidden="true"><Icon name="solve" /></span>
           <span class="svc-body">
             <span class="svc-kicker">SOLVE · ANALYSE</span>
             <h3>Iterative Improvement.</h3>
@@ -104,7 +93,7 @@ import "../styles/home.css";
           </span>
         </a>
         <a href="/services/evolve/" class="svc-row">
-          <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="hd" d="M49 26 Q51 14 39 11 Q21 6 14 23 Q10 35 22 45 Q35 53 47 42"/><path class="hd-acc" d="M40 40 L48 43 L45 35"/><circle cx="31" cy="29" r="3.2" fill="#26245C"/></svg></span>
+          <span class="svc-icon" aria-hidden="true"><Icon name="evolve" /></span>
           <span class="svc-body">
             <span class="svc-kicker">EVOLVE · IMPROVE</span>
             <h3>Rapid Pilot.</h3>
@@ -113,7 +102,7 @@ import "../styles/home.css";
           </span>
         </a>
         <a href="/services/govern/" class="svc-row">
-          <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 80 80" fill="none" stroke="#26245C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M40 13 C49 19 57 20 62 19 C63 41 57 57 40 68 C23 57 17 41 18 19 C23 20 31 19 40 13 Z"/><path d="M29 41 L37 50 L53 30" stroke="#C15F3C"/></svg></span>
+          <span class="svc-icon" aria-hidden="true"><Icon name="govern" /></span>
           <span class="svc-body">
             <span class="svc-kicker">GOVERN · CONTROL</span>
             <h3>Architecture &amp; Governance.</h3>
@@ -122,7 +111,7 @@ import "../styles/home.css";
           </span>
         </a>
         <a href="/services/scale/" class="svc-row">
-          <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="hd" d="M12 38 L27 38 L27 23 L12 23 Z"/><path class="hd" d="M21 47 L38 47 L38 30 L21 30 Z"/><path class="hd-acc" d="M31 55 L52 55 L52 35 L31 35 Z"/></svg></span>
+          <span class="svc-icon" aria-hidden="true"><Icon name="scale" /></span>
           <span class="svc-body">
             <span class="svc-kicker">SCALE · OPERATE</span>
             <h3>Operational Embedding.</h3>
@@ -209,7 +198,7 @@ import "../styles/home.css";
       </div>
       <div class="industry-list">
         <article class="ind-row">
-          <span class="ic" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="hd" d="M11 50 Q32 51 53 49.6"/><path class="hd" d="M14 24 Q32 14 50 24"/><path class="hd" d="M19 26 Q18.6 38 19 47"/><path class="hd" d="M28 26 Q27.6 38 28 47"/><path class="hd-acc" d="M37 26 Q36.6 38 37 47"/><path class="hd" d="M46 26 Q45.6 38 46 47"/></svg></span>
+          <span class="ic" aria-hidden="true"><Icon name="financial-services" /></span>
           <div>
             <h3>Financial Services.</h3>
             <p class="hook">Fix the process, not the symptom.</p>
@@ -218,7 +207,7 @@ import "../styles/home.css";
           </div>
         </article>
         <article class="ind-row">
-          <span class="ic" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="hd" d="M14 49 Q32 52 50 49"/><path class="hd" d="M16 21 Q31 11 48 20"/><path class="hd" d="M20 25 Q18 36 21 45"/><path class="hd" d="M32 19 Q30 34 32 47"/><path class="hd-acc" d="M44 25 Q47 36 43 45"/><circle cx="32" cy="19" r="3.2" fill="#26245C"/></svg></span>
+          <span class="ic" aria-hidden="true"><Icon name="government" /></span>
           <div>
             <h3>Government and Public Sector.</h3>
             <p class="hook">Make delivery reliable under constraint.</p>
@@ -227,7 +216,7 @@ import "../styles/home.css";
           </div>
         </article>
         <article class="ind-row">
-          <span class="ic" aria-hidden="true"><svg viewBox="0 0 80 80" fill="none" stroke="#26245C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M31 66 C33 49 36 33 40 15 C44 33 47 49 49 66"/><path d="M34 36 L46 36"/><path d="M33 46 L47 46"/><path d="M31 56 L49 56"/><path d="M23 30 L57 30"/><path d="M20 40 L60 40"/><path d="M23 30 C31 37 49 37 57 30" stroke="#C15F3C"/></svg></span>
+          <span class="ic" aria-hidden="true"><Icon name="utilities" /></span>
           <div>
             <h3>Utilities.</h3>
             <p class="hook">Stabilise service under load.</p>
@@ -236,7 +225,7 @@ import "../styles/home.css";
           </div>
         </article>
         <article class="ind-row">
-          <span class="ic" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="hd" d="M12 45 L12 30 L22 36 L22 29 L33 36 L33 29 L52 40 L52 50 L12 50 Z"/><path class="hd" d="M18 50 Q17 42 18 36"/><path class="hd" d="M31 50 Q30 43 31 37"/><path class="hd-acc" d="M44 50 Q43 44 44 40"/></svg></span>
+          <span class="ic" aria-hidden="true"><Icon name="manufacturing" /></span>
           <div>
             <h3>Advanced Manufacturing.</h3>
             <p class="hook">Reduce waste at the source.</p>
