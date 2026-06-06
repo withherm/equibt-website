@@ -1,5 +1,7 @@
 # DESIGN_LEARNINGS_v5x.md
 
+> **SUPERSEDED for all v6x work by `DESIGN_LEARNINGS_v6x.md` (EQT-252).** This file remains as reference for the v5x prototypes only. Do not apply v5x visual rules to v6x pages.
+
 Supersedes: DESIGN_LEARNINGS_v3.md
 Last updated: 2026-06-03
 Scope: EQUIBT website prototype series - accumulated design taste and decisions. Named v5x to align with the v5x prototype series so there is one version label across design rules and prototypes. Several rules (light hero/menu, no 01/02/03 numbering, restrained type scale) now apply portfolio-wide; noted inline where they do.
