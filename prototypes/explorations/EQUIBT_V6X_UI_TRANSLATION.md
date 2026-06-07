@@ -15,7 +15,7 @@ Locked tokens carried in: Montserrat 700 headings (letter-spacing -0.012em), Lor
 | Element | v5x now | v6x treatment |
 |---|---|---|
 | Section backgrounds | navy-wash, light-grey, highlight-wash, off-white all in rotation | White and beige only, alternating. No other section fills. |
-| Dark sections | full-bleed navy / dark-slate bands (proof, CTA) | Max ONE dark moment per page, as a contained rounded card (flagship 24px / CTA equation ~20px radius) sitting on a light section. Never a full-bleed band. (One approved exception: the home flagship's binary expand-on-scroll to full-bleed, see DESIGN_LEARNINGS_v6x.) Dark field is FLAT, no gradient; colour may vary per page (home uses near-black `#101317`, the CTA equation dark-slate `#2C3E50`). |
+| Dark sections | full-bleed navy / dark-slate bands (proof, CTA) | Max ONE dark moment per page, as a contained rounded card (flagship 24px / CTA equation ~20px radius) sitting on a light section. Never a full-bleed band. (One approved exception: the home flagship's binary expand-on-scroll to full-bleed, see DESIGN_LEARNINGS_v6x.) Dark field is FLAT, no gradient; tone varies per page TYPE, not per page (R1 2026-06-07): home near-black `#101317`, service pages dark-slate `#2C3E50`, industry pages ink-navy. Siblings within a page type share one tone. |
 | Shadows | `card-shadow` + `card-shadow-hover` everywhere | Removed. Separation by 1px hairline `rgba(38,36,92,0.13)`. |
 | Corner radius | 8px on every card | Only on earned boxes: 22px on the dark card, 6-12px on images. Open content has no radius. |
 | Hover lift | translateY(-6px) on all cards | Drop. Hover = the chevron-link behaviour only (underline draws left-to-right under the text, then the `›` nudges right). |
@@ -33,7 +33,7 @@ v5x runs a six-colour pillar-pill system (frame magenta, plan navy, solve teal, 
 |---|---|---|
 | Service cards (`service-card`) | 6 white boxes, shadow, 7-col span grid | Editorial rows on hairlines, hand-drawn icon on one left axis, no box (done in exploration). |
 | Examine / context / challenge cards | navy-wash or white boxes, shadow, 3-up grid | De-box. Open 2-3 column editorial blocks on hairlines, hand-drawn icon, generous gap. |
-| Deliverable carousel (`deliverables-carousel`) | 88%-width white slides, shadowed white circle arrows, terracotta dots | Keep horizontal scroll-snap but de-weight: no card shadow, hairline arrow buttons (no heavy shadow), image keeps a small radius, copy is open. Terracotta dot/active indicator stays. Consider a calm stacked variant on desktop for accessibility. |
+| Deliverable carousel (`deliverables-carousel`) | 88%-width white slides, shadowed white circle arrows, terracotta dots | Keep horizontal scroll-snap but de-weight: no card shadow, hairline arrow buttons (no heavy shadow), image keeps a small radius, copy is open. Terracotta dot/active indicator stays. R3 (2026-06-07): a clickable 4-item deliverables INDEX sits between the intro and the carousel — each name is a button that jumps to its slide, active item tracks the carousel (terracotta), keyboard accessible. Readers see all four deliverables at once. |
 | Stat / proof blocks (`stat-num`, `proof-stat`) | big number, label, sector | **Tie every number to the action that produced it** (see The Work below). A number with no cause reads as a claim. |
 | The Work strip | 3 before/after numbers in a dark box | Light evidence rows: verb-first action + the metric move + anonymised sector. No box. Proof, not assertion. |
 | Case cards (`case-card`, Our Work) | 2-col box, shadow, coloured pillar label | De-box to hairline-framed editorial. Keep Problem / Approach / Outcome substance. Make ONE flagship the single dark feature card (the page's one dark moment) with real story, verb-first title, result, "Read the case" link. |
@@ -41,7 +41,7 @@ v5x runs a six-colour pillar-pill system (frame magenta, plan navy, solve teal, 
 | Sector cards (`sector-card`) | boxed, icon, problem text | Open blocks on hairlines, hand-drawn icon. |
 | Belief / insight / related cards | boxed, shadow | De-box, hairline editorial. Related links become a simple hairline list, not a card grid. |
 | Phase timeline (`phase-timeline`, `phase-card`) | boxed phase cards in a row | Hairline vertical timeline with hand-drawn connector line; phases as open steps, not boxes. |
-| Station / subway pathway (`station-map`) | geometric SVG subway map | Redraw as a hand-drawn single-line pathway in the new idiom (matches the hero illustration language). Two variants: HOME = interactive selector (hover-selects-and-persists, proximity effect, label above the station inside the container — built in `index.astro`); SERVICE PAGES = static with a terracotta YOU ARE HERE on the current station, current + next labels navy, downstream labels muted `#7A8591`. |
+| Station / subway pathway (`station-map`) | geometric SVG subway map | Redraw as a hand-drawn single-line pathway in the new idiom (matches the hero illustration language). Two variants: HOME = interactive selector (hover-selects-and-persists, proximity effect, label above the station inside the container — built in `index.astro`); SERVICE PAGES = static with a terracotta YOU ARE HERE on the current station, current + next labels navy, downstream labels muted `#7A8591`; R1 (2026-06-07) the NEXT station is marked on the line — terracotta segment current→next, filled navy core in the next ring, small terracotta NEXT label (no pointer); SCALE as terminus carries no next marking. The pathway and the next-step columns form ONE merged WHERE IT LEADS section (no divider, no second eyebrow); the columns carry current-vs-next asymmetry (block 09): YOU ARE HERE grey label + muted unlinked current column, THE NEXT STEP terracotta label + the only Explore link, terracotta `›` in the gutter. Industry pages keep both columns equal (entry points, not current/next). R2 responsive: columns stack at ≤860px (current above next, gutter `›` hidden when stacked); the pathway SVG scales to its container at every viewport, no clipping (below ~420px an intentional padded horizontal scroll is the only fallback). |
 | Filter chips (`filter-chip`, Our Work) | filled chips | Hairline pills, terracotta fill on active (same language as carousel dot). |
 | Pillar badges / tags | 6-colour pills | Retire (see above). |
 | Buttons | navy solid primary, outline secondary | Keep navy solid primary (hover = dark-slate `#2C3E50`) + the terracotta `›` chevron text link (glyph bigger/bolder than the link text; underline left-to-right under text only, then chevron nudge). `→` is retired site-wide. Drop the bordered outline button for the lighter text link. |
@@ -69,7 +69,7 @@ Treatment: light evidence rows on hairlines (no dark box), terracotta metric inl
 |---|---|---|
 | Interactive service selector (`data-service-card` + `#service-panel`) | 6 pillar cards (colour-coded) act as a master-detail switcher rewriting a panel: title, copy, sector challenges, deliverables | Keep the interaction. Selector list as hairline rows on one left axis, hand-drawn pillar icon, active item marked by terracotta dot/rule (not a colour fill). Detail panel is open content on white, challenges + deliverables as hairline chip lists. No boxes, no six-colour coding. |
 | Proof carousel (`proof-band`, `proof-slide`) | second carousel: stat + pillar-tagged proof slides, shadowed arrows | Same de-weighted scroll-snap as deliverables: hairline controls bottom-right, terracotta dot. Each slide is an evidence row (number tied to action), not a bare stat. |
-| Sticky sub-nav | sticky in-page nav band | Keep sticky, restyle: white, hairline bottom border, Montserrat links, terracotta dot/underline on active. |
+| Sticky sub-nav | NOT shipped in v5x (this audit row described a component that was never built) | NEW v6x component on the four sector pages (decision 2026-06-07, EQT-254): slim bar pinned under the main nav — white, 1px hairline bottom, Montserrat uppercase links, terracotta marker on the active section, IntersectionObserver scroll-spy. Anchors: Challenges · How we help · Results · Our work · Where to start. Sector pages only, NOT the hub. Worked example: exploration v6 block 37. |
 | Our Work accordion (`<details>`) | native expand/collapse for extra cases | Keep. Hairline rows, Montserrat summary, terracotta + on hover; no filled panel. |
 | Contact form | standard fields | Hairline inputs (1px border, no fill), Montserrat labels, navy solid submit, generous spacing. |
 
@@ -87,7 +87,7 @@ A class-level scan of all v5x prototypes confirmed the component inventory; ever
 | Component (v5x classes) | v5x now | v6x treatment | Block |
 |---|---|---|---|
 | Site nav (`site-nav`) | built | BUILT in `src/components/Nav.astro`: sticky, hairline bottom, Montserrat 15/600 near-black links, bold down-chevron on submenu items, navy nav-CTA with dark-slate hover. Consume the component. | 00 |
-| Page hero (`hero`, `hero-panel`, `hero-geometry`) | grid hero + low-poly gem; industry heroes carry boxed stat cells (`stat-num`) | Editorial asymmetric hero: top-left copy, 110px-idiom motif right bleeding into whitespace, Get in touch + chevron link. Gem RETIRED. Industry hero stats become a hairline metric band (terracotta figures, italic captions, no boxes). | 20 |
+| Page hero (`hero`, `hero-panel`, `hero-geometry`) | grid hero + low-poly gem; industry heroes carry boxed stat cells (`stat-num`) | Editorial asymmetric hero: top-left copy, motif right bleeding into whitespace, Get in touch + chevron link. Gem RETIRED. R1/R2/R4 (2026-06-07): the sub-page hero motif renders at HOME-HERO scale — size the SVG element DIRECTLY at `min(540px,48vw)`, exactly as home does — WITH the R4 fine-line treatment: a hero-scoped stroke override thins the lines so visual weight matches the home hero (blown-up icon strokes read as fat marker, rejected); terracotta keeps its extra-weight ratio; the override never leaks beyond the hero wrapper. Per-pillar/sector hero SCENES are queued as Herman-drawn artwork (EQT-275, content-only swap at the marked seam). The hairline metric band stays available for pages with genuine hero stats (case study), but the EQT-254 industry pages SKIP it: figures live in the proof carousel. | 20 |
 | Statement rows (`difference-point`) | filled difference cards | BUILT on home: hanging-label rows on hairlines (navy Montserrat lead left, Lora right). | 21 |
 | Light closing CTA (`cta-panel`, on all pages) | full dark-slate band on every page | LIGHT closing CTA on the alternating section colour: eyebrow, headline, prose, navy button. The dark moment belongs to the flagship or the CTA equation, never the closing CTA. | 22 |
 | LMI handover (`lmi-handover`, `training-handover`) | navy band with white LMI mark | BUILT on home: hairline-bounded band, full-colour clickable LMI-LOGO-702 (701 superseded), links to leanmethods.com.au (interim AU). Home + industry pages ONLY, never service pages. | 23 |
@@ -103,9 +103,9 @@ A class-level scan of all v5x prototypes confirmed the component inventory; ever
 | We are / We're not (`compare-card`, How We Work) | two compare cards | Two open columns on top hairlines, items as hairline list rows. | 30 |
 | Our Story field notes (`story-item`, About) | hook + copy list | Hanging-label rows (beliefs device). Drop "Since 2009" at conversion: no dates/years in public copy. | 31 |
 | Why-EQUIBT rows (`why-body-row`, about/howwework/operators/capability) | label + copy rows | Same hanging-label editorial device as beliefs/statements. No separate pattern. | 18/21 |
-| Site footer (`site-footer`) | built | BUILT in `src/components/Footer.astro`: pure white, full FRAME footer, NO LMI line, entity + ABN bottom strip. Consume the component. | 32 |
+| Site footer (`site-footer`) | built | BUILT in `src/components/Footer.astro`: pure white, full FRAME footer, NO LMI line, entity + ABN bottom strip. Consume the component. R2 (2026-06-07): at phone widths (≤760/≤460) the brand block sits full-width on top and the three link columns flow in a 2-COLUMN grid, never one long single stack (footer rules in base.css, applies site-wide). | 32 |
 | Breadcrumb (`breadcrumb`, resource landing) | text trail | Keep minimal: Montserrat caption-grey trail with `›` separators. No chips. | note |
-| Scroll-reveal system (`reveal`, `reveal-d1..d3`, 312 uses site-wide) | fade/slide-in on scroll | **RETIRED.** The merged home ships without it; v6x pages are static-calm. Do not port. | note |
+| Scroll-reveal system (`reveal`, `reveal-d1..d3`, 312 uses site-wide) | fade/slide-in on scroll | The v5x multi-element system stays RETIRED — do not port it. AMENDED R1 (2026-06-07): one minimal SECTION reveal reinstated as the v6x idiom — fade + ~8px rise, 350ms ease-out, fires once per section, no stagger, `prefers-reduced-motion: reduce` disables it. Lives in the page stylesheet until promoted to base.css (home retrofit = follow-up issue). | note |
 | Page scaffolding (`page-shell`, `wide-inner`) | wrapper divs | v6x uses `.section`/`.section-inner` with `--max`/`--wide` tokens (see base.css/home.css). | note |
 | Outline button (`btn-outline`) / secondary (`btn-secondary`) | bordered outline | RETIRED for the terracotta chevron text link. | 12 |
 | Persona narrative ("Michael", all six service pages) | named buyer persona | Rewrite to second-person/role framing: firm "we", no named individual (EQT-253 decision). | note |
@@ -117,8 +117,8 @@ A class-level scan of all v5x prototypes confirmed the component inventory; ever
 
 | Component | v5x now | v6x treatment |
 |---|---|---|
-| CTA equation (`cta-equation`) | heavy dark band, filled meta cells: timeline + how we work = deliverables | Contained dark card (rounded), thin hairline boxes, terracotta + and = operators, white "Get in touch". The A+B=C logic kept. |
-| Side-bleed highlights (`highlight-callout`) | navy-wash / white callout blocks | Keep. Statement callouts that run off the side edge, rounded on the inner side only. Navy-wash (#E8ECF5) for one, white-with-hairline for the other. Used sparingly, asymmetric. |
+| CTA equation (`cta-equation`) | heavy dark band, filled meta cells: timeline + how we work = deliverables | Contained dark card (rounded), thin hairline boxes, terracotta + and = operators, white "Get in touch". The A+B=C logic kept. R1 (2026-06-07): eyebrow is `WORK WITH US` (`START HERE` retired, echoed WHY START HERE); value lines Montserrat 700 ~25px white so they carry the weight; dark field dark-slate `#2C3E50` on all service pages (per-page-type tone rule). R2: `+` and `=` operators 48px/700 terracotta (matches the locked v5x equation precedent). R3: the equation NEVER orphans an operator — one five-column row at desktop, one deliberate stacked layout (box / + / box / = / box) below a single breakpoint, no intermediate wraps. |
+| Side-bleed highlights (`highlight-callout`) | navy-wash / white callout blocks | Keep. Statement callouts that run off the side edge, rounded on the inner side only. Navy-wash (#E8ECF5) for one, white-with-hairline for the other. Used sparingly, asymmetric. R3 (2026-06-07) reaffirmed: the bleed is REQUIRED — anchored to the viewport edge, no radius on the bleeding side, content keeps the page's left text axis. A floating contained box is wrong. |
 | Beliefs list (`belief-row`, the vertical terracotta lines) | terracotta left-rule on each item | Drop the left rule (the design-learnings ban decorative left-rule on prose, and Herman does not want it). Becomes hanging-label editorial rows on hairlines, same as the statement rows. |
 | Why-sector formula (`method × context = fix`) | filled boxes + heavy sub-panel | Thin-lined white boxes, navy × and = operators, the four-shape row as hairline columns (Bank / Government / Telco / Production line). |
 
@@ -134,6 +134,33 @@ Retired: the **vertical terracotta left-rule** is not adopted. It conflicts with
 - **Client results / proof slides are fine-line boxed cards** (1px hairline, rounded, white) for readability. The three-output trio and next-step columns stay as open columns on a top hairline, not boxed (boxing them framed the icons like image borders, not wanted).
 - **Eyebrow-to-title spacing ~14px**, consistent everywhere (the "WHAT WE DO" gap is the reference). Not tighter.
 - **Minimise font-size variation.** Default supporting copy (including highlight sub-lines like "It is abandonment.") to plain body text (Lora 500, **22px**), rather than inventing smaller sizes. Fewer sizes reads cleaner. Italic captions (19px) are the deliberate exception. Evidence action lines are Montserrat 600 20px (the one functional-label exception, per the built home).
+
+## EQT-253 R1 amendments (Herman review, 2026-06-07)
+
+1. **One left axis per page.** Every section's content starts on the same left grid line; no indented sections (THE SITUATION had drifted).
+2. **WHY-section headlines carry a positive frame.** The situation section owns the negative; the why-start-here headline states the payoff, verb-first (FRAME: "Solve the right problem, once.").
+3. **`WORK WITH US` is the dark CTA eyebrow.** `START HERE` retired site-wide (echoed WHY START HERE / WHERE TO START). Applies to the industries light closing CTA too (EQT-254 brief).
+4. **Dark tone per page TYPE:** home near-black `#101317`, services dark-slate `#2C3E50`, industries ink-navy. Never per page within a type.
+5. **WHERE IT LEADS is one continuous section:** pathway flows into the next-step columns; no divider, no second eyebrow. Columns asymmetric (current muted/unlinked, next emphasised/linked, terracotta `›` gutter); pathway marks NEXT on the line itself (blocks 08b + 09).
+6. **Sub-page hero motifs at home-hero scale** via the wrapper; artwork unchanged (artwork-authority swap later).
+7. **Minimal section reveal reinstated** (amends static-calm): fade + 8px rise, 350ms, once, no stagger, reduced-motion respected. v5x multi-element system stays retired.
+
+## EQT-253 R2 amendments (Herman review, 2026-06-07)
+
+1. **CTA equation operators 48px/700 terracotta** (the locked v5x precedent; 24px read too quiet).
+2. **Sub-page hero art sized on the SVG element at `min(540px,48vw)`** — home parity; wrapper-clamp sizing rejected (did not land visually).
+3. **Footer mobile = 2-column link grid** at ≤760/≤460, brand full-width on top. Footer rules in base.css, site-wide (deliberate shared-component exception).
+4. **WHERE IT LEADS responsive locks:** columns stack at ≤860 (current above next, gutter `›` hidden when stacked); pathway SVG scales without clipping at every viewport.
+
+## EQT-253 R3 amendments (Herman review, 2026-06-07)
+
+1. **Side-bleed callout enforced:** the navy-wash callout genuinely bleeds off the left viewport edge, rounded inner side only (block 17 as drawn; the floating contained box was a build error).
+2. **Deliverables index:** clickable 4-item index above the WHAT YOU RECEIVE carousel, synced both ways with the slides and dots.
+3. **Equation wrap rule:** A + B = C renders as one row or as a deliberate stack; an operator is never separated from its boxes at any width.
+
+## EQT-253 R4 amendment (Herman review, 2026-06-07)
+
+1. **Hero fine-line treatment:** at hero scale the icon's strokes are thinned via a hero-scoped CSS override to match the home hero's visual line weight (sparse + fine = deliberate minimalism; fat + sparse rejected). Terracotta/navy weight ratio preserved; no icon component edited; override never leaks beyond the hero. Interim until the EQT-275 hero scene motifs (Herman, Affinity) swap in at the marked seam. Applies to EQT-254 sector heroes identically.
 
 ## Decisions (locked, 2026-06-04)
 

@@ -200,10 +200,10 @@ a{color:inherit;}
 .ctaf-eq{display:flex;align-items:stretch;gap:18px;flex-wrap:wrap;margin:32px 0 30px;}
 .ctaf-box{flex:1 1 200px;border:1px solid rgba(245,243,238,0.22);border-radius:12px;padding:24px;}
 .ctaf-box .lab{color:rgba(245,243,238,0.55);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;}
-.ctaf-box .val{margin-top:10px;color:var(--off-white);font-family:"Montserrat",sans-serif;font-weight:600;font-size:20px;line-height:1.2;}
+.ctaf-box .val{margin-top:10px;color:var(--off-white);font-family:"Montserrat",sans-serif;font-weight:700;font-size:25px;line-height:1.2;}
 .ctaf-box ul{margin:8px 0 0;padding:0;list-style:none;}
 .ctaf-box ul li{padding:7px 0;border-top:1px solid rgba(245,243,238,0.16);color:rgba(245,243,238,0.85);font-size:15px;}
-.ctaf-op{display:flex;align-items:center;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-weight:700;font-size:24px;}
+.ctaf-op{display:flex;align-items:center;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-weight:700;font-size:48px;}
 .ctaf .btn-primary{background:#fff;color:var(--near-black);}
 
 /* side-bleed highlights */
@@ -519,7 +519,7 @@ a{color:inherit;}
 
 <!-- 04 CAROUSEL -->
 <section class="block">
-  <div class="label"><span class="num">04</span><span class="name">Deliverables carousel → de-weighted scroll-snap</span><span class="note">was: 88% white slides, shadowed circle arrows → now: hairline controls, terracotta dot, no shadow</span></div>
+  <div class="label"><span class="num">04</span><span class="name">Deliverables carousel → de-weighted scroll-snap</span><span class="note">R3 (2026-06-07): a compact 4-item deliverables INDEX sits between the section intro and the carousel — hairline-separated names, each a button that jumps the carousel to its slide, active item tracks the carousel position (terracotta, same active language as the dots), keyboard accessible. Solves recall (readers see all four at once) and navigation in one device. ·was: 88% white slides, shadowed circle arrows → now: hairline controls, terracotta dot, no shadow</span></div>
   <div class="stage white">
     <div class="eyebrow">WHAT YOU RECEIVE</div>
     <h2 class="stage-h2" style="margin-top:12px;">Four deliverables. Aligned from day one.</h2>
@@ -663,18 +663,21 @@ a{color:inherit;}
 </section>
 
 <section class="block">
-  <div class="label"><span class="num">08b</span><span class="name">Station pathway — SERVICE-PAGE static variant</span><span class="note">same white pathway box; STATIC (no JS): terracotta YOU ARE HERE on the current station, current + next labels navy, downstream labels muted #7A8591</span></div>
+  <div class="label"><span class="num">08b</span><span class="name">Station pathway — SERVICE-PAGE static variant</span><span class="note">same white pathway box; STATIC (no JS): terracotta YOU ARE HERE on the current station, current + next labels navy, downstream labels muted #7A8591. R1 (2026-06-07): the NEXT station is marked on the line itself — terracotta segment current→next (direction of travel), filled navy core in the next station's ring, small terracotta NEXT label above it (no pointer). Last station (SCALE) carries no next marking. This pathway + block 09's columns form ONE merged WHERE IT LEADS section: no divider, no second eyebrow between them. Responsive (R2): the pathway SVG scales to its container at every viewport (viewBox scaling, no clipping; below ~420px an intentional padded horizontal scroll is the only sanctioned fallback).</span></div>
   <div class="stage white pathway">
     <div class="eyebrow">WHERE IT LEADS</div>
     <h2 class="stage-h2" style="margin:12px 0 0;">Define the problem. Then measure it.</h2>
     <div class="pathway-box">
       <svg viewBox="0 0 1040 150" role="img" aria-label="FRAME to SCALE progression">
         <path class="hd-f2" d="M70 100 Q300 90 520 99 Q760 109 970 98"/>
+        <path d="M70 100 Q160 95 250 97" fill="none" stroke="#C15F3C" stroke-width="2.6" stroke-linecap="round"/>
         <text x="70" y="24" text-anchor="middle" class="pathway-label">YOU ARE HERE</text>
         <path class="pathway-pointer" d="M70 34 L70 78"/>
+        <text x="250" y="62" text-anchor="middle" fill="#C15F3C" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" letter-spacing="1.4">NEXT</text>
         <circle cx="70" cy="100" r="11" fill="#fff" stroke="#C15F3C" stroke-width="2.6"/>
         <circle cx="70" cy="100" r="4" fill="#C15F3C"/>
         <circle cx="250" cy="97" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
+        <circle cx="250" cy="97" r="3.4" fill="#26245C"/>
         <circle cx="430" cy="99" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
         <circle cx="610" cy="101" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
         <circle cx="790" cy="98" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
@@ -694,16 +697,19 @@ a{color:inherit;}
 
 <!-- 09 NEXT STEP -->
 <section class="block">
-  <div class="label"><span class="num">09</span><span class="name">Next-step / related cards → hairline columns</span><span class="note">was: filled boxes with shadow → now: open columns, current step + the natural next one</span></div>
+  <div class="label"><span class="num">09</span><span class="name">Next-step / related cards → hairline columns</span><span class="note">was: filled boxes with shadow → now: open columns, current step + the natural next one. R1 (2026-06-07): current-vs-next made unmistakable — top-hairline label per column (YOU ARE HERE muted grey / THE NEXT STEP terracotta), current column de-weighted (grey kicker, no link), next column full weight with the ONLY Explore link, large terracotta › in the gutter (desktop only). Sits inside the merged WHERE IT LEADS section, directly under the 08b pathway. Responsive (R2): the columns stack to one at ≤860px, current ABOVE next, both status labels readable, gutter › hidden whenever stacked. Industry pages do NOT use this asymmetry: both their columns are equal entry points.</span></div>
   <div class="stage white">
-    <div class="next">
+    <div class="next" style="position:relative;">
+      <span aria-hidden="true" style="position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);color:#C15F3C;font-family:'Montserrat',sans-serif;font-size:36px;font-weight:700;">&rsaquo;</span>
       <div class="col">
+        <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#7A8591;margin-bottom:16px;">YOU ARE HERE</div>
         <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M13 26 Q12 14 14 13 Q16 12 26 12.4"/><path class="hd" d="M38 12.4 Q50 12 51 14 Q52 16 51.6 26"/><path class="hd" d="M51.6 38 Q52 50 50 51 Q48 52 38 51.6"/><path class="hd" d="M26 51.6 Q14 52 13 50 Q12 48 13 38"/><circle cx="32" cy="32" r="11" class="hd"/><circle cx="32" cy="32" r="3.6" fill="#C15F3C"/></svg></span>
-        <div class="k">FRAME · DEFINE</div>
-        <h3>Problem Framing and Stakeholder Alignment.</h3>
+        <div class="k" style="color:#7A8591;">FRAME · DEFINE</div>
+        <h3 style="color:#566273;">Problem Framing and Stakeholder Alignment.</h3>
         <p>When your leadership team disagrees on what the problem is. A SPIN workshop aligns stakeholders and produces a locked charter before any diagnostic dollar gets spent.</p>
       </div>
       <div class="col">
+        <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#C15F3C;margin-bottom:16px;">THE NEXT STEP</div>
         <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M11 51 Q32 52 53 50.4"/><path class="hd" d="M18 50 Q17.5 44 18 38"/><path class="hd" d="M28 50 Q27.5 41 28 33"/><path class="hd" d="M38 50 Q37.5 36 38 27"/><path class="hd-acc" d="M48 50 Q47.4 32 48 20"/></svg></span>
         <div class="k">PLAN · MEASURE</div>
         <h3>Operations Diagnostic.</h3>
@@ -843,10 +849,10 @@ a{color:inherit;}
 
 <!-- 16 CTA EQUATION -->
 <section class="block">
-  <div class="label"><span class="num">16</span><span class="name">CTA equation → dark panel, thin-lined boxes</span><span class="note">was: heavy dark band + filled meta → now: contained dark card, hairline boxes, terracotta operators</span></div>
+  <div class="label"><span class="num">16</span><span class="name">CTA equation → dark panel, thin-lined boxes</span><span class="note">was: heavy dark band + filled meta → now: contained dark card, hairline boxes, terracotta operators. R1 (2026-06-07): eyebrow WORK WITH US (START HERE retired, echoed WHY START HERE); value lines Montserrat 700 ~25px so they carry the weight; dark tone per page TYPE: home near-black #101317, services dark-slate #2C3E50, industries ink-navy. R2: + and = operators 48px/700 terracotta (matches the v5x CTA-equation precedent). R3: the equation never orphans an operator — one five-column row at desktop, a deliberate stacked layout (box / + / box / = / box) below one breakpoint, no intermediate wraps.</span></div>
   <div class="stage beige">
     <div class="ctaf">
-      <div class="eyebrow">START HERE</div>
+      <div class="eyebrow">WORK WITH US</div>
       <h2>Make the improvement hold.</h2>
       <p>If gains keep slipping back, the improvement was never embedded. That is a governance gap, and it is fixable. Tell us where the operation is drifting and we will identify what is missing.</p>
       <div class="ctaf-eq">
@@ -863,7 +869,7 @@ a{color:inherit;}
 
 <!-- 17 SIDE-BLEED HIGHLIGHTS -->
 <section class="block">
-  <div class="label"><span class="num">17</span><span class="name">Side-bleed highlights → blue and white</span><span class="note">callout statements that run off the side edge · navy-wash and white, rounded on the inner side only</span></div>
+  <div class="label"><span class="num">17</span><span class="name">Side-bleed highlights → blue and white</span><span class="note">callout statements that run off the side edge · navy-wash and white, rounded on the inner side only. R3 (2026-06-07) reaffirmed: the bleed is REQUIRED, not optional — anchored to the viewport edge (left), no radius on the bleeding side, content keeps the page's left text axis. A floating contained box is wrong.</span></div>
   <div class="stage white">
     <div class="eyebrow">THE PROBLEM WE SOLVE</div>
     <h2 class="stage-h2">Most improvement programmes produce results. Fewer produce results that last.</h2>
@@ -922,7 +928,7 @@ a{color:inherit;}
 
 <!-- 20 PAGE HERO -->
 <section class="block">
-  <div class="label"><span class="num">20</span><span class="name">Page hero (service variant) + industry metric band</span><span class="note">home hero is BUILT in index.astro · sub-page heroes follow it: pure white, top-left copy, asymmetric motif right bleeding into whitespace, Get in touch + chevron link · industry heroes add a hairline metric band (no boxed stat cells)</span></div>
+  <div class="label"><span class="num">20</span><span class="name">Page hero (service variant) + industry metric band</span><span class="note">home hero is BUILT in index.astro · sub-page heroes follow it: pure white, top-left copy, asymmetric motif right bleeding into whitespace, Get in touch + chevron link. R1/R2/R4 (2026-06-07): the sub-page hero motif renders at HOME-HERO scale — SVG sized directly at `min(540px,48vw)` exactly as home does — WITH the R4 fine-line treatment: strokes thinned via a hero-scoped CSS override so visual line weight matches the home hero (blown-up icon strokes read as fat marker, killed at R4); terracotta keeps its weight ratio; the override never leaks beyond the hero wrapper. Per-pillar/sector hero SCENES are queued as Herman-drawn artwork (EQT-275, content-only swap at the marked seam). Industry metric band: SKIPPED for the EQT-254 industry pages (decision 2026-06-07, figures live in the proof carousel); the hairline band pattern stays here for pages that genuinely carry hero stats (e.g. case study).</span></div>
   <div class="stage white">
     <div class="demo-hero">
       <div>
@@ -1229,7 +1235,7 @@ a{color:inherit;}
 
 <!-- 36 SITE FOOTER -->
 <section class="block">
-  <div class="label"><span class="num">36</span><span class="name">Site footer</span><span class="note">BUILT in src/components/Footer.astro — markup mirrored for reference; pages consume the component. Pure white, full FRAME footer, NO LMI line, entity + ABN in the bottom strip.</span></div>
+  <div class="label"><span class="num">36</span><span class="name">Site footer</span><span class="note">BUILT in src/components/Footer.astro — markup mirrored for reference; pages consume the component. Pure white, full FRAME footer, NO LMI line, entity + ABN in the bottom strip. R2 (2026-06-07): at phone widths (≤760/≤460) the brand block sits full-width on top and the three link columns flow in a 2-COLUMN grid, never one long single stack (footer rules in base.css, site-wide).</span></div>
   <div class="stage white">
     <footer class="site-footer">
       <div class="footer-inner">
@@ -1273,8 +1279,29 @@ a{color:inherit;}
   </div>
 </section>
 
+<!-- 37 STICKY SUB-NAV (industry sector pages) -->
+<section class="block">
+  <div class="label"><span class="num">37</span><span class="name">Sticky sub-nav (industry sector pages)</span><span class="note">NEW in v6x (added 2026-06-07, EQT-254) — the v5x sector pages never shipped one. Slim in-page anchor bar pinned under the main nav: white, hairline bottom, Montserrat uppercase links, terracotta marker on the active section (IntersectionObserver scroll-spy, no animation beyond the marker). Anchors: Challenges · How we help · Results · Our work · Where to start. Sector pages ONLY, not the hub.</span></div>
+  <style>
+    .subnav-demo{background:#fff;border-bottom:1px solid var(--hairline);display:flex;gap:34px;align-items:center;height:52px;padding:0 8px;}
+    .subnav-demo a{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;color:#161616;position:relative;line-height:52px;}
+    .subnav-demo a.on{color:#C15F3C;}
+    .subnav-demo a.on::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:#C15F3C;}
+  </style>
+  <div class="stage white" style="padding-top:0;padding-bottom:34px;">
+    <div class="subnav-demo" role="navigation" aria-label="On this page">
+      <a href="#" class="on">Challenges</a>
+      <a href="#">How we help</a>
+      <a href="#">Results</a>
+      <a href="#">Our work</a>
+      <a href="#">Where to start</a>
+    </div>
+    <p style="margin:22px 0 0;color:var(--caption);font-family:'Lora',serif;font-style:italic;font-size:15px;">In the build: <code>position:sticky; top:0;</code> directly below the main nav; the active state follows the section in view via IntersectionObserver. Links are plain in-page anchors, keyboard reachable. The marker is the only moving part.</p>
+  </div>
+</section>
+
 <div style="max-width:1180px;margin:0 auto;padding:8px 48px 70px;color:var(--caption);font-family:'Lora',serif;font-style:italic;font-size:15px;">
-  Notes: thin-lined boxes (1px hairline, no shadow) contain each pattern; the contained bisection line divides them. Client results (block 14) is the proof carousel and can sit on a contained dark panel when it is the page's one dark moment. Phase timeline from older v2/v3 pages stays out of scope (not in any v5x page). Synced to the merged home (EQT-245/250/251): Lora 22px body, terracotta chevron links, 110px pillar/sector icons, Open Sans removed, GOVERN shield updated to the locked straight two-line tick, carousel ghosts use the EQT-253 doc glyphs. Coverage pass 2026-06-07: every component that appears in any v5x page now has a block here (00-32). RETIRED by the home build: the v5x scroll-reveal animation system (reveal/reveal-d1..d3, the home ships without it), the bordered outline button, the six-colour pillar pills, the hero low-poly gem, and all wash section fills. The nav, footer and pillar icon markup here mirrors src/ — builds consume the components, never copies. AEO answer and hook on blog posts stay quiet plain prose (no box). The "Since 2009" story item drops its year at conversion.
+  Notes: thin-lined boxes (1px hairline, no shadow) contain each pattern; the contained bisection line divides them. Client results (block 14) is the proof carousel and can sit on a contained dark panel when it is the page's one dark moment. Phase timeline from older v2/v3 pages stays out of scope (not in any v5x page). Synced to the merged home (EQT-245/250/251): Lora 22px body, terracotta chevron links, 110px pillar/sector icons, Open Sans removed, GOVERN shield updated to the locked straight two-line tick, carousel ghosts use the EQT-253 doc glyphs. Coverage pass 2026-06-07: every component that appears in any v5x page now has a block here (00-32). Block 37 (sticky sub-nav) added later the same day for EQT-254: a NEW v6x component for the industry sector pages, not a v5x translation (the v5x audit row described a component that never shipped). EQT-253 R1 amendments (2026-06-07, Herman review): minimal SECTION reveal reinstated (one fade + 8px rise, 350ms ease-out, fires once, no stagger, prefers-reduced-motion disables; the v5x multi-element reveal-d1..d3 system stays retired; home retrofit is a follow-up issue); dark-field tone varies per page TYPE not per page (home near-black #101317, services dark-slate #2C3E50, industries ink-navy); CTA equation eyebrow is WORK WITH US (START HERE retired as repetitive); WHERE IT LEADS + next-step columns merge into ONE continuous section with current-vs-next asymmetry (blocks 08b + 09 updated); the static pathway marks the NEXT station (terracotta segment, filled navy core, small NEXT label); WHY-section headlines carry a positive verb-first frame (the situation section owns the negative); every section sits on one left axis; sub-page hero motifs render at home-hero scale. R2 amendments (same day): CTA equation operators 48px/700 terracotta; hero art sized on the SVG element at min(540px,48vw) (home parity); footer link columns flow in a 2-column grid at phone widths (base.css, site-wide); WHERE IT LEADS stacks at ≤860px with the gutter chevron hidden and the pathway SVG scaling without clipping. R3 amendments (same day): the navy-wash callout must genuinely bleed off the left viewport edge (block 17 reaffirmed, floating box rejected); a clickable 4-item deliverables index sits above the carousel (block 04); the CTA equation never orphans an operator (single row or deliberate stack, nothing between). RETIRED by the home build: the v5x scroll-reveal animation system (reveal/reveal-d1..d3, the home ships without it), the bordered outline button, the six-colour pillar pills, the hero low-poly gem, and all wash section fills. The nav, footer and pillar icon markup here mirrors src/ — builds consume the components, never copies. AEO answer and hook on blog posts stay quiet plain prose (no box). The "Since 2009" story item drops its year at conversion.
 </div>
 
 <script>
