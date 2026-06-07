@@ -1,0 +1,618 @@
+---
+import Footer from "../../components/Footer.astro";
+import Icon from "../../components/icons/Icon.astro";
+import Assure from "../../components/icons/glyphs/Assure.astro";
+import Automation from "../../components/icons/glyphs/Automation.astro";
+import Capability from "../../components/icons/glyphs/Capability.astro";
+import Charter from "../../components/icons/glyphs/Charter.astro";
+import Dialogue from "../../components/icons/glyphs/Dialogue.astro";
+import DocReport from "../../components/icons/glyphs/DocReport.astro";
+import Evidence from "../../components/icons/glyphs/Evidence.astro";
+import FutureState from "../../components/icons/glyphs/FutureState.astro";
+import Gauge from "../../components/icons/glyphs/Gauge.astro";
+import Layout from "../../layouts/Layout.astro";
+import Loop from "../../components/icons/glyphs/Loop.astro";
+import Nav from "../../components/Nav.astro";
+import Network from "../../components/icons/glyphs/Network.astro";
+import RootCause from "../../components/icons/glyphs/RootCause.astro";
+import Standardise from "../../components/icons/glyphs/Standardise.astro";
+import Transfer from "../../components/icons/glyphs/Transfer.astro";
+import lmiLogo from "../../../brand/assets/logos/lmi/LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg";
+import "../../styles/industries.css";
+
+const glyphs = {
+  assure: Assure,
+  automation: Automation,
+  capability: Capability,
+  charter: Charter,
+  dialogue: Dialogue,
+  "doc-report": DocReport,
+  evidence: Evidence,
+  "future-state": FutureState,
+  gauge: Gauge,
+  loop: Loop,
+  network: Network,
+  "root-cause": RootCause,
+  standardise: Standardise,
+  transfer: Transfer,
+} as const;
+
+const serviceMeta = {
+  frame: { eyebrow: "FRAME · DEFINE", name: "Problem Framing", href: "/services/frame/" },
+  plan: { eyebrow: "PLAN · MEASURE", name: "Operations Diagnostic", href: "/services/plan/" },
+  solve: { eyebrow: "SOLVE · ANALYSE", name: "Iterative Improvement", href: "/services/solve/" },
+  evolve: { eyebrow: "EVOLVE · IMPROVE", name: "Rapid Pilot", href: "/services/evolve/" },
+  govern: { eyebrow: "GOVERN · CONTROL", name: "Architecture & Governance", href: "/services/govern/" },
+  scale: { eyebrow: "SCALE · OPERATE", name: "Operational Embedding", href: "/services/scale/" },
+} as const;
+
+const stations = [
+  { key: "FRAME", pillar: "frame", x: 70, y: 100 },
+  { key: "PLAN", pillar: "plan", x: 250, y: 97 },
+  { key: "SOLVE", pillar: "solve", x: 430, y: 99 },
+  { key: "EVOLVE", pillar: "evolve", x: 610, y: 101 },
+  { key: "GOVERN", pillar: "govern", x: 790, y: 98 },
+  { key: "SCALE", pillar: "scale", x: 970, y: 98 },
+] as const;
+
+const sectors = {
+  "financial-services": {
+    title: "Financial Services | Industries | EQUIBT",
+    description: "EQUIBT helps financial services teams reduce rework, control risk and build operational capability.",
+    sectorName: "Financial Services",
+    icon: "financial-services",
+    heroTitle: "Fix the process, not the symptom.",
+    heroSubhead: "Rework, rising handle times, and control gaps in a regulated operation are rarely a people problem. They are a process problem, and process problems are fixable.",
+    heroBody: "EQUIBT works where transaction volume, regulatory documentation, approval hierarchy, and AI adoption pressure meet. In financial services, operational precision is not an efficiency preference. It is a compliance requirement.",
+    challengesTitle: "The same operational problem carries more consequence here.",
+    challengesNote: "A rework problem in a bank is shaped by regulatory documentation requirements, approval hierarchies, and the risk appetite of the compliance function. The same fix that works in a factory will not survive contact with an audit trail. We design improvement that holds inside the controls you already answer to.",
+    challenges: [
+      { title: "Documentation burden", body: "Audit and regulatory reporting can be carried by spreadsheets long after the operating risk is visible.", glyph: "doc-report" },
+      { title: "Approval hierarchy", body: "Delegated authority and compliance review can turn one unclear handoff into repeat rework.", glyph: "network" },
+      { title: "Risk appetite", body: "The solution has to match the compliance function's tolerance for variation, not just the process owner's preference.", glyph: "assure" },
+      { title: "AI-assisted decisions", body: "Credit, fraud and onboarding tools need ownership, measured benefit and drift detection.", glyph: "automation" },
+      { title: "High-volume handoffs", body: "Handle times rise quickly when small ambiguity repeats across claims, lending and onboarding queues.", glyph: "transfer" },
+      { title: "Customer impact", body: "Back-office instability shows up as delays, complaints, remediation and avoidable escalation.", glyph: "dialogue" },
+    ],
+    selectorTitle: "Six services, calibrated to financial services.",
+    selectorNote: "The method is the same; the calibration is not. Diagnostics weigh regulatory constraint and approval hierarchy. Pilots run inside a contained book of work with a defined go or no-go decision. Governance is built as a working control, not a compliance document.",
+    services: {
+      frame: { title: "Define the pressure before it becomes a project.", copy: "Use FRAME when the operational pressure is visible but the scope, stakeholders, success criteria or decision point are still contested.", description: "Clarify the problem, boundary, stakeholders and success measures before the fix is designed.", challenges: ["Approval hierarchy", "Risk appetite", "Customer impact"], deliverables: ["SPIN Workshop Report", "Project Charter", "Success Criteria Framework", "SPIN Workshop Record"] },
+      plan: { title: "Baseline the real source of the rework.", copy: "Use PLAN when claims, lending or onboarding processes show rework above threshold and leaders cannot yet prove where the problem starts.", description: "Map the current state, establish baselines and identify the highest-value starting point.", challenges: ["Documentation burden", "High-volume handoffs", "Customer impact"], deliverables: ["Current-State Assessment", "Capability Gap Analysis", "Prioritised Improvement Roadmap", "Engagement Pathway Recommendation"] },
+      solve: { title: "Isolate the structural cause.", copy: "Use SOLVE when prior training, checklist or system changes have failed because the missing decision right or process break has not been isolated.", description: "Move from symptoms to causes, and from causes to costed solution options.", challenges: ["Approval hierarchy", "Risk appetite", "High-volume handoffs"], deliverables: ["Root Cause Analysis Report", "Future State Design", "Cost-Benefit Analysis", "Implementation Readiness Assessment"] },
+      evolve: { title: "Test the fix inside live work.", copy: "Use EVOLVE when the redesigned decision point, handoff or control needs to be piloted in a contained book of work before broader change.", description: "Validate the redesigned process with real work, live metrics and a go or no-go decision.", challenges: ["High-volume handoffs", "Customer impact", "Risk appetite"], deliverables: ["Pilot Results Report", "Business Requirements Document", "Implementation and Change Management Plan", "Deployment Authorisation Brief"] },
+      govern: { title: "Lock ownership and controls.", copy: "Use GOVERN when AI-assisted decisions, manual controls or operating standards need ownership, escalation and drift detection that people actually use.", description: "Build control plans, AI governance and monitoring infrastructure so the gain holds.", challenges: ["AI-assisted decisions", "Documentation burden", "Risk appetite"], deliverables: ["Process Architecture Document", "Control Plans", "Monitoring Dashboard Specification", "AI Governance Framework"] },
+      scale: { title: "Standardise what has proven itself.", copy: "Use SCALE when a governed improvement is ready to move across teams, channels or business units without losing control.", description: "Deploy the validated, governed way of working across the operation.", challenges: ["High-volume handoffs", "Documentation burden", "Customer impact"], deliverables: ["Standardisation Playbook", "Automation Deployment Package", "Capability Transfer Programme", "Continuous Improvement System"] },
+    },
+    proofTitle: "Rework falls when the operating cause is fixed.",
+    proofIntro: "The first result is the same anonymised claims rework engagement featured below. The remaining examples show realistic financial-services proof points and are tagged in the HTML.",
+    proofSlides: [
+      { comment: "ILLUSTRATIVE: replace with real anonymised figure before launch", action: "Reduced claims rework by", metric: "23%", rest: "by piloting the missing decision right and governing the new standard.", caption: "Health insurer · EVOLVE and GOVERN engagement." },
+      { comment: "ILLUSTRATIVE: replace with real anonymised figure before launch", action: "Reduced backlog by", metric: "18%", rest: "after a contained lending operations pilot isolated the failure point.", caption: "Regional bank · Contained lending operations pilot." },
+      { comment: "ILLUSTRATIVE: replace with real anonymised figure before launch", action: "Cut turnaround time by", metric: "11 days", rest: "by rerouting claims exceptions and approval handoffs.", caption: "Insurance underwriter · Claims exception routing and approval handoffs." },
+      { comment: "ILLUSTRATIVE: replace with real anonymised figure before launch", action: "Reduced cycle time by", metric: "27%", rest: "after redesigning a high-volume onboarding workflow.", caption: "Mutual bank · High-volume onboarding workflow." },
+    ],
+    caseStudy: {
+      sector: "Health insurer",
+      comment: "ILLUSTRATIVE: replace with real anonymised figure before launch",
+      metric: "23% reduction",
+      caption: "claims rework",
+      title: "Reduced claims rework through a governed pilot.",
+      problem: "A large financial services operation had a persistent claims rework problem that three previous improvement programmes had failed to fix. Each programme had treated the symptom: additional training, updated checklists, or system modifications. None had isolated where the work was actually breaking or which decision right was missing.",
+      approach: "PLAN established the true baseline and mapped where rework was originating. SOLVE identified a missing decision right at a specific point in the approval process, combined with inconsistent training across teams. EVOLVE tested the structural fix in live work and GOVERN built the control infrastructure around the new decision point.",
+      outcome: "The operation stopped treating the symptom and locked the decision right into the process. The pilot created a clearer operating standard, gave leaders a better view of drift risk, and left the team with governance infrastructure for the improved process.",
+    },
+    startTitle: "Most financial services work begins with PLAN.",
+    startNote: "If the rework source is unclear, start with diagnostic evidence. If the operation needs ownership, controls or AI governance, start with GOVERN.",
+    recommended: ["plan", "govern"],
+    entryPoints: [
+      { pillar: "plan", summary: "PLAN maps the current state, establishes baselines, and clarifies the highest-value improvement opportunities before solution design begins." },
+      { pillar: "govern", summary: "GOVERN builds the controls, decision rights, dashboards, and AI governance frameworks that keep the improved operation running to standard after the project closes." },
+    ],
+    ctaTitle: "Put a financial services operation on a firmer footing.",
+    ctaBody: "Tell us where the rework or the handle time is building. We will tell you whether there is a process fix worth scoping.",
+    lmiPhrase: "financial services operations",
+  },
+  government: {
+    title: "Government and Public Sector | Industries | EQUIBT",
+    description: "EQUIBT helps public-sector teams reduce backlog, improve cycle time and keep accountability intact.",
+    sectorName: "Government & Public Sector",
+    icon: "government",
+    heroTitle: "Cut the cycle time, keep the accountability.",
+    heroSubhead: "Public-sector operations carry obligations a private operation does not. Faster does not have to mean looser. We make the process quicker without loosening the controls you answer for.",
+    heroBody: "A backlog in a government department is shaped by ministerial accountability, public-service enterprise agreements, and procurement constraints. Improvement has to respect those, not route around them.",
+    challengesTitle: "The process has to answer to more than throughput.",
+    challengesNote: "A backlog in a government department is shaped by ministerial accountability, public-service enterprise agreements, and procurement constraints. Improvement has to respect those, not route around them. We design for the operating reality, not an idealised one.",
+    challenges: [
+      { title: "Investigation and assessment backlogs", body: "Backlogs grow when decision rights, evidence standards and handoffs are unclear across teams.", glyph: "evidence" },
+      { title: "Cycle times under public and ministerial scrutiny", body: "Time lost inside the process becomes visible quickly when leaders are asked to explain performance.", glyph: "gauge" },
+      { title: "Process change constrained by enterprise agreements", body: "The future state has to work inside real staffing, classification and consultation limits.", glyph: "charter" },
+      { title: "Legacy systems that cannot be replaced quickly", body: "Improvement often has to stabilise the work before the system can be replaced.", glyph: "future-state" },
+      { title: "AI adoption pressure without a governance path", body: "Use cases need ownership, escalation and defensible controls before they touch live decisions.", glyph: "automation" },
+      { title: "Reporting burden that crowds out frontline work", body: "Manual reporting can consume the capacity needed to move the backlog itself.", glyph: "doc-report" },
+    ],
+    selectorTitle: "Six services, calibrated to government operations.",
+    selectorNote: "Diagnostics map the accountability and procurement constraints up front. The future state is designed to be defensible, not just faster. Governance gives the operation a control structure that survives a change of staff or minister.",
+    services: {
+      frame: { title: "Define the public accountability before it becomes a project.", copy: "Use FRAME when the pressure is visible but scope, stakeholders, decision rights or public accountability are still contested.", description: "Clarify the problem, boundary, stakeholders and success measures before the fix is designed.", challenges: ["Ministerial scrutiny", "Procurement constraint", "Frontline impact"], deliverables: ["SPIN Workshop Report", "Project Charter", "Success Criteria Framework", "SPIN Workshop Record"] },
+      plan: { title: "Baseline the backlog and the constraints around it.", copy: "Use PLAN when investigation, assessment or reporting backlogs are visible and leaders need evidence before solution design.", description: "Map the current state, establish baselines and identify the highest-value starting point.", challenges: ["Backlog evidence", "Enterprise agreements", "Legacy systems"], deliverables: ["Current-State Assessment", "Capability Gap Analysis", "Prioritised Improvement Roadmap", "Engagement Pathway Recommendation"] },
+      solve: { title: "Isolate the operating cause without loosening control.", copy: "Use SOLVE when prior fixes have missed the decision right, handoff or policy interpretation that is slowing the work.", description: "Move from symptoms to causes, and from causes to costed solution options.", challenges: ["Assessment backlogs", "Cycle time", "Decision rights"], deliverables: ["Root Cause Analysis Report", "Future State Design", "Cost-Benefit Analysis", "Implementation Readiness Assessment"] },
+      evolve: { title: "Test the fix in a contained public-service setting.", copy: "Use EVOLVE when a redesigned process needs to be proven inside live work before wider deployment.", description: "Validate the redesigned process with real work, live metrics and a go or no-go decision.", challenges: ["Frontline work", "Reporting burden", "Stakeholder confidence"], deliverables: ["Pilot Results Report", "Business Requirements Document", "Implementation and Change Management Plan", "Deployment Authorisation Brief"] },
+      govern: { title: "Lock ownership, controls and escalation.", copy: "Use GOVERN when the improved process needs decision rights, monitoring and AI governance that can survive staff or ministerial change.", description: "Build control plans, AI governance and monitoring infrastructure so the gain holds.", challenges: ["AI governance", "Accountability", "Control structure"], deliverables: ["Process Architecture Document", "Control Plans", "Monitoring Dashboard Specification", "AI Governance Framework"] },
+      scale: { title: "Standardise what works across teams.", copy: "Use SCALE when a governed improvement is ready to move across units without losing control or accountability.", description: "Deploy the validated, governed way of working across the operation.", challenges: ["Standard work", "Capability transfer", "Sustained backlog movement"], deliverables: ["Standardisation Playbook", "Automation Deployment Package", "Capability Transfer Programme", "Continuous Improvement System"] },
+    },
+    proofTitle: "Cycle time falls when accountability is designed in.",
+    proofIntro: "The proof point below is anonymised by client type and focused on the operational metric, not the client name.",
+    proofSlides: [
+      { action: "Reduced investigation cycle time by", metric: "41%", rest: "by redesigning handoffs and decision points without loosening controls.", caption: "Anonymised." },
+      { action: "Mapped accountability constraints with", metric: "PLAN", rest: "so process delay could be separated from policy, procurement and staffing constraints.", caption: "The diagnostic located the real starting point." },
+      { action: "Designed a defensible future state with", metric: "SOLVE", rest: "so avoidable handoffs were removed without weakening control.", caption: "The redesign kept accountability visible." },
+      { action: "Retained the control structure with", metric: "GOVERN", rest: "so ownership and monitoring could survive staff or ministerial change.", caption: "The standard was built to hold." },
+    ],
+    caseStudy: {
+      sector: "State government client",
+      metric: "41% reduction",
+      caption: "investigation cycle time",
+      title: "Reduced investigation cycle time without loosening controls.",
+      problem: "A state government client had an investigation backlog that was attracting internal and external scrutiny. The process had grown around legacy systems, unclear evidence standards, and handoffs that were hard to challenge. Leaders needed speed, but not a shortcut that would fail accountability tests.",
+      approach: "PLAN mapped the true source of cycle time and separated process delay from policy and procurement constraints. SOLVE redesigned the handoffs and decision points so the future state remained defensible. GOVERN clarified ownership, escalation and monitoring so the standard could hold after personnel changes.",
+      outcome: "The operation moved backlog work faster while keeping the control logic visible. Leaders gained a clearer view of where work was waiting, what decisions were missing, and how to sustain the new operating standard.",
+    },
+    startTitle: "Most government work begins with PLAN.",
+    startNote: "If the backlog source is unclear, start with diagnostic evidence. If the operation needs defensible ownership or AI governance, bring GOVERN into scope early.",
+    recommended: ["plan", "solve", "govern"],
+    entryPoints: [
+      { pillar: "plan", summary: "PLAN maps the current state, establishes baselines, and clarifies the highest-value improvement opportunities before solution design begins." },
+      { pillar: "govern", summary: "GOVERN builds the controls, decision rights, dashboards, and AI governance frameworks that keep the improved operation running to standard after the project closes." },
+    ],
+    ctaTitle: "Move the backlog without moving the goalposts.",
+    ctaBody: "Tell us where the cycle time or the backlog sits. We will tell you whether a diagnostic is worth your time.",
+    lmiPhrase: "government operations",
+  },
+  utilities: {
+    title: "Utilities | Industries | EQUIBT",
+    description: "EQUIBT helps utilities teams stabilise operational processes under regulatory and reliability pressure.",
+    sectorName: "Utilities",
+    icon: "utilities",
+    heroTitle: "Stabilise the operation under load.",
+    heroSubhead: "Asset-heavy, regulated, and under constant reliability pressure. We help utilities steady high-volume operational processes and build the capability to keep them steady.",
+    heroBody: "A process problem in a utility sits against regulatory reporting obligations, asset constraints, and reliability targets that are not negotiable. The work has to hold up to the regulator and keep the lights on at the same time.",
+    challengesTitle: "Reliability and regulation make process drift expensive.",
+    challengesNote: "A process problem in a utility sits against regulatory reporting obligations, asset constraints, and reliability targets that are not negotiable. The work has to hold up to the regulator and keep the lights on at the same time. We design for both.",
+    challenges: [
+      { title: "Processes drifting off standard", body: "Variation compounds quickly when the same workflow runs across field and back-office teams.", glyph: "gauge" },
+      { title: "Reliability and SLA pressure", body: "The fix has to protect service continuity while the process is being changed.", glyph: "assure" },
+      { title: "Regulatory reporting carried manually", body: "Manual reporting absorbs capacity and increases the risk of inconsistent evidence.", glyph: "doc-report" },
+      { title: "Field and back-office handoffs", body: "Data loss at the handoff turns operational work into rework and escalation.", glyph: "transfer" },
+      { title: "AI and automation without governance", body: "Automation needs controls, ownership and drift monitoring before it scales.", glyph: "automation" },
+      { title: "Improvement that fades", body: "The operating standard has to be embedded where the work happens every day.", glyph: "loop" },
+    ],
+    selectorTitle: "Six services, calibrated to utilities operations.",
+    selectorNote: "Diagnostics account for asset constraints and regulatory reporting from the first question. Pilots are contained so reliability is never the test subject. Governance embeds the standard so the gain does not erode after go-live.",
+    services: {
+      frame: { title: "Define the operating pressure before it becomes a reliability risk.", copy: "Use FRAME when the process pressure is visible but scope, asset constraints, reporting needs or reliability risk are still contested.", description: "Clarify the problem, boundary, stakeholders and success measures before the fix is designed.", challenges: ["Reliability pressure", "Asset constraints", "Regulatory reporting"], deliverables: ["SPIN Workshop Report", "Project Charter", "Success Criteria Framework", "SPIN Workshop Record"] },
+      plan: { title: "Baseline the process under load.", copy: "Use PLAN when high-volume work drifts off standard and leaders need to prove where the variation starts.", description: "Map the current state, establish baselines and identify the highest-value starting point.", challenges: ["Process drift", "Field handoffs", "Manual reporting"], deliverables: ["Current-State Assessment", "Capability Gap Analysis", "Prioritised Improvement Roadmap", "Engagement Pathway Recommendation"] },
+      solve: { title: "Isolate the cause of operational drift.", copy: "Use SOLVE when the process has been trained or automated before the structural cause of variation is understood.", description: "Move from symptoms to causes, and from causes to costed solution options.", challenges: ["SLA pressure", "Data loss", "Handoff delay"], deliverables: ["Root Cause Analysis Report", "Future State Design", "Cost-Benefit Analysis", "Implementation Readiness Assessment"] },
+      evolve: { title: "Test the fix without making reliability the test subject.", copy: "Use EVOLVE when the redesigned workflow needs a contained pilot that protects live service continuity.", description: "Validate the redesigned process with real work, live metrics and a go or no-go decision.", challenges: ["Contained pilots", "Service continuity", "Operational evidence"], deliverables: ["Pilot Results Report", "Business Requirements Document", "Implementation and Change Management Plan", "Deployment Authorisation Brief"] },
+      govern: { title: "Lock the reporting, controls and ownership.", copy: "Use GOVERN when regulatory reporting, AI use or manual controls need ownership and monitoring that people actually use.", description: "Build control plans, AI governance and monitoring infrastructure so the gain holds.", challenges: ["Regulatory evidence", "AI governance", "Control ownership"], deliverables: ["Process Architecture Document", "Control Plans", "Monitoring Dashboard Specification", "AI Governance Framework"] },
+      scale: { title: "Standardise what has proven reliable.", copy: "Use SCALE when a governed improvement is ready to move across crews, teams or regions without eroding.", description: "Deploy the validated, governed way of working across the operation.", challenges: ["Standard work", "Capability transfer", "Sustained performance"], deliverables: ["Standardisation Playbook", "Automation Deployment Package", "Capability Transfer Programme", "Continuous Improvement System"] },
+    },
+    proofTitle: "Restoration improves when the process holds under load.",
+    proofIntro: "The lead utilities figure is illustrative and marked until replaced by a confirmed real metric.",
+    proofSlides: [
+      { comment: "ILLUSTRATIVE: realistic placeholder; replace with a confirmed real anonymised utilities metric before launch.", action: "Cut unplanned outage restoration time by", metric: "27%", rest: "by baselining process drift, governing the reporting standard and preparing the workflow to scale.", caption: "Energy distribution operator · PLAN, GOVERN and SCALE engagement · anonymised, illustrative pending a confirmed metric." },
+      { action: "Mapped where process drift and asset constraints interacted with", metric: "PLAN", rest: "so the starting point was visible under load.", caption: "The diagnostic located the real starting point." },
+      { action: "Embedded a reporting standard with", metric: "GOVERN", rest: "so regulatory evidence became easier to sustain.", caption: "Ownership and monitoring held the standard." },
+      { action: "Transferred the operating standard with", metric: "SCALE", rest: "so the improved workflow could hold beyond the project team.", caption: "The workflow was prepared to scale." },
+    ],
+    caseStudy: {
+      sector: "Energy distribution operator",
+      comment: "ILLUSTRATIVE: realistic placeholder; replace with a confirmed real anonymised utilities metric before launch.",
+      metric: "27% reduction",
+      caption: "restoration time",
+      title: "Reduced restoration time through governed standard work.",
+      problem: "An energy distribution operator had a restoration workflow that drifted under load. Field and back-office handoffs were losing time and data, while regulatory reporting still had to be completed accurately. Reliability targets left little room for experimentation inside live service delivery.",
+      approach: "PLAN mapped the restoration process against asset constraints, handoffs and reporting obligations. GOVERN clarified the controls and evidence needed to keep the standard defensible. SCALE prepared the workflow, ownership and capability transfer needed to keep the gain after go-live.",
+      outcome: "The operation had a clearer standard for restoration work and a stronger control path for the reporting that surrounded it. The process became easier to monitor, easier to teach, and less dependent on project-team attention.",
+    },
+    startTitle: "Most utilities work begins with PLAN.",
+    startNote: "If the process keeps drifting under load, start with the diagnostic. If reliability and reporting need to hold after go-live, bring GOVERN and SCALE into scope early.",
+    recommended: ["plan", "govern", "scale"],
+    entryPoints: [
+      { pillar: "plan", summary: "PLAN maps the current state, establishes baselines, and clarifies the highest-value improvement opportunities before solution design begins." },
+      { pillar: "govern", summary: "GOVERN builds the controls, decision rights, dashboards, and AI governance frameworks that keep the improved operation running to standard after the project closes." },
+    ],
+    ctaTitle: "Steady a high-volume utilities operation.",
+    ctaBody: "Tell us which process keeps drifting under load. We will tell you whether it is a fixable process gap.",
+    lmiPhrase: "utilities operations",
+  },
+  manufacturing: {
+    title: "Advanced Manufacturing | Industries | EQUIBT",
+    description: "EQUIBT helps manufacturers reduce waste, stabilise process performance and build capability on the floor.",
+    sectorName: "Advanced Manufacturing",
+    icon: "manufacturing",
+    heroTitle: "Cut waste, hold the standard.",
+    heroSubhead: "Precision, throughput, and quality under tight tolerances. We help manufacturers cut waste, stabilise processes, and build improvement capability on the floor.",
+    heroBody: "A process problem on a manufacturing floor is shaped by shift patterns, machine uptime, and supplier variability. Improvement has to work across shifts and survive a bad batch of inputs.",
+    challengesTitle: "The floor has to run on the hard days too.",
+    challengesNote: "A process problem on a manufacturing floor is shaped by shift patterns, machine uptime, and supplier variability. Improvement has to work across shifts and survive a bad batch of inputs. We design for the floor as it runs, not the line on a good day.",
+    challenges: [
+      { title: "Cycle time and throughput below capacity", body: "Capacity leaks through waiting, variation and handoffs that become normal over time.", glyph: "gauge" },
+      { title: "Quality variation and rework", body: "Small deviations at the point of work become rework, scrap and missed delivery windows.", glyph: "root-cause" },
+      { title: "Changeover and downtime losses", body: "Lost time around changeover and uptime needs to be measured before it can be improved.", glyph: "standardise" },
+      { title: "Supplier variability", body: "The operating standard has to survive imperfect inputs, not only ideal conditions.", glyph: "network" },
+      { title: "Capability that does not outlast the consultant", body: "The floor needs the capability to keep improving after the external project closes.", glyph: "capability" },
+      { title: "AI without floor-level governance", body: "Automation needs standards and ownership at the point where work actually changes.", glyph: "automation" },
+    ],
+    selectorTitle: "Six services, calibrated to advanced manufacturing operations.",
+    selectorNote: "Diagnostics read shift patterns, uptime, and supplier variability as first-class constraints. The future state is designed to run across shifts. Capability transfer leaves the floor able to keep improving without us.",
+    services: {
+      frame: { title: "Define the constraint before it becomes a project.", copy: "Use FRAME when throughput, quality or downtime pressure is visible but the scope, stakeholders or success measure are still contested.", description: "Clarify the problem, boundary, stakeholders and success measures before the fix is designed.", challenges: ["Throughput pressure", "Quality variation", "Floor constraints"], deliverables: ["SPIN Workshop Report", "Project Charter", "Success Criteria Framework", "SPIN Workshop Record"] },
+      plan: { title: "Baseline where time and quality are leaking.", copy: "Use PLAN when cycle time, rework or downtime are visible and leaders cannot yet prove where the loss starts.", description: "Map the current state, establish baselines and identify the highest-value starting point.", challenges: ["Cycle time", "Shift patterns", "Supplier variability"], deliverables: ["Current-State Assessment", "Capability Gap Analysis", "Prioritised Improvement Roadmap", "Engagement Pathway Recommendation"] },
+      solve: { title: "Isolate the structural cause of waste.", copy: "Use SOLVE when prior training, tooling or automation has not fixed the root cause of rework or delay.", description: "Move from symptoms to causes, and from causes to costed solution options.", challenges: ["Waste", "Rework", "Changeover loss"], deliverables: ["Root Cause Analysis Report", "Future State Design", "Cost-Benefit Analysis", "Implementation Readiness Assessment"] },
+      evolve: { title: "Test the fix across real shifts.", copy: "Use EVOLVE when the redesigned standard needs to be proven in live work across normal variation.", description: "Validate the redesigned process with real work, live metrics and a go or no-go decision.", challenges: ["Shift adoption", "Pilot evidence", "Floor standard"], deliverables: ["Pilot Results Report", "Business Requirements Document", "Implementation and Change Management Plan", "Deployment Authorisation Brief"] },
+      govern: { title: "Lock ownership at the point of work.", copy: "Use GOVERN when operating standards, AI use or automation need ownership, escalation and drift detection on the floor.", description: "Build control plans, AI governance and monitoring infrastructure so the gain holds.", challenges: ["Floor governance", "AI controls", "Standard work"], deliverables: ["Process Architecture Document", "Control Plans", "Monitoring Dashboard Specification", "AI Governance Framework"] },
+      scale: { title: "Standardise what survives the floor.", copy: "Use SCALE when a governed improvement is ready to move across lines, shifts or sites without consultant dependency.", description: "Deploy the validated, governed way of working across the operation.", challenges: ["Capability transfer", "Cross-shift standard", "Sustained improvement"], deliverables: ["Standardisation Playbook", "Automation Deployment Package", "Capability Transfer Programme", "Continuous Improvement System"] },
+    },
+    proofTitle: "Waste falls when the standard survives the floor.",
+    proofIntro: "The proof point below is anonymised by client type and focused on the operational metric, not the client name.",
+    proofSlides: [
+      { action: "Reduced cycle time by", metric: "14%", rest: "by baselining where time leaked and isolating the structural causes of waste.", caption: "Anonymised." },
+      { action: "Mapped shift patterns with", metric: "PLAN", rest: "so line capacity could be separated from process variation and handoff delay.", caption: "The diagnostic made the loss visible." },
+      { action: "Isolated root causes with", metric: "SOLVE", rest: "so the redesign targeted the structural causes of waste and rework.", caption: "The fix reached the floor." },
+      { action: "Prepared capability transfer with", metric: "SCALE", rest: "so the standard could work across shifts without consultant dependency.", caption: "The standard was prepared to hold." },
+    ],
+    caseStudy: {
+      sector: "Precision manufacturer",
+      metric: "14% reduction",
+      caption: "cycle time",
+      title: "Reduced cycle time across manufacturing operations.",
+      problem: "A precision manufacturer had cycle time and throughput below capacity across operations. Shift patterns, machine uptime and supplier variability were all affecting the process, which made the problem hard to isolate. The operation needed a fix that worked across shifts, not only on a good day.",
+      approach: "PLAN established the baseline and mapped how the work actually ran across shifts. SOLVE isolated the structural causes of waste, rework and delay. The future state was designed around the operating constraints of the floor, including uptime and supplier variability.",
+      outcome: "The line gained a clearer standard for where time was being lost and how the process should run. Leaders had better evidence for prioritising improvements, and the floor had a practical basis for continued improvement without consultant dependency.",
+    },
+    startTitle: "Most advanced manufacturing work begins with PLAN.",
+    startNote: "If throughput or quality is leaking, start with the diagnostic. If the operating cause is known but unresolved, move quickly into SOLVE and prepare the standard for SCALE.",
+    recommended: ["plan", "solve", "scale"],
+    entryPoints: [
+      { pillar: "plan", summary: "PLAN maps the current state, establishes baselines, and clarifies the highest-value improvement opportunities before solution design begins." },
+      { pillar: "solve", summary: "SOLVE moves from symptoms to causes, and from causes to costed solution options that can be tested in the real operation." },
+    ],
+    ctaTitle: "Get more out of the line you already run.",
+    ctaBody: "Tell us where throughput or quality is leaking. We will tell you whether there is a process fix worth scoping.",
+    lmiPhrase: "advanced manufacturing operations",
+  },
+} as const;
+
+type SectorKey = keyof typeof sectors;
+const { sector } = Astro.props as { sector: SectorKey };
+const data = sectors[sector];
+const initialService = data.services.frame;
+---
+
+<Layout title={data.title} description={data.description}>
+  <Nav />
+  <main>
+    <section class="industry-hero industry-reveal">
+      <div class="industry-hero-inner">
+        <div>
+          <div class="eyebrow">{data.sectorName}</div>
+          <h1>{data.heroTitle}</h1>
+          <p class="industry-hero-subhead">{data.heroSubhead}</p>
+          <p class="industry-hero-body">{data.heroBody}</p>
+          <div class="industry-actions">
+            <a href="/contact/" class="btn-primary">Get in touch</a>
+            <a href="/industries/" class="btn-text"><span class="link-label">View all industries</span> <span class="ar">&rsaquo;</span></a>
+          </div>
+        </div>
+        <div class="industry-hero-art" aria-hidden="true">
+          <!-- hero art: sector icon at hero scale, fine-line interim. Per-sector hero scene swaps in here later (EQT-275). -->
+          <span><Icon name={data.icon} /></span>
+        </div>
+      </div>
+    </section>
+
+    <nav class="sector-subnav" aria-label={`${data.sectorName} sections`}>
+      <div class="sector-subnav-inner">
+        <a href="#challenges" class="is-active">Challenges</a>
+        <a href="#how-we-help">How we help</a>
+        <a href="#results">Results</a>
+        <a href="#our-work">Our work</a>
+        <a href="#where-to-start">Where to start</a>
+      </div>
+    </nav>
+
+    <section id="challenges" class="industry-section beige industry-reveal" data-subnav-section>
+      <div class="industry-inner">
+        <div class="industry-head">
+          <div class="eyebrow">WHY THIS SECTOR IS DIFFERENT</div>
+          <h2 class="industry-title">{data.challengesTitle}</h2>
+          <p>{data.challengesNote}</p>
+        </div>
+        <div class="challenge-grid">
+          {data.challenges.map((challenge) => {
+            const Glyph = glyphs[challenge.glyph];
+            return (
+              <article class="challenge-item">
+                <span class="challenge-glyph" aria-hidden="true"><Glyph /></span>
+                <h3>{challenge.title}</h3>
+                <p>{challenge.body}</p>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <section id="how-we-help" class="industry-section white industry-reveal" data-subnav-section>
+      <div class="industry-inner">
+        <div class="industry-head">
+          <div class="eyebrow">HOW WE HELP IN {data.sectorName.toUpperCase()}</div>
+          <h2 class="industry-title">{data.selectorTitle}</h2>
+          <p>{data.selectorNote}</p>
+        </div>
+        <div class="service-selector" data-service-selector>
+          <div class="selector-list" role="list" aria-label={`${data.sectorName} service selector`}>
+            {Object.entries(serviceMeta).map(([pillar, meta], index) => (
+              <button
+                class:list={["selector-item", { "is-active": index === 0 }]}
+                type="button"
+                data-pillar={pillar}
+                data-title={data.services[pillar].title}
+                data-copy={data.services[pillar].copy}
+                data-description={data.services[pillar].description}
+                data-challenges={data.services[pillar].challenges.join("|")}
+                data-deliverables={data.services[pillar].deliverables.join("|")}
+                data-href={meta.href}
+                aria-pressed={index === 0 ? "true" : "false"}
+              >
+                <span class="selector-icon" aria-hidden="true"><Icon name={pillar} /></span>
+                <span>
+                  <span class="selector-kicker">{meta.eyebrow}</span>
+                  <span class="selector-service">{meta.name}</span>
+                </span>
+              </button>
+            ))}
+          </div>
+          <div class="selector-panel" aria-live="polite">
+            <h3 data-selector-title>{initialService.title}</h3>
+            <p class="selector-panel-copy" data-selector-copy>{initialService.copy}</p>
+            <p class="selector-panel-desc" data-selector-description>{initialService.description}</p>
+            <p class="selector-label">Sector challenges addressed</p>
+            <ul class="selector-chips" data-selector-challenges>
+              {initialService.challenges.map((item) => <li>{item}</li>)}
+            </ul>
+            <p class="selector-label">Deliverables</p>
+            <ul class="selector-deliverables" data-selector-deliverables>
+              {initialService.deliverables.map((item) => <li>{item}</li>)}
+            </ul>
+            <a href="/services/frame/" class="btn-text" data-selector-link><span class="link-label">Explore FRAME</span> <span class="ar">&rsaquo;</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="industry-section beige industry-reveal" data-subnav-section>
+      <div class="proof-shell">
+        <div class="eyebrow light">CLIENT RESULTS</div>
+        <h2>{data.proofTitle}</h2>
+        <p>{data.proofIntro}</p>
+        <div class="proof-carousel" data-proof-carousel>
+          <div class="proof-track">
+            {data.proofSlides.map((slide) => (
+              <article class="proof-slide">
+                {slide.comment && <Fragment set:html={`<!-- ${slide.comment} -->`} />}
+                <p class="proof-action">{slide.action} <span class="metric">{slide.metric}</span> {slide.rest}</p>
+                <p class="proof-caption">{slide.caption}</p>
+              </article>
+            ))}
+          </div>
+          <div class="proof-controls">
+            <div class="proof-dots">
+              {data.proofSlides.map((_, index) => (
+                <button class:list={["proof-dot", { "is-active": index === 0 }]} type="button" data-proof-dot={index} aria-label={`Show result ${index + 1}`}></button>
+              ))}
+            </div>
+            <button class="proof-arrow" type="button" data-proof-prev aria-label="Previous result">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 L8 12 L15 19"/></svg>
+            </button>
+            <button class="proof-arrow" type="button" data-proof-next aria-label="Next result">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 L16 12 L9 19"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="our-work" class="industry-section white industry-reveal" data-subnav-section>
+      <div class="industry-inner">
+        <div class="industry-head">
+          <div class="eyebrow">OUR WORK</div>
+          <h2 class="industry-title">Proven in practice.</h2>
+        </div>
+        <article class="industry-case">
+          <div>
+            <div class="case-sector">{data.caseStudy.sector}</div>
+            {data.caseStudy.comment && <Fragment set:html={`<!-- ${data.caseStudy.comment} -->`} />}
+            <div class="case-number">{data.caseStudy.metric}</div>
+            <div class="case-caption">{data.caseStudy.caption}</div>
+          </div>
+          <div>
+            <h3>{data.caseStudy.title}</h3>
+            <div class="case-block"><p class="case-label">Problem</p><p>{data.caseStudy.problem}</p></div>
+            <div class="case-block"><p class="case-label">Approach</p><p>{data.caseStudy.approach}</p></div>
+            <div class="case-block"><p class="case-label">Outcomes</p><p>{data.caseStudy.outcome}</p></div>
+            <a href="/our-work/" class="btn-text"><span class="link-label">View our work</span> <span class="ar">&rsaquo;</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="where-to-start" class="industry-section beige industry-reveal" data-subnav-section>
+      <div class="industry-inner">
+        <div class="industry-head">
+          <div class="eyebrow">WHERE TO START</div>
+          <h2 class="industry-title">{data.startTitle}</h2>
+          <p>{data.startNote}</p>
+        </div>
+        <div class="pathway-box">
+          <svg viewBox="0 0 1040 150" role="img" aria-label={`${data.sectorName} recommended service pathway`}>
+            <path class="pathway-line hd-f2" d="M70 100 Q300 90 520 99 Q760 109 970 98"/>
+            {stations.map((station) => (
+              <a href={serviceMeta[station.pillar].href} class:list={["station-link", { "is-recommended": data.recommended.includes(station.pillar) }]} aria-label={`${station.key} service`}>
+                <circle class="station-ring" cx={station.x} cy={station.y}/>
+                <circle class="station-core" cx={station.x} cy={station.y}/>
+                <text class="station-label" x={station.x} y="138">{station.key}</text>
+              </a>
+            ))}
+          </svg>
+        </div>
+        <div class="entry-grid">
+          {data.entryPoints.map((entry) => {
+            const meta = serviceMeta[entry.pillar];
+            return (
+              <article class="entry-card">
+                <span class="entry-icon" aria-hidden="true"><Icon name={entry.pillar} /></span>
+                <div class="entry-kicker">{meta.eyebrow}</div>
+                <h3>{meta.name}</h3>
+                <p>{entry.summary}</p>
+                <a href={meta.href} class="btn-text"><span class="link-label">Explore {entry.pillar.toUpperCase()}</span> <span class="ar">&rsaquo;</span></a>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <section class="industry-section white cta-light industry-reveal">
+      <div class="industry-inner cta-grid">
+        <div>
+          <div class="eyebrow">WORK WITH US</div>
+          <h2 class="industry-title">{data.ctaTitle}</h2>
+          <p>{data.ctaBody}</p>
+          <a href="/contact/" class="btn-primary">Get in touch</a>
+        </div>
+        <div class="cta-art" aria-hidden="true">
+          <Icon name={data.icon} />
+        </div>
+      </div>
+    </section>
+
+    <section class="industry-section white lmi-handover section-after-white industry-reveal">
+      <div class="industry-inner training-inner">
+        <div class="eyebrow">TRAINING</div>
+        <h2 class="industry-title">Train your team in your own context.</h2>
+        <p class="training-copy">Lean Methods Institute contextualises our training to {data.lmiPhrase}, not generic case studies or simulations. Your team learns the methods and tools relevant to the problems they actually face, so the capability stays with them.</p>
+        <a href="https://leanmethods.com.au" class="lmi-logo-link" aria-label="Lean Methods Institute">
+          <img src={lmiLogo.src} class="lmi-logo-img" alt="Lean Methods Institute" loading="lazy" />
+        </a>
+        <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  const navToggle = document.querySelector(".nav-toggle");
+  const navLinks = document.getElementById("nav-links");
+  navToggle?.addEventListener("click", () => {
+    const expanded = navToggle.getAttribute("aria-expanded") === "true";
+    navToggle.setAttribute("aria-expanded", String(!expanded));
+    navLinks?.classList.toggle("is-open");
+    document.body.classList.toggle("nav-open");
+  });
+
+  function initialiseIndustryReveals() {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const sections = Array.from(document.querySelectorAll(".industry-reveal"));
+    if (reduceMotion || !("IntersectionObserver" in window)) return;
+    document.documentElement.classList.add("industry-reveal-enabled");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.16 });
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  function initialiseSubnav() {
+    const links = Array.from(document.querySelectorAll(".sector-subnav a"));
+    const sections = Array.from(document.querySelectorAll("[data-subnav-section]"));
+    if (!links.length || !sections.length || !("IntersectionObserver" in window)) return;
+    const byId = new Map(links.map((link) => [link.getAttribute("href")?.replace("#", ""), link]));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        links.forEach((link) => link.classList.remove("is-active"));
+        byId.get(entry.target.id)?.classList.add("is-active");
+      });
+    }, { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 });
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  function initialiseServiceSelector(selector) {
+    const buttons = Array.from(selector.querySelectorAll(".selector-item"));
+    const title = selector.querySelector("[data-selector-title]");
+    const copy = selector.querySelector("[data-selector-copy]");
+    const description = selector.querySelector("[data-selector-description]");
+    const challenges = selector.querySelector("[data-selector-challenges]");
+    const deliverables = selector.querySelector("[data-selector-deliverables]");
+    const link = selector.querySelector("[data-selector-link]");
+    const setList = (element, values) => {
+      if (!element) return;
+      element.innerHTML = "";
+      values.forEach((value) => {
+        const item = document.createElement("li");
+        item.textContent = value;
+        element.appendChild(item);
+      });
+    };
+    const select = (button) => {
+      buttons.forEach((item) => {
+        const active = item === button;
+        item.classList.toggle("is-active", active);
+        item.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+      if (title) title.textContent = button.dataset.title || "";
+      if (copy) copy.textContent = button.dataset.copy || "";
+      if (description) description.textContent = button.dataset.description || "";
+      setList(challenges, (button.dataset.challenges || "").split("|").filter(Boolean));
+      setList(deliverables, (button.dataset.deliverables || "").split("|").filter(Boolean));
+      if (link) {
+        const pillar = (button.dataset.pillar || "").toUpperCase();
+        link.setAttribute("href", button.dataset.href || "#");
+        const label = link.querySelector(".link-label");
+        if (label) label.textContent = `Explore ${pillar}`;
+      }
+    };
+    buttons.forEach((button) => button.addEventListener("click", () => select(button)));
+  }
+
+  function initialiseProofCarousel(carousel) {
+    const track = carousel.querySelector(".proof-track");
+    if (!track) return;
+    const slides = Array.from(track.querySelectorAll(".proof-slide"));
+    const dots = Array.from(carousel.querySelectorAll(".proof-dot"));
+    const previous = carousel.querySelector("[data-proof-prev]");
+    const next = carousel.querySelector("[data-proof-next]");
+    const gap = () => parseFloat(window.getComputedStyle(track).columnGap) || 0;
+    const step = () => slides[0] ? slides[0].getBoundingClientRect().width + gap() : track.clientWidth;
+    const sync = () => {
+      const index = Math.max(0, Math.min(dots.length - 1, Math.round(track.scrollLeft / step())));
+      dots.forEach((dot, position) => dot.classList.toggle("is-active", position === index));
+    };
+    previous?.addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" }));
+    next?.addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" }));
+    dots.forEach((dot) => dot.addEventListener("click", () => track.scrollTo({ left: Number(dot.dataset.proofDot || 0) * step(), behavior: "smooth" })));
+    track.addEventListener("scroll", sync, { passive: true });
+    sync();
+  }
+
+  initialiseIndustryReveals();
+  initialiseSubnav();
+  document.querySelectorAll("[data-service-selector]").forEach(initialiseServiceSelector);
+  document.querySelectorAll("[data-proof-carousel]").forEach(initialiseProofCarousel);
+</script>
