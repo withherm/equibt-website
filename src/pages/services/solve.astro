@@ -1,0 +1,91 @@
+---
+import ServicePage from "../../components/ServicePage.astro";
+
+const data = {
+  title: "Iterative Improvement | SOLVE | EQUIBT",
+  description: "SOLVE turns diagnostic evidence into root cause analysis, future-state design, and costed implementation choices.",
+  pillar: "solve",
+  eyebrow: "SOLVE · ANALYSE",
+  serviceName: "Iterative Improvement",
+  heroTitle: "Move from symptoms to causes. From causes to costed solutions.",
+  heroSubhead: "The diagnostic told you what is broken. SOLVE tells you why, then designs what to do about it. Root cause analysis, process redesign, and future state design, built to transfer capability.",
+  situationTitle: "Knowing where the friction sits is not enough.",
+  situation: [
+    "You have the diagnostic results. You know where the bottleneck, rework, or control failure appears. But knowing where is not the same as knowing why.",
+    "The same symptom can be caused by a missing decision right, a broken system handoff, an unclear escalation path, or capability that has never been built. SOLVE isolates the cause before the future state is designed."
+  ],
+  whyTitle: "Treating symptoms is why improvements do not hold.",
+  whyBody: [
+    "Training gets deployed, dashboards get rebuilt, or the process gets rewritten before the cause is isolated. The symptom moves, returns, or shows up somewhere else.",
+    "SOLVE works from evidence to cause, then from cause to design. Where structural redesign is needed, we define the process flows, decision rights, technology needs, and trade-offs before pilot validation."
+  ],
+  callout: {
+    lead: "A good solution to the wrong cause is still waste.",
+    body: "The work only earns funding when the root cause and the design choice are explicit."
+  },
+  proofPoints: [
+    { title: "Causes, not symptoms.", body: "We isolate the mechanism driving the operational failure before anything is redesigned.", glyph: "root-cause" },
+    { title: "Designed future state.", body: "The target state covers process, roles, decision rights, technology requirements, and performance targets.", glyph: "future-state" },
+    { title: "Capability transfer.", body: "Your team works through the method with us so the analytical capability stays inside the operation.", glyph: "transfer" }
+  ],
+  examineTitle: "Three disciplines. Causes to solutions.",
+  examineIntro: "SOLVE turns diagnostic findings into isolated causes, designed future states, and costed implementation choices.",
+  examineItems: [
+    { title: "Root Cause Analysis", body: "We test the diagnostic findings until the true constraint is visible and the symptom is no longer mistaken for the cause.", glyph: "root-cause" },
+    { title: "Future State Design", body: "We design the target operating flow, decision rights, role clarity, technology requirements, and performance targets.", glyph: "future-state" },
+    { title: "Cost-Benefit Analysis", body: "We make trade-offs visible so the future state can be funded, sequenced, and validated without hidden assumptions.", glyph: "evidence" }
+  ],
+  deliverablesTitle: "Four deliverables. Analysis to design.",
+  deliverablesIntro: "These are the outputs that move your team from diagnostic findings to a costed future state ready for validation.",
+  deliverables: [
+    { title: "Root Cause Analysis Report", body: "The tested cause chain behind the operational failure, with evidence for what is driving the symptom.", glyph: "doc-chart" },
+    { title: "Future State Design", body: "A complete operational design covering process flows, role definitions, decision rights, technology requirements, and performance targets.", glyph: "doc-report" },
+    { title: "Cost-Benefit Analysis", body: "The quantified case for the design choices, including trade-offs, expected benefit, implementation effort, and risk.", glyph: "doc-chart" },
+    { title: "Implementation Readiness Assessment", body: "A readiness view of what must be true before the solution can be piloted or deployed with confidence.", glyph: "doc-chart" }
+  ],
+  cases: [
+    {
+      sector: "Financial Services",
+      metric: "47% reduction",
+      caption: "processing errors removed after routing redesign",
+      title: "Redesigned claims exception routing.",
+      problem: "A claims processing function had a high error rate. Training had been deployed twice with no improvement, and the problem was still being treated as a skill gap.",
+      approach: "Root cause analysis identified that the decision gate for exception routing was missing. Claims were being processed by whoever picked them up, not by the team qualified to handle exceptions.",
+      outcome: "Process redesign added the decision gate and removed the error pattern from the source."
+    },
+    {
+      sector: "Government and Public Sector",
+      metric: "Sustained handover",
+      caption: "internal team kept the redesigned process operating",
+      title: "Redesigned high-volume regulatory processes.",
+      problem: "A regulatory agency needed to redesign high-volume processes after a diagnostic identified systemic rework. Previous improvement attempts had skipped root cause analysis.",
+      approach: "Structured root cause analysis identified unclear decision rights at the point of exception. Future state design addressed decision rights first, then process flows.",
+      outcome: "The redesigned processes held after handover, with the internal team able to operate and improve them without external support."
+    }
+  ],
+  pathwayTitle: "Where it leads.",
+  pathwayIntro: "SOLVE designs the future state. EVOLVE validates it in a controlled pilot before the full operation is asked to change.",
+  currentIndex: 2,
+  nextStepIntro: "The current step and the natural next move.",
+  currentStep: {
+    pillar: "solve",
+    eyebrow: "SOLVE · ANALYSE",
+    serviceName: "Iterative Improvement",
+    summary: "SOLVE isolates the root cause and designs the future state with clear trade-offs, ready for validation."
+  },
+  nextStep: {
+    pillar: "evolve",
+    eyebrow: "EVOLVE · IMPROVE",
+    serviceName: "Rapid Pilot",
+    summary: "EVOLVE tests the designed solution with real work in a controlled scope before the full operation commits.",
+    href: "/services/evolve/",
+    linkLabel: "Explore EVOLVE"
+  },
+  ctaTitle: "Design the future state, costed and ready.",
+  ctaBody: "If the diagnostic has shown where the friction sits, the next move is analysis. We will help isolate the cause and design a solution your team can validate.",
+  timeline: "From 4 weeks",
+  howWeWork: "Embedded with your team"
+} as const;
+---
+
+<ServicePage data={data} />

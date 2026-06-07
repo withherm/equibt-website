@@ -1,0 +1,91 @@
+---
+import ServicePage from "../../components/ServicePage.astro";
+
+const data = {
+  title: "Problem Framing | FRAME | EQUIBT",
+  description: "FRAME aligns stakeholders on the real operational problem before diagnostic or improvement work begins.",
+  pillar: "frame",
+  eyebrow: "FRAME · DEFINE",
+  serviceName: "Problem Framing",
+  heroTitle: "Align on the real problem before anything else moves.",
+  heroSubhead: "Most operational improvement programmes fail because stakeholders never agreed on what the problem actually was. FRAME locks that alignment before a single diagnostic dollar gets spent.",
+  situationTitle: "Most teams do not disagree about effort. They disagree about the problem.",
+  situation: [
+    "Most operations leaders have been here. The leadership team holds three different views: the COO calls it a technology problem, the operations director calls it a people problem, and finance calls it a cost problem. They are all partly right, and that is the problem.",
+    "Without alignment, any improvement initiative faces resistance from the sponsors who disagree with the framing. FRAME makes the disagreement visible, tests it, and turns it into a single problem statement everyone can commit to."
+  ],
+  whyTitle: "Most improvement programmes solve the wrong problem.",
+  whyBody: [
+    "The pattern is predictable. A symptom surfaces, a hypothesis forms, and a project gets funded around that hypothesis. The project runs, but the original symptom remains because the starting frame was wrong.",
+    "FRAME prevents this. It uses a structured SPIN workshop to surface what is really going on, what happens if nothing changes, and what success must look like."
+  ],
+  callout: {
+    lead: "The work is not ready to move until the problem is specific.",
+    body: "A signed charter is not administration. It is the control that stops the next phase solving a different problem."
+  },
+  proofPoints: [
+    { title: "Alignment before action.", body: "We surface disagreement before it becomes project resistance.", glyph: "align-target" },
+    { title: "SPIN methodology.", body: "Situation, problem, implication, need and payoff are worked through with operational evidence.", glyph: "dialogue" },
+    { title: "Charter, not recommendations.", body: "The output is a locked charter that governs the diagnostic and the decisions that follow.", glyph: "charter" }
+  ],
+  examineTitle: "Three outputs. Complete alignment.",
+  examineIntro: "FRAME covers the disciplines that make the next service worth funding: stakeholder alignment, a locked charter, and specific success criteria.",
+  examineItems: [
+    { title: "Stakeholder Alignment", body: "We facilitate a structured workshop with your leadership team so competing views surface in the room, not halfway through the project.", glyph: "dialogue" },
+    { title: "Project Charter", body: "The charter captures the problem statement, scope boundaries, exclusions, success criteria, and the commitment required before work moves.", glyph: "charter" },
+    { title: "Success Criteria", body: "Specific criteria define what done looks like before the diagnostic starts, so later measurement has a clear baseline.", glyph: "align-target" }
+  ],
+  deliverablesTitle: "Four deliverables. Aligned from day one.",
+  deliverablesIntro: "Each deliverable is a practical working asset, not a slide deck for the shelf.",
+  deliverables: [
+    { title: "SPIN Workshop Report", body: "The agreed problem statement, competing hypotheses surfaced and resolved, implications mapped, and the non-negotiables each stakeholder brought.", glyph: "doc-report" },
+    { title: "Project Charter", body: "The governance document for everything that follows: scope boundaries, exclusions, success criteria, timeline, and stakeholder sign-off.", glyph: "doc-tick" },
+    { title: "Success Criteria Framework", body: "Specific, measurable success criteria the PLAN diagnostic can baseline against, written so every stakeholder reads the target the same way.", glyph: "doc-tick" },
+    { title: "SPIN Workshop Record", body: "A complete facilitated record of the hypotheses explored, evidence tested, and reasoning behind the agreed problem statement.", glyph: "doc-report" }
+  ],
+  cases: [
+    {
+      sector: "Government and Public Sector",
+      metric: "5 days",
+      caption: "charter signed before the diagnostic began",
+      title: "Reached alignment across three directorates.",
+      problem: "Three directorates held competing hypotheses about the root cause of a cross-functional service failure. Each area had commissioned its own preliminary analysis and no shared problem definition existed.",
+      approach: "Ran a structured SPIN workshop across the directorates. Surfaced the competing hypotheses, tested each against available evidence, and produced one agreed problem statement and a signed project charter within the week.",
+      outcome: "The diagnostic started with clear targets and full stakeholder commitment."
+    },
+    {
+      sector: "Financial Services",
+      metric: "Zero rework",
+      caption: "no reframing required after the charter",
+      title: "Scoped the diagnostic correctly the first time.",
+      problem: "An operations team was about to commission a process redesign while executive leaders held different views on what was broken.",
+      approach: "Used FRAME before the diagnostic was commissioned. The workshop revealed that all three views described symptoms of the same missing decision right at exception handling.",
+      outcome: "The project charter was reframed before spend moved, and the diagnostic confirmed the agreed starting point."
+    }
+  ],
+  pathwayTitle: "Define the problem. Then measure it.",
+  pathwayIntro: "Clarity creates options. Once the project charter is signed, the natural next step is PLAN, the operations diagnostic that baselines the current state against the success criteria FRAME defined.",
+  currentIndex: 0,
+  nextStepIntro: "The current step and the natural next move.",
+  currentStep: {
+    pillar: "frame",
+    eyebrow: "FRAME · DEFINE",
+    serviceName: "Problem Framing",
+    summary: "When your leadership team disagrees on what the problem is, FRAME aligns stakeholders and produces a locked charter before diagnostic spend begins."
+  },
+  nextStep: {
+    pillar: "plan",
+    eyebrow: "PLAN · MEASURE",
+    serviceName: "Operations Diagnostic",
+    summary: "When the charter is signed, PLAN establishes the evidence base: baseline measurement, capability assessment, and prioritised roadmap.",
+    href: "/services/plan/",
+    linkLabel: "Explore PLAN"
+  },
+  ctaTitle: "Agree on the real problem first.",
+  ctaBody: "If the leadership team is aligned on urgency but not on cause, the next spend is at risk. Tell us where the views differ and we will help frame the work properly.",
+  timeline: "From 1 day",
+  howWeWork: "Embedded with your team"
+} as const;
+---
+
+<ServicePage data={data} />

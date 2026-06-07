@@ -1,0 +1,91 @@
+---
+import ServicePage from "../../components/ServicePage.astro";
+
+const data = {
+  title: "Operations Diagnostic | PLAN | EQUIBT",
+  description: "PLAN measures the operation, capability, and current-state evidence before improvement spend is committed.",
+  pillar: "plan",
+  eyebrow: "PLAN · MEASURE",
+  serviceName: "Operations Diagnostic",
+  heroTitle: "See the full picture before you act.",
+  heroSubhead: "An operations diagnostic gives you clarity on what is actually broken, where readiness to change is highest, and where to focus first. Evidence-based, not assumption-driven.",
+  situationTitle: "A visible symptom is not the same as a measured problem.",
+  situation: [
+    "You can feel the friction in late reports, ad hoc decisions, manual workarounds, and unclear process ownership. But the root cause may be process design, capability, measurement, structure, or all of them together.",
+    "Most organisations act before they diagnose. PLAN slows the first move just enough to measure what is actually happening, then turns that evidence into a roadmap your team can act on."
+  ],
+  whyTitle: "Most organisations act before they measure.",
+  whyBody: [
+    "The improvement conversation often starts with a hypothesis. A symptom appears, budget is approved, and a solution is funded. Then the project stalls because the hypothesis was wrong.",
+    "PLAN builds the evidence base first. We map the current state, assess capability readiness, and define the measurement system before the improvement budget gets committed."
+  ],
+  callout: {
+    lead: "A diagnostic is not a delay.",
+    body: "It is the step that stops the organisation funding the most confident assumption instead of the real constraint."
+  },
+  proofPoints: [
+    { title: "Evidence-based, not assumption-driven.", body: "We map the current state with data and observation, not opinion dressed as certainty.", glyph: "evidence" },
+    { title: "Capability readiness matters.", body: "The roadmap only works if the team can carry the change or knows what support is required.", glyph: "capability" },
+    { title: "Roadmap, not recommendations.", body: "The output sequences what to do first, what to defer, and what not to fund.", glyph: "roadmap" }
+  ],
+  examineTitle: "Three areas. Full picture.",
+  examineIntro: "The diagnostic is the discipline of understanding fully across process, capability, and measures before the improvement budget gets committed.",
+  examineItems: [
+    { title: "Process Health", body: "We map the real end-to-end flow, bottlenecks, handoffs, quality failures, and decision points that create rework or delay.", glyph: "evidence" },
+    { title: "Capability Readiness", body: "We assess what your team can carry independently, what training would unlock movement, and where external support is still required.", glyph: "capability" },
+    { title: "Measurement System", body: "We test whether the operation is measuring what matters, whether baselines are trusted, and where reporting hides the real constraint.", glyph: "gauge" }
+  ],
+  deliverablesTitle: "Four deliverables. All actionable.",
+  deliverablesIntro: "These are the inputs that make everything after PLAN faster, cheaper, and more targeted.",
+  deliverables: [
+    { title: "Current-State Assessment", body: "A clear evidence base for how the operation works now, where friction sits, and which constraints are measurable.", glyph: "doc-chart" },
+    { title: "Capability Gap Analysis", body: "An honest assessment of what your team can carry independently and where training, support, or change capability needs to come first.", glyph: "doc-chart" },
+    { title: "Prioritised Improvement Roadmap", body: "A sequenced roadmap that shows where to start, what to defer, and which initiatives should not be funded yet.", glyph: "doc-calendar" },
+    { title: "Engagement Pathway Recommendation", body: "A practical view of the right next step: build improvement capability, validate a direction with a pilot, or commit to a deeper redesign.", glyph: "doc-calendar" }
+  ],
+  cases: [
+    {
+      sector: "Commercial Operations",
+      metric: "60% reduction",
+      caption: "recurring ad hoc reporting removed from leadership load",
+      title: "Standardised commercial planning nationally.",
+      problem: "A national financial services group had no consistent plan, do, review methodology across state-based sales functions. Senior leaders were absorbing weekly reporting requests because no standard output existed.",
+      approach: "Mapped the commercial planning process across state teams, identified where reporting diverged, then designed standard forums, decision rights, and one reporting pack with the leadership team.",
+      outcome: "Ad hoc reporting requests stopped as a recurring drain on leadership time."
+    },
+    {
+      sector: "Government and Public Sector",
+      metric: "183 to 30",
+      caption: "taxonomy categories simplified for automation readiness",
+      title: "Identified and specified high-volume inbound calls for automation.",
+      problem: "A large enquiry function had a noisy category taxonomy, misdirected inbound calls, manual handling, no agreed KPIs, and informal quality assurance.",
+      approach: "Analysed enquiry volume across the full taxonomy, separated true call types from classification noise, and delivered a roadmap covering automation, simplified categories, quality assurance, and workforce design.",
+      outcome: "The team left with a simplified classification model, automation specification, quality framework, and sequenced roadmap."
+    }
+  ],
+  pathwayTitle: "Where it leads.",
+  pathwayIntro: "The diagnostic maps the terrain. SOLVE designs the solution by turning diagnostic findings into isolated causes, costed choices, and a future state ready for validation.",
+  currentIndex: 1,
+  nextStepIntro: "The current step and the natural next move.",
+  currentStep: {
+    pillar: "plan",
+    eyebrow: "PLAN · MEASURE",
+    serviceName: "Operations Diagnostic",
+    summary: "PLAN establishes the evidence base: baseline measurement, capability assessment, and a roadmap that focuses effort where it will matter."
+  },
+  nextStep: {
+    pillar: "solve",
+    eyebrow: "SOLVE · ANALYSE",
+    serviceName: "Iterative Improvement",
+    summary: "Once you know what is broken, SOLVE isolates why it is broken and designs the future state your team can validate.",
+    href: "/services/solve/",
+    linkLabel: "Explore SOLVE"
+  },
+  ctaTitle: "Find your biggest operational opportunity.",
+  ctaBody: "If you can see the symptoms but cannot yet prove the cause, start with measurement. We will help you baseline the operation and choose the right next move.",
+  timeline: "From 2 weeks",
+  howWeWork: "Embedded with your team"
+} as const;
+---
+
+<ServicePage data={data} />
