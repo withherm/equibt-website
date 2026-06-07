@@ -105,6 +105,8 @@
 .sector-subnav a.is-active::after{opacity:1;}
 
 .industry-section{--industry-gutter:56px;padding:130px var(--industry-gutter);}
+/* Anchor landings sit below the pinned nav + sticky sub-nav stack. Sub-nav measures 51px tall and does not compact at narrow widths, so one value holds across desktop and mobile; --nav-h shifts per breakpoint on its own. */
+.industry-section[data-subnav-section]{scroll-margin-top:calc(var(--nav-h, 81px) + 51px + 12px);}
 .industry-section.white{background:#fff;}
 .industry-section.beige{background:var(--off-white);}
 .industry-inner{max-width:var(--max);margin:0 auto;}
@@ -222,7 +224,8 @@
 .selector-chips li{padding:9px 12px;border:1px solid var(--hairline);border-radius:999px;color:var(--mid-grey);font-size:19px;font-style:italic;}
 .selector-deliverables{list-style:none;margin:0;padding:0;max-width:720px;border-top:1px solid var(--hairline);}
 .selector-deliverables li{
-  padding:13px 0;
+  position:relative;
+  padding:13px 0 13px 19px;
   border-bottom:1px solid var(--hairline);
   color:#161616;
   font-family:"Montserrat",Arial,sans-serif;
@@ -230,6 +233,17 @@
   font-weight:600;
   letter-spacing:.01em;
   line-height:1.35;
+}
+.selector-deliverables li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:calc(13px + 0.675em);
+  transform:translateY(-50%);
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--terracotta);
 }
 .selector-panel .btn-text{margin-top:var(--link-gap);}
 
