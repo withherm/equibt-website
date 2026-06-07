@@ -20,6 +20,21 @@
 .service-hero-art{display:flex;align-items:center;justify-content:flex-end;}
 .service-hero-art span{display:block;height:auto;transform:translateX(4vw);}
 .service-hero-art svg{display:block;width:min(540px,48vw);height:auto;overflow:visible;}
+.service-hero-art svg .hd,
+.service-hero-art svg .hd-f1,
+.service-hero-art svg .hd-f2,
+.service-hero-art svg .hd-f3,
+.service-hero-art svg[stroke]:not([stroke="none"]),
+.service-hero-art svg [stroke]:not([stroke="none"]){
+  stroke-width:.25;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.service-hero-art svg .hd-acc,
+.service-hero-art svg [stroke="#C15F3C"]{stroke-width:.2875;}
+.service-hero-art svg[viewBox="0 0 80 80"][stroke]:not([stroke="none"]),
+.service-hero-art svg[viewBox="0 0 80 80"] [stroke]:not([stroke="none"]){stroke-width:.31;}
+.service-hero-art svg[viewBox="0 0 80 80"] [stroke="#C15F3C"]{stroke-width:.3565;}
 
 .service-section{--service-page-gutter:56px;padding:130px var(--service-page-gutter);}
 .service-section.white{background:#fff;}
