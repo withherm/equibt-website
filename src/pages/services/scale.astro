@@ -1,0 +1,91 @@
+---
+import ServicePage from "../../components/ServicePage.astro";
+
+const data = {
+  title: "Operational Embedding | SCALE | EQUIBT",
+  description: "SCALE deploys validated and governed improvements across the operation, then embeds capability and continuous improvement.",
+  pillar: "scale",
+  eyebrow: "SCALE · OPERATE",
+  serviceName: "Operational Embedding",
+  heroTitle: "Scale what works. Make it self-sustaining.",
+  heroSubhead: "The pilot worked. The governance is in place. Now it needs to run everywhere. Standardisation, automation, training, and continuous improvement systems that keep learning after the project closes.",
+  situationTitle: "Pilot success does not guarantee scale success.",
+  situation: [
+    "The pilot succeeds, the metrics improve, and leadership is convinced. Then the hard part starts: deploying the new way of working across teams that were not part of the pilot and have different routines, readiness, and constraints.",
+    "This is where many improvement programmes stall. Not because the solution was wrong, but because scaling requires a different discipline: standardisation without rigidity, automation without fragility, training that transfers capability, and routines that keep improving."
+  ],
+  whyTitle: "Embed the standard so improvement keeps moving.",
+  whyBody: [
+    "A validated solution still has to survive handover, local variation, operating pressure, and the reality of people who did not help design it.",
+    "SCALE deploys validated and governed improvements across the full organisation, then embeds the capability to keep improving without external dependence."
+  ],
+  callout: {
+    lead: "The project is not finished when rollout starts.",
+    body: "It is finished when the operation can run, improve, and correct the new standard without us."
+  },
+  proofPoints: [
+    { title: "Standardisation without rigidity.", body: "We define what must stay consistent and what can adapt to local operating conditions.", glyph: "standardise" },
+    { title: "Automation with governance.", body: "Automation moves only where the process is stable, ownership is clear, and controls are in place.", glyph: "automation" },
+    { title: "Continuous improvement systems.", body: "The operation keeps learning through routines, measures, and ownership after the project team steps back.", glyph: "loop" }
+  ],
+  examineTitle: "Three activities. Full-scale deployment.",
+  examineIntro: "SCALE deploys validated and governed improvements across the full organisation, then embeds the capability to keep improving.",
+  examineItems: [
+    { title: "Standardisation", body: "We convert the proven way of working into standards that hold across teams while allowing necessary local variation.", glyph: "standardise" },
+    { title: "Automation Deployment", body: "Where AI-powered or rules-based automation has been validated, we deploy it with governance, oversight, and drift detection.", glyph: "automation" },
+    { title: "Capability and Improvement", body: "Training, transfer, and continuous improvement routines make the new standard self-sustaining after the engagement closes.", glyph: "loop" }
+  ],
+  deliverablesTitle: "Four deliverables. Deployment to independence.",
+  deliverablesIntro: "These are the outputs that help your teams deploy the validated way of working, operate it independently, and keep improving.",
+  deliverables: [
+    { title: "Standardisation Playbook", body: "The operating playbook that defines the standard, the permitted variation, and how teams should run the new way of working.", glyph: "doc-report" },
+    { title: "Automation Deployment Package", body: "The deployment assets for approved automation, including governance, oversight, exception handling, and drift controls.", glyph: "doc-tick" },
+    { title: "Capability Transfer Programme", body: "The training and transfer plan that builds the internal capability needed to run and improve the operation independently.", glyph: "doc-calendar" },
+    { title: "Continuous Improvement System", body: "The routines, measures, review cadence, and ownership model that keep the operation learning after the project closes.", glyph: "doc-report" }
+  ],
+  cases: [
+    {
+      sector: "Retail and Consumer",
+      metric: "12 months",
+      caption: "standard operating model sustained after rollout",
+      title: "Scaled the inventory model across regional operations.",
+      problem: "A validated inventory model worked in one operating unit but risked failing during rollout because regional teams had different processes and readiness.",
+      approach: "Defined the standard operating model, built the playbook, trained regional owners, and installed review routines so local variation did not erode the standard.",
+      outcome: "The new model continued operating after rollout because the teams owned the standard and the improvement routines."
+    },
+    {
+      sector: "Financial Services",
+      metric: "68% routine volume",
+      caption: "governed automation handled repeatable work",
+      title: "Embedded governed automation across decision teams.",
+      problem: "A decision function had repeatable manual work that was suitable for automation, but governance and human oversight were not yet embedded.",
+      approach: "Deployed automation only for stable routine volume, defined exception paths, trained owners, and installed monitoring for drift and control breaches.",
+      outcome: "Routine volume moved into governed automation while the team retained clear control of exceptions."
+    }
+  ],
+  pathwayTitle: "Where it leads.",
+  pathwayIntro: "SCALE is not the end. Once the operation runs at scale, the next leadership question is where to start the next improvement cycle.",
+  currentIndex: 5,
+  nextStepIntro: "The current step and the next conversation.",
+  currentStep: {
+    pillar: "scale",
+    eyebrow: "SCALE · OPERATE",
+    serviceName: "Operational Embedding",
+    summary: "SCALE deploys validated and governed improvements across the operation, then embeds capability and improvement routines."
+  },
+  nextStep: {
+    pillar: "frame",
+    eyebrow: "START · AGAIN",
+    serviceName: "Talk to us about where to start.",
+    summary: "When the operation runs itself, the next question is where the next constraint sits. We can help frame the next move.",
+    href: "/contact/",
+    linkLabel: "Get in touch"
+  },
+  ctaTitle: "Scale what works, then step back.",
+  ctaBody: "If a pilot has proven the solution and governance is in place, the next challenge is operating at scale. We will help embed the standard so your team can run it without us.",
+  timeline: "From 4 weeks",
+  howWeWork: "Embedded with your team"
+} as const;
+---
+
+<ServicePage data={data} />

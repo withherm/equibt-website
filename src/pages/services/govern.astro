@@ -1,0 +1,91 @@
+---
+import ServicePage from "../../components/ServicePage.astro";
+
+const data = {
+  title: "Architecture & Governance | GOVERN | EQUIBT",
+  description: "GOVERN builds process architecture, control plans, monitoring, and AI governance that prevent operational drift.",
+  pillar: "govern",
+  eyebrow: "GOVERN · CONTROL",
+  serviceName: "Architecture & Governance",
+  heroTitle: "Build the infrastructure that prevents drift.",
+  heroSubhead: "Improvements fail when nobody owns the ongoing governance. GOVERN builds the control systems, process architecture, and AI governance frameworks that keep your operation running to standard after the project closes.",
+  situationTitle: "Every improvement that fails to hold is missing governance.",
+  situation: [
+    "The improvement runs, the new process launches, and the first results hold. Then the operation slowly drifts back. Workarounds return, the dashboard stops being checked, and the new way of working becomes optional.",
+    "The problem is not that the improvement failed. The problem is that nobody built the governance infrastructure to sustain it: control plans, escalation protocols, monitoring, ownership, and AI controls where models or automation are involved."
+  ],
+  whyTitle: "Lock in the controls before drift returns.",
+  whyBody: [
+    "Sustained performance needs more than documentation. It needs process architecture people actually use, controls that catch drift early, and monitoring that gives owners a reason to act.",
+    "In AI-enabled operations, the need is sharper. Models degrade, training data goes stale, outputs drift, and ownership is often unclear until the failure is visible."
+  ],
+  callout: {
+    lead: "Governance is how the improvement survives handover.",
+    body: "If nobody owns the control, the control does not exist."
+  },
+  proofPoints: [
+    { title: "Process architecture, not documentation.", body: "We build operating structures people can follow, not files that sit outside the work.", glyph: "network" },
+    { title: "Control plans that catch drift early.", body: "Controls define ownership, thresholds, escalation, and the signals that require action.", glyph: "assure" },
+    { title: "AI governance frameworks.", body: "We define how models, automation, outputs, and human oversight are owned and monitored.", glyph: "automation" }
+  ],
+  examineTitle: "Three systems. Sustained governance.",
+  examineIntro: "GOVERN builds the systems your team uses to hold the improved operation to standard after the project closes.",
+  examineItems: [
+    { title: "Process Architecture", body: "We define how the improved process runs, who owns each decision, and how the operating model holds together in daily work.", glyph: "network" },
+    { title: "Controls and Monitoring", body: "Control plans and dashboards work together so drift is detected, owned, escalated, and corrected before it compounds.", glyph: "assure" },
+    { title: "AI Governance Frameworks", body: "Where automation or AI is involved, we define model ownership, validation, oversight, escalation, and change controls.", glyph: "automation" }
+  ],
+  deliverablesTitle: "Four deliverables. Infrastructure that holds.",
+  deliverablesIntro: "These are the outputs that make governance specific, owned, and maintainable inside the operation.",
+  deliverables: [
+    { title: "Process Architecture Document", body: "The operating architecture for the improved process, including ownership, decisions, handoffs, and control points.", glyph: "doc-report" },
+    { title: "Control Plans", body: "The practical control system: measures, thresholds, owners, escalation paths, review cadence, and correction triggers.", glyph: "doc-calendar" },
+    { title: "Monitoring Dashboard Specification", body: "The dashboard requirements that make drift visible and actionable for the owners who need to intervene.", glyph: "doc-chart" },
+    { title: "AI Governance Framework", body: "The ownership, validation, oversight, and escalation framework for AI-assisted or automated operating work.", glyph: "doc-report" }
+  ],
+  cases: [
+    {
+      sector: "Insurance",
+      metric: "18 months",
+      caption: "improved operating standard sustained after handover",
+      title: "Built the control infrastructure for sustained insurance operations.",
+      problem: "An improved insurance operation had launched successfully but lacked the controls, ownership, and monitoring needed to prevent drift after handover.",
+      approach: "Defined process architecture, control plans, review cadence, escalation points, and dashboard requirements with the operational owners.",
+      outcome: "The operating standard held after handover because ownership and correction triggers were explicit."
+    },
+    {
+      sector: "Financial Services",
+      metric: "0 incidents",
+      caption: "customer-facing drift caught before release",
+      title: "Established AI governance before model drift reached customers.",
+      problem: "An AI-assisted workflow was moving toward production without clear ownership for output validation, model drift, or escalation.",
+      approach: "Built an AI governance framework covering model ownership, validation checks, human oversight, change control, and drift response.",
+      outcome: "The team detected output drift before customer impact and had a defined process for correction."
+    }
+  ],
+  pathwayTitle: "Where it leads.",
+  pathwayIntro: "GOVERN builds the infrastructure that keeps improvements holding. SCALE embeds the governed way of working across the full operation.",
+  currentIndex: 4,
+  nextStepIntro: "The current step and the natural next move.",
+  currentStep: {
+    pillar: "govern",
+    eyebrow: "GOVERN · CONTROL",
+    serviceName: "Architecture & Governance",
+    summary: "GOVERN defines the process architecture, controls, monitoring, and AI governance required to prevent drift."
+  },
+  nextStep: {
+    pillar: "scale",
+    eyebrow: "SCALE · OPERATE",
+    serviceName: "Operational Embedding",
+    summary: "SCALE takes the governed improvement across teams, locations, and routines without losing the standard.",
+    href: "/services/scale/",
+    linkLabel: "Explore SCALE"
+  },
+  ctaTitle: "Make the improvement hold.",
+  ctaBody: "If gains keep slipping back, the improvement was never embedded. Tell us where the operation is drifting and we will identify the missing controls.",
+  timeline: "From 4 weeks",
+  howWeWork: "Embedded with your team"
+} as const;
+---
+
+<ServicePage data={data} />

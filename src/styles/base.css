@@ -215,9 +215,12 @@ h1,h2,h3,p{margin-top:0;}
   .nav-links.is-open{display:flex;}
   .nav-link{width:100%;padding:14px 0;border-bottom:1px solid var(--hairline);}
   .nav-cta{margin-top:18px;}
-  .footer-inner{grid-template-columns:1fr;gap:34px;}
+  .footer-inner{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 28px;}
+  .footer-brand{grid-column:1/-1;}
+  .footer-col:last-child{grid-column:1/-1;}
   .site-footer{padding-top:86px;}
 }
 @media(max-width:460px){
   .site-footer{padding-left:22px;padding-right:22px;}
+  .footer-inner{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 24px;}
 }

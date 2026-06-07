@@ -1,0 +1,91 @@
+---
+import ServicePage from "../../components/ServicePage.astro";
+
+const data = {
+  title: "Rapid Pilot | EVOLVE | EQUIBT",
+  description: "EVOLVE validates the designed solution with real data, controlled scope, and deployment-ready requirements.",
+  pillar: "evolve",
+  eyebrow: "EVOLVE · IMPROVE",
+  serviceName: "Rapid Pilot",
+  heroTitle: "Validate the future state before you commit the full operation.",
+  heroSubhead: "A rapid pilot tests the designed solution with real data in a controlled scope. Once validated, we develop the requirements for full-scale deployment.",
+  situationTitle: "A design can look right on paper and still fail in practice.",
+  situation: [
+    "You are close to a significant operational change. The future state is designed and the cost-benefit case looks promising, but committing the entire operation based on analysis alone carries risk.",
+    "A rapid pilot removes that uncertainty. It runs the redesigned process in a controlled scope with real work, live metrics, and clear learning before the full operation commits."
+  ],
+  whyTitle: "Prove the solution before you scale it.",
+  whyBody: [
+    "A solution can work in theory and fail when real customers, real cases, real data, and real team behaviours hit the new process.",
+    "EVOLVE tests what works, what breaks, and what needs adjustment. Once the pilot validates the direction, the work shifts to requirements development and change readiness."
+  ],
+  callout: {
+    lead: "A pilot is not a soft launch.",
+    body: "It is a controlled test of whether the future state survives contact with real work."
+  },
+  proofPoints: [
+    { title: "Real data, real metrics.", body: "We test the designed solution against live operational measures, not workshop assumptions.", glyph: "gauge" },
+    { title: "Controlled scope, controlled risk.", body: "The pilot is bounded enough to protect the operation and real enough to teach the truth.", glyph: "assure" },
+    { title: "Requirements after validation.", body: "Build requirements come after learning, so deployment is based on proof rather than speculation.", glyph: "future-state" }
+  ],
+  examineTitle: "Three disciplines. Pilot. Specify. Manage.",
+  examineIntro: "EVOLVE tests the designed solution, turns validated learning into requirements, and prepares the organisation to deploy with less risk.",
+  examineItems: [
+    { title: "Rapid Pilot", body: "We run the redesigned process in a controlled scope with real data, real work, and explicit pass or adjust measures.", glyph: "gauge" },
+    { title: "Requirements Development", body: "We turn validated learning into the business, process, data, technology, and control requirements required for deployment.", glyph: "future-state" },
+    { title: "Change Management", body: "We prepare the operation to adopt the validated way of working without losing the evidence gained in the pilot.", glyph: "transfer" }
+  ],
+  deliverablesTitle: "Four deliverables. Validated, then specified.",
+  deliverablesIntro: "These are the outputs that move your team from a designed solution to confident deployment readiness.",
+  deliverables: [
+    { title: "Pilot Results Report", body: "The evidence from the pilot: what worked, what failed, what changed, and whether the solution is ready to move.", glyph: "doc-chart" },
+    { title: "Business Requirements Document", body: "The requirements that emerge from validated learning, covering process, system, data, control, and adoption needs.", glyph: "doc-report" },
+    { title: "Implementation and Change Management Plan", body: "A practical plan for moving from pilot to deployment while protecting continuity, adoption, and governance.", glyph: "doc-calendar" },
+    { title: "Deployment Authorisation Brief", body: "The decision brief that shows what has been validated and what must be true before the full operation commits.", glyph: "doc-tick" }
+  ],
+  cases: [
+    {
+      sector: "Energy and Utilities",
+      metric: "100% target pass",
+      caption: "pilot measures met before rollout planning",
+      title: "Validated the field operations redesign.",
+      problem: "A field operation had a redesigned workflow that looked sound in analysis but had not been tested against live service constraints.",
+      approach: "Ran a controlled pilot with live work, measured the target process outcomes, captured adoption issues, and adjusted the requirements before rollout planning.",
+      outcome: "The pilot passed the agreed measures and gave the team the evidence required to plan deployment."
+    },
+    {
+      sector: "Financial Services",
+      metric: "82% reduction",
+      caption: "manual review load reduced by validated workflow design",
+      title: "Piloted the AI-assisted review process.",
+      problem: "A decision team wanted to use AI-assisted review but had not validated the workflow, controls, or handoff points with real cases.",
+      approach: "Piloted the assisted review workflow in a controlled scope, tested exception handling, and defined the requirements for governance and human oversight.",
+      outcome: "Manual review load fell while control ownership and escalation remained explicit."
+    }
+  ],
+  pathwayTitle: "Where it leads.",
+  pathwayIntro: "EVOLVE validates the future state and develops the requirements. GOVERN builds the control infrastructure that keeps the improved operation running to standard.",
+  currentIndex: 3,
+  nextStepIntro: "The current step and the natural next move.",
+  currentStep: {
+    pillar: "evolve",
+    eyebrow: "EVOLVE · IMPROVE",
+    serviceName: "Rapid Pilot",
+    summary: "EVOLVE validates the designed solution with real data in a controlled scope before the full operation commits."
+  },
+  nextStep: {
+    pillar: "govern",
+    eyebrow: "GOVERN · CONTROL",
+    serviceName: "Architecture & Governance",
+    summary: "GOVERN builds the process architecture, controls, dashboards, and AI governance that stop the validated improvement drifting.",
+    href: "/services/govern/",
+    linkLabel: "Explore GOVERN"
+  },
+  ctaTitle: "Test the solution before you scale it.",
+  ctaBody: "If the future state is designed but not proven, pilot it before the full operation commits. We will help you validate what works and specify what comes next.",
+  timeline: "From 4 weeks",
+  howWeWork: "Embedded with your team"
+} as const;
+---
+
+<ServicePage data={data} />

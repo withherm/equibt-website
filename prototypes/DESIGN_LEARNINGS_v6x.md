@@ -12,6 +12,8 @@ Guardrail: deliberately NOT a monochrome Orgonomics clone (competitor-adjacent-i
 
 Root problem v6x fixes: v5x read "too structured." Cure is two parts, not one: (1) hand-drawn line-art as texture, AND (2) broken layout regularity (asymmetric placement, varied section rhythm, off-grid art bleeding into whitespace). Decoration alone does not fix rigidity. Checklist line: "Layout rhythm varied and asymmetric; structure softened, not just decorated."
 
+- **Minimal reveal reinstated, 2026-06-07, EQT-253 R1:** amends the static-calm lock. Use one fade plus 8px rise per SECTION, 350ms, once, no stagger, and respect reduced motion. The v5x multi-element `reveal-d1..d3` system stays retired. Home retrofit = follow-up issue.
+
 ## Type
 
 - Headings **Montserrat 700**, letter-spacing -0.012em. Retained for brand continuity with Lean Methods.
@@ -89,6 +91,7 @@ Loosen the grid: generous air, **asymmetric hero** (motif right, bleeding into w
   - SCALE · Embed the new standard
 - **Hover acts as select and persists** on the new station (does not revert on mouse-out); click/keyboard also select. Default selected = FRAME.
 - Calm **proximity effect**: nearby station circles gradually enlarge and interpolate toward terracotta by cursor distance (smooth, not a hard snap).
+- **Static pathway, service pages, 2026-06-07, EQT-253 R1:** current station = terracotta ring + `YOU ARE HERE` pointer; NEXT station = filled navy core + small terracotta `NEXT` label; the segment between them renders terracotta to show direction of travel; downstream stations stay hollow with grey labels. Last station, SCALE, carries no next marking.
 
 ## Client logo wall (replaces the retired standalone Credentials page, EQT-222)
 
@@ -108,6 +111,7 @@ This pattern overrides two v6x locks for ONE moment per page, approved by Herman
 - Layout = **copy left, abstract image right** (Anthropic "Project Glasswing" model). Card background is a **FLAT near-black field (~#101317), no gradient**; the image carries the texture. **No divider/seam** between the copy and image columns: one continuous background. Image sits as a contained square panel on the right with breathing room around it (per the Anthropic reference), not a stretched full-edge wash. Layout holds in both contained and full-bleed states; content stays in the normal container (no width scrubbing — the R6 continuous scrub broke this and was reverted).
 - Expand mechanic = **binary `.is-expanded` CSS transition** (smooth both ways, returns to the box), toggled on viewport coverage with hysteresis (expand 0.32, contract 0.28). The R6 continuous width-scrub was rejected.
 - **Dark-field colour may vary per page** to avoid monotony across the site: home uses flat near-black `#101317`, but other pages may use a different flat dark tone for their one dark moment (e.g. deep slate, ink-navy, charcoal-green, dark plum). Constraints hold: still dark and FLAT (no gradient), one dark moment per page only, terracotta accent intact, copy legible.
+- **Dark-field tone by page type, 2026-06-07, EQT-253 R1:** tone varies per page TYPE, not per sibling page. Home = near-black `#101317`; service pages = dark-slate `#2C3E50`; industry pages = ink-navy. Siblings within a page type share one tone.
 - Background = **abstract image** (dark, textured). Current placeholder = a generated Voronoi/glasswing mesh (`prototypes/assets/flagship-mesh-placeholder.svg`); the real image swaps in later via the image pipeline by replacing that file. (Alt held in reserve: a flowing-topographic-lines SVG, `EQUIBT_V6X_FLAGSHIP_PHOTO_PLACEHOLDER.html` — keep for other surfaces.) Content legible across the full range; terracotta accent intact.
 - **Anthropic reference finding (measured 2026-06-04):** their dark CTA box rests at ~89% of viewport width with 24px corners; the travel is small and subtle, not a tiny box ballooning. Restraint is the point. A ~58% resting box was rejected as too aggressive; ~80% keeps the motion visible without looking like a trick.
 
