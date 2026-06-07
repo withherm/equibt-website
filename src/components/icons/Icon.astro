@@ -1,17 +1,20 @@
 ---
 /**
- * EQUIBT v6x icon library dispatcher (EQT-251).
+ * EQUIBT v6x icon library dispatcher (EQT-272 adopted hand-drawn idiom;
+ * supersedes the EQT-251 single-weight set, preserved in git history PR #36).
  *
- * Single-weight hand-drawn line-art, navy #26245C, one terracotta #C15F3C
- * accent each, 110px uniform (sized by the page wrapper, e.g. .svc-icon / .ic).
- * Stroke classes .hd / .hd-acc / .hd-f1..f3 live in src/styles/base.css.
+ * Hand-drawn line-art, navy #26245C, exactly one terracotta #C15F3C accent
+ * each, 110px uniform (sized by the page wrapper, e.g. .svc-icon / .ic).
+ * All ten icon-slot icons share the same square 64 viewBox (hard rule — no
+ * squeeze artifacts). Stroke weight is CODE-authority via .hd / .hd-acc /
+ * .hd-f1..f3 in src/styles/base.css — never per-icon overrides.
  *
- * SVG paths are exact lifts from the merged v6x home. Do not redraw here:
- * idiom changes happen as a side-by-side under EQT-251 and swap in only
- * if they clearly beat the originals (Linear comment trail).
+ * SVGs are hand-vectorised originals; the GPT rasters in Docs/EQUIBT
+ * (CANDIDATE_SET_v3 / SECTORS_v2 / HERO_v1 / CTA_v2) are look targets only.
  *
  * Usage: <Icon name="frame" />  ·  <Icon name="financial-services" />
  */
+import CtaMotif from "./CtaMotif.astro";
 import Evolve from "./Evolve.astro";
 import FinancialServices from "./FinancialServices.astro";
 import Frame from "./Frame.astro";
@@ -36,6 +39,7 @@ const icons = {
   utilities: Utilities,
   manufacturing: Manufacturing,
   "hero-motif": HeroMotif,
+  "cta-motif": CtaMotif,
 } as const;
 
 interface Props {

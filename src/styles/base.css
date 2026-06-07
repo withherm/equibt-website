@@ -16,12 +16,15 @@ a{color:inherit;}
 h1,h2,h3{font-family:"Montserrat",Arial,sans-serif;letter-spacing:-0.012em;color:var(--navy);}
 h1,h2,h3,p{margin-top:0;}
 
-/* v6x hand-drawn line-art strokes (EQT-251 icon library, src/components/icons/). Shared site-wide; moved from home.css. */
-.hd{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-.hd-acc{fill:none;stroke:var(--terracotta);stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;}
-.hd-f1{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0.55;}
-.hd-f2{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0.28;}
-.hd-f3{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0.16;}
+/* v6x hand-drawn line-art strokes (EQT-272 adopted idiom, src/components/icons/). Shared site-wide.
+   Stroke weight is CODE-authority: one uniform system here, never per-icon overrides.
+   2.8 on a 64 viewBox renders ~4.8px at the 110px icon size (old 2 read thin, Herman 2026-06-06).
+   Hero (300 box) and CTA motif (tight box) are sized so the same classes land at matching rendered weight. */
+.hd{fill:none;stroke:var(--navy);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;}
+.hd-acc{fill:none;stroke:var(--terracotta);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;}
+.hd-f1{fill:none;stroke:var(--navy);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;opacity:0.55;}
+.hd-f2{fill:none;stroke:var(--navy);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;opacity:0.28;}
+.hd-f3{fill:none;stroke:var(--navy);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;opacity:0.16;}
 
 .site-nav{
   position:sticky;

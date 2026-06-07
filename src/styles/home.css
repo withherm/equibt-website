@@ -361,12 +361,21 @@
   text-decoration:none;
 }
 .cta-light p{max-width:660px;margin:24px 0 40px;color:var(--mid-grey);}
+/* CTA bookend motif (EQT-272): copy left, motif right. align-items:start + the
+   margin-top offset (eyebrow 14.4px line + 14px margin-bottom) put the motif's
+   top edge level with the top of the H2, NOT centred in the band. No caption.
+   The motif SVG is authored tight to its strokes, so this alignment holds. */
+.cta-grid{display:grid;grid-template-columns:minmax(0,1fr) clamp(240px,26vw,340px);gap:72px;align-items:start;}
+.cta-art{margin-top:28px;}
+.cta-art svg{width:100%;height:auto;display:block;}
 
 @media(max-width:1120px){
   .hero,.section{padding-left:36px;padding-right:36px;}
   .hero-inner,.training-inner{grid-template-columns:1fr;gap:48px;}
   .hero-art{justify-content:flex-start;}
   .hero-art svg{width:min(100%,420px);}
+  .cta-grid{grid-template-columns:1fr;gap:40px;}
+  .cta-art{margin-top:0;max-width:300px;}
   .flagship{grid-template-columns:1fr;}
   .flagship.is-expanded{padding-left:0;}
   .flagship-media{padding:0 56px 56px;justify-content:flex-start;}

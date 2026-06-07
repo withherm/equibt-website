@@ -1,6 +1,6 @@
 # EQUIBT DESIGN LEARNINGS v6x
 
-_CANONICAL (EQT-252). The single source of truth for v6x visual work; supersedes `DESIGN_LEARNINGS_v5x.md`, which remains as reference for the v5x prototypes only. Captured from the EQT-245 v6x home build (Brief v2 + correction rounds 1-6); icon idiom updated 2026-06-05 (single-weight stands, variable-weight explored and parked). The vault copy at `Docs/EQUIBT` becomes a pointer stub after this merge._
+_CANONICAL (EQT-252). The single source of truth for v6x visual work; supersedes `DESIGN_LEARNINGS_v5x.md`, which remains as reference for the v5x prototypes only. Captured from the EQT-245 v6x home build (Brief v2 + correction rounds 1-6); icon idiom updated 2026-06-06 (EQT-272: hand-drawn candidate set ADOPTED, supersedes single-weight; variable-width exploration parked as EQT-273). The vault copy at `Docs/EQUIBT` becomes a pointer stub after this merge._
 
 ---
 
@@ -34,12 +34,17 @@ Root problem v6x fixes: v5x read "too structured." Cure is two parts, not one: (
 
 ## Line-art and icons
 
-- Hand-drawn **single-weight navy `#26245C`** SVG, **one terracotta accent** per illustration, slightly off-straight (crafted, not mechanical). _(Variable-weight line-art was explored 2026-06-05 and PARKED: the redrawn variable-weight set read rougher and less consistent than the merged single-weight icons. Single-weight stands for now. Revisit the idiom as part of EQT-251 if pursued. Exploration kept for reference: `Docs/EQUIBT/EQUIBT_V6X_PILLAR_ICONS_v1.html`, `Docs/EQUIBT/EQUIBT_V6X_ICON_WEIGHT_COMPARISON.html`.)_
-- One hero motif (tangle-resolving-into-a-clear-path) + one icon per DMAICO pillar + sector motifs.
+- **ADOPTED IDIOM (EQT-272, 2026-06-06): hand-drawn fountain-pen line-art**, navy `#26245C`, **exactly one terracotta `#C15F3C` accent** per icon, slightly off-straight with controlled wobble (engineering schematic, not wellness doodle). Supersedes the EQT-251 single-weight set (preserved in git history, PR #36). Look targets: `Docs/EQUIBT/EQUIBT_V6X_ICON_CANDIDATE_SET_v3.png` (pillars), `_SECTORS_v2.png`, `_HERO_v1.png`, `_CTA_v2.png`. Rasters are look targets ONLY — everything shipped is hand-vectorised original SVG, no tracing, no embedded raster.
+- **Square viewBox is a hard rule.** All ten icon-slot icons share `0 0 64 64`; the hero uses a larger square. Non-square boxes caused squeeze artifacts twice.
+- **Stroke weight is CODE-authority, not raster-authority**: one uniform system via `.hd / .hd-acc / .hd-f1..f3` in `src/styles/base.css` (2.8 on the 64 box — the old 2 read thin at 110px). Never per-icon stroke overrides; the rasters drift in pen weight between generations, the code must not.
+- Subjects (one accent each): FRAME bracket + target dot · PLAN stethoscope on a process line (chest-piece) · SOLVE nested arcs uncovering the root-cause dot · EVOLVE paper plane + dotted loop trail · GOVERN shield + tick · SCALE nested panels + growth path. PLAN fallback: measurement bars.
+- One hero motif (tangle, terracotta path threads THROUGH the knot, exits right, lands down-right with an arrowhead — top-right exit rejected as growth-arrow cliché) + one icon per DMAICO pillar + sector motifs.
+- **CTA bookend motif** (`cta-motif`, twelfth asset): all-terracotta line entering upper-right, two gentle curves settling near-horizontal into a bold ring-and-dot waypoint lower-left (mirrored vs the raster so the waypoint floats toward the CTA button). **Terminal logic locked: hero ends in an arrowhead (motion), CTA ends in a waypoint (arrival) — do not unify.** Placement: home `cta-light`, copy left / motif right, NO caption, motif top edge aligns with the top of the section H2 (grid `align-items:start`, offset past the eyebrow), must not crowd the button. The SVG is authored tight to its strokes (no internal padding) or the top alignment breaks.
 - **Icon size 110px**, top-aligned with the eyebrow so the icon spans roughly eyebrow-to-bottom-of-first-body-line. **All icons one uniform size** across the page (services and industries match).
 - **Icon-to-text horizontal spacing**: the "How we help" services section is the standard; every section matches its icon column width and gap.
-- Use the exact approved SVG paths from the merged home: do not redraw or approximate. (Any idiom change is an EQT-251 decision.)
-- **Utilities icon = transmission pylon** (tower + terracotta live wire). The abstract-waves icon was retired as too abstract.
+- Use the exact approved SVG paths from `src/components/icons/`: do not redraw or approximate per page. (Any idiom change is a Linear decision under the icon issue trail.)
+- **Utilities icon = lattice transmission pylon** (tower + terracotta catenary wires both sides). The abstract-waves icon was retired as too abstract.
+- **Government sector icon = Australian Parliament House flag mast** (terracotta flag). Replaces the civic dome — deliberate distinctiveness call (EQT-272).
 - **Govern icon = hand-drawn shield + straight two-line terracotta tick.** Shield+tick concept kept; the tick stays two straight lines for stability and instant legibility (curved/convex variants explored and rejected, over-tuning at 110px).
 
 ## Eyebrows
