@@ -6,17 +6,18 @@
 <title>EQUIBT v6x — Component Translations (v6)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;500;600&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="icon" href="data:,">
 <style>
 :root{
   --navy:#26245C; --terracotta:#C15F3C; --terracotta-dark:#A04E30;
   --off-white:#F5F3EE; --dark-slate:#2C3E50; --near-black:#161616;
-  --mid-grey:#2B2B2B; --caption:#5A5A5A; --hairline:rgba(38,36,92,0.13);
+  --mid-grey:#2B2B2B; --caption:#5A5A5A; --muted:#7A8591; --hairline:rgba(38,36,92,0.13);
+  --max:1180px; --wide:1320px; --link-gap:22px;
 }
 *,*::before,*::after{box-sizing:border-box;}
 body{margin:0;background:var(--off-white);color:var(--near-black);
-  font-family:"Lora",Georgia,serif;font-size:20px;font-weight:500;line-height:1.45;-webkit-font-smoothing:antialiased;}
+  font-family:"Lora",Georgia,serif;font-size:22px;font-weight:500;line-height:1.45;-webkit-font-smoothing:antialiased;}
 p{font-family:"Lora",Georgia,serif;}
 h1,h2,h3{font-family:"Montserrat",sans-serif;letter-spacing:-0.012em;margin:0;color:var(--navy);}
 a{color:inherit;}
@@ -29,13 +30,21 @@ a{color:inherit;}
 .eyebrow{display:flex;width:fit-content;align-items:center;gap:9px;margin-bottom:14px;color:var(--terracotta);
   font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;}
 .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--terracotta);flex:0 0 auto;}
-.eyebrow.light{color:var(--terracotta);}
+.eyebrow.light{color:rgba(245,243,238,0.85);}
 
-.btn-text{font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
-  text-decoration:none;color:var(--navy);display:inline-flex;align-items:center;gap:8px;}
+.btn-text{position:relative;font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  text-decoration:none;color:var(--terracotta);display:inline-flex;align-items:center;gap:8px;}
+.link-label{position:relative;display:inline-block;}
+.link-label::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1px;background:currentColor;
+  transform:scaleX(0);transform-origin:left;transition:transform .18s ease;}
+.btn-text .ar,.flag-link .ar{color:currentColor;font-size:18px;font-weight:800;line-height:.8;transition:transform .16s ease;}
+.btn-text:hover .link-label::after,.btn-text:focus .link-label::after,
+.flag-link:hover .link-label::after,.flag-link:focus .link-label::after{transform:scaleX(1);}
+.btn-text:hover .ar,.btn-text:focus .ar,.flag-link:hover .ar,.flag-link:focus .ar{transition-delay:.18s;transform:translateX(4px);}
 .btn-primary{font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
   text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:14px 30px;
-  border-radius:6px;background:var(--navy);color:var(--off-white);}
+  border-radius:6px;background:var(--navy);color:var(--off-white);transition:background .18s ease;}
+.btn-primary:hover,.btn-primary:focus{background:var(--dark-slate);}
 
 /* hand-drawn */
 .hd{fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
@@ -54,22 +63,22 @@ a{color:inherit;}
 .stage.white{background:#fff;}
 .stage.beige{background:var(--off-white);}
 .stage-h2{font-weight:700;font-size:28px;line-height:1.1;margin-bottom:10px;}
-.stage-note{color:var(--mid-grey);font-size:18px;max-width:560px;margin:0 0 26px;}
+.stage-note{color:var(--mid-grey);font-size:22px;max-width:620px;margin:0 0 26px;}
 
 /* 03 service row */
-.svc-row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:40px;align-items:start;
-  padding:36px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
-.svc-icon{width:78px;height:78px;}
+.svc-row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:44px;align-items:start;
+  padding:48px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
+.svc-icon{width:110px;height:110px;}
 .svc-kicker{margin-bottom:10px;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
 .svc-row h3{font-size:26px;line-height:1.16;margin-bottom:8px;}
-.svc-row p{margin:0 0 16px;color:var(--mid-grey);max-width:560px;}
+.svc-row p{margin:0 0 var(--link-gap);color:var(--mid-grey);max-width:660px;}
 
 /* 04 examine editorial trio */
 .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;}
 .trio .col{border-top:1px solid var(--hairline);padding-top:22px;}
 .trio .ic{width:54px;height:54px;margin-bottom:16px;}
-.trio h3{font-size:20px;line-height:1.2;margin-bottom:10px;}
-.trio p{margin:0;color:var(--mid-grey);font-size:17px;line-height:1.5;}
+.trio h3{font-size:23px;line-height:1.2;margin-bottom:10px;}
+.trio p{margin:0;color:var(--mid-grey);font-size:22px;line-height:1.45;}
 
 /* 05 carousel */
 .carousel{position:relative;}
@@ -78,9 +87,9 @@ a{color:inherit;}
 .slide{flex:0 0 78%;scroll-snap-align:start;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;}
 .slide .img{aspect-ratio:4/3;border-radius:8px;background:var(--off-white);border:1px solid var(--hairline);
   display:flex;align-items:center;justify-content:center;}
-.slide .img svg{width:46px;height:46px;fill:none;stroke:rgba(38,36,92,0.34);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
-.slide h3{font-size:22px;margin-bottom:10px;}
-.slide p{margin:0;color:var(--mid-grey);font-size:17px;line-height:1.5;}
+.slide .img svg{width:46px;height:46px;opacity:0.4;} /* ghost placeholder: the EQT-253 doc-* glyphs at reduced opacity; a real mockup image replaces the panel contents later (EQT-274) */
+.slide h3{font-size:24px;margin-bottom:10px;}
+.slide p{margin:0;color:var(--mid-grey);font-size:22px;line-height:1.45;}
 .car-ctrl{display:flex;align-items:center;gap:14px;margin-top:24px;justify-content:flex-end;}
 .car-arrow{width:46px;height:46px;border:1px solid var(--hairline);border-radius:50%;background:#fff;color:var(--navy);
   cursor:pointer;display:inline-flex;align-items:center;justify-content:center;}
@@ -92,32 +101,37 @@ a{color:inherit;}
 /* 06 evidence + flagship */
 .ev-row{padding:22px 0;border-top:1px solid var(--hairline);}
 .ev-row:last-of-type{border-bottom:1px solid var(--hairline);}
-.ev-act{margin:0;font-family:"Montserrat",sans-serif;font-weight:600;font-size:19px;color:var(--near-black);line-height:1.35;}
+.ev-act{margin:0;font-family:"Montserrat",sans-serif;font-weight:600;font-size:20px;color:var(--near-black);line-height:1.35;}
 .ev-act .m{color:var(--terracotta);font-weight:700;}
-.ev-sec{margin:6px 0 0;font-size:16px;font-style:italic;color:var(--caption);}
-.flagship{margin-top:40px;background:var(--dark-slate);border-radius:20px;padding:48px;}
+.ev-sec{margin:6px 0 0;font-size:19px;font-style:italic;color:var(--caption);}
+.flagship{margin-top:40px;background:#101317;border-radius:24px;padding:0;overflow:hidden;
+  display:grid;grid-template-columns:minmax(0,.58fr) minmax(280px,.42fr);gap:0;align-items:stretch;}
+.flagship-copy{padding:48px;display:flex;flex-direction:column;justify-content:center;}
+.flagship-media{display:flex;align-items:center;justify-content:center;padding:48px 48px 48px 24px;}
+.flagship-media img{display:block;width:min(100%,420px);aspect-ratio:1/1;object-fit:cover;}
 .flagship h3{max-width:560px;color:var(--off-white);font-weight:700;font-size:27px;line-height:1.12;}
-.flag-copy{max-width:560px;margin:16px 0 0;color:rgba(245,243,238,0.82);font-weight:400;font-size:18px;line-height:1.5;}
+.flag-copy{max-width:560px;margin:16px 0 0;color:rgba(245,243,238,0.82);font-weight:400;font-size:22px;line-height:1.5;}
 .flag-metric{display:flex;align-items:baseline;gap:14px;margin-top:24px;}
-.flag-metric strong{font-family:"Montserrat",sans-serif;font-weight:700;font-size:36px;color:var(--terracotta);letter-spacing:-0.02em;}
-.flag-metric span{font-size:16px;font-style:italic;color:rgba(245,243,238,0.7);}
-.flag-link{display:inline-flex;gap:8px;margin-top:26px;color:var(--off-white);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;}
+.flag-metric strong{font-family:"Montserrat",sans-serif;font-weight:700;font-size:clamp(34px,3.4vw,42px);color:var(--terracotta);letter-spacing:-0.02em;}
+.flag-metric span{font-size:19px;font-style:italic;color:rgba(245,243,238,0.72);}
+.flag-link{position:relative;display:inline-flex;gap:8px;margin-top:var(--link-gap);color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;}
 
 /* 07 case editorial */
 .case{display:grid;grid-template-columns:minmax(0,0.34fr) minmax(0,0.66fr);gap:48px;border-top:1px solid var(--hairline);padding-top:30px;}
 .case .meta .sec{color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
 .case .meta .num{margin-top:14px;font-family:"Montserrat",sans-serif;font-weight:700;font-size:clamp(34px,4vw,48px);color:var(--navy);line-height:0.98;letter-spacing:-0.01em;}
+.case .meta .cap{margin-top:8px;color:var(--caption);font-size:19px;font-style:italic;}
 .case h3{font-size:26px;line-height:1.14;margin-bottom:18px;}
 .case .blk{margin-top:16px;}
 .case .blk .l{margin:0 0 5px;color:var(--navy);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
-.case .blk p{margin:0;color:var(--mid-grey);font-size:17px;line-height:1.5;}
+.case .blk p{margin:0;color:var(--mid-grey);font-size:22px;line-height:1.45;}
 
 /* 08 industry rows */
-.ind-row{display:grid;grid-template-columns:84px minmax(0,1fr);gap:36px;align-items:start;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:32px 0;}
-.ind-row .ic{width:70px;height:70px;}
-.ind-row h3{font-size:24px;margin-bottom:6px;}
-.ind-row .hook{margin:0 0 8px;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:13px;font-weight:700;letter-spacing:0.04em;}
-.ind-row p{margin:0;color:var(--mid-grey);font-size:17px;line-height:1.5;max-width:600px;}
+.ind-row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:44px;align-items:start;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:34px 0;}
+.ind-row .ic{width:110px;height:110px;}
+.ind-row h3{font-size:24px;margin-bottom:8px;}
+.ind-row .hook{margin:0 0 10px;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:13px;font-weight:700;letter-spacing:0.04em;}
+.ind-row p{margin:0;color:var(--mid-grey);font-size:22px;line-height:1.45;max-width:720px;}
 
 /* 09 pathway */
 .pathway svg{width:100%;height:auto;overflow:visible;}
@@ -128,8 +142,8 @@ a{color:inherit;}
 #track2 .slide{border:1px solid var(--hairline);border-radius:14px;background:#fff;padding:28px 30px;}
 .next .ic{width:50px;height:50px;margin-bottom:14px;}
 .next .k{margin-bottom:8px;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
-.next h3{font-size:21px;margin-bottom:8px;}
-.next p{margin:0 0 14px;color:var(--mid-grey);font-size:17px;line-height:1.5;}
+.next h3{font-size:23px;margin-bottom:8px;}
+.next p{margin:0 0 var(--link-gap);color:var(--mid-grey);font-size:22px;line-height:1.45;}
 
 /* 11 insights list */
 .ins{border-top:1px solid var(--hairline);}
@@ -160,29 +174,29 @@ a{color:inherit;}
 .sel-item.on::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;background:var(--terracotta);border-radius:2px;}
 .sel-item.on .sk{color:var(--terracotta-dark);}
 .panel-title{font-family:"Montserrat",sans-serif;font-weight:700;font-size:23px;color:var(--navy);line-height:1.18;}
-.panel-copy{margin:14px 0 0;color:var(--mid-grey);font-size:18px;line-height:1.5;}
+.panel-copy{margin:14px 0 0;color:var(--mid-grey);font-size:22px;line-height:1.45;}
 .panel-lab{margin:26px 0 10px;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
 .panel-chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0;}
 .panel-chips li{font-family:"Montserrat",sans-serif;font-size:12px;font-weight:600;color:var(--navy);border:1px solid var(--hairline);border-radius:100px;padding:7px 14px;}
 .panel-del{margin:0;padding:0;list-style:none;}
-.panel-del li{padding:10px 0;border-top:1px solid var(--hairline);font-size:17px;color:var(--mid-grey);}
+.panel-del li{padding:10px 0;border-top:1px solid var(--hairline);font-size:19px;color:var(--mid-grey);}
 
 /* case study */
 .cs h1{font-weight:700;font-size:clamp(32px,3.2vw,40px);line-height:1.08;max-width:780px;}
-.cs-sub{max-width:600px;margin:18px 0 0;color:var(--mid-grey);font-size:19px;line-height:1.45;}
+.cs-sub{max-width:600px;margin:18px 0 0;color:var(--mid-grey);font-size:22px;line-height:1.45;}
 .cs-metrics{display:flex;flex-wrap:wrap;gap:44px;margin-top:30px;padding-top:24px;border-top:1px solid var(--hairline);}
 .cs-metrics .fig{font-family:"Montserrat",sans-serif;font-weight:700;font-size:clamp(26px,3vw,34px);color:var(--terracotta);letter-spacing:-0.02em;line-height:1;}
-.cs-metrics .cap{margin-top:8px;font-size:15px;font-style:italic;color:var(--caption);max-width:190px;}
+.cs-metrics .cap{margin-top:8px;font-size:19px;font-style:italic;color:var(--caption);max-width:210px;}
 .cs-blocks{margin-top:14px;}
 .cs-block{display:grid;grid-template-columns:minmax(160px,220px) minmax(0,1fr);gap:44px;padding:30px 0;border-top:1px solid var(--hairline);}
 .cs-block:last-child{border-bottom:1px solid var(--hairline);}
 .cs-block h2{font-size:17px;font-weight:700;letter-spacing:0.04em;color:var(--navy);}
-.cs-block p{margin:0;color:var(--mid-grey);font-size:18px;line-height:1.55;}
+.cs-block p{margin:0;color:var(--mid-grey);font-size:22px;line-height:1.5;}
 
 /* CTA equation (dark) */
 .ctaf{background:var(--dark-slate);border-radius:20px;padding:48px;}
 .ctaf h2{color:var(--off-white);font-weight:700;font-size:clamp(28px,3vw,36px);line-height:1.08;}
-.ctaf p{max-width:560px;margin:16px 0 0;color:rgba(245,243,238,0.78);font-size:18px;line-height:1.5;}
+.ctaf p{max-width:560px;margin:16px 0 0;color:rgba(245,243,238,0.78);font-size:22px;line-height:1.5;}
 .ctaf-eq{display:flex;align-items:stretch;gap:18px;flex-wrap:wrap;margin:32px 0 30px;}
 .ctaf-box{flex:1 1 200px;border:1px solid rgba(245,243,238,0.22);border-radius:12px;padding:24px;}
 .ctaf-box .lab{color:rgba(245,243,238,0.55);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;}
@@ -204,15 +218,15 @@ a{color:inherit;}
 .beliefs{display:flex;flex-direction:column;}
 .belief{display:grid;grid-template-columns:minmax(220px,320px) minmax(0,1fr);gap:44px;padding:28px 0;border-top:1px solid var(--hairline);}
 .belief:last-child{border-bottom:1px solid var(--hairline);}
-.belief h3{font-size:21px;color:var(--navy);}
-.belief p{margin:0;color:var(--mid-grey);font-size:17px;line-height:1.5;}
+.belief h3{font-size:23px;color:var(--navy);}
+.belief p{margin:0;color:var(--mid-grey);font-size:22px;line-height:1.45;}
 
 /* why-sector formula */
 .secf-eq{display:flex;align-items:stretch;gap:18px;flex-wrap:wrap;margin:24px 0 0;}
 .secf-box{flex:1 1 220px;background:#fff;border:1px solid var(--hairline);border-radius:14px;padding:26px;}
 .secf-box .lab{color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;}
 .secf-box h3{margin:8px 0 10px;font-size:21px;color:var(--navy);}
-.secf-box p{margin:0;color:var(--mid-grey);font-size:16px;line-height:1.5;}
+.secf-box p{margin:0;color:var(--mid-grey);font-size:19px;line-height:1.5;}
 .secf-op{display:flex;align-items:center;color:var(--navy);font-family:"Montserrat",sans-serif;font-weight:700;font-size:22px;}
 .shapes{margin-top:18px;border-top:1px solid var(--hairline);padding-top:22px;}
 .shapes h4{font-family:"Montserrat",sans-serif;font-size:16px;color:var(--navy);margin:0 0 16px;}
@@ -220,7 +234,164 @@ a{color:inherit;}
 .shape{padding:0 22px;border-left:1px solid var(--hairline);}
 .shape:first-child{padding-left:0;border-left:0;}
 .shape .s-lab{font-family:"Montserrat",sans-serif;font-weight:700;font-size:13px;color:var(--navy);}
-.shape .s-val{margin-top:6px;color:var(--mid-grey);font-size:15px;font-style:italic;line-height:1.4;}
+.shape .s-val{margin-top:6px;color:var(--caption);font-size:19px;font-style:italic;line-height:1.4;}
+
+/* ============ blocks 00 + 20-32 (post-home sync additions) ============ */
+
+/* 00 site nav — mirrored from src/components/Nav.astro + base.css */
+.site-nav{background:rgba(255,255,255,0.97);border-bottom:1px solid var(--hairline);}
+.nav-inner{max-width:var(--wide);height:80px;margin:0 auto;display:flex;align-items:center;gap:32px;}
+.nav-logo{display:inline-flex;align-items:center;width:180px;margin-left:-4px;flex:0 0 auto;}
+.nav-logo svg{display:block;width:100%;height:auto;}
+.nav-links{margin-left:auto;display:flex;align-items:center;gap:30px;flex-wrap:wrap;}
+.nav-link{display:inline-flex;align-items:center;gap:6px;font-family:"Montserrat",sans-serif;font-size:15px;font-weight:600;color:var(--near-black);text-decoration:none;}
+.nav-chevron{position:relative;top:-1px;font-size:18px;font-weight:800;line-height:1;color:var(--navy);}
+.nav-link:hover,.nav-link:focus{color:var(--navy);}
+.nav-cta{font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:13px 26px;border-radius:6px;background:var(--navy);color:var(--off-white);transition:background .18s ease;}
+.nav-cta:hover,.nav-cta:focus{background:var(--dark-slate);}
+
+/* 20 page hero (service variant) */
+.demo-hero{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(260px,.7fr);gap:36px;align-items:center;}
+.demo-hero h1{margin:0 0 28px;font-weight:700;font-size:clamp(40px,3.4vw,46px);line-height:1.08;}
+.demo-hero .hero-subhead{max-width:560px;margin:0 0 34px;color:var(--near-black);font-size:22px;line-height:1.4;}
+.demo-hero .hero-actions{display:flex;flex-wrap:wrap;gap:24px;align-items:center;}
+.demo-hero .hero-art{display:flex;justify-content:flex-end;}
+.demo-hero .hero-art svg{width:min(340px,100%);height:auto;overflow:visible;}
+
+/* 21 statement rows — mirrored from home.css */
+.statement-row{display:grid;grid-template-columns:minmax(220px,300px) minmax(0,1fr);gap:56px;padding:42px 0;border-top:1px solid var(--hairline);max-width:1020px;}
+.statement-row:last-child{border-bottom:1px solid var(--hairline);}
+.statement-row h3{margin:0;color:var(--navy);font-size:23px;font-weight:700;line-height:1.2;}
+.statement-row p{margin:0;color:var(--mid-grey);font-size:22px;}
+
+/* 08 pathway — mirrored from home.css */
+.pathway-box{margin-top:24px;padding:18px 28px 26px;border:1px solid var(--hairline);border-radius:16px;background:#fff;}
+.pathway-box svg{width:100%;height:auto;overflow:visible;}
+.pathway-label{fill:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
+.pathway-pointer{fill:none;stroke:var(--terracotta);stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;}
+.station{cursor:pointer;outline:none;}
+.station text{pointer-events:none;}
+.station-hit{fill:transparent;stroke:none;pointer-events:all;}
+.station-ring,.station-core{transition:r .18s ease,fill .18s ease,stroke .18s ease,stroke-width .18s ease;}
+
+/* 22 light CTA panel */
+.cta-light p{max-width:660px;margin:24px 0 40px;color:var(--mid-grey);}
+
+/* 23 LMI handover */
+.training-block{padding:54px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
+.training-copy{margin:24px 0 28px;max-width:700px;color:var(--mid-grey);}
+.lmi-logo-ph{display:flex;align-items:center;justify-content:center;width:250px;height:64px;border:1px dashed rgba(38,36,92,0.3);border-radius:8px;margin:0 0 var(--link-gap);color:var(--caption);font-family:"Montserrat",sans-serif;font-size:12px;font-weight:600;letter-spacing:.06em;}
+
+/* 24 client logo wall */
+.logo-strip h2{max-width:760px;margin:0 0 38px;font-size:clamp(28px,2.6vw,34px);font-weight:700;line-height:1.12;}
+.logo-marks{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:30px 24px;padding:38px 0 40px;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);align-items:center;justify-items:center;}
+.logo-ph{width:120px;height:34px;border:1px solid var(--hairline);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--caption);font-family:"Montserrat",sans-serif;font-size:11px;letter-spacing:.06em;}
+
+/* 25 accordion (Our Work cases + FAQ) */
+.disc{border-top:1px solid var(--hairline);max-width:860px;}
+.disc details{border-bottom:1px solid var(--hairline);}
+.disc summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:20px 0;font-family:"Montserrat",sans-serif;font-weight:600;font-size:20px;color:var(--near-black);}
+.disc summary::-webkit-details-marker{display:none;}
+.disc summary::after{content:"+";color:var(--terracotta);font-weight:700;font-size:22px;flex:0 0 auto;}
+.disc details[open] summary::after{content:"\2212";}
+.disc summary:hover{color:var(--navy);}
+.disc .disc-body{padding:0 0 24px;max-width:760px;}
+.disc .disc-body p{margin:0 0 14px;color:var(--mid-grey);font-size:22px;}
+.disc .disc-lab{margin:0 0 5px;color:var(--navy);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
+
+/* 26 contact form + facts */
+.form-demo{max-width:560px;display:flex;flex-direction:column;gap:26px;align-items:flex-start;}
+.form-demo .ff{width:100%;}
+.form-demo label{display:block;margin-bottom:8px;font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);}
+.form-demo input,.form-demo textarea{width:100%;padding:14px 16px;border:1px solid var(--hairline);border-radius:8px;background:#fff;font-family:"Lora",serif;font-size:19px;font-weight:500;color:var(--near-black);}
+.form-demo textarea{min-height:130px;resize:vertical;}
+.form-demo input:focus,.form-demo textarea:focus{outline:2px solid var(--terracotta);outline-offset:1px;}
+
+/* 27 blog post anchors */
+.anchor-box{border:1px solid var(--hairline);border-radius:16px;background:#fff;padding:30px 34px;max-width:720px;}
+.anchor-box .ab-lab{margin:0 0 12px;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+.anchor-box p{margin:0;color:var(--mid-grey);font-size:22px;}
+.anchor-box ul{margin:0;padding-left:24px;}
+.anchor-box li{margin:6px 0;color:var(--mid-grey);font-size:22px;}
+.rel-row{display:flex;justify-content:space-between;align-items:baseline;gap:24px;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:18px 0;max-width:720px;}
+.rel-row .rl{font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--caption);white-space:nowrap;}
+.rel-row p{margin:0;font-size:22px;color:var(--mid-grey);}
+
+/* 28 resource rows */
+.res-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:start;padding:30px 0;border-top:1px solid var(--hairline);}
+.res-row:last-of-type{border-bottom:1px solid var(--hairline);}
+.res-row h3{font-size:23px;margin:12px 0 8px;}
+.res-row p{margin:0 0 var(--link-gap);color:var(--mid-grey);font-size:22px;max-width:660px;}
+.coming{font-style:italic;color:var(--caption);font-size:19px;}
+
+/* 29 wizard */
+.wiz{max-width:760px;}
+.step-q{margin:0 0 18px;font-family:"Montserrat",sans-serif;font-weight:700;font-size:23px;color:var(--navy);}
+.choices{display:flex;flex-wrap:wrap;gap:10px;}
+.choice{font-family:"Montserrat",sans-serif;font-size:13px;font-weight:600;padding:12px 20px;border-radius:10px;border:1px solid var(--hairline);background:#fff;color:var(--navy);cursor:pointer;}
+.choice.on{border-color:var(--terracotta);background:var(--terracotta);color:#fff;}
+.wiz-rec{margin-top:26px;border:1px solid var(--hairline);border-radius:16px;background:#fff;padding:26px 30px;}
+.wiz-rec .ab-lab{margin:0 0 10px;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+.wiz-rec h3{font-size:23px;margin:0 0 8px;}
+.wiz-rec p{margin:0 0 var(--link-gap);color:var(--mid-grey);font-size:22px;}
+
+/* 30 we are / we're not */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:1020px;}
+.compare .ccol{border-top:1px solid var(--hairline);padding-top:22px;}
+.compare h3{font-size:23px;margin:0 0 6px;}
+.compare ul{list-style:none;margin:0;padding:0;}
+.compare li{padding:13px 0;border-bottom:1px solid var(--hairline);font-size:22px;color:var(--mid-grey);}
+
+/* 33 inline prose links */
+.prose-demo{max-width:680px;}
+.prose-demo p{margin:0 0 18px;color:var(--mid-grey);font-size:22px;}
+.inline-link{color:var(--terracotta);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;font-weight:500;}
+.inline-link:hover,.inline-link:focus{color:var(--terracotta-dark);}
+.inline-link.ext::after{content:"\2197";font-size:0.8em;margin-left:2px;vertical-align:0.1em;}
+
+/* 34 downloadable document */
+.dl-row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:22px;align-items:center;padding:24px 0;border-top:1px solid var(--hairline);max-width:760px;}
+.dl-row:last-of-type{border-bottom:1px solid var(--hairline);}
+.dl-row .dl-ic{width:40px;height:40px;}
+.dl-row h3{margin:0 0 4px;font-size:21px;font-weight:700;line-height:1.2;}
+.dl-row p{margin:0;color:var(--mid-grey);font-size:19px;}
+.dl-action{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;}
+.dl-action .dl-meta{color:var(--caption);font-weight:600;letter-spacing:0.04em;font-style:italic;text-transform:none;font-family:"Lora",serif;font-size:15px;}
+.dl-action .ar{font-size:16px;font-weight:800;line-height:.8;}
+.dl-row a.dl-action:hover .ar{transform:translateY(2px);transition:transform .16s ease;}
+
+/* 35 legal / utility page */
+.legal{max-width:760px;}
+.legal .updated{margin:0 0 34px;color:var(--caption);font-size:19px;font-style:italic;}
+.legal h2{font-size:23px;font-weight:700;color:var(--navy);margin:38px 0 12px;padding-top:26px;border-top:1px solid var(--hairline);}
+.legal h2:first-of-type{border-top:none;padding-top:0;}
+.legal p{margin:0 0 16px;color:var(--mid-grey);font-size:22px;}
+.footer-legal{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px;}
+.footer-legal a{color:rgba(38,36,92,.48);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;}
+.footer-legal a:hover{color:var(--navy);}
+
+/* 36 footer — mirrored from src/components/Footer.astro + base.css */
+.site-footer{padding:48px 0 20px;background:#fff;color:var(--near-black);}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.25fr .8fr .8fr .95fr;gap:72px;}
+.footer-logo{display:inline-flex;width:142px;margin-bottom:28px;}
+.footer-logo svg{display:block;width:100%;height:auto;}
+.footer-tagline{max-width:310px;margin:0;color:var(--navy);font-family:"Montserrat",sans-serif;font-size:28px;font-weight:700;line-height:1.12;}
+.footer-col h4{margin:0 0 18px;color:rgba(38,36,92,.48);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin:0;padding:0;}
+.footer-col a{color:var(--near-black);font-family:"Montserrat",sans-serif;font-size:15px;font-weight:600;text-decoration:none;transition:color .18s ease;}
+.footer-col a:hover,.footer-col a:focus{color:var(--navy);}
+.footer-bottom{max-width:1200px;margin:48px auto 0;padding-top:28px;border-top:1px solid rgba(38,36,92,.12);color:rgba(38,36,92,.48);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+
+@media(max-width:900px){
+  .demo-hero,.compare{grid-template-columns:1fr;}
+  .demo-hero .hero-art{justify-content:flex-start;}
+  .statement-row{grid-template-columns:1fr;gap:10px;}
+  .res-row{grid-template-columns:1fr;}
+  .logo-marks{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .footer-inner{grid-template-columns:1fr;gap:34px;}
+  .nav-inner{height:auto;flex-wrap:wrap;padding:14px 0;}
+  .rel-row{flex-direction:column;gap:6px;}
+}
 
 @media(max-width:900px){
   .ctaf-eq,.secf-eq{flex-direction:column;}
@@ -234,6 +405,8 @@ a{color:inherit;}
   .block,.page-head{padding-left:24px;padding-right:24px;}
   .stage{padding:28px 22px;}
   .trio,.next,.sel,.cs-block{grid-template-columns:1fr;gap:26px;}
+  .flagship{grid-template-columns:1fr;}
+  .flagship-media{padding:0 48px 48px;justify-content:flex-start;}
   .slide{flex:0 0 88%;grid-template-columns:1fr;}
   .case{grid-template-columns:1fr;gap:22px;}
   .ins a{flex-direction:column;gap:6px;}
@@ -243,10 +416,41 @@ a{color:inherit;}
 <body>
 
 <div class="page-head">
-  <div class="eyebrow">V6X COMPONENT TRANSLATIONS</div>
+  <div class="eyebrow">V6X COMPONENT TRANSLATIONS · SYNCED TO MERGED HOME</div>
   <h1>One example of each pattern, in real content.</h1>
-  <p>Each block names the v5x pattern, what changes, and shows the v6x version using the actual page copy. Same rules throughout: Montserrat headings, Lora body, white and beige only, thin-lined boxes and hairlines (no drop shadows), one terracotta accent, hand-drawn line-art. The divider above each block is the contained bisection line.</p>
+  <p>Each block names the v5x pattern, what changes, and shows the v6x version using the actual page copy. Same rules throughout: Montserrat headings, Lora body 22px, white and beige only, thin-lined boxes and hairlines (no drop shadows), one terracotta accent, hand-drawn line-art, terracotta chevron links, 110px pillar/sector icons. The divider above each block is the contained bisection line. Updated after the EQT-245/250/251 home merge: where this file and the built home disagree, the home and DESIGN_LEARNINGS_v6x win.</p>
 </div>
+
+<!-- 00 SITE NAV -->
+<section class="block">
+  <div class="label"><span class="num">00</span><span class="name">Site nav</span><span class="note">BUILT in src/components/Nav.astro — markup mirrored here for reference; pages consume the component, never copy this. Sticky with hairline bottom border on the site.</span></div>
+  <div class="stage white" style="padding:0 46px;">
+    <nav class="site-nav" style="border-bottom:none;">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo" aria-label="EQUIBT home">
+          <svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
+            <g fill="#2C3E50">
+              <path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/>
+              <path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/>
+              <path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/>
+              <path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/>
+              <path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/>
+              <path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/>
+            </g>
+            <path fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/>
+          </svg>
+        </a>
+        <div class="nav-links">
+          <a href="#" class="nav-link">Services <span class="nav-chevron" aria-hidden="true">&#8964;</span></a>
+          <a href="#" class="nav-link">Industries <span class="nav-chevron" aria-hidden="true">&#8964;</span></a>
+          <a href="#" class="nav-link">Our Work</a>
+          <a href="#" class="nav-link">About</a>
+          <a href="#" class="nav-cta">Get in touch</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
 
 <!-- 01 PILLAR IDENTITY -->
 <section class="block">
@@ -280,7 +484,7 @@ a{color:inherit;}
         <div class="svc-kicker">FRAME · DEFINE</div>
         <h3>Problem Framing.</h3>
         <p>Align on the real problem before anything else moves.</p>
-        <a href="#" class="btn-text">Explore FRAME &rarr;</a>
+        <a href="#" class="btn-text"><span class="link-label">Explore FRAME</span> <span class="ar">&rsaquo;</span></a>
       </div>
     </div>
   </div>
@@ -295,17 +499,17 @@ a{color:inherit;}
     <p class="stage-note">FRAME covers the disciplines that make the next service worth funding: stakeholder alignment, a locked charter, and specific success criteria.</p>
     <div class="trio">
       <div class="col">
-        <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M21 18 Q32 13 41 18"/><path class="hd" d="M18 22 Q24 33 30 41"/><path class="hd" d="M44 22 Q38 33 34 41"/><circle cx="16" cy="18" r="5.5" class="hd"/><circle cx="46" cy="18" r="5.5" class="hd"/><circle cx="32" cy="46" r="6.5" fill="none" stroke="#C15F3C" stroke-width="2.3"/></svg></span>
+        <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M15 11 H40 Q44 11 44 15 V27 Q44 31 40 31 H24 L16 38 V31 Q12 31 12 27 V14 Q12 11 15 11 Z"/><path fill="none" stroke="#C15F3C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M37 39 H50 Q52 39 52 41 V48 Q52 50 50 50 H45 L41 54 V50 H37 Q35 50 35 48 V41 Q35 39 37 39 Z"/></svg></span>
         <h3>Stakeholder Alignment</h3>
         <p>A structured SPIN workshop with your leadership team. Disagreements surface in the room, not six months into a project.</p>
       </div>
       <div class="col">
-        <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M11 51 Q32 52 53 50.4"/><path class="hd" d="M18 50 Q17.5 44 18 38"/><path class="hd" d="M28 50 Q27.5 41 28 33"/><path class="hd" d="M38 50 Q37.5 36 38 27"/><path class="hd-acc" d="M48 50 Q47.4 32 48 20"/></svg></span>
+        <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M17 8 H41 L48 15 V53 Q48 56 45 56 H17 Q14 56 14 53 V11 Q14 8 17 8 Z"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M41 8 V15 H48"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M21 24 H41"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M21 31 H41"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M21 38 H34"/><path fill="none" stroke="#C15F3C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M21 47 Q25 43 28 47 Q31 51 35 46 Q37 44 41 45"/></svg></span>
         <h3>Project Charter</h3>
         <p>A locked charter: problem statement, scope boundaries, exclusions, success criteria, timeline. Every stakeholder signs off.</p>
       </div>
       <div class="col">
-        <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M49 26 Q51 14 39 11 Q21 6 14 23 Q10 35 22 45 Q35 53 47 42"/><path class="hd-acc" d="M40 40 L48 43 L45 35"/><circle cx="31" cy="29" r="3.4" fill="#26245C"/></svg></span>
+        <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M20 10 H13 Q10 10 10 13 V20"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M44 10 H51 Q54 10 54 13 V20"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M54 44 V51 Q54 54 51 54 H44"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M20 54 H13 Q10 54 10 51 V44"/><circle fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" cx="32" cy="32" r="9"/><circle fill="#C15F3C" stroke="none" cx="32" cy="32" r="3.4"/></svg></span>
         <h3>Success Criteria</h3>
         <p>Specific, measurable criteria the PLAN diagnostic baselines against. You know what done looks like before anything starts.</p>
       </div>
@@ -322,10 +526,10 @@ a{color:inherit;}
     <p class="stage-note">Each deliverable is a practical working asset, not a slide deck for the shelf.</p>
     <div class="carousel">
       <div class="track" id="track">
-        <article class="slide"><div class="img"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="13" y2="15"/></svg></div><div><h3>SPIN Workshop Report</h3><p>The agreed problem statement, competing hypotheses surfaced and resolved, implications mapped, and the non-negotiables each stakeholder brought.</p></div></article>
-        <article class="slide"><div class="img"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><path d="M 8 16 L 10.5 18.5 L 16 13"/></svg></div><div><h3>Project Charter</h3><p>The governance document for everything that follows. Scope boundaries, exclusions, success criteria, timeline, signed off by all stakeholders.</p></div></article>
-        <article class="slide"><div class="img"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M 8 16 L 11 12 L 14 14 L 17 8"/></svg></div><div><h3>Success Criteria Framework</h3><p>Specific, measurable success criteria the PLAN diagnostic will baseline against. Measurable targets everyone reads the same way.</p></div></article>
-        <article class="slide"><div class="img"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="18" rx="2"/><path d="M 8 2 V 7 M 16 2 V 7"/><line x1="8" y1="11" x2="16" y2="11"/></svg></div><div><h3>SPIN Workshop Record</h3><p>A complete facilitated record: all hypotheses explored, evidence tested, the reasoning behind the agreed problem statement.</p></div></article>
+        <article class="slide"><div class="img"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M21 10 H43 Q46 10 46 13 V51 Q46 54 43 54 H21 Q18 54 18 51 V13 Q18 10 21 10 Z"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 22 H39"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 30 H39"/><path fill="none" stroke="#C15F3C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 38 H33"/></svg></div><div><h3>SPIN Workshop Report</h3><p>The agreed problem statement, competing hypotheses surfaced and resolved, implications mapped, and the non-negotiables each stakeholder brought.</p></div></article>
+        <article class="slide"><div class="img"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M21 10 H43 Q46 10 46 13 V51 Q46 54 43 54 H21 Q18 54 18 51 V13 Q18 10 21 10 Z"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 20 H39"/><path fill="none" stroke="#C15F3C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 36 L30 42 L39 28"/></svg></div><div><h3>Project Charter</h3><p>The governance document for everything that follows. Scope boundaries, exclusions, success criteria, timeline, signed off by all stakeholders.</p></div></article>
+        <article class="slide"><div class="img"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M21 10 H43 Q46 10 46 13 V51 Q46 54 43 54 H21 Q18 54 18 51 V13 Q18 10 21 10 Z"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 20 H39"/><path fill="none" stroke="#C15F3C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M24 42 L30 33 L35 37 L40 27"/></svg></div><div><h3>Success Criteria Framework</h3><p>Specific, measurable success criteria the PLAN diagnostic will baseline against. Measurable targets everyone reads the same way.</p></div></article>
+        <article class="slide"><div class="img"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" x="14" y="14" width="36" height="38" rx="3"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M24 8 V19"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M40 8 V19"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M14 27 H50"/><circle fill="#C15F3C" stroke="none" cx="24" cy="37" r="3"/></svg></div><div><h3>SPIN Workshop Record</h3><p>A complete facilitated record: all hypotheses explored, evidence tested, the reasoning behind the agreed problem statement.</p></div></article>
       </div>
       <div class="car-ctrl">
         <div class="car-dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
@@ -338,7 +542,7 @@ a{color:inherit;}
 
 <!-- 05 THE WORK -->
 <section class="block">
-  <div class="label"><span class="num">05</span><span class="name">Proof stats → evidence rows + one flagship dark card</span><span class="note">was: 3 bare numbers in a dark box (claims) → now: number tied to the action that earned it</span></div>
+  <div class="label"><span class="num">05</span><span class="name">Proof stats → evidence rows + one flagship dark card</span><span class="note">was: 3 bare numbers in a dark box (claims) → now: number tied to the action that earned it · built home adds copy-left / image-right on flat near-black #101317 + binary expand-on-scroll (see index.astro)</span></div>
   <div class="stage beige">
     <div class="eyebrow">THE WORK</div>
     <h2 class="stage-h2" style="margin-top:12px;">Operational gains that stay visible after the project ends.</h2>
@@ -348,11 +552,16 @@ a{color:inherit;}
       <div class="ev-row"><p class="ev-act">Rebuilt quality checks at the source. Rework dropped <span class="m">28% to 9%</span>.</p><p class="ev-sec">Government department</p></div>
     </div>
     <div class="flagship">
-      <div class="eyebrow">OUR WORK · FLAGSHIP</div>
-      <h3>Redesigned customer retention across five call-centre partners.</h3>
-      <p class="flag-copy">Churn was high and each partner ran its own retention method with no shared data. We mapped the end-to-end process, fixed the failure points, and handed the teams a model they now run without us.</p>
-      <div class="flag-metric"><strong>18% to 24%</strong><span>retention save rate</span></div>
-      <a href="#" class="flag-link">Read the case &rarr;</a>
+      <div class="flagship-copy">
+        <div class="eyebrow light">OUR WORK · FLAGSHIP</div>
+        <h3>Redesigned customer retention across five call-centre partners.</h3>
+        <p class="flag-copy">Churn was high and each partner ran its own retention method with no shared data. We mapped the end-to-end process, fixed the failure points, and handed the teams a model they now run without us.</p>
+        <div class="flag-metric"><strong>18% to 24%</strong><span>retention save rate</span></div>
+        <a href="#" class="flag-link"><span class="link-label">Read the case</span> <span class="ar">&rsaquo;</span></a>
+      </div>
+      <div class="flagship-media" aria-hidden="true">
+        <img src="../../public/assets/flagship-mesh-placeholder.svg" alt="">
+      </div>
     </div>
   </div>
 </section>
@@ -371,7 +580,7 @@ a{color:inherit;}
         <div class="blk"><p class="l">Problem</p><p>Three directorates held competing hypotheses about a cross-functional service failure. No shared problem definition existed.</p></div>
         <div class="blk"><p class="l">Approach</p><p>Ran a two-day SPIN workshop across all three. Surfaced the competing hypotheses, tested each against evidence, and produced a single agreed problem statement and a signed charter within the week.</p></div>
         <div class="blk"><p class="l">Outcome</p><p>Project charter signed before the diagnostic began.</p></div>
-        <a href="#" class="btn-text" style="margin-top:22px;">View our work &rarr;</a>
+        <a href="#" class="btn-text" style="margin-top:var(--link-gap);"><span class="link-label">View our work</span> <span class="ar">&rsaquo;</span></a>
       </div>
     </div>
   </div>
@@ -399,32 +608,87 @@ a{color:inherit;}
   </div>
 </section>
 
-<!-- 08 STATION PATHWAY -->
+<!-- 08 STATION PATHWAY (TWO VARIANTS) -->
 <section class="block">
-  <div class="label"><span class="num">08</span><span class="name">Station pathway → hand-drawn line</span><span class="note">was: geometric subway map with coloured pills → now: single hand-drawn line, one terracotta "you are here"</span></div>
+  <div class="label"><span class="num">08a</span><span class="name">Station pathway — HOME interactive selector</span><span class="note">as built in index.astro: white hairline pathway box, hover-selects-and-persists, proximity effect, label above the station inside the box. Locked ≤5-word verb-first labels.</span></div>
+  <div class="stage beige pathway">
+    <div class="eyebrow">WHERE IT LEADS</div>
+    <h2 class="stage-h2" style="margin:12px 0 0;">You don't start all six at once.</h2>
+    <div class="pathway-box">
+      <svg id="pw-svg" viewBox="0 0 1040 150" role="img" aria-label="FRAME to SCALE progression">
+        <g class="station-callout">
+          <text id="pw-label" class="pathway-label" x="70" y="24" text-anchor="middle">DEFINE THE REAL PROBLEM</text>
+          <path id="pw-pointer" class="pathway-pointer" d="M70 34 L70 78"/>
+        </g>
+        <path class="hd-f2" d="M70 100 Q300 90 520 99 Q760 109 970 98"/>
+        <g class="station is-active" tabindex="0" data-key="FRAME" data-x="70" data-y="100" data-label="DEFINE THE REAL PROBLEM">
+          <circle class="station-hit" cx="70" cy="100" r="34"/>
+          <circle class="station-ring" cx="70" cy="100" r="11" fill="#C15F3C" stroke="#C15F3C" stroke-width="2.6"/>
+          <circle class="station-core" cx="70" cy="100" r="4" fill="#fff"/>
+          <text x="70" y="138" fill="#26245C" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">FRAME</text>
+        </g>
+        <g class="station" tabindex="0" data-key="PLAN" data-x="250" data-y="97" data-label="DIAGNOSE HOW IT RUNS">
+          <circle class="station-hit" cx="250" cy="97" r="34"/>
+          <circle class="station-ring" cx="250" cy="97" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
+          <circle class="station-core" cx="250" cy="97" r="0" fill="#fff"/>
+          <text x="250" y="138" fill="#26245C" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">PLAN</text>
+        </g>
+        <g class="station" tabindex="0" data-key="SOLVE" data-x="430" data-y="99" data-label="FIX THE ROOT CAUSES">
+          <circle class="station-hit" cx="430" cy="99" r="34"/>
+          <circle class="station-ring" cx="430" cy="99" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
+          <circle class="station-core" cx="430" cy="99" r="0" fill="#fff"/>
+          <text x="430" y="138" fill="#26245C" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">SOLVE</text>
+        </g>
+        <g class="station" tabindex="0" data-key="EVOLVE" data-x="610" data-y="101" data-label="PROVE IT WITH A PILOT">
+          <circle class="station-hit" cx="610" cy="101" r="34"/>
+          <circle class="station-ring" cx="610" cy="101" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
+          <circle class="station-core" cx="610" cy="101" r="0" fill="#fff"/>
+          <text x="610" y="138" fill="#26245C" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">EVOLVE</text>
+        </g>
+        <g class="station" tabindex="0" data-key="GOVERN" data-x="790" data-y="98" data-label="LOCK IN THE CONTROLS">
+          <circle class="station-hit" cx="790" cy="98" r="34"/>
+          <circle class="station-ring" cx="790" cy="98" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
+          <circle class="station-core" cx="790" cy="98" r="0" fill="#fff"/>
+          <text x="790" y="138" fill="#26245C" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">GOVERN</text>
+        </g>
+        <g class="station" tabindex="0" data-key="SCALE" data-x="970" data-y="98" data-label="EMBED THE NEW STANDARD">
+          <circle class="station-hit" cx="970" cy="98" r="34"/>
+          <circle class="station-ring" cx="970" cy="98" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
+          <circle class="station-core" cx="970" cy="98" r="0" fill="#fff"/>
+          <text x="970" y="138" fill="#26245C" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">SCALE</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="label"><span class="num">08b</span><span class="name">Station pathway — SERVICE-PAGE static variant</span><span class="note">same white pathway box; STATIC (no JS): terracotta YOU ARE HERE on the current station, current + next labels navy, downstream labels muted #7A8591</span></div>
   <div class="stage white pathway">
     <div class="eyebrow">WHERE IT LEADS</div>
-    <h2 class="stage-h2" style="margin:12px 0 30px;">Define the problem. Then measure it.</h2>
-    <svg viewBox="0 0 1040 150" role="img" aria-label="FRAME to SCALE progression">
-      <path class="hd-f2" d="M70 100 Q300 90 520 99 Q760 109 970 98"/>
-      <text x="70" y="34" text-anchor="middle" fill="#C15F3C" font-family="Montserrat,sans-serif" font-size="12" font-weight="700" letter-spacing="1.4">YOU ARE HERE</text>
-      <path class="hd-acc" d="M70 44 L70 78"/>
-      <circle cx="70" cy="100" r="11" fill="#fff" stroke="#C15F3C" stroke-width="2.6"/>
-      <circle cx="70" cy="100" r="4" fill="#C15F3C"/>
-      <circle cx="250" cy="97" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
-      <circle cx="430" cy="99" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
-      <circle cx="610" cy="101" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
-      <circle cx="790" cy="98" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
-      <circle cx="970" cy="98" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
-      <g font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">
-        <text x="70" y="138" fill="#26245C">FRAME</text>
-        <text x="250" y="138" fill="#26245C">PLAN</text>
-        <text x="430" y="138" fill="#7A8591">SOLVE</text>
-        <text x="610" y="138" fill="#7A8591">EVOLVE</text>
-        <text x="790" y="138" fill="#7A8591">GOVERN</text>
-        <text x="970" y="138" fill="#7A8591">SCALE</text>
-      </g>
-    </svg>
+    <h2 class="stage-h2" style="margin:12px 0 0;">Define the problem. Then measure it.</h2>
+    <div class="pathway-box">
+      <svg viewBox="0 0 1040 150" role="img" aria-label="FRAME to SCALE progression">
+        <path class="hd-f2" d="M70 100 Q300 90 520 99 Q760 109 970 98"/>
+        <text x="70" y="24" text-anchor="middle" class="pathway-label">YOU ARE HERE</text>
+        <path class="pathway-pointer" d="M70 34 L70 78"/>
+        <circle cx="70" cy="100" r="11" fill="#fff" stroke="#C15F3C" stroke-width="2.6"/>
+        <circle cx="70" cy="100" r="4" fill="#C15F3C"/>
+        <circle cx="250" cy="97" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
+        <circle cx="430" cy="99" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
+        <circle cx="610" cy="101" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
+        <circle cx="790" cy="98" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
+        <circle cx="970" cy="98" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
+        <g font-family="Montserrat,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">
+          <text x="70" y="138" fill="#26245C">FRAME</text>
+          <text x="250" y="138" fill="#26245C">PLAN</text>
+          <text x="430" y="138" fill="#7A8591">SOLVE</text>
+          <text x="610" y="138" fill="#7A8591">EVOLVE</text>
+          <text x="790" y="138" fill="#7A8591">GOVERN</text>
+          <text x="970" y="138" fill="#7A8591">SCALE</text>
+        </g>
+      </svg>
+    </div>
   </div>
 </section>
 
@@ -444,7 +708,7 @@ a{color:inherit;}
         <div class="k">PLAN · MEASURE</div>
         <h3>Operations Diagnostic.</h3>
         <p>When the charter is signed, PLAN establishes the evidence base. Baseline measurement, capability assessment, prioritised roadmap.</p>
-        <a href="#" class="btn-text">Explore PLAN &rarr;</a>
+        <a href="#" class="btn-text"><span class="link-label">Explore PLAN</span> <span class="ar">&rsaquo;</span></a>
       </div>
     </div>
   </div>
@@ -485,7 +749,7 @@ a{color:inherit;}
   <div class="stage white">
     <div class="btnrow">
       <a href="#" class="btn-primary">Get in touch</a>
-      <a href="#" class="btn-text">Download capability statement &rarr;</a>
+      <a href="#" class="btn-text"><span class="link-label">Download capability statement</span> <span class="ar">&rsaquo;</span></a>
       <span class="retired">(the v5x bordered "outline" button is dropped in favour of the lighter text link)</span>
     </div>
   </div>
@@ -516,7 +780,7 @@ a{color:inherit;}
           <span><span class="sk">EVOLVE</span> <span class="ss">· Improve</span></span>
         </button>
         <button class="sel-item" data-title="GOVERN: lock the reporting, controls and ownership." data-copy="Use GOVERN when regulatory reporting, AI use or manual controls need ownership and monitoring that people actually use." data-ch="Regulatory evidence|AI governance|Control ownership" data-del="Process Architecture Document|Control Plans|Monitoring Dashboard Specification|AI Governance Framework">
-          <span class="si"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M32 10 Q44 15 50 16 Q51.5 31 48 41 Q43 51 32 55 Q21 51 16 41 Q12.5 31 14 16 Q20 15 32 10 Z"/><path class="hd-acc" d="M24 31 Q28 36 30 38 Q36 28 42 22"/></svg></span>
+          <span class="si"><svg viewBox="0 0 80 80" style="width:100%;height:100%" fill="none" stroke="#26245C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M40 13 C49 19 57 20 62 19 C63 41 57 57 40 68 C23 57 17 41 18 19 C23 20 31 19 40 13 Z"/><path d="M29 41 L37 50 L53 30" stroke="#C15F3C"/></svg></span>
           <span><span class="sk">GOVERN</span> <span class="ss">· Control</span></span>
         </button>
         <button class="sel-item" data-title="SCALE: standardise what has proven reliable." data-copy="Use SCALE when a governed improvement is ready to move across crews, teams or regions without eroding." data-ch="Standard work|Capability transfer|Sustained performance" data-del="Standardisation Playbook|Automation Deployment Package|Capability Transfer Programme|Continuous Improvement System">
@@ -656,8 +920,361 @@ a{color:inherit;}
   </div>
 </section>
 
-<div style="max-width:1180px;margin:0 auto;padding:8px 48px 70px;color:var(--caption);font-family:'Open Sans',sans-serif;font-size:13px;">
-  Notes: thin-lined boxes (1px hairline, no shadow) contain each pattern; the contained bisection line divides them. Client results (block 14) is the proof carousel and can sit on a contained dark panel when it is the page's one dark moment. Phase timeline and belief cards from older v2/v3 pages stay out of scope. Contact form and Our Work &lt;details&gt; accordion follow the same hairline rule.
+<!-- 20 PAGE HERO -->
+<section class="block">
+  <div class="label"><span class="num">20</span><span class="name">Page hero (service variant) + industry metric band</span><span class="note">home hero is BUILT in index.astro · sub-page heroes follow it: pure white, top-left copy, asymmetric motif right bleeding into whitespace, Get in touch + chevron link · industry heroes add a hairline metric band (no boxed stat cells)</span></div>
+  <div class="stage white">
+    <div class="demo-hero">
+      <div>
+        <div class="eyebrow">FRAME · DEFINE</div>
+        <h1>Align on the real problem before anything else moves.</h1>
+        <p class="hero-subhead">Most operational improvement programmes fail because stakeholders never agreed on what the problem actually was. FRAME locks that alignment before a single diagnostic dollar gets spent.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn-primary">Get in touch</a>
+          <a href="#" class="btn-text"><span class="link-label">View our work</span> <span class="ar">&rsaquo;</span></a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><path class="hd" d="M13 26 Q12 14 14 13 Q16 12 26 12.4"/><path class="hd" d="M38 12.4 Q50 12 51 14 Q52 16 51.6 26"/><path class="hd" d="M51.6 38 Q52 50 50 51 Q48 52 38 51.6"/><path class="hd" d="M26 51.6 Q14 52 13 50 Q12 48 13 38"/><circle cx="32" cy="32" r="11" class="hd"/><circle cx="32" cy="32" r="3.4" fill="#C15F3C"/></svg>
+      </div>
+    </div>
+    <div class="cs-metrics" style="margin-top:38px;">
+      <div><div class="fig">9 to 4 days</div><div class="cap">loan approval time</div></div>
+      <div><div class="fig">6% to 2%</div><div class="cap">scrap rate at the source</div></div>
+      <div><div class="fig">320 to 540</div><div class="cap">weekly assessment throughput</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 21 STATEMENT ROWS -->
+<section class="block">
+  <div class="label"><span class="num">21</span><span class="name">Statement rows (the difference section)</span><span class="note">BUILT on home: hanging-label editorial rows on hairlines, navy Montserrat lead left, Lora support right</span></div>
+  <div class="stage beige">
+    <div class="eyebrow">THE EQUIBT DIFFERENCE</div>
+    <h2 class="stage-h2" style="margin-top:12px;">We build capability, not dependency.</h2>
+    <div style="margin-top:26px;">
+      <div class="statement-row">
+        <h3>We embed inside your operations.</h3>
+        <p>Most consultants parachute in and hand over a document. We sit in your workshops, work through your data, and stay until your team can run the process without us.</p>
+      </div>
+      <div class="statement-row">
+        <h3>We build your team's capability.</h3>
+        <p>The engagement succeeds or fails based on what your people can do when we leave. Training is not an add-on, it is the centre of the work.</p>
+      </div>
+      <div class="statement-row">
+        <h3>We exit when the work is yours.</h3>
+        <p>A successful engagement means less of us over time, not more. The project outcome is an operation that runs independently.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 22 LIGHT CTA PANEL -->
+<section class="block">
+  <div class="label"><span class="num">22</span><span class="name">Light CTA panel (page-closing CTA)</span><span class="note">was: full dark-slate cta-panel band on every page → now: LIGHT closing CTA on the alternating section colour (BUILT on home). The dark moment belongs to the flagship or CTA equation, never both.</span></div>
+  <div class="stage beige cta-light">
+    <div class="eyebrow">START HERE</div>
+    <h2 class="stage-h2" style="margin-top:12px;">Start where the work actually is.</h2>
+    <p>Most operations leaders know something needs to change. Fewer know where to start. Tell us what you are seeing and we will point you to the right starting point, even if that turns out not to be us. You'll hear back from a person, not an auto-reply.</p>
+    <a href="#" class="btn-primary">Get in touch</a>
+  </div>
+</section>
+
+<!-- 23 LMI HANDOVER -->
+<section class="block">
+  <div class="label"><span class="num">23</span><span class="name">Training / LMI handover</span><span class="note">BUILT on home: hairline-bounded band, full-colour LMI-LOGO-702 (clickable), links to leanmethods.com.au (interim AU). Home + industry pages only — NEVER on service pages. Placeholder box below stands in for the logo asset.</span></div>
+  <div class="stage white">
+    <div class="training-block">
+      <div class="eyebrow">TRAINING</div>
+      <h2 class="stage-h2" style="margin-top:12px;">Need to build the skills in-house?</h2>
+      <p class="training-copy">Lean Methods Institute is our specialist training division. If your team needs Lean and AI capability built through structured courses rather than an advisory engagement, that is where to start.</p>
+      <div class="lmi-logo-ph">LMI-LOGO-702 · FULL COLOUR</div>
+      <a href="#" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 24 CLIENT LOGO WALL -->
+<section class="block">
+  <div class="label"><span class="num">24</span><span class="name">Client logo wall</span><span class="note">BUILT on home (replaces the retired Credentials page): static grid not a carousel, monochrome, 5 across, between exactly one hairline above and below. Coded filenames logo-01..20, alt empty, client key vault-only.</span></div>
+  <div class="stage white">
+    <div class="logo-strip">
+      <div class="eyebrow">CLIENTS</div>
+      <h2 style="margin-top:12px;">Worked across complex, regulated operating environments.</h2>
+      <div class="logo-marks" aria-label="Client logos (placeholders)">
+        <span class="logo-ph">Client mark</span><span class="logo-ph">Client mark</span><span class="logo-ph">Client mark</span><span class="logo-ph">Client mark</span><span class="logo-ph">Client mark</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 25 ACCORDION: OUR WORK CASES + FAQ -->
+<section class="block">
+  <div class="label"><span class="num">25</span><span class="name">Accordion (Our Work case expand + FAQ)</span><span class="note">was: filled disclosure panels → now: native &lt;details&gt; on hairline rows, Montserrat summary, terracotta +/− marker, no filled panel. Our Work index groups cases under a pillar section header (eyebrow + title).</span></div>
+  <div class="stage white">
+    <div class="eyebrow">PLAN · OPERATIONS DIAGNOSTIC</div>
+    <h2 class="stage-h2" style="margin:12px 0 18px;">Diagnostics that found the real constraint.</h2>
+    <div class="disc">
+      <details>
+        <summary>Reviewed a platform migration before further commitment.</summary>
+        <div class="disc-body">
+          <p class="disc-lab">Problem</p>
+          <p>A platform migration faced a large further commitment with early warning signs across delivery, resourcing, and key-person risk.</p>
+          <p class="disc-lab">Approach</p>
+          <p>The team ran a structured review of the systems and the project management practice, then validated and prioritised the fixes with stakeholders.</p>
+          <a href="#" class="btn-text"><span class="link-label">Full case study</span> <span class="ar">&rsaquo;</span></a>
+        </div>
+      </details>
+      <details>
+        <summary>Which resource should I start with?</summary>
+        <div class="disc-body">
+          <p>Start with the one that matches where you are. If you are evaluating whether to run an improvement programme, use the readiness assessment. If you are considering working with us, read the capability statement. If you are not sure what the problem even is, frame the problem first.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 26 CONTACT FORM + FACTS -->
+<section class="block">
+  <div class="label"><span class="num">26</span><span class="name">Contact form + engagement facts</span><span class="note">was: standard filled fields + fact cards → now: hairline inputs (1px border, no fill, terracotta focus), Montserrat labels, navy solid submit; facts as hanging-label rows, not cards</span></div>
+  <div class="stage beige">
+    <div class="eyebrow">CONTACT</div>
+    <h2 class="stage-h2" style="margin:12px 0 26px;">Tell us what you are seeing.</h2>
+    <form class="form-demo" action="#" method="post">
+      <div class="ff"><label for="d-name">Name</label><input id="d-name" type="text"></div>
+      <div class="ff"><label for="d-org">Organisation</label><input id="d-org" type="text"></div>
+      <div class="ff"><label for="d-problem">What is the operational problem?</label><textarea id="d-problem"></textarea></div>
+      <button class="btn-primary" type="button">Get in touch</button>
+    </form>
+    <div style="margin-top:40px;">
+      <div class="belief"><h3>Engagement model.</h3><p>Advisory and capability transfer, not staff augmentation.</p></div>
+      <div class="belief"><h3>Typical start.</h3><p>Two to three weeks from the first conversation.</p></div>
+      <div class="belief"><h3>Geography.</h3><p>Australia and New Zealand.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 27 BLOG POST ANCHORS -->
+<section class="block">
+  <div class="label"><span class="num">27</span><span class="name">Blog post skim anchors + related-service row</span><span class="note">was: navy-wash tldr/takeaway boxes → now: thin-lined white boxes (the earned-container language). AEO answer and hook stay QUIET plain prose, no box. Related service becomes a hairline row with a chevron link.</span></div>
+  <div class="stage beige">
+    <div class="anchor-box">
+      <p class="ab-lab">TL;DR</p>
+      <ul>
+        <li>Root causes drive multiple symptoms. Fixing one root cause dissolves five to eight related problems without separate work.</li>
+        <li>Most diagnostic findings cluster around three to six structural issues.</li>
+        <li>Start with the root causes; track how many symptoms dissolve without additional work.</li>
+      </ul>
+    </div>
+    <div class="anchor-box" style="margin-top:28px;">
+      <p class="ab-lab">ONE THING TO TRY</p>
+      <p>Take your diagnostic findings and for each one, ask: is this a cause or a symptom? For every symptom, trace it back to the root cause that generates it. Fix the causes first and track how many symptoms dissolve without additional work.</p>
+    </div>
+    <div class="rel-row" style="margin-top:28px;">
+      <span class="rl">Related service</span>
+      <p>This thinking sits inside our Operations Diagnostic.</p>
+      <a href="#" class="btn-text"><span class="link-label">Explore PLAN</span> <span class="ar">&rsaquo;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 28 RESOURCE ROWS -->
+<section class="block">
+  <div class="label"><span class="num">28</span><span class="name">Resource cards → editorial rows</span><span class="note">was: boxed resource cards with pillar badges → now: hairline rows, hairline type pill (block 11 language), chevron action link. Coming-soon items carry an italic caption, no greyed box.</span></div>
+  <div class="stage white">
+    <div class="eyebrow">RESOURCES</div>
+    <h2 class="stage-h2" style="margin:12px 0 10px;">Use what we use.</h2>
+    <div style="margin-top:18px;">
+      <div class="res-row">
+        <div>
+          <span class="chip" style="cursor:default;">Capability statement</span>
+          <h3>EQUIBT Capability Statement</h3>
+          <p>Our track record, services, and operating model in one place. Who we are, what we do, the sectors we work in, and representative client outcomes.</p>
+          <a href="#" class="btn-text"><span class="link-label">View</span> <span class="ar">&rsaquo;</span></a>
+        </div>
+      </div>
+      <div class="res-row">
+        <div>
+          <span class="chip" style="cursor:default;">Scorecard</span>
+          <h3>Transformation Readiness Assessment</h3>
+          <p>Evaluate whether the operation is ready to run an improvement programme before you fund one.</p>
+          <p class="coming">Coming soon</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 29 PROBLEM-FRAMING WIZARD -->
+<section class="block">
+  <div class="label"><span class="num">29</span><span class="name">Problem-framing wizard (resource landing)</span><span class="note">was: filled wizard shell with step cards → now: open question (Montserrat), hairline choice buttons (terracotta active, same language as chips), recommendation in a thin-lined box · click a pressure</span></div>
+  <div class="stage beige">
+    <div class="eyebrow">FRAME THE PROBLEM</div>
+    <h2 class="stage-h2" style="margin:12px 0 24px;">Not sure what the problem even is?</h2>
+    <div class="wiz">
+      <p class="step-q">What pressure are you trying to understand?</p>
+      <div class="choices" id="wiz-choices">
+        <button class="choice on" data-rec="FRAME: agree on the real problem first." data-copy="If your team holds different views on what needs to change, that disagreement is the thing worth resolving before anything else.">Rework keeps climbing</button>
+        <button class="choice" data-rec="PLAN: baseline how the work actually runs." data-copy="When cycle times blow out and nobody can say where the time goes, the evidence base comes before any fix.">Cycle times are blowing out</button>
+        <button class="choice" data-rec="FRAME: agree on the real problem first." data-copy="Cost pressure is usually a symptom. Agree on the underlying problem before funding a programme against the symptom.">Costs exceed budget</button>
+      </div>
+      <div class="wiz-rec">
+        <p class="ab-lab">Recommended starting point</p>
+        <h3 id="wiz-rec-title">FRAME: agree on the real problem first.</h3>
+        <p id="wiz-rec-copy">If your team holds different views on what needs to change, that disagreement is the thing worth resolving before anything else.</p>
+        <a href="#" class="btn-text"><span class="link-label">Explore the service</span> <span class="ar">&rsaquo;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 30 WE ARE / WE'RE NOT -->
+<section class="block">
+  <div class="label"><span class="num">30</span><span class="name">We are / We're not (How We Work)</span><span class="note">was: two compare cards → now: two open columns on top hairlines, items as hairline list rows. How We Work page only.</span></div>
+  <div class="stage white">
+    <div class="compare">
+      <div class="ccol">
+        <h3>We are</h3>
+        <ul>
+          <li>Operators who have carried the weight, not observers</li>
+          <li>Embedded with your team until the change holds</li>
+          <li>Ruthless about measurement and root cause</li>
+          <li>Trusted with the problems that have resisted fixing</li>
+        </ul>
+      </div>
+      <div class="ccol">
+        <h3>We're not</h3>
+        <ul>
+          <li>Best-practice parrots</li>
+          <li>Framework-first thinkers</li>
+          <li>Slide decks and theatre</li>
+          <li>Staff augmentation by another name</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 31 STORY / FIELD NOTES -->
+<section class="block">
+  <div class="label"><span class="num">31</span><span class="name">Our Story field notes (About)</span><span class="note">hanging-label editorial rows (same device as beliefs/statements). NOTE: drop "Since 2009" at conversion — no dates/years in public copy.</span></div>
+  <div class="stage beige">
+    <div class="eyebrow">OUR STORY</div>
+    <h2 class="stage-h2" style="margin:12px 0 18px;">Field notes from the way we work.</h2>
+    <div>
+      <div class="belief"><h3>Say it like "equipped".</h3><p>EQUIBT is a made-up word, and the job it names: we equip your team to run the improved operation without us. The domain was free, too.</p></div>
+      <div class="belief"><h3>We say no a lot.</h3><p>We do not consult on everything. We focus on operational performance in complex service organisations, and we say no to the rest.</p></div>
+      <div class="belief"><h3>In it to deliver it.</h3><p>We are not a body shop. We do not outsource our talent, and our operators are part of the firm, here for the long term.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 33 INLINE PROSE LINKS -->
+<section class="block">
+  <div class="label"><span class="num">33</span><span class="name">Inline hyperlinks (in prose)</span><span class="note">NEW pattern — distinct from the standalone chevron CTA. An inline link inside a sentence is terracotta + always-on underline (no chevron). External links open in a new tab with rel="noopener" and a small outbound mark; internal links and mailto/tel are the same minus the mark. The chevron "›" link is RESERVED for standalone calls to action, never used mid-sentence.</span></div>
+  <div class="stage white">
+    <div class="prose-demo">
+      <p>Send the problem, not a polished brief. A plain description of the operational issue is enough to start: email <a class="inline-link" href="mailto:hello@equibt.com">hello@equibt.com</a> and you will hear back from a person.</p>
+      <p>The diagnostic baselines the current state before anything moves. If you want the detail, read the <a class="inline-link" href="#">Operations Diagnostic</a> service page, or see how it played out in <a class="inline-link" href="#">our work</a>.</p>
+      <p>The approach draws on established operational practice. Our operators publish on <a class="inline-link ext" href="#" target="_blank" rel="noopener">LinkedIn</a> if you want to follow the thinking.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 34 DOWNLOADABLE DOCUMENT -->
+<section class="block">
+  <div class="label"><span class="num">34</span><span class="name">Downloadable document (template / PDF)</span><span class="note">NEW pattern — a file the browser downloads, distinct from a page/tool link (block 28). UNGATED (no form: all resources are ungated), direct file via the download attribute. Hairline row, doc glyph, title + one-line use, and a DOWNLOAD action carrying file-type + size meta so the user knows what they are getting. Use this for the capability statement PDF and any downloadable template.</span></div>
+  <div class="stage beige">
+    <div class="eyebrow">DOWNLOAD</div>
+    <h2 class="stage-h2" style="margin:12px 0 18px;">Take the working templates with you.</h2>
+    <div>
+      <div class="dl-row">
+        <span class="dl-ic"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M21 10 H43 Q46 10 46 13 V51 Q46 54 43 54 H21 Q18 54 18 51 V13 Q18 10 21 10 Z"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 22 H39"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 30 H39"/><path fill="none" stroke="#C15F3C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 38 H33"/></svg></span>
+        <div>
+          <h3>EQUIBT Capability Statement</h3>
+          <p>Track record, services, and operating model in one document.</p>
+        </div>
+        <a class="dl-action" href="#" download>Download <span class="dl-meta">PDF · 280 KB</span> <span class="ar">&darr;</span></a>
+      </div>
+      <div class="dl-row">
+        <span class="dl-ic"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M21 10 H43 Q46 10 46 13 V51 Q46 54 43 54 H21 Q18 54 18 51 V13 Q18 10 21 10 Z"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 20 H39"/><path fill="none" stroke="#C15F3C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 36 L30 42 L39 28"/></svg></span>
+        <div>
+          <h3>Problem Framing Worksheet</h3>
+          <p>The questions we use to surface the real problem before any work starts.</p>
+        </div>
+        <a class="dl-action" href="#" download>Download <span class="dl-meta">PDF · 140 KB</span> <span class="ar">&darr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 35 LEGAL / UTILITY PAGE -->
+<section class="block">
+  <div class="label"><span class="num">35</span><span class="name">Legal / utility page (Privacy, Terms)</span><span class="note">NEW low-chrome archetype — same nav + footer, NO marketing components, NO dark moment, NO CTA equation. Simple hero (LEGAL eyebrow + H1 + last-updated line), then plain prose with Montserrat sub-headings on hairlines, inline links per block 33. FLAG: the "Last updated" line is a PROPOSED exception to the no-dates-in-public-copy hard rule, since privacy/terms legally need an effective date — confirm with Herman. Footer carries Privacy · Terms in a legal link row (shown in block 32).</span></div>
+  <div class="stage white">
+    <div class="legal">
+      <div class="eyebrow">LEGAL</div>
+      <h2 class="stage-h2" style="margin:12px 0 8px;">Privacy Policy</h2>
+      <p class="updated">Last updated: [effective date]</p>
+      <h2>What we collect</h2>
+      <p>We collect only what we need to respond to an enquiry and run the engagement: the details you send us and basic site analytics. We do not sell personal information.</p>
+      <h2>How we use it</h2>
+      <p>To reply to you, deliver the work, and meet our legal and contractual obligations. If you want to know what we hold or ask us to remove it, email <a class="inline-link" href="mailto:hello@equibt.com">hello@equibt.com</a>.</p>
+      <h2>Your rights</h2>
+      <p>You can request access to, correction of, or deletion of the personal information we hold about you, consistent with Australian privacy law.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 36 SITE FOOTER -->
+<section class="block">
+  <div class="label"><span class="num">36</span><span class="name">Site footer</span><span class="note">BUILT in src/components/Footer.astro — markup mirrored for reference; pages consume the component. Pure white, full FRAME footer, NO LMI line, entity + ABN in the bottom strip.</span></div>
+  <div class="stage white">
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="#" class="footer-logo" aria-label="EQUIBT home">
+            <svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
+              <g fill="#2C3E50">
+                <path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/>
+                <path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/>
+                <path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/>
+                <path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/>
+                <path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/>
+                <path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/>
+              </g>
+              <path fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/>
+            </svg>
+          </a>
+          <p class="footer-tagline">We simplify the complex. We make it stick.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul><li><a href="#">FRAME</a></li><li><a href="#">PLAN</a></li><li><a href="#">SOLVE</a></li><li><a href="#">EVOLVE</a></li><li><a href="#">GOVERN</a></li><li><a href="#">SCALE</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul><li><a href="#">About</a></li><li><a href="#">Our Work</a></li><li><a href="#">Insights</a></li><li><a href="#">Contact</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul><li><a href="#">hello@equibt.com</a></li><li><a href="#">LinkedIn</a></li></ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+        <div style="margin-top:14px;">&copy; EQUIBT Group Pty Ltd. All Rights Reserved. ABN 50 044 179 771</div>
+      </div>
+    </footer>
+  </div>
+</section>
+
+<div style="max-width:1180px;margin:0 auto;padding:8px 48px 70px;color:var(--caption);font-family:'Lora',serif;font-style:italic;font-size:15px;">
+  Notes: thin-lined boxes (1px hairline, no shadow) contain each pattern; the contained bisection line divides them. Client results (block 14) is the proof carousel and can sit on a contained dark panel when it is the page's one dark moment. Phase timeline from older v2/v3 pages stays out of scope (not in any v5x page). Synced to the merged home (EQT-245/250/251): Lora 22px body, terracotta chevron links, 110px pillar/sector icons, Open Sans removed, GOVERN shield updated to the locked straight two-line tick, carousel ghosts use the EQT-253 doc glyphs. Coverage pass 2026-06-07: every component that appears in any v5x page now has a block here (00-32). RETIRED by the home build: the v5x scroll-reveal animation system (reveal/reveal-d1..d3, the home ships without it), the bordered outline button, the six-colour pillar pills, the hero low-poly gem, and all wash section fills. The nav, footer and pillar icon markup here mirrors src/ — builds consume the components, never copies. AEO answer and hook on blog posts stay quiet plain prose (no box). The "Since 2009" story item drops its year at conversion.
 </div>
 
 <script>
@@ -688,6 +1305,59 @@ carousel('track','prev','next'); carousel('track2','prev2','next2');
     });
   });
   render(list.querySelector('.sel-item.on'));
+})();
+
+/* 08a interactive pathway — lifted from the built home (index.astro) */
+(function(){
+  var svg=document.getElementById('pw-svg'); if(!svg)return;
+  var label=document.getElementById('pw-label'), pointer=document.getElementById('pw-pointer');
+  var stations=Array.prototype.slice.call(svg.querySelectorAll('.station'));
+  var active=stations[0];
+  function mix(a,b,t){return Math.round(a+(b-a)*t);}
+  function col(a,b,t){return 'rgb('+mix(a[0],b[0],t)+','+mix(a[1],b[1],t)+','+mix(a[2],b[2],t)+')';}
+  function setLabel(st){
+    var x=+st.dataset.x,y=+st.dataset.y;
+    var lx=Math.min(910,Math.max(130,x)), ly=Math.max(24,y-76);
+    label.textContent=st.dataset.label; label.setAttribute('x',lx); label.setAttribute('y',ly);
+    pointer.setAttribute('d','M'+lx+' '+(ly+10)+' L'+x+' '+(y-22));
+  }
+  function render(pt){
+    var navy=[38,36,92],terra=[193,95,60],pale=[255,247,243];
+    stations.forEach(function(st){
+      var ring=st.querySelector('.station-ring'),core=st.querySelector('.station-core');
+      var x=+st.dataset.x,y=+st.dataset.y,sel=(st===active);
+      var d=pt?Math.hypot(pt.x-x,pt.y-y):999, p=sel?1:Math.max(0,1-d/150);
+      ring.setAttribute('r',(sel?11:8+p*5).toFixed(2));
+      ring.setAttribute('stroke',sel?'rgb(193,95,60)':col(navy,terra,p));
+      ring.setAttribute('fill',sel?'rgb(193,95,60)':col([255,255,255],pale,p));
+      ring.setAttribute('stroke-width',sel?'2.6':(2+p*0.6).toFixed(2));
+      core.setAttribute('r',sel?'4':(p*2.8).toFixed(2));
+      core.setAttribute('fill',sel?'#fff':col([255,255,255],terra,p));
+    });
+  }
+  function select(st){active=st;setLabel(st);render();}
+  function pointFrom(e){var p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(svg.getScreenCTM().inverse());}
+  setLabel(active);render();
+  svg.addEventListener('mousemove',function(e){render(pointFrom(e));});
+  svg.addEventListener('mouseleave',function(){render();setLabel(active);});
+  stations.forEach(function(st){
+    st.addEventListener('mouseenter',function(){select(st);});
+    st.addEventListener('click',function(){select(st);});
+    st.addEventListener('focus',function(){select(st);});
+    st.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();select(st);}});
+  });
+})();
+
+/* 29 wizard */
+(function(){
+  var box=document.getElementById('wiz-choices'); if(!box)return;
+  var t=document.getElementById('wiz-rec-title'), c=document.getElementById('wiz-rec-copy');
+  box.querySelectorAll('.choice').forEach(function(b){
+    b.addEventListener('click',function(){
+      box.querySelectorAll('.choice').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on'); t.textContent=b.dataset.rec; c.textContent=b.dataset.copy;
+    });
+  });
 })();
 </script>
 </body>
