@@ -137,6 +137,7 @@ const pointerD = `M${calloutX} 34 L${currentStation.x} ${currentStation.y - 22}`
 const nextSegmentD = nextStation
   ? `M${currentStation.x} ${currentStation.y} Q${(currentStation.x + nextStation.x) / 2} ${((currentStation.y + nextStation.y) / 2) - 5} ${nextStation.x} ${nextStation.y}`
   : "";
+const deliverablesCarouselId = `${data.pillar}-deliverables-carousel`;
 ---
 
 <Layout title={data.title} description={data.description}>
@@ -224,7 +225,21 @@ const nextSegmentD = nextStation
           <p>{data.deliverablesIntro}</p>
         </div>
         <div class="service-carousel" data-service-carousel>
-          <div class="service-track">
+          <div class="deliverables-index" aria-label="Deliverables index">
+            {data.deliverables.map((item, index) => (
+              <button
+                class:list={["deliverables-index-button", { "is-active": index === 0 }]}
+                type="button"
+                data-carousel-index={index}
+                aria-controls={deliverablesCarouselId}
+                aria-pressed={index === 0 ? "true" : "false"}
+              >
+                <span class="deliverables-index-marker" aria-hidden="true"></span>
+                <span>{item.title}</span>
+              </button>
+            ))}
+          </div>
+          <div class="service-track" id={deliverablesCarouselId} role="region" aria-label={`${data.serviceName} deliverables carousel`}>
             {data.deliverables.map((item) => {
               const Glyph = glyphs[item.glyph];
               return (
@@ -374,14 +389,24 @@ const nextSegmentD = nextStation
     const previous = carousel.querySelector("[data-carousel-prev]");
     const next = carousel.querySelector("[data-carousel-next]");
     const dots = Array.from(carousel.querySelectorAll(".carousel-dot"));
+    const indexButtons = Array.from(carousel.querySelectorAll("[data-carousel-index]"));
     const firstSlide = track.querySelector(".service-slide");
-    const step = () => firstSlide ? firstSlide.getBoundingClientRect().width + 26 : track.clientWidth * 0.78;
+    const gap = () => parseFloat(window.getComputedStyle(track).columnGap) || 0;
+    const step = () => firstSlide ? firstSlide.getBoundingClientRect().width + gap() : track.clientWidth * 0.78;
+    const scrollToIndex = (index) => track.scrollTo({ left: index * step(), behavior: "smooth" });
     const sync = () => {
       const index = Math.max(0, Math.min(dots.length - 1, Math.round(track.scrollLeft / step())));
       dots.forEach((dot, position) => dot.classList.toggle("is-active", position === index));
+      indexButtons.forEach((button, position) => {
+        button.classList.toggle("is-active", position === index);
+        button.setAttribute("aria-pressed", position === index ? "true" : "false");
+      });
     };
     previous?.addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" }));
     next?.addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" }));
+    indexButtons.forEach((button) => {
+      button.addEventListener("click", () => scrollToIndex(Number(button.dataset.carouselIndex || 0)));
+    });
     track.addEventListener("scroll", sync, { passive: true });
     sync();
   }
