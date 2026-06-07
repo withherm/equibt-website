@@ -160,7 +160,7 @@ const sectors = {
     },
     startTitle: "Most government work begins with PLAN.",
     startNote: "If the backlog source is unclear, start with diagnostic evidence. If the operation needs defensible ownership or AI governance, bring GOVERN into scope early.",
-    recommended: ["plan", "solve", "govern"],
+    recommended: ["plan", "govern"],
     entryPoints: [
       { pillar: "plan", summary: "PLAN maps the current state, establishes baselines, and clarifies the highest-value improvement opportunities before solution design begins." },
       { pillar: "govern", summary: "GOVERN builds the controls, decision rights, dashboards, and AI governance frameworks that keep the improved operation running to standard after the project closes." },
@@ -217,7 +217,7 @@ const sectors = {
     },
     startTitle: "Most utilities work begins with PLAN.",
     startNote: "If the process keeps drifting under load, start with the diagnostic. If reliability and reporting need to hold after go-live, bring GOVERN and SCALE into scope early.",
-    recommended: ["plan", "govern", "scale"],
+    recommended: ["plan", "govern"],
     entryPoints: [
       { pillar: "plan", summary: "PLAN maps the current state, establishes baselines, and clarifies the highest-value improvement opportunities before solution design begins." },
       { pillar: "govern", summary: "GOVERN builds the controls, decision rights, dashboards, and AI governance frameworks that keep the improved operation running to standard after the project closes." },
@@ -273,7 +273,7 @@ const sectors = {
     },
     startTitle: "Most advanced manufacturing work begins with PLAN.",
     startNote: "If throughput or quality is leaking, start with the diagnostic. If the operating cause is known but unresolved, move quickly into SOLVE and prepare the standard for SCALE.",
-    recommended: ["plan", "solve", "scale"],
+    recommended: ["plan", "solve"],
     entryPoints: [
       { pillar: "plan", summary: "PLAN maps the current state, establishes baselines, and clarifies the highest-value improvement opportunities before solution design begins." },
       { pillar: "solve", summary: "SOLVE moves from symptoms to causes, and from causes to costed solution options that can be tested in the real operation." },
@@ -523,6 +523,12 @@ const initialService = data.services.frame;
     document.body.classList.toggle("nav-open");
   });
 
+  function syncNavHeight() {
+    const nav = document.querySelector(".site-nav");
+    if (!nav) return;
+    document.documentElement.style.setProperty("--nav-h", nav.offsetHeight + "px");
+  }
+
   function initialiseIndustryReveals() {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const sections = Array.from(document.querySelectorAll(".industry-reveal"));
@@ -611,6 +617,8 @@ const initialService = data.services.frame;
     sync();
   }
 
+  syncNavHeight();
+  window.addEventListener("resize", syncNavHeight);
   initialiseIndustryReveals();
   initialiseSubnav();
   document.querySelectorAll("[data-service-selector]").forEach(initialiseServiceSelector);

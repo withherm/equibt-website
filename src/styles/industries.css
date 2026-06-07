@@ -62,7 +62,7 @@
 
 .sector-subnav{
   position:sticky;
-  top:0;
+  top:var(--nav-h,81px);
   z-index:20;
   background:#fff;
   border-top:1px solid var(--hairline);
@@ -440,6 +440,7 @@
 }
 .lmi-logo-img{display:block;width:100%;height:auto;}
 .training-inner .btn-text{display:inline-flex;margin-left:0;}
+.lmi-handover .btn-text{display:table;margin-top:var(--link-gap,22px);}
 
 .formula-grid{
   display:grid;
@@ -496,15 +497,21 @@
 .sector-selector{
   display:block;
 }
-.sector-list{
+.selector-sticky-scope{position:relative;}
+.sector-list-sticky{
   position:sticky;
-  top:80px;
+  top:var(--nav-h,81px);
   z-index:15;
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
+  background:#fff;
   border-top:1px solid var(--hairline);
   border-bottom:1px solid var(--hairline);
-  background:#fff;
+  padding:0 56px;
+}
+.sector-list{
+  max-width:var(--max);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
 }
 .sector-row{
   position:relative;
@@ -600,6 +607,7 @@
 
 @media(max-width:1120px){
   .industry-hero,.industry-section{padding-left:36px;padding-right:36px;}
+  .sector-list-sticky{padding-left:36px;padding-right:36px;}
   .industry-section{--industry-gutter:36px;}
   .industry-hero-inner{grid-template-columns:1fr;gap:48px;}
   .industry-hero-art{justify-content:flex-start;}
@@ -619,6 +627,10 @@
   .sector-list{grid-template-columns:repeat(2,minmax(0,1fr));}
   .sector-row:nth-child(2){border-right:0;}
   .sector-row:nth-child(-n+2){border-bottom:1px solid var(--hairline);}
+  .sector-list .sector-hook{display:none;}
+  .sector-row{grid-template-columns:28px minmax(0,1fr);gap:10px;padding:14px 14px 14px 0;align-items:center;}
+  .sector-row-icon{width:28px;height:28px;}
+  .sector-row h3{margin:0;font-size:15px;line-height:1.2;}
   .cta-art{justify-content:flex-start;}
   .cta-art{justify-self:start;width:min(260px,80vw);min-height:260px;}
   .cta-art > svg{width:100%;}
@@ -640,6 +652,7 @@
   .industry-section{padding:86px 26px;}
   .industry-section{--industry-gutter:26px;}
   .sector-subnav-inner{padding:0 26px;}
+  .sector-list-sticky{padding-left:26px;padding-right:26px;}
   .industry-hero-subhead,
   .industry-hero-body,
   .industry-head p,
@@ -658,8 +671,6 @@
   .sector-panel-card p{font-size:20px;}
   .proof-shell{padding:34px 26px;}
   .industry-actions{align-items:flex-start;flex-direction:column;}
-  .sector-row{grid-template-columns:48px minmax(0,1fr);gap:14px;padding:20px 16px 22px 0;}
-  .sector-row-icon{width:48px;height:48px;}
   .formula-takeaway-panel{
     margin-right:-26px;
     padding:28px 26px;
@@ -668,20 +679,9 @@
 @media(max-width:520px){
   .industry-hero-cluster{grid-template-columns:repeat(2,118px);gap:22px 28px;}
   .industry-hero-cluster span{width:118px;height:118px;}
-  .sector-row{
-    display:block;
-    min-height:156px;
-    padding:18px 14px 20px 0;
-  }
-  .sector-row-icon{
-    width:44px;
-    height:44px;
-    margin-bottom:12px;
-  }
-.sector-row h3{font-size:16px;}
-  .sector-row h3,
-  .sector-hook{overflow-wrap:anywhere;}
-  .sector-hook{font-size:12px;}
+  .sector-row{padding:12px 12px 12px 0;}
+  .sector-row-icon{width:26px;height:26px;}
+  .sector-row h3{font-size:14px;overflow-wrap:anywhere;}
   .pathway-box{overflow-x:auto;padding:18px 14px 18px;}
   .pathway-box svg{min-width:760px;}
   .hub-pathway{padding:18px 14px 18px;margin-left:-14px;margin-right:-14px;overflow-x:auto;}
@@ -691,6 +691,7 @@
   .industry-hero,.industry-section{padding-left:22px;padding-right:22px;}
   .industry-section{--industry-gutter:22px;}
   .sector-subnav-inner{padding:0 22px;}
+  .sector-list-sticky{padding-left:22px;padding-right:22px;}
   .formula-takeaway-panel{
     margin-right:-22px;
     padding-right:22px;

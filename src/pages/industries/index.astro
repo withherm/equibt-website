@@ -49,7 +49,7 @@ const sectors = [
     icon: "government",
     hook: "Cut the cycle time, keep the accountability.",
     body: "Public-sector operations carry obligations a private operation does not. Faster does not have to mean looser. We make the process quicker without loosening the controls you answer for.",
-    recommended: ["plan", "solve", "govern"],
+    recommended: ["plan", "govern"],
     href: "/industries/government/",
     label: "Explore Government & Public Sector",
     challenges: [
@@ -67,7 +67,7 @@ const sectors = [
     icon: "utilities",
     hook: "Stabilise the operation under load.",
     body: "Asset-heavy, regulated, and under constant reliability pressure. We help utilities steady high-volume operational processes and build the capability to keep them steady.",
-    recommended: ["plan", "govern", "scale"],
+    recommended: ["plan", "govern"],
     href: "/industries/utilities/",
     label: "Explore Utilities",
     challenges: [
@@ -85,7 +85,7 @@ const sectors = [
     icon: "manufacturing",
     hook: "Cut waste, hold the standard.",
     body: "Precision, throughput, and quality under tight tolerances. We help manufacturers cut waste, stabilise processes, and build improvement capability on the floor.",
-    recommended: ["plan", "solve", "scale"],
+    recommended: ["plan", "solve"],
     href: "/industries/manufacturing/",
     label: "Explore Advanced Manufacturing",
     challenges: [
@@ -170,6 +170,31 @@ const initialSector = sectors[0];
       </div>
     </section>
 
+    <div class="selector-sticky-scope" data-sector-selector>
+      <div class="sector-list-sticky">
+        <div class="sector-list" role="list" aria-label="Industry selector">
+          {sectors.map((sector, index) => (
+            <button
+              class:list={["sector-row", { "is-active": index === 0 }]}
+              type="button"
+              data-sector={sector.key}
+              data-recommended={sector.recommended.join("|")}
+              data-challenges={sector.challenges.join("|")}
+              data-pathway={sector.pathway}
+              data-href={sector.href}
+              data-label={sector.label}
+              aria-pressed={index === 0 ? "true" : "false"}
+            >
+              <span class="sector-row-icon" aria-hidden="true"><Icon name={sector.icon} /></span>
+              <span>
+                <h3>{sector.title}</h3>
+                <p class="sector-hook">{sector.hook}</p>
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
     <section class="industry-section white industry-reveal selector-section">
       <div class="industry-inner">
         <div class="industry-head">
@@ -177,28 +202,7 @@ const initialSector = sectors[0];
           <h2 class="industry-title">Choose the pathway for your operating context.</h2>
           <p>EQUIBT focuses on four sectors where process performance, accountability, and adoption pressure meet. Select an industry to see the common challenges, where to start, and the service pathway that fits the operating pressure.</p>
         </div>
-        <div class="sector-selector" data-sector-selector>
-          <div class="sector-list" role="list" aria-label="Industry selector">
-            {sectors.map((sector, index) => (
-              <button
-                class:list={["sector-row", { "is-active": index === 0 }]}
-                type="button"
-                data-sector={sector.key}
-                data-recommended={sector.recommended.join("|")}
-                data-challenges={sector.challenges.join("|")}
-                data-pathway={sector.pathway}
-                data-href={sector.href}
-                data-label={sector.label}
-                aria-pressed={index === 0 ? "true" : "false"}
-              >
-                <span class="sector-row-icon" aria-hidden="true"><Icon name={sector.icon} /></span>
-                <span>
-                  <h3>{sector.title}</h3>
-                  <p class="sector-hook">{sector.hook}</p>
-                </span>
-              </button>
-            ))}
-          </div>
+        <div class="sector-selector">
           <div id="sector-panel" class="sector-panel">
             <div class="sector-panel-grid">
               <article class="sector-panel-card">
@@ -258,6 +262,7 @@ const initialSector = sectors[0];
         <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
       </div>
     </section>
+    </div>
   </main>
   <Footer />
 </Layout>
@@ -287,12 +292,21 @@ const initialSector = sectors[0];
     sections.forEach((section) => observer.observe(section));
   }
 
+  function syncNavHeight() {
+    const nav = document.querySelector(".site-nav");
+    if (!nav) return;
+    document.documentElement.style.setProperty("--nav-h", nav.offsetHeight + "px");
+  }
+
   function initialiseSectorSelector(selector) {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const rows = Array.from(selector.querySelectorAll(".sector-row"));
     const challenges = selector.querySelector("[data-sector-challenges]");
     const pathway = selector.querySelector("[data-sector-pathway]");
     const link = selector.querySelector("[data-sector-link]");
     const stations = Array.from(selector.querySelectorAll("[data-station]"));
+    const panel = selector.querySelector(".sector-panel");
+    const stickyBar = selector.querySelector(".sector-list-sticky");
     const setList = (values) => {
       if (!challenges) return;
       challenges.innerHTML = "";
@@ -302,7 +316,19 @@ const initialSector = sectors[0];
         challenges.appendChild(item);
       });
     };
-    const select = (row) => {
+    const revealPanel = () => {
+      if (!panel) return;
+      const nav = document.querySelector(".site-nav");
+      const navH = nav ? nav.offsetHeight : 0;
+      const barH = stickyBar ? stickyBar.offsetHeight : 0;
+      const offset = navH + barH;
+      const top = panel.getBoundingClientRect().top;
+      if (top < offset) {
+        const target = window.scrollY + top - offset - 16;
+        window.scrollTo({ top: target, behavior: reduceMotion ? "auto" : "smooth" });
+      }
+    };
+    const select = (row, opts) => {
       const recommended = (row.dataset.recommended || "").split("|").filter(Boolean);
       rows.forEach((item) => {
         const active = item === row;
@@ -322,14 +348,17 @@ const initialSector = sectors[0];
           station.classList.add("is-recommended");
         }
       });
+      if (opts && opts.scroll) revealPanel();
     };
     rows.forEach((row) => {
       row.addEventListener("pointerenter", () => select(row));
       row.addEventListener("focus", () => select(row));
-      row.addEventListener("click", () => select(row));
+      row.addEventListener("click", () => select(row, { scroll: true }));
     });
   }
 
+  syncNavHeight();
+  window.addEventListener("resize", syncNavHeight);
   initialiseIndustryReveals();
   document.querySelectorAll("[data-sector-selector]").forEach(initialiseSectorSelector);
 </script>
