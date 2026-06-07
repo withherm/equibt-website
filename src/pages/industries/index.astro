@@ -1,0 +1,364 @@
+---
+import Footer from "../../components/Footer.astro";
+import Icon from "../../components/icons/Icon.astro";
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import lmiLogo from "../../../brand/assets/logos/lmi/LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg";
+import "../../styles/industries.css";
+
+const serviceMeta = {
+  frame: { href: "/services/frame/" },
+  plan: { href: "/services/plan/" },
+  solve: { href: "/services/solve/" },
+  evolve: { href: "/services/evolve/" },
+  govern: { href: "/services/govern/" },
+  scale: { href: "/services/scale/" },
+} as const;
+
+const stations = [
+  { key: "FRAME", pillar: "frame", x: 70, y: 100 },
+  { key: "PLAN", pillar: "plan", x: 250, y: 97 },
+  { key: "SOLVE", pillar: "solve", x: 430, y: 99 },
+  { key: "EVOLVE", pillar: "evolve", x: 610, y: 101 },
+  { key: "GOVERN", pillar: "govern", x: 790, y: 98 },
+  { key: "SCALE", pillar: "scale", x: 970, y: 98 },
+] as const;
+
+const sectors = [
+  {
+    key: "financial",
+    title: "Financial Services",
+    icon: "financial-services",
+    hook: "Fix the process, not the symptom.",
+    body: "Rework, rising handle times, and control gaps in a regulated operation are rarely a people problem. They are a process problem, and process problems are fixable.",
+    recommended: ["plan", "govern"],
+    href: "/industries/financial-services/",
+    label: "Explore Financial Services",
+    challenges: [
+      "Claims and case rework eating capacity",
+      "Handle times rising faster than volume",
+      "Manual controls that do not scale with the book",
+      "Remediation programmes that do not stay remediated",
+      "AI tools adopted without governance or measured benefit",
+    ],
+    pathway: "Start with PLAN to quantify where rework and handle time are building, then GOVERN to lock the controls so the gain holds inside your audit trail.",
+  },
+  {
+    key: "government",
+    title: "Government & Public Sector",
+    icon: "government",
+    hook: "Cut the cycle time, keep the accountability.",
+    body: "Public-sector operations carry obligations a private operation does not. Faster does not have to mean looser. We make the process quicker without loosening the controls you answer for.",
+    recommended: ["plan", "govern"],
+    href: "/industries/government/",
+    label: "Explore Government & Public Sector",
+    challenges: [
+      "Investigation and assessment backlogs",
+      "Cycle times under public and ministerial scrutiny",
+      "Process change constrained by enterprise agreements",
+      "Legacy systems that cannot be replaced quickly",
+      "AI adoption pressure without a governance path",
+    ],
+    pathway: "Start with PLAN to baseline the backlog, then GOVERN to make the faster process defensible.",
+  },
+  {
+    key: "utilities",
+    title: "Utilities",
+    icon: "utilities",
+    hook: "Stabilise the operation under load.",
+    body: "Asset-heavy, regulated, and under constant reliability pressure. We help utilities steady high-volume operational processes and build the capability to keep them steady.",
+    recommended: ["plan", "govern"],
+    href: "/industries/utilities/",
+    label: "Explore Utilities",
+    challenges: [
+      "High-volume operational processes drifting off standard",
+      "Reliability and SLA pressure with limited headroom",
+      "Regulatory reporting carried manually",
+      "Field and back-office handoffs losing time and data",
+      "AI and automation adopted without governance",
+    ],
+    pathway: "Start with PLAN to baseline where the operation drifts, then GOVERN to embed the standard and hold reliability across the network.",
+  },
+  {
+    key: "manufacturing",
+    title: "Advanced Manufacturing",
+    icon: "manufacturing",
+    hook: "Cut waste, hold the standard.",
+    body: "Precision, throughput, and quality under tight tolerances. We help manufacturers cut waste, stabilise processes, and build improvement capability on the floor.",
+    recommended: ["plan", "solve"],
+    href: "/industries/manufacturing/",
+    label: "Explore Advanced Manufacturing",
+    challenges: [
+      "Cycle time and throughput below capacity",
+      "Quality variation and rework at the line",
+      "Changeover and downtime losses",
+      "Supplier variability destabilising the process",
+      "Improvement capability that does not outlast the consultant",
+    ],
+    pathway: "Start with PLAN to baseline the loss, then SOLVE to isolate the cause on the floor and cost the fix.",
+  },
+] as const;
+
+const initialSector = sectors[0];
+---
+
+<Layout
+  title="Industries | EQUIBT"
+  description="EQUIBT helps complex operations apply one improvement method to the sector context they operate in."
+>
+  <Nav />
+  <main>
+    <section class="industry-hero industry-reveal">
+      <div class="industry-hero-inner">
+        <div>
+          <div class="eyebrow">INDUSTRIES</div>
+          <h1>Build improvement for the sector you operate in.</h1>
+          <p class="industry-hero-subhead">EQUIBT works in sectors where operational precision is not optional: high process volumes, regulatory constraint, AI adoption pressure, and zero tolerance for sustained underperformance.</p>
+          <div class="industry-actions">
+            <a href="/contact/" class="btn-primary">Get in touch</a>
+          </div>
+        </div>
+        <div class="industry-hero-art" aria-hidden="true">
+          <div class="industry-hero-cluster">
+            <span><Icon name="financial-services" /></span>
+            <span><Icon name="government" /></span>
+            <span><Icon name="utilities" /></span>
+            <span><Icon name="manufacturing" /></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="industry-section beige industry-reveal">
+      <div class="industry-inner">
+        <div class="industry-head">
+          <div class="eyebrow">WHY SECTOR CONTEXT MATTERS</div>
+          <h2 class="industry-title">One method. Calibrated to your sector.</h2>
+          <p>The fix survives contact with your operating reality because the method is constant and its application is tuned to your sector.</p>
+        </div>
+        <div class="formula-grid">
+          <article class="formula-box">
+            <p class="formula-label">What stays constant</p>
+            <h3>Method rigour.</h3>
+            <p>The diagnostic tools, analytical methods, pilot structure, governance frameworks, and improvement systems.</p>
+          </article>
+          <div class="formula-op" aria-hidden="true">&times;</div>
+          <article class="formula-box">
+            <p class="formula-label">What changes by sector</p>
+            <h3>Operating context.</h3>
+            <p>The questions we ask, the benchmarks we use, the stakeholder dynamics, and the change approach the environment demands.</p>
+          </article>
+          <div class="formula-op" aria-hidden="true">=</div>
+          <article class="formula-box">
+            <p class="formula-label">What holds</p>
+            <h3>A fix that survives.</h3>
+            <p>The method stays disciplined. The application changes enough to work where the operation actually runs.</p>
+          </article>
+        </div>
+        <div class="shape-strip">
+          <h3>One method, four different shapes.</h3>
+          <div class="shape-grid">
+            <div class="shape-item"><span class="shape-label">Bank</span><p>First-time-right increased</p></div>
+            <div class="shape-item"><span class="shape-label">Government agency</span><p>Backlog reduced</p></div>
+            <div class="shape-item"><span class="shape-label">Telco</span><p>Retention rate increased</p></div>
+            <div class="shape-item"><span class="shape-label">Production line</span><p>Unscheduled downtime reduced</p></div>
+          </div>
+        </div>
+        <div class="formula-takeaway-panel">
+          <p>Generic application is not rigour. We keep the method constant and calibrate how we apply it, so the fix survives contact with your operating reality.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="selector-sticky-scope" data-sector-selector>
+      <div class="sector-list-sticky">
+        <div class="sector-list" role="list" aria-label="Industry selector">
+          {sectors.map((sector, index) => (
+            <button
+              class:list={["sector-row", { "is-active": index === 0 }]}
+              type="button"
+              data-sector={sector.key}
+              data-recommended={sector.recommended.join("|")}
+              data-challenges={sector.challenges.join("|")}
+              data-pathway={sector.pathway}
+              data-href={sector.href}
+              data-label={sector.label}
+              aria-pressed={index === 0 ? "true" : "false"}
+            >
+              <span class="sector-row-icon" aria-hidden="true"><Icon name={sector.icon} /></span>
+              <span>
+                <h3>{sector.title}</h3>
+                <p class="sector-hook">{sector.hook}</p>
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+    <section class="industry-section white industry-reveal selector-section">
+      <div class="industry-inner">
+        <div class="industry-head">
+          <div class="eyebrow">SECTORS</div>
+          <h2 class="industry-title">Choose the pathway for your operating context.</h2>
+          <p>EQUIBT focuses on four sectors where process performance, accountability, and adoption pressure meet. Select an industry to see the common challenges, where to start, and the service pathway that fits the operating pressure.</p>
+        </div>
+        <div class="sector-selector">
+          <div id="sector-panel" class="sector-panel">
+            <div class="sector-panel-grid">
+              <article class="sector-panel-card">
+                <h3>Common challenges</h3>
+                <ul class="sector-challenges" data-sector-challenges>
+                  {initialSector.challenges.map((challenge) => <li>{challenge}</li>)}
+                </ul>
+              </article>
+              <article class="sector-panel-card">
+                <h3>Where to start</h3>
+                <p data-sector-pathway>{initialSector.pathway}</p>
+                <a href={initialSector.href} class="btn-text" data-sector-link><span class="link-label">{initialSector.label}</span> <span class="ar">&rsaquo;</span></a>
+              </article>
+            </div>
+            <div class="pathway-box hub-pathway">
+              <svg viewBox="0 0 1040 150" role="img" aria-label="Selected sector recommended service pathway">
+                <path class="pathway-line hd-f2" d="M70 100 Q300 90 520 99 Q760 109 970 98"/>
+                {stations.map((station) => (
+                  <a href={serviceMeta[station.pillar].href} class:list={["station-link", { "is-recommended": initialSector.recommended.includes(station.pillar) }]} data-station={station.pillar} aria-label={`${station.key} service`}>
+                    <circle class="station-ring" cx={station.x} cy={station.y}/>
+                    <circle class="station-core" cx={station.x} cy={station.y}/>
+                    <text class="station-label" x={station.x} y="138">{station.key}</text>
+                  </a>
+                ))}
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="industry-section beige cta-light industry-reveal">
+      <div class="industry-inner cta-grid">
+        <div>
+          <div class="eyebrow">WORK WITH US</div>
+          <h2 class="industry-title">Put a complex operation on a firmer footing.</h2>
+          <p>Tell us where performance is drifting, work is backing up, or governance is struggling to keep pace. We will tell you whether there is a process fix worth scoping.</p>
+          <a href="/contact/" class="btn-primary">Get in touch</a>
+        </div>
+        <div class="cta-art cta-art-cluster" aria-hidden="true">
+          <span><Icon name="financial-services" /></span>
+          <span><Icon name="government" /></span>
+          <span><Icon name="utilities" /></span>
+          <span><Icon name="manufacturing" /></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="industry-section white lmi-handover industry-reveal">
+      <div class="industry-inner training-inner">
+        <div class="eyebrow">TRAINING</div>
+        <h2 class="industry-title">Train your team in your own context.</h2>
+        <p class="training-copy">Lean Methods Institute contextualises our training to complex operations, not generic case studies or simulations. Your team learns the methods and tools relevant to the problems they actually face, so the capability stays with them.</p>
+        <a href="https://leanmethods.com.au" class="lmi-logo-link" aria-label="Lean Methods Institute">
+          <img src={lmiLogo.src} class="lmi-logo-img" alt="Lean Methods Institute" loading="lazy" />
+        </a>
+        <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
+      </div>
+    </section>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  const navToggle = document.querySelector(".nav-toggle");
+  const navLinks = document.getElementById("nav-links");
+  navToggle?.addEventListener("click", () => {
+    const expanded = navToggle.getAttribute("aria-expanded") === "true";
+    navToggle.setAttribute("aria-expanded", String(!expanded));
+    navLinks?.classList.toggle("is-open");
+    document.body.classList.toggle("nav-open");
+  });
+
+  function initialiseIndustryReveals() {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const sections = Array.from(document.querySelectorAll(".industry-reveal"));
+    if (reduceMotion || !("IntersectionObserver" in window)) return;
+    document.documentElement.classList.add("industry-reveal-enabled");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.16 });
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  function syncNavHeight() {
+    const nav = document.querySelector(".site-nav");
+    if (!nav) return;
+    document.documentElement.style.setProperty("--nav-h", nav.offsetHeight + "px");
+  }
+
+  function initialiseSectorSelector(selector) {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const rows = Array.from(selector.querySelectorAll(".sector-row"));
+    const challenges = selector.querySelector("[data-sector-challenges]");
+    const pathway = selector.querySelector("[data-sector-pathway]");
+    const link = selector.querySelector("[data-sector-link]");
+    const stations = Array.from(selector.querySelectorAll("[data-station]"));
+    const panel = selector.querySelector(".sector-panel");
+    const stickyBar = selector.querySelector(".sector-list-sticky");
+    const setList = (values) => {
+      if (!challenges) return;
+      challenges.innerHTML = "";
+      values.forEach((value) => {
+        const item = document.createElement("li");
+        item.textContent = value;
+        challenges.appendChild(item);
+      });
+    };
+    const revealPanel = () => {
+      if (!panel) return;
+      const nav = document.querySelector(".site-nav");
+      const navH = nav ? nav.offsetHeight : 0;
+      const barH = stickyBar ? stickyBar.offsetHeight : 0;
+      const offset = navH + barH;
+      const top = panel.getBoundingClientRect().top;
+      if (top < offset) {
+        const target = window.scrollY + top - offset - 16;
+        window.scrollTo({ top: target, behavior: reduceMotion ? "auto" : "smooth" });
+      }
+    };
+    const select = (row, opts) => {
+      const recommended = (row.dataset.recommended || "").split("|").filter(Boolean);
+      rows.forEach((item) => {
+        const active = item === row;
+        item.classList.toggle("is-active", active);
+        item.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+      setList((row.dataset.challenges || "").split("|").filter(Boolean));
+      if (pathway) pathway.textContent = row.dataset.pathway || "";
+      if (link) {
+        link.setAttribute("href", row.dataset.href || "#");
+        const label = link.querySelector(".link-label");
+        if (label) label.textContent = row.dataset.label || "";
+      }
+      stations.forEach((station) => station.classList.remove("is-recommended"));
+      stations.forEach((station) => {
+        if (recommended.includes(station.dataset.station || "")) {
+          station.classList.add("is-recommended");
+        }
+      });
+      if (opts && opts.scroll) revealPanel();
+    };
+    rows.forEach((row) => {
+      row.addEventListener("pointerenter", () => select(row));
+      row.addEventListener("focus", () => select(row));
+      row.addEventListener("click", () => select(row, { scroll: true }));
+    });
+  }
+
+  syncNavHeight();
+  window.addEventListener("resize", syncNavHeight);
+  initialiseIndustryReveals();
+  document.querySelectorAll("[data-sector-selector]").forEach(initialiseSectorSelector);
+</script>
