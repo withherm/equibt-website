@@ -17,8 +17,36 @@ const cases = defineCollection({
   schema: z.object({
     title: z.string(),
     sector: z.string(),
-    stat: z.string(),
-    illustrative: z.boolean(),
+    pillar: z.enum(["FRAME", "PLAN", "SOLVE", "EVOLVE", "GOVERN", "SCALE"]),
+    order: z.number(),
+    metric: z.string(),
+    caption: z.string().optional(),
+    problem: z.string(),
+    approach: z.string(),
+    outcome: z.string(),
+    illustrative: z.boolean().default(false),
+    fullStudy: z.boolean().default(false),
+    // full-study-only fields
+    heroSubhead: z.string().optional(),
+    pathwaySummary: z.string().optional(),
+    problemFull: z.string().optional(),
+    approachFull: z.string().optional(),
+    resultFull: z.string().optional(),
+    stats: z
+      .array(z.object({ figure: z.string(), caption: z.string() }))
+      .optional(),
+    flagship: z.object({ quote: z.string(), source: z.string().optional() }).optional(),
+    related: z
+      .array(
+        z.object({
+          kind: z.string(),
+          title: z.string(),
+          body: z.string(),
+          href: z.string(),
+        }),
+      )
+      .optional(),
+    draft: z.boolean().default(false),
   }),
 });
 

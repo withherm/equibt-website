@@ -1,0 +1,255 @@
+---
+import Footer from "./Footer.astro";
+import Layout from "../layouts/Layout.astro";
+import Nav from "./Nav.astro";
+import Icon from "./icons/Icon.astro";
+import RootCause from "./icons/glyphs/RootCause.astro";
+import Loop from "./icons/glyphs/Loop.astro";
+import Standardise from "./icons/glyphs/Standardise.astro";
+import lmiLogo from "../../brand/assets/logos/lmi/LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg";
+import "../styles/our-work.css";
+
+interface StatCell {
+  figure: string;
+  caption: string;
+}
+
+interface RelatedItem {
+  kind: string;
+  title: string;
+  body: string;
+  href: string;
+}
+
+interface CaseData {
+  title: string;
+  sector: string;
+  pillar: "FRAME" | "PLAN" | "SOLVE" | "EVOLVE" | "GOVERN" | "SCALE";
+  heroSubhead?: string;
+  stats?: StatCell[];
+  problemFull?: string;
+  approachFull?: string;
+  resultFull?: string;
+  problem: string;
+  approach: string;
+  outcome: string;
+  pathwaySummary?: string;
+  flagship?: { quote: string; source?: string };
+  related?: RelatedItem[];
+}
+
+interface Props {
+  data: CaseData;
+  description?: string;
+}
+
+const { data, description } = Astro.props;
+
+const industry = data.related?.find((r) => r.kind.toLowerCase() === "industry");
+const industryName = industry?.title ?? data.sector;
+const industryLower = industryName.toLowerCase();
+const heroEyebrow = industryName.toUpperCase();
+const pillarIcon = data.pillar.toLowerCase() as
+  | "frame" | "plan" | "solve" | "evolve" | "govern" | "scale";
+
+const problemBody = data.problemFull ?? data.problem;
+const approachBody = data.approachFull ?? data.approach;
+const resultBody = data.resultFull ?? data.outcome;
+const stats = data.stats ?? [];
+
+const journey = [
+  { eyebrow: "THE PROBLEM", heading: "What was going wrong.", body: problemBody, Glyph: RootCause, connector: "What we did about it" },
+  { eyebrow: "WHAT WE DID", heading: "How we redesigned it.", body: approachBody, Glyph: Loop, connector: "Where it landed" },
+  { eyebrow: "THE RESULT", heading: "What the team now runs.", body: resultBody, Glyph: Standardise, connector: null },
+];
+
+// DMAICO trainline: highlight this case's station.
+const stations = [
+  { key: "FRAME", x: 70 },
+  { key: "PLAN", x: 250 },
+  { key: "SOLVE", x: 430 },
+  { key: "EVOLVE", x: 610 },
+  { key: "GOVERN", x: 790 },
+  { key: "SCALE", x: 970 },
+];
+const stationY = 100;
+const currentIndex = stations.findIndex((s) => s.key === data.pillar);
+const calloutX = currentIndex >= 0 ? Math.min(910, Math.max(130, stations[currentIndex].x)) : 0;
+const pointerD = currentIndex >= 0 ? `M${calloutX} 34 L${stations[currentIndex].x} ${stationY - 22}` : "";
+---
+
+<Layout
+  title={`${data.title} | Our Work | EQUIBT`}
+  description={description ?? data.outcome}
+>
+  <Nav />
+  <main>
+    <section class="ow-case-hero ow-reveal">
+      <div class="ow-case-hero-inner">
+        <div class="ow-case-hero-top">
+          <div class="ow-case-hero-copy">
+            <div class="eyebrow">{heroEyebrow}</div>
+            <h1>{data.title}</h1>
+            {data.heroSubhead && <p class="ow-case-subhead">{data.heroSubhead}</p>}
+          </div>
+          <div class="ow-case-hero-art" aria-hidden="true">
+            <!-- hero art: pillar line-art at hero scale, fine-line interim: bespoke per-case scene swaps in here later (artwork-authority, EQT-274/275) -->
+            <span><Icon name={pillarIcon} /></span>
+          </div>
+        </div>
+        {stats.length > 0 && (
+          <div class="ow-statband" aria-label="Case results">
+            {stats.map((stat) => (
+              <div class="ow-stat">
+                <div class="ow-stat-figure">{stat.figure}</div>
+                <div class="ow-stat-caption">{stat.caption}</div>
+              </div>
+            ))}
+          </div>
+        )}
+        <div class="ow-case-actions">
+          <a href="/contact/" class="btn-primary">Get in touch</a>
+          <a href="/our-work/" class="btn-text"><span class="link-label">View our work</span> <span class="ar">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="ow-section beige ow-reveal">
+      <div class="ow-inner">
+        <div class="ow-head">
+          <div class="eyebrow">WHERE THIS FITS</div>
+          <h2 class="ow-title">{data.pathwaySummary ?? "Part of a six-step system the team keeps running."}</h2>
+        </div>
+        {currentIndex >= 0 && (
+          <div class="ow-pathway-box" role="img" aria-label={`This engagement sits at the ${data.pillar} stage of the FRAME to SCALE pathway`}>
+            <svg viewBox="0 0 1040 150">
+              <path class="hd-f2" d="M70 100 Q300 90 520 99 Q760 109 970 98"/>
+              <text x={calloutX} y="24" text-anchor="middle" class="ow-pathway-label">THIS ENGAGEMENT</text>
+              <path class="ow-pathway-pointer" d={pointerD}/>
+              {stations.map((station, index) => (
+                <>
+                  <circle
+                    cx={station.x}
+                    cy={stationY}
+                    r={index === currentIndex ? 11 : 8}
+                    fill="#fff"
+                    stroke={index === currentIndex ? "#C15F3C" : "#26245C"}
+                    stroke-width={index === currentIndex ? 2.6 : 2}
+                  />
+                  {index === currentIndex && <circle cx={station.x} cy={stationY} r="4" fill="#C15F3C" />}
+                </>
+              ))}
+              <g font-family="Montserrat, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">
+                {stations.map((station, index) => (
+                  <text x={station.x} y="138" fill={index === currentIndex ? "#26245C" : "#7A8591"}>{station.key}</text>
+                ))}
+              </g>
+            </svg>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <section class="ow-section white ow-reveal">
+      <div class="ow-inner">
+        <div class="ow-journey-head">
+          <div class="eyebrow">THE WORK</div>
+          <h2 class="ow-title">From problem to a process they own.</h2>
+        </div>
+        <div class="ow-journey-list">
+          {journey.map((step) => {
+            const Glyph = step.Glyph;
+            return (
+              <div class="ow-journey-step">
+                <span class="ow-journey-node" aria-hidden="true"><Glyph /></span>
+                <div>
+                  <div class="eyebrow">{step.eyebrow}</div>
+                  <h3>{step.heading}</h3>
+                  <p>{step.body}</p>
+                  {step.connector && <div class="ow-journey-connector">{step.connector} &darr;</div>}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {data.flagship && (
+      <section class="ow-flagship ow-reveal">
+        <div class="ow-flagship-inner">
+          <div class="eyebrow light">THE OUTCOME</div>
+          <blockquote>{data.flagship.quote}</blockquote>
+          {data.flagship.source && <cite>{data.flagship.source}</cite>}
+        </div>
+      </section>
+    )}
+
+    {data.related && data.related.length > 0 && (
+      <section class="ow-section white ow-reveal">
+        <div class="ow-inner">
+          <div class="ow-head">
+            <div class="eyebrow">RELATED</div>
+            <h2 class="ow-title">Keep exploring.</h2>
+          </div>
+          <div class="ow-related-list">
+            {data.related.map((item) => (
+              <div class="ow-related">
+                <span class="ow-related-kind">{item.kind}</span>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+                <a href={item.href} class="btn-text"><span class="link-label">Explore {item.title}</span> <span class="ar">&rsaquo;</span></a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <section class="ow-section beige ow-reveal">
+      <div class="ow-inner ow-cta-grid">
+        <div class="ow-cta-copy">
+          <div class="eyebrow">WORK WITH US</div>
+          <h2>Put a complex operation on firmer footing.</h2>
+          <p>Tell us where the operation is under strain. We will tell you straight whether it is a fixable process gap, and whether we are the right firm for it.</p>
+          <a href="/contact/" class="btn-primary">Get in touch</a>
+        </div>
+        <div class="ow-cta-art" aria-hidden="true">
+          <span><Icon name={pillarIcon} /></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ow-section white ow-lmi ow-reveal">
+      <div class="ow-inner">
+        <div class="eyebrow">TRAINING</div>
+        <h2 class="ow-title">Build this capability inside your {industryName} team.</h2>
+        <p class="ow-lmi-copy">Lean Methods Institute contextualises our training to {industryLower} operations, not generic case studies or simulations. Your team learns the methods and tools relevant to the problems they actually face, so the improvement stays with them after we step out.</p>
+        <a href="https://leanmethods.com.au" class="ow-lmi-logo-link" aria-label="Lean Methods Institute">
+          <img src={lmiLogo.src} class="ow-lmi-logo-img" alt="Lean Methods Institute" loading="lazy" />
+        </a>
+        <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  function initialiseOwReveals() {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const sections = Array.from(document.querySelectorAll(".ow-reveal"));
+    if (reduceMotion || !("IntersectionObserver" in window)) return;
+    document.documentElement.classList.add("ow-reveal-enabled");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.16 });
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  initialiseOwReveals();
+</script>

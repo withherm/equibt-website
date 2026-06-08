@@ -1,0 +1,119 @@
+---
+import { getCollection } from "astro:content";
+import Footer from "../../components/Footer.astro";
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Icon from "../../components/icons/Icon.astro";
+import "../../styles/our-work.css";
+
+const allCases = await getCollection("cases", ({ data }) => !data.draft);
+
+// Pillar phrasing (monochrome dotted eyebrow) + section sub-line + line-art icon, in fixed display order.
+const pillarGroups = [
+  { pillar: "FRAME", icon: "frame", eyebrow: "FRAME · DEFINE", intro: "Framing that aligns the team on the real problem before anything moves." },
+  { pillar: "PLAN", icon: "plan", eyebrow: "PLAN · MEASURE", intro: "Diagnostics that find where the time and cost actually go." },
+  { pillar: "SOLVE", icon: "solve", eyebrow: "SOLVE · ANALYSE", intro: "Root-cause redesign that cuts rework and cycle time." },
+  { pillar: "EVOLVE", icon: "evolve", eyebrow: "EVOLVE · IMPROVE", intro: "Piloted changes that lift performance and stay in place." },
+  { pillar: "GOVERN", icon: "govern", eyebrow: "GOVERN · CONTROL", intro: "Operating models and frameworks the team owns and runs." },
+  { pillar: "SCALE", icon: "scale", eyebrow: "SCALE · OPERATE", intro: "Standards embedded so the new way of working scales without us." },
+] as const;
+
+const groups = pillarGroups
+  .map((group) => ({
+    ...group,
+    cases: allCases
+      .filter((entry) => entry.data.pillar === group.pillar)
+      .sort((a, b) => a.data.order - b.data.order),
+  }))
+  .filter((group) => group.cases.length > 0);
+---
+
+<Layout
+  title="Our Work | EQUIBT"
+  description="Operations problems, redesigned with the teams who own them. Anonymised engagements across financial services, government, utilities, and manufacturing."
+>
+  <Nav />
+  <main>
+    <section class="ow-hero ow-reveal">
+      <div class="ow-hero-inner">
+        <div class="ow-hero-copy">
+          <div class="eyebrow">OUR WORK</div>
+          <h1>Proven in practice.</h1>
+          <p class="ow-hero-lede">Operations problems, redesigned with the teams who own them. Every result below was built to run without us.</p>
+          <p class="ow-hero-lede muted">These are anonymised engagements across financial services, government, utilities, and manufacturing. Each one names the problem, what the team changed, and the result they now run on their own.</p>
+          <div class="ow-hero-actions">
+            <a href="/contact/" class="btn-primary">Get in touch</a>
+          </div>
+        </div>
+        <div class="ow-hero-art" aria-hidden="true">
+          <!-- hero art: tangle-resolving-into-a-clear-path motif, fine-line interim: bespoke Our Work hero scene swaps in here later (artwork-authority, EQT-274/275) -->
+          <span><Icon name="hero-motif" /></span>
+        </div>
+      </div>
+    </section>
+
+    {groups.map((group, index) => (
+      <section class:list={["ow-section", index % 2 === 0 ? "beige" : "white", "ow-reveal"]}>
+        <div class="ow-inner">
+          <div class="ow-group-head">
+            <span class="ow-group-icon" aria-hidden="true"><Icon name={group.icon} /></span>
+            <div>
+              <div class="eyebrow">{group.eyebrow}</div>
+              <p class="ow-pillar-intro">{group.intro}</p>
+            </div>
+          </div>
+          <div class="ow-case-list">
+            {group.cases.map((entry) => {
+              const c = entry.data;
+              return (
+                <article class="ow-case">
+                  <div class="ow-case-sector">{c.sector}</div>
+                  <div class="ow-case-metric">{c.metric}</div>
+                  <h3>{c.title}</h3>
+                  <p class="ow-case-context">{c.problem}</p>
+                  {c.fullStudy && (
+                    <a href={`/our-work/${entry.id}/`} class="btn-text"><span class="link-label">Full case study</span> <span class="ar">&rsaquo;</span></a>
+                  )}
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class:list={["ow-section", groups.length % 2 === 0 ? "beige" : "white", "ow-reveal"]}>
+      <div class="ow-inner ow-cta-grid">
+        <div class="ow-cta-copy">
+          <div class="eyebrow">WORK WITH US</div>
+          <h2>Put a complex operation on firmer footing.</h2>
+          <p>Tell us where the operation is under strain. We will tell you straight whether it is a fixable process gap, and whether we are the right firm for it.</p>
+          <a href="/contact/" class="btn-primary">Get in touch</a>
+        </div>
+        <div class="ow-cta-art" aria-hidden="true">
+          <span><Icon name="hero-motif" /></span>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  function initialiseOwReveals() {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const sections = Array.from(document.querySelectorAll(".ow-reveal"));
+    if (reduceMotion || !("IntersectionObserver" in window)) return;
+    document.documentElement.classList.add("ow-reveal-enabled");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.16 });
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  initialiseOwReveals();
+</script>

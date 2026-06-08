@@ -36,7 +36,7 @@ v5x runs a six-colour pillar-pill system (frame magenta, plan navy, solve teal, 
 | Deliverable carousel (`deliverables-carousel`) | 88%-width white slides, shadowed white circle arrows, terracotta dots | Keep horizontal scroll-snap but de-weight: no card shadow, hairline arrow buttons (no heavy shadow), image keeps a small radius, copy is open. Terracotta dot/active indicator stays. R3 (2026-06-07): a clickable 4-item deliverables INDEX sits between the intro and the carousel — each name is a button that jumps to its slide, active item tracks the carousel (terracotta), keyboard accessible. Readers see all four deliverables at once. |
 | Stat / proof blocks (`stat-num`, `proof-stat`) | big number, label, sector | **Tie every number to the action that produced it** (see The Work below). A number with no cause reads as a claim. |
 | The Work strip | 3 before/after numbers in a dark box | Light evidence rows: verb-first action + the metric move + anonymised sector. No box. Proof, not assertion. |
-| Case cards (`case-card`, Our Work) | 2-col box, shadow, coloured pillar label | De-box to hairline-framed editorial. Keep Problem / Approach / Outcome substance. Make ONE flagship the single dark feature card (the page's one dark moment) with real story, verb-first title, result, "Read the case" link. |
+| Case cards (`case-card`, Our Work) | 2-col box, shadow, coloured pillar label | SHIPPED EQT-255 (supersedes this row): de-boxed **compact two-column proof grid** on hairlines, NOT tall open P/A/O rows. Each case = italic-Lora sector + big navy metric + verb-first H3 + one context line (the Problem line); full P/A/O kept in data for detail pages. Pillar group = hand-drawn pillar icon + monochrome dotted eyebrow. No disclosure toggle, no `Read the case`, no coloured pillar label. The flagship dark moment lives on the case STUDY page (charcoal `#22211F`), not the index. |
 | Industry cards (`industry-card`) | 452px white boxes, terracotta top bar, shadow | Drop the terracotta top bar and shadow. Editorial rows or hairline cards, hand-drawn sector motif, more air. |
 | Sector cards (`sector-card`) | boxed, icon, problem text | Open blocks on hairlines, hand-drawn icon. |
 | Belief / insight / related cards | boxed, shadow | De-box, hairline editorial. Related links become a simple hairline list, not a card grid. |
@@ -73,12 +73,18 @@ Treatment: light evidence rows on hairlines (no dark box), terracotta metric inl
 | Our Work accordion (`<details>`) | native expand/collapse for extra cases | Keep. Hairline rows, Montserrat summary, terracotta + on hover; no filled panel. |
 | Contact form | standard fields | Hairline inputs (1px border, no fill), Montserrat labels, navy solid submit, generous spacing. |
 
-## Case study page
+## Case study page (SHIPPED EQT-255 2026-06-08 — this table updated to as-built)
 
-| Part | v5x now | v6x treatment |
+Page order: hero → WHERE THIS FITS (trainline) → THE WORK (journey) → flagship dark moment → RELATED → WORK WITH US CTA → LMI handover.
+
+| Part | v5x now | v6x treatment (as built) |
 |---|---|---|
-| One-page summary (hero `stat-band`) | eyebrow "SECTOR · PILLAR" coloured, verb-first H1, subhead, 3 boxed stat cells, low-poly gem motif | Eyebrow dotted monochrome (e.g. "FINANCIAL SERVICES · RAPID PILOT"), verb-first H1 (kept), hairline three-metric band (terracotta figures, no boxes), hand-drawn motif replaces the gem. |
-| Body blocks (`The problem / What we did / The result`) | stacked prose under plain h2 | Editorial blocks with a hanging Montserrat label column (label left, Lora prose right) on hairlines, calm left axis, generous air. Optional sticky metric summary while scrolling. |
+| One-page summary (hero `stat-band`) | eyebrow "SECTOR · PILLAR" coloured, verb-first H1, subhead, 3 boxed stat cells, low-poly gem motif | Eyebrow dotted monochrome SECTOR only (e.g. "FINANCIAL SERVICES"), verb-first H1 (kept). Hero TOP ROW = copy left + pillar `<Icon>` motif right; the hairline three-metric band runs FULL WIDTH BELOW the row (navy figures, italic-Lora captions, no boxes), motif above the boxes; actions under the band. Unified ≤960px collapse for top row + band + CTA art together. |
+| Body blocks (`The problem / What we did / The result`) | stacked prose under plain h2 | THE WORK = ONE connected journey on a single continuous vertical spine (single background), each step a hairline node with a line-art glyph (RootCause / Loop / Standardise) + a terracotta connector caption ("What we did about it ↓"). Not three separate alternating sections. |
+| Pathway / context | n/a (gem only) | WHERE THIS FITS = the DMAICO trainline placed directly UNDER the hero for context; heading is a per-case approach summary (`pathwaySummary`); the case's pillar station highlighted; marker reads `THIS ENGAGEMENT` (NOT `YOU ARE HERE`, which is service-page-only). |
+| Flagship | (single dark card concept) | Contained flat charcoal `#22211F` outcome pull-quote, one per page. |
+| Related | coloured pillar tags | Two hairline columns side by side (Service pillar + Industry), kind as eyebrow above each title, chevron links. Heading "Keep exploring." |
+| LMI handover | n/a on Our Work in brief | ADDED under the CTA, industry-relevant per case (Herman override; see block 23). |
 
 ## Full coverage pass (2026-06-07) — every v5x component
 
@@ -90,7 +96,7 @@ A class-level scan of all v5x prototypes confirmed the component inventory; ever
 | Page hero (`hero`, `hero-panel`, `hero-geometry`) | grid hero + low-poly gem; industry heroes carry boxed stat cells (`stat-num`) | Editorial asymmetric hero: top-left copy, motif right bleeding into whitespace, Get in touch + chevron link. Gem RETIRED. R1/R2/R4 (2026-06-07): the sub-page hero motif renders at HOME-HERO scale — size the SVG element DIRECTLY at `min(540px,48vw)`, exactly as home does — WITH the R4 fine-line treatment: a hero-scoped stroke override thins the lines so visual weight matches the home hero (blown-up icon strokes read as fat marker, rejected); terracotta keeps its extra-weight ratio; the override never leaks beyond the hero wrapper. Per-pillar/sector hero SCENES are queued as Herman-drawn artwork (EQT-275, content-only swap at the marked seam). The hairline metric band stays available for pages with genuine hero stats (case study), but the EQT-254 industry pages SKIP it: figures live in the proof carousel. | 20 |
 | Statement rows (`difference-point`) | filled difference cards | BUILT on home: hanging-label rows on hairlines (navy Montserrat lead left, Lora right). | 21 |
 | Light closing CTA (`cta-panel`, on all pages) | full dark-slate band on every page | LIGHT closing CTA on the alternating section colour: eyebrow, headline, prose, navy button. The dark moment belongs to the flagship or the CTA equation, never the closing CTA. | 22 |
-| LMI handover (`lmi-handover`, `training-handover`) | navy band with white LMI mark | BUILT on home: hairline-bounded band, full-colour clickable LMI-LOGO-702 (701 superseded), links to leanmethods.com.au (interim AU). Home + industry pages ONLY, never service pages. | 23 |
+| LMI handover (`lmi-handover`, `training-handover`) | navy band with white LMI mark | BUILT on home: hairline-bounded band, full-colour clickable LMI-LOGO-702 (701 superseded), links to leanmethods.com.au (interim AU). Home + industry pages + **Our Work case pages** (EQT-255, industry-relevant per case), never service pages and never the Our Work index. | 23 |
 | Client logo wall (v6x addition, replaces Credentials page) | n/a | BUILT on home: static monochrome grid, 5 across, one hairline above and below, coded filenames logo-01..20, empty alt, client key vault-only. Never a marquee. | 24 |
 | Our Work accordion (`case-disclosure`) + pillar section headers (`pillar-section-header`) | filled disclosure panels, coloured pillar groupings | Native `<details>` on hairline rows, Montserrat summary, terracotta +/− marker, no filled panel. Pillar groupings become dotted eyebrow + title (no colour coding). | 25 |
 | FAQ (`faq-item`, resources) | boxed FAQ cards | Same accordion language as Our Work: hairline `<details>` rows. | 25 |
@@ -161,6 +167,36 @@ Retired: the **vertical terracotta left-rule** is not adopted. It conflicts with
 ## EQT-253 R4 amendment (Herman review, 2026-06-07)
 
 1. **Hero fine-line treatment:** at hero scale the icon's strokes are thinned via a hero-scoped CSS override to match the home hero's visual line weight (sparse + fine = deliberate minimalism; fat + sparse rejected). Terracotta/navy weight ratio preserved; no icon component edited; override never leaks beyond the hero. Interim until the EQT-275 hero scene motifs (Herman, Affinity) swap in at the marked seam. Applies to EQT-254 sector heroes identically.
+
+## EQT-254 R1-R5 amendments (industries hub + 4 sector pages, shipped 2026-06-08)
+
+Industry-specific locks from the conversion. Full consolidated set with exact values is in `DESIGN_LEARNINGS_v6x.md` → "Rollout page-type locks".
+
+1. **Shared template, no URL sniffing.** The four sector pages are thin wrappers over `src/pages/industries/_sector.astro` (sector key as a prop); the hub is `index.astro`. No `Astro.url`/pathname parsing.
+2. **Industry dark tone = ink-navy `#202946`** (the page's one dark moment, the proof carousel). Confirms the per-page-type rule with the exact shipped value.
+3. **Sticky sub-nav (sector pages only):** left-aligned to the grid axis; `top` = real nav height (`--nav-h`) so it does not hide behind the main nav; anchored sections get `scroll-margin-top: calc(--nav-h + 51px + 12px)`.
+4. **Hub hero = 2x2 sector-icon cluster** at the home-hero footprint (`min(540px,48vw)`, each icon ~`min(240px,21vw)`), bleeding right. Polyhedron retired.
+5. **Hub "why sector" takeaway = right-bleed white panel** (white fill, left corners ~16px, square right edge, no shadow/border; text on the wide grid axis).
+6. **Hub sector selector restructured:** horizontal sector row across the top (terracotta rule under active), full-width shared panel, full-width de-coloured station line below — NOT a left side-list, and the station line is unboxed.
+7. **Hub sector row is page-long sticky:** wrap selector + CTA + LMI in a sticky scope. Named gotcha: `position:sticky` dies under any ancestor with `transform`/`overflow`/`filter`/`will-change`; the section-reveal transform broke it — apply the reveal to inner content, do not drop the reveal.
+8. **Station / entry-point mapping (SPEC CHANGE, supersedes brief §5.6/6.3):** lit stations = exactly the two entry-point columns. FS = PLAN, GOVERN · Government = PLAN, GOVERN · Utilities = PLAN, GOVERN · Manufacturing = PLAN, SOLVE. SOLVE drops off Government; SCALE lights nowhere. Re-mark resets all six to muted before marking the selected set (class-driven, not baked SVG attributes).
+9. **Industry next-step columns stay equal** (both entry points, both linked) — NOT the current/next asymmetry used on service pages.
+10. **Service-selector detail titles drop the `PILLAR:` prefix** (kicker already carries the pillar); verb-first. Deliverable items = Montserrat 600 16px near-black `#161616` with a small terracotta `::before` dot (~5px, ~14px gap).
+11. **Closing CTA = home `cta-grid` treatment** (copy left, art right): the page's own sector `<Icon>` ~260px (hub = the 2x2 cluster reduced).
+12. **LMI handover band = BEIGE on industry pages** (white-band R1 reversed in R2). Logo uses the transparent variant `LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg` (white background rect removed; mark untouched), original 702 left alone, never 701. Chevron link left-aligned (`display:table`), never centred. Footer gap killed by reducing the handover bottom spacing against the footer's 120px top padding. Handover on home + industry pages only, never service pages.
+
+## EQT-255 amendments (Our Work index + case study, Herman review, shipped 2026-06-08)
+
+1. **Our Work index is a compact two-column proof grid,** not the brief's tall open Problem/Approach/Outcome rows (too tall and repetitive). Each case: italic-Lora sector + big navy metric + verb-first H3 + one context line (the Problem line). Full P/A/O kept in the case data for detail pages. Pillar group = hand-drawn pillar icon + monochrome dotted eyebrow + intro.
+2. **Invented Outcome lines** (verb-first, tied to each metric, no new numbers) authored per case and held in the data; Herman approved.
+3. **Illustrative markers removed from public output** entirely (no `<!-- ILLUSTRATIVE -->`, no visible label); the `illustrative` flag stays in data, unrendered. (Override of the brief's "preserve markers".)
+4. **Case hero:** copy + motif in a top row, the hairline three-metric band runs full width below, motif above the boxes. Top row + band + CTA art share one ≤960px collapse.
+5. **THE WORK = one connected journey on a single vertical spine** with line-art glyph nodes and terracotta connector captions, not three alternating sections.
+6. **WHERE THIS FITS = the trainline moved directly under the hero;** heading is a per-case `pathwaySummary`; station marker reads `THIS ENGAGEMENT` (not `YOU ARE HERE`); "Follow the workstream." retired.
+7. **RELATED = two columns side by side,** kind as eyebrow above title; heading "Keep exploring."
+8. **Case-page dark moment = flat charcoal `#22211F`** (the page-type tone).
+9. **LMI handover added to case pages, industry-relevant** (Herman override of services-parity). Index has none.
+10. **Architecture:** `cases` content collection drives both surfaces; `[slug].astro` → `CaseStudy.astro` for `fullStudy` entries only; a `/our-work/<slug>/` page exists only where full Problem/Approach/Result copy exists. Styles in `our-work.css` (own `.ow-*` classes, references tokens).
 
 ## Decisions (locked, 2026-06-04)
 
