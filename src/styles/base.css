@@ -135,13 +135,15 @@ h1,h2,h3,p{margin-top:0;}
 .eyebrow.light{color:rgba(245,243,238,0.85);}
 
 .site-footer{
-  padding:120px 56px 48px;
+  padding:56px 56px 48px;
   background:#fff;
   color:var(--near-black);
 }
 .footer-inner{
   max-width:1200px;
   margin:0 auto;
+  padding-top:64px;
+  border-top:1px solid var(--hairline);
   display:grid;
   grid-template-columns:1.25fr .8fr .8fr .95fr;
   gap:72px;

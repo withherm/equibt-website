@@ -179,6 +179,7 @@ These are the locked deltas from the two conversions that merged after the home 
 
 ### Footer (site-wide, shared component)
 - At phone widths (≤760/≤460) the brand block sits full-width on top and the three link columns flow in a **2-column grid**, never one long single stack (EQT-253 R2, footer rules in base.css — deliberate shared-component exception).
+- **Top hairline on the footer content (EQT-255):** `.footer-inner` carries a 1px hairline top + 64px padding-top (matching the contained line above the copyright strip), so the footer separates cleanly when the last section is white (e.g. the case-page LMI handover). `.site-footer` top padding reduced 120→56 to keep total spacing. Site-wide.
 
 ### Our Work index + case study (EQT-255, shipped 2026-06-08)
 
