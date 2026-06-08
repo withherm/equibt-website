@@ -139,7 +139,6 @@ a{color:inherit;}
 /* 10 next step */
 .next{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
 .next .col{border-top:1px solid var(--hairline);padding-top:22px;}
-#track2 .slide{border:1px solid var(--hairline);border-radius:14px;background:#fff;padding:28px 30px;}
 .next .ic{width:50px;height:50px;margin-bottom:14px;}
 .next .k{margin-bottom:8px;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
 .next h3{font-size:23px;margin-bottom:8px;}
@@ -221,13 +220,8 @@ a{color:inherit;}
 .belief h3{font-size:23px;color:var(--navy);}
 .belief p{margin:0;color:var(--mid-grey);font-size:22px;line-height:1.45;}
 
-/* why-sector formula */
-.secf-eq{display:flex;align-items:stretch;gap:18px;flex-wrap:wrap;margin:24px 0 0;}
-.secf-box{flex:1 1 220px;background:#fff;border:1px solid var(--hairline);border-radius:14px;padding:26px;}
-.secf-box .lab{color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;}
-.secf-box h3{margin:8px 0 10px;font-size:21px;color:var(--navy);}
-.secf-box p{margin:0;color:var(--mid-grey);font-size:19px;line-height:1.5;}
-.secf-op{display:flex;align-items:center;color:var(--navy);font-family:"Montserrat",sans-serif;font-weight:700;font-size:22px;}
+/* why-sector formula — see the EQT-276 rebuild block lower in this stylesheet
+   (.formula-grid / .formula-box / .formula-op / .formula-takeaway-panel / .shape-strip) */
 .shapes{margin-top:18px;border-top:1px solid var(--hairline);padding-top:22px;}
 .shapes h4{font-family:"Montserrat",sans-serif;font-size:16px;color:var(--navy);margin:0 0 16px;}
 .shapes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
@@ -280,7 +274,6 @@ a{color:inherit;}
 /* 23 LMI handover */
 .training-block{padding:54px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
 .training-copy{margin:24px 0 28px;max-width:700px;color:var(--mid-grey);}
-.lmi-logo-ph{display:flex;align-items:center;justify-content:center;width:250px;height:64px;border:1px dashed rgba(38,36,92,0.3);border-radius:8px;margin:0 0 var(--link-gap);color:var(--caption);font-family:"Montserrat",sans-serif;font-size:12px;font-weight:600;letter-spacing:.06em;}
 
 /* 24 client logo wall */
 .logo-strip h2{max-width:760px;margin:0 0 38px;font-size:clamp(28px,2.6vw,34px);font-weight:700;line-height:1.12;}
@@ -371,8 +364,8 @@ a{color:inherit;}
 .footer-legal a:hover{color:var(--navy);}
 
 /* 36 footer — mirrored from src/components/Footer.astro + base.css */
-.site-footer{padding:48px 0 20px;background:#fff;color:var(--near-black);}
-.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.25fr .8fr .8fr .95fr;gap:72px;}
+.site-footer{padding:8px 0 20px;background:#fff;color:var(--near-black);}
+.footer-inner{max-width:1200px;margin:0 auto;padding-top:64px;border-top:1px solid var(--hairline);display:grid;grid-template-columns:1.25fr .8fr .8fr .95fr;gap:72px;}
 .footer-logo{display:inline-flex;width:142px;margin-bottom:28px;}
 .footer-logo svg{display:block;width:100%;height:auto;}
 .footer-tagline{max-width:310px;margin:0;color:var(--navy);font-family:"Montserrat",sans-serif;font-size:28px;font-weight:700;line-height:1.12;}
@@ -394,8 +387,6 @@ a{color:inherit;}
 }
 
 @media(max-width:900px){
-  .ctaf-eq,.secf-eq{flex-direction:column;}
-  .ctaf-op,.secf-op{justify-content:center;}
   .belief{grid-template-columns:1fr;gap:8px;}
   .shapes-grid{grid-template-columns:1fr 1fr;gap:18px;}
   .shape{border-left:0;padding:0;}
@@ -411,6 +402,198 @@ a{color:inherit;}
   .case{grid-template-columns:1fr;gap:22px;}
   .ins a{flex-direction:column;gap:6px;}
 }
+
+/* ===================================================================
+   EQT-276: blocks rebuilt to the SHIPPED v6x state
+   (values lifted from src/styles/services.css + industries.css and the
+   merged ServicePage.astro / industries _sector.astro / index.astro).
+   This is reference HTML only — no src/ code changes.
+   =================================================================== */
+
+/* 20 sub-page hero — home-parity scale + R4 fine-line override */
+.demo-hero{grid-template-columns:minmax(0,1.02fr) minmax(380px,.98fr);gap:36px;}
+.demo-hero .hero-art{justify-content:flex-end;overflow:visible;}
+.demo-hero .hero-art svg{width:min(540px,48vw);height:auto;overflow:visible;transform:translateX(2vw);}
+.demo-hero .hero-art svg .hd,
+.demo-hero .hero-art svg .hd-f1,
+.demo-hero .hero-art svg .hd-f2,
+.demo-hero .hero-art svg .hd-f3,
+.demo-hero .hero-art svg [stroke]:not([stroke="none"]){stroke-width:.25;stroke-linecap:round;stroke-linejoin:round;}
+.demo-hero .hero-art svg .hd-acc,
+.demo-hero .hero-art svg [stroke="#C15F3C"]{stroke-width:.2875;}
+.hero-metric-note{margin:6px 0 14px;color:var(--caption);font-family:"Lora",serif;font-style:italic;font-size:15px;}
+
+/* 16 CTA equation — five-column grid, operator never orphaned */
+.ctaf-eq{display:grid;grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr) 48px minmax(0,1fr);align-items:stretch;gap:18px;flex-wrap:nowrap;}
+.ctaf-box{flex:none;}
+.ctaf-box .val{font-size:clamp(24px,2.2vw,26px);}
+.ctaf-op{justify-content:center;font-size:48px;}
+
+/* 17 side-bleed callout — genuine viewport-edge bleed, rounded inner side only.
+   The stage content box is centred in the viewport, so (50vw - 50%) is the exact
+   distance to the viewport edge at every width. */
+.hl-blue,.hl-white{max-width:none;}
+.hl-blue{
+  --b:calc(50vw - 50%);
+  width:min(calc(660px + var(--b)),calc(100% + var(--b)));
+  margin-left:calc(var(--b) * -1);
+  margin-right:0;
+  padding:30px 40px 30px var(--b);
+  border-radius:0 14px 14px 0;
+  background:#E8ECF5;
+}
+.hl-white{
+  --b:calc(50vw - 50%);
+  width:min(calc(660px + var(--b)),calc(100% + var(--b)));
+  margin-left:auto;
+  margin-right:calc(var(--b) * -1);
+  padding:30px var(--b) 30px 40px;
+  border:1px solid var(--hairline);
+  border-radius:14px 0 0 14px;
+  background:#fff;
+  text-align:left;
+}
+
+/* 04 deliverables index — clickable 4-item index synced to the carousel */
+.deliverables-index{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0 0 30px;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
+.deliverables-index-button{min-height:64px;padding:14px 16px;border:0;border-right:1px solid var(--hairline);background:transparent;color:var(--navy);cursor:pointer;display:flex;align-items:center;gap:10px;font-family:"Montserrat",sans-serif;font-size:13px;font-weight:700;line-height:1.25;text-align:left;}
+.deliverables-index-button:last-child{border-right:0;}
+.deliverables-index-button:hover,.deliverables-index-button:focus,.deliverables-index-button.on{color:var(--terracotta);}
+.deliverables-index-button:focus-visible{outline:2px solid var(--terracotta);outline-offset:-2px;}
+.deliverables-index-marker{width:8px;height:8px;border:1px solid currentColor;border-radius:50%;flex:0 0 auto;}
+.deliverables-index-button.on .deliverables-index-marker{background:currentColor;}
+
+/* 13 sector-page service selector — deliverables Montserrat 600 16px near-black + terracotta dot */
+.panel-del{max-width:720px;border-top:1px solid var(--hairline);}
+.panel-del li{position:relative;padding:13px 0 13px 19px;border-top:0;border-bottom:1px solid var(--hairline);color:#161616;font-family:"Montserrat",sans-serif;font-size:16px;font-weight:600;letter-spacing:.01em;line-height:1.35;}
+.panel-del li::before{content:"";position:absolute;left:0;top:calc(13px + 0.675em);transform:translateY(-50%);width:5px;height:5px;border-radius:50%;background:var(--terracotta);}
+
+/* 08b + 09 merged WHERE IT LEADS — static pathway + asymmetric next columns */
+.pathway-next-segment{fill:none;stroke:var(--terracotta);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.pathway-next-label{fill:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+.next-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:48px;}
+.next-grid::before{content:"\203A";position:absolute;top:54%;left:50%;transform:translate(-50%,-50%);color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:58px;font-weight:700;line-height:1;}
+.next-col{padding-top:22px;border-top:1px solid var(--hairline);}
+.next-status{margin:-8px 0 18px;color:var(--caption);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+.next-col.is-next .next-status{color:var(--terracotta);}
+.next-icon{display:block;width:50px;height:50px;margin-bottom:14px;}
+.next-icon svg{display:block;width:100%;height:100%;overflow:visible;}
+.next-kicker{margin-bottom:8px;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+.next-col h3{margin:0 0 8px;font-size:23px;font-weight:700;line-height:1.2;color:var(--navy);}
+.next-col p{margin:0 0 var(--link-gap);color:var(--mid-grey);font-size:22px;}
+.next-col.is-current .next-kicker{color:var(--muted);}
+.next-col.is-current h3{color:var(--muted);}
+
+/* 19 why-sector formula — 5-col grid + right-bleed white takeaway panel */
+.formula-grid{display:grid;grid-template-columns:minmax(0,1fr) 54px minmax(0,1fr) 54px minmax(0,1fr);gap:18px;align-items:stretch;margin-top:24px;}
+.formula-box{padding:26px;border:1px solid var(--hairline);border-radius:16px;background:#fff;}
+.formula-label{margin:0 0 10px;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+.formula-box h3{margin:0 0 10px;font-size:21px;color:var(--navy);}
+.formula-box p{margin:0;color:var(--mid-grey);font-size:19px;line-height:1.5;}
+.formula-op{display:flex;align-items:center;justify-content:center;color:var(--navy);font-family:"Montserrat",sans-serif;font-weight:700;font-size:44px;}
+.formula-takeaway-panel{--b:calc(50vw - 50%);margin:34px calc(var(--b) * -1) 0 0;padding:34px var(--b) 34px 34px;border-radius:16px 0 0 16px;background:#fff;}
+.formula-takeaway-panel p{max-width:820px;margin:0;color:var(--near-black);font-size:22px;}
+.shape-strip{margin-top:34px;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:28px 0;}
+.shape-strip h3{margin:0 0 20px;font-size:23px;font-weight:700;}
+.shape-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;}
+.shape-item{padding:0 22px;border-left:1px solid var(--hairline);}
+.shape-item:first-child{border-left:0;padding-left:0;}
+.shape-label{display:block;margin-bottom:6px;color:var(--terracotta);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+.shape-item p{margin:0;color:var(--mid-grey);font-size:20px;}
+
+/* 14 industry proof carousel — ink-navy #202946 dark panel */
+.proof-shell{padding:48px;border-radius:22px;background:#202946;color:var(--off-white);}
+.proof-shell .eyebrow.light{color:var(--off-white);}
+.proof-shell .eyebrow.light::before{background:var(--terracotta);}
+.proof-shell h2{max-width:780px;margin:0;color:#fff;font-size:clamp(30px,3vw,38px);font-weight:700;line-height:1.08;}
+.proof-shell > p{max-width:720px;margin:18px 0 0;color:rgba(245,243,238,.76);font-size:22px;}
+.proof-carousel{margin-top:34px;}
+.proof-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;}
+.proof-track::-webkit-scrollbar{display:none;}
+.proof-slide{flex:0 0 72%;min-height:230px;padding:34px;border:1px solid rgba(245,243,238,.22);border-radius:16px;scroll-snap-align:start;background:rgba(255,255,255,.03);}
+.proof-action{margin:0;color:#fff;font-family:"Montserrat",sans-serif;font-size:22px;font-weight:700;line-height:1.34;}
+.proof-action .metric{color:var(--terracotta);}
+.proof-caption{margin:14px 0 0;color:rgba(245,243,238,.72);font-size:19px;font-style:italic;}
+.proof-controls{display:flex;justify-content:flex-end;align-items:center;gap:14px;margin-top:24px;}
+.proof-dots{display:flex;gap:9px;margin-right:6px;}
+.proof-dot{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:rgba(245,243,238,.34);cursor:pointer;}
+.proof-dot.on{width:24px;border-radius:999px;background:var(--terracotta);}
+.proof-arrow{width:46px;height:46px;border:1px solid rgba(245,243,238,.28);border-radius:50%;background:transparent;color:#fff;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;}
+.proof-arrow svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* 22 closing CTA — home cta-grid layout, sector/page icon as art */
+.cta-grid{display:grid;grid-template-columns:minmax(0,.58fr) minmax(280px,.42fr);gap:56px;align-items:center;}
+.cta-grid .cta-art{display:flex;justify-content:flex-end;align-items:center;justify-self:end;width:min(260px,34vw);min-height:280px;}
+.cta-grid .cta-art > svg{display:block;width:100%;height:auto;overflow:visible;}
+.cta-grid .cta-art svg .hd,.cta-grid .cta-art svg .hd-f1,.cta-grid .cta-art svg .hd-f2,.cta-grid .cta-art svg .hd-f3,.cta-grid .cta-art svg [stroke]:not([stroke="none"]){stroke-width:.25;stroke-linecap:round;stroke-linejoin:round;}
+.cta-grid .cta-art svg .hd-acc,.cta-grid .cta-art svg [stroke="#C15F3C"]{stroke-width:.2875;}
+
+/* 23 LMI handover — beige band, transparent 702 logo, left-aligned chevron */
+.lmi-logo-link{display:inline-block;width:min(250px,100%);margin:0 0 var(--link-gap);color:inherit;text-decoration:none;}
+.lmi-logo-img{display:block;width:100%;height:auto;}
+.training-block .btn-text{display:table;}
+
+/* 07 industry hub — 2x2 hero cluster + sticky top-row sector selector + full-width station line */
+.industry-hero-cluster{width:min(420px,82%);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,30px);justify-items:center;margin:0 0 38px auto;}
+.industry-hero-cluster span{display:block;width:min(170px,38vw);aspect-ratio:1;}
+.industry-hero-cluster span:nth-child(2){transform:translateY(18px);}
+.industry-hero-cluster span:nth-child(3){transform:translateY(-6px);}
+.industry-hero-cluster svg{display:block;width:100%;height:100%;overflow:visible;}
+.selector-sticky-scope{position:relative;}
+.sector-list-sticky{position:sticky;top:0;z-index:15;background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
+.sector-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));}
+.sector-row{position:relative;width:100%;padding:24px 22px 26px 0;border:0;border-right:1px solid var(--hairline);background:transparent;color:inherit;cursor:pointer;display:grid;grid-template-columns:54px minmax(0,1fr);gap:16px;align-items:center;text-align:left;}
+.sector-row:last-child{border-right:0;}
+.sector-row::before{content:"";position:absolute;left:0;right:22px;bottom:-1px;height:3px;background:var(--terracotta);opacity:0;}
+.sector-row.on::before{opacity:1;}
+.sector-row:focus-visible{outline:2px solid var(--terracotta);outline-offset:4px;}
+.sector-row-icon{display:block;width:54px;height:54px;}
+.sector-row-icon svg{display:block;width:100%;height:100%;overflow:visible;}
+.sector-row h3{margin:0 0 8px;font-size:20px;font-weight:700;line-height:1.16;}
+.sector-hook{margin:0;color:var(--near-black);font-family:"Montserrat",sans-serif;font-size:14px;font-weight:700;line-height:1.35;}
+.sector-panel{padding-top:42px;}
+.sector-panel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;}
+.sector-panel-card{padding-top:22px;border-top:1px solid var(--hairline);}
+.sector-panel-card h3{margin:0 0 12px;font-size:23px;font-weight:700;}
+.sector-challenges{list-style:none;margin:0;padding:0;border-top:1px solid var(--hairline);}
+.sector-challenges li{padding:13px 0;border-bottom:1px solid var(--hairline);color:var(--mid-grey);font-size:22px;}
+.sector-panel-card p{margin:0 0 var(--link-gap);color:var(--mid-grey);font-size:22px;}
+.hub-pathway{margin-top:50px;padding:0;border:0;border-radius:0;background:transparent;overflow:visible;}
+.hub-pathway svg{width:100%;height:auto;overflow:visible;}
+.pathway-line{fill:none;stroke:var(--navy);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.9;}
+.station-link{cursor:pointer;text-decoration:none;}
+.station-link .station-ring{r:8px;fill:#fff;stroke:var(--navy);stroke-width:2;transition:r .18s ease,stroke .18s ease,stroke-width .18s ease;}
+.station-link .station-core{r:0;fill:transparent;transition:r .18s ease,fill .18s ease;}
+.station-link .station-label{fill:#7A8591;font-family:"Montserrat",sans-serif;font-size:13px;font-weight:700;letter-spacing:1.2px;text-anchor:middle;}
+.station-link.is-recommended .station-ring{r:11px;stroke:var(--terracotta);stroke-width:2.6;}
+.station-link.is-recommended .station-core{r:4px;fill:var(--terracotta);}
+.station-link.is-recommended .station-label{fill:var(--navy);}
+
+/* 37 sticky sub-nav — left-aligned to the grid axis, terracotta active marker (51px, top:var(--nav-h) live) */
+.subnav-demo{height:51px;gap:26px;padding:0;}
+.subnav-demo a{font-size:12px;font-weight:700;letter-spacing:.08em;line-height:51px;}
+.subnav-demo a.on::after{height:3px;}
+
+@media(max-width:900px){
+  .ctaf-eq{grid-template-columns:1fr;gap:12px;}
+  .ctaf-op{min-height:42px;}
+  .formula-grid{grid-template-columns:1fr;}
+  .formula-op{min-height:42px;}
+  .next-grid{grid-template-columns:1fr;}
+  .next-grid::before{display:none;}
+  .cta-grid{grid-template-columns:1fr;}
+  .cta-grid .cta-art{justify-self:start;justify-content:flex-start;width:min(260px,80vw);}
+  .industry-hero-cluster{margin:0 0 30px;width:100%;}
+  .sector-list{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .sector-row:nth-child(2){border-right:0;}
+  .sector-row:nth-child(-n+2){border-bottom:1px solid var(--hairline);}
+  .sector-panel-grid{grid-template-columns:1fr;gap:34px;}
+  .shape-grid{grid-template-columns:1fr 1fr;gap:18px;}
+  .shape-item{border-left:0;padding:0;}
+  .proof-slide{flex-basis:86%;}
+  .hl-blue,.hl-white{--b:0px;width:auto;margin-left:0;margin-right:0;padding:30px 34px;border-radius:14px;}
+  .formula-takeaway-panel{--b:0px;margin-right:0;padding:28px 26px;border-radius:14px;}
+}
 </style>
 </head>
 <body>
@@ -419,6 +602,10 @@ a{color:inherit;}
   <div class="eyebrow">V6X COMPONENT TRANSLATIONS · SYNCED TO MERGED HOME</div>
   <h1>One example of each pattern, in real content.</h1>
   <p>Each block names the v5x pattern, what changes, and shows the v6x version using the actual page copy. Same rules throughout: Montserrat headings, Lora body 22px, white and beige only, thin-lined boxes and hairlines (no drop shadows), one terracotta accent, hand-drawn line-art, terracotta chevron links, 110px pillar/sector icons. The divider above each block is the contained bisection line. Updated after the EQT-245/250/251 home merge: where this file and the built home disagree, the home and DESIGN_LEARNINGS_v6x win.</p>
+</div>
+
+<div class="page-head" style="padding-top:0;">
+  <p style="margin:0;color:var(--caption);font-family:'Lora',serif;font-style:italic;font-size:15px;">Changelog (EQT-276, 2026-06-08): the in-scope blocks were rebuilt to match the shipped EQT-253 (services) and EQT-254 (industries) conversions. Authority for exact values: <strong>DESIGN_LEARNINGS_v6x.md → "Rollout page-type locks"</strong> and <strong>EQUIBT_V6X_UI_TRANSLATION.md</strong> (EQT-253 R1-R4, EQT-254 R1-R5), plus the merged <code>ServicePage.astro</code> / industries <code>_sector.astro</code> / <code>index.astro</code>. Where this file and those disagree, the merged code wins.</p>
 </div>
 
 <!-- 00 SITE NAV -->
@@ -525,7 +712,13 @@ a{color:inherit;}
     <h2 class="stage-h2" style="margin-top:12px;">Four deliverables. Aligned from day one.</h2>
     <p class="stage-note">Each deliverable is a practical working asset, not a slide deck for the shelf.</p>
     <div class="carousel">
-      <div class="track" id="track">
+      <div class="deliverables-index" aria-label="Deliverables index">
+        <button class="deliverables-index-button on" type="button" data-carousel-index="0" aria-controls="track" aria-pressed="true"><span class="deliverables-index-marker" aria-hidden="true"></span><span>SPIN Workshop Report</span></button>
+        <button class="deliverables-index-button" type="button" data-carousel-index="1" aria-controls="track" aria-pressed="false"><span class="deliverables-index-marker" aria-hidden="true"></span><span>Project Charter</span></button>
+        <button class="deliverables-index-button" type="button" data-carousel-index="2" aria-controls="track" aria-pressed="false"><span class="deliverables-index-marker" aria-hidden="true"></span><span>Success Criteria Framework</span></button>
+        <button class="deliverables-index-button" type="button" data-carousel-index="3" aria-controls="track" aria-pressed="false"><span class="deliverables-index-marker" aria-hidden="true"></span><span>SPIN Workshop Record</span></button>
+      </div>
+      <div class="track" id="track" role="region" aria-label="PLAN deliverables carousel">
         <article class="slide"><div class="img"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M21 10 H43 Q46 10 46 13 V51 Q46 54 43 54 H21 Q18 54 18 51 V13 Q18 10 21 10 Z"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 22 H39"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 30 H39"/><path fill="none" stroke="#C15F3C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 38 H33"/></svg></div><div><h3>SPIN Workshop Report</h3><p>The agreed problem statement, competing hypotheses surfaced and resolved, implications mapped, and the non-negotiables each stakeholder brought.</p></div></article>
         <article class="slide"><div class="img"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M21 10 H43 Q46 10 46 13 V51 Q46 54 43 54 H21 Q18 54 18 51 V13 Q18 10 21 10 Z"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 20 H39"/><path fill="none" stroke="#C15F3C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 36 L30 42 L39 28"/></svg></div><div><h3>Project Charter</h3><p>The governance document for everything that follows. Scope boundaries, exclusions, success criteria, timeline, signed off by all stakeholders.</p></div></article>
         <article class="slide"><div class="img"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M21 10 H43 Q46 10 46 13 V51 Q46 54 43 54 H21 Q18 54 18 51 V13 Q18 10 21 10 Z"/><path fill="none" stroke="#26245C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M25 20 H39"/><path fill="none" stroke="#C15F3C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M24 42 L30 33 L35 37 L40 27"/></svg></div><div><h3>Success Criteria Framework</h3><p>Specific, measurable success criteria the PLAN diagnostic will baseline against. Measurable targets everyone reads the same way.</p></div></article>
@@ -586,23 +779,91 @@ a{color:inherit;}
   </div>
 </section>
 
-<!-- 07 INDUSTRY ROWS -->
+<!-- 07 INDUSTRY HUB — SECTOR SELECTOR (sticky top row + full-width station line) -->
 <section class="block">
-  <div class="label"><span class="num">07</span><span class="name">Industry / sector cards → editorial rows</span><span class="note">was: 452px box, terracotta top bar, shadow → now: hairline row, hand-drawn sector motif</span></div>
+  <div class="label"><span class="num">07</span><span class="name">Industry hub → sector selector + station line</span><span class="note">REBUILT to the shipped EQT-254 hub (industries/index.astro). The 2x2 sector-icon hero cluster at home-hero footprint, then a horizontal sector ROW across the top (terracotta rule under the active item) — NOT a left side-list — with a shared challenges / where-to-start panel and the de-coloured six-station line FULL WIDTH below it (no box). The row is page-long sticky in the build (pins under the main nav; here top:0). Hover selects and persists, click/keyboard select, default Financial Services. Station mapping is ENTRY-POINTS only: FS/Gov/Util = PLAN + GOVERN, Mfg = PLAN + SOLVE; SCALE lights nowhere; every re-selection resets all six to muted, then marks the recommended set.</span></div>
   <div class="stage white">
-    <div class="ind-row">
-      <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%">
-        <path class="hd" d="M11 50 Q32 51 53 49.6"/>
-        <path class="hd" d="M14 24 Q32 14 50 24"/>
-        <path class="hd" d="M19 26 Q18.6 38 19 47"/>
-        <path class="hd" d="M28 26 Q27.6 38 28 47"/>
-        <path class="hd-acc" d="M37 26 Q36.6 38 37 47"/>
-        <path class="hd" d="M46 26 Q45.6 38 46 47"/>
-      </svg></span>
+    <div class="demo-hero" style="margin-bottom:8px;">
       <div>
-        <h3>Financial Services</h3>
-        <p class="hook">Fix the process, not the symptom.</p>
-        <p>Rework, rising handle times, and control gaps in a regulated operation are rarely a people problem. They are a process problem, and process problems are fixable.</p>
+        <div class="eyebrow">INDUSTRIES</div>
+        <h1>Build improvement for the sector you operate in.</h1>
+        <p class="hero-subhead">EQUIBT works in sectors where operational precision is not optional: high process volumes, regulatory constraint, AI adoption pressure, and zero tolerance for sustained underperformance.</p>
+        <div class="hero-actions"><a href="#" class="btn-primary">Get in touch</a></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="industry-hero-cluster">
+          <span><svg viewBox="0 0 64 64"><path class="hd" d="M11 50 Q32 51 53 49.6"/><path class="hd" d="M14 24 Q32 14 50 24"/><path class="hd" d="M19 26 Q18.6 38 19 47"/><path class="hd" d="M28 26 Q27.6 38 28 47"/><path class="hd-acc" d="M37 26 Q36.6 38 37 47"/><path class="hd" d="M46 26 Q45.6 38 46 47"/></svg></span>
+          <span><svg viewBox="0 0 64 64"><path class="hd" d="M14 49 Q32 52 50 49"/><path class="hd" d="M16 21 Q31 11 48 20"/><path class="hd" d="M20 25 Q18 36 21 45"/><path class="hd" d="M32 19 Q30 34 32 47"/><path class="hd-acc" d="M44 25 Q47 36 43 45"/><circle cx="32" cy="19" r="3.2" fill="#26245C"/></svg></span>
+          <span><svg viewBox="0 0 80 80" fill="none" stroke="#26245C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M31 66 C33 49 36 33 40 15 C44 33 47 49 49 66"/><path d="M34 36 L46 36"/><path d="M33 46 L47 46"/><path d="M31 56 L49 56"/><path d="M23 30 L57 30"/><path d="M20 40 L60 40"/><path d="M23 30 C31 37 49 37 57 30" stroke="#C15F3C"/></svg></span>
+          <span><svg viewBox="0 0 64 64"><path class="hd" d="M12 45 L12 30 L22 36 L22 29 L33 36 L33 29 L52 40 L52 50 L12 50 Z"/><path class="hd" d="M18 50 Q17 42 18 36"/><path class="hd" d="M31 50 Q30 43 31 37"/><path class="hd-acc" d="M44 50 Q43 44 44 40"/></svg></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="selector-sticky-scope" data-sector-selector style="margin-top:18px;">
+      <div class="sector-list-sticky">
+        <div class="sector-list" role="list" aria-label="Industry selector">
+          <button class="sector-row on" type="button" aria-pressed="true"
+            data-sector="financial" data-recommended="plan|govern" data-href="#" data-label="Explore Financial Services"
+            data-challenges="Claims and case rework eating capacity|Handle times rising faster than volume|Manual controls that do not scale with the book|Remediation programmes that do not stay remediated|AI tools adopted without governance or measured benefit"
+            data-pathway="Start with PLAN to quantify where rework and handle time are building, then GOVERN to lock the controls so the gain holds inside your audit trail.">
+            <span class="sector-row-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="hd" d="M11 50 Q32 51 53 49.6"/><path class="hd" d="M14 24 Q32 14 50 24"/><path class="hd" d="M19 26 Q18.6 38 19 47"/><path class="hd" d="M28 26 Q27.6 38 28 47"/><path class="hd-acc" d="M37 26 Q36.6 38 37 47"/><path class="hd" d="M46 26 Q45.6 38 46 47"/></svg></span>
+            <span><h3>Financial Services</h3><p class="sector-hook">Fix the process, not the symptom.</p></span>
+          </button>
+          <button class="sector-row" type="button" aria-pressed="false"
+            data-sector="government" data-recommended="plan|govern" data-href="#" data-label="Explore Government &amp; Public Sector"
+            data-challenges="Investigation and assessment backlogs|Cycle times under public and ministerial scrutiny|Process change constrained by enterprise agreements|Legacy systems that cannot be replaced quickly|AI adoption pressure without a governance path"
+            data-pathway="Start with PLAN to baseline the backlog, then GOVERN to make the faster process defensible.">
+            <span class="sector-row-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="hd" d="M14 49 Q32 52 50 49"/><path class="hd" d="M16 21 Q31 11 48 20"/><path class="hd" d="M20 25 Q18 36 21 45"/><path class="hd" d="M32 19 Q30 34 32 47"/><path class="hd-acc" d="M44 25 Q47 36 43 45"/><circle cx="32" cy="19" r="3.2" fill="#26245C"/></svg></span>
+            <span><h3>Government &amp; Public Sector</h3><p class="sector-hook">Cut the cycle time, keep the accountability.</p></span>
+          </button>
+          <button class="sector-row" type="button" aria-pressed="false"
+            data-sector="utilities" data-recommended="plan|govern" data-href="#" data-label="Explore Utilities"
+            data-challenges="High-volume operational processes drifting off standard|Reliability and SLA pressure with limited headroom|Regulatory reporting carried manually|Field and back-office handoffs losing time and data|AI and automation adopted without governance"
+            data-pathway="Start with PLAN to baseline where the operation drifts, then GOVERN to embed the standard and hold reliability across the network.">
+            <span class="sector-row-icon" aria-hidden="true"><svg viewBox="0 0 80 80" fill="none" stroke="#26245C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M31 66 C33 49 36 33 40 15 C44 33 47 49 49 66"/><path d="M34 36 L46 36"/><path d="M33 46 L47 46"/><path d="M31 56 L49 56"/><path d="M23 30 L57 30"/><path d="M20 40 L60 40"/><path d="M23 30 C31 37 49 37 57 30" stroke="#C15F3C"/></svg></span>
+            <span><h3>Utilities</h3><p class="sector-hook">Stabilise the operation under load.</p></span>
+          </button>
+          <button class="sector-row" type="button" aria-pressed="false"
+            data-sector="manufacturing" data-recommended="plan|solve" data-href="#" data-label="Explore Advanced Manufacturing"
+            data-challenges="Cycle time and throughput below capacity|Quality variation and rework at the line|Changeover and downtime losses|Supplier variability destabilising the process|Improvement capability that does not outlast the consultant"
+            data-pathway="Start with PLAN to baseline the loss, then SOLVE to isolate the cause on the floor and cost the fix.">
+            <span class="sector-row-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="hd" d="M12 45 L12 30 L22 36 L22 29 L33 36 L33 29 L52 40 L52 50 L12 50 Z"/><path class="hd" d="M18 50 Q17 42 18 36"/><path class="hd" d="M31 50 Q30 43 31 37"/><path class="hd-acc" d="M44 50 Q43 44 44 40"/></svg></span>
+            <span><h3>Advanced Manufacturing</h3><p class="sector-hook">Cut waste, hold the standard.</p></span>
+          </button>
+        </div>
+      </div>
+      <div class="sector-selector" style="margin-top:0;">
+        <div class="sector-panel">
+          <div class="sector-panel-grid">
+            <article class="sector-panel-card">
+              <h3>Common challenges</h3>
+              <ul class="sector-challenges" data-sector-challenges>
+                <li>Claims and case rework eating capacity</li>
+                <li>Handle times rising faster than volume</li>
+                <li>Manual controls that do not scale with the book</li>
+                <li>Remediation programmes that do not stay remediated</li>
+                <li>AI tools adopted without governance or measured benefit</li>
+              </ul>
+            </article>
+            <article class="sector-panel-card">
+              <h3>Where to start</h3>
+              <p data-sector-pathway>Start with PLAN to quantify where rework and handle time are building, then GOVERN to lock the controls so the gain holds inside your audit trail.</p>
+              <a href="#" class="btn-text" data-sector-link><span class="link-label">Explore Financial Services</span> <span class="ar">&rsaquo;</span></a>
+            </article>
+          </div>
+          <div class="pathway-box hub-pathway">
+            <svg viewBox="0 0 1040 150" role="img" aria-label="Selected sector recommended service pathway">
+              <path class="pathway-line hd-f2" d="M70 100 Q300 90 520 99 Q760 109 970 98"/>
+              <a href="#" class="station-link" data-station="frame" aria-label="FRAME service"><circle class="station-ring" cx="70" cy="100"/><circle class="station-core" cx="70" cy="100"/><text class="station-label" x="70" y="138">FRAME</text></a>
+              <a href="#" class="station-link is-recommended" data-station="plan" aria-label="PLAN service"><circle class="station-ring" cx="250" cy="97"/><circle class="station-core" cx="250" cy="97"/><text class="station-label" x="250" y="138">PLAN</text></a>
+              <a href="#" class="station-link" data-station="solve" aria-label="SOLVE service"><circle class="station-ring" cx="430" cy="99"/><circle class="station-core" cx="430" cy="99"/><text class="station-label" x="430" y="138">SOLVE</text></a>
+              <a href="#" class="station-link" data-station="evolve" aria-label="EVOLVE service"><circle class="station-ring" cx="610" cy="101"/><circle class="station-core" cx="610" cy="101"/><text class="station-label" x="610" y="138">EVOLVE</text></a>
+              <a href="#" class="station-link is-recommended" data-station="govern" aria-label="GOVERN service"><circle class="station-ring" cx="790" cy="98"/><circle class="station-core" cx="790" cy="98"/><text class="station-label" x="790" y="138">GOVERN</text></a>
+              <a href="#" class="station-link" data-station="scale" aria-label="SCALE service"><circle class="station-ring" cx="970" cy="98"/><circle class="station-core" cx="970" cy="98"/><text class="station-label" x="970" y="138">SCALE</text></a>
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -663,7 +924,7 @@ a{color:inherit;}
 </section>
 
 <section class="block">
-  <div class="label"><span class="num">08b</span><span class="name">Station pathway — SERVICE-PAGE static variant</span><span class="note">same white pathway box; STATIC (no JS): terracotta YOU ARE HERE on the current station, current + next labels navy, downstream labels muted #7A8591. R1 (2026-06-07): the NEXT station is marked on the line itself — terracotta segment current→next (direction of travel), filled navy core in the next station's ring, small terracotta NEXT label above it (no pointer). Last station (SCALE) carries no next marking. This pathway + block 09's columns form ONE merged WHERE IT LEADS section: no divider, no second eyebrow between them. Responsive (R2): the pathway SVG scales to its container at every viewport (viewBox scaling, no clipping; below ~420px an intentional padded horizontal scroll is the only sanctioned fallback).</span></div>
+  <div class="label"><span class="num">08b + 09</span><span class="name">Merged WHERE IT LEADS — service-page pathway + next-step columns</span><span class="note">REBUILT to the shipped merged section (ServicePage.astro): ONE section, one WHERE IT LEADS eyebrow, NO divider and NO second eyebrow between the static pathway and the next-step columns. STATIC pathway: terracotta YOU ARE HERE on the current station, terracotta segment current→next (direction of travel), filled navy core in the next station's ring, small terracotta NEXT label; current + next labels navy, downstream muted #7A8591; SCALE (terminus) carries no next marking. Next-step columns are ASYMMETRIC on service pages: current column muted and unlinked (YOU ARE HERE grey), next column emphasised with the ONLY Explore link (THE NEXT STEP terracotta) and a single large terracotta › in the gutter; columns stack at ≤860/900px (current above next, gutter › hidden). Industry pages do NOT use this asymmetry (both entry-point columns are equal — see block 07).</span></div>
   <div class="stage white pathway">
     <div class="eyebrow">WHERE IT LEADS</div>
     <h2 class="stage-h2" style="margin:12px 0 0;">Define the problem. Then measure it.</h2>
@@ -673,11 +934,11 @@ a{color:inherit;}
         <path d="M70 100 Q160 95 250 97" fill="none" stroke="#C15F3C" stroke-width="2.6" stroke-linecap="round"/>
         <text x="70" y="24" text-anchor="middle" class="pathway-label">YOU ARE HERE</text>
         <path class="pathway-pointer" d="M70 34 L70 78"/>
-        <text x="250" y="62" text-anchor="middle" fill="#C15F3C" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" letter-spacing="1.4">NEXT</text>
+        <text x="250" y="56" text-anchor="middle" class="pathway-next-label">NEXT</text>
         <circle cx="70" cy="100" r="11" fill="#fff" stroke="#C15F3C" stroke-width="2.6"/>
         <circle cx="70" cy="100" r="4" fill="#C15F3C"/>
         <circle cx="250" cy="97" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
-        <circle cx="250" cy="97" r="3.4" fill="#26245C"/>
+        <circle cx="250" cy="97" r="3.2" fill="#26245C"/>
         <circle cx="430" cy="99" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
         <circle cx="610" cy="101" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
         <circle cx="790" cy="98" r="8" fill="#fff" stroke="#26245C" stroke-width="2"/>
@@ -692,30 +953,22 @@ a{color:inherit;}
         </g>
       </svg>
     </div>
-  </div>
-</section>
-
-<!-- 09 NEXT STEP -->
-<section class="block">
-  <div class="label"><span class="num">09</span><span class="name">Next-step / related cards → hairline columns</span><span class="note">was: filled boxes with shadow → now: open columns, current step + the natural next one. R1 (2026-06-07): current-vs-next made unmistakable — top-hairline label per column (YOU ARE HERE muted grey / THE NEXT STEP terracotta), current column de-weighted (grey kicker, no link), next column full weight with the ONLY Explore link, large terracotta › in the gutter (desktop only). Sits inside the merged WHERE IT LEADS section, directly under the 08b pathway. Responsive (R2): the columns stack to one at ≤860px, current ABOVE next, both status labels readable, gutter › hidden whenever stacked. Industry pages do NOT use this asymmetry: both their columns are equal entry points.</span></div>
-  <div class="stage white">
-    <div class="next" style="position:relative;">
-      <span aria-hidden="true" style="position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);color:#C15F3C;font-family:'Montserrat',sans-serif;font-size:36px;font-weight:700;">&rsaquo;</span>
-      <div class="col">
-        <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#7A8591;margin-bottom:16px;">YOU ARE HERE</div>
-        <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M13 26 Q12 14 14 13 Q16 12 26 12.4"/><path class="hd" d="M38 12.4 Q50 12 51 14 Q52 16 51.6 26"/><path class="hd" d="M51.6 38 Q52 50 50 51 Q48 52 38 51.6"/><path class="hd" d="M26 51.6 Q14 52 13 50 Q12 48 13 38"/><circle cx="32" cy="32" r="11" class="hd"/><circle cx="32" cy="32" r="3.6" fill="#C15F3C"/></svg></span>
-        <div class="k" style="color:#7A8591;">FRAME · DEFINE</div>
-        <h3 style="color:#566273;">Problem Framing and Stakeholder Alignment.</h3>
+    <div class="next-grid">
+      <article class="next-col is-current">
+        <div class="next-status">YOU ARE HERE</div>
+        <span class="next-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="hd" d="M13 26 Q12 14 14 13 Q16 12 26 12.4"/><path class="hd" d="M38 12.4 Q50 12 51 14 Q52 16 51.6 26"/><path class="hd" d="M51.6 38 Q52 50 50 51 Q48 52 38 51.6"/><path class="hd" d="M26 51.6 Q14 52 13 50 Q12 48 13 38"/><circle cx="32" cy="32" r="11" class="hd"/><circle cx="32" cy="32" r="3.6" fill="#C15F3C"/></svg></span>
+        <div class="next-kicker">FRAME · DEFINE</div>
+        <h3>Problem Framing and Stakeholder Alignment.</h3>
         <p>When your leadership team disagrees on what the problem is. A SPIN workshop aligns stakeholders and produces a locked charter before any diagnostic dollar gets spent.</p>
-      </div>
-      <div class="col">
-        <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#C15F3C;margin-bottom:16px;">THE NEXT STEP</div>
-        <span class="ic"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M11 51 Q32 52 53 50.4"/><path class="hd" d="M18 50 Q17.5 44 18 38"/><path class="hd" d="M28 50 Q27.5 41 28 33"/><path class="hd" d="M38 50 Q37.5 36 38 27"/><path class="hd-acc" d="M48 50 Q47.4 32 48 20"/></svg></span>
-        <div class="k">PLAN · MEASURE</div>
+      </article>
+      <article class="next-col is-next">
+        <div class="next-status">THE NEXT STEP</div>
+        <span class="next-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="hd" d="M11 51 Q32 52 53 50.4"/><path class="hd" d="M18 50 Q17.5 44 18 38"/><path class="hd" d="M28 50 Q27.5 41 28 33"/><path class="hd" d="M38 50 Q37.5 36 38 27"/><path class="hd-acc" d="M48 50 Q47.4 32 48 20"/></svg></span>
+        <div class="next-kicker">PLAN · MEASURE</div>
         <h3>Operations Diagnostic.</h3>
         <p>When the charter is signed, PLAN establishes the evidence base. Baseline measurement, capability assessment, prioritised roadmap.</p>
         <a href="#" class="btn-text"><span class="link-label">Explore PLAN</span> <span class="ar">&rsaquo;</span></a>
-      </div>
+      </article>
     </div>
   </div>
 </section>
@@ -763,33 +1016,33 @@ a{color:inherit;}
 
 <!-- 13 SERVICE SELECTOR -->
 <section class="block">
-  <div class="label"><span class="num">13</span><span class="name">Industry service selector → master-detail (interactive)</span><span class="note">was: 6 colour-coded pillar cards + panel → now: hairline list on a left axis, terracotta active rule, no colour-coding · click a pillar</span></div>
+  <div class="label"><span class="num">13</span><span class="name">Industry service selector → master-detail (interactive)</span><span class="note">SECTOR-PAGE "how we help" selector (_sector.astro): a left side-list (this one IS a left list, unlike the hub selector in block 07) on the left axis, terracotta active rule, no colour-coding · click a pillar. REBUILT to shipped EQT-254 R2/R3/R5: detail titles drop the PILLAR: prefix (the kicker already carries the pillar) and are verb-first; the Deliverables list renders Montserrat 600 16px near-black #161616 with a small terracotta dot (no chevrons, no navy bullets).</span></div>
   <div class="stage white">
     <div class="eyebrow">HOW WE HELP IN UTILITIES</div>
     <h2 class="stage-h2">Pick the pressure you are under.</h2>
     <div class="sel" style="margin-top:24px;">
       <div class="sel-list" id="sel-list">
-        <button class="sel-item on" data-title="FRAME: define the operating pressure before it becomes a reliability risk." data-copy="Use FRAME when the pressure is visible but scope, asset constraints, reporting needs or reliability risk are still contested." data-ch="Reliability pressure|Asset constraints|Regulatory reporting" data-del="SPIN Workshop Report|Project Charter|Success Criteria Framework|SPIN Workshop Record">
+        <button class="sel-item on" data-title="Define the operating pressure before it becomes a reliability risk." data-copy="Use FRAME when the pressure is visible but scope, asset constraints, reporting needs or reliability risk are still contested." data-ch="Reliability pressure|Asset constraints|Regulatory reporting" data-del="SPIN Workshop Report|Project Charter|Success Criteria Framework|SPIN Workshop Record">
           <span class="si"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M13 26 Q12 14 14 13 Q16 12 26 12.4"/><path class="hd" d="M38 12.4 Q50 12 51 14 Q52 16 51.6 26"/><path class="hd" d="M51.6 38 Q52 50 50 51 Q48 52 38 51.6"/><path class="hd" d="M26 51.6 Q14 52 13 50 Q12 48 13 38"/><circle cx="32" cy="32" r="11" class="hd"/><circle cx="32" cy="32" r="3.4" fill="#C15F3C"/></svg></span>
           <span><span class="sk">FRAME</span> <span class="ss">· Define</span></span>
         </button>
-        <button class="sel-item" data-title="PLAN: baseline the process under load." data-copy="Use PLAN when high-volume work drifts off standard and leaders need to prove where the variation starts." data-ch="Process drift|Field handoffs|Manual reporting" data-del="Current-State Assessment|Capability Gap Analysis|Prioritised Improvement Roadmap|Engagement Pathway Recommendation">
+        <button class="sel-item" data-title="Baseline the process under load." data-copy="Use PLAN when high-volume work drifts off standard and leaders need to prove where the variation starts." data-ch="Process drift|Field handoffs|Manual reporting" data-del="Current-State Assessment|Capability Gap Analysis|Prioritised Improvement Roadmap|Engagement Pathway Recommendation">
           <span class="si"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M11 51 Q32 52 53 50.4"/><path class="hd" d="M18 50 Q17.5 44 18 38"/><path class="hd" d="M28 50 Q27.5 41 28 33"/><path class="hd" d="M38 50 Q37.5 36 38 27"/><path class="hd-acc" d="M48 50 Q47.4 32 48 20"/></svg></span>
           <span><span class="sk">PLAN</span> <span class="ss">· Measure</span></span>
         </button>
-        <button class="sel-item" data-title="SOLVE: isolate the cause of operational drift." data-copy="Use SOLVE when the process has been trained or automated before the structural cause of variation is understood." data-ch="SLA pressure|Data loss|Handoff delay" data-del="Root Cause Analysis Report|Future State Design|Cost-Benefit Analysis|Implementation Readiness Assessment">
+        <button class="sel-item" data-title="Isolate the cause of operational drift." data-copy="Use SOLVE when the process has been trained or automated before the structural cause of variation is understood." data-ch="SLA pressure|Data loss|Handoff delay" data-del="Root Cause Analysis Report|Future State Design|Cost-Benefit Analysis|Implementation Readiness Assessment">
           <span class="si"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M21 18 Q32 13 41 18"/><path class="hd" d="M18 22 Q24 33 30 41"/><path class="hd" d="M44 22 Q38 33 34 41"/><circle cx="16" cy="18" r="5" class="hd"/><circle cx="46" cy="18" r="5" class="hd"/><circle cx="32" cy="46" r="6" fill="none" stroke="#C15F3C" stroke-width="2.3"/></svg></span>
           <span><span class="sk">SOLVE</span> <span class="ss">· Analyse</span></span>
         </button>
-        <button class="sel-item" data-title="EVOLVE: test the fix without making reliability the test subject." data-copy="Use EVOLVE when the redesigned workflow needs a contained pilot that protects live service continuity." data-ch="Contained pilots|Service continuity|Operational evidence" data-del="Pilot Results Report|Business Requirements Document|Implementation and Change Management Plan|Deployment Authorisation Brief">
+        <button class="sel-item" data-title="Test the fix without making reliability the test subject." data-copy="Use EVOLVE when the redesigned workflow needs a contained pilot that protects live service continuity." data-ch="Contained pilots|Service continuity|Operational evidence" data-del="Pilot Results Report|Business Requirements Document|Implementation and Change Management Plan|Deployment Authorisation Brief">
           <span class="si"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M49 26 Q51 14 39 11 Q21 6 14 23 Q10 35 22 45 Q35 53 47 42"/><path class="hd-acc" d="M40 40 L48 43 L45 35"/><circle cx="31" cy="29" r="3.2" fill="#26245C"/></svg></span>
           <span><span class="sk">EVOLVE</span> <span class="ss">· Improve</span></span>
         </button>
-        <button class="sel-item" data-title="GOVERN: lock the reporting, controls and ownership." data-copy="Use GOVERN when regulatory reporting, AI use or manual controls need ownership and monitoring that people actually use." data-ch="Regulatory evidence|AI governance|Control ownership" data-del="Process Architecture Document|Control Plans|Monitoring Dashboard Specification|AI Governance Framework">
+        <button class="sel-item" data-title="Lock the reporting, controls and ownership." data-copy="Use GOVERN when regulatory reporting, AI use or manual controls need ownership and monitoring that people actually use." data-ch="Regulatory evidence|AI governance|Control ownership" data-del="Process Architecture Document|Control Plans|Monitoring Dashboard Specification|AI Governance Framework">
           <span class="si"><svg viewBox="0 0 80 80" style="width:100%;height:100%" fill="none" stroke="#26245C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M40 13 C49 19 57 20 62 19 C63 41 57 57 40 68 C23 57 17 41 18 19 C23 20 31 19 40 13 Z"/><path d="M29 41 L37 50 L53 30" stroke="#C15F3C"/></svg></span>
           <span><span class="sk">GOVERN</span> <span class="ss">· Control</span></span>
         </button>
-        <button class="sel-item" data-title="SCALE: standardise what has proven reliable." data-copy="Use SCALE when a governed improvement is ready to move across crews, teams or regions without eroding." data-ch="Standard work|Capability transfer|Sustained performance" data-del="Standardisation Playbook|Automation Deployment Package|Capability Transfer Programme|Continuous Improvement System">
+        <button class="sel-item" data-title="Standardise what has proven reliable." data-copy="Use SCALE when a governed improvement is ready to move across crews, teams or regions without eroding." data-ch="Standard work|Capability transfer|Sustained performance" data-del="Standardisation Playbook|Automation Deployment Package|Capability Transfer Programme|Continuous Improvement System">
           <span class="si"><svg viewBox="0 0 64 64" style="width:100%;height:100%"><path class="hd" d="M12 38 L27 38 L27 23 L12 23 Z"/><path class="hd" d="M21 47 L38 47 L38 30 L21 30 Z"/><path class="hd-acc" d="M31 55 L52 55 L52 35 L31 35 Z"/></svg></span>
           <span><span class="sk">SCALE</span> <span class="ss">· Operate</span></span>
         </button>
@@ -808,19 +1061,28 @@ a{color:inherit;}
 
 <!-- 14 PROOF CAROUSEL -->
 <section class="block">
-  <div class="label"><span class="num">14</span><span class="name">Industry proof carousel → evidence slides</span><span class="note">was: stat slides in a carousel → now: de-weighted scroll-snap, controls bottom-right, each slide an evidence row</span></div>
+  <div class="label"><span class="num">14</span><span class="name">Industry proof carousel → ink-navy evidence panel</span><span class="note">REBUILT to the shipped EQT-254 proof-shell: the industry page's ONE dark moment is an ink-navy <code>#202946</code> contained panel (not a beige stage), light eyebrow, white heading, bordered translucent evidence slides with a terracotta metric and an italic caption, de-weighted scroll-snap with bottom-right dots + arrows. Industry pages carry NO hero metric band — every figure lives here.</span></div>
   <div class="stage beige">
-    <div class="eyebrow">CLIENT RESULTS</div>
-    <h2 class="stage-h2">Restoration improves when the process holds under load.</h2>
-    <div class="track" id="track2" style="margin-top:24px;">
-      <article class="slide" style="display:block;flex-basis:62%;"><p class="ev-act" style="font-size:22px;">Cut unplanned outage restoration time by <span class="m">27%</span> across the network.</p><p class="ev-sec" style="margin-top:10px;">Energy distribution operator · PLAN, GOVERN and SCALE engagement · anonymised, illustrative pending a confirmed metric.</p></article>
-      <article class="slide" style="display:block;flex-basis:62%;"><p class="ev-act" style="font-size:22px;">Mapped where process drift and asset constraints interacted. <span class="m">PLAN</span></p><p class="ev-sec" style="margin-top:10px;">The diagnostic located the real starting point under load.</p></article>
-      <article class="slide" style="display:block;flex-basis:62%;"><p class="ev-act" style="font-size:22px;">Embedded a reporting standard owners actually use. <span class="m">GOVERN</span></p><p class="ev-sec" style="margin-top:10px;">Regulatory evidence became easier to sustain.</p></article>
-    </div>
-    <div class="car-ctrl">
-      <div class="car-dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div>
-      <button class="car-arrow" id="prev2" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5 L8 12 L15 19"/></svg></button>
-      <button class="car-arrow" id="next2" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5 L16 12 L9 19"/></svg></button>
+    <div class="proof-shell">
+      <div class="eyebrow light">CLIENT RESULTS</div>
+      <h2>Restoration improves when the process holds under load.</h2>
+      <p>Evidence from the operations we work in, anonymised by client type.</p>
+      <div class="proof-carousel" data-proof-carousel>
+        <div class="proof-track">
+          <article class="proof-slide"><p class="proof-action">Cut unplanned outage restoration time by <span class="metric">27%</span> across the network.</p><p class="proof-caption">Energy distribution operator · anonymised, illustrative pending a confirmed metric.</p></article>
+          <article class="proof-slide"><p class="proof-action">Mapped where process drift and asset constraints interacted. <span class="metric">PLAN</span></p><p class="proof-caption">The diagnostic located the real starting point under load.</p></article>
+          <article class="proof-slide"><p class="proof-action">Embedded a reporting standard owners actually use. <span class="metric">GOVERN</span></p><p class="proof-caption">Regulatory evidence became easier to sustain.</p></article>
+        </div>
+        <div class="proof-controls">
+          <div class="proof-dots">
+            <button class="proof-dot on" type="button" data-proof-dot="0" aria-label="Show result 1"></button>
+            <button class="proof-dot" type="button" data-proof-dot="1" aria-label="Show result 2"></button>
+            <button class="proof-dot" type="button" data-proof-dot="2" aria-label="Show result 3"></button>
+          </div>
+          <button class="proof-arrow" type="button" data-proof-prev aria-label="Previous result"><svg viewBox="0 0 24 24"><path d="M15 5 L8 12 L15 19"/></svg></button>
+          <button class="proof-arrow" type="button" data-proof-next aria-label="Next result"><svg viewBox="0 0 24 24"><path d="M9 5 L16 12 L9 19"/></svg></button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -852,7 +1114,7 @@ a{color:inherit;}
   <div class="label"><span class="num">16</span><span class="name">CTA equation → dark panel, thin-lined boxes</span><span class="note">was: heavy dark band + filled meta → now: contained dark card, hairline boxes, terracotta operators. R1 (2026-06-07): eyebrow WORK WITH US (START HERE retired, echoed WHY START HERE); value lines Montserrat 700 ~25px so they carry the weight; dark tone per page TYPE: home near-black #101317, services dark-slate #2C3E50, industries ink-navy. R2: + and = operators 48px/700 terracotta (matches the v5x CTA-equation precedent). R3: the equation never orphans an operator — one five-column row at desktop, a deliberate stacked layout (box / + / box / = / box) below one breakpoint, no intermediate wraps.</span></div>
   <div class="stage beige">
     <div class="ctaf">
-      <div class="eyebrow">WORK WITH US</div>
+      <div class="eyebrow light">WORK WITH US</div>
       <h2>Make the improvement hold.</h2>
       <p>If gains keep slipping back, the improvement was never embedded. That is a governance gap, and it is fixable. Tell us where the operation is drifting and we will identify what is missing.</p>
       <div class="ctaf-eq">
@@ -902,26 +1164,29 @@ a{color:inherit;}
 
 <!-- 19 WHY SECTOR MATTERS FORMULA -->
 <section class="block">
-  <div class="label"><span class="num">19</span><span class="name">Why sector matters → formula + shape boxes</span><span class="note">was: filled boxes + heavy panel → now: thin-lined boxes, navy operators, hairline shape row</span></div>
+  <div class="label"><span class="num">19</span><span class="name">Why sector matters → formula + right-bleed takeaway panel</span><span class="note">REBUILT to the shipped EQT-254 hub (industries/index.astro): thin-lined formula boxes in a five-column grid (box / × / box / = / box) with navy operators (no flex-wrap orphan); hairline shape strip with terracotta labels; then the formula takeaway as a WHITE panel that BLEEDS to the right viewport edge (white fill, ~16px radius on the left corners, square on the right, no shadow/border), inner text held on the wide grid axis.</span></div>
   <div class="stage white">
     <div class="eyebrow">WHY SECTOR CONTEXT MATTERS</div>
     <h2 class="stage-h2">One method. Calibrated to your sector.</h2>
     <p class="stage-note">The fix survives contact with your operating reality because the method is constant and its application is tuned to your sector.</p>
-    <div class="secf-eq">
-      <div class="secf-box"><div class="lab">What stays constant</div><h3>Method rigour.</h3><p>The diagnostic tools, analytical methods, pilot structure, governance frameworks, and improvement systems.</p></div>
-      <div class="secf-op">&times;</div>
-      <div class="secf-box"><div class="lab">What changes by sector</div><h3>Operating context.</h3><p>The questions we ask, the benchmarks we use, the stakeholder dynamics, and the change approach the environment demands.</p></div>
-      <div class="secf-op">=</div>
-      <div class="secf-box"><div class="lab">What holds</div><h3>A fix that survives.</h3><p>The method stays disciplined. The application changes enough to work where the operation actually runs.</p></div>
+    <div class="formula-grid">
+      <article class="formula-box"><p class="formula-label">What stays constant</p><h3>Method rigour.</h3><p>The diagnostic tools, analytical methods, pilot structure, governance frameworks, and improvement systems.</p></article>
+      <div class="formula-op" aria-hidden="true">&times;</div>
+      <article class="formula-box"><p class="formula-label">What changes by sector</p><h3>Operating context.</h3><p>The questions we ask, the benchmarks we use, the stakeholder dynamics, and the change approach the environment demands.</p></article>
+      <div class="formula-op" aria-hidden="true">=</div>
+      <article class="formula-box"><p class="formula-label">What holds</p><h3>A fix that survives.</h3><p>The method stays disciplined. The application changes enough to work where the operation actually runs.</p></article>
     </div>
-    <div class="shapes">
-      <h4>One method, four different shapes.</h4>
-      <div class="shapes-grid">
-        <div class="shape"><div class="s-lab">Bank</div><div class="s-val">First-time-right increased</div></div>
-        <div class="shape"><div class="s-lab">Government agency</div><div class="s-val">Backlog reduced</div></div>
-        <div class="shape"><div class="s-lab">Telco</div><div class="s-val">Retention rate increased</div></div>
-        <div class="shape"><div class="s-lab">Production line</div><div class="s-val">Unscheduled downtime reduced</div></div>
+    <div class="shape-strip">
+      <h3>One method, four different shapes.</h3>
+      <div class="shape-grid">
+        <div class="shape-item"><span class="shape-label">Bank</span><p>First-time-right increased</p></div>
+        <div class="shape-item"><span class="shape-label">Government agency</span><p>Backlog reduced</p></div>
+        <div class="shape-item"><span class="shape-label">Telco</span><p>Retention rate increased</p></div>
+        <div class="shape-item"><span class="shape-label">Production line</span><p>Unscheduled downtime reduced</p></div>
       </div>
+    </div>
+    <div class="formula-takeaway-panel">
+      <p>Generic application is not rigour. We keep the method constant and calibrate how we apply it, so the fix survives contact with your operating reality.</p>
     </div>
   </div>
 </section>
@@ -944,7 +1209,8 @@ a{color:inherit;}
         <svg viewBox="0 0 64 64"><path class="hd" d="M13 26 Q12 14 14 13 Q16 12 26 12.4"/><path class="hd" d="M38 12.4 Q50 12 51 14 Q52 16 51.6 26"/><path class="hd" d="M51.6 38 Q52 50 50 51 Q48 52 38 51.6"/><path class="hd" d="M26 51.6 Q14 52 13 50 Q12 48 13 38"/><circle cx="32" cy="32" r="11" class="hd"/><circle cx="32" cy="32" r="3.4" fill="#C15F3C"/></svg>
       </div>
     </div>
-    <div class="cs-metrics" style="margin-top:38px;">
+    <p class="hero-metric-note">Hero metric band — CASE-STUDY ONLY. Service and industry sub-page heroes carry NO metric band (EQT-254: industry figures live in the proof carousel, block 14). The hairline band below stays available only where a page has genuine hero stats (the case study, EQT-255).</p>
+    <div class="cs-metrics" style="margin-top:0;">
       <div><div class="fig">9 to 4 days</div><div class="cap">loan approval time</div></div>
       <div><div class="fig">6% to 2%</div><div class="cap">scrap rate at the source</div></div>
       <div><div class="fig">320 to 540</div><div class="cap">weekly assessment throughput</div></div>
@@ -977,25 +1243,34 @@ a{color:inherit;}
 
 <!-- 22 LIGHT CTA PANEL -->
 <section class="block">
-  <div class="label"><span class="num">22</span><span class="name">Light CTA panel (page-closing CTA)</span><span class="note">was: full dark-slate cta-panel band on every page → now: LIGHT closing CTA on the alternating section colour (BUILT on home). The dark moment belongs to the flagship or CTA equation, never both.</span></div>
+  <div class="label"><span class="num">22</span><span class="name">Closing CTA → home cta-grid (copy left, icon art right)</span><span class="note">REBUILT to the shipped EQT-254 closing CTA: the home <code>cta-grid</code> treatment — copy left, the page's own sector/page <code>&lt;Icon&gt;</code> at ~260px on the right (hub uses the 2x2 cluster reduced). LIGHT section on the alternating colour. Eyebrow is <code>WORK WITH US</code> (START HERE retired site-wide). The dark moment belongs to the flagship / CTA equation / proof panel, never the closing CTA.</span></div>
   <div class="stage beige cta-light">
-    <div class="eyebrow">START HERE</div>
-    <h2 class="stage-h2" style="margin-top:12px;">Start where the work actually is.</h2>
-    <p>Most operations leaders know something needs to change. Fewer know where to start. Tell us what you are seeing and we will point you to the right starting point, even if that turns out not to be us. You'll hear back from a person, not an auto-reply.</p>
-    <a href="#" class="btn-primary">Get in touch</a>
+    <div class="cta-grid">
+      <div>
+        <div class="eyebrow">WORK WITH US</div>
+        <h2 class="stage-h2" style="margin-top:12px;">Put a complex operation on a firmer footing.</h2>
+        <p>Tell us where performance is drifting, work is backing up, or governance is struggling to keep pace. We will tell you whether there is a process fix worth scoping. You'll hear back from a person, not an auto-reply.</p>
+        <a href="#" class="btn-primary">Get in touch</a>
+      </div>
+      <div class="cta-art" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><path class="hd" d="M11 50 Q32 51 53 49.6"/><path class="hd" d="M14 24 Q32 14 50 24"/><path class="hd" d="M19 26 Q18.6 38 19 47"/><path class="hd" d="M28 26 Q27.6 38 28 47"/><path class="hd-acc" d="M37 26 Q36.6 38 37 47"/><path class="hd" d="M46 26 Q45.6 38 46 47"/></svg>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- 23 LMI HANDOVER -->
 <section class="block">
-  <div class="label"><span class="num">23</span><span class="name">Training / LMI handover</span><span class="note">BUILT on home: hairline-bounded band, full-colour LMI-LOGO-702 (clickable), links to leanmethods.com.au (interim AU). Home + industry pages only — NEVER on service pages. Placeholder box below stands in for the logo asset.</span></div>
-  <div class="stage white">
+  <div class="label"><span class="num">23</span><span class="name">Training / LMI handover</span><span class="note">REBUILT to the shipped EQT-254 industry handover: BEIGE band (white-band R1 reversed in R2), hairline-bounded inner. The logo is the TRANSPARENT variant <code>LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg</code> (white background rect removed, mark untouched; never 701), clickable, linking <code>leanmethods.com.au</code> (interim AU). The chevron link is LEFT-ALIGNED on the same axis (<code>display:table</code>), never floating centre. Home + industry + Our Work case pages only — NEVER on service pages or the Our Work index.</span></div>
+  <div class="stage beige">
     <div class="training-block">
       <div class="eyebrow">TRAINING</div>
-      <h2 class="stage-h2" style="margin-top:12px;">Need to build the skills in-house?</h2>
-      <p class="training-copy">Lean Methods Institute is our specialist training division. If your team needs Lean and AI capability built through structured courses rather than an advisory engagement, that is where to start.</p>
-      <div class="lmi-logo-ph">LMI-LOGO-702 · FULL COLOUR</div>
-      <a href="#" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
+      <h2 class="stage-h2" style="margin-top:12px;">Train your team in your own context.</h2>
+      <p class="training-copy">Lean Methods Institute contextualises our training to complex operations, not generic case studies or simulations. Your team learns the methods and tools relevant to the problems they actually face, so the capability stays with them.</p>
+      <a href="https://leanmethods.com.au" class="lmi-logo-link" aria-label="Lean Methods Institute">
+        <img src="../../brand/assets/logos/lmi/LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg" class="lmi-logo-img" alt="Lean Methods Institute" loading="lazy">
+      </a>
+      <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
     </div>
   </div>
 </section>
@@ -1235,7 +1510,7 @@ a{color:inherit;}
 
 <!-- 36 SITE FOOTER -->
 <section class="block">
-  <div class="label"><span class="num">36</span><span class="name">Site footer</span><span class="note">BUILT in src/components/Footer.astro — markup mirrored for reference; pages consume the component. Pure white, full FRAME footer, NO LMI line, entity + ABN in the bottom strip. R2 (2026-06-07): at phone widths (≤760/≤460) the brand block sits full-width on top and the three link columns flow in a 2-COLUMN grid, never one long single stack (footer rules in base.css, site-wide).</span></div>
+  <div class="label"><span class="num">36</span><span class="name">Site footer</span><span class="note">BUILT in src/components/Footer.astro — markup mirrored for reference; pages consume the component. Pure white, full FRAME footer, NO LMI line, entity + ABN in the bottom strip. R2 (2026-06-07): at phone widths (≤760/≤460) the brand block sits full-width on top and the three link columns flow in a 2-COLUMN grid, never one long single stack (footer rules in base.css, site-wide). EQT-255 (site-wide): the footer content (.footer-inner) carries a 1px hairline TOP + 64px padding-top so it separates cleanly when the last section is white (e.g. the case-page LMI handover); .site-footer top padding was cut to suit.</span></div>
   <div class="stage white">
     <footer class="site-footer">
       <div class="footer-inner">
@@ -1281,7 +1556,7 @@ a{color:inherit;}
 
 <!-- 37 STICKY SUB-NAV (industry sector pages) -->
 <section class="block">
-  <div class="label"><span class="num">37</span><span class="name">Sticky sub-nav (industry sector pages)</span><span class="note">NEW in v6x (added 2026-06-07, EQT-254) — the v5x sector pages never shipped one. Slim in-page anchor bar pinned under the main nav: white, hairline bottom, Montserrat uppercase links, terracotta marker on the active section (IntersectionObserver scroll-spy, no animation beyond the marker). Anchors: Challenges · How we help · Results · Our work · Where to start. Sector pages ONLY, not the hub.</span></div>
+  <div class="label"><span class="num">37</span><span class="name">Sticky sub-nav (industry sector pages)</span><span class="note">NEW in v6x (added 2026-06-07, EQT-254) — the v5x sector pages never shipped one. Slim 51px in-page anchor bar pinned under the main nav: white, hairline top + bottom, Montserrat 12px uppercase links, terracotta 3px marker on the active section (IntersectionObserver scroll-spy, no animation beyond the marker). LEFT-ALIGNED to the wide grid axis (not centred). In the build <code>top</code> = the real main-nav height (<code>var(--nav-h, 81px)</code>) so it does not slide behind the opaque main nav; anchored sections carry <code>scroll-margin-top: calc(var(--nav-h) + 51px + 12px)</code>. Anchors: Challenges · How we help · Results · Our work · Where to start. Sector pages ONLY, not the hub.</span></div>
   <style>
     .subnav-demo{background:#fff;border-bottom:1px solid var(--hairline);display:flex;gap:34px;align-items:center;height:52px;padding:0 8px;}
     .subnav-demo a{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;color:#161616;position:relative;line-height:52px;}
@@ -1296,7 +1571,7 @@ a{color:inherit;}
       <a href="#">Our work</a>
       <a href="#">Where to start</a>
     </div>
-    <p style="margin:22px 0 0;color:var(--caption);font-family:'Lora',serif;font-style:italic;font-size:15px;">In the build: <code>position:sticky; top:0;</code> directly below the main nav; the active state follows the section in view via IntersectionObserver. Links are plain in-page anchors, keyboard reachable. The marker is the only moving part.</p>
+    <p style="margin:22px 0 0;color:var(--caption);font-family:'Lora',serif;font-style:italic;font-size:15px;">In the build: <code>position:sticky; top:var(--nav-h);</code> directly below the opaque main nav (not <code>top:0</code>), left-aligned to the wide grid axis; the active state follows the section in view via IntersectionObserver. Links are plain in-page anchors, keyboard reachable. The marker is the only moving part.</p>
   </div>
 </section>
 
@@ -1308,14 +1583,63 @@ a{color:inherit;}
 function carousel(trackId,prevId,nextId){
   var t=document.getElementById(trackId); if(!t)return;
   var p=document.getElementById(prevId), n=document.getElementById(nextId);
-  var dots=t.parentNode.querySelectorAll('.car-dots .dot'), s=t.querySelector('.slide');
+  var wrap=t.parentNode;
+  var dots=wrap.querySelectorAll('.car-dots .dot');
+  var idx=wrap.querySelectorAll('.deliverables-index-button');
+  var s=t.querySelector('.slide');
   function step(){return s?s.getBoundingClientRect().width+26:t.clientWidth*0.7;}
-  function sync(){var i=Math.round(t.scrollLeft/step());dots.forEach(function(d,k){d.classList.toggle('on',k===i);});}
-  p.addEventListener('click',function(){t.scrollBy({left:-step(),behavior:'smooth'});});
-  n.addEventListener('click',function(){t.scrollBy({left:step(),behavior:'smooth'});});
+  function sync(){
+    var i=Math.round(t.scrollLeft/step());
+    dots.forEach(function(d,k){d.classList.toggle('on',k===i);});
+    idx.forEach(function(b,k){b.classList.toggle('on',k===i);b.setAttribute('aria-pressed',k===i?'true':'false');});
+  }
+  if(p)p.addEventListener('click',function(){t.scrollBy({left:-step(),behavior:'smooth'});});
+  if(n)n.addEventListener('click',function(){t.scrollBy({left:step(),behavior:'smooth'});});
+  idx.forEach(function(b,k){b.addEventListener('click',function(){t.scrollTo({left:k*step(),behavior:'smooth'});});});
   t.addEventListener('scroll',sync,{passive:true});
+  sync();
 }
-carousel('track','prev','next'); carousel('track2','prev2','next2');
+carousel('track','prev','next');
+
+/* 14 industry proof carousel (ink-navy panel) */
+document.querySelectorAll('[data-proof-carousel]').forEach(function(c){
+  var track=c.querySelector('.proof-track'); if(!track)return;
+  var prev=c.querySelector('[data-proof-prev]'), next=c.querySelector('[data-proof-next]');
+  var dots=Array.prototype.slice.call(c.querySelectorAll('.proof-dot'));
+  var first=track.querySelector('.proof-slide');
+  function gap(){return parseFloat(getComputedStyle(track).columnGap)||24;}
+  function step(){return first?first.getBoundingClientRect().width+gap():track.clientWidth*0.72;}
+  function sync(){var i=Math.max(0,Math.min(dots.length-1,Math.round(track.scrollLeft/step())));dots.forEach(function(d,k){d.classList.toggle('on',k===i);});}
+  if(prev)prev.addEventListener('click',function(){track.scrollBy({left:-step(),behavior:'smooth'});});
+  if(next)next.addEventListener('click',function(){track.scrollBy({left:step(),behavior:'smooth'});});
+  dots.forEach(function(d,k){d.addEventListener('click',function(){track.scrollTo({left:k*step(),behavior:'smooth'});});});
+  track.addEventListener('scroll',sync,{passive:true});
+  sync();
+});
+
+/* 07 industry hub — sticky top-row sector selector (lifted from industries/index.astro) */
+(function(){
+  var scope=document.querySelector('[data-sector-selector]'); if(!scope)return;
+  var rows=Array.prototype.slice.call(scope.querySelectorAll('.sector-row'));
+  var challenges=scope.querySelector('[data-sector-challenges]');
+  var pathway=scope.querySelector('[data-sector-pathway]');
+  var link=scope.querySelector('[data-sector-link]');
+  var stations=Array.prototype.slice.call(scope.querySelectorAll('[data-station]'));
+  function select(row){
+    var rec=(row.dataset.recommended||'').split('|').filter(Boolean);
+    rows.forEach(function(r){var a=r===row;r.classList.toggle('on',a);r.setAttribute('aria-pressed',a?'true':'false');});
+    if(challenges){challenges.innerHTML='';(row.dataset.challenges||'').split('|').filter(Boolean).forEach(function(v){var li=document.createElement('li');li.textContent=v;challenges.appendChild(li);});}
+    if(pathway)pathway.textContent=row.dataset.pathway||'';
+    if(link){link.setAttribute('href',row.dataset.href||'#');var lab=link.querySelector('.link-label');if(lab)lab.textContent=row.dataset.label||'';}
+    stations.forEach(function(s){s.classList.remove('is-recommended');});
+    stations.forEach(function(s){if(rec.indexOf(s.dataset.station||'')>-1)s.classList.add('is-recommended');});
+  }
+  rows.forEach(function(r){
+    r.addEventListener('pointerenter',function(){select(r);});
+    r.addEventListener('focus',function(){select(r);});
+    r.addEventListener('click',function(){select(r);});
+  });
+})();
 
 (function(){
   var list=document.getElementById('sel-list'); if(!list)return;
