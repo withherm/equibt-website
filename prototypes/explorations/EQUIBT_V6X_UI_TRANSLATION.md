@@ -88,7 +88,7 @@ Page order: hero → WHERE THIS FITS (trainline) → THE WORK (journey) → flag
 
 ## Full coverage pass (2026-06-07) — every v5x component
 
-A class-level scan of all v5x prototypes confirmed the component inventory; every pattern below now has a worked block in `EQUIBT_V6X_DIRECTION_EXPLORATION_v6.html` (blocks 00-32). Patterns not already covered by the tables above:
+A class-level scan of all v5x prototypes confirmed the component inventory; every pattern below now has a worked block in `EQUIBT_V6X_DIRECTION_EXPLORATION_v6.html` (blocks 00-37; 32 is unused, numbering jumps 31 → 33). Patterns not already covered by the tables above:
 
 | Component (v5x classes) | v5x now | v6x treatment | Block |
 |---|---|---|---|
@@ -109,7 +109,7 @@ A class-level scan of all v5x prototypes confirmed the component inventory; ever
 | We are / We're not (`compare-card`, How We Work) | two compare cards | Two open columns on top hairlines, items as hairline list rows. | 30 |
 | Our Story field notes (`story-item`, About) | hook + copy list | Hanging-label rows (beliefs device). Drop "Since 2009" at conversion: no dates/years in public copy. | 31 |
 | Why-EQUIBT rows (`why-body-row`, about/howwework/operators/capability) | label + copy rows | Same hanging-label editorial device as beliefs/statements. No separate pattern. | 18/21 |
-| Site footer (`site-footer`) | built | BUILT in `src/components/Footer.astro`: pure white, full FRAME footer, NO LMI line, entity + ABN bottom strip. Consume the component. R2 (2026-06-07): at phone widths (≤760/≤460) the brand block sits full-width on top and the three link columns flow in a 2-COLUMN grid, never one long single stack (footer rules in base.css, applies site-wide). | 32 |
+| Site footer (`site-footer`) | built | BUILT in `src/components/Footer.astro`: pure white, full FRAME footer, NO LMI line, entity + ABN bottom strip. Consume the component. R2 (2026-06-07): at phone widths (≤760/≤460) the brand block sits full-width on top and the three link columns flow in a 2-COLUMN grid, never one long single stack (footer rules in base.css, applies site-wide). EQT-255 (site-wide): the footer content (`.footer-inner`) carries a 1px hairline TOP + 64px padding-top so it separates cleanly when the last section is white; `.site-footer` top padding cut to suit. | 36 |
 | Breadcrumb (`breadcrumb`, resource landing) | text trail | Keep minimal: Montserrat caption-grey trail with `›` separators. No chips. | note |
 | Scroll-reveal system (`reveal`, `reveal-d1..d3`, 312 uses site-wide) | fade/slide-in on scroll | The v5x multi-element system stays RETIRED — do not port it. AMENDED R1 (2026-06-07): one minimal SECTION reveal reinstated as the v6x idiom — fade + ~8px rise, 350ms ease-out, fires once per section, no stagger, `prefers-reduced-motion: reduce` disables it. Lives in the page stylesheet until promoted to base.css (home retrofit = follow-up issue). | note |
 | Page scaffolding (`page-shell`, `wide-inner`) | wrapper divs | v6x uses `.section`/`.section-inner` with `--max`/`--wide` tokens (see base.css/home.css). | note |
@@ -197,6 +197,14 @@ Industry-specific locks from the conversion. Full consolidated set with exact va
 8. **Case-page dark moment = flat charcoal `#22211F`** (the page-type tone).
 9. **LMI handover added to case pages, industry-relevant** (Herman override of services-parity). Index has none.
 10. **Architecture:** `cases` content collection drives both surfaces; `[slug].astro` → `CaseStudy.astro` for `fullStudy` entries only; a `/our-work/<slug>/` page exists only where full Problem/Approach/Result copy exists. Styles in `our-work.css` (own `.ow-*` classes, references tokens).
+
+## EQT-276 reconciliation (exploration v6 blocks redrawn to as-built, 2026-06-08)
+
+The exploration block library predated the EQT-253/254 conversions, so several blocks were rebuilt to match shipped behaviour (reference HTML only, no `src/` change). This doc is the authority and needed no behavioural change; the notes below keep the two files consistent and resolve stale cross-references.
+
+- **Authoritative rows:** where the older "Industry-page controls (audited 2026-06-04)" table disagrees with the **EQT-253 R1-R4** and **EQT-254 R1-R5** amendment sections, the amendment sections win. Specifically: the sector-page service-selector deliverables are **Montserrat 600 16px near-black `#161616` + a terracotta dot** (NOT the "hairline chip lists" phrasing in the 2026-06-04 row), and the industry proof carousel is the **ink-navy `#202946` proof-shell panel** (the 2026-06-04 row predates that).
+- **Block numbers:** the merged WHERE IT LEADS is exploration block **08b + 09** (one section, one eyebrow); the industry hub sector selector + full-width station line is block **07** (the old "editorial rows" block was repurposed, since the shipped hub uses the sticky top-row selector, not rows); the footer is block **36** (not 32).
+- **Footer:** carries the EQT-255 top hairline (see the Site footer row above).
 
 ## Decisions (locked, 2026-06-04)
 
