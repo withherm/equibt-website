@@ -19,38 +19,36 @@ const services = [
   { name: "scale", kicker: "SCALE · OPERATE", title: "Operational Embedding", line: "Scale the proven solution and make it self-sustaining.", label: "SCALE" },
 ];
 
-const sectors = [
-  { name: "financial-services", slug: "financial-services", title: "Financial Services", line: "Tight margins and high regulatory compliance, where simplification and risk reduction have to happen together." },
-  { name: "government", slug: "government", title: "Government and Public Sector", line: "Service delivery balanced against budget constraint and procedural rigour." },
-  { name: "utilities", slug: "utilities", title: "Utilities", line: "Critical services under regulatory requirement, where process consistency and safety are non-negotiable." },
-  { name: "manufacturing", slug: "manufacturing", title: "Advanced Manufacturing", line: "Precision, throughput, and quality under tight tolerances." },
-];
-
-const proof = [
+// Industries and their proof, merged: one sector-organised section (no separate proof block).
+const industries = [
   {
-    sector: "Financial Services", name: "financial-services",
-    items: [
+    slug: "financial-services", icon: "financial-services", title: "Financial Services",
+    line: "Tight margins and high regulatory compliance, where simplification and risk reduction have to happen together.",
+    proof: [
       { action: "Cut mortgage lead leakage across direct and broker channels from", metric: "30% to 10%", desc: "Bank" },
       { action: "Cut the close-to-board reporting cycle from", metric: "18 to 5 days", desc: "Property Group" },
     ],
   },
   {
-    sector: "Government and Public Sector", name: "government",
-    items: [
+    slug: "government", icon: "government", title: "Government and Public Sector",
+    line: "Service delivery balanced against budget constraint and procedural rigour.",
+    proof: [
       { action: "Cut grant-processing rework through redesign alone, from", metric: "28% to 9%", desc: "Government Department" },
       { action: "Cut complaint resolution time with a triage redesign, from", metric: "67 to 38 days", desc: "Privacy Regulator" },
     ],
   },
   {
-    sector: "Utilities", name: "utilities",
-    items: [
+    slug: "utilities", icon: "utilities", title: "Utilities",
+    line: "Critical services under regulatory requirement, where process consistency and safety are non-negotiable.",
+    proof: [
       { action: "Cut investigation cycle time across the teams, from", metric: "52 to 31 days", desc: "Utilities Ombudsman" },
       { action: "Lifted the residential retention save rate from", metric: "18% to 24%", desc: "Energy Retailer" },
     ],
   },
   {
-    sector: "Advanced Manufacturing", name: "manufacturing",
-    items: [
+    slug: "manufacturing", icon: "manufacturing", title: "Advanced Manufacturing",
+    line: "Precision, throughput, and quality under tight tolerances.",
+    proof: [
       { action: "Redesigned self-serve to deflect", metric: "38%", desc: "Industrial Manufacturer", tail: "of manual transactions" },
       { action: "Redesigned the custom-blend quote process to cut", metric: "12 steps", desc: "Chemical Sales", tail: "and kill a delay" },
     ],
@@ -151,83 +149,38 @@ const proof = [
       </div>
     </section>
 
-    <!-- 5. INDUSTRIES -->
+    <!-- 5. INDUSTRIES + PROOF (combined, sector-organised) -->
     <section class="cx-section white cx-reveal">
       <div class="cx-inner">
         <div class="cx-head">
           <div class="eyebrow">INDUSTRIES WE SERVE</div>
           <h2 class="cx-title">Built for complex, regulated operations.</h2>
+          <p>Anonymised gains across the sectors we serve. Each one was built to run without us.</p>
         </div>
-        <div class="cx-ind-list">
-          {sectors.map((sec) => (
-            <a class="cx-ind-row" href={`/industries/${sec.slug}/`}>
-              <span class="cx-ind-icon" aria-hidden="true"><Icon name={sec.name as any} /></span>
-              <div class="cx-ind-text">
-                <h3 class="cx-ind-name">{sec.title}</h3>
-                <p class="cx-ind-line">{sec.line}</p>
-              </div>
-              <span class="cx-ind-ar" aria-hidden="true">&rsaquo;</span>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. PROVEN IN PRACTICE -->
-    <section class="cx-section beige cx-reveal">
-      <div class="cx-inner">
-        <div class="cx-head">
-          <div class="eyebrow">PROVEN IN PRACTICE</div>
-          <h2 class="cx-title">Operational gains that stay visible after the project ends.</h2>
-          <p>Anonymised engagements across the sectors we serve. Each one was built to run without us.</p>
-        </div>
-        <div class="cx-proof-groups">
-          {proof.map((g) => (
-            <div class="cx-proof-group">
-              <div class="cx-proof-group-head">
-                <span class="cx-proof-group-icon" aria-hidden="true"><Icon name={g.name as any} /></span>
-                <h3>{g.sector}</h3>
-              </div>
-              {g.items.map((it) => (
-                <div class="cx-ev-row">
-                  <p class="cx-ev-line">{it.action} <span class="cx-ev-metric">{it.metric}</span>{it.tail ? ` ${it.tail}` : ""}.</p>
-                  <p class="cx-ev-desc">{it.desc}</p>
+        <div class="cx-sector-grid">
+          {industries.map((ind) => (
+            <div class="cx-sector">
+              <div class="cx-sector-head">
+                <span class="cx-sector-icon" aria-hidden="true"><Icon name={ind.icon as any} /></span>
+                <div class="cx-sector-headtext">
+                  <h3 class="cx-sector-name">{ind.title}</h3>
+                  <p class="cx-sector-line">{ind.line}</p>
                 </div>
-              ))}
+              </div>
+              <div class="cx-sector-proof">
+                {ind.proof.map((it) => (
+                  <div class="cx-ev-row">
+                    <p class="cx-ev-line">{it.action} <span class="cx-ev-metric">{it.metric}</span>{it.tail ? ` ${it.tail}` : ""}.</p>
+                    <p class="cx-ev-desc">{it.desc}</p>
+                  </div>
+                ))}
+              </div>
+              <a class="btn-text cx-sector-link" href={`/industries/${ind.slug}/`}><span class="link-label">Explore {ind.title}</span> <span class="ar">&rsaquo;</span></a>
             </div>
           ))}
         </div>
         <div class="cx-proof-link">
           <a class="btn-text" href="/our-work/"><span class="link-label">Read the full case studies</span> <span class="ar">&rsaquo;</span></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. HOW TO ENGAGE (facts as hanging-label rows) -->
-    <section class="cx-section white cx-reveal">
-      <div class="cx-inner">
-        <div class="cx-head">
-          <div class="eyebrow">HOW TO ENGAGE</div>
-          <h2 class="cx-title">The facts before we talk.</h2>
-          <p>You should know how we work before a conversation starts.</p>
-        </div>
-        <div class="cx-rows">
-          <div class="cx-row">
-            <p class="cx-row-label">Engagement model</p>
-            <p class="cx-row-body">Advisory and capability transfer, not staff augmentation.</p>
-          </div>
-          <div class="cx-row">
-            <p class="cx-row-label">Typical start</p>
-            <p class="cx-row-body">Two to three weeks from the first conversation.</p>
-          </div>
-          <div class="cx-row">
-            <p class="cx-row-label">Geography</p>
-            <p class="cx-row-body">Australia.</p>
-          </div>
-          <div class="cx-row">
-            <p class="cx-row-label">How to reach us</p>
-            <p class="cx-row-body">Send the problem, not a polished brief. A plain description of the operational issue is enough to start. <a href="mailto:hello@equibt.com">hello@equibt.com</a></p>
-          </div>
         </div>
       </div>
     </section>

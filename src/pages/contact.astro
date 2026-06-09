@@ -35,7 +35,7 @@ const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC
         <div class="cx-head">
           <div class="eyebrow">GET IN TOUCH</div>
           <h2 class="cx-title">Let's talk about your operation.</h2>
-          <p>Share enough for us to understand the problem and decide whether a conversation is useful.</p>
+          <p>A plain description of the operational issue or goal is enough to start.</p>
         </div>
         <form class="cx-form" action="mailto:hello@equibt.com" method="post" enctype="text/plain">
           <div class="cx-form-row">
@@ -67,9 +67,11 @@ const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC
             <textarea id="problem" name="problem" required></textarea>
           </div>
           <div class="cx-field cx-captcha">
-            <label for="human-check">Quick check: what is six plus three? <span class="cx-req" aria-hidden="true">*</span></label>
-            <input id="human-check" name="human_check" type="text" inputmode="numeric" autocomplete="off" required />
-            <p class="cx-field-error" id="human-check-error" hidden>That answer is not right. Try again.</p>
+            <span class="cx-captcha-label">Verification <span class="cx-req" aria-hidden="true">*</span></span>
+            <!-- Cloudflare Turnstile. Interim TEST sitekey (always passes); the production sitekey
+                 + server-side token verification land with the form handler at go-live (EQT-262). -->
+            <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-theme="light"></div>
+            <p class="cx-field-error" id="captcha-error" hidden>Please complete the verification.</p>
           </div>
           <div class="cx-hp" aria-hidden="true">
             <label>Company website<input type="text" name="company_website" tabindex="-1" autocomplete="off" /></label>
@@ -88,8 +90,7 @@ const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC
       <div class="cx-inner">
         <div class="cx-head">
           <div class="eyebrow">REACH US</div>
-          <h2 class="cx-title">Send the problem, not a polished brief.</h2>
-          <p>A plain description of the operational issue is enough to start.</p>
+          <h2 class="cx-title">Reach us directly.</h2>
         </div>
         <div class="cx-reach-grid">
           <div class="cx-map">
@@ -131,6 +132,9 @@ const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC
   </main>
   <Footer />
 
+  <!-- Cloudflare Turnstile loader (auto-renders .cf-turnstile widgets) -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
+
   <script>
     function initialiseContactReveals() {
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -148,24 +152,21 @@ const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC
     }
     initialiseContactReveals();
 
-    // Lightweight bot gate (interim). Real protection = Cloudflare Turnstile at go-live (EQT-262),
-    // which needs server-side verification the static page cannot do yet.
+    // Bot gate: Cloudflare Turnstile + honeypot (client side). The TEST sitekey always passes;
+    // the production sitekey and SERVER-SIDE token verification land with the form handler at
+    // go-live (EQT-262) - a static page cannot verify the token on its own.
     function initialiseContactGuard() {
       const form = document.querySelector(".cx-form");
       if (!form) return;
       form.addEventListener("submit", (event) => {
         const honeypot = form.querySelector('[name="company_website"]');
-        const human = form.querySelector('[name="human_check"]');
-        const error = document.getElementById("human-check-error");
-        const answer = (human && "value" in human ? String(human.value) : "").trim().toLowerCase();
-        const humanOk = answer === "9" || answer === "nine";
+        const token = form.querySelector('[name="cf-turnstile-response"]');
+        const error = document.getElementById("captcha-error");
+        const tokenOk = token && "value" in token && String(token.value).length > 0;
         const honeypotTripped = honeypot && "value" in honeypot && String(honeypot.value).length > 0;
-        if (honeypotTripped || !humanOk) {
+        if (honeypotTripped || !tokenOk) {
           event.preventDefault();
-          if (!humanOk && error) {
-            error.hidden = false;
-            if (human && "focus" in human) human.focus();
-          }
+          if (!tokenOk && error) error.hidden = false;
         }
       });
     }
