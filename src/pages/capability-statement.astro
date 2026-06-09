@@ -1,0 +1,283 @@
+---
+import Footer from "../components/Footer.astro";
+import Icon from "../components/icons/Icon.astro";
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Roadmap from "../components/icons/glyphs/Roadmap.astro";
+import Capability from "../components/icons/glyphs/Capability.astro";
+import Assure from "../components/icons/glyphs/Assure.astro";
+import Charter from "../components/icons/glyphs/Charter.astro";
+import lmiLogo from "../../brand/assets/logos/lmi/LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg";
+import "../styles/contact.css";
+
+const services = [
+  { name: "frame", kicker: "FRAME · DEFINE", title: "Problem Framing", line: "Align on the real problem before anything else moves.", label: "FRAME" },
+  { name: "plan", kicker: "PLAN · MEASURE", title: "Operations Diagnostic", line: "See the full picture before you act.", label: "PLAN" },
+  { name: "solve", kicker: "SOLVE · ANALYSE", title: "Iterative Improvement", line: "Root cause, solution design, and the capability to keep improving independently.", label: "SOLVE" },
+  { name: "evolve", kicker: "EVOLVE · IMPROVE", title: "Rapid Pilot", line: "Validate the future state before you commit.", label: "EVOLVE" },
+  { name: "govern", kicker: "GOVERN · CONTROL", title: "Architecture & Governance", line: "Build the infrastructure that prevents drift.", label: "GOVERN" },
+  { name: "scale", kicker: "SCALE · OPERATE", title: "Operational Embedding", line: "Scale the proven solution and make it self-sustaining.", label: "SCALE" },
+];
+
+const sectors = [
+  { name: "financial-services", slug: "financial-services", title: "Financial Services", line: "Tight margins and high regulatory compliance, where simplification and risk reduction have to happen together." },
+  { name: "government", slug: "government", title: "Government and Public Sector", line: "Service delivery balanced against budget constraint and procedural rigour." },
+  { name: "utilities", slug: "utilities", title: "Utilities", line: "Critical services under regulatory requirement, where process consistency and safety are non-negotiable." },
+  { name: "manufacturing", slug: "manufacturing", title: "Advanced Manufacturing", line: "Precision, throughput, and quality under tight tolerances." },
+];
+
+const proof = [
+  {
+    sector: "Financial Services", name: "financial-services",
+    items: [
+      { action: "Cut mortgage lead leakage across direct and broker channels from", metric: "30% to 10%", desc: "Bank" },
+      { action: "Cut the close-to-board reporting cycle from", metric: "18 to 5 days", desc: "Property Group" },
+    ],
+  },
+  {
+    sector: "Government and Public Sector", name: "government",
+    items: [
+      { action: "Cut grant-processing rework through redesign alone, from", metric: "28% to 9%", desc: "Government Department" },
+      { action: "Cut complaint resolution time with a triage redesign, from", metric: "67 to 38 days", desc: "Privacy Regulator" },
+    ],
+  },
+  {
+    sector: "Utilities", name: "utilities",
+    items: [
+      { action: "Cut investigation cycle time across the teams, from", metric: "52 to 31 days", desc: "Utilities Ombudsman" },
+      { action: "Lifted the residential retention save rate from", metric: "18% to 24%", desc: "Energy Retailer" },
+    ],
+  },
+  {
+    sector: "Advanced Manufacturing", name: "manufacturing",
+    items: [
+      { action: "Redesigned self-serve to deflect", metric: "38%", desc: "Industrial Manufacturer", tail: "of manual transactions" },
+      { action: "Redesigned the custom-blend quote process to cut", metric: "12 steps", desc: "Chemical Sales", tail: "and kill a delay" },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Capability Statement | EQUIBT"
+  description="EQUIBT is an operational improvement advisory that builds the capability, systems, and governance to keep improvement in place across complex service organisations in Australia."
+>
+  <Nav />
+  <main>
+    <!-- 1. HERO -->
+    <section class="cx-hero cx-reveal">
+      <div class="cx-hero-inner">
+        <div class="cx-hero-content">
+          <div class="eyebrow">CAPABILITY STATEMENT</div>
+          <h1>A complete picture of how we work.</h1>
+          <p class="cx-hero-subhead">EQUIBT is an operational improvement advisory. We work with complex service organisations across Australia to build the capability, systems, and governance that keep improvement in place after we leave.</p>
+          <div class="cx-hero-actions">
+            <a href="/contact/" class="btn-primary">Get in touch</a>
+          </div>
+        </div>
+        <div class="cx-hero-art" aria-hidden="true">
+          <!-- hero art: firm motif at hero scale, native weight — page hero scene swaps in here later (artwork-authority, EQT-274/275) -->
+          <Icon name="hero-motif" />
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. WHO WE ARE -->
+    <section class="cx-section beige cx-reveal">
+      <div class="cx-inner">
+        <div class="cx-head">
+          <div class="eyebrow">WHO WE ARE</div>
+          <h2 class="cx-title">We make operational improvement hold.</h2>
+        </div>
+        <div class="cx-prose">
+          <p class="lead">Most improvement programmes produce results. Fewer produce results that last. The common failure mode is not bad methodology, it is abandonment: a firm runs a diagnostic, designs the fix, runs a pilot, then leaves, and twelve months later the operation has drifted back.</p>
+          <p>We embed inside your operations, build capability in your people, and exit when the work is yours.</p>
+        </div>
+        <div class="cx-callout">
+          <p class="cx-callout-lead">We built EQUIBT around a different model.</p>
+          <p>Every engagement is scoped from the outset to end with your team running the improved operation independently, without us in the room.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. HOW WE WORK -->
+    <section class="cx-section white cx-reveal">
+      <div class="cx-inner">
+        <div class="cx-head">
+          <div class="eyebrow">HOW WE WORK</div>
+          <h2 class="cx-title">Three things make the improvement survive our exit.</h2>
+        </div>
+        <div class="cx-cols">
+          <div class="cx-col">
+            <span class="cx-col-glyph" aria-hidden="true"><Roadmap /></span>
+            <h3>Sustainment, not just delivery.</h3>
+            <p>You get an exit plan from day one, with the exit criteria agreed before the work starts. We do not move to the next phase until the current one is embedded in how your team operates.</p>
+          </div>
+          <div class="cx-col">
+            <span class="cx-col-glyph" aria-hidden="true"><Capability /></span>
+            <h3>Capability at the centre.</h3>
+            <p>You leave able to run the improved operation yourselves. We measure success by what your team can do once we go, not by what we delivered while we were there.</p>
+          </div>
+          <div class="cx-col">
+            <span class="cx-col-glyph" aria-hidden="true"><Assure /></span>
+            <h3>Governance that runs itself.</h3>
+            <p>You keep the controls that keep the gain. Process architecture, control plans, dashboards, and escalation protocols are the mechanism that holds the improvement in place.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. WHAT WE DO -->
+    <section class="cx-section beige cx-reveal">
+      <div class="cx-inner">
+        <div class="cx-head">
+          <div class="eyebrow">WHAT WE DO</div>
+          <h2 class="cx-title">Six services. One focus: capability that holds.</h2>
+          <p>Each service can stand alone. The system is strongest when evidence, capability, and control build together.</p>
+        </div>
+        <div class="cx-svc-list">
+          {services.map((s) => (
+            <div class="cx-svc-row">
+              <span class="cx-svc-icon" aria-hidden="true"><Icon name={s.name as any} /></span>
+              <div class="cx-svc-text">
+                <span class="cx-svc-kicker">{s.kicker}</span>
+                <h3 class="cx-svc-name">{s.title}</h3>
+                <p class="cx-svc-line">{s.line}</p>
+              </div>
+              <a class="btn-text cx-svc-link" href={`/services/${s.name}/`}><span class="link-label">Explore {s.label}</span> <span class="ar">&rsaquo;</span></a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. INDUSTRIES -->
+    <section class="cx-section white cx-reveal">
+      <div class="cx-inner">
+        <div class="cx-head">
+          <div class="eyebrow">INDUSTRIES WE SERVE</div>
+          <h2 class="cx-title">Built for complex, regulated operations.</h2>
+        </div>
+        <div class="cx-ind-list">
+          {sectors.map((sec) => (
+            <a class="cx-ind-row" href={`/industries/${sec.slug}/`}>
+              <span class="cx-ind-icon" aria-hidden="true"><Icon name={sec.name as any} /></span>
+              <div class="cx-ind-text">
+                <h3 class="cx-ind-name">{sec.title}</h3>
+                <p class="cx-ind-line">{sec.line}</p>
+              </div>
+              <span class="cx-ind-ar" aria-hidden="true">&rsaquo;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. PROVEN IN PRACTICE -->
+    <section class="cx-section beige cx-reveal">
+      <div class="cx-inner">
+        <div class="cx-head">
+          <div class="eyebrow">PROVEN IN PRACTICE</div>
+          <h2 class="cx-title">Operational gains that stay visible after the project ends.</h2>
+          <p>Anonymised engagements across the sectors we serve. Each one was built to run without us.</p>
+        </div>
+        <div class="cx-proof-groups">
+          {proof.map((g) => (
+            <div class="cx-proof-group">
+              <div class="cx-proof-group-head">
+                <span class="cx-proof-group-icon" aria-hidden="true"><Icon name={g.name as any} /></span>
+                <h3>{g.sector}</h3>
+              </div>
+              {g.items.map((it) => (
+                <div class="cx-ev-row">
+                  <p class="cx-ev-line">{it.action} <span class="cx-ev-metric">{it.metric}</span>{it.tail ? ` ${it.tail}` : ""}.</p>
+                  <p class="cx-ev-desc">{it.desc}</p>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+        <div class="cx-proof-link">
+          <a class="btn-text" href="/our-work/"><span class="link-label">Read the full case studies</span> <span class="ar">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. HOW TO ENGAGE (facts as hanging-label rows) -->
+    <section class="cx-section white cx-reveal">
+      <div class="cx-inner">
+        <div class="cx-head">
+          <div class="eyebrow">HOW TO ENGAGE</div>
+          <h2 class="cx-title">The facts before we talk.</h2>
+          <p>You should know how we work before a conversation starts.</p>
+        </div>
+        <div class="cx-rows">
+          <div class="cx-row">
+            <p class="cx-row-label">Engagement model</p>
+            <p class="cx-row-body">Advisory and capability transfer, not staff augmentation.</p>
+          </div>
+          <div class="cx-row">
+            <p class="cx-row-label">Typical start</p>
+            <p class="cx-row-body">Two to three weeks from the first conversation.</p>
+          </div>
+          <div class="cx-row">
+            <p class="cx-row-label">Geography</p>
+            <p class="cx-row-body">Australia.</p>
+          </div>
+          <div class="cx-row">
+            <p class="cx-row-label">How to reach us</p>
+            <p class="cx-row-body">Send the problem, not a polished brief. A plain description of the operational issue is enough to start. <a href="mailto:hello@equibt.com">hello@equibt.com</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. LMI HANDOVER (core differentiating capability) -->
+    <section class="cx-section beige cx-lmi cx-reveal">
+      <div class="cx-inner">
+        <div class="eyebrow">OUR TRAINING DIVISION</div>
+        <h2 class="cx-title">Build lean, AI-capable teams.</h2>
+        <p class="cx-lmi-copy">Capability transfer is our core differentiator, and increasingly that means AI. Lean Methods Institute is our specialist training division: we build lean, AI-capable teams through structured Lean and AI courses, the same methods we run inside an engagement. It is how the improvement keeps compounding after we step out, run by your people, not us.</p>
+        <a href="https://leanmethods.com.au" class="cx-lmi-logo-link" aria-label="Lean Methods Institute">
+          <img src={lmiLogo.src} class="cx-lmi-logo-img" alt="Lean Methods Institute" loading="lazy" />
+        </a>
+        <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
+      </div>
+    </section>
+
+    <!-- 9. CLOSING CTA (light, copy left + motif right) -->
+    <section class="cx-section white cx-cta cx-reveal">
+      <div class="cx-inner cx-cta-grid">
+        <div class="cx-cta-copy">
+          <div class="eyebrow">WORK WITH US</div>
+          <h2>Get a straight read on a complex operation.</h2>
+          <p>Tell us where the operation is under strain. We will look at it with you and say straight whether it is a fixable process gap, and whether we are the right firm to fix it. You will hear back from an operator, not an auto-reply.</p>
+          <a href="/contact/" class="btn-primary">Get in touch</a>
+        </div>
+        <div class="cx-cta-art" aria-hidden="true">
+          <!-- closing motif: line-art at interim weight — page artwork swaps in here later (artwork-authority, EQT-274/275) -->
+          <Charter />
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+
+  <script>
+    function initialiseCapabilityReveals() {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const sections = Array.from(document.querySelectorAll(".cx-reveal"));
+      if (reduceMotion || !("IntersectionObserver" in window)) return;
+      document.documentElement.classList.add("cx-reveal-enabled");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.16 });
+      sections.forEach((section) => observer.observe(section));
+    }
+    initialiseCapabilityReveals();
+  </script>
+</Layout>
