@@ -1,0 +1,157 @@
+---
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Transfer from "../components/icons/glyphs/Transfer.astro";
+import Gauge from "../components/icons/glyphs/Gauge.astro";
+import RootCause from "../components/icons/glyphs/RootCause.astro";
+import AlignTarget from "../components/icons/glyphs/AlignTarget.astro";
+import Evidence from "../components/icons/glyphs/Evidence.astro";
+import "../styles/about.css";
+
+const arc = [
+  { Glyph: Gauge, heading: "Set a quantified baseline.", body: "Typical start is two to three weeks from the first conversation. We measure how the operation actually runs before anyone proposes a change, so the work is anchored to evidence, not opinion.", connector: "Then we isolate the cause" },
+  { Glyph: RootCause, heading: "Isolate the root cause.", body: "We separate the symptom from the cause, because a good solution to the wrong problem wastes budget and goodwill. Nothing gets designed until the cause is clear.", connector: "Then we design the fix" },
+  { Glyph: AlignTarget, heading: "Design the solution with your team.", body: "The people who run the operation help design the new way of working, so it fits the constraints they actually face and they own it from the start.", connector: "Then we prove it" },
+  { Glyph: Evidence, heading: "Run a governed pilot.", body: "We prove the redesign on a contained slice with the controls already in place, so the gain is real and measured before it scales.", connector: "Then we hand it back" },
+  { Glyph: Transfer, heading: "Hand over for sustainment.", body: "The handover makes sustainment your team's job, not an assumption. We leave when the operating rhythm, measures, governance and handover are strong enough to run without us." },
+];
+---
+
+<Layout
+  title="How We Work | EQUIBT"
+  description="Advisory and capability transfer, not staff augmentation. EQUIBT designs every engagement to end with your team running the improved operation."
+>
+  <Nav />
+  <main>
+    <!-- 1. HERO -->
+    <section class="about-hero about-reveal">
+      <div class="about-hero-inner">
+        <div class="about-hero-content">
+          <div class="eyebrow">HOW WE WORK</div>
+          <h1>We design every engagement to end.</h1>
+          <p class="about-hero-subhead">Advisory and capability transfer, not staff augmentation. We define how we leave before we decide how we start.</p>
+          <div class="about-hero-actions">
+            <a href="/contact/" class="btn-primary">Get in touch</a>
+          </div>
+        </div>
+        <div class="about-hero-art glyph" aria-hidden="true">
+          <!-- hero art: hand-off motif at hero scale, fine-line interim — page hero scene swaps in here later (artwork-authority, EQT-274/275) -->
+          <Transfer />
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. THE OPERATING MODEL -->
+    <section class="about-section beige about-reveal">
+      <div class="about-inner">
+        <div class="about-head">
+          <div class="eyebrow">THE OPERATING MODEL</div>
+          <h2 class="about-title">We build the operation to run without us.</h2>
+        </div>
+        <div class="about-prose">
+          <p>Every engagement carries an exit plan from day one. The exit criteria are written before the work begins, so success is defined in your terms, not ours.</p>
+        </div>
+        <div class="about-callout">
+          <p class="about-callout-lead">You are not buying hours.</p>
+          <p>You are buying an operation that holds.</p>
+        </div>
+        <div class="about-prose">
+          <p>We work in phases, and we do not advance a phase until the current one is embedded in how your team actually operates. The work only moves when the operation can carry it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. HOW WE OPERATE (we are / we're not) -->
+    <section class="about-section white about-reveal">
+      <div class="about-inner">
+        <div class="about-head">
+          <div class="eyebrow">HOW WE OPERATE</div>
+          <h2 class="about-title">Direct about what we are, and what we are not.</h2>
+          <p>This is the operating line we hold before we accept the work.</p>
+        </div>
+        <div class="about-compare">
+          <div class="about-compare-col">
+            <div class="eyebrow">WE ARE</div>
+            <div class="about-compare-item">Operators who have carried the weight, not observers</div>
+            <div class="about-compare-item">Embedded with your team until the change holds</div>
+            <div class="about-compare-item">Ruthless about measurement and root cause</div>
+            <div class="about-compare-item">Trusted with the problems that have resisted fixing</div>
+          </div>
+          <div class="about-compare-col">
+            <div class="eyebrow">WE ARE NOT</div>
+            <div class="about-compare-item">Best-practice parrots</div>
+            <div class="about-compare-item">Framework-first thinkers</div>
+            <div class="about-compare-item">Slide decks and theatre</div>
+            <div class="about-compare-item">Staff augmentation by another name</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. THE ARC -->
+    <section class="about-section beige about-reveal">
+      <div class="about-inner">
+        <div class="about-head">
+          <div class="eyebrow">THE ARC</div>
+          <h2 class="about-title">How an engagement runs.</h2>
+          <p>From the first conversation to the handover that makes sustainment your team's job, not an assumption.</p>
+        </div>
+        <div class="about-arc">
+          {arc.map((step) => {
+            const Glyph = step.Glyph;
+            return (
+              <div class="about-arc-step">
+                <span class="about-arc-node" aria-hidden="true"><Glyph /></span>
+                <div>
+                  <h3>{step.heading}</h3>
+                  <p>{step.body}</p>
+                  {step.connector && <div class="about-arc-connector">{step.connector} &darr;</div>}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <div class="about-rows">
+          <div class="about-row">
+            <p class="about-row-label">In the room while it is fragile.</p>
+            <p class="about-row-body">We stay close while the new way of working is still unstable, because that is when operational change usually slips.</p>
+          </div>
+          <div class="about-row">
+            <p class="about-row-label">Out of the room once it holds.</p>
+            <p class="about-row-body">We leave when the operating rhythm, measures, governance and handover are strong enough for your team to run without us.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CLOSING CTA (light) -->
+    <section class="about-section white about-cta about-reveal">
+      <div class="about-inner">
+        <div class="eyebrow">WORK WITH US</div>
+        <h2>See how this fits your operation.</h2>
+        <p>Tell us where the operation is under strain. We will tell you straight whether EQUIBT is the right firm for it.</p>
+        <a href="/contact/" class="btn-primary">Get in touch</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+
+  <script>
+    function initialiseAboutReveals() {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const sections = Array.from(document.querySelectorAll(".about-reveal"));
+      if (reduceMotion || !("IntersectionObserver" in window)) return;
+      document.documentElement.classList.add("about-reveal-enabled");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.16 });
+      sections.forEach((section) => observer.observe(section));
+    }
+    initialiseAboutReveals();
+  </script>
+</Layout>
