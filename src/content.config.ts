@@ -7,8 +7,26 @@ const insights = defineCollection({
   schema: z.object({
     title: z.string(),
     pillar: z.enum(["FRAME", "PLAN", "SOLVE", "EVOLVE", "GOVERN", "SCALE"]),
+    // DMAICO phase word for the dotted kicker (PLAN · MEASURE).
+    phase: z
+      .enum(["Define", "Measure", "Analyse", "Improve", "Control", "Operate"])
+      .optional(),
     summary: z.string(),
-    draft: z.boolean(),
+    readTime: z.string().optional(), // e.g. "4 min read"
+    // Sort key only. NEVER rendered as a public date (no dates/years in copy).
+    order: z.number().default(0),
+    lede: z.array(z.string()).optional(), // hook: 2-3 short punchy lines (no box)
+    aeo: z.string().optional(), // AEO answer block: short italic, citable (BLOG_WRITING_STANDARDS_v1)
+    tldr: z.array(z.string()).optional(), // TL;DR skim points (top white box)
+    tryThis: z
+      .object({ heading: z.string(), body: z.string() })
+      .optional(), // "one thing to try" (bottom white box)
+    related: z
+      .object({ label: z.string(), title: z.string(), href: z.string() })
+      .optional(), // related-service row (rendered with the DMAICO trainline)
+    closingLine: z.string().optional(), // strong closing statement (rendered as a pull-statement, not body italic)
+    cta: z.object({ heading: z.string(), body: z.string() }).optional(), // per-post closing CTA (falls back to a generic one)
+    draft: z.boolean().default(true),
   }),
 });
 

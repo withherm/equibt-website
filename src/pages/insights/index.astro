@@ -1,0 +1,114 @@
+---
+import { getCollection } from "astro:content";
+import Footer from "../../components/Footer.astro";
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import DocReport from "../../components/icons/glyphs/DocReport.astro";
+import "../../styles/insights.css";
+
+const posts = (await getCollection("insights", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.order - a.data.order,
+);
+
+// Monochrome dotted kicker: "PLAN · MEASURE" (pillar always; phase if set). No colour.
+const kicker = (pillar: string, phase?: string) =>
+  phase ? `${pillar} · ${phase.toUpperCase()}` : pillar;
+
+// Filter pills (interim: working client-side filter, no six-colour coding — EQT-260 owns the rework).
+const pillars = ["FRAME", "PLAN", "SOLVE", "EVOLVE", "GOVERN", "SCALE"] as const;
+---
+
+<Layout
+  title="Insights | EQUIBT"
+  description="Short, specific reads on diagnosing and fixing operations. Written for the people who run them."
+>
+  <Nav />
+  <main>
+    <section class="ins-hero ins-reveal">
+      <div class="ins-hero-inner">
+        <div class="ins-hero-copy">
+          <div class="eyebrow">INSIGHTS</div>
+          <h1>Field notes from the work.</h1>
+          <p class="ins-hero-lede">Short, specific reads on diagnosing and fixing operations. Written for the people who run them.</p>
+        </div>
+        <div class="ins-hero-art" aria-hidden="true">
+          <!-- hero art: line-art document/field-notes motif, fine-line interim: bespoke Insights hero art swaps in here later (artwork-authority, EQT-274/275) -->
+          <span><DocReport /></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ins-list ins-reveal">
+      <div class="ins-inner">
+        <div class="ins-filter" role="group" aria-label="Filter by service area">
+          <button class="ins-chip is-active" type="button" data-filter="all">All</button>
+          {pillars.map((p) => (
+            <button class="ins-chip" type="button" data-filter={p.toLowerCase()}>{p}</button>
+          ))}
+        </div>
+
+        <div class="ins-grid">
+          {posts.map((post) => {
+            const d = post.data;
+            return (
+              <a class="ins-card" href={`/insights/${post.id}/`} data-pillar={d.pillar.toLowerCase()}>
+                <div class="eyebrow ins-kicker">{kicker(d.pillar, d.phase)}</div>
+                <h2 class="ins-card-title">{d.title}</h2>
+                <p class="ins-card-summary">{d.summary}</p>
+                <div class="ins-card-foot">
+                  {d.readTime && <span class="ins-card-time">{d.readTime}</span>}
+                  <span class="ins-card-arrow btn-text" aria-hidden="true"><span class="link-label">Read</span> <span class="ar">&rsaquo;</span></span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+
+        <p class="ins-empty" hidden>No insights in this area yet.</p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  // ---- Working client-side filter (hairline pills, terracotta active; no colour coding) ----
+  function initialiseInsFilter() {
+    const chips = Array.from(document.querySelectorAll<HTMLButtonElement>(".ins-chip"));
+    const rows = Array.from(document.querySelectorAll<HTMLElement>(".ins-row"));
+    const empty = document.querySelector<HTMLElement>(".ins-empty");
+    if (!chips.length) return;
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const filter = chip.dataset.filter;
+        chips.forEach((c) => c.classList.toggle("is-active", c === chip));
+        let shown = 0;
+        rows.forEach((row) => {
+          const match = filter === "all" || row.dataset.pillar === filter;
+          row.classList.toggle("is-hidden", !match);
+          if (match) shown += 1;
+        });
+        if (empty) empty.hidden = shown !== 0;
+      });
+    });
+  }
+
+  // ---- One reveal per section (fade + 8px rise, once; reduced-motion disables) ----
+  function initialiseInsReveals() {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const sections = Array.from(document.querySelectorAll(".ins-reveal"));
+    if (reduceMotion || !("IntersectionObserver" in window)) return;
+    document.documentElement.classList.add("ins-reveal-enabled");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.16 });
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  initialiseInsFilter();
+  initialiseInsReveals();
+</script>
