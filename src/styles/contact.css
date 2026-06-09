@@ -147,7 +147,8 @@
 /* ---- Combined industries + proof: 2x2 beige tiles (earned boxes, minimal internal lines) ---- */
 .cx-sector-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
 .cx-sector{padding:36px 38px 32px;border-radius:16px;background:var(--off-white);display:flex;flex-direction:column;align-items:flex-start;}
-.cx-sector-head{display:grid;grid-template-columns:72px minmax(0,1fr);gap:22px;align-items:center;width:100%;margin-bottom:30px;}
+/* Fixed head height so the proof points start on the same line in every tile, regardless of descriptor length. */
+.cx-sector-head{display:grid;grid-template-columns:72px minmax(0,1fr);gap:22px;align-items:start;width:100%;min-height:120px;margin-bottom:26px;}
 .cx-sector-icon{display:block;width:68px;height:68px;flex:0 0 auto;}
 .cx-sector-icon svg{display:block;width:100%;height:100%;overflow:visible;}
 .cx-sector-name{margin:0 0 6px;color:var(--navy);font-size:22px;font-weight:700;line-height:1.15;}

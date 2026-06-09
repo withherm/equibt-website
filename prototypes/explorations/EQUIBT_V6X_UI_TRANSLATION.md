@@ -211,3 +211,27 @@ The exploration block library predated the EQT-253/254 conversions, so several b
 1. **Retire the six-colour pillar pill system.** Pillars identified by hand-drawn icon + monochrome dotted eyebrow. Terracotta is the only accent.
 2. **The Work becomes light evidence rows** (number tied to action); the page's one dark card becomes a flagship Our Work case with a real story. Applied in `EQUIBT_V6X_DIRECTION_EXPLORATION_v2.html`.
 3. **Carousel translates to de-weighted scroll-snap:** no shadows, hairline arrow controls, terracotta dot indicator.
+
+## EQT-256 / EQT-257 amendments (About, How We Work, Contact, Capability Statement — shipped 2026-06-09)
+
+Full detail and exact values: `DESIGN_LEARNINGS_v6x.md` → the EQT-256/257 rollout-locks section. Built in Cowork. About + How We Work share `about.css` (`.about-*`); Contact + Capability Statement share `contact.css` (`.cx-*`); neither imports another page's stylesheet.
+
+**Brand-level (site-wide):**
+1. **Geography = Australia only.** Drop "and New Zealand" everywhere.
+2. **LMI handover scope widened** to About, How We Work, and the Capability Statement (Herman override), in addition to home + industry + Our Work case pages; still never on service pages, the Our Work index, or Contact. Eyebrow on the new pages = `OUR TRAINING DIVISION` (home still `TRAINING`); framing is the differentiator ("Build lean, AI-capable teams").
+3. **Artwork redraw narrowed (EQT-274/275):** only hero/CTA art, deliverables glyphs, the 4 sector identity icons, and the service icons get redrawn in Affinity. General/section/story glyphs AND sector-challenge glyphs keep the shipped line-art. So on converted pages only the hero motif and CTA art swap at the seam.
+
+**Component rows (additions / changes to the tables above):**
+
+| Component | v5x / prior | v6x as built (EQT-256/257) |
+|---|---|---|
+| Side-bleed callout (about) | single navy-wash | a PAIR used sparingly and asymmetric: navy-wash callout bleeding off the LEFT edge + a white hairline "answer" bleeding off the RIGHT edge, matched internal spacing. |
+| Our Story field notes | hanging-label rows | hanging-label rows WITH an inline line-art glyph per note at site small-icon size (~54px), so Our Story reads distinctly from the (glyph-less) beliefs rows. Drop all dates. |
+| We-are / we're-not (How We Work) | two compare cards | two open columns on hairlines (block 30 as built). |
+| The Arc (How We Work) | phase timeline | the CaseStudy connected journey spine (glyph nodes + terracotta connectors), followed by the in-room/out-of-room posture as a TWO-COLUMN principle under its own eyebrow `WHEN WE STAY, WHEN WE LEAVE` (not orphan steps). |
+| Closing CTA (about/HWW/capability) | light, plain | light `cta-grid`: copy left, interim line-art motif right. Cliché "firmer footing" headline retired. |
+| Capability "what we do" | n/a | the home `svc-row` idiom (pillar icon + dotted kicker + name + line + `Explore PILLAR ›`), icons at site small-icon size. |
+| Capability industries + proof | two separate sections | MERGED into ONE sector-organised section: a **2x2 quadrant of beige tiles** (earned boxes, 16px radius, no border/shadow). Each tile = bigger sector icon (~68px) + name + descriptor, then that sector's 2 evidence rows (one quiet divider), then `Explore <Sector> ›`. The tile head has a **fixed min-height so the proof points start on the same line in every tile** regardless of descriptor length. Replaced the fine-line-soup of separate industry rows + proof groups. |
+| Capability "how to engage" / facts | facts rows | REMOVED (Herman). |
+| Contact form | hairline inputs | v6x hairline inputs kept; heading "Let's talk about your operation." (Herman re-allowed "Let's talk" as a HEADING; the CTA button stays "Get in touch"). CAPTCHA = **real Cloudflare Turnstile** (interim TEST sitekey; production key + server-side verification at go-live EQT-262) + honeypot; `mailto:` action interim. |
+| Contact REACH US | email + LinkedIn | monochrome Google-Maps embed left + details right (real Melbourne office + Melbourne/Sydney numbers + email + LinkedIn). Heading "Reach us directly." |
