@@ -1,0 +1,175 @@
+---
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Dialogue from "../components/icons/glyphs/Dialogue.astro";
+import "../styles/contact.css";
+
+const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC 3000, Australia");
+---
+
+<Layout
+  title="Contact EQUIBT | Start with a 15-minute conversation"
+  description="Tell EQUIBT about an operational problem in Australia. Send the problem, not a polished brief: a plain description of the operational issue is enough to start."
+>
+  <Nav />
+  <main>
+    <!-- 1. HERO (small) -->
+    <section class="cx-hero compact cx-reveal">
+      <div class="cx-hero-inner">
+        <div class="cx-hero-content">
+          <div class="eyebrow">CONTACT</div>
+          <h1>Start with a 15-minute conversation.</h1>
+          <p class="cx-hero-subhead">It is enough to tell you whether EQUIBT is the right fit for your operation. No obligation.</p>
+        </div>
+        <div class="cx-hero-art glyph" aria-hidden="true">
+          <!-- hero art: firm motif at hero scale, fine-line interim — page hero scene swaps in here later (artwork-authority, EQT-274/275) -->
+          <Dialogue />
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. THE FORM (right after the hero; v6x hairline inputs; mailto interim, no live handler this issue) -->
+    <section class="cx-section beige cx-reveal" id="contact-form">
+      <div class="cx-inner">
+        <div class="cx-head">
+          <div class="eyebrow">GET IN TOUCH</div>
+          <h2 class="cx-title">Let's talk about your operation.</h2>
+          <p>A plain description of the operational issue or goal is enough to start.</p>
+        </div>
+        <form class="cx-form" action="mailto:hello@equibt.com" method="post" enctype="text/plain">
+          <div class="cx-form-row">
+            <div class="cx-field">
+              <label for="first-name">First name <span class="cx-req" aria-hidden="true">*</span></label>
+              <input id="first-name" name="first_name" type="text" autocomplete="given-name" required />
+            </div>
+            <div class="cx-field">
+              <label for="last-name">Last name <span class="cx-req" aria-hidden="true">*</span></label>
+              <input id="last-name" name="last_name" type="text" autocomplete="family-name" required />
+            </div>
+          </div>
+          <div class="cx-form-row">
+            <div class="cx-field">
+              <label for="email">Email <span class="cx-req" aria-hidden="true">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div class="cx-field">
+              <label for="phone">Phone number <span class="cx-opt">(optional)</span></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+          </div>
+          <div class="cx-field">
+            <label for="organisation">Organisation <span class="cx-opt">(optional)</span></label>
+            <input id="organisation" name="organisation" type="text" autocomplete="organization" />
+          </div>
+          <div class="cx-field">
+            <label for="problem">How might we help? <span class="cx-req" aria-hidden="true">*</span></label>
+            <textarea id="problem" name="problem" required></textarea>
+          </div>
+          <div class="cx-field cx-captcha">
+            <span class="cx-captcha-label">Verification <span class="cx-req" aria-hidden="true">*</span></span>
+            <!-- Cloudflare Turnstile. Interim TEST sitekey (always passes); the production sitekey
+                 + server-side token verification land with the form handler at go-live (EQT-262). -->
+            <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-theme="light"></div>
+            <p class="cx-field-error" id="captcha-error" hidden>Please complete the verification.</p>
+          </div>
+          <div class="cx-hp" aria-hidden="true">
+            <label>Company website<input type="text" name="company_website" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <div class="cx-form-actions">
+            <button class="btn-primary" type="submit">Get in touch</button>
+            <p class="cx-form-note">Prefer email? Write to <a href="mailto:hello@equibt.com">hello@equibt.com</a> directly.</p>
+          </div>
+          <p class="cx-form-legend"><span class="cx-req">*</span> required</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- 3. REACH US (monochrome map left, contact details right) -->
+    <section class="cx-section white cx-reveal">
+      <div class="cx-inner">
+        <div class="cx-head">
+          <div class="eyebrow">REACH US</div>
+          <h2 class="cx-title">Reach us directly.</h2>
+        </div>
+        <div class="cx-reach-grid">
+          <div class="cx-map">
+            <iframe
+              title="Map showing the EQUIBT office at Level 15, 470 Collins Street, Melbourne"
+              src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <div class="cx-reach-details">
+            <div class="cx-contact-row">
+              <p class="cx-contact-label">Email</p>
+              <p class="cx-contact-val"><a href="mailto:hello@equibt.com">hello@equibt.com</a></p>
+            </div>
+            <div class="cx-contact-row">
+              <p class="cx-contact-label">Melbourne</p>
+              <p class="cx-contact-val"><a href="tel:+61390282288">+61 (03) 9028 2288</a></p>
+            </div>
+            <div class="cx-contact-row">
+              <p class="cx-contact-label">Sydney</p>
+              <p class="cx-contact-val"><a href="tel:+61280033022">+61 (02) 8003 3022</a></p>
+            </div>
+            <div class="cx-contact-row">
+              <p class="cx-contact-label">LinkedIn</p>
+              <p class="cx-contact-val"><a href="https://www.linkedin.com/company/equibt/" target="_blank" rel="noopener">EQUIBT <span class="ext">&#8599;</span></a></p>
+            </div>
+            <div class="cx-contact-row">
+              <p class="cx-contact-label">Office</p>
+              <p class="cx-contact-val">
+                Level 15, 470 Collins Street,<br />Melbourne VIC 3000, Australia
+                <a class="btn-text cx-directions" href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} target="_blank" rel="noopener"><span class="link-label">Get directions</span> <span class="ar">&rsaquo;</span></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+
+  <!-- Cloudflare Turnstile loader (auto-renders .cf-turnstile widgets) -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
+
+  <script>
+    function initialiseContactReveals() {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const sections = Array.from(document.querySelectorAll(".cx-reveal"));
+      if (reduceMotion || !("IntersectionObserver" in window)) return;
+      document.documentElement.classList.add("cx-reveal-enabled");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.16 });
+      sections.forEach((section) => observer.observe(section));
+    }
+    initialiseContactReveals();
+
+    // Bot gate: Cloudflare Turnstile + honeypot (client side). The TEST sitekey always passes;
+    // the production sitekey and SERVER-SIDE token verification land with the form handler at
+    // go-live (EQT-262) - a static page cannot verify the token on its own.
+    function initialiseContactGuard() {
+      const form = document.querySelector(".cx-form");
+      if (!form) return;
+      form.addEventListener("submit", (event) => {
+        const honeypot = form.querySelector('[name="company_website"]');
+        const token = form.querySelector('[name="cf-turnstile-response"]');
+        const error = document.getElementById("captcha-error");
+        const tokenOk = token && "value" in token && String(token.value).length > 0;
+        const honeypotTripped = honeypot && "value" in honeypot && String(honeypot.value).length > 0;
+        if (honeypotTripped || !tokenOk) {
+          event.preventDefault();
+          if (!tokenOk && error) error.hidden = false;
+        }
+      });
+    }
+    initialiseContactGuard();
+  </script>
+</Layout>
