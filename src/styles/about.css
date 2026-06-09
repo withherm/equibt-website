@@ -71,7 +71,7 @@
 .about-answer{
   --answer-bleed:max(var(--about-gutter),calc((100vw - var(--max)) / 2));
   width:min(100vw,calc(640px + var(--answer-bleed)));
-  margin:6px calc(var(--answer-bleed) * -1) 0 0;
+  margin:44px calc(var(--answer-bleed) * -1) 0 0;
   padding:30px var(--answer-bleed) 30px 40px;
   border-radius:14px 0 0 14px;
   border:1px solid var(--hairline);
