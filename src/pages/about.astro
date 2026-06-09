@@ -6,6 +6,12 @@ import Nav from "../components/Nav.astro";
 import Roadmap from "../components/icons/glyphs/Roadmap.astro";
 import Capability from "../components/icons/glyphs/Capability.astro";
 import Assure from "../components/icons/glyphs/Assure.astro";
+import Loop from "../components/icons/glyphs/Loop.astro";
+import AlignTarget from "../components/icons/glyphs/AlignTarget.astro";
+import Network from "../components/icons/glyphs/Network.astro";
+import Dialogue from "../components/icons/glyphs/Dialogue.astro";
+import Charter from "../components/icons/glyphs/Charter.astro";
+import lmiLogo from "../../brand/assets/logos/lmi/LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg";
 import "../styles/about.css";
 ---
 
@@ -124,31 +130,59 @@ import "../styles/about.css";
         </div>
         <div class="about-rows">
           <div class="about-row story">
-            <p class="about-row-label">Long enough to know what holds.</p>
+            <div class="about-story-head">
+              <span class="about-story-glyph" aria-hidden="true"><Loop /></span>
+              <p class="about-row-label">Long enough to know what holds.</p>
+            </div>
             <p class="about-row-body">We have been at this long enough to learn that an improvement only counts if it survives our exit.</p>
           </div>
           <div class="about-row story">
-            <p class="about-row-label">Say it like "equipped".</p>
+            <div class="about-story-head">
+              <span class="about-story-glyph" aria-hidden="true"><Capability /></span>
+              <p class="about-row-label">Say it like "equipped".</p>
+            </div>
             <p class="about-row-body">EQUIBT is a made-up word, and the job it names: we equip your team to run the improved operation without us. The domain was free, too.</p>
           </div>
           <div class="about-row story">
-            <p class="about-row-label">We say no a lot.</p>
+            <div class="about-story-head">
+              <span class="about-story-glyph" aria-hidden="true"><AlignTarget /></span>
+              <p class="about-row-label">We say no a lot.</p>
+            </div>
             <p class="about-row-body">We do not consult on everything. We focus on operational performance in complex service organisations, and we say no to the rest.</p>
           </div>
           <div class="about-row story">
-            <p class="about-row-label">In it to deliver it.</p>
+            <div class="about-story-head">
+              <span class="about-story-glyph" aria-hidden="true"><Network /></span>
+              <p class="about-row-label">In it to deliver it.</p>
+            </div>
             <p class="about-row-body">We are not a body shop. We do not outsource our talent, and our operators are part of the firm, here for the long term. Each one adds their own spice to the brand.</p>
           </div>
           <div class="about-row story">
-            <p class="about-row-label">Grown on WOMBAT.</p>
+            <div class="about-story-head">
+              <span class="about-story-glyph" aria-hidden="true"><Dialogue /></span>
+              <p class="about-row-label">Grown on WOMBAT.</p>
+            </div>
             <p class="about-row-body">Word Of Mouth, Buy And Tell. Our clients send us the next one.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 6. CLIENT LOGO WALL -->
-    <section class="about-section beige about-reveal">
+    <!-- 6. LMI HANDOVER (story-framed: why we built LMI) -->
+    <section class="about-section beige about-lmi about-reveal">
+      <div class="about-inner">
+        <div class="eyebrow">TRAINING</div>
+        <h2 class="about-title">Build the capability in-house.</h2>
+        <p class="about-lmi-copy">We started Lean Methods Institute for the clients who wanted to build the capability themselves, not rent it. It is our specialist training division: the same Lean and AI methods we run inside an engagement, taught to your team through structured courses, so the improvement keeps going after we step out. Working with us to build capability is the point, not an add-on.</p>
+        <a href="https://leanmethods.com.au" class="about-lmi-logo-link" aria-label="Lean Methods Institute">
+          <img src={lmiLogo.src} class="about-lmi-logo-img" alt="Lean Methods Institute" loading="lazy" />
+        </a>
+        <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
+      </div>
+    </section>
+
+    <!-- 7. CLIENT LOGO WALL -->
+    <section class="about-section white about-reveal">
       <div class="about-inner about-logos">
         <div class="eyebrow">CLIENTS</div>
         <h2>Worked across complex, regulated operating environments.</h2>
@@ -172,13 +206,19 @@ import "../styles/about.css";
       </div>
     </section>
 
-    <!-- 7. CLOSING CTA (light) -->
-    <section class="about-section white about-cta about-reveal">
-      <div class="about-inner">
-        <div class="eyebrow">WORK WITH US</div>
-        <h2>Put a complex operation on firmer footing.</h2>
-        <p>Tell us where the operation is under strain. We will tell you straight whether it is a fixable process gap, and whether we are the right firm for it.</p>
-        <a href="/contact/" class="btn-primary">Get in touch</a>
+    <!-- 8. CLOSING CTA (light, copy left + motif right) -->
+    <section class="about-section beige about-cta about-reveal">
+      <div class="about-inner about-cta-grid">
+        <div class="about-cta-copy">
+          <div class="eyebrow">WORK WITH US</div>
+          <h2>Put a complex operation on firmer footing.</h2>
+          <p>Tell us where the operation is under strain. We will tell you straight whether it is a fixable process gap, and whether we are the right firm for it.</p>
+          <a href="/contact/" class="btn-primary">Get in touch</a>
+        </div>
+        <div class="about-cta-art" aria-hidden="true">
+          <!-- closing motif: line-art at interim weight — page artwork swaps in here later (artwork-authority, EQT-274/275) -->
+          <Charter />
+        </div>
       </div>
     </section>
   </main>

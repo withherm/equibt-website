@@ -7,6 +7,8 @@ import Gauge from "../components/icons/glyphs/Gauge.astro";
 import RootCause from "../components/icons/glyphs/RootCause.astro";
 import AlignTarget from "../components/icons/glyphs/AlignTarget.astro";
 import Evidence from "../components/icons/glyphs/Evidence.astro";
+import Roadmap from "../components/icons/glyphs/Roadmap.astro";
+import lmiLogo from "../../brand/assets/logos/lmi/LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg";
 import "../styles/about.css";
 
 const arc = [
@@ -30,7 +32,7 @@ const arc = [
         <div class="about-hero-content">
           <div class="eyebrow">HOW WE WORK</div>
           <h1>We design every engagement to end.</h1>
-          <p class="about-hero-subhead">Advisory and capability transfer, not staff augmentation. We define how we leave before we decide how we start.</p>
+          <p class="about-hero-subhead">We are advisory and capability transfer, not staff augmentation. Every engagement is scoped to end: we agree the exit criteria before the work begins, then move in phases, and we do not advance one until your team can carry the last. What you are left with is an operation that holds on its own, not a dependency on us.</p>
           <div class="about-hero-actions">
             <a href="/contact/" class="btn-primary">Get in touch</a>
           </div>
@@ -125,13 +127,32 @@ const arc = [
       </div>
     </section>
 
-    <!-- 5. CLOSING CTA (light) -->
-    <section class="about-section white about-cta about-reveal">
+    <!-- 5. LMI HANDOVER (story-framed: why we built LMI) -->
+    <section class="about-section white about-lmi about-reveal">
       <div class="about-inner">
-        <div class="eyebrow">WORK WITH US</div>
-        <h2>See how this fits your operation.</h2>
-        <p>Tell us where the operation is under strain. We will tell you straight whether EQUIBT is the right firm for it.</p>
-        <a href="/contact/" class="btn-primary">Get in touch</a>
+        <div class="eyebrow">TRAINING</div>
+        <h2 class="about-title">Build the capability in-house.</h2>
+        <p class="about-lmi-copy">Capability transfer is the point of every engagement, so we built a place for teams who want to build it directly. Lean Methods Institute is our specialist training division: the same Lean and AI methods we use in the room, taught through structured courses, so your team can keep improving the operation long after we have stepped out.</p>
+        <a href="https://leanmethods.com.au" class="about-lmi-logo-link" aria-label="Lean Methods Institute">
+          <img src={lmiLogo.src} class="about-lmi-logo-img" alt="Lean Methods Institute" loading="lazy" />
+        </a>
+        <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
+      </div>
+    </section>
+
+    <!-- 6. CLOSING CTA (light, copy left + motif right) -->
+    <section class="about-section beige about-cta about-reveal">
+      <div class="about-inner about-cta-grid">
+        <div class="about-cta-copy">
+          <div class="eyebrow">WORK WITH US</div>
+          <h2>See how this fits your operation.</h2>
+          <p>Tell us where the operation is under strain. We will tell you straight whether EQUIBT is the right firm for it.</p>
+          <a href="/contact/" class="btn-primary">Get in touch</a>
+        </div>
+        <div class="about-cta-art" aria-hidden="true">
+          <!-- closing motif: line-art at interim weight — page artwork swaps in here later (artwork-authority, EQT-274/275) -->
+          <Roadmap />
+        </div>
       </div>
     </section>
   </main>

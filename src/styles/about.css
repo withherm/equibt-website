@@ -79,8 +79,9 @@
   background:#fff;
 }
 .about-answer p{margin:0;color:var(--near-black);font-size:21px;line-height:1.4;}
+.about-answer p + p{margin-top:10px;}
 .about-answer .about-answer-lead{
-  color:var(--navy);font-family:"Montserrat",Arial,sans-serif;font-size:21px;font-weight:700;line-height:1.25;
+  margin:0;color:var(--navy);font-family:"Montserrat",Arial,sans-serif;font-size:21px;font-weight:700;line-height:1.25;
 }
 
 /* ---- Differentiators / open columns on top hairlines (de-boxed) ---- */
@@ -136,10 +137,31 @@
 .about-arc-step p{margin:0;max-width:720px;color:var(--mid-grey);font-size:22px;line-height:1.45;}
 .about-arc-connector{margin-top:14px;color:var(--terracotta);font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
 
-/* ---- Light closing CTA ---- */
-.about-cta .eyebrow{margin-bottom:18px;}
-.about-cta h2{max-width:680px;margin:0 0 20px;font-size:clamp(30px,3vw,38px);font-weight:700;line-height:1.08;}
-.about-cta p{max-width:640px;margin:0 0 32px;color:var(--mid-grey);font-size:22px;line-height:1.45;}
+/* ---- Our Story: line-art glyph per field note (differentiates from beliefs) ---- */
+.about-story-head{display:block;}
+.about-story-glyph{display:block;width:46px;height:46px;margin-bottom:16px;}
+.about-story-glyph svg{display:block;width:100%;height:100%;overflow:visible;}
+.about-row.story .about-row-label{margin:0;}
+
+/* ---- LMI training handover (full-colour 702 transparent mark, leanmethods.com.au) ---- */
+.about-lmi .eyebrow{margin-bottom:14px;}
+.about-lmi-copy{max-width:760px;margin:18px 0 26px;color:var(--mid-grey);font-size:22px;line-height:1.45;}
+.about-lmi-logo-link{display:inline-block;width:min(250px,100%);margin:0 0 var(--link-gap);color:inherit;text-decoration:none;}
+.about-lmi-logo-img{display:block;width:100%;height:auto;}
+.about-lmi .btn-text{display:table;margin-top:var(--link-gap);}
+
+/* ---- Light closing CTA (copy left, line-art motif right) ---- */
+.about-cta-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.62fr);gap:48px;align-items:center;}
+.about-cta-copy .eyebrow{margin-bottom:18px;}
+.about-cta-copy h2{max-width:640px;margin:0 0 20px;font-size:clamp(30px,3vw,38px);font-weight:700;line-height:1.08;}
+.about-cta-copy p{max-width:600px;margin:0 0 32px;color:var(--mid-grey);font-size:22px;line-height:1.45;}
+.about-cta-art{display:flex;align-items:center;justify-content:flex-end;}
+.about-cta-art svg{display:block;width:min(300px,28vw);height:auto;overflow:visible;}
+.about-cta-art svg .hd,.about-cta-art svg .hd-f1,.about-cta-art svg .hd-f2,.about-cta-art svg .hd-f3,
+.about-cta-art svg[stroke]:not([stroke="none"]),.about-cta-art svg [stroke]:not([stroke="none"]){
+  stroke-width:.5;stroke-linecap:round;stroke-linejoin:round;
+}
+.about-cta-art svg .hd-acc,.about-cta-art svg [stroke="#C15F3C"]{stroke-width:.575;}
 
 /* ---- Scroll reveal: one per section, fade + 8px rise, once ---- */
 .about-reveal-enabled .about-reveal > .about-inner,
@@ -165,6 +187,9 @@
   .about-cols{grid-template-columns:1fr;gap:0;}
   .about-col{padding-top:24px;}
   .about-col + .about-col{margin-top:4px;}
+  .about-cta-grid{grid-template-columns:1fr;gap:36px;}
+  .about-cta-art{justify-content:flex-start;}
+  .about-cta-art svg{width:min(260px,56vw);}
 }
 @media(max-width:860px){
   .about-compare{grid-template-columns:1fr;gap:0;}
