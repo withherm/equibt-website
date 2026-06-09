@@ -10,7 +10,7 @@ const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC
 
 <Layout
   title="Contact EQUIBT | Start with a 15-minute conversation"
-  description="Tell EQUIBT about an operational problem in Australia or New Zealand. Send the problem, not a polished brief: a plain description of the operational issue is enough to start."
+  description="Tell EQUIBT about an operational problem in Australia. Send the problem, not a polished brief: a plain description of the operational issue is enough to start."
 >
   <Nav />
   <main>
@@ -34,8 +34,8 @@ const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC
       <div class="cx-inner">
         <div class="cx-head">
           <div class="eyebrow">GET IN TOUCH</div>
-          <h2 class="cx-title">Tell us what is under strain.</h2>
-          <p>Share enough context for us to understand the strain point and decide whether a conversation is useful.</p>
+          <h2 class="cx-title">Let's talk about your operation.</h2>
+          <p>Share enough for us to understand the problem and decide whether a conversation is useful.</p>
         </div>
         <form class="cx-form" action="mailto:hello@equibt.com" method="post" enctype="text/plain">
           <div class="cx-form-row">
@@ -83,68 +83,15 @@ const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC
       </div>
     </section>
 
-    <!-- 3. WHAT TO EXPECT (facts as hanging-label rows) -->
+    <!-- 3. REACH US (monochrome map left, contact details right) -->
     <section class="cx-section white cx-reveal">
-      <div class="cx-inner">
-        <div class="cx-head">
-          <div class="eyebrow">WHAT TO EXPECT</div>
-          <h2 class="cx-title">The facts before we talk.</h2>
-          <p>You should know how we engage before a conversation starts.</p>
-        </div>
-        <div class="cx-rows">
-          <div class="cx-row">
-            <p class="cx-row-label">Engagement model</p>
-            <p class="cx-row-body">Advisory and capability transfer, not staff augmentation.</p>
-          </div>
-          <div class="cx-row">
-            <p class="cx-row-label">Typical start</p>
-            <p class="cx-row-body">Two to three weeks from the first conversation.</p>
-          </div>
-          <div class="cx-row">
-            <p class="cx-row-label">Geography</p>
-            <p class="cx-row-body">Australia and New Zealand.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. REACH US (email, LinkedIn, office phone numbers) -->
-    <section class="cx-section beige cx-reveal">
       <div class="cx-inner">
         <div class="cx-head">
           <div class="eyebrow">REACH US</div>
           <h2 class="cx-title">Send the problem, not a polished brief.</h2>
           <p>A plain description of the operational issue is enough to start.</p>
         </div>
-        <div class="cx-rows">
-          <div class="cx-row">
-            <p class="cx-row-label">Email</p>
-            <p class="cx-row-body"><a href="mailto:hello@equibt.com">hello@equibt.com</a></p>
-          </div>
-          <div class="cx-row">
-            <p class="cx-row-label">Melbourne</p>
-            <p class="cx-row-body"><a href="tel:+61390282288">+61 (03) 9028 2288</a></p>
-          </div>
-          <div class="cx-row">
-            <p class="cx-row-label">Sydney</p>
-            <p class="cx-row-body"><a href="tel:+61280033022">+61 (02) 8003 3022</a></p>
-          </div>
-          <div class="cx-row">
-            <p class="cx-row-label">LinkedIn</p>
-            <p class="cx-row-body"><a href="https://www.linkedin.com/company/equibt/" target="_blank" rel="noopener">EQUIBT <span class="ext">&#8599;</span></a></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. VISIT US (map + address) -->
-    <section class="cx-section white cx-reveal">
-      <div class="cx-inner">
-        <div class="cx-head">
-          <div class="eyebrow">VISIT US</div>
-          <h2 class="cx-title">Find us in the Melbourne CBD.</h2>
-        </div>
-        <div class="cx-visit-grid">
+        <div class="cx-reach-grid">
           <div class="cx-map">
             <iframe
               title="Map showing the EQUIBT office at Level 15, 470 Collins Street, Melbourne"
@@ -153,10 +100,30 @@ const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-          <div class="cx-address">
-            <span class="cx-address-label">Office</span>
-            <p>Level 15, 470 Collins Street,<br />Melbourne VIC 3000,<br />Australia</p>
-            <a class="btn-text cx-directions" href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} target="_blank" rel="noopener"><span class="link-label">Get directions</span> <span class="ar">&rsaquo;</span></a>
+          <div class="cx-reach-details">
+            <div class="cx-contact-row">
+              <p class="cx-contact-label">Email</p>
+              <p class="cx-contact-val"><a href="mailto:hello@equibt.com">hello@equibt.com</a></p>
+            </div>
+            <div class="cx-contact-row">
+              <p class="cx-contact-label">Melbourne</p>
+              <p class="cx-contact-val"><a href="tel:+61390282288">+61 (03) 9028 2288</a></p>
+            </div>
+            <div class="cx-contact-row">
+              <p class="cx-contact-label">Sydney</p>
+              <p class="cx-contact-val"><a href="tel:+61280033022">+61 (02) 8003 3022</a></p>
+            </div>
+            <div class="cx-contact-row">
+              <p class="cx-contact-label">LinkedIn</p>
+              <p class="cx-contact-val"><a href="https://www.linkedin.com/company/equibt/" target="_blank" rel="noopener">EQUIBT <span class="ext">&#8599;</span></a></p>
+            </div>
+            <div class="cx-contact-row">
+              <p class="cx-contact-label">Office</p>
+              <p class="cx-contact-val">
+                Level 15, 470 Collins Street,<br />Melbourne VIC 3000, Australia
+                <a class="btn-text cx-directions" href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} target="_blank" rel="noopener"><span class="link-label">Get directions</span> <span class="ar">&rsaquo;</span></a>
+              </p>
+            </div>
           </div>
         </div>
       </div>

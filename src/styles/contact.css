@@ -147,22 +147,22 @@
 /* ---- Reach us inline editorial rows reuse .cx-rows ---- */
 
 /* ---- Contact form: v6x hairline inputs (1px border, no fill) ---- */
-.cx-form{max-width:680px;display:grid;gap:26px;}
-.cx-field{display:grid;gap:10px;}
+.cx-form{max-width:680px;display:grid;gap:18px;}
+.cx-field{display:grid;gap:8px;}
 .cx-field label{color:var(--navy);font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;line-height:1.2;text-transform:uppercase;}
 .cx-field input,.cx-field textarea{
   width:100%;
   border:1px solid var(--hairline);
-  border-radius:10px;
-  padding:15px 17px;
-  background:transparent;
+  border-radius:8px;
+  padding:12px 14px;
+  background:#fff;
   color:var(--near-black);
   font-family:"Lora",Georgia,serif;
   font-size:18px;
   line-height:1.4;
 }
 .cx-field input::placeholder,.cx-field textarea::placeholder{color:var(--muted);}
-.cx-field textarea{min-height:170px;resize:vertical;}
+.cx-field textarea{min-height:128px;resize:vertical;}
 .cx-field input:focus,.cx-field textarea:focus{
   outline:2px solid rgba(193,95,60,0.28);
   outline-offset:1px;
@@ -172,16 +172,16 @@
 .cx-form-note{margin:0;color:var(--caption);font-family:"Lora",Georgia,serif;font-size:17px;line-height:1.4;}
 .cx-form-note a{color:var(--terracotta);text-decoration:underline;text-underline-offset:3px;font-weight:600;}
 
-/* ---- Compact hero (Contact: small, form sits right beneath) ---- */
-.cx-hero.compact{padding:88px 56px 68px;}
-.cx-hero.compact h1{margin-bottom:22px;}
+/* ---- Compact hero (Contact: small, ~75% height, form sits right beneath) ---- */
+.cx-hero.compact{padding:64px 56px 50px;}
+.cx-hero.compact h1{margin-bottom:20px;}
 .cx-hero.compact .cx-hero-subhead{margin-bottom:0;}
-.cx-hero.compact .cx-hero-art.glyph svg{width:min(320px,30vw);}
-@media(max-width:960px){.cx-hero.compact .cx-hero-art.glyph svg{width:min(260px,52vw);}}
-@media(max-width:760px){.cx-hero.compact{padding:64px 26px 56px;}}
+.cx-hero.compact .cx-hero-art.glyph svg{width:min(300px,28vw);}
+@media(max-width:960px){.cx-hero.compact .cx-hero-art.glyph svg{width:min(240px,48vw);}}
+@media(max-width:760px){.cx-hero.compact{padding:48px 26px 44px;}}
 
 /* ---- Form layout helpers + required / optional markers ---- */
-.cx-form-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.cx-form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
 .cx-req{color:var(--terracotta);}
 .cx-opt{color:var(--muted);font-weight:600;}
 .cx-form-legend{margin:0;color:var(--caption);font-family:"Lora",Georgia,serif;font-size:16px;}
@@ -192,19 +192,27 @@
 /* Honeypot: off-screen, never shown to humans */
 .cx-hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;}
 
-@media(max-width:560px){.cx-form-row{grid-template-columns:1fr;gap:24px;}}
+@media(max-width:560px){.cx-form-row{grid-template-columns:1fr;gap:18px;}}
 
-/* ---- Visit us: map + address block ---- */
-.cx-visit-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(260px,1fr);gap:48px;align-items:start;}
+/* ---- Reach us: monochrome map (left) + contact details (right) ---- */
+.cx-reach-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,1fr);gap:48px;align-items:start;}
 .cx-map{border:1px solid var(--hairline);border-radius:16px;overflow:hidden;line-height:0;}
-.cx-map iframe{display:block;width:100%;height:440px;border:0;filter:grayscale(.35) contrast(1.03);}
-.cx-address{padding-top:4px;}
-.cx-address-label{display:block;margin-bottom:12px;color:var(--terracotta);font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;line-height:1.2;text-transform:uppercase;}
-.cx-address p{margin:0 0 22px;color:var(--near-black);font-size:21px;line-height:1.5;font-style:normal;}
-.cx-address .cx-directions{margin-top:4px;}
+.cx-map iframe{display:block;width:100%;height:460px;border:0;filter:grayscale(1) contrast(1.05);}
+.cx-reach-details{display:flex;flex-direction:column;}
+.cx-contact-row{display:grid;grid-template-columns:120px minmax(0,1fr);gap:22px;padding:18px 0;border-top:1px solid var(--hairline);align-items:baseline;}
+.cx-reach-details .cx-contact-row:first-child{border-top:0;padding-top:0;}
+.cx-contact-label{margin:0;color:var(--navy);font-family:"Montserrat",Arial,sans-serif;font-size:16px;font-weight:700;line-height:1.3;letter-spacing:-.01em;}
+.cx-contact-val{margin:0;color:var(--near-black);font-size:19px;line-height:1.5;}
+.cx-contact-val a{color:var(--terracotta);text-decoration:underline;text-underline-offset:3px;font-weight:600;}
+.cx-contact-val a.btn-text{text-decoration:none;}
+.cx-contact-val .ext{font-style:normal;}
+.cx-contact-val .cx-directions{display:inline-flex;margin-top:12px;}
 @media(max-width:960px){
-  .cx-visit-grid{grid-template-columns:1fr;gap:32px;}
+  .cx-reach-grid{grid-template-columns:1fr;gap:32px;}
   .cx-map iframe{height:340px;}
+}
+@media(max-width:560px){
+  .cx-contact-row{grid-template-columns:1fr;gap:6px;padding:16px 0;}
 }
 
 /* ---- LMI training handover (core differentiating capability) ---- */
