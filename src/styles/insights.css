@@ -1,0 +1,297 @@
+/* Insights (blog) index + post template (EQT-258). v6x. References tokens.css; does not redefine tokens. */
+
+/* ---- Shared line-art motif (interim DocReport glyph, fine-lined for hero scale) ---- */
+.ins-hero-art,.ins-post-hero-art,.ins-close-art{display:flex;align-items:center;justify-content:flex-end;}
+.ins-hero-art span,.ins-post-hero-art span{display:block;height:auto;transform:translateX(2vw);}
+.ins-hero-art svg,.ins-post-hero-art svg{display:block;width:min(200px,22vw);height:auto;overflow:visible;}
+.ins-close-art svg{display:block;width:min(180px,22vw);height:auto;overflow:visible;}
+/* DocReport ships literal strokes at 2.8 on a 64 viewBox; thin them down when scaled up. */
+.ins-hero-art svg [stroke]:not([stroke="none"]),
+.ins-post-hero-art svg [stroke]:not([stroke="none"]),
+.ins-close-art svg [stroke]:not([stroke="none"]){stroke-width:1.1;}
+
+/* ---- Index hero (asymmetric, white; height parity with Contact hero) ---- */
+.ins-hero{padding:124px 56px 104px;background:#fff;}
+.ins-hero-inner{
+  max-width:var(--wide);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1.04fr) minmax(260px,.96fr);
+  gap:40px;
+  align-items:center;
+}
+.ins-hero .eyebrow{margin-bottom:32px;}
+.ins-hero h1{max-width:740px;margin:0 0 24px;font-size:clamp(40px,3.4vw,46px);font-weight:700;line-height:1.08;}
+.ins-hero-lede{max-width:620px;margin:0;color:var(--mid-grey);font-size:22px;line-height:1.42;}
+
+/* ---- List section ---- */
+.ins-list{padding:64px 56px 104px;background:#fff;}
+.ins-inner{max-width:var(--max);margin:0 auto;}
+
+/* ---- Filter pills (hairline, terracotta active; NO six-colour coding — EQT-260) ---- */
+.ins-filter{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:44px;}
+.ins-chip{
+  min-height:38px;
+  padding:0 18px;
+  border:1px solid var(--hairline);
+  border-radius:999px;
+  background:#fff;
+  color:var(--navy);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  line-height:1;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:background .18s ease,border-color .18s ease,color .18s ease;
+}
+.ins-chip:hover,.ins-chip:focus-visible{border-color:var(--navy);}
+.ins-chip.is-active{border-color:var(--terracotta);background:var(--terracotta);color:#fff;}
+
+/* ---- Card grid: each card ~1/3 width, responsive (3 -> 2 -> 1). Thin hairline boxes, no shadow. ---- */
+.ins-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;}
+.ins-card{
+  display:flex;
+  flex-direction:column;
+  min-height:100%;
+  padding:30px 30px 26px;
+  border:1px solid var(--hairline);
+  border-radius:16px;
+  background:#fff;
+  color:var(--near-black);
+  text-decoration:none;
+  transition:border-color .18s ease,transform .18s ease;
+}
+.ins-card:hover,.ins-card:focus-visible{border-color:rgba(38,36,92,0.30);transform:translateY(-3px);}
+.ins-card.is-hidden{display:none;}
+.ins-kicker{margin-bottom:14px;}
+.ins-card-title{
+  margin:0 0 12px;
+  font-size:23px;
+  font-weight:700;
+  line-height:1.16;
+  transition:color .18s ease;
+}
+.ins-card:hover .ins-card-title,.ins-card:focus-visible .ins-card-title{color:var(--terracotta);}
+.ins-card-summary{margin:0 0 24px;color:var(--mid-grey);font-size:19px;line-height:1.42;}
+.ins-card-foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-top:auto;
+  padding-top:18px;
+  border-top:1px solid var(--hairline);
+}
+.ins-card-time{color:var(--caption);font-family:"Lora",Georgia,serif;font-size:17px;font-style:italic;line-height:1.3;}
+.ins-card:hover .ins-card-arrow .link-label::after,
+.ins-card:focus-visible .ins-card-arrow .link-label::after{transform:scaleX(1);}
+.ins-card:hover .ins-card-arrow .ar,
+.ins-card:focus-visible .ins-card-arrow .ar{transform:translateX(4px);transition-delay:.18s;}
+.ins-empty{margin:40px 0 0;color:var(--mid-grey);font-size:20px;font-style:italic;}
+
+/* ====================  POST  ==================== */
+.ins-post-hero{padding:124px 56px 76px;background:#fff;}
+.ins-post-hero-inner{
+  max-width:var(--wide);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1.06fr) minmax(240px,.94fr);
+  gap:40px;
+  align-items:center;
+}
+.ins-crumb{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:26px;
+  color:var(--muted);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.ins-crumb a{color:var(--muted);text-decoration:none;transition:color .18s ease;}
+.ins-crumb a:hover,.ins-crumb a:focus-visible{color:var(--navy);}
+.ins-crumb-sep{color:var(--navy);font-weight:800;}
+.ins-post-hero .eyebrow{margin-bottom:14px;}
+.ins-post-hero h1{max-width:780px;margin:0 0 22px;font-size:clamp(38px,3.4vw,46px);font-weight:700;line-height:1.1;}
+.ins-post-time{margin:0;color:var(--caption);font-family:"Lora",Georgia,serif;font-size:18px;font-style:italic;line-height:1.3;}
+
+/* ---- Post body: content sits on the same centred axis as the other sections (1180), with a 720 measure ---- */
+.ins-post-body{padding:8px 56px 96px;background:#fff;overflow:hidden;}  /* clip any sub-pixel from the left side-bleed */
+.ins-measure{max-width:720px;margin:0;}
+
+/* Lede: quiet plain prose, NO box */
+.ins-lede{margin:0 0 44px;}
+.ins-lede p{margin:0 0 14px;color:var(--near-black);font-size:24px;line-height:1.5;}
+.ins-lede p:last-child{margin-bottom:0;}
+
+/* Skim label shared by both boxes */
+.ins-skim-label{
+  display:block;
+  margin-bottom:16px;
+  color:var(--terracotta);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+/* TL;DR: BEIGE filled box, hairline (stronger than white-on-white; stays in white+beige palette) */
+.ins-skim{margin:0 0 48px;}
+.ins-skim-tldr{
+  padding:30px 34px 32px;
+  border:1px solid var(--hairline);
+  border-radius:16px;
+  background:var(--off-white);
+}
+.ins-skim-tldr ul{margin:0;padding-left:22px;}
+.ins-skim-tldr li{margin:0 0 12px;color:var(--mid-grey);font-family:"Lora",Georgia,serif;font-size:20px;line-height:1.45;}
+.ins-skim-tldr li:last-child{margin-bottom:0;}
+
+/* One thing to try: WHITE box bleeding off the LEFT viewport edge; content stays on the body axis.
+   Parent is the centred .ins-inner, so the standard full-bleed maths reaches the viewport edge. */
+.ins-try{
+  margin:8px 0 48px;
+  margin-left:calc((100% - 100vw) / 2);
+  /* left gutter + ~720 text measure + right padding, so the bar ends just past the text (not full width) */
+  width:calc((100vw - 100%) / 2 + 760px);
+  padding:32px 34px 34px;
+  padding-left:calc((100vw - 100%) / 2);
+  background:#E8ECF5;          /* light-blue highlight bar (deliberate accent; reinstates the v5x navy-wash for this skim anchor) */
+  border:0;
+  border-radius:0 16px 16px 0;
+}
+.ins-try-inner{max-width:720px;}
+.ins-try p{margin:0 0 14px;color:var(--mid-grey);font-size:20px;line-height:1.5;}
+.ins-try p:last-child{margin-bottom:0;}
+.ins-skim-lead{color:var(--near-black);font-family:"Montserrat",Arial,sans-serif;font-size:19px;font-weight:700;line-height:1.3;letter-spacing:-.01em;margin:0 0 14px;}
+
+/* AEO answer: short citable answer, bolded for emphasis, quiet (no box). Sits between TL;DR and the scenario body. */
+.ins-aeo{margin:0 0 44px;color:var(--near-black);font-weight:700;font-size:23px;line-height:1.5;}
+
+/* Rendered markdown body */
+.ins-body{margin:0 0 8px;}
+.ins-body > :first-child{margin-top:0;}
+.ins-body p{margin:0 0 24px;color:var(--mid-grey);font-size:22px;line-height:1.5;}
+.ins-body h2{
+  margin:48px 0 20px;
+  padding-top:26px;
+  border-top:1px solid var(--hairline);
+  color:var(--navy);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:clamp(22px,2.2vw,26px);
+  font-weight:700;
+  line-height:1.18;
+}
+.ins-body strong{color:var(--near-black);font-weight:700;}
+/* Key-insight line (the bold descriptor under a section heading): light-blue band that bleeds off the
+   left edge (matches the "one thing to try" treatment), with an interim line-art light bulb on the body axis.
+   Bespoke Affinity glyph swaps in later (artwork-authority, EQT-274/275). The left bleed is clipped by
+   .ins-post-body overflow:hidden. */
+.ins-body p:has(> strong:only-child){
+  margin:12px 0 30px;
+  margin-left:-100vw;
+  padding:40px 34px 40px calc(100vw + 70px);
+  background-color:#F4E8E1;   /* soft terracotta wash (tint of the accent; on-brand, pairs with the bulb filament) */
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2326245C' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3a6 6 0 00-6 6c0 2.2 1.2 3.6 2.4 4.7.6.6 1.1 1.2 1.1 2.1h5c0-.9.5-1.5 1.1-2.1C16.8 12.6 18 11.2 18 9a6 6 0 00-6-6z'/%3E%3Cpath d='M9.5 19h5'/%3E%3Cpath d='M10.5 21.5h3'/%3E%3Cpath d='M12 8v5' stroke='%23C15F3C'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:100vw center;
+  background-size:46px 46px;
+  border-radius:0 16px 16px 0;
+}
+.ins-body em{font-style:italic;}
+.ins-body a{color:var(--terracotta);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;}
+.ins-body a:hover,.ins-body a:focus-visible{color:var(--terracotta-dark);}
+
+/* Closing line: strong navy pull-statement on a top hairline (NOT body italic) */
+.ins-closing{
+  max-width:720px;
+  margin:40px 0 0;
+  padding-top:28px;
+  border-top:1px solid var(--hairline);
+  color:var(--navy);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:clamp(22px,2.3vw,28px);
+  font-weight:700;
+  line-height:1.2;
+  letter-spacing:-.01em;
+}
+
+/* ---- Related service: DMAICO trainline + link (de-boxed) ---- */
+.ins-related{padding:88px 56px;background:var(--off-white);}
+.ins-related-eyebrow{margin-bottom:24px;}
+.ins-pathway-box{margin:0 0 28px;padding:18px 28px 26px;border:1px solid var(--hairline);border-radius:16px;background:#fff;overflow:hidden;}
+.ins-pathway-box svg{display:block;width:100%;max-width:100%;height:auto;overflow:visible;}
+.ins-pathway-label{fill:var(--terracotta);font-family:"Montserrat",Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
+.ins-pathway-pointer{fill:none;stroke:var(--terracotta);stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;}
+.ins-related-link{
+  display:block;
+  margin:0 0 30px;
+  max-width:820px;
+  color:var(--navy);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:clamp(26px,2.6vw,34px);
+  font-weight:700;
+  line-height:1.14;
+  letter-spacing:-.01em;
+  text-decoration:none;
+}
+.ins-related-link:hover,.ins-related-link:focus-visible{color:var(--terracotta);}
+
+/* ---- Light closing CTA (copy left, motif right; no dark moment) ---- */
+.ins-close{padding:92px 56px;background:#fff;}
+.ins-close-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.5fr);gap:48px;align-items:center;}
+.ins-close .eyebrow{margin-bottom:20px;}
+.ins-close h2{max-width:620px;margin:0;font-size:clamp(30px,3vw,38px);font-weight:700;line-height:1.08;}
+.ins-close p{max-width:600px;margin:18px 0 32px;color:var(--mid-grey);font-size:22px;line-height:1.45;}
+
+/* ---- Scroll reveal: one per section, fade + 8px rise, once ---- */
+.ins-reveal-enabled .ins-reveal > *{
+  opacity:0;transform:translateY(8px);transition:opacity 350ms ease-out,transform 350ms ease-out;
+}
+.ins-reveal-enabled .ins-reveal.is-visible > *{opacity:1;transform:translateY(0);}
+@media(prefers-reduced-motion:reduce){
+  .ins-reveal > *{opacity:1;transform:none;transition:none;}
+}
+
+/* ---- Responsive ---- */
+@media(max-width:1120px){
+  .ins-hero,.ins-list,.ins-post-hero,.ins-post-body,.ins-related,.ins-close{padding-left:36px;padding-right:36px;}
+}
+@media(max-width:960px){
+  .ins-hero-inner,.ins-post-hero-inner{grid-template-columns:1fr;gap:36px;}
+  .ins-hero-art,.ins-post-hero-art{justify-content:flex-start;}
+  .ins-hero-art span,.ins-post-hero-art span{transform:none;}
+  .ins-hero-art svg,.ins-post-hero-art svg{width:min(180px,42vw);}
+  .ins-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .ins-close-grid{grid-template-columns:1fr;gap:32px;}
+  .ins-close-art{justify-content:flex-start;}
+  .ins-close-art svg{width:min(160px,40vw);}
+}
+/* Below tablet: drop the left bleed so the bar can't overflow; becomes a normal contained box. */
+@media(max-width:860px){
+  .ins-try{margin-left:0;width:auto;max-width:720px;padding-left:34px;border-radius:16px;}
+}
+@media(max-width:760px){
+  .ins-hero{padding:72px 26px 64px;}
+  .ins-list{padding:56px 26px 80px;}
+  .ins-post-hero{padding:80px 26px 56px;}
+  .ins-post-body{padding:8px 26px 72px;}
+  .ins-related{padding:64px 26px;}
+  .ins-close{padding:72px 26px;}
+  .ins-hero h1,.ins-post-hero h1{font-size:38px;}
+  .ins-hero-lede{font-size:20px;}
+  .ins-grid{grid-template-columns:1fr;}
+  .ins-lede p{font-size:21px;}
+  .ins-body p{font-size:20px;}
+  .ins-skim-tldr{padding:26px 24px 28px;}
+  .ins-try{padding-top:28px;padding-bottom:30px;padding-right:24px;}
+}
+@media(max-width:460px){
+  .ins-hero,.ins-list,.ins-post-hero,.ins-post-body,.ins-related,.ins-close{padding-left:22px;padding-right:22px;}
+}

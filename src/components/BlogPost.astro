@@ -1,0 +1,183 @@
+---
+import Footer from "./Footer.astro";
+import Layout from "../layouts/Layout.astro";
+import Nav from "./Nav.astro";
+import DocReport from "./icons/glyphs/DocReport.astro";
+import "../styles/insights.css";
+
+interface InsightData {
+  title: string;
+  pillar: "FRAME" | "PLAN" | "SOLVE" | "EVOLVE" | "GOVERN" | "SCALE";
+  phase?: string;
+  summary: string;
+  readTime?: string;
+  lede?: string[];
+  aeo?: string;
+  tldr?: string[];
+  tryThis?: { heading: string; body: string };
+  related?: { label: string; title: string; href: string };
+  closingLine?: string;
+  cta?: { heading: string; body: string };
+}
+
+const { data } = Astro.props as { data: InsightData };
+const kicker = data.phase ? `${data.pillar} · ${data.phase.toUpperCase()}` : data.pillar;
+const cta = data.cta ?? {
+  heading: "Put your hardest operational problem in front of us.",
+  body: "Tell us where the operation is under strain. We will tell you straight whether it is a fixable process gap, and whether we are the right firm for it.",
+};
+
+// DMAICO trainline: highlight this insight's pillar station (mirrors the Our Work case-study pathway).
+const stations = [
+  { key: "FRAME", x: 70 },
+  { key: "PLAN", x: 250 },
+  { key: "SOLVE", x: 430 },
+  { key: "EVOLVE", x: 610 },
+  { key: "GOVERN", x: 790 },
+  { key: "SCALE", x: 970 },
+];
+const stationY = 100;
+const currentIndex = stations.findIndex((s) => s.key === data.pillar);
+const calloutX = currentIndex >= 0 ? Math.min(910, Math.max(130, stations[currentIndex].x)) : 0;
+const pointerD = currentIndex >= 0 ? `M${calloutX} 34 L${stations[currentIndex].x} ${stationY - 22}` : "";
+---
+
+<Layout title={`${data.title} | EQUIBT Insights`} description={data.summary}>
+  <Nav />
+  <main>
+    <article class="ins-post">
+      <header class="ins-post-hero ins-reveal">
+        <div class="ins-post-hero-inner">
+          <div class="ins-post-hero-copy">
+            <nav class="ins-crumb" aria-label="Breadcrumb">
+              <a href="/insights/">Insights</a>
+              <span class="ins-crumb-sep" aria-hidden="true">&rsaquo;</span>
+              <span>{data.pillar}</span>
+            </nav>
+            <div class="eyebrow ins-kicker">{kicker}</div>
+            <h1>{data.title}</h1>
+            {data.readTime && <p class="ins-post-time">{data.readTime}</p>}
+          </div>
+          <div class="ins-post-hero-art" aria-hidden="true">
+            <!-- post motif: line-art document/field-notes idiom, fine-line interim: bespoke post art swaps in here later (artwork-authority, EQT-274/275) -->
+            <span><DocReport /></span>
+          </div>
+        </div>
+      </header>
+
+      <div class="ins-post-body ins-reveal">
+        <div class="ins-inner">
+          <div class="ins-measure">
+            {data.lede && data.lede.length > 0 && (
+              <div class="ins-lede">
+                {data.lede.map((line) => <p>{line}</p>)}
+              </div>
+            )}
+
+            {data.tldr && data.tldr.length > 0 && (
+              <section class="ins-skim ins-skim-tldr" aria-label="TL;DR">
+                <span class="ins-skim-label">TL;DR</span>
+                <ul>
+                  {data.tldr.map((point) => <li>{point}</li>)}
+                </ul>
+              </section>
+            )}
+
+            {data.aeo && <p class="ins-aeo">{data.aeo}</p>}
+
+            <div class="ins-body">
+              <slot />
+            </div>
+          </div>
+
+          {data.tryThis && (
+            <aside class="ins-try" aria-label="One thing to try">
+              <div class="ins-try-inner">
+                <span class="ins-skim-label">One thing to try</span>
+                <p class="ins-skim-lead">{data.tryThis.heading}</p>
+                <p>{data.tryThis.body}</p>
+              </div>
+            </aside>
+          )}
+
+          {data.closingLine && (
+            <div class="ins-measure">
+              <p class="ins-closing">{data.closingLine}</p>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {data.related && (
+        <section class="ins-related ins-reveal">
+          <div class="ins-inner">
+            <div class="eyebrow ins-related-eyebrow">{data.related.label}</div>
+            <a href={data.related.href} class="ins-related-link">{data.related.title}</a>
+            {currentIndex >= 0 && (
+              <div class="ins-pathway-box" role="img" aria-label={`This insight sits at the ${data.pillar} stage of the FRAME to SCALE pathway`}>
+                <svg viewBox="0 0 1040 150">
+                  <path class="hd-f2" d="M70 100 Q300 90 520 99 Q760 109 970 98"/>
+                  <text x={calloutX} y="24" text-anchor="middle" class="ins-pathway-label">THIS INSIGHT</text>
+                  <path class="ins-pathway-pointer" d={pointerD}/>
+                  {stations.map((station, index) => (
+                    <>
+                      <circle
+                        cx={station.x}
+                        cy={stationY}
+                        r={index === currentIndex ? 11 : 8}
+                        fill="#fff"
+                        stroke={index === currentIndex ? "#C15F3C" : "#26245C"}
+                        stroke-width={index === currentIndex ? 2.6 : 2}
+                      />
+                      {index === currentIndex && <circle cx={station.x} cy={stationY} r="4" fill="#C15F3C" />}
+                    </>
+                  ))}
+                  <g font-family="Montserrat, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">
+                    {stations.map((station, index) => (
+                      <text x={station.x} y="138" fill={index === currentIndex ? "#26245C" : "#7A8591"}>{station.key}</text>
+                    ))}
+                  </g>
+                </svg>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      <section class="ins-close ins-reveal">
+        <div class="ins-inner ins-close-grid">
+          <div class="ins-close-copy">
+            <div class="eyebrow">WORK WITH US</div>
+            <h2>{cta.heading}</h2>
+            <p>{cta.body}</p>
+            <a href="/contact/" class="btn-primary">Get in touch</a>
+          </div>
+          <div class="ins-close-art" aria-hidden="true">
+            <!-- CTA art placeholder: line-art motif interim, bespoke art swaps in here later (artwork-authority, EQT-274/275) -->
+            <span><DocReport /></span>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  function initialiseInsReveals() {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const sections = Array.from(document.querySelectorAll(".ins-reveal"));
+    if (reduceMotion || !("IntersectionObserver" in window)) return;
+    document.documentElement.classList.add("ins-reveal-enabled");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.16 });
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  initialiseInsReveals();
+</script>
