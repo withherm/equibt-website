@@ -76,7 +76,7 @@ const pillars = ["FRAME", "PLAN", "SOLVE", "EVOLVE", "GOVERN", "SCALE"] as const
   // ---- Working client-side filter (hairline pills, terracotta active; no colour coding) ----
   function initialiseInsFilter() {
     const chips = Array.from(document.querySelectorAll<HTMLButtonElement>(".ins-chip"));
-    const rows = Array.from(document.querySelectorAll<HTMLElement>(".ins-row"));
+    const cards = Array.from(document.querySelectorAll<HTMLElement>(".ins-card[data-pillar]"));
     const empty = document.querySelector<HTMLElement>(".ins-empty");
     if (!chips.length) return;
     chips.forEach((chip) => {
@@ -84,9 +84,9 @@ const pillars = ["FRAME", "PLAN", "SOLVE", "EVOLVE", "GOVERN", "SCALE"] as const
         const filter = chip.dataset.filter;
         chips.forEach((c) => c.classList.toggle("is-active", c === chip));
         let shown = 0;
-        rows.forEach((row) => {
-          const match = filter === "all" || row.dataset.pillar === filter;
-          row.classList.toggle("is-hidden", !match);
+        cards.forEach((card) => {
+          const match = filter === "all" || card.dataset.pillar === filter;
+          card.classList.toggle("is-hidden", !match);
           if (match) shown += 1;
         });
         if (empty) empty.hidden = shown !== 0;
