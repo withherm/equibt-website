@@ -85,15 +85,15 @@ const stations = [
             {stations.map((station) => {
               const approxHalfW = Math.ceil(station.name.length * 3.5);
               const lx = Math.max(approxHalfW + 4, Math.min(svgW - approxHalfW - 4, station.x));
-              const ptrY1 = station.y - 18;
-              const ptrY2 = station.y - 12;
+              const ptrY1 = station.y - 66;
+              const ptrY2 = station.y - 22;
               return (
                 <a href={`/services/${station.pillar}/`} class="station-link" aria-label={`${station.key}: ${station.name}`}>
                   <circle class="station-ring" cx={station.x} cy={station.y}/>
                   <circle class="station-core" cx={station.x} cy={station.y}/>
                   <text class="station-label" x={station.x} y="138">{station.key}</text>
                   <g class="station-tooltip" aria-hidden="true">
-                    <text class="stt-label" x={lx} y={station.y - 23}>{station.name}</text>
+                    <text class="stt-label" x={lx} y={station.y - 76}>{station.name}</text>
                     <path class="stt-ptr" d={`M${station.x} ${ptrY1} L${station.x} ${ptrY2}`}/>
                   </g>
                 </a>
