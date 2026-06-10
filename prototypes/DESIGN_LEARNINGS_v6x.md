@@ -245,6 +245,49 @@ Architecture: an `insights` content collection (`src/content/insights/*.md`) dri
 
 **RESOLVED (2026-06-09): `BLOG_WRITING_STANDARDS_v2` codifies all of it** — AEO-bold, the three renamed/added body headings (What we did, and what we found / The pattern to avoid / One thing to try), the closing line dropped, the story-driven hook, the single highlighted key insight, and the per-post customised CTA header. The proof post (`prioritising-after-diagnostic`) was updated to match. The other 21 v1 posts still need migrating to v2 when they are ported into the `insights` collection.
 
+### Nav dropdowns + Insights chips (EQT-283, shipped 2026-06-10)
+
+Built and merged via PR #46. A post-merge hover-gap bug required a same-session hotfix (see below); the hotfix landed on main before end of session.
+
+**Dropdown HTML structure.** Each dropdown item in the nav is a `[data-dropdown]` `<div class="nav-item has-dropdown">` wrapping a `.nav-item-row` (flex row with the `<a class="nav-link">` label + `<button class="nav-chevron-btn">` chevron button) and a `<ul class="nav-dropdown" role="menu">` panel. Services items carry a `.nav-dropdown-eyebrow` (terracotta, 10px/700, letter-spacing 0.14em) above the `.nav-dropdown-label`. Industries items have a label only (no pillar eyebrow). The parent anchor still navigates to the hub page (`/services/`, `/industries/`); the chevron button is a separate focusable element for keyboard/mobile use.
+
+**CSS `:hover` is the authoritative desktop show/hide mechanism.** Do NOT use JS `mouseenter`/`mouseleave` to open/close dropdown panels on desktop. The CSS rule is:
+
+```css
+@media(min-width:761px){
+  .nav-item:hover .nav-dropdown{display:block;}
+  .nav-item:hover .nav-chevron{transform:rotate(180deg);}
+}
+```
+
+This works because CSS `:hover` propagates through the DOM tree to absolutely-positioned descendants, so the dropdown panel is treated as part of `.nav-item` for hover purposes regardless of visual position. JS `mouseleave` fires based on the element's **layout bounding box** — if the dropdown panel sits outside the parent's box (which it does, because `position:absolute` removes it from flow), the cursor crossing into the panel triggers `mouseleave` on the parent. JS hover was removed from `Nav.astro` as part of the hotfix; a comment marks its absence.
+
+**The hover gap bug (post-merge, fixed same session).** The initial build used `top: calc(100% + 10px)` on `.nav-dropdown` to create visual breathing room between the nav bar and the panel, combined with JS `mouseenter`/`mouseleave`. This 10px gap was outside `.nav-item`'s layout bounding box, so moving the cursor from the nav label down toward the panel fired `mouseleave` on `.nav-item` and closed the dropdown before the cursor arrived. Fix: `top: 100%` (no external gap) + `padding-top: 10px` INSIDE the dropdown, plus switching to CSS `:hover`. The padding moves the first item down visually while keeping the panel flush against the nav bar so the hover region is unbroken.
+
+**Dropdown item hover state = grey highlight band.** `.nav-dropdown-item:hover,.nav-dropdown-item:focus{ color:var(--navy); background:rgba(38,36,92,0.05); }` — a subtle full-width band that reads as a highlight row without introducing colour. The band fills the full padding width of the item (20px horizontal padding).
+
+**Mobile = accordion, JS only.** The chevron button's click handler toggles `.is-open` on `.nav-item`. The dropdown then shows via `.nav-item.is-open .nav-dropdown{display:block;}`. Desktop CSS hover still takes over at ≥761px, so the `.is-open` class on mobile becomes inert on desktop (harmless).
+
+**Keyboard (desktop).** `focusin`/`focusout` on the `.nav-item` wrapper open/close the dropdown via `.is-open`. Esc closes and returns focus to the chevron button.
+
+**Insights filter chips live in `.ins-hero`, not `.ins-list`.** The chips were originally rendered at the top of the `.ins-list` section (inside `.ins-inner`). This put them below the hero section with a large section-gap between the hero heading and the filter row, requiring the user to scroll before filtering. Fix: move `.ins-filter` into `.ins-hero` (after `.ins-hero-inner`), wrapped in `.ins-inner` for max-width alignment. Hero bottom padding reduced 104px → 52px; list top padding reduced 64px → 48px. The chips now sit visually adjacent to the hero copy.
+
+### Post-merge UI polishes (EQT-283 follow-up, shipped 2026-06-10)
+
+**Nav link hover colour = terracotta (commit 178b939).** Top-level `.nav-link:hover` and `.nav-link:focus` changed from navy to terracotta, matching the site's hover language for all other interactive elements. The chevron also transitions to terracotta on parent hover via `.nav-item:hover .nav-chevron{color:var(--terracotta);}`. The `color` property was added to the chevron's `transition` declaration alongside `transform`.
+
+**Service dropdown eyebrows carry the full DMAICO phase (commit 178b939).** All six dropdown eyebrows now read `FRAME · DEFINE`, `PLAN · MEASURE`, `SOLVE · ANALYSE`, `EVOLVE · IMPROVE`, `GOVERN · CONTROL`, `SCALE · OPERATE` — not bare pillar names. Format matches the dotted-eyebrow idiom used on the services hub, case pages, and Our Work sections. Consistency rule: any UI surface that references a DMAICO pillar should carry the full `PILLAR · PHASE` pair, not the pillar alone.
+
+**Chip alignment fix — Insights (commit e8efdfb).** The chips container (`.ins-inner` inside `.ins-hero`) was constrained to `--max` (1180px) while the hero-inner used `--wide` (1320px). At wide viewports this caused the chips to start ~70px further right than the hero prose. Fix: override `.ins-hero .ins-inner{max-width:var(--wide);}` so both containers share the same left edge. The `margin-top:24px` on the same rule preserves the gap between lede and chips (matches H1 `margin-bottom`).
+
+**Our Work filter chips (commit e8efdfb).** The same hairline-pill chip pattern from Insights was added to the Our Work index. Chips sit in a `.ow-inner` div at the bottom of `.ow-hero`, flush with the prose left edge (same `max-width:var(--wide)` override). Each pillar section in the groups map carries `data-pillar={group.pillar.toLowerCase()}`. JS `initialiseOwFilter()` in `our-work/index.astro` toggles `.is-hidden` (display:none) on sections matching the active filter; the closing CTA section has no `data-pillar` attribute and is always visible regardless of filter state. Stylesheet: `.ow-hero .ow-inner{max-width:var(--wide);margin-top:24px;}`, `.ow-filter`, `.ow-chip`, `.ow-section.is-hidden{display:none;}` — all `.ow-*` prefixed, no cross-import from `insights.css`.
+
+**Insights filter bug fix (commit e8efdfb).** The Insights page JS was querying `.ins-row` (a class that does not exist in the markup). Cards are `.ins-card` with `data-pillar` attributes. Fix: `document.querySelectorAll(".ins-row")` → `document.querySelectorAll(".ins-card[data-pillar]")`.
+
+**Hero section hairline divider — Insights (commit e8efdfb).** Added `border-bottom:1px solid var(--hairline)` to `.ins-hero`. Provides a clean visual break between the hero and the card list, consistent with the footer hairline pattern. Apply this to any hero-to-content transition that would otherwise show two unbroken white sections.
+
+**Chip-to-card gap tightened — Insights (commit e8efdfb).** `.ins-filter` had `margin-bottom:44px`; since the filter is the last element inside the hero, this stacked directly on top of the list section's 48px top padding, creating ~100px+ of dead space between the chips and the first card. Fix: `margin-bottom` removed from `.ins-filter` (zero is correct — nothing follows inside the section). `.ins-list` padding-top reduced 48px → 32px for further tightening. Rule: the bottom spacing of the last element inside a section is governed by the section's `padding-bottom`, not the element's own margin.
+
 ## Process notes
 
 - Build runs via Codex on branch `eqt-245` (single canonical clone); Herman/Cowork review screenshots and the file directly. Codex's screenshot environment was blocked this session, and self-checks are not trusted for sign-off (past false passes). Six correction rounds (R1-R6) produced this set. Icon options and the Govern-tick exploration are recorded in `EQUIBT_V6X_ICON_OPTIONS.html`, `EQUIBT_V6X_GOVERN_TICK_OPTIONS.html`, `EQUIBT_V6X_GOVERN_FINAL.html` (Docs/EQUIBT).
