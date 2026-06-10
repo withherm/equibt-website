@@ -11,7 +11,7 @@
 .ins-close-art svg [stroke]:not([stroke="none"]){stroke-width:1.1;}
 
 /* ---- Index hero (asymmetric, white; height parity with Contact hero) ---- */
-.ins-hero{padding:124px 56px 104px;background:#fff;}
+.ins-hero{padding:124px 56px 52px;background:#fff;}
 .ins-hero-inner{
   max-width:var(--wide);
   margin:0 auto;
@@ -25,7 +25,7 @@
 .ins-hero-lede{max-width:620px;margin:0;color:var(--mid-grey);font-size:22px;line-height:1.42;}
 
 /* ---- List section ---- */
-.ins-list{padding:64px 56px 104px;background:#fff;}
+.ins-list{padding:48px 56px 104px;background:#fff;}
 .ins-inner{max-width:var(--max);margin:0 auto;}
 
 /* ---- Filter pills (hairline, terracotta active; NO six-colour coding — EQT-260) ---- */

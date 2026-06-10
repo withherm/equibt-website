@@ -36,9 +36,6 @@ const pillars = ["FRAME", "PLAN", "SOLVE", "EVOLVE", "GOVERN", "SCALE"] as const
           <span><DocReport /></span>
         </div>
       </div>
-    </section>
-
-    <section class="ins-list ins-reveal">
       <div class="ins-inner">
         <div class="ins-filter" role="group" aria-label="Filter by service area">
           <button class="ins-chip is-active" type="button" data-filter="all">All</button>
@@ -46,7 +43,11 @@ const pillars = ["FRAME", "PLAN", "SOLVE", "EVOLVE", "GOVERN", "SCALE"] as const
             <button class="ins-chip" type="button" data-filter={p.toLowerCase()}>{p}</button>
           ))}
         </div>
+      </div>
+    </section>
 
+    <section class="ins-list ins-reveal">
+      <div class="ins-inner">
         <div class="ins-grid">
           {posts.map((post) => {
             const d = post.data;
