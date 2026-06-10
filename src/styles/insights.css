@@ -25,7 +25,7 @@
 .ins-hero-lede{max-width:620px;margin:0;color:var(--mid-grey);font-size:22px;line-height:1.42;}
 
 /* ---- List section ---- */
-.ins-list{padding:32px 56px 104px;background:#fff;}
+.ins-list{padding:32px 56px 104px;background:#F5F3EE;}
 .ins-inner{max-width:var(--max);margin:0 auto;}
 /* When .ins-inner lives inside .ins-hero, match the hero-inner width + spacing so chips align with prose */
 .ins-hero .ins-inner{max-width:var(--wide);margin-top:24px;}
@@ -252,6 +252,15 @@
 .ins-close h2{max-width:620px;margin:0;font-size:clamp(30px,3vw,38px);font-weight:700;line-height:1.08;}
 .ins-close p{max-width:600px;margin:18px 0 32px;color:var(--mid-grey);font-size:22px;line-height:1.45;}
 
+/* ---- LMI training handover (beige band, 702 mark, leanmethods.com.au) ---- */
+.ins-lmi{padding:72px 56px;background:#F5F3EE;}
+.ins-lmi-inner{padding:54px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
+.ins-lmi-inner h2{max-width:640px;margin:0;font-size:clamp(28px,3vw,36px);font-weight:700;line-height:1.1;}
+.ins-lmi-copy{max-width:760px;margin:18px 0 26px;color:var(--mid-grey);font-size:22px;line-height:1.45;}
+.ins-lmi-logo-link{display:inline-block;width:min(250px,100%);margin:0 0 var(--link-gap);color:inherit;text-decoration:none;}
+.ins-lmi-logo-img{display:block;width:100%;height:auto;}
+.ins-lmi .btn-text{display:table;margin-top:var(--link-gap,22px);}
+
 /* ---- Scroll reveal: one per section, fade + 8px rise, once ---- */
 .ins-reveal-enabled .ins-reveal > *{
   opacity:0;transform:translateY(8px);transition:opacity 350ms ease-out,transform 350ms ease-out;
@@ -263,7 +272,7 @@
 
 /* ---- Responsive ---- */
 @media(max-width:1120px){
-  .ins-hero,.ins-list,.ins-post-hero,.ins-post-body,.ins-related,.ins-close{padding-left:36px;padding-right:36px;}
+  .ins-hero,.ins-list,.ins-post-hero,.ins-post-body,.ins-related,.ins-close,.ins-lmi{padding-left:36px;padding-right:36px;}
 }
 @media(max-width:960px){
   .ins-hero-inner,.ins-post-hero-inner{grid-template-columns:1fr;gap:36px;}
@@ -286,6 +295,7 @@
   .ins-post-body{padding:8px 26px 72px;}
   .ins-related{padding:64px 26px;}
   .ins-close{padding:72px 26px;}
+  .ins-lmi{padding:56px 26px;}
   .ins-hero h1,.ins-post-hero h1{font-size:38px;}
   .ins-hero-lede{font-size:20px;}
   .ins-grid{grid-template-columns:1fr;}
@@ -295,5 +305,5 @@
   .ins-try{padding-top:28px;padding-bottom:30px;padding-right:24px;}
 }
 @media(max-width:460px){
-  .ins-hero,.ins-list,.ins-post-hero,.ins-post-body,.ins-related,.ins-close{padding-left:22px;padding-right:22px;}
+  .ins-hero,.ins-list,.ins-post-hero,.ins-post-body,.ins-related,.ins-close,.ins-lmi{padding-left:22px;padding-right:22px;}
 }

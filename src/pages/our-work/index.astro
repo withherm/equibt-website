@@ -4,6 +4,7 @@ import Footer from "../../components/Footer.astro";
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Icon from "../../components/icons/Icon.astro";
+import lmiLogo from "../../../brand/assets/logos/lmi/LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg";
 import "../../styles/our-work.css";
 
 const allCases = await getCollection("cases", ({ data }) => !data.draft);
@@ -101,6 +102,18 @@ const groups = pillarGroups
         <div class="ow-cta-art" aria-hidden="true">
           <span><Icon name="hero-motif" /></span>
         </div>
+      </div>
+    </section>
+
+    <section class="ow-section beige ow-lmi ow-reveal">
+      <div class="ow-inner">
+        <div class="eyebrow">TRAINING</div>
+        <h2 class="ow-lmi-title">Build the capability your operation runs on.</h2>
+        <p class="ow-lmi-copy">Lean Methods Institute contextualises our training to your operations context — not generic case studies or simulations. Your team learns the methods behind this work so the capability stays with them.</p>
+        <a href="https://leanmethods.com.au" class="ow-lmi-logo-link" aria-label="Lean Methods Institute">
+          <img src={lmiLogo.src} class="ow-lmi-logo-img" alt="Lean Methods Institute" loading="lazy" />
+        </a>
+        <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
       </div>
     </section>
   </main>

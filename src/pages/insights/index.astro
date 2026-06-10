@@ -4,6 +4,7 @@ import Footer from "../../components/Footer.astro";
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import DocReport from "../../components/icons/glyphs/DocReport.astro";
+import lmiLogo from "../../../brand/assets/logos/lmi/LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg";
 import "../../styles/insights.css";
 
 const posts = (await getCollection("insights", ({ data }) => !data.draft)).sort(
@@ -66,6 +67,34 @@ const pillars = ["FRAME", "PLAN", "SOLVE", "EVOLVE", "GOVERN", "SCALE"] as const
         </div>
 
         <p class="ins-empty" hidden>No insights in this area yet.</p>
+      </div>
+    </section>
+
+    <section class="ins-close ins-reveal">
+      <div class="ins-inner">
+        <div class="ins-close-grid">
+          <div class="ins-close-copy">
+            <div class="eyebrow">WORK WITH US</div>
+            <h2>If the pattern looks familiar, it probably is.</h2>
+            <p>The issues in these field notes come from real operations. Tell us where yours is under strain. We will tell you straight what is causing it and whether there is a fix worth scoping.</p>
+            <a href="/contact/" class="btn-primary">Get in touch</a>
+          </div>
+          <div class="ins-close-art" aria-hidden="true">
+            <span><DocReport /></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ins-lmi ins-reveal">
+      <div class="ins-inner ins-lmi-inner">
+        <div class="eyebrow">TRAINING</div>
+        <h2>Train your team in the methods behind the work.</h2>
+        <p class="ins-lmi-copy">Lean Methods Institute contextualises our training to your operations context — not generic case studies or simulations. Your team learns the methods and tools behind these insights so the capability stays with them.</p>
+        <a href="https://leanmethods.com.au" class="ins-lmi-logo-link" aria-label="Lean Methods Institute">
+          <img src={lmiLogo.src} class="ins-lmi-logo-img" alt="Lean Methods Institute" loading="lazy" />
+        </a>
+        <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
       </div>
     </section>
   </main>
