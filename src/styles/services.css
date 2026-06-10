@@ -441,8 +441,8 @@
   text-anchor:middle;
 }
 .stt-ptr{stroke:var(--terracotta);stroke-width:2.3;stroke-linecap:round;fill:none;}
-/* R4: hub hero — bigger padding, wider + stronger motif */
-.service-hub-hero{padding-top:140px;padding-bottom:140px;}
+/* R4/R11: hub hero — site-standard height, wider + stronger motif */
+.service-hub-hero{padding-top:124px;padding-bottom:112px;}
 .service-hub-hero .service-hero-art svg .hd,
 .service-hub-hero .service-hero-art svg .hd-f1,
 .service-hub-hero .service-hero-art svg .hd-f2,
@@ -452,6 +452,8 @@
 .service-hub-hero .service-hero-art svg .hd-acc,
 .service-hub-hero .service-hero-art svg [stroke="#C15F3C"]{stroke-width:.44;}
 /* R5: LMI capability-training handover band */
+/* R10: kill footer gap — match industries hub lmi-handover bottom spacing */
+.service-hub-lmi{padding-bottom:56px;}
 .service-hub-lmi .eyebrow{margin-bottom:14px;}
 /* R8: lock LMI explore link to left content axis (display:table prevents inline-flex drift) */
 .service-hub-lmi .btn-text{display:table;}
