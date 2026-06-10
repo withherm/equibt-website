@@ -295,7 +295,6 @@ const initialService = data.services.frame;
           <p class="industry-hero-subhead">{data.heroSubhead}</p>
           <p class="industry-hero-body">{data.heroBody}</p>
           <div class="industry-actions">
-            <a href="/contact/" class="btn-primary">Get in touch</a>
             <a href="/industries/" class="btn-text"><span class="link-label">View all industries</span> <span class="ar">&rsaquo;</span></a>
           </div>
         </div>
@@ -538,6 +537,21 @@ const initialService = data.services.frame;
     sections.forEach((section) => observer.observe(section));
   }
 
+  function initialiseSubnavVisibility() {
+    const hero = document.querySelector(".industry-hero");
+    const subnav = document.querySelector(".sector-subnav");
+    if (!hero || !subnav || !("IntersectionObserver" in window)) return;
+    // Start hidden (applied via JS so no-JS fallback keeps subnav visible)
+    subnav.classList.add("subnav-hidden");
+    const navEl = document.querySelector(".site-nav");
+    const navH = navEl ? navEl.offsetHeight : 81;
+    const io = new IntersectionObserver(
+      ([entry]) => { subnav.classList.toggle("subnav-hidden", entry.isIntersecting); },
+      { rootMargin: `-${navH}px 0px 0px 0px`, threshold: 0 }
+    );
+    io.observe(hero);
+  }
+
   function initialiseSubnav() {
     const links = Array.from(document.querySelectorAll(".sector-subnav a"));
     const sections = Array.from(document.querySelectorAll("[data-subnav-section]"));
@@ -614,6 +628,7 @@ const initialService = data.services.frame;
   syncNavHeight();
   window.addEventListener("resize", syncNavHeight);
   initialiseIndustryReveals();
+  initialiseSubnavVisibility();
   initialiseSubnav();
   document.querySelectorAll("[data-service-selector]").forEach(initialiseServiceSelector);
   document.querySelectorAll("[data-proof-carousel]").forEach(initialiseProofCarousel);

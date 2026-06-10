@@ -103,6 +103,8 @@
 }
 .sector-subnav a.is-active{color:var(--terracotta);}
 .sector-subnav a.is-active::after{opacity:1;}
+/* Hidden while hero is still in viewport — JS adds this class so subnav only shows when sticking at top */
+.sector-subnav.subnav-hidden{opacity:0;pointer-events:none;}
 
 .industry-section{--industry-gutter:56px;padding:130px var(--industry-gutter);}
 /* Anchor landings sit below the pinned nav + sticky sub-nav stack. Sub-nav measures 51px tall and does not compact at narrow widths, so one value holds across desktop and mobile; --nav-h shifts per breakpoint on its own. */
