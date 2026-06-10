@@ -1,7 +1,7 @@
 /* Our Work index + case study pages (EQT-255). v6x. References tokens.css; does not redefine tokens. */
 
 /* ---- Big hand-drawn hero/section art (mirrors services.css stroke handling) ---- */
-.ow-hero-art,.ow-case-hero-art,.ow-cta-art{display:flex;align-items:center;justify-content:flex-end;}
+.ow-hero-art,.ow-case-hero-art,.ow-cta-art{display:flex;align-items:center;justify-content:flex-end;align-self:center;}
 .ow-hero-art span,.ow-case-hero-art span{display:block;height:auto;transform:translateX(3vw);}
 .ow-cta-art span{display:block;height:auto;}
 .ow-hero-art svg,.ow-case-hero-art svg{display:block;width:min(460px,42vw);height:auto;overflow:visible;}
@@ -25,14 +25,14 @@
 .ow-cta-art svg[viewBox="0 0 80 80"] [stroke="#C15F3C"]{stroke-width:.3565;}
 
 /* ---- Index hero (asymmetric, white) ---- */
-.ow-hero{padding:124px 56px 104px;background:#fff;}
+.ow-hero{padding:124px 56px 112px;background:#fff;}
 .ow-hero-inner{
   max-width:var(--wide);
   margin:0 auto;
   display:grid;
   grid-template-columns:minmax(0,1.04fr) minmax(320px,.96fr);
   gap:40px;
-  align-items:center;
+  align-items:start;
 }
 .ow-hero .eyebrow{margin-bottom:32px;}
 .ow-hero h1{max-width:740px;margin:0 0 26px;font-size:clamp(40px,3.4vw,46px);font-weight:700;line-height:1.08;}

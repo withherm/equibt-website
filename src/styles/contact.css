@@ -4,14 +4,14 @@
    import (clean firewall). */
 
 /* ---- Hero (asymmetric, white) ---- */
-.cx-hero{padding:124px 56px 104px;background:#fff;}
+.cx-hero{padding:124px 56px 112px;background:#fff;}
 .cx-hero-inner{
   max-width:var(--wide);
   margin:0 auto;
   display:grid;
   grid-template-columns:minmax(0,1.02fr) minmax(380px,.98fr);
   gap:36px;
-  align-items:center;
+  align-items:start;
 }
 .cx-hero .eyebrow{margin-bottom:32px;}
 .cx-hero h1{max-width:740px;margin:0 0 28px;font-size:clamp(40px,3.4vw,46px);font-weight:700;line-height:1.08;}
@@ -19,7 +19,7 @@
 .cx-hero-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
 
 /* Hero art: the 520-viewBox hero-motif renders at its native weight (home parity). */
-.cx-hero-art{display:flex;align-items:center;justify-content:flex-end;}
+.cx-hero-art{display:flex;align-items:center;justify-content:flex-end;align-self:center;}
 .cx-hero-art svg{display:block;width:min(540px,48vw);height:auto;overflow:visible;}
 
 /* Glyph hero (Contact, 64-viewBox Dialogue): fine-line interim treatment so the blown-up

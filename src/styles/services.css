@@ -5,7 +5,7 @@
   display:grid;
   grid-template-columns:minmax(0,1.02fr) minmax(380px,.98fr);
   gap:36px;
-  align-items:center;
+  align-items:start;
 }
 .service-hero .eyebrow{margin-bottom:32px;}
 .service-hero h1{
@@ -17,7 +17,7 @@
 }
 .service-hero-subhead{max-width:620px;margin:0 0 42px;color:var(--near-black);font-size:22px;line-height:1.4;}
 .service-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
-.service-hero-art{display:flex;align-items:center;justify-content:flex-end;}
+.service-hero-art{display:flex;align-items:center;justify-content:flex-end;align-self:center;}
 .service-hero-art span{display:block;height:auto;transform:translateX(4vw);}
 .service-hero-art svg{display:block;width:min(540px,48vw);height:auto;overflow:visible;}
 .service-hero-art svg .hd,
