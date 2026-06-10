@@ -103,8 +103,13 @@
 }
 .sector-subnav a.is-active{color:var(--terracotta);}
 .sector-subnav a.is-active::after{opacity:1;}
-/* Hidden while hero is still in viewport — JS adds this class so subnav only shows when sticking at top */
-.sector-subnav.subnav-hidden{opacity:0;pointer-events:none;}
+/* Sticky bars (sector subnav + hub sector selector) are shown only while pinned
+   at the top. JS adds .subnav-hidden whenever the bar is not stuck, so it never
+   floats mid-page before sticking or lingers over the closing CTA after release. */
+.sector-subnav,
+.sector-list-sticky{transition:opacity 140ms ease-out;}
+.sector-subnav.subnav-hidden,
+.sector-list-sticky.subnav-hidden{opacity:0;pointer-events:none;}
 
 .industry-section{--industry-gutter:56px;padding:130px var(--industry-gutter);}
 /* Anchor landings sit below the pinned nav + sticky sub-nav stack. Sub-nav measures 51px tall and does not compact at narrow widths, so one value holds across desktop and mobile; --nav-h shifts per breakpoint on its own. */

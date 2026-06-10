@@ -537,19 +537,24 @@ const initialService = data.services.frame;
     sections.forEach((section) => observer.observe(section));
   }
 
+  // Show the sticky subnav only while it is actually pinned at the top.
+  // Deterministic + synchronous (reads rect.top each scroll) rather than an
+  // IntersectionObserver on the hero: the observer fired asynchronously and
+  // raced the scroll, flashing the bar in a mid-page floating state.
   function initialiseSubnavVisibility() {
-    const hero = document.querySelector(".industry-hero");
     const subnav = document.querySelector(".sector-subnav");
-    if (!hero || !subnav || !("IntersectionObserver" in window)) return;
+    if (!subnav) return;
+    const navEl = document.querySelector(".site-nav");
     // Start hidden (applied via JS so no-JS fallback keeps subnav visible)
     subnav.classList.add("subnav-hidden");
-    const navEl = document.querySelector(".site-nav");
-    const navH = navEl ? navEl.offsetHeight : 81;
-    const io = new IntersectionObserver(
-      ([entry]) => { subnav.classList.toggle("subnav-hidden", entry.isIntersecting); },
-      { rootMargin: `-${navH}px 0px 0px 0px`, threshold: 0 }
-    );
-    io.observe(hero);
+    const update = () => {
+      const navH = navEl ? navEl.offsetHeight : 81;
+      const stuck = Math.abs(subnav.getBoundingClientRect().top - navH) <= 1.5;
+      subnav.classList.toggle("subnav-hidden", !stuck);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
   }
 
   function initialiseSubnav() {
