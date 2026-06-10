@@ -130,14 +130,7 @@
   dropdowns.forEach((item) => {
     const btn = item.querySelector<HTMLButtonElement>('.nav-chevron-btn');
 
-    // Desktop: hover open/close
-    item.addEventListener('mouseenter', () => {
-      if (!isMobile()) openItem(item);
-    });
-    item.addEventListener('mouseleave', () => {
-      if (!isMobile()) closeItem(item);
-    });
-
+    // Desktop hover handled by CSS :hover (see base.css). JS handles keyboard only.
     // Desktop: keyboard focus-within open
     item.addEventListener('focusin', () => {
       if (!isMobile()) openItem(item);
