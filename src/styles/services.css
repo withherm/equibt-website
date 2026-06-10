@@ -354,6 +354,7 @@
 }
 
 /* ── Services hub ──────────────────────────────────────────────── */
+/* R6: row treatment — exact match of home .svc-list / .svc-row idiom */
 .service-hub-list{margin-top:20px;}
 .service-hub-row{
   display:grid;
@@ -426,8 +427,6 @@
   letter-spacing:1.2px;
   text-anchor:middle;
 }
-/* R1: hub hero — tighter bottom, no button */
-.service-hub-hero{padding-bottom:72px;}
 /* R2: station hover/focus tooltips (hub pathway only) */
 .station-tooltip{opacity:0;pointer-events:none;transition:opacity .15s ease;}
 .station-link:hover .station-tooltip,
@@ -442,18 +441,33 @@
   text-anchor:middle;
 }
 .stt-ptr{stroke:var(--terracotta);stroke-width:1.5;stroke-linecap:round;fill:none;}
-/* R3: LMI service entry */
-.service-hub-lmi-icon{display:block;align-self:center;}
-.service-hub-lmi-img{width:110px;max-width:100%;height:auto;display:block;}
+/* R4: hub hero — bigger padding, wider + stronger motif */
+.service-hub-hero{padding-top:140px;padding-bottom:140px;}
+.service-hub-hero .service-hero-art svg .hd,
+.service-hub-hero .service-hero-art svg .hd-f1,
+.service-hub-hero .service-hero-art svg .hd-f2,
+.service-hub-hero .service-hero-art svg .hd-f3,
+.service-hub-hero .service-hero-art svg[stroke]:not([stroke="none"]),
+.service-hub-hero .service-hero-art svg [stroke]:not([stroke="none"]){stroke-width:.38;stroke-linecap:round;stroke-linejoin:round;}
+.service-hub-hero .service-hero-art svg .hd-acc,
+.service-hub-hero .service-hero-art svg [stroke="#C15F3C"]{stroke-width:.44;}
+/* R5: LMI capability-training handover band */
+.service-hub-lmi .eyebrow{margin-bottom:14px;}
+.service-hub-lmi-copy{max-width:760px;margin:18px 0 26px;color:var(--mid-grey);font-size:22px;line-height:1.45;}
+.service-hub-lmi-logo-link{display:inline-block;width:min(250px,100%);margin:0 0 var(--link-gap);color:inherit;text-decoration:none;}
+.service-hub-lmi-logo-img{display:block;width:100%;height:auto;}
+@media(min-width:1121px){
+  /* R4: wider motif on large screens only (base responsive overrides below 1121px) */
+  .service-hub-hero .service-hero-art svg{width:min(620px,52vw);}
+}
 @media(max-width:860px){
   .service-hub-row{grid-template-columns:1fr;gap:18px;padding:38px 0;}
-  .service-hub-icon{width:90px;height:90px;}
-  .service-hub-lmi-img{width:90px;}
+  .service-hub-icon{width:110px;height:110px;}
   .service-hub-cta-grid{grid-template-columns:1fr;}
   .service-hub-cta-art{justify-self:start;width:min(220px,80vw);min-height:220px;}
 }
 @media(max-width:760px){
-  .service-hub-body p,.cta-light-hub p,.service-head-note{font-size:20px;}
+  .service-hub-body p,.cta-light-hub p,.service-head-note,.service-hub-lmi-copy{font-size:20px;}
   .service-hub-cta-grid{gap:32px;}
 }
 @media(max-width:460px){

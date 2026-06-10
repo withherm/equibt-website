@@ -51,7 +51,7 @@ const stations = [
     <!-- ═══════════════════════════════════════════════════════════════════
          SIX SERVICES
     ═══════════════════════════════════════════════════════════════════ -->
-    <section class="service-section white service-reveal">
+    <section class="service-section beige service-reveal">
       <div class="service-inner">
         <div class="service-hub-list">
           {services.map((svc) => (
@@ -70,38 +70,17 @@ const stations = [
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════════
-         LMI — R3: training as a service-styled entry
-    ═══════════════════════════════════════════════════════════════════ -->
-    <section class="service-section beige service-reveal">
-      <div class="service-inner">
-        <div class="service-hub-list">
-          <a href="https://leanmethods.com.au" class="service-hub-row" target="_blank" rel="noopener">
-            <span class="service-hub-icon service-hub-lmi-icon" aria-hidden="true">
-              <img src={lmiLogo.src} class="service-hub-lmi-img" alt="" loading="lazy" />
-            </span>
-            <span class="service-hub-body">
-              <span class="service-hub-kicker">CAPABILITY TRAINING</span>
-              <h3>Build lean, AI-capable teams.</h3>
-              <p>Lean Methods Institute contextualises structured Lean and AI training to your sector, not generic case studies. Your team builds the capability to run the improved process without us, so the work holds after we leave.</p>
-              <span class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></span>
-            </span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════
-         DMAICO PATHWAY — R2: hover/focus labels per station
+         PATHWAY — R2: hover/focus labels; R7: no visible DMAICO
     ═══════════════════════════════════════════════════════════════════ -->
     <section class="service-section white service-reveal">
       <div class="service-inner">
         <div class="service-head">
-          <div class="eyebrow">THE DMAICO PATHWAY</div>
+          <div class="eyebrow">THE PATHWAY</div>
           <h2 class="service-title">Six services, one connected system.</h2>
-          <p class="service-head-note">Each service maps to a phase of the DMAICO improvement cycle. You can enter at any phase and exit when the work is yours. The system is strongest when evidence, capability and control build together.</p>
+          <p class="service-head-note">Each service maps to a phase of the improvement cycle. You can enter at any phase and exit when the work is yours. The system is strongest when evidence, capability and control build together.</p>
         </div>
         <div class="pathway-box">
-          <svg viewBox="0 0 1040 150" role="img" aria-label="DMAICO six-service pathway">
+          <svg viewBox="0 0 1040 150" role="img" aria-label="Six-service improvement pathway">
             <path class="pathway-line hd-f2" d="M70 100 Q300 90 520 99 Q760 109 970 98"/>
             {stations.map((station) => {
               const approxHalfW = Math.ceil(station.name.length * 3.5);
@@ -139,6 +118,21 @@ const stations = [
         <div class="service-hub-cta-art" aria-hidden="true">
           <Icon name="hero-motif" />
         </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         LMI CAPABILITY TRAINING — R5: stacked handover band, after CTA
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section class="service-section white service-hub-lmi service-reveal">
+      <div class="service-inner">
+        <div class="eyebrow">CAPABILITY TRAINING</div>
+        <h2 class="service-title">Build lean, AI-capable teams.</h2>
+        <p class="service-hub-lmi-copy">Lean Methods Institute contextualises structured Lean and AI training to your sector, not generic case studies. Your team builds the capability to run the improved process without us, so the work holds after we leave.</p>
+        <a href="https://leanmethods.com.au" class="service-hub-lmi-logo-link" aria-label="Lean Methods Institute">
+          <img src={lmiLogo.src} class="service-hub-lmi-logo-img" alt="Lean Methods Institute" loading="lazy" />
+        </a>
+        <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
       </div>
     </section>
   </main>
