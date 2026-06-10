@@ -17,11 +17,173 @@
       <span></span><span></span><span></span>
     </button>
     <div class="nav-links" id="nav-links">
-      <a href="/services/" class="nav-link">Services <span class="nav-chevron" aria-hidden="true">&#8964;</span></a>
-      <a href="/industries/" class="nav-link">Industries <span class="nav-chevron" aria-hidden="true">&#8964;</span></a>
+
+      <!-- Services dropdown -->
+      <div class="nav-item has-dropdown" data-dropdown>
+        <div class="nav-item-row">
+          <a href="/services/" class="nav-link">Services</a>
+          <button class="nav-chevron-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Toggle Services submenu">
+            <span class="nav-chevron" aria-hidden="true">&#8964;</span>
+          </button>
+        </div>
+        <ul class="nav-dropdown" role="menu">
+          <li role="none">
+            <a href="/services/frame/" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-eyebrow">FRAME</span>
+              <span class="nav-dropdown-label">Problem Framing</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="/services/plan/" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-eyebrow">PLAN</span>
+              <span class="nav-dropdown-label">Operations Diagnostic</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="/services/solve/" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-eyebrow">SOLVE</span>
+              <span class="nav-dropdown-label">Iterative Improvement</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="/services/evolve/" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-eyebrow">EVOLVE</span>
+              <span class="nav-dropdown-label">Rapid Pilot</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="/services/govern/" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-eyebrow">GOVERN</span>
+              <span class="nav-dropdown-label">Architecture &amp; Governance</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="/services/scale/" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-eyebrow">SCALE</span>
+              <span class="nav-dropdown-label">Operational Embedding</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Industries dropdown -->
+      <div class="nav-item has-dropdown" data-dropdown>
+        <div class="nav-item-row">
+          <a href="/industries/" class="nav-link">Industries</a>
+          <button class="nav-chevron-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Toggle Industries submenu">
+            <span class="nav-chevron" aria-hidden="true">&#8964;</span>
+          </button>
+        </div>
+        <ul class="nav-dropdown" role="menu">
+          <li role="none">
+            <a href="/industries/financial-services/" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-label">Financial Services</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="/industries/government/" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-label">Government and Public Sector</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="/industries/utilities/" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-label">Utilities</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="/industries/manufacturing/" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-label">Advanced Manufacturing</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
       <a href="/our-work/" class="nav-link">Our Work</a>
+      <a href="/insights/" class="nav-link">Insights</a>
       <a href="/about/" class="nav-link">About</a>
       <a href="/contact/" class="nav-cta">Get in touch</a>
     </div>
   </div>
 </nav>
+
+<script>
+  // Dropdown + mobile accordion logic
+  // Note: hamburger toggle handled by per-page scripts
+  const dropdowns = document.querySelectorAll<HTMLElement>('[data-dropdown]');
+
+  function openItem(item: HTMLElement) {
+    const btn = item.querySelector<HTMLButtonElement>('.nav-chevron-btn');
+    if (btn) btn.setAttribute('aria-expanded', 'true');
+    item.classList.add('is-open');
+  }
+
+  function closeItem(item: HTMLElement) {
+    const btn = item.querySelector<HTMLButtonElement>('.nav-chevron-btn');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+    item.classList.remove('is-open');
+  }
+
+  function isMobile() {
+    return window.innerWidth <= 760;
+  }
+
+  dropdowns.forEach((item) => {
+    const btn = item.querySelector<HTMLButtonElement>('.nav-chevron-btn');
+
+    // Desktop: hover open/close
+    item.addEventListener('mouseenter', () => {
+      if (!isMobile()) openItem(item);
+    });
+    item.addEventListener('mouseleave', () => {
+      if (!isMobile()) closeItem(item);
+    });
+
+    // Desktop: keyboard focus-within open
+    item.addEventListener('focusin', () => {
+      if (!isMobile()) openItem(item);
+    });
+    item.addEventListener('focusout', (e: FocusEvent) => {
+      if (!isMobile() && !item.contains(e.relatedTarget as Node)) closeItem(item);
+    });
+
+    // Mobile: chevron button toggles accordion
+    btn?.addEventListener('click', (e) => {
+      if (isMobile()) {
+        e.preventDefault();
+        if (item.classList.contains('is-open')) {
+          closeItem(item);
+        } else {
+          openItem(item);
+        }
+      }
+    });
+
+    // Esc closes
+    item.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeItem(item);
+        btn?.focus();
+      }
+    });
+  });
+
+  // Close desktop dropdowns on outside click
+  document.addEventListener('click', (e) => {
+    if (!isMobile()) {
+      dropdowns.forEach((item) => {
+        if (!item.contains(e.target as Node)) closeItem(item);
+      });
+    }
+  });
+
+  // Close all dropdowns when mobile menu closes
+  const navLinks = document.getElementById('nav-links');
+  if (navLinks) {
+    const observer = new MutationObserver(() => {
+      if (!navLinks.classList.contains('is-open')) {
+        dropdowns.forEach(closeItem);
+      }
+    });
+    observer.observe(navLinks, { attributes: true, attributeFilter: ['class'] });
+  }
+</script>
