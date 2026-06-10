@@ -27,6 +27,8 @@
 /* ---- List section ---- */
 .ins-list{padding:48px 56px 104px;background:#fff;}
 .ins-inner{max-width:var(--max);margin:0 auto;}
+/* When .ins-inner lives inside .ins-hero, match the hero-inner width + spacing so chips align with prose */
+.ins-hero .ins-inner{max-width:var(--wide);margin-top:24px;}
 
 /* ---- Filter pills (hairline, terracotta active; NO six-colour coding — EQT-260) ---- */
 .ins-filter{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:44px;}

@@ -50,10 +50,18 @@ const groups = pillarGroups
           <span><Icon name="hero-motif" /></span>
         </div>
       </div>
+      <div class="ow-inner">
+        <div class="ow-filter" role="group" aria-label="Filter by service area">
+          <button class="ow-chip is-active" type="button" data-filter="all">All</button>
+          {pillarGroups.map((g) => (
+            <button class="ow-chip" type="button" data-filter={g.pillar.toLowerCase()}>{g.pillar}</button>
+          ))}
+        </div>
+      </div>
     </section>
 
     {groups.map((group, index) => (
-      <section class:list={["ow-section", index % 2 === 0 ? "beige" : "white", "ow-reveal"]}>
+      <section class:list={["ow-section", index % 2 === 0 ? "beige" : "white", "ow-reveal"]} data-pillar={group.pillar.toLowerCase()}>
         <div class="ow-inner">
           <div class="ow-group-head">
             <span class="ow-group-icon" aria-hidden="true"><Icon name={group.icon} /></span>
@@ -100,6 +108,22 @@ const groups = pillarGroups
 </Layout>
 
 <script>
+  function initialiseOwFilter() {
+    const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.ow-chip'));
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('.ow-section[data-pillar]'));
+    if (!chips.length) return;
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const filter = chip.dataset.filter;
+        chips.forEach((c) => c.classList.toggle('is-active', c === chip));
+        sections.forEach((section) => {
+          const match = filter === 'all' || section.dataset.pillar === filter;
+          section.classList.toggle('is-hidden', !match);
+        });
+      });
+    });
+  }
+
   function initialiseOwReveals() {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const sections = Array.from(document.querySelectorAll(".ow-reveal"));
@@ -115,5 +139,6 @@ const groups = pillarGroups
     sections.forEach((section) => observer.observe(section));
   }
 
+  initialiseOwFilter();
   initialiseOwReveals();
 </script>

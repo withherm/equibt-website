@@ -25,7 +25,7 @@
 .ow-cta-art svg[viewBox="0 0 80 80"] [stroke="#C15F3C"]{stroke-width:.3565;}
 
 /* ---- Index hero (asymmetric, white) ---- */
-.ow-hero{padding:124px 56px 112px;background:#fff;}
+.ow-hero{padding:124px 56px 52px;background:#fff;}
 .ow-hero-inner{
   max-width:var(--wide);
   margin:0 auto;
@@ -40,10 +40,33 @@
 .ow-hero-lede.muted{color:var(--mid-grey);}
 .ow-hero-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:22px;}
 
+/* ---- Filter chips (mirrors .ins-chip; isolated to ow- prefix per stylesheet firewall rule) ---- */
+.ow-hero .ow-inner{max-width:var(--wide);margin-top:24px;}
+.ow-filter{display:flex;flex-wrap:wrap;gap:10px;}
+.ow-chip{
+  min-height:38px;
+  padding:0 18px;
+  border:1px solid var(--hairline);
+  border-radius:999px;
+  background:#fff;
+  color:var(--navy);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  line-height:1;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:background .18s ease,border-color .18s ease,color .18s ease;
+}
+.ow-chip:hover,.ow-chip:focus-visible{border-color:var(--navy);}
+.ow-chip.is-active{border-color:var(--terracotta);background:var(--terracotta);color:#fff;}
+
 /* ---- Sections ---- */
 .ow-section{--ow-gutter:56px;padding:96px var(--ow-gutter);}
 .ow-section.white{background:#fff;}
 .ow-section.beige{background:var(--off-white);}
+.ow-section.is-hidden{display:none;}
 .ow-inner{max-width:var(--max);margin:0 auto;}
 
 /* ---- Pillar group header: line-art icon on the calm left axis ---- */
