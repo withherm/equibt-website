@@ -295,22 +295,11 @@ const initialSector = sectors[0];
     document.documentElement.style.setProperty("--nav-h", nav.offsetHeight + "px");
   }
 
-  // Show the sticky sector bar only while it is actually pinned at the top.
-  // Deterministic + synchronous (reads rect.top each scroll) so it never floats
-  // mid-page before sticking and never lingers over the closing CTA after release.
-  function initialiseStickyBarVisibility(bar) {
-    if (!bar) return;
-    const navEl = document.querySelector(".site-nav");
-    bar.classList.add("subnav-hidden");
-    const update = () => {
-      const navH = navEl ? navEl.offsetHeight : 81;
-      const stuck = Math.abs(bar.getBoundingClientRect().top - navH) <= 1.5;
-      bar.classList.toggle("subnav-hidden", !stuck);
-    };
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-  }
+  // The hub selector bar is a plain position:sticky bar bounded to
+  // .selector-sticky-scope (which ends before the closing CTA). It stays visible
+  // the whole time its panel is the reading area and releases at the scope end.
+  // No visibility toggle: the earlier stuck-detector (top ~= navH) only matched
+  // for a single pin instant, so the bar vanished on tall viewports (EQT-295).
 
   function initialiseSectorSelector(selector) {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -374,6 +363,5 @@ const initialSector = sectors[0];
   syncNavHeight();
   window.addEventListener("resize", syncNavHeight);
   initialiseIndustryReveals();
-  initialiseStickyBarVisibility(document.querySelector(".sector-list-sticky"));
   document.querySelectorAll("[data-sector-selector]").forEach(initialiseSectorSelector);
 </script>
