@@ -360,48 +360,16 @@ const initialSector = sectors[0];
     });
   }
 
-  // JS-driven pin (EQT-296). CSS position:sticky is unreliable in Safari/WebKit
-  // here (drops the pin mid-page even with a clean ancestor chain), so we drive
-  // the bar with position:fixed, which behaves the same in every browser. A
-  // spacer holds the bar's flow space while it is lifted out; the bar pins under
-  // the nav while its scope is the reading area and parks at the scope bottom
-  // (released, before the CTA). scope must be position:relative.
-  function initialiseBarPin(bar, scope) {
-    if (!bar || !scope) return;
-    const spacer = document.createElement("div");
-    spacer.setAttribute("aria-hidden", "true");
-    spacer.style.height = "0px";
-    bar.insertAdjacentElement("beforebegin", spacer);
-    const navH = () => {
-      const n = document.querySelector(".site-nav");
-      return n ? n.offsetHeight : 81;
-    };
-    const update = () => {
-      const barH = bar.offsetHeight;
-      const spTop = spacer.getBoundingClientRect().top;
-      const scBottom = scope.getBoundingClientRect().bottom;
-      const nH = navH();
-      if (spTop > nH) {
-        bar.classList.remove("is-pinned", "is-parked");
-        spacer.style.height = "0px";
-      } else if (scBottom <= nH + barH) {
-        bar.classList.remove("is-pinned");
-        bar.classList.add("is-parked");
-        spacer.style.height = barH + "px";
-      } else {
-        bar.classList.remove("is-parked");
-        bar.classList.add("is-pinned");
-        spacer.style.height = barH + "px";
-      }
-    };
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-  }
+  // EQT-297: the hub selector bar is NOT pinned. Do not re-add a pin here.
+  // Three attempts failed in Safari/WebKit on this page: CSS position:sticky
+  // (drops the pin), JS position:fixed + translateZ(0) (stale ghost mid-page),
+  // and JS position:fixed unpromoted with the reveal animation removed (bar
+  // painted at the wrong viewport position while scrolling). The subnav pin on
+  // sector pages (_sector.astro) works and stays. The bar sits in normal flow;
+  // revealPanel() in initialiseSectorSelector still positions panels below it.
 
   syncNavHeight();
   window.addEventListener("resize", syncNavHeight);
   initialiseIndustryReveals();
-  initialiseBarPin(document.querySelector(".sector-list-sticky"), document.querySelector(".selector-sticky-scope"));
   document.querySelectorAll("[data-sector-selector]").forEach(initialiseSectorSelector);
 </script>

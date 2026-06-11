@@ -560,6 +560,11 @@
   display:block;
 }
 .selector-sticky-scope{position:relative;}
+/* EQT-297: the hub bar is a plain in-flow bar, NOT pinned. Do not re-add
+   sticky/fixed/GPU promotion — three attempts all mis-painted in Safari on
+   this page (sticky dropped; fixed + translateZ(0) ghosted; fixed unpromoted
+   rode at the wrong viewport position). The sector-page subnav pin is separate
+   and works. */
 .sector-list-sticky{
   position:static;
   z-index:15;
@@ -568,15 +573,7 @@
   border-bottom:1px solid var(--hairline);
   padding:0 56px;
   box-sizing:border-box;
-  /* EQT-297: no transform/GPU promotion here. translateZ(0) was added for the
-     EQT-296 stale ghost, but with the animated neighbour removed it caused its
-     own bug: Safari desynced the composited fixed layer during scroll (bar rode
-     at the wrong viewport position). The bar must stay unpromoted, like the
-     working .sector-subnav. */
 }
-/* JS-driven pin (EQT-296), same as .sector-subnav — Safari drops CSS sticky. */
-.sector-list-sticky.is-pinned{position:fixed;top:var(--nav-h,81px);left:0;right:0;}
-.sector-list-sticky.is-parked{position:absolute;top:auto;bottom:0;left:0;right:0;}
 .sector-list{
   max-width:var(--max);
   margin:0 auto;
@@ -655,20 +652,18 @@
   transform:none;
   transition:none;
 }
-/* EQT-297: no transform/transition inside the selector scope. A moving
-   translateY next to the JS-pinned .sector-list-sticky forces Safari to
-   repaint the region and leaves a stale paint of the fixed bar mid-page.
-   The selector panel appears statically; this is the accepted trade-off. */
+/* Reveal restored (EQT-297): with the hub bar no longer pinned there is no
+   fixed element in the scope, so the translateY reveal is safe again. */
 .industry-reveal-enabled .selector-section .industry-head,
 .industry-reveal-enabled .selector-section .sector-panel,
 .industry-reveal-enabled .selector-section .hub-pathway{
-  opacity:1;
-  transform:none;
-  transition:none;
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity 350ms ease-out,transform 350ms ease-out;
 }
 .industry-reveal-enabled .selector-section.is-visible .industry-head,
 .industry-reveal-enabled .selector-section.is-visible .sector-panel,
-.industry-reveal-enabled .selector-section.is-visible .hub-pathway{opacity:1;transform:none;}
+.industry-reveal-enabled .selector-section.is-visible .hub-pathway{opacity:1;transform:translateY(0);}
 
 @media(prefers-reduced-motion:reduce){
   .industry-reveal > .industry-inner,
