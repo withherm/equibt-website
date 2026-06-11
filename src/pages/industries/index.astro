@@ -230,6 +230,7 @@ const initialSector = sectors[0];
         </div>
       </div>
     </section>
+    </div>
 
     <section class="industry-section beige cta-light industry-reveal">
       <div class="industry-inner cta-grid">
@@ -259,7 +260,6 @@ const initialSector = sectors[0];
         <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
       </div>
     </section>
-    </div>
   </main>
   <Footer />
 </Layout>
@@ -293,6 +293,23 @@ const initialSector = sectors[0];
     const nav = document.querySelector(".site-nav");
     if (!nav) return;
     document.documentElement.style.setProperty("--nav-h", nav.offsetHeight + "px");
+  }
+
+  // Show the sticky sector bar only while it is actually pinned at the top.
+  // Deterministic + synchronous (reads rect.top each scroll) so it never floats
+  // mid-page before sticking and never lingers over the closing CTA after release.
+  function initialiseStickyBarVisibility(bar) {
+    if (!bar) return;
+    const navEl = document.querySelector(".site-nav");
+    bar.classList.add("subnav-hidden");
+    const update = () => {
+      const navH = navEl ? navEl.offsetHeight : 81;
+      const stuck = Math.abs(bar.getBoundingClientRect().top - navH) <= 1.5;
+      bar.classList.toggle("subnav-hidden", !stuck);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
   }
 
   function initialiseSectorSelector(selector) {
@@ -357,5 +374,6 @@ const initialSector = sectors[0];
   syncNavHeight();
   window.addEventListener("resize", syncNavHeight);
   initialiseIndustryReveals();
+  initialiseStickyBarVisibility(document.querySelector(".sector-list-sticky"));
   document.querySelectorAll("[data-sector-selector]").forEach(initialiseSectorSelector);
 </script>

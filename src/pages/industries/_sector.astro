@@ -537,20 +537,9 @@ const initialService = data.services.frame;
     sections.forEach((section) => observer.observe(section));
   }
 
-  function initialiseSubnavVisibility() {
-    const hero = document.querySelector(".industry-hero");
-    const subnav = document.querySelector(".sector-subnav");
-    if (!hero || !subnav || !("IntersectionObserver" in window)) return;
-    // Start hidden (applied via JS so no-JS fallback keeps subnav visible)
-    subnav.classList.add("subnav-hidden");
-    const navEl = document.querySelector(".site-nav");
-    const navH = navEl ? navEl.offsetHeight : 81;
-    const io = new IntersectionObserver(
-      ([entry]) => { subnav.classList.toggle("subnav-hidden", entry.isIntersecting); },
-      { rootMargin: `-${navH}px 0px 0px 0px`, threshold: 0 }
-    );
-    io.observe(hero);
-  }
+  // The sector subnav is always visible: it sits at the top of the sector
+  // content on load and pins under the main nav on scroll (normal sticky).
+  // No hide-until-stuck — it must never pop in or disappear near the hero.
 
   function initialiseSubnav() {
     const links = Array.from(document.querySelectorAll(".sector-subnav a"));
@@ -628,7 +617,6 @@ const initialService = data.services.frame;
   syncNavHeight();
   window.addEventListener("resize", syncNavHeight);
   initialiseIndustryReveals();
-  initialiseSubnavVisibility();
   initialiseSubnav();
   document.querySelectorAll("[data-service-selector]").forEach(initialiseServiceSelector);
   document.querySelectorAll("[data-proof-carousel]").forEach(initialiseProofCarousel);
