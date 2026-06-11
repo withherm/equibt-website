@@ -568,6 +568,14 @@
   border-bottom:1px solid var(--hairline);
   padding:0 56px;
   box-sizing:border-box;
+  /* Force a GPU compositing layer (EQT-296). When fixed, Safari had the bar's
+     geometry correct (rectTop=81) but painted a stale ghost mid-page because the
+     reveal-animated panel + trainline in the same scope repaint next to it. This
+     promotes the bar so Safari repaints it at its real position. Self-transform
+     does not break the element's own fixed/absolute positioning. */
+  transform:translateZ(0);
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
 }
 /* JS-driven pin (EQT-296), same as .sector-subnav — Safari drops CSS sticky. */
 .sector-list-sticky.is-pinned{position:fixed;top:var(--nav-h,81px);left:0;right:0;}
