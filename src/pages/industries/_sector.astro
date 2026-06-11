@@ -306,6 +306,7 @@ const initialService = data.services.frame;
     </section>
 
     <nav class="sector-subnav" aria-label={`${data.sectorName} sections`}>
+      <button type="button" class="sector-subnav-arrow sector-subnav-arrow--prev" aria-label="Scroll sections left" tabindex="-1" aria-hidden="true">‹</button>
       <div class="sector-subnav-inner">
         <a href="#challenges" class="is-active">Challenges</a>
         <a href="#how-we-help">How we help</a>
@@ -313,6 +314,7 @@ const initialService = data.services.frame;
         <a href="#our-work">Our work</a>
         <a href="#where-to-start">Where to start</a>
       </div>
+      <button type="button" class="sector-subnav-arrow sector-subnav-arrow--next" aria-label="Scroll sections right" tabindex="-1" aria-hidden="true">›</button>
     </nav>
 
     <section id="challenges" class="industry-section beige industry-reveal" data-subnav-section>
@@ -556,6 +558,29 @@ const initialService = data.services.frame;
     sections.forEach((section) => observer.observe(section));
   }
 
+  // Overflow affordance: on narrow widths the tab strip scrolls horizontally with
+  // the scrollbar hidden, so later tabs (e.g. "Where to start") can sit off-screen
+  // with no cue. Show a chevron on each side only while the strip can scroll that
+  // way; tapping it nudges the strip toward the hidden tabs. (EQT-296)
+  function initialiseSubnavOverflow() {
+    const nav = document.querySelector(".sector-subnav");
+    const scroller = nav && nav.querySelector(".sector-subnav-inner");
+    if (!nav || !scroller) return;
+    const prev = nav.querySelector(".sector-subnav-arrow--prev");
+    const next = nav.querySelector(".sector-subnav-arrow--next");
+    const update = () => {
+      const max = scroller.scrollWidth - scroller.clientWidth;
+      nav.classList.toggle("can-scroll-prev", scroller.scrollLeft > 1);
+      nav.classList.toggle("can-scroll-next", scroller.scrollLeft < max - 1);
+    };
+    const nudge = (dir) => scroller.scrollBy({ left: dir * scroller.clientWidth * 0.7, behavior: "smooth" });
+    prev && prev.addEventListener("click", () => nudge(-1));
+    next && next.addEventListener("click", () => nudge(1));
+    scroller.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  }
+
   function initialiseServiceSelector(selector) {
     const buttons = Array.from(selector.querySelectorAll(".selector-item"));
     const title = selector.querySelector("[data-selector-title]");
@@ -618,6 +643,7 @@ const initialService = data.services.frame;
   window.addEventListener("resize", syncNavHeight);
   initialiseIndustryReveals();
   initialiseSubnav();
+  initialiseSubnavOverflow();
   document.querySelectorAll("[data-service-selector]").forEach(initialiseServiceSelector);
   document.querySelectorAll("[data-proof-carousel]").forEach(initialiseProofCarousel);
 </script>

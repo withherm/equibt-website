@@ -70,6 +70,13 @@
   /* Gutter on the outer bar (full-bleed bg/border), inner content centred to --max,
      so the first tab lines up with the section content gutter below (EQT-295). */
   padding:0 56px;
+  /* Promote to its own compositing layer so WebKit/Safari does not drop the
+     sticky pin when the section reveal transforms repaint while scrolling past
+     it (Chrome composites sticky off-thread and survives this; Safari did not).
+     EQT-296. Also makes this the positioning context for the overflow chevrons. */
+  transform:translateZ(0);
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
 }
 .sector-subnav-inner{
   max-width:var(--max);
@@ -106,6 +113,39 @@
 }
 .sector-subnav a.is-active{color:var(--terracotta);}
 .sector-subnav a.is-active::after{opacity:1;}
+/* Overflow chevrons: shown only when the tab strip can scroll that way, so on
+   narrow widths clipped tabs (e.g. "Where to start") are discoverable (EQT-296). */
+.sector-subnav-arrow{
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:48px;
+  display:none;
+  align-items:center;
+  border:0;
+  padding:0;
+  margin:0;
+  cursor:pointer;
+  z-index:2;
+  color:var(--near-black);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:20px;
+  line-height:1;
+}
+.sector-subnav-arrow--prev{
+  left:0;
+  justify-content:flex-start;
+  padding-left:16px;
+  background:linear-gradient(to right,#fff 58%,rgba(255,255,255,0));
+}
+.sector-subnav-arrow--next{
+  right:0;
+  justify-content:flex-end;
+  padding-right:16px;
+  background:linear-gradient(to left,#fff 58%,rgba(255,255,255,0));
+}
+.sector-subnav.can-scroll-prev .sector-subnav-arrow--prev{display:flex;}
+.sector-subnav.can-scroll-next .sector-subnav-arrow--next{display:flex;}
 /* Both sticky bars (sector subnav + hub selector) are plain position:sticky,
    each bounded to its own scope so it releases before the next section. No
    visibility toggling: the bars stay visible while their panel is the reading
@@ -528,6 +568,10 @@
   border-top:1px solid var(--hairline);
   border-bottom:1px solid var(--hairline);
   padding:0 56px;
+  /* Same WebKit/Safari sticky-layer promotion as .sector-subnav (EQT-296). */
+  transform:translateZ(0);
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
 }
 .sector-list{
   max-width:var(--max);
