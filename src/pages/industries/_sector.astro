@@ -537,25 +537,9 @@ const initialService = data.services.frame;
     sections.forEach((section) => observer.observe(section));
   }
 
-  // Show the sticky subnav only while it is actually pinned at the top.
-  // Deterministic + synchronous (reads rect.top each scroll) rather than an
-  // IntersectionObserver on the hero: the observer fired asynchronously and
-  // raced the scroll, flashing the bar in a mid-page floating state.
-  function initialiseSubnavVisibility() {
-    const subnav = document.querySelector(".sector-subnav");
-    if (!subnav) return;
-    const navEl = document.querySelector(".site-nav");
-    // Start hidden (applied via JS so no-JS fallback keeps subnav visible)
-    subnav.classList.add("subnav-hidden");
-    const update = () => {
-      const navH = navEl ? navEl.offsetHeight : 81;
-      const stuck = Math.abs(subnav.getBoundingClientRect().top - navH) <= 1.5;
-      subnav.classList.toggle("subnav-hidden", !stuck);
-    };
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-  }
+  // The sector subnav is always visible: it sits at the top of the sector
+  // content on load and pins under the main nav on scroll (normal sticky).
+  // No hide-until-stuck — it must never pop in or disappear near the hero.
 
   function initialiseSubnav() {
     const links = Array.from(document.querySelectorAll(".sector-subnav a"));
@@ -633,7 +617,6 @@ const initialService = data.services.frame;
   syncNavHeight();
   window.addEventListener("resize", syncNavHeight);
   initialiseIndustryReveals();
-  initialiseSubnavVisibility();
   initialiseSubnav();
   document.querySelectorAll("[data-service-selector]").forEach(initialiseServiceSelector);
   document.querySelectorAll("[data-proof-carousel]").forEach(initialiseProofCarousel);
