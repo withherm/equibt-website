@@ -89,7 +89,7 @@ const faqs = [
             const Glyph = glyphs[r.glyph];
             const category = categoryMap[r.tag] ?? "all";
             return (
-              <article class="res-card" class:list={[{ "is-soon": r.action === "soon" }]} data-category={category}>
+              <article class:list={["res-card", { "is-soon": r.action === "soon" }]} data-category={category}>
                 <div class="res-card-top">
                   <span class="res-card-glyph" aria-hidden="true"><Glyph /></span>
                   <span class="eyebrow res-card-tag">{r.tag}</span>
