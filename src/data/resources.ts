@@ -41,7 +41,7 @@ export const resources: Resource[] = [
     tag: "CAPABILITY STATEMENT",
     title: "EQUIBT Capability Statement",
     summary:
-      "Our track record, services, and operating model in one place. Who we are, what we do, the sectors we work in, and representative client outcomes. Use this if you are weighing up working with us and want to understand the approach before a conversation.",
+      "Our services, sectors, and approach in one document. Use it before a conversation.",
     glyph: "Capability",
     action: "view",
     href: "/capability-statement/",
@@ -53,7 +53,7 @@ export const resources: Resource[] = [
     tag: "ASSESSMENT",
     title: "Transformation Readiness Assessment",
     summary:
-      "A 19-question self-assessment across four dimensions: leadership readiness, operational readiness, change readiness, and measurement readiness. Check whether your organisation is ready to run a transformation programme before you commit budget. Includes a scoring guide and interpretation framework.",
+      "19 questions across four readiness dimensions: leadership, operational, change, and measurement. Use it before committing budget to a transformation programme.",
     glyph: "Gauge",
     action: "download",
     href: "#",
@@ -77,7 +77,7 @@ export const resources: Resource[] = [
     tag: "ASSESSMENT",
     title: "Continuous Improvement Maturity Assessment",
     summary:
-      "A 20-question self-assessment across five dimensions: leadership support, process stability, CI methods, improvement rhythm, and measurement. See where your CI capability stands today, from developing to sustaining, and what needs to change to move up a tier.",
+      "20 questions across five CI dimensions. Diagnose where your capability stands and what it takes to move up a tier.",
     glyph: "Loop",
     action: "download",
     href: "#",
@@ -101,7 +101,7 @@ export const resources: Resource[] = [
     tag: "GUIDE / FRAMEWORK",
     title: "CI Programme Design Framework",
     summary:
-      "A practical framework for designing a continuous improvement programme that actually holds. Why most CI programmes fail, the four components every programme needs (management system, methodology, capability, measurement), and how to design each one so improvement sustains without external support.",
+      "A framework for CI programmes that hold after the consultants leave. Covers the four components every programme needs: management system, methodology, capability, and measurement.",
     glyph: "Charter",
     action: "download",
     href: "#",
@@ -125,7 +125,7 @@ export const resources: Resource[] = [
     tag: "GUIDE",
     title: "EQUIBT Engagement Model",
     summary:
-      "A plain-language guide to how an engagement works, from first conversation to close. What to expect, what you commit to, how the work happens, and how it ends. Covers the discovery process, the pricing approach, and what a successful handover looks like.",
+      "How an engagement runs from first conversation to handover. What to expect, what you commit to, and what close looks like.",
     glyph: "Transfer",
     action: "download",
     href: "#",
@@ -149,7 +149,7 @@ export const resources: Resource[] = [
     tag: "CALCULATOR",
     title: "Operational Improvement ROI Calculator",
     summary:
-      "Estimate the financial return from an operational improvement initiative. Enter baseline metrics (cycle time, volume, cost, rework) and improvement assumptions to calculate annual benefit, payback period, and multi-year return. Build a business case with numbers, not just qualitative arguments.",
+      "Enter baseline metrics and improvement assumptions. Returns annual benefit, payback period, and multi-year return.",
     glyph: "DocChart",
     action: "soon",
     href: "#",
@@ -161,7 +161,7 @@ export const resources: Resource[] = [
     tag: "CHECKLIST / TEMPLATE",
     title: "Government Programme Checklist",
     summary:
-      "A 25-item checklist for government leaders running an improvement programme. What to do before you start (governance readiness), during the programme (operating rhythm), and at close (handover readiness). Includes common failure modes in government programmes and what to watch for.",
+      "25 items across three phases: before you start, during delivery, and at close. Includes common government programme failure modes.",
     glyph: "DocTick",
     action: "download",
     href: "#",
@@ -186,7 +186,7 @@ export const resources: Resource[] = [
     tag: "TEMPLATE",
     title: "Consulting Brief Template",
     summary:
-      "A template for briefing an external consulting firm, including us. Covers problem statement, scope, success criteria, operating conditions, commercial expectations, and evaluation criteria. Forces the right discipline before you issue a brief.",
+      "A template for briefing external consultants. Covers problem statement, scope, success criteria, commercial expectations, and evaluation criteria.",
     glyph: "DocReport",
     action: "download",
     href: "#",

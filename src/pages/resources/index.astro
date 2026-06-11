@@ -3,10 +3,10 @@ import Footer from "../../components/Footer.astro";
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import { resources } from "../../data/resources";
+import lmiLogo from "../../../brand/assets/logos/lmi/LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg";
 import "../../styles/resources.css";
 
 // Card glyphs (line-art library, src/components/icons/glyphs). Keyed by Resource.glyph.
-import Capability from "../../components/icons/glyphs/Capability.astro";
 import Gauge from "../../components/icons/glyphs/Gauge.astro";
 import Loop from "../../components/icons/glyphs/Loop.astro";
 import Charter from "../../components/icons/glyphs/Charter.astro";
@@ -17,7 +17,6 @@ import DocReport from "../../components/icons/glyphs/DocReport.astro";
 import Network from "../../components/icons/glyphs/Network.astro";
 
 const glyphs = {
-  Capability,
   Gauge,
   Loop,
   Charter,
@@ -27,25 +26,38 @@ const glyphs = {
   DocReport,
 } as Record<string, any>;
 
+// Category mapping for filter chips.
+const categoryMap: Record<string, string> = {
+  "ASSESSMENT": "tools",
+  "GUIDE / FRAMEWORK": "guides",
+  "GUIDE": "guides",
+  "CALCULATOR": "tools",
+  "CHECKLIST / TEMPLATE": "templates",
+  "TEMPLATE": "templates",
+};
+
+// Hub grid: exclude Capability Statement (moved to About nav).
+const hubResources = resources.filter((r) => r.slug !== "capability-statement");
+
 const faqs = [
   {
     q: "Which resource should I start with?",
-    a: "Start with the one that matches where you are. If you are weighing up whether to run an improvement programme, use the Transformation Readiness Assessment. If you know you want to improve but not how, use the CI Programme Design Framework. If you are considering working with us, read the Capability Statement and the Engagement Model. If you are not sure what the problem even is, frame the problem first.",
+    a: "Start with the one closest to where you are. Weighing up a transformation programme — use the Readiness Assessment. Know you need to improve but not sure how — use the CI Framework. Considering working with us — read the Engagement Model first.",
   },
   {
     q: "Are these specific to government, or do they apply to any sector?",
-    a: "Most of them (Readiness Assessment, CI Maturity, CI Framework, ROI Calculator, Consulting Brief) apply to any sector: corporate, government, healthcare, finance. The Government Programme Checklist is specific to government agencies. The case outcomes in the Capability Statement are anonymised and span multiple sectors.",
+    a: "The Readiness Assessment, CI Maturity, CI Framework, ROI Calculator, and Consulting Brief apply to any sector. The Government Programme Checklist is government-specific.",
   },
   {
     q: "Can I share these with my team?",
-    a: "Yes. They are tools for doing the work, not marketing collateral. Download them and share them with colleagues as you like.",
+    a: "Yes. Download and share as needed.",
   },
 ];
 ---
 
 <Layout
   title="Resources | EQUIBT"
-  description="Practical tools for operational improvement leaders: assessments, frameworks, templates, and a calculator. Not marketing PDFs."
+  description="Assessments, frameworks, templates, and calculators for operational improvement leaders."
 >
   <Nav />
   <main>
@@ -53,40 +65,31 @@ const faqs = [
       <div class="res-hero-inner">
         <div class="res-hero-copy">
           <div class="eyebrow">RESOURCES</div>
-          <h1>Resources for operational improvement leaders.</h1>
-          <p class="res-hero-lede">These are not marketing PDFs. They are practical tools for doing the work: assessments that diagnose readiness, frameworks that guide design, templates that force clarity, and a calculator that builds a business case with numbers. Use them to evaluate improvement opportunities and decide where to invest.</p>
+          <h1>Tools for operational improvement leaders.</h1>
+          <p class="res-hero-lede">Assessments, frameworks, templates, and calculators. Each one came out of real improvement work.</p>
         </div>
         <div class="res-hero-art" aria-hidden="true">
           <span><Network /></span>
         </div>
       </div>
-    </section>
-
-    <section class="res-frame res-reveal">
       <div class="res-inner">
-        <div class="res-frame-bleed">
-          <div class="res-frame-inner">
-            <div class="eyebrow">NOT SURE WHERE TO START</div>
-            <p class="res-frame-line">Frame the problem first. If you are not sure which resource or service fits, start by defining the operational problem you are actually trying to solve.</p>
-            <a href="/resources/frame-your-problem/" class="btn-text"><span class="link-label">Frame your problem</span> <span class="ar">&rsaquo;</span></a>
-          </div>
+        <div class="res-filter" role="group" aria-label="Filter by resource type">
+          <button class="res-chip is-active" type="button" data-filter="all">All</button>
+          <button class="res-chip" type="button" data-filter="guides">Guides</button>
+          <button class="res-chip" type="button" data-filter="templates">Templates</button>
+          <button class="res-chip" type="button" data-filter="tools">Tools</button>
         </div>
       </div>
     </section>
 
     <section class="res-list res-reveal">
       <div class="res-inner">
-        <div class="res-list-head">
-          <div class="eyebrow">THE RESOURCES</div>
-          <h2>Tools for evaluating, designing, and embedding improvement.</h2>
-          <p class="res-list-note">Each one came out of real work inside complex operations. Use the tag to find what fits where you are.</p>
-        </div>
-
         <div class="res-grid">
-          {resources.map((r) => {
+          {hubResources.map((r) => {
             const Glyph = glyphs[r.glyph];
+            const category = categoryMap[r.tag] ?? "all";
             return (
-              <article class="res-card" class:list={[{ "is-soon": r.action === "soon" }]}>
+              <article class="res-card" class:list={[{ "is-soon": r.action === "soon" }]} data-category={category}>
                 <div class="res-card-top">
                   <span class="res-card-glyph" aria-hidden="true"><Glyph /></span>
                   <span class="eyebrow res-card-tag">{r.tag}</span>
@@ -122,8 +125,8 @@ const faqs = [
         <div class="res-more-grid">
           <div class="res-more-copy">
             <div class="eyebrow">NEED SOMETHING MORE SPECIFIC?</div>
-            <h2>None of these answer your exact question?</h2>
-            <p>The next step is a conversation. Tell us the specific problem and we will outline what an engagement would look like.</p>
+            <h2>None of these fit?</h2>
+            <p>Tell us the specific problem. We will outline what an engagement looks like.</p>
             <a href="/contact/" class="btn-primary">Get in touch</a>
           </div>
           <div class="res-more-art" aria-hidden="true">
@@ -138,12 +141,24 @@ const faqs = [
         <div class="eyebrow">COMMON QUESTIONS</div>
         <div class="res-faq-list">
           {faqs.map((f) => (
-            <div class="res-faq-row">
-              <h3 class="res-faq-q">{f.q}</h3>
+            <details class="res-faq-row">
+              <summary class="res-faq-q">{f.q}</summary>
               <p class="res-faq-a">{f.a}</p>
-            </div>
+            </details>
           ))}
         </div>
+      </div>
+    </section>
+
+    <section class="res-lmi res-reveal">
+      <div class="res-inner res-lmi-inner">
+        <div class="eyebrow">TRAINING</div>
+        <h2>Train your team in the methods.</h2>
+        <p class="res-lmi-copy">Lean Methods Institute delivers training in your operations context, not generic simulations. The capability stays with your team.</p>
+        <a href="https://leanmethods.com.au" class="res-lmi-logo-link" aria-label="Lean Methods Institute">
+          <img src={lmiLogo.src} class="res-lmi-logo-img" alt="Lean Methods Institute" loading="lazy" />
+        </a>
+        <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
       </div>
     </section>
   </main>
@@ -168,4 +183,20 @@ const faqs = [
   }
 
   initialiseResReveals();
+
+  // Filter chips
+  const chips = Array.from(document.querySelectorAll<HTMLElement>(".res-chip"));
+  const cards = Array.from(document.querySelectorAll<HTMLElement>(".res-card"));
+
+  chips.forEach((chip) => chip.addEventListener("click", () => {
+    chips.forEach((c) => c.classList.toggle("is-active", c === chip));
+    const filter = (chip as HTMLElement).dataset.filter ?? "all";
+    cards.forEach((card) => {
+      if (filter === "all" || (card as HTMLElement).dataset.category === filter) {
+        card.classList.remove("is-hidden");
+      } else {
+        card.classList.add("is-hidden");
+      }
+    });
+  }));
 </script>
