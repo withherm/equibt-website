@@ -1,0 +1,397 @@
+---
+import Footer from "../../../components/Footer.astro";
+import Layout from "../../../layouts/Layout.astro";
+import Nav from "../../../components/Nav.astro";
+import Loop from "../../../components/icons/glyphs/Loop.astro";
+import "../../../styles/resources.css";
+---
+
+<Layout
+  title="CI Maturity Assessment | EQUIBT Resources"
+  description="20 questions across five dimensions. Diagnose where your CI capability stands and what it takes to move up a tier."
+>
+  <Nav />
+  <main>
+    <section class="res-hero res-reveal">
+      <div class="res-hero-inner">
+        <div class="res-hero-copy">
+          <div class="res-crumb">
+            <a href="/resources/">Resources</a>
+            <span class="res-crumb-sep">&rsaquo;</span>
+            <span>CI Maturity Assessment</span>
+          </div>
+          <div class="eyebrow">ASSESSMENT</div>
+          <h1>Where does your CI capability actually sit?</h1>
+          <p class="res-hero-lede">20 questions across five dimensions. Know where you are today and what it takes to move up a tier, not just a score. Results generated here — nothing stored or sent.</p>
+          <div class="res-hero-actions">
+            <a href="#assessment" class="btn-primary">Start the assessment</a>
+            <a href="/contact/" class="btn-text"><span class="link-label">Talk it through instead</span> <span class="ar">&rsaquo;</span></a>
+          </div>
+        </div>
+        <div class="res-hero-art" aria-hidden="true">
+          <span><Loop /></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ra-tool res-reveal" id="assessment">
+      <div class="res-inner">
+        <div id="ra-form-view">
+          <div class="ra-progress-bar" aria-hidden="true">
+            <div class="ra-progress-fill" id="ra-progress-fill"></div>
+          </div>
+          <div class="ra-section-head">
+            <div class="eyebrow" id="ra-section-label">SECTION 1 OF 5</div>
+            <h2 id="ra-section-title">Leadership &amp; Governance</h2>
+            <p class="ra-section-note" id="ra-section-note">Does leadership actively own and govern the CI programme?</p>
+          </div>
+          <form id="ra-form" novalidate>
+            <div id="ra-questions"></div>
+            <div class="ra-nav">
+              <button type="button" class="btn-text" id="ra-prev" style="display:none;"><span class="ar" style="transform:rotate(180deg);">&rsaquo;</span> <span class="link-label">Back</span></button>
+              <button type="button" class="btn-primary" id="ra-next">Next section</button>
+            </div>
+            <p class="ra-required-note" id="ra-required-note" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div id="ra-results-view" style="display:none;">
+          <div class="ra-results-head">
+            <div class="eyebrow">YOUR MATURITY TIER</div>
+            <h2 id="ra-tier-title"></h2>
+            <p id="ra-tier-description" class="ra-tier-desc"></p>
+          </div>
+          <div class="ra-dim-grid" id="ra-dim-grid"></div>
+          <div class="ra-gap-section" id="ra-gap-section">
+            <div class="eyebrow" style="margin-bottom:14px;">GAP ANALYSIS</div>
+            <p class="ra-gap-intro" id="ra-gap-intro"></p>
+            <div id="ra-gap-cards"></div>
+          </div>
+          <div class="ra-results-actions">
+            <button type="button" class="btn-primary" id="ra-download-btn">Download your results</button>
+            <button type="button" class="btn-text" id="ra-restart-btn"><span class="link-label">Start again</span></button>
+          </div>
+          <div class="ra-cta-strip">
+            <div class="eyebrow">NEXT STEP</div>
+            <p>If you want to work through what the gap analysis means in practice, get in touch.</p>
+            <a href="/contact/" class="btn-text"><span class="link-label">Get in touch</span> <span class="ar">&rsaquo;</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="res-ld-close res-reveal">
+      <div class="res-inner">
+        <div class="res-ld-close-grid">
+          <div class="res-ld-close-copy">
+            <div class="eyebrow">WORK WITH US</div>
+            <h2>Rather have us run it with you?</h2>
+            <p>These tools do real work on their own. If you would rather describe the problem to someone, get in touch.</p>
+            <a href="/contact/" class="btn-primary">Get in touch</a>
+          </div>
+          <div class="res-ld-close-art" aria-hidden="true">
+            <span><Loop /></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+.ra-tool{padding:72px 56px 88px;background:#F5F3EE;}
+.ra-progress-bar{height:4px;background:var(--hairline);border-radius:2px;margin-bottom:40px;}
+.ra-progress-fill{height:100%;background:var(--terracotta);border-radius:2px;transition:width .35s ease;}
+.ra-section-head{margin-bottom:36px;}
+.ra-section-head .eyebrow{margin-bottom:12px;}
+.ra-section-head h2{font-size:clamp(26px,2.6vw,34px);font-weight:700;margin:0 0 12px;}
+.ra-section-note{color:var(--muted);font-size:18px;margin:0;}
+.ra-q-list{list-style:none;padding:0;margin:0 0 32px;display:flex;flex-direction:column;gap:20px;}
+.ra-q-item{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:24px 28px;}
+.ra-q-text{font-size:18px;font-weight:600;color:var(--navy);margin:0 0 16px;line-height:1.4;}
+.ra-q-num{color:var(--muted);font-weight:400;}
+.ra-likert{display:flex;gap:8px;flex-wrap:wrap;}
+.ra-likert label{flex:1;min-width:80px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;}
+.ra-likert input{display:none;}
+.ra-likert-btn{
+  display:flex;align-items:center;justify-content:center;
+  width:100%;min-height:44px;padding:8px 6px;
+  border:1px solid var(--hairline);border-radius:8px;
+  background:#fff;color:var(--navy);
+  font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-align:center;line-height:1.3;
+  transition:background .15s,border-color .15s,color .15s;cursor:pointer;
+}
+.ra-likert input:checked + .ra-likert-btn{background:var(--navy);border-color:var(--navy);color:#fff;}
+.ra-likert label:hover .ra-likert-btn{border-color:var(--terracotta);}
+.ra-likert-scale-labels{display:flex;justify-content:space-between;padding:4px 0 0;color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.06em;}
+.ra-nav{display:flex;align-items:center;gap:24px;margin-top:8px;}
+.ra-required-note{color:var(--terracotta);font-size:14px;min-height:20px;margin:8px 0 0;}
+.ra-results-head{margin-bottom:40px;}
+.ra-results-head .eyebrow{margin-bottom:12px;}
+.ra-results-head h2{font-size:clamp(28px,3vw,38px);font-weight:700;margin:0 0 12px;}
+.ra-tier-desc{font-size:19px;color:var(--mid-grey);max-width:680px;line-height:1.5;}
+.ra-dim-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:36px;}
+.ra-dim-card{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:24px;}
+.ra-dim-name{font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;}
+.ra-dim-score-row{display:flex;align-items:baseline;gap:8px;margin-bottom:10px;}
+.ra-dim-score{font-size:32px;font-weight:700;color:var(--navy);}
+.ra-dim-max{font-size:16px;color:var(--muted);}
+.ra-dim-bar-track{height:6px;background:var(--hairline);border-radius:3px;}
+.ra-dim-bar-fill{height:100%;border-radius:3px;transition:width .5s ease .2s;}
+.ra-dim-label{font-size:13px;color:var(--caption);margin:8px 0 0;}
+.ra-gap-section{margin-bottom:40px;}
+.ra-gap-intro{color:var(--mid-grey);font-size:18px;margin:0 0 20px;}
+.ra-gap-cards{display:flex;flex-direction:column;gap:14px;}
+.ra-gap-card{background:#fff;border:1px solid var(--hairline);border-radius:10px;padding:20px 24px;}
+.ra-gap-card-head{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+.ra-gap-dim{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--navy);}
+.ra-gap-tag{padding:2px 10px;border-radius:999px;font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;}
+.ra-gap-shift{font-size:16px;color:var(--mid-grey);margin:0;}
+.ra-results-actions{display:flex;align-items:center;gap:24px;margin-bottom:40px;}
+.ra-cta-strip{padding:32px;background:#fff;border:1px solid var(--hairline);border-radius:12px;}
+.ra-cta-strip .eyebrow{margin-bottom:10px;}
+.ra-cta-strip p{margin:0 0 16px;color:var(--mid-grey);font-size:18px;}
+
+@media print{
+  nav,footer,.res-ld-close,.res-hero,.ra-nav,.ra-results-actions,.ra-cta-strip,.ra-progress-bar,.ra-section-head{display:none!important;}
+  .ra-tool{padding:0;background:#fff;}
+  .res-inner{max-width:100%;}
+  #ra-form-view{display:none!important;}
+  #ra-results-view{display:block!important;}
+  .ra-dim-grid{grid-template-columns:repeat(2,1fr);}
+  .ra-dim-card,.ra-gap-card{border:1px solid #ccc;break-inside:avoid;}
+  body{font-size:13px;}
+}
+@media(max-width:720px){
+  .ra-tool{padding:48px 24px 64px;}
+  .ra-dim-grid{grid-template-columns:1fr;}
+  .ra-likert{gap:6px;}
+}
+</style>
+
+<script>
+const SECTIONS = [
+  {
+    key: "leadership",
+    label: "SECTION 1 OF 5",
+    title: "Leadership & Governance",
+    note: "Does leadership actively own and govern the CI programme?",
+    questions: [
+      "Senior leaders visibly participate in CI reviews, improvement events, or problem-solving — not just receive reports about them.",
+      "There is a named owner or sponsor for the CI programme with genuine accountability for its results.",
+      "CI performance and outcomes are reviewed at board or executive level on a regular cycle.",
+      "Dedicated resources — time, budget, and people — are allocated to CI activities as a standing commitment."
+    ]
+  },
+  {
+    key: "process",
+    label: "SECTION 2 OF 5",
+    title: "Process Stability",
+    note: "Are your processes stable and visible enough to improve?",
+    questions: [
+      "Key processes are documented with clear standard operating procedures that are actually used.",
+      "Performance is measured at the point where work happens, not only reported at the end.",
+      "Variation in outputs is visible and understood by the people doing the work, not just managers.",
+      "Process problems are systematically identified and addressed before they escalate to failures or complaints."
+    ]
+  },
+  {
+    key: "methods",
+    label: "SECTION 3 OF 5",
+    title: "Methods & Tools",
+    note: "Are structured improvement methods being used consistently?",
+    questions: [
+      "Staff use structured problem-solving methods (e.g. A3, PDCA, 8D) rather than jumping to solutions.",
+      "Root cause analysis is completed before fixes are implemented.",
+      "Improvement tools are applied consistently across teams, not just in pockets where individuals know them.",
+      "The organisation has a recognised improvement methodology that applies across programmes and functions."
+    ]
+  },
+  {
+    key: "rhythm",
+    label: "SECTION 4 OF 5",
+    title: "Operating Rhythm",
+    note: "Is CI embedded in how the organisation runs day to day?",
+    questions: [
+      "Teams meet regularly to review operational performance — daily huddles, weekly reviews, or similar.",
+      "Improvement actions are tracked and followed up in a structured way, not just agreed and forgotten.",
+      "Visual management is in place — boards, dashboards, or similar that make performance visible to the team.",
+      "Improvement work is part of normal operations, not a separate initiative running alongside BAU."
+    ]
+  },
+  {
+    key: "measurement",
+    label: "SECTION 5 OF 5",
+    title: "Measurement & Review",
+    note: "Can you tell whether improvement is actually happening?",
+    questions: [
+      "KPIs are defined and consistently measured for all key processes.",
+      "Performance trends are tracked over time, not just reported as a point-in-time snapshot.",
+      "Improvement outcomes are quantified in financial or operational terms and reported to leadership.",
+      "Lessons learned from improvement projects are captured and shared across teams."
+    ]
+  }
+];
+
+const LABELS = ["Strongly disagree","Disagree","Neutral","Agree","Strongly agree"];
+
+const TIERS = [
+  { min: 0, max: 39, title: "Developing", color: "#C15F3C", description: "CI activity is ad hoc and reactive. Improvement depends on individual effort rather than system. The priority is building foundations: stable processes, a visible sponsor, and a basic measurement rhythm.", shift: "From individual heroes to system." },
+  { min: 40, max: 59, title: "Emerging", color: "#E09C50", description: "Some structure is in place, but it is inconsistent across the organisation. Pockets of good practice exist but haven't spread. Focus on standardising what is working in pilot areas and building leadership governance.", shift: "From pockets to pattern." },
+  { min: 60, max: 74, title: "Establishing", color: "#7A8591", description: "A structured approach is developing and spreading. Most dimensions are moving in the right direction. The focus now is on embedding operating rhythm so that CI does not depend on external prompting.", shift: "From programme to practice." },
+  { min: 75, max: 89, title: "Sustaining", color: "#26245C", description: "CI is embedded and largely self-reinforcing. Performance is tracked and reviewed at the right levels. The shift is from maintaining the system to improving the improvement system itself.", shift: "From maintaining to improving the system." },
+  { min: 90, max: 100, title: "Leading", color: "#26245C", description: "Best-in-class CI capability. The organisation is continuously innovating its own improvement system and sharing practice. The focus is on sustaining pace and not letting standards drift.", shift: "Sustain and continue to raise the bar." }
+];
+
+const DIM_NAMES = {
+  leadership: "Leadership & Governance",
+  process: "Process Stability",
+  methods: "Methods & Tools",
+  rhythm: "Operating Rhythm",
+  measurement: "Measurement & Review"
+};
+
+const GAP_SHIFTS = {
+  leadership: { low: "Secure a named executive sponsor with genuine accountability for CI outcomes.", mid: "Move CI from being reported to leadership to being owned by leadership.", high: "Deepen leadership participation from governance to visible involvement in improvement events." },
+  process: { low: "Document and stabilise key processes before attempting to improve them.", mid: "Build measurement at the point of work, not just end-of-process reporting.", high: "Move variation management from reactive to proactive — make it visible to the people doing the work." },
+  methods: { low: "Introduce a consistent problem-solving method and make its use the standard, not the exception.", mid: "Extend structured methods beyond the trained few to become the organisational norm.", high: "Integrate methodology into how improvement is commissioned and reviewed, not just how it is executed." },
+  rhythm: { low: "Establish regular performance review routines — at minimum weekly — with the teams doing the work.", mid: "Make improvement actions visible and tracked. A backlog that is actively managed beats a list that is reviewed quarterly.", high: "Move from improvement as initiative to improvement as operating model." },
+  measurement: { low: "Define baseline metrics for key processes before any improvement activity starts.", mid: "Shift from snapshot reporting to trend tracking. Performance over time tells a different story.", high: "Quantify improvement outcomes in financial terms and close the loop to benefit realisation." }
+};
+
+let currentSection = 0;
+const answers = {};
+
+function pct(score, max) { return Math.round((score / max) * 100); }
+function barColor(p) {
+  if (p < 40) return "#C15F3C";
+  if (p < 60) return "#E09C50";
+  if (p < 75) return "#7A8591";
+  return "#26245C";
+}
+
+function getGlobalQ(si, qi) {
+  let n = 1;
+  for (let i = 0; i < si; i++) n += SECTIONS[i].questions.length;
+  return n + qi;
+}
+
+function renderSection(idx) {
+  const s = SECTIONS[idx];
+  document.getElementById("ra-section-label").textContent = s.label;
+  document.getElementById("ra-section-title").textContent = s.title;
+  document.getElementById("ra-section-note").textContent = s.note;
+  const saved = answers[s.key] || {};
+  const totalQ = SECTIONS.reduce((a, sec) => a + sec.questions.length, 0);
+  const answeredSoFar = Object.values(answers).reduce((a, d) => a + Object.keys(d).length, 0);
+  document.getElementById("ra-progress-fill").style.width = `${(answeredSoFar / totalQ) * 100}%`;
+
+  document.getElementById("ra-questions").innerHTML = `<ul class="ra-q-list">${
+    s.questions.map((q, qi) => `<li class="ra-q-item" id="ra-q-${qi}">
+      <p class="ra-q-text"><span class="ra-q-num">${getGlobalQ(idx, qi)}.</span> ${q}</p>
+      <div class="ra-likert">${LABELS.map((lbl, val) => `
+        <label><input type="radio" name="q${qi}" value="${val + 1}" ${saved[qi] === val + 1 ? "checked" : ""}><span class="ra-likert-btn">${lbl}</span></label>
+      `).join("")}</div>
+    </li>`).join("")
+  }</ul><div class="ra-likert-scale-labels"><span>Not at all</span><span>Completely</span></div>`;
+
+  document.getElementById("ra-prev").style.display = idx > 0 ? "inline-flex" : "none";
+  document.getElementById("ra-next").textContent = idx === SECTIONS.length - 1 ? "See my results" : "Next section";
+  document.getElementById("ra-required-note").textContent = "";
+}
+
+function collectSection(idx) {
+  const s = SECTIONS[idx];
+  const res = {};
+  let allAnswered = true;
+  s.questions.forEach((_, qi) => {
+    const checked = document.querySelector(`input[name="q${qi}"]:checked`);
+    if (checked) res[qi] = parseInt(checked.value);
+    else allAnswered = false;
+  });
+  return { res, allAnswered };
+}
+
+function showResults() {
+  document.getElementById("ra-form-view").style.display = "none";
+  const rv = document.getElementById("ra-results-view");
+  rv.style.display = "block";
+  rv.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  const dimScores = {};
+  SECTIONS.forEach(s => { dimScores[s.key] = Object.values(answers[s.key] || {}).reduce((a, v) => a + v, 0); });
+  const totalScore = Object.values(dimScores).reduce((a, v) => a + v, 0);
+  const totalMax = SECTIONS.reduce((a, s) => a + s.questions.length * 5, 0);
+  const totalPct = pct(totalScore, totalMax);
+
+  const tier = TIERS.find(t => totalPct >= t.min && totalPct <= t.max) || TIERS[TIERS.length - 1];
+  document.getElementById("ra-tier-title").textContent = tier.title;
+  document.getElementById("ra-tier-description").textContent = tier.description;
+
+  const dimMax = 4 * 5;
+  document.getElementById("ra-dim-grid").innerHTML = SECTIONS.map(s => {
+    const score = dimScores[s.key];
+    const p = pct(score, dimMax);
+    const color = barColor(p);
+    const label = p < 40 ? "Needs attention" : p < 60 ? "Developing" : p < 75 ? "Progressing" : "Strong";
+    return `<div class="ra-dim-card">
+      <p class="ra-dim-name">${DIM_NAMES[s.key]}</p>
+      <div class="ra-dim-score-row"><span class="ra-dim-score">${score}</span><span class="ra-dim-max">/ ${dimMax}</span><span style="margin-left:auto;font-size:13px;font-weight:700;color:${color};">${p}%</span></div>
+      <div class="ra-dim-bar-track"><div class="ra-dim-bar-fill" style="width:${p}%;background:${color};"></div></div>
+      <p class="ra-dim-label">${label}</p>
+    </div>`;
+  }).join("");
+
+  // Gap analysis — lowest 2 dimensions
+  const sorted = SECTIONS.map(s => ({ key: s.key, score: dimScores[s.key], pct: pct(dimScores[s.key], dimMax) }))
+    .sort((a, b) => a.pct - b.pct);
+  const gaps = sorted.slice(0, 3);
+
+  document.getElementById("ra-gap-intro").textContent = "The dimensions below are your lowest-scoring areas. These are where focus will have the most impact on moving up a tier.";
+  document.getElementById("ra-gap-cards").innerHTML = gaps.map(g => {
+    const p = g.pct;
+    const level = p < 40 ? "low" : p < 65 ? "mid" : "high";
+    const color = barColor(p);
+    const tag = p < 40 ? "Priority" : p < 65 ? "Develop" : "Strengthen";
+    const tagBg = p < 40 ? "#C15F3C" : p < 65 ? "#E09C50" : "#7A8591";
+    return `<div class="ra-gap-card">
+      <div class="ra-gap-card-head">
+        <span class="ra-gap-dim">${DIM_NAMES[g.key]}</span>
+        <span class="ra-gap-tag" style="background:${tagBg};color:#fff;">${tag}</span>
+        <span style="margin-left:auto;font-size:13px;font-weight:700;color:${color};">${p}%</span>
+      </div>
+      <p class="ra-gap-shift">${GAP_SHIFTS[g.key][level]}</p>
+    </div>`;
+  }).join("");
+
+  document.getElementById("ra-progress-fill").style.width = "100%";
+}
+
+document.getElementById("ra-next").addEventListener("click", () => {
+  const { res, allAnswered } = collectSection(currentSection);
+  if (!allAnswered) { document.getElementById("ra-required-note").textContent = "Please answer all questions in this section before continuing."; return; }
+  answers[SECTIONS[currentSection].key] = res;
+  if (currentSection === SECTIONS.length - 1) { showResults(); }
+  else { currentSection++; renderSection(currentSection); document.getElementById("ra-form-view").scrollIntoView({ behavior: "smooth", block: "start" }); }
+});
+document.getElementById("ra-prev").addEventListener("click", () => {
+  const { res } = collectSection(currentSection);
+  answers[SECTIONS[currentSection].key] = res;
+  currentSection--;
+  renderSection(currentSection);
+  document.getElementById("ra-form-view").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+document.getElementById("ra-download-btn").addEventListener("click", () => { window.print(); });
+document.getElementById("ra-restart-btn").addEventListener("click", () => {
+  Object.keys(answers).forEach(k => delete answers[k]);
+  currentSection = 0;
+  document.getElementById("ra-results-view").style.display = "none";
+  document.getElementById("ra-form-view").style.display = "block";
+  renderSection(0);
+  document.getElementById("ra-form-view").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+renderSection(0);
+</script>

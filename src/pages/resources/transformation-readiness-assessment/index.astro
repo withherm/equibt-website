@@ -1,0 +1,393 @@
+---
+import Footer from "../../../components/Footer.astro";
+import Layout from "../../../layouts/Layout.astro";
+import Nav from "../../../components/Nav.astro";
+import Gauge from "../../../components/icons/glyphs/Gauge.astro";
+import "../../../styles/resources.css";
+---
+
+<Layout
+  title="Transformation Readiness Assessment | EQUIBT Resources"
+  description="19 questions across four readiness dimensions. Use it before committing budget to a transformation programme."
+>
+  <Nav />
+  <main>
+    <section class="res-hero res-reveal">
+      <div class="res-hero-inner">
+        <div class="res-hero-copy">
+          <div class="res-crumb">
+            <a href="/resources/">Resources</a>
+            <span class="res-crumb-sep">&rsaquo;</span>
+            <span>Transformation Readiness Assessment</span>
+          </div>
+          <div class="eyebrow">ASSESSMENT</div>
+          <h1>Are you ready to transform?</h1>
+          <p class="res-hero-lede">Most transformation programmes fail on readiness, not ambition. 19 questions across four dimensions. Your results are generated here — nothing is sent or stored.</p>
+          <div class="res-hero-actions">
+            <a href="#assessment" class="btn-primary">Start the assessment</a>
+            <a href="/contact/" class="btn-text"><span class="link-label">Talk it through instead</span> <span class="ar">&rsaquo;</span></a>
+          </div>
+        </div>
+        <div class="res-hero-art" aria-hidden="true">
+          <span><Gauge /></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ra-tool res-reveal" id="assessment">
+      <div class="res-inner">
+        <div id="ra-form-view">
+          <div class="ra-progress-bar" aria-hidden="true">
+            <div class="ra-progress-fill" id="ra-progress-fill"></div>
+          </div>
+          <div class="ra-section-head" id="ra-section-head">
+            <div class="eyebrow" id="ra-section-label">SECTION 1 OF 4</div>
+            <h2 id="ra-section-title">Leadership Readiness</h2>
+            <p class="ra-section-note" id="ra-section-note">How committed and aligned is leadership to driving the transformation?</p>
+          </div>
+          <form id="ra-form" novalidate>
+            <div id="ra-questions"></div>
+            <div class="ra-nav">
+              <button type="button" class="btn-text" id="ra-prev" style="display:none;"><span class="ar" style="transform:rotate(180deg);">&rsaquo;</span> <span class="link-label">Back</span></button>
+              <button type="button" class="btn-primary" id="ra-next">Next section</button>
+            </div>
+            <p class="ra-required-note" id="ra-required-note" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div id="ra-results-view" style="display:none;">
+          <div class="ra-results-head">
+            <div class="eyebrow">YOUR RESULTS</div>
+            <h2 id="ra-tier-title"></h2>
+            <p id="ra-tier-description" class="ra-tier-desc"></p>
+          </div>
+          <div class="ra-dim-grid" id="ra-dim-grid"></div>
+          <div class="ra-results-actions">
+            <button type="button" class="btn-primary" id="ra-download-btn">Download your results</button>
+            <button type="button" class="btn-text" id="ra-restart-btn"><span class="link-label">Start again</span></button>
+          </div>
+          <div class="ra-cta-strip">
+            <div class="eyebrow">NEXT STEP</div>
+            <p>These results point to where preparation is needed before committing to a programme. If you would like to work through them with us, get in touch.</p>
+            <a href="/contact/" class="btn-text"><span class="link-label">Get in touch</span> <span class="ar">&rsaquo;</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="res-ld-close res-reveal">
+      <div class="res-inner">
+        <div class="res-ld-close-grid">
+          <div class="res-ld-close-copy">
+            <div class="eyebrow">WORK WITH US</div>
+            <h2>Rather have us run it with you?</h2>
+            <p>These tools do real work on their own. If you would rather describe the problem to someone, get in touch.</p>
+            <a href="/contact/" class="btn-primary">Get in touch</a>
+          </div>
+          <div class="res-ld-close-art" aria-hidden="true">
+            <span><Gauge /></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+/* Assessment tool */
+.ra-tool{padding:72px 56px 88px;background:#F5F3EE;}
+
+.ra-progress-bar{height:4px;background:var(--hairline);border-radius:2px;margin-bottom:40px;}
+.ra-progress-fill{height:100%;background:var(--terracotta);border-radius:2px;transition:width .35s ease;}
+
+.ra-section-head{margin-bottom:36px;}
+.ra-section-head .eyebrow{margin-bottom:12px;}
+.ra-section-head h2{font-size:clamp(26px,2.6vw,34px);font-weight:700;margin:0 0 12px;}
+.ra-section-note{color:var(--muted);font-size:18px;margin:0;}
+
+.ra-q-list{list-style:none;padding:0;margin:0 0 32px;display:flex;flex-direction:column;gap:20px;}
+.ra-q-item{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:24px 28px;}
+.ra-q-item.has-error{border-color:#C15F3C;}
+.ra-q-text{font-size:18px;font-weight:600;color:var(--navy);margin:0 0 16px;line-height:1.4;}
+.ra-q-num{color:var(--muted);font-weight:400;}
+.ra-likert{display:flex;gap:8px;flex-wrap:wrap;}
+.ra-likert label{
+  flex:1;min-width:80px;display:flex;flex-direction:column;align-items:center;gap:6px;
+  cursor:pointer;
+}
+.ra-likert input{display:none;}
+.ra-likert-btn{
+  display:flex;align-items:center;justify-content:center;
+  width:100%;min-height:44px;padding:8px 6px;
+  border:1px solid var(--hairline);border-radius:8px;
+  background:#fff;color:var(--navy);
+  font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-align:center;line-height:1.3;
+  transition:background .15s,border-color .15s,color .15s;
+  cursor:pointer;
+}
+.ra-likert input:checked + .ra-likert-btn{background:var(--navy);border-color:var(--navy);color:#fff;}
+.ra-likert label:hover .ra-likert-btn{border-color:var(--terracotta);}
+.ra-likert-scale-labels{display:flex;justify-content:space-between;padding:4px 0 0;color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.06em;}
+
+.ra-nav{display:flex;align-items:center;gap:24px;margin-top:8px;}
+.ra-required-note{color:var(--terracotta);font-size:14px;min-height:20px;margin:8px 0 0;}
+
+/* Results */
+.ra-results-head{margin-bottom:40px;}
+.ra-results-head .eyebrow{margin-bottom:12px;}
+.ra-results-head h2{font-size:clamp(28px,3vw,38px);font-weight:700;margin:0 0 12px;}
+.ra-tier-desc{font-size:19px;color:var(--mid-grey);max-width:680px;line-height:1.5;}
+
+.ra-dim-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:40px;}
+.ra-dim-card{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:24px;}
+.ra-dim-name{font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;}
+.ra-dim-score-row{display:flex;align-items:baseline;gap:8px;margin-bottom:10px;}
+.ra-dim-score{font-size:32px;font-weight:700;color:var(--navy);}
+.ra-dim-max{font-size:16px;color:var(--muted);}
+.ra-dim-bar-track{height:6px;background:var(--hairline);border-radius:3px;}
+.ra-dim-bar-fill{height:100%;border-radius:3px;transition:width .5s ease .2s;}
+.ra-dim-label{font-size:13px;color:var(--caption);margin:8px 0 0;}
+
+.ra-results-actions{display:flex;align-items:center;gap:24px;margin-bottom:40px;}
+
+.ra-cta-strip{padding:32px;background:#fff;border:1px solid var(--hairline);border-radius:12px;}
+.ra-cta-strip .eyebrow{margin-bottom:10px;}
+.ra-cta-strip p{margin:0 0 16px;color:var(--mid-grey);font-size:18px;}
+
+/* Print */
+@media print{
+  nav,footer,.res-ld-close,.res-hero,.ra-nav,.ra-results-actions,.ra-cta-strip,.ra-progress-bar,.ra-section-head,.ra-form-view,#ra-form-view{display:none!important;}
+  .ra-tool{padding:0;background:#fff;}
+  .res-inner{max-width:100%;}
+  #ra-results-view{display:block!important;}
+  .ra-dim-grid{grid-template-columns:repeat(2,1fr);}
+  .ra-results-head h2{font-size:28px;}
+  body{font-size:13px;}
+  .ra-dim-card{border:1px solid #ccc;break-inside:avoid;}
+  .ra-print-header{display:block!important;}
+}
+.ra-print-header{display:none;}
+
+@media(max-width:720px){
+  .ra-tool{padding:48px 24px 64px;}
+  .ra-dim-grid{grid-template-columns:1fr;}
+  .ra-likert{gap:6px;}
+}
+</style>
+
+<script>
+const SECTIONS = [
+  {
+    key: "leadership",
+    label: "SECTION 1 OF 4",
+    title: "Leadership Readiness",
+    note: "How committed and aligned is leadership to driving the transformation?",
+    questions: [
+      "Senior leaders actively sponsor and champion the transformation — it is not delegated below SES or executive level.",
+      "Leaders are prepared to change their own behaviours and ways of working as part of the programme.",
+      "There is clear accountability for transformation outcomes at the executive or board level.",
+      "Decisions in this organisation are made on data and evidence, not primarily on opinion or seniority.",
+      "Leadership has a track record of seeing improvement and change work through to completion."
+    ]
+  },
+  {
+    key: "operational",
+    label: "SECTION 2 OF 4",
+    title: "Operational Readiness",
+    note: "Are the operating conditions in place to support change?",
+    questions: [
+      "Core processes being targeted for improvement are documented and understood before any changes are made.",
+      "Staff have genuine capacity to participate in improvement work alongside their BAU responsibilities.",
+      "The organisation has experience running structured change or improvement projects.",
+      "Technology and systems can support the operating changes being proposed.",
+      "Key suppliers, partners, or dependencies are ready to adapt alongside internal changes."
+    ]
+  },
+  {
+    key: "change",
+    label: "SECTION 3 OF 4",
+    title: "Change Readiness",
+    note: "How well positioned is the organisation to absorb and sustain change?",
+    questions: [
+      "Staff at all levels understand why this transformation is necessary — not just that it is happening.",
+      "There is a clear, consistent narrative about what success looks like and who benefits.",
+      "Previous change efforts in this organisation have been seen through rather than abandoned.",
+      "Resistance to change is actively managed and addressed, rather than ignored or suppressed.",
+      "Affected stakeholders have been engaged early and their concerns taken seriously."
+    ]
+  },
+  {
+    key: "measurement",
+    label: "SECTION 4 OF 4",
+    title: "Measurement Readiness",
+    note: "Can you tell whether the transformation is working?",
+    questions: [
+      "Baseline performance data exists for the areas being targeted for improvement.",
+      "The organisation has agreed metrics for what transformation success looks like.",
+      "There are regular rhythms for reviewing progress against targets.",
+      "Benefit realisation will be actively tracked and reported to leadership throughout the programme."
+    ]
+  }
+];
+
+const LABELS = ["Strongly disagree","Disagree","Neutral","Agree","Strongly agree"];
+const TIER_COLORS = ["#C15F3C","#E09C50","#7A8591","#26245C","#26245C"];
+
+const TIERS = [
+  { min: 0, max: 39, title: "Not ready", description: "Significant gaps across readiness dimensions. Committing to a full transformation programme now carries a high risk of failure. Focus on the lowest-scoring dimensions first to build the foundations." },
+  { min: 40, max: 59, title: "Early stage", description: "Some readiness in place but meaningful gaps remain. A targeted preparation phase — focusing on the weakest dimensions — will materially improve outcomes before a programme starts." },
+  { min: 60, max: 74, title: "Developing", description: "A reasonable foundation exists. Address the gaps identified below before scaling. A phased or piloted approach is lower risk than a full programme launch." },
+  { min: 75, max: 89, title: "Ready to proceed", description: "Strong readiness across most dimensions. Proceed with clear mitigation plans for any gaps. Focus the early stages of the programme on the areas below that need attention." },
+  { min: 90, max: 100, title: "High readiness", description: "Excellent foundations across all dimensions. The conditions for a successful transformation are in place. Maintain rigour on measurement and leadership visibility throughout delivery." }
+];
+
+const DIM_LABELS = { leadership: "Leadership", operational: "Operational", change: "Change", measurement: "Measurement" };
+const DIM_MAX = { leadership: 25, operational: 25, change: 25, measurement: 20 };
+
+let currentSection = 0;
+const answers = {};
+
+function pct(score, max) { return Math.round((score / max) * 100); }
+
+function barColor(p) {
+  if (p < 40) return "#C15F3C";
+  if (p < 60) return "#E09C50";
+  if (p < 75) return "#7A8591";
+  return "#26245C";
+}
+
+function renderSection(idx) {
+  const s = SECTIONS[idx];
+  document.getElementById("ra-section-label").textContent = s.label;
+  document.getElementById("ra-section-title").textContent = s.title;
+  document.getElementById("ra-section-note").textContent = s.note;
+
+  const qContainer = document.getElementById("ra-questions");
+  const saved = answers[s.key] || {};
+
+  qContainer.innerHTML = `<ul class="ra-q-list">${s.questions.map((q, qi) => `
+    <li class="ra-q-item" id="ra-q-${qi}" data-qi="${qi}">
+      <p class="ra-q-text"><span class="ra-q-num">${getGlobalQ(idx, qi)}.</span> ${q}</p>
+      <div class="ra-likert">
+        ${LABELS.map((lbl, val) => `
+          <label>
+            <input type="radio" name="q${qi}" value="${val + 1}" ${saved[qi] === val + 1 ? "checked" : ""}>
+            <span class="ra-likert-btn">${lbl}</span>
+          </label>
+        `).join("")}
+      </div>
+    </li>
+  `).join("")}</ul>
+  <div class="ra-likert-scale-labels"><span>Not at all</span><span>Completely</span></div>`;
+
+  const totalQ = SECTIONS.reduce((a, s) => a + s.questions.length, 0);
+  const answeredSoFar = Object.values(answers).reduce((a, d) => a + Object.keys(d).length, 0);
+  document.getElementById("ra-progress-fill").style.width = `${(answeredSoFar / totalQ) * 100}%`;
+
+  document.getElementById("ra-prev").style.display = idx > 0 ? "inline-flex" : "none";
+  document.getElementById("ra-next").textContent = idx === SECTIONS.length - 1 ? "See my results" : "Next section";
+  document.getElementById("ra-required-note").textContent = "";
+}
+
+function getGlobalQ(si, qi) {
+  let n = 1;
+  for (let i = 0; i < si; i++) n += SECTIONS[i].questions.length;
+  return n + qi;
+}
+
+function collectSection(idx) {
+  const s = SECTIONS[idx];
+  const res = {};
+  let allAnswered = true;
+  s.questions.forEach((_, qi) => {
+    const checked = document.querySelector(`input[name="q${qi}"]:checked`);
+    if (checked) res[qi] = parseInt(checked.value);
+    else allAnswered = false;
+  });
+  return { res, allAnswered };
+}
+
+function showResults() {
+  document.getElementById("ra-form-view").style.display = "none";
+  const rv = document.getElementById("ra-results-view");
+  rv.style.display = "block";
+  rv.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  const dimScores = {};
+  SECTIONS.forEach(s => {
+    const d = answers[s.key] || {};
+    dimScores[s.key] = Object.values(d).reduce((a, v) => a + v, 0);
+  });
+
+  const totalScore = Object.values(dimScores).reduce((a, v) => a + v, 0);
+  const totalMax = Object.values(DIM_MAX).reduce((a, v) => a + v, 0);
+  const totalPct = pct(totalScore, totalMax);
+
+  const tier = TIERS.find(t => totalPct >= t.min && totalPct <= t.max) || TIERS[TIERS.length - 1];
+  document.getElementById("ra-tier-title").textContent = tier.title;
+  document.getElementById("ra-tier-description").textContent = tier.description;
+
+  const dimGrid = document.getElementById("ra-dim-grid");
+  dimGrid.innerHTML = SECTIONS.map(s => {
+    const score = dimScores[s.key];
+    const max = DIM_MAX[s.key];
+    const p = pct(score, max);
+    const color = barColor(p);
+    const dimTier = p < 40 ? "Needs attention" : p < 60 ? "Developing" : p < 75 ? "Progressing" : "Strong";
+    return `<div class="ra-dim-card">
+      <p class="ra-dim-name">${DIM_LABELS[s.key]} Readiness</p>
+      <div class="ra-dim-score-row">
+        <span class="ra-dim-score">${score}</span>
+        <span class="ra-dim-max">/ ${max}</span>
+        <span style="margin-left:auto;font-size:13px;font-weight:700;color:${color};">${p}%</span>
+      </div>
+      <div class="ra-dim-bar-track">
+        <div class="ra-dim-bar-fill" style="width:${p}%;background:${color};"></div>
+      </div>
+      <p class="ra-dim-label">${dimTier}</p>
+    </div>`;
+  }).join("");
+
+  document.getElementById("ra-progress-fill").style.width = "100%";
+}
+
+document.getElementById("ra-next").addEventListener("click", () => {
+  const { res, allAnswered } = collectSection(currentSection);
+  if (!allAnswered) {
+    document.getElementById("ra-required-note").textContent = "Please answer all questions in this section before continuing.";
+    return;
+  }
+  answers[SECTIONS[currentSection].key] = res;
+
+  if (currentSection === SECTIONS.length - 1) {
+    showResults();
+  } else {
+    currentSection++;
+    renderSection(currentSection);
+    document.getElementById("ra-form-view").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+});
+
+document.getElementById("ra-prev").addEventListener("click", () => {
+  const { res } = collectSection(currentSection);
+  answers[SECTIONS[currentSection].key] = res;
+  currentSection--;
+  renderSection(currentSection);
+  document.getElementById("ra-form-view").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+document.getElementById("ra-download-btn").addEventListener("click", () => { window.print(); });
+document.getElementById("ra-restart-btn").addEventListener("click", () => {
+  Object.keys(answers).forEach(k => delete answers[k]);
+  currentSection = 0;
+  document.getElementById("ra-results-view").style.display = "none";
+  document.getElementById("ra-form-view").style.display = "block";
+  renderSection(0);
+  document.getElementById("ra-form-view").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+// Init
+renderSection(0);
+</script>

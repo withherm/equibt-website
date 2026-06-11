@@ -1,0 +1,286 @@
+---
+import Footer from "../../../components/Footer.astro";
+import Layout from "../../../layouts/Layout.astro";
+import Nav from "../../../components/Nav.astro";
+import Charter from "../../../components/icons/glyphs/Charter.astro";
+import "../../../styles/resources.css";
+
+const components = [
+  {
+    num: "01",
+    title: "Management System",
+    tagline: "The operating infrastructure that makes improvement visible and accountable.",
+    summary: "A CI programme without a management system relies on individuals to keep it going. The management system replaces that dependency with structure.",
+    sections: [
+      {
+        head: "What it is",
+        body: "The set of routines, forums, and artefacts that govern how improvement is managed day to day. It is the operating infrastructure — not the improvement methodology itself."
+      },
+      {
+        head: "Daily management routines",
+        body: "Team-level performance reviews at daily or shift frequency. Short, standing meetings that surface problems before they compound. The discipline of reviewing actuals against target at the point of work."
+      },
+      {
+        head: "Governance cadence",
+        body: "A tiered review structure from team level through to executive. Each tier has a defined frequency, standard agenda, and escalation trigger. Problems move up when they cannot be resolved at the level they are first seen."
+      },
+      {
+        head: "Visual management",
+        body: "Performance made visible at the point of work — boards, dashboards, or digital displays that show status without a report being needed. Visual management is for the team doing the work, not for management to monitor the team."
+      },
+      {
+        head: "Common design errors",
+        body: "Building the governance layer without the daily management layer below it. Making visual management a reporting tool rather than a team tool. Designing for compliance rather than for operational use."
+      }
+    ]
+  },
+  {
+    num: "02",
+    title: "Methodology",
+    tagline: "The improvement method: how problems are selected, structured, and solved.",
+    summary: "A methodology gives the programme a common language and a consistent way to approach problems. Without it, improvement depends on whoever happens to know a technique.",
+    sections: [
+      {
+        head: "What it is",
+        body: "The structured approach used to identify, analyse, and resolve performance gaps. It defines how improvement work is initiated, how problems are framed, what analytical tools are applied, and how solutions are tested before being implemented."
+      },
+      {
+        head: "Method choice",
+        body: "Lean, Lean Six Sigma, PDCA, and A3 are the most common frameworks in operational environments. The choice matters less than consistency — the value comes from everyone using the same method, not from which method is chosen."
+      },
+      {
+        head: "Problem-solving process",
+        body: "A standard process that applies regardless of problem size. Typically: define the problem, measure the current state, identify root causes, design a counter-measure, test it, implement, and control. The key discipline is not skipping from problem to solution."
+      },
+      {
+        head: "Project selection criteria",
+        body: "A defined process for deciding which problems get improvement resources. Without this, effort clusters around what is visible or politically convenient rather than what matters most. Selection criteria typically cover impact, feasibility, and strategic alignment."
+      },
+      {
+        head: "Common design errors",
+        body: "Running multiple methodologies in parallel without reconciling them. Selecting projects based on consultant availability rather than operational priority. Treating methodology training as the output rather than a means to the output."
+      }
+    ]
+  },
+  {
+    num: "03",
+    title: "Capability",
+    tagline: "The people infrastructure: who can do what, how they were developed, and how that is sustained.",
+    summary: "Capability is what makes a CI programme self-sustaining. Without it, the programme depends on external support indefinitely.",
+    sections: [
+      {
+        head: "What it is",
+        body: "The combination of roles, skills, and development pathways that allow the organisation to run and evolve its own CI programme without external dependence."
+      },
+      {
+        head: "Role definitions",
+        body: "Named roles with defined responsibilities: typically a programme sponsor (executive), a CI lead or programme manager, internal facilitators or belts, and team-level improvement leads. Each role has a clear accountability for the programme's performance."
+      },
+      {
+        head: "Training curriculum",
+        body: "A structured development programme matched to roles. Frontline: awareness and problem identification. Team leads: structured problem-solving and daily management facilitation. CI practitioners: full methodology, project management, coaching skills."
+      },
+      {
+        head: "Coaching structure",
+        body: "Formal coaching relationships between experienced practitioners and those developing capability. Coaching is distinct from training — it applies in the context of real work, not in a classroom."
+      },
+      {
+        head: "Certification pathway",
+        body: "A recognised qualification structure that creates career value for CI capability. This is both a retention mechanism and a quality signal. AUSQ-accredited Lean Six Sigma tracks provide external recognition without dependency on a single provider."
+      },
+      {
+        head: "Common design errors",
+        body: "Training people without giving them work to apply it on. Building capability in a CI team without building it in the operational teams. Treating certification as the endpoint rather than a by-product of applied learning."
+      }
+    ]
+  },
+  {
+    num: "04",
+    title: "Measurement",
+    tagline: "The evidence layer: how you know whether improvement is happening and whether it is holding.",
+    summary: "Measurement is what makes CI accountable. Without it, activity is mistaken for outcome and programmes drift without anyone noticing.",
+    sections: [
+      {
+        head: "What it is",
+        body: "The set of metrics, baselines, tracking processes, and reporting structures that allow the programme to demonstrate that improvement is happening, quantify it, and confirm that it is holding over time."
+      },
+      {
+        head: "KPI framework",
+        body: "A hierarchy of measures from operational (process-level) to strategic (outcome-level). Each metric has a defined owner, a baseline, a target, and a review frequency. The framework covers leading indicators (process behaviours) as well as lagging ones (outcomes)."
+      },
+      {
+        head: "Baseline process",
+        body: "A standard approach to establishing performance before improvement work begins. Without a baseline, you cannot demonstrate improvement. Baselines must be established before any changes are made, not reconstructed after the fact."
+      },
+      {
+        head: "Benefit tracking",
+        body: "A mechanism for quantifying and recording the financial and operational value of completed improvements. Benefits are calculated using an agreed methodology, signed off by Finance or an independent function, and tracked against projection for at least 12 months post-implementation."
+      },
+      {
+        head: "Reporting cadence",
+        body: "Programme-level reporting to the sponsor at monthly frequency minimum. Performance trends at team level weekly. Benefit realisation reporting to executive or board quarterly. Each report shows actuals against plan, not just raw performance."
+      },
+      {
+        head: "Common design errors",
+        body: "Measuring activity (number of projects completed, people trained) rather than outcome (performance improvement, benefits realised). Using point-in-time snapshots rather than trend data. Not having Finance independently validate benefit claims."
+      }
+    ]
+  }
+];
+---
+
+<Layout
+  title="CI Programme Design Framework | EQUIBT Resources"
+  description="The four components every CI programme needs to hold after the consultants leave: management system, methodology, capability, and measurement."
+>
+  <Nav />
+  <main>
+    <section class="res-hero res-reveal">
+      <div class="res-hero-inner">
+        <div class="res-hero-copy">
+          <div class="res-crumb">
+            <a href="/resources/">Resources</a>
+            <span class="res-crumb-sep">&rsaquo;</span>
+            <span>CI Programme Design Framework</span>
+          </div>
+          <div class="eyebrow">FRAMEWORK</div>
+          <h1>Four components. One CI programme that holds.</h1>
+          <p class="res-hero-lede">Most CI programmes drift after the consultants leave. These four components are what make them sustain. Click each to see what is in it, how it is designed, and what goes wrong.</p>
+          <div class="res-hero-actions">
+            <a href="#framework" class="btn-text"><span class="link-label">Explore the framework</span> <span class="ar">&rsaquo;</span></a>
+            <a href="/contact/" class="btn-text"><span class="link-label">Get in touch</span> <span class="ar">&rsaquo;</span></a>
+          </div>
+        </div>
+        <div class="res-hero-art" aria-hidden="true">
+          <span><Charter /></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="fw-tool res-reveal" id="framework">
+      <div class="res-inner">
+        <div class="fw-intro">
+          <p class="fw-intro-text">A continuous improvement programme holds or it drifts. The four components below are what determine which way it goes. They are interdependent — a weakness in any one undermines the others.</p>
+        </div>
+
+        <div class="fw-components" id="fw-components">
+          {components.map((comp) => (
+            <div class="fw-component" id={`fw-comp-${comp.num}`}>
+              <button class="fw-comp-btn" type="button" aria-expanded="false" aria-controls={`fw-comp-detail-${comp.num}`}>
+                <div class="fw-comp-left">
+                  <span class="fw-comp-num">{comp.num}</span>
+                  <div class="fw-comp-meta">
+                    <span class="fw-comp-title">{comp.title}</span>
+                    <span class="fw-comp-tagline">{comp.tagline}</span>
+                  </div>
+                </div>
+                <span class="fw-chevron" aria-hidden="true">&#x203A;</span>
+              </button>
+              <div class="fw-comp-detail" id={`fw-comp-detail-${comp.num}`} hidden>
+                <p class="fw-comp-summary">{comp.summary}</p>
+                <div class="fw-sections-grid">
+                  {comp.sections.map(s => (
+                    <div class="fw-section-card">
+                      <p class="fw-section-head">{s.head}</p>
+                      <p class="fw-section-body">{s.body}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="fw-cta-strip">
+          <div class="eyebrow">APPLYING THIS</div>
+          <p>Designing a CI programme that holds is a different brief to running an improvement project. If you want to work through what these components look like in your organisation, get in touch.</p>
+          <a href="/contact/" class="btn-primary">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="res-ld-close res-reveal">
+      <div class="res-inner">
+        <div class="res-ld-close-grid">
+          <div class="res-ld-close-copy">
+            <div class="eyebrow">WORK WITH US</div>
+            <h2>Rather have us design it with you?</h2>
+            <p>We design CI programmes that outlast the engagement. Get in touch if you want to talk through what that looks like in your context.</p>
+            <a href="/contact/" class="btn-primary">Get in touch</a>
+          </div>
+          <div class="res-ld-close-art" aria-hidden="true">
+            <span><Charter /></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+.fw-tool{padding:72px 56px 88px;background:#F5F3EE;}
+
+.fw-intro{max-width:780px;margin:0 0 48px;}
+.fw-intro-text{font-size:20px;color:var(--mid-grey);line-height:1.5;margin:0;}
+
+.fw-components{display:flex;flex-direction:column;gap:12px;margin-bottom:48px;}
+
+.fw-comp-btn{
+  display:flex;align-items:center;gap:24px;
+  width:100%;text-align:left;
+  background:#fff;border:1px solid var(--hairline);border-radius:12px;
+  padding:24px 28px;cursor:pointer;
+  transition:border-color .15s;
+}
+.fw-comp-btn:hover{border-color:var(--terracotta);}
+.fw-comp-btn[aria-expanded="true"]{border-color:var(--navy);border-bottom-left-radius:0;border-bottom-right-radius:0;}
+
+.fw-comp-left{display:flex;align-items:flex-start;gap:20px;flex:1;}
+.fw-comp-num{
+  font-family:"Montserrat",Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;
+  color:#fff;background:var(--navy);
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.fw-comp-meta{display:flex;flex-direction:column;gap:4px;}
+.fw-comp-title{font-size:20px;font-weight:700;color:var(--navy);}
+.fw-comp-tagline{font-size:15px;color:var(--muted);line-height:1.4;}
+.fw-chevron{font-size:22px;color:var(--muted);transition:transform .2s ease;flex:0 0 auto;}
+.fw-comp-btn[aria-expanded="true"] .fw-chevron{transform:rotate(90deg);}
+
+.fw-comp-detail{
+  background:#fff;border:1px solid var(--navy);border-top:none;
+  border-bottom-left-radius:12px;border-bottom-right-radius:12px;
+  padding:0 28px 28px;
+}
+.fw-comp-summary{font-size:18px;color:var(--mid-grey);padding-top:24px;margin:0 0 24px;line-height:1.5;border-bottom:1px solid var(--hairline);padding-bottom:24px;}
+.fw-sections-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.fw-section-card{background:#F5F3EE;border-radius:8px;padding:18px 20px;}
+.fw-section-head{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin:0 0 8px;}
+.fw-section-body{font-size:15px;color:var(--mid-grey);margin:0;line-height:1.5;}
+
+.fw-cta-strip{padding:32px;background:#fff;border:1px solid var(--hairline);border-radius:12px;}
+.fw-cta-strip .eyebrow{margin-bottom:10px;}
+.fw-cta-strip p{margin:0 0 18px;color:var(--mid-grey);font-size:18px;}
+
+@media(max-width:900px){.fw-sections-grid{grid-template-columns:1fr;}}
+@media(max-width:640px){
+  .fw-tool{padding:48px 24px 64px;}
+  .fw-comp-btn{gap:14px;padding:18px 20px;}
+  .fw-comp-left{gap:14px;}
+}
+</style>
+
+<script>
+document.querySelectorAll(".fw-comp-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    const detailId = btn.getAttribute("aria-controls");
+    const detail = document.getElementById(detailId);
+    btn.setAttribute("aria-expanded", !expanded);
+    detail.hidden = expanded;
+    if (!expanded) detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+});
+</script>
