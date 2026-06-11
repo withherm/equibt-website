@@ -60,17 +60,24 @@
 .industry-hero-cluster span:nth-child(3){transform:translateY(-8px);}
 .industry-hero-cluster svg{display:block;width:100%;height:100%;overflow:visible;}
 
+/* JS-driven pin (EQT-296): CSS position:sticky is unreliable in Safari/WebKit
+   here even with a clean ancestor chain — it drops the pin mid-page. We drive
+   the bar with position:fixed via JS instead (initialiseBarPin), which behaves
+   identically across Chrome and Safari. Base state is in normal flow. */
+.subnav-pin-scope{position:relative;}
 .sector-subnav{
-  position:sticky;
-  top:var(--nav-h,81px);
+  position:static;
   z-index:20;
   background:#fff;
   border-top:1px solid var(--hairline);
   border-bottom:1px solid var(--hairline);
+  box-sizing:border-box;
   /* Gutter on the outer bar (full-bleed bg/border), inner content centred to --max,
      so the first tab lines up with the section content gutter below (EQT-295). */
   padding:0 56px;
 }
+.sector-subnav.is-pinned{position:fixed;top:var(--nav-h,81px);left:0;right:0;}
+.sector-subnav.is-parked{position:absolute;top:auto;bottom:0;left:0;right:0;}
 .sector-subnav-inner{
   max-width:var(--max);
   margin:0 auto;
@@ -106,6 +113,39 @@
 }
 .sector-subnav a.is-active{color:var(--terracotta);}
 .sector-subnav a.is-active::after{opacity:1;}
+/* Overflow chevrons: shown only when the tab strip can scroll that way, so on
+   narrow widths clipped tabs (e.g. "Where to start") are discoverable (EQT-296). */
+.sector-subnav-arrow{
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:48px;
+  display:none;
+  align-items:center;
+  border:0;
+  padding:0;
+  margin:0;
+  cursor:pointer;
+  z-index:2;
+  color:var(--near-black);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:20px;
+  line-height:1;
+}
+.sector-subnav-arrow--prev{
+  left:0;
+  justify-content:flex-start;
+  padding-left:16px;
+  background:linear-gradient(to right,#fff 58%,rgba(255,255,255,0));
+}
+.sector-subnav-arrow--next{
+  right:0;
+  justify-content:flex-end;
+  padding-right:16px;
+  background:linear-gradient(to left,#fff 58%,rgba(255,255,255,0));
+}
+.sector-subnav.can-scroll-prev .sector-subnav-arrow--prev{display:flex;}
+.sector-subnav.can-scroll-next .sector-subnav-arrow--next{display:flex;}
 /* Both sticky bars (sector subnav + hub selector) are plain position:sticky,
    each bounded to its own scope so it releases before the next section. No
    visibility toggling: the bars stay visible while their panel is the reading
@@ -521,14 +561,17 @@
 }
 .selector-sticky-scope{position:relative;}
 .sector-list-sticky{
-  position:sticky;
-  top:var(--nav-h,81px);
+  position:static;
   z-index:15;
   background:#fff;
   border-top:1px solid var(--hairline);
   border-bottom:1px solid var(--hairline);
   padding:0 56px;
+  box-sizing:border-box;
 }
+/* JS-driven pin (EQT-296), same as .sector-subnav — Safari drops CSS sticky. */
+.sector-list-sticky.is-pinned{position:fixed;top:var(--nav-h,81px);left:0;right:0;}
+.sector-list-sticky.is-parked{position:absolute;top:auto;bottom:0;left:0;right:0;}
 .sector-list{
   max-width:var(--max);
   margin:0 auto;
