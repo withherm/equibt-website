@@ -658,16 +658,20 @@
   transform:none;
   transition:none;
 }
+/* EQT-297: no transform/transition inside the selector scope. A moving
+   translateY next to the JS-pinned .sector-list-sticky forces Safari to
+   repaint the region and leaves a stale paint of the fixed bar mid-page.
+   The selector panel appears statically; this is the accepted trade-off. */
 .industry-reveal-enabled .selector-section .industry-head,
 .industry-reveal-enabled .selector-section .sector-panel,
 .industry-reveal-enabled .selector-section .hub-pathway{
-  opacity:0;
-  transform:translateY(8px);
-  transition:opacity 350ms ease-out,transform 350ms ease-out;
+  opacity:1;
+  transform:none;
+  transition:none;
 }
 .industry-reveal-enabled .selector-section.is-visible .industry-head,
 .industry-reveal-enabled .selector-section.is-visible .sector-panel,
-.industry-reveal-enabled .selector-section.is-visible .hub-pathway{opacity:1;transform:translateY(0);}
+.industry-reveal-enabled .selector-section.is-visible .hub-pathway{opacity:1;transform:none;}
 
 @media(prefers-reduced-motion:reduce){
   .industry-reveal > .industry-inner,
