@@ -533,23 +533,23 @@ a{color:inherit;}
 .lmi-logo-img{display:block;width:100%;height:auto;}
 .training-block .btn-text{display:table;}
 
-/* 07 industry hub — 2x2 hero cluster + sticky top-row sector selector + full-width station line */
+/* 07 industry hub — 2x2 hero cluster + non-sticky top-row sector selector (EQT-297) + full-width station line */
 .industry-hero-cluster{width:min(420px,82%);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,30px);justify-items:center;margin:0 0 38px auto;}
 .industry-hero-cluster span{display:block;width:min(170px,38vw);aspect-ratio:1;}
 .industry-hero-cluster span:nth-child(2){transform:translateY(18px);}
 .industry-hero-cluster span:nth-child(3){transform:translateY(-6px);}
 .industry-hero-cluster svg{display:block;width:100%;height:100%;overflow:visible;}
 .selector-sticky-scope{position:relative;}
-.sector-list-sticky{position:sticky;top:0;z-index:15;background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
+.sector-list-sticky{position:static;background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);} /* EQT-297: NOT sticky — Safari broke both CSS sticky and a JS fixed pin in this scope; bar stays in flow under the intro */
 .sector-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));}
-.sector-row{position:relative;width:100%;padding:24px 22px 26px 0;border:0;border-right:1px solid var(--hairline);background:transparent;color:inherit;cursor:pointer;display:grid;grid-template-columns:54px minmax(0,1fr);gap:16px;align-items:center;text-align:left;}
+.sector-row{position:relative;width:100%;padding:24px 22px 26px 0;border:0;border-right:1px solid var(--hairline);background:transparent;color:inherit;cursor:pointer;display:grid;grid-template-columns:54px minmax(0,1fr);gap:16px;align-items:start;text-align:left;}
 .sector-row:last-child{border-right:0;}
 .sector-row::before{content:"";position:absolute;left:0;right:22px;bottom:-1px;height:3px;background:var(--terracotta);opacity:0;}
 .sector-row.on::before{opacity:1;}
 .sector-row:focus-visible{outline:2px solid var(--terracotta);outline-offset:4px;}
-.sector-row-icon{display:block;width:54px;height:54px;}
+.sector-row-icon{display:block;width:54px;height:54px;align-self:center;}
 .sector-row-icon svg{display:block;width:100%;height:100%;overflow:visible;}
-.sector-row h3{margin:0 0 8px;font-size:20px;font-weight:700;line-height:1.16;}
+.sector-row h3{margin:0 0 8px;font-size:20px;font-weight:700;line-height:1.16;min-height:2.32em;} /* EQT-297: reserve two title lines so hooks align across tiles */
 .sector-hook{margin:0;color:var(--near-black);font-family:"Montserrat",sans-serif;font-size:14px;font-weight:700;line-height:1.35;}
 .sector-panel{padding-top:42px;}
 .sector-panel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;}
@@ -780,9 +780,9 @@ a{color:inherit;}
   </div>
 </section>
 
-<!-- 07 INDUSTRY HUB — SECTOR SELECTOR (sticky top row + full-width station line) -->
+<!-- 07 INDUSTRY HUB — SECTOR SELECTOR (non-sticky top row, EQT-297 + full-width station line) -->
 <section class="block">
-  <div class="label"><span class="num">07</span><span class="name">Industry hub → sector selector + station line</span><span class="note">REBUILT to the shipped EQT-254 hub (industries/index.astro). The 2x2 sector-icon hero cluster at home-hero footprint, then a horizontal sector ROW across the top (terracotta rule under the active item) — NOT a left side-list — with a shared challenges / where-to-start panel and the de-coloured six-station line FULL WIDTH below it (no box). The row is page-long sticky in the build (pins under the main nav; here top:0). Hover selects and persists, click/keyboard select, default Financial Services. Station mapping is ENTRY-POINTS only: FS/Gov/Util = PLAN + GOVERN, Mfg = PLAN + SOLVE; SCALE lights nowhere; every re-selection resets all six to muted, then marks the recommended set.</span></div>
+  <div class="label"><span class="num">07</span><span class="name">Industry hub → sector selector + station line</span><span class="note">REBUILT to the shipped EQT-254 hub (industries/index.astro). The 2x2 sector-icon hero cluster at home-hero footprint, then a horizontal sector ROW across the top (terracotta rule under the active item) — NOT a left side-list — with a shared challenges / where-to-start panel and the de-coloured six-station line FULL WIDTH below it (no box). The row is NOT sticky (EQT-297): both CSS sticky and a JS fixed pin broke in Safari, so the bar sits in normal flow under the selector intro head; do not re-add a pin. Tiles are top-aligned with a fixed two-line title min-height so titles and hooks align across all four. Hover selects and persists, click/keyboard select, default Financial Services. Station mapping is ENTRY-POINTS only: FS/Gov/Util = PLAN + GOVERN, Mfg = PLAN + SOLVE; SCALE lights nowhere; every re-selection resets all six to muted, then marks the recommended set.</span></div>
   <div class="stage white">
     <div class="demo-hero" style="margin-bottom:8px;">
       <div>
@@ -1618,7 +1618,7 @@ document.querySelectorAll('[data-proof-carousel]').forEach(function(c){
   sync();
 });
 
-/* 07 industry hub — sticky top-row sector selector (lifted from industries/index.astro) */
+/* 07 industry hub — non-sticky top-row sector selector (EQT-297; lifted from industries/index.astro) */
 (function(){
   var scope=document.querySelector('[data-sector-selector]'); if(!scope)return;
   var rows=Array.prototype.slice.call(scope.querySelectorAll('.sector-row'));
