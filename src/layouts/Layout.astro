@@ -6,15 +6,20 @@ import "@fontsource/lora/400-italic.css";
 import "@fontsource/lora/500-italic.css";
 import "../styles/tokens.css";
 import "../styles/base.css";
+import BaseHead from "../components/BaseHead.astro";
 
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  canonical?: string;
 }
 
 const {
   title = "EQUIBT | Operational capability advisory",
   description = "EQUIBT helps leaders simplify complex operating work and make capability stick.",
+  image,
+  canonical,
 } = Astro.props;
 ---
 
@@ -23,9 +28,7 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="icon" href="data:," />
+    <BaseHead title={title} description={description} image={image} canonical={canonical} />
     <slot name="head" />
   </head>
   <body>
