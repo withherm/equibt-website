@@ -305,6 +305,7 @@ const initialService = data.services.frame;
       </div>
     </section>
 
+    <div class="subnav-pin-scope">
     <nav class="sector-subnav" aria-label={`${data.sectorName} sections`}>
       <button type="button" class="sector-subnav-arrow sector-subnav-arrow--prev" aria-label="Scroll sections left" tabindex="-1" aria-hidden="true">‹</button>
       <div class="sector-subnav-inner">
@@ -478,6 +479,7 @@ const initialService = data.services.frame;
         </div>
       </div>
     </section>
+    </div>
 
     <section class="industry-section white cta-light industry-reveal">
       <div class="industry-inner cta-grid">
@@ -581,6 +583,45 @@ const initialService = data.services.frame;
     update();
   }
 
+  // JS-driven pin (EQT-296). CSS position:sticky is unreliable in Safari/WebKit
+  // here (drops the pin mid-page even with a clean ancestor chain), so we drive
+  // the bar with position:fixed, which behaves the same in every browser.
+  // A spacer holds the bar's flow space while it is lifted out. The bar pins
+  // under the nav while its scope is the reading area and parks at the scope
+  // bottom (released) before the next section. scope must be position:relative.
+  function initialiseBarPin(bar, scope) {
+    if (!bar || !scope) return;
+    const spacer = document.createElement("div");
+    spacer.setAttribute("aria-hidden", "true");
+    spacer.style.height = "0px";
+    bar.insertAdjacentElement("beforebegin", spacer);
+    const navH = () => {
+      const n = document.querySelector(".site-nav");
+      return n ? n.offsetHeight : 81;
+    };
+    const update = () => {
+      const barH = bar.offsetHeight;
+      const spTop = spacer.getBoundingClientRect().top;
+      const scBottom = scope.getBoundingClientRect().bottom;
+      const nH = navH();
+      if (spTop > nH) {
+        bar.classList.remove("is-pinned", "is-parked");
+        spacer.style.height = "0px";
+      } else if (scBottom <= nH + barH) {
+        bar.classList.remove("is-pinned");
+        bar.classList.add("is-parked");
+        spacer.style.height = barH + "px";
+      } else {
+        bar.classList.remove("is-parked");
+        bar.classList.add("is-pinned");
+        spacer.style.height = barH + "px";
+      }
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+  }
+
   function initialiseServiceSelector(selector) {
     const buttons = Array.from(selector.querySelectorAll(".selector-item"));
     const title = selector.querySelector("[data-selector-title]");
@@ -644,6 +685,7 @@ const initialService = data.services.frame;
   initialiseIndustryReveals();
   initialiseSubnav();
   initialiseSubnavOverflow();
+  initialiseBarPin(document.querySelector(".sector-subnav"), document.querySelector(".subnav-pin-scope"));
   document.querySelectorAll("[data-service-selector]").forEach(initialiseServiceSelector);
   document.querySelectorAll("[data-proof-carousel]").forEach(initialiseProofCarousel);
 </script>

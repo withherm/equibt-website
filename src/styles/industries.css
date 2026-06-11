@@ -60,24 +60,24 @@
 .industry-hero-cluster span:nth-child(3){transform:translateY(-8px);}
 .industry-hero-cluster svg{display:block;width:100%;height:100%;overflow:visible;}
 
+/* JS-driven pin (EQT-296): CSS position:sticky is unreliable in Safari/WebKit
+   here even with a clean ancestor chain — it drops the pin mid-page. We drive
+   the bar with position:fixed via JS instead (initialiseBarPin), which behaves
+   identically across Chrome and Safari. Base state is in normal flow. */
+.subnav-pin-scope{position:relative;}
 .sector-subnav{
-  position:sticky;
-  top:var(--nav-h,81px);
+  position:static;
   z-index:20;
   background:#fff;
   border-top:1px solid var(--hairline);
   border-bottom:1px solid var(--hairline);
+  box-sizing:border-box;
   /* Gutter on the outer bar (full-bleed bg/border), inner content centred to --max,
      so the first tab lines up with the section content gutter below (EQT-295). */
   padding:0 56px;
-  /* Promote to its own compositing layer so WebKit/Safari does not drop the
-     sticky pin when the section reveal transforms repaint while scrolling past
-     it (Chrome composites sticky off-thread and survives this; Safari did not).
-     EQT-296. Also makes this the positioning context for the overflow chevrons. */
-  transform:translateZ(0);
-  -webkit-backface-visibility:hidden;
-  backface-visibility:hidden;
 }
+.sector-subnav.is-pinned{position:fixed;top:var(--nav-h,81px);left:0;right:0;}
+.sector-subnav.is-parked{position:absolute;top:auto;bottom:0;left:0;right:0;}
 .sector-subnav-inner{
   max-width:var(--max);
   margin:0 auto;
@@ -561,18 +561,17 @@
 }
 .selector-sticky-scope{position:relative;}
 .sector-list-sticky{
-  position:sticky;
-  top:var(--nav-h,81px);
+  position:static;
   z-index:15;
   background:#fff;
   border-top:1px solid var(--hairline);
   border-bottom:1px solid var(--hairline);
   padding:0 56px;
-  /* Same WebKit/Safari sticky-layer promotion as .sector-subnav (EQT-296). */
-  transform:translateZ(0);
-  -webkit-backface-visibility:hidden;
-  backface-visibility:hidden;
+  box-sizing:border-box;
 }
+/* JS-driven pin (EQT-296), same as .sector-subnav — Safari drops CSS sticky. */
+.sector-list-sticky.is-pinned{position:fixed;top:var(--nav-h,81px);left:0;right:0;}
+.sector-list-sticky.is-parked{position:absolute;top:auto;bottom:0;left:0;right:0;}
 .sector-list{
   max-width:var(--max);
   margin:0 auto;
