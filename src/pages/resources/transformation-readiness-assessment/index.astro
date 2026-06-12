@@ -37,13 +37,23 @@ import "../../../styles/resources.css";
     <section class="ra-tool res-reveal" id="assessment">
       <div class="res-inner">
         <div id="ra-form-view">
-          <div class="ra-progress-bar" aria-hidden="true">
-            <div class="ra-progress-fill" id="ra-progress-fill"></div>
-          </div>
+          <nav class="ra-stepper" id="ra-stepper" aria-label="Assessment sections">
+            <div class="ra-step is-active" data-step="0"><div class="ra-step-dot">1</div><span class="ra-step-label">Leadership</span></div>
+            <div class="ra-step-line"></div>
+            <div class="ra-step" data-step="1"><div class="ra-step-dot">2</div><span class="ra-step-label">Operational</span></div>
+            <div class="ra-step-line"></div>
+            <div class="ra-step" data-step="2"><div class="ra-step-dot">3</div><span class="ra-step-label">Change</span></div>
+            <div class="ra-step-line"></div>
+            <div class="ra-step" data-step="3"><div class="ra-step-dot">4</div><span class="ra-step-label">Measurement</span></div>
+          </nav>
           <div class="ra-section-head" id="ra-section-head">
             <div class="eyebrow" id="ra-section-label">SECTION 1 OF 4</div>
             <h2 id="ra-section-title">Leadership Readiness</h2>
             <p class="ra-section-note" id="ra-section-note">How committed and aligned is leadership to driving the transformation?</p>
+          </div>
+          <div class="ra-anon" id="ra-anon-notice">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="7" width="12" height="8" rx="2" stroke="#26245C" stroke-width="1.5"/><path d="M5 7V5a3 3 0 0 1 6 0v2" stroke="#26245C" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>Anonymous — your answers are not stored or sent. Results appear only in this browser window.</span>
           </div>
           <form id="ra-form" novalidate>
             <div id="ra-questions"></div>
@@ -62,6 +72,7 @@ import "../../../styles/resources.css";
             <p id="ra-tier-description" class="ra-tier-desc"></p>
           </div>
           <div class="ra-dim-grid" id="ra-dim-grid"></div>
+          <div class="ra-gap-section" id="ra-gap-section"></div>
           <div class="ra-results-actions">
             <button type="button" class="btn-primary" id="ra-download-btn">Download your results</button>
             <button type="button" class="btn-text" id="ra-restart-btn"><span class="link-label">Start again</span></button>
@@ -94,97 +105,144 @@ import "../../../styles/resources.css";
   <Footer />
 </Layout>
 
-<style>
-/* Assessment tool */
+<style is:global>
+/* ── Assessment tool ── */
 .ra-tool{padding:72px 56px 88px;background:#F5F3EE;}
 
-.ra-progress-bar{height:4px;background:var(--hairline);border-radius:2px;margin-bottom:40px;}
-.ra-progress-fill{height:100%;background:var(--terracotta);border-radius:2px;transition:width .35s ease;}
+/* Flat button override inside nav row */
+.ra-nav .btn-primary{box-shadow:none!important;transform:none!important;}
+.ra-nav .btn-primary:hover{box-shadow:none!important;transform:none!important;background:#2f2d6e;}
 
+/* ── Stepper ── */
+.ra-stepper{display:flex;align-items:flex-start;margin-bottom:44px;}
+.ra-step{display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0;min-width:64px;}
+.ra-step-dot{width:32px;height:32px;border-radius:50%;border:2px solid #d4d0c8;background:#fff;display:flex;align-items:center;justify-content:center;font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;color:#999;transition:all .2s;line-height:1;}
+.ra-step.is-active .ra-step-dot{background:#C15F3C;border-color:#C15F3C;color:#fff;}
+.ra-step.is-done .ra-step-dot{background:#26245C;border-color:#26245C;color:#fff;}
+.ra-step-label{font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.06em;color:#999;text-transform:uppercase;text-align:center;white-space:nowrap;}
+.ra-step.is-active .ra-step-label{color:#C15F3C;}
+.ra-step.is-done .ra-step-label{color:#26245C;}
+.ra-step-line{flex:1;height:2px;background:#d4d0c8;margin:15px 4px 0;transition:background .2s;min-width:16px;}
+.ra-step-line.is-done{background:#26245C;}
+
+/* ── Anonymity notice ── */
+.ra-anon{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #d4d0c8;border-radius:8px;padding:10px 16px;margin-bottom:32px;}
+.ra-anon svg{flex-shrink:0;}
+.ra-anon span{font-size:13px;font-weight:500;color:#666;}
+
+/* ── Section head ── */
 .ra-section-head{margin-bottom:36px;}
 .ra-section-head .eyebrow{margin-bottom:12px;}
 .ra-section-head h2{font-size:clamp(26px,2.6vw,34px);font-weight:700;margin:0 0 12px;}
-.ra-section-note{color:var(--muted);font-size:18px;margin:0;}
+.ra-section-note{color:#666;font-size:18px;margin:0;}
 
-.ra-q-list{list-style:none;padding:0;margin:0 0 32px;display:flex;flex-direction:column;gap:20px;}
-.ra-q-item{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:24px 28px;}
-.ra-q-item.has-error{border-color:#C15F3C;}
-.ra-q-text{font-size:18px;font-weight:600;color:var(--navy);margin:0 0 16px;line-height:1.4;}
-.ra-q-num{color:var(--muted);font-weight:400;}
-.ra-likert{display:flex;gap:8px;flex-wrap:wrap;}
-.ra-likert label{
-  flex:1;min-width:80px;display:flex;flex-direction:column;align-items:center;gap:6px;
-  cursor:pointer;
+/* ── Column header row ── */
+.ra-q-header{display:grid;grid-template-columns:1fr auto;gap:24px;padding:0 28px 12px;border-bottom:1px solid #e0ddd5;margin-bottom:0;}
+.ra-q-header-labels{display:grid;grid-template-columns:repeat(5,52px);gap:6px;text-align:center;}
+.ra-q-header-labels span{font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.06em;color:#999;text-transform:uppercase;line-height:1.3;}
+
+/* ── Question rows ── */
+.ra-q-list{list-style:none;padding:0;margin:0 0 32px;display:flex;flex-direction:column;gap:0;}
+.ra-q-item{background:#fff;border:1px solid #e0ddd5;border-top:none;padding:18px 28px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;}
+.ra-q-item:first-child{border-top:1px solid #e0ddd5;border-radius:0;}
+.ra-q-item:last-child{border-radius:0 0 12px 12px;}
+.ra-q-item.has-error{background:#fff9f7;}
+.ra-q-text{font-size:15px;font-weight:500;color:#26245C;margin:0;line-height:1.55;}
+.ra-q-num{color:#999;font-weight:400;margin-right:4px;}
+
+/* ── Likert radio circles ── */
+.ra-likert{display:grid;grid-template-columns:repeat(5,52px);gap:6px;}
+.ra-likert label{display:flex;justify-content:center;align-items:center;cursor:pointer;}
+.ra-likert input[type="radio"]{
+  -webkit-appearance:none;appearance:none;
+  width:26px;height:26px;
+  border:2px solid #d4d0c8;border-radius:50%;
+  cursor:pointer;position:relative;flex-shrink:0;
+  transition:border-color .15s,background .15s;
 }
-.ra-likert input{display:none;}
-.ra-likert-btn{
-  display:flex;align-items:center;justify-content:center;
-  width:100%;min-height:44px;padding:8px 6px;
-  border:1px solid var(--hairline);border-radius:8px;
-  background:#fff;color:var(--navy);
-  font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;
-  text-align:center;line-height:1.3;
-  transition:background .15s,border-color .15s,color .15s;
-  cursor:pointer;
+.ra-likert input[type="radio"]:checked{border-color:#26245C;background:#26245C;}
+.ra-likert input[type="radio"]:checked::after{
+  content:"";position:absolute;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  width:9px;height:9px;border-radius:50%;background:#fff;
 }
-.ra-likert input:checked + .ra-likert-btn{background:var(--navy);border-color:var(--navy);color:#fff;}
-.ra-likert label:hover .ra-likert-btn{border-color:var(--terracotta);}
-.ra-likert-scale-labels{display:flex;justify-content:space-between;padding:4px 0 0;color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.06em;}
+.ra-likert label:hover input[type="radio"]:not(:checked){border-color:#C15F3C;}
 
-.ra-nav{display:flex;align-items:center;gap:24px;margin-top:8px;}
-.ra-required-note{color:var(--terracotta);font-size:14px;min-height:20px;margin:8px 0 0;}
+/* ── Nav row ── */
+.ra-nav{display:flex;align-items:center;gap:24px;margin-top:24px;}
+.ra-required-note{color:#C15F3C;font-size:14px;min-height:20px;margin:8px 0 0;}
 
-/* Results */
-.ra-results-head{margin-bottom:40px;}
-.ra-results-head .eyebrow{margin-bottom:12px;}
-.ra-results-head h2{font-size:clamp(28px,3vw,38px);font-weight:700;margin:0 0 12px;}
-.ra-tier-desc{font-size:19px;color:var(--mid-grey);max-width:680px;line-height:1.5;}
+/* ── Results: overall score ── */
+.ra-score-banner{display:flex;align-items:center;gap:32px;background:#fff;border:1px solid #e0ddd5;border-radius:14px;padding:28px 32px;margin-bottom:32px;}
+.ra-score-circle{width:88px;height:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:"Montserrat",Arial,sans-serif;font-size:24px;font-weight:700;color:#fff;}
+.ra-score-tier{font-size:26px;font-weight:700;margin:0 0 6px;color:#26245C;}
+.ra-score-desc{font-size:15px;color:#666;line-height:1.55;margin:0;}
 
-.ra-dim-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:40px;}
-.ra-dim-card{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:24px;}
-.ra-dim-name{font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;}
-.ra-dim-score-row{display:flex;align-items:baseline;gap:8px;margin-bottom:10px;}
-.ra-dim-score{font-size:32px;font-weight:700;color:var(--navy);}
-.ra-dim-max{font-size:16px;color:var(--muted);}
-.ra-dim-bar-track{height:6px;background:var(--hairline);border-radius:3px;}
-.ra-dim-bar-fill{height:100%;border-radius:3px;transition:width .5s ease .2s;}
-.ra-dim-label{font-size:13px;color:var(--caption);margin:8px 0 0;}
+/* ── Results: dimension grid ── */
+.ra-results-head{margin-bottom:28px;}
+.ra-results-head .eyebrow{margin-bottom:10px;}
+.ra-results-eyebrow{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:16px;}
+.ra-dim-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:40px;}
+.ra-dim-card{background:#fff;border:1px solid #e0ddd5;border-radius:12px;padding:22px 24px;}
+.ra-dim-name{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin:0 0 12px;}
+.ra-dim-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+.ra-dim-bar-track{flex:1;height:12px;background:#e8e6e2;border-radius:6px;overflow:hidden;}
+.ra-dim-bar-fill{height:100%;border-radius:6px;transition:width .6s ease .1s;}
+.ra-dim-bar-pct{font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;min-width:36px;text-align:right;}
+.ra-dim-label-row{display:flex;justify-content:space-between;align-items:baseline;}
+.ra-dim-score-text{font-size:13px;color:#999;}
+.ra-dim-status{font-size:12px;font-weight:700;font-family:"Montserrat",Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;}
 
+/* ── Gap analysis ── */
+.ra-gap-section{margin-bottom:40px;}
+.ra-gap-header{margin-bottom:20px;}
+.ra-gap-header .eyebrow{margin-bottom:8px;}
+.ra-gap-header h3{font-size:22px;font-weight:700;color:#26245C;margin:0 0 8px;}
+.ra-gap-header p{font-size:16px;color:#666;margin:0;}
+.ra-gap-cards{display:flex;flex-direction:column;gap:16px;}
+.ra-gap-card{background:#fff;border:1px solid #e0ddd5;border-left:4px solid #e0ddd5;border-radius:0 12px 12px 0;padding:20px 24px;}
+.ra-gap-card-top{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
+.ra-gap-card-name{font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#26245C;}
+.ra-gap-tag{padding:2px 10px;border-radius:999px;font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;color:#fff;}
+.ra-gap-card-pct{margin-left:auto;font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;}
+.ra-gap-context{font-size:13px;color:#999;margin:0 0 10px;font-style:italic;}
+.ra-gap-action{font-size:15px;color:#444;margin:0;line-height:1.55;}
+.ra-gap-action strong{color:#26245C;font-weight:600;}
+
+/* ── CTA strip ── */
 .ra-results-actions{display:flex;align-items:center;gap:24px;margin-bottom:40px;}
-
-.ra-cta-strip{padding:32px;background:#fff;border:1px solid var(--hairline);border-radius:12px;}
+.ra-cta-strip{padding:32px;background:#fff;border:1px solid #e0ddd5;border-radius:12px;}
 .ra-cta-strip .eyebrow{margin-bottom:10px;}
-.ra-cta-strip p{margin:0 0 16px;color:var(--mid-grey);font-size:18px;}
+.ra-cta-strip p{margin:0 0 16px;color:#666;font-size:18px;}
 
-/* Print */
+/* ── Section divider (two beige sections meet) ── */
+.res-ld-close{border-top:1px solid #d4d0c8;}
+
+/* ── Print ── */
 @media print{
-  nav,footer,.res-ld-close,.res-hero,.ra-nav,.ra-results-actions,.ra-cta-strip,.ra-progress-bar,.ra-section-head,.ra-form-view,#ra-form-view{display:none!important;}
+  nav,footer,.res-ld-close,.res-hero,.ra-nav,.ra-results-actions,.ra-cta-strip,
+  .ra-stepper,.ra-section-head,#ra-form-view{display:none!important;}
   .ra-tool{padding:0;background:#fff;}
   .res-inner{max-width:100%;}
   #ra-results-view{display:block!important;}
   .ra-dim-grid{grid-template-columns:repeat(2,1fr);}
-  .ra-results-head h2{font-size:28px;}
-  body{font-size:13px;}
-  .ra-dim-card{border:1px solid #ccc;break-inside:avoid;}
-  .ra-print-header{display:block!important;}
+  .ra-score-banner,.ra-dim-card,.ra-gap-card{border:1px solid #ccc;break-inside:avoid;}
 }
-.ra-print-header{display:none;}
-
-@media(max-width:720px){
-  .ra-tool{padding:48px 24px 64px;}
+@media(max-width:760px){
+  .ra-tool{padding:48px 20px 64px;}
   .ra-dim-grid{grid-template-columns:1fr;}
-  .ra-likert{gap:6px;}
+  .ra-q-item{grid-template-columns:1fr;gap:12px;}
+  .ra-q-header{display:none;}
+  .ra-likert{grid-template-columns:repeat(5,1fr);}
+  .ra-step-label{display:none;}
 }
 </style>
-
 <script>
 const SECTIONS = [
   {
-    key: "leadership",
-    label: "SECTION 1 OF 4",
-    title: "Leadership Readiness",
-    note: "How committed and aligned is leadership to driving the transformation?",
-    questions: [
+    key:"leadership",label:"SECTION 1 OF 4",title:"Leadership Readiness",
+    note:"How committed and aligned is leadership to driving the transformation?",
+    questions:[
       "Senior leaders actively sponsor and champion the transformation — it is not delegated below SES or executive level.",
       "Leaders are prepared to change their own behaviours and ways of working as part of the programme.",
       "There is clear accountability for transformation outcomes at the executive or board level.",
@@ -193,11 +251,9 @@ const SECTIONS = [
     ]
   },
   {
-    key: "operational",
-    label: "SECTION 2 OF 4",
-    title: "Operational Readiness",
-    note: "Are the operating conditions in place to support change?",
-    questions: [
+    key:"operational",label:"SECTION 2 OF 4",title:"Operational Readiness",
+    note:"Are the operating conditions in place to support change?",
+    questions:[
       "Core processes being targeted for improvement are documented and understood before any changes are made.",
       "Staff have genuine capacity to participate in improvement work alongside their BAU responsibilities.",
       "The organisation has experience running structured change or improvement projects.",
@@ -206,11 +262,9 @@ const SECTIONS = [
     ]
   },
   {
-    key: "change",
-    label: "SECTION 3 OF 4",
-    title: "Change Readiness",
-    note: "How well positioned is the organisation to absorb and sustain change?",
-    questions: [
+    key:"change",label:"SECTION 3 OF 4",title:"Change Readiness",
+    note:"How well positioned is the organisation to absorb and sustain change?",
+    questions:[
       "Staff at all levels understand why this transformation is necessary — not just that it is happening.",
       "There is a clear, consistent narrative about what success looks like and who benefits.",
       "Previous change efforts in this organisation have been seen through rather than abandoned.",
@@ -219,11 +273,9 @@ const SECTIONS = [
     ]
   },
   {
-    key: "measurement",
-    label: "SECTION 4 OF 4",
-    title: "Measurement Readiness",
-    note: "Can you tell whether the transformation is working?",
-    questions: [
+    key:"measurement",label:"SECTION 4 OF 4",title:"Measurement Readiness",
+    note:"Can you tell whether the transformation is working?",
+    questions:[
       "Baseline performance data exists for the areas being targeted for improvement.",
       "The organisation has agreed metrics for what transformation success looks like.",
       "There are regular rhythms for reviewing progress against targets.",
@@ -232,162 +284,239 @@ const SECTIONS = [
   }
 ];
 
-const LABELS = ["Strongly disagree","Disagree","Neutral","Agree","Strongly agree"];
-const TIER_COLORS = ["#C15F3C","#E09C50","#7A8591","#26245C","#26245C"];
-
-const TIERS = [
-  { min: 0, max: 39, title: "Not ready", description: "Significant gaps across readiness dimensions. Committing to a full transformation programme now carries a high risk of failure. Focus on the lowest-scoring dimensions first to build the foundations." },
-  { min: 40, max: 59, title: "Early stage", description: "Some readiness in place but meaningful gaps remain. A targeted preparation phase — focusing on the weakest dimensions — will materially improve outcomes before a programme starts." },
-  { min: 60, max: 74, title: "Developing", description: "A reasonable foundation exists. Address the gaps identified below before scaling. A phased or piloted approach is lower risk than a full programme launch." },
-  { min: 75, max: 89, title: "Ready to proceed", description: "Strong readiness across most dimensions. Proceed with clear mitigation plans for any gaps. Focus the early stages of the programme on the areas below that need attention." },
-  { min: 90, max: 100, title: "High readiness", description: "Excellent foundations across all dimensions. The conditions for a successful transformation are in place. Maintain rigour on measurement and leadership visibility throughout delivery." }
+const LABELS=["Strongly disagree","Disagree","Neutral","Agree","Strongly agree"];
+const DIM_NAMES={leadership:"Leadership",operational:"Operational",change:"Change",measurement:"Measurement"};
+const DIM_MAX={leadership:25,operational:25,change:25,measurement:20};
+const DIM_CONTEXT={
+  leadership:"Whether senior leaders genuinely own the transformation — not just sponsor it on paper.",
+  operational:"Whether the operating conditions, capacity, and systems can support the change.",
+  change:"Whether the organisation can absorb, sustain, and commit to change over time.",
+  measurement:"Whether you can tell whether the transformation is working and delivering value."
+};
+const TIERS=[
+  {min:0,max:39,title:"Not ready",color:"#C15F3C",description:"Significant gaps across readiness dimensions. Committing to a full transformation programme now carries high risk. Focus on the lowest-scoring dimensions first to build the foundations."},
+  {min:40,max:59,title:"Early stage",color:"#E09C50",description:"Some readiness is in place but meaningful gaps remain. A targeted preparation phase — focused on the weakest dimensions — will materially improve outcomes before a programme starts."},
+  {min:60,max:74,title:"Developing",color:"#7A8591",description:"A reasonable foundation exists. Address the gaps identified before scaling. A phased or piloted approach is lower risk than a full programme launch."},
+  {min:75,max:89,title:"Ready to proceed",color:"#26245C",description:"Strong readiness across most dimensions. Proceed with clear mitigation plans for any gaps. Focus the early stages on the areas below that need attention."},
+  {min:90,max:100,title:"High readiness",color:"#26245C",description:"Excellent foundations across all dimensions. The conditions for a successful transformation are in place. Maintain rigour on measurement and leadership visibility throughout delivery."}
 ];
+const GAP_SHIFTS={
+  leadership:{
+    low:"Start with a frank conversation at board level about genuine commitment. A sponsor without real accountability for outcomes is decoration.",
+    mid:"Secure a named executive champion with decision-making authority, not just advocacy. Test whether leaders are prepared to change their own working patterns.",
+    high:"Deepen leadership engagement from sponsorship to visible participation in the change process — attending reviews, not just receiving them."
+  },
+  operational:{
+    low:"Document and baseline the processes being targeted before any programme begins. You cannot improve what you cannot see.",
+    mid:"Create protected capacity for change work. Improvement running alongside BAU without dedicated time means neither succeeds.",
+    high:"Build the internal project management capability to run structured change, rather than depending entirely on external support."
+  },
+  change:{
+    low:"Build the case for change and test whether staff at all levels understand why — not just that it is happening. Without a credible why, resistance is inevitable.",
+    mid:"Address the history of change. If previous efforts were abandoned, acknowledge it openly. Credibility cannot be asserted; it must be rebuilt through follow-through.",
+    high:"Move from communication to co-design. Teams who helped shape the solution sustain it after go-live. Teams who were informed often do not."
+  },
+  measurement:{
+    low:"Establish baseline data before the programme starts. Without a baseline, you cannot demonstrate value or know when to course-correct.",
+    mid:"Agree on the specific metrics that define success before the programme launches — not partway through when pressure mounts.",
+    high:"Build benefit realisation into the programme governance structure so it is tracked and reported throughout, not just at the end."
+  }
+};
 
-const DIM_LABELS = { leadership: "Leadership", operational: "Operational", change: "Change", measurement: "Measurement" };
-const DIM_MAX = { leadership: 25, operational: 25, change: 25, measurement: 20 };
+let currentSection=0;
+const answers={};
 
-let currentSection = 0;
-const answers = {};
-
-function pct(score, max) { return Math.round((score / max) * 100); }
-
-function barColor(p) {
-  if (p < 40) return "#C15F3C";
-  if (p < 60) return "#E09C50";
-  if (p < 75) return "#7A8591";
-  return "#26245C";
+function pct(score,max){return Math.round((score/max)*100);}
+function barColor(p){if(p<40)return"#C15F3C";if(p<60)return"#E09C50";if(p<75)return"#7A8591";return"#26245C";}
+function statusLabel(p){
+  if(p<40)return{label:"Needs attention",note:"Below 40% — foundational work needed."};
+  if(p<60)return{label:"Developing",note:"40–59% — some structure in place but inconsistent."};
+  if(p<75)return{label:"Progressing",note:"60–74% — foundations developing well."};
+  return{label:"Strong",note:"75%+ — this dimension is well established."};
 }
+function getGlobalQ(si,qi){let n=1;for(let i=0;i<si;i++)n+=SECTIONS[i].questions.length;return n+qi;}
 
-function renderSection(idx) {
-  const s = SECTIONS[idx];
-  document.getElementById("ra-section-label").textContent = s.label;
-  document.getElementById("ra-section-title").textContent = s.title;
-  document.getElementById("ra-section-note").textContent = s.note;
-
-  const qContainer = document.getElementById("ra-questions");
-  const saved = answers[s.key] || {};
-
-  qContainer.innerHTML = `<ul class="ra-q-list">${s.questions.map((q, qi) => `
-    <li class="ra-q-item" id="ra-q-${qi}" data-qi="${qi}">
-      <p class="ra-q-text"><span class="ra-q-num">${getGlobalQ(idx, qi)}.</span> ${q}</p>
-      <div class="ra-likert">
-        ${LABELS.map((lbl, val) => `
-          <label>
-            <input type="radio" name="q${qi}" value="${val + 1}" ${saved[qi] === val + 1 ? "checked" : ""}>
-            <span class="ra-likert-btn">${lbl}</span>
-          </label>
-        `).join("")}
-      </div>
-    </li>
-  `).join("")}</ul>
-  <div class="ra-likert-scale-labels"><span>Not at all</span><span>Completely</span></div>`;
-
-  const totalQ = SECTIONS.reduce((a, s) => a + s.questions.length, 0);
-  const answeredSoFar = Object.values(answers).reduce((a, d) => a + Object.keys(d).length, 0);
-  document.getElementById("ra-progress-fill").style.width = `${(answeredSoFar / totalQ) * 100}%`;
-
-  document.getElementById("ra-prev").style.display = idx > 0 ? "inline-flex" : "none";
-  document.getElementById("ra-next").textContent = idx === SECTIONS.length - 1 ? "See my results" : "Next section";
-  document.getElementById("ra-required-note").textContent = "";
-}
-
-function getGlobalQ(si, qi) {
-  let n = 1;
-  for (let i = 0; i < si; i++) n += SECTIONS[i].questions.length;
-  return n + qi;
-}
-
-function collectSection(idx) {
-  const s = SECTIONS[idx];
-  const res = {};
-  let allAnswered = true;
-  s.questions.forEach((_, qi) => {
-    const checked = document.querySelector(`input[name="q${qi}"]:checked`);
-    if (checked) res[qi] = parseInt(checked.value);
-    else allAnswered = false;
+function updateStepper(idx){
+  document.querySelectorAll(".ra-step").forEach((el,i)=>{
+    el.classList.remove("is-active","is-done");
+    if(i===idx)el.classList.add("is-active");
+    else if(i<idx)el.classList.add("is-done");
   });
-  return { res, allAnswered };
+  document.querySelectorAll(".ra-step-line").forEach((el,i)=>{el.classList.toggle("is-done",i<idx);});
 }
 
-function showResults() {
-  document.getElementById("ra-form-view").style.display = "none";
-  const rv = document.getElementById("ra-results-view");
-  rv.style.display = "block";
-  rv.scrollIntoView({ behavior: "smooth", block: "start" });
+function renderSection(idx){
+  const s=SECTIONS[idx];
+  document.getElementById("ra-section-label").textContent=s.label;
+  document.getElementById("ra-section-title").textContent=s.title;
+  document.getElementById("ra-section-note").textContent=s.note;
+  const saved=answers[s.key]||{};
+  const anon=document.getElementById("ra-anon-notice");
+  if(anon)anon.style.display=idx===0?"flex":"none";
+  updateStepper(idx);
+  const colHeaders=`<div class="ra-q-header"><div></div><div class="ra-q-header-labels">${LABELS.map(l=>`<span>${l}</span>`).join("")}</div></div>`;
+  document.getElementById("ra-questions").innerHTML=colHeaders+`<ul class="ra-q-list">${
+    s.questions.map((q,qi)=>`<li class="ra-q-item" id="ra-q-${qi}">
+      <p class="ra-q-text"><span class="ra-q-num">${getGlobalQ(idx,qi)}.</span> ${q}</p>
+      <div class="ra-likert">${LABELS.map((lbl,val)=>`<label><input type="radio" name="q${qi}" value="${val+1}" ${saved[qi]===val+1?"checked":""} aria-label="${lbl}"></label>`).join("")}</div>
+    </li>`).join("")
+  }</ul>`;
+  document.getElementById("ra-prev").style.display=idx>0?"inline-flex":"none";
+  document.getElementById("ra-next").textContent=idx===SECTIONS.length-1?"See my results":"Next section";
+  document.getElementById("ra-required-note").textContent="";
+}
 
-  const dimScores = {};
-  SECTIONS.forEach(s => {
-    const d = answers[s.key] || {};
-    dimScores[s.key] = Object.values(d).reduce((a, v) => a + v, 0);
+function collectSection(idx){
+  const s=SECTIONS[idx];const res={};let allAnswered=true;
+  s.questions.forEach((_,qi)=>{
+    const c=document.querySelector(`input[name="q${qi}"]:checked`);
+    if(c)res[qi]=parseInt(c.value);else allAnswered=false;
   });
+  return{res,allAnswered};
+}
 
-  const totalScore = Object.values(dimScores).reduce((a, v) => a + v, 0);
-  const totalMax = Object.values(DIM_MAX).reduce((a, v) => a + v, 0);
-  const totalPct = pct(totalScore, totalMax);
-
-  const tier = TIERS.find(t => totalPct >= t.min && totalPct <= t.max) || TIERS[TIERS.length - 1];
-  document.getElementById("ra-tier-title").textContent = tier.title;
-  document.getElementById("ra-tier-description").textContent = tier.description;
-
-  const dimGrid = document.getElementById("ra-dim-grid");
-  dimGrid.innerHTML = SECTIONS.map(s => {
-    const score = dimScores[s.key];
-    const max = DIM_MAX[s.key];
-    const p = pct(score, max);
-    const color = barColor(p);
-    const dimTier = p < 40 ? "Needs attention" : p < 60 ? "Developing" : p < 75 ? "Progressing" : "Strong";
-    return `<div class="ra-dim-card">
-      <p class="ra-dim-name">${DIM_LABELS[s.key]} Readiness</p>
-      <div class="ra-dim-score-row">
-        <span class="ra-dim-score">${score}</span>
-        <span class="ra-dim-max">/ ${max}</span>
-        <span style="margin-left:auto;font-size:13px;font-weight:700;color:${color};">${p}%</span>
+function buildPrintHTML(dimScores,tier,totalPct){
+  const date=new Date().toLocaleDateString("en-AU",{day:"numeric",month:"long",year:"numeric"});
+  const cards=SECTIONS.map(s=>{
+    const sc=dimScores[s.key];const max=DIM_MAX[s.key];const p=pct(sc,max);const color=barColor(p);const st=statusLabel(p);
+    return`<div style="background:#fff;border:1px solid #ddd;border-left:4px solid ${color};border-radius:0 8px 8px 0;padding:16px 20px;margin-bottom:10px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <span style="font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#666;">${DIM_NAMES[s.key]} Readiness</span>
+        <span style="font-size:12px;font-weight:700;color:${color};">${st.label} — ${p}%</span>
       </div>
-      <div class="ra-dim-bar-track">
-        <div class="ra-dim-bar-fill" style="width:${p}%;background:${color};"></div>
+      <div style="height:10px;background:#e8e6e2;border-radius:5px;margin-bottom:8px;overflow:hidden;"><div style="height:100%;width:${p}%;background:${color};border-radius:5px;"></div></div>
+      <div style="font-size:12px;color:#888;">${sc} / ${max} · ${DIM_CONTEXT[s.key]}</div>
+    </div>`;
+  }).join("");
+  const gapItems=SECTIONS.map(s=>({key:s.key,p:pct(dimScores[s.key],DIM_MAX[s.key])}))
+    .sort((a,b)=>a.p-b.p).slice(0,3).map(g=>{
+      const color=barColor(g.p);const level=g.p<40?"low":g.p<65?"mid":"high";
+      return`<div style="margin-bottom:14px;padding:14px 18px;border:1px solid #ddd;border-radius:8px;background:#fff;">
+        <div style="font-size:11px;font-weight:700;font-family:Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:${color};margin-bottom:6px;">${DIM_NAMES[g.key]} — ${g.p}%</div>
+        <div style="font-size:13px;color:#444;line-height:1.5;">${GAP_SHIFTS[g.key][level]}</div>
+      </div>`;
+    }).join("");
+  return`<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Transformation Readiness Results — EQUIBT</title>
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Georgia,serif;color:#1a1a2e;background:#fff;padding:40px 48px;max-width:760px;margin:0 auto;font-size:14px;}.print-btn{display:block;margin-bottom:32px;padding:10px 22px;background:#1a1a2e;color:#fff;border:none;border-radius:6px;font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;}@media print{.print-btn{display:none;}}</style>
+</head><body>
+<button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+<div style="border-bottom:2px solid #1a1a2e;padding-bottom:16px;margin-bottom:24px;">
+  <div style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999;">EQUIBT · Transformation Readiness Assessment</div>
+  <div style="font-size:12px;color:#999;margin-top:4px;">Generated ${date} · Anonymous results</div>
+</div>
+<div style="margin-bottom:28px;">
+  <div style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:8px;">YOUR READINESS</div>
+  <div style="display:flex;align-items:center;gap:16px;margin-bottom:10px;">
+    <div style="width:64px;height:64px;border-radius:50%;background:${tier.color};display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:18px;font-weight:700;color:#fff;flex-shrink:0;">${totalPct}%</div>
+    <div>
+      <div style="font-family:Arial,sans-serif;font-size:26px;font-weight:700;color:${tier.color};margin-bottom:4px;">${tier.title}</div>
+      <div style="font-size:13px;color:#555;line-height:1.5;max-width:520px;">${tier.description}</div>
+    </div>
+  </div>
+</div>
+<div style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:10px;">DIMENSION BREAKDOWN</div>
+${cards}
+<div style="margin-top:24px;border-top:1px solid #ddd;padding-top:20px;">
+  <div style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:14px;">PRIORITIES — WHERE TO FOCUS FIRST</div>
+  ${gapItems}
+</div>
+</body></html>`;
+}
+
+function showResults(){
+  document.getElementById("ra-form-view").style.display="none";
+  const rv=document.getElementById("ra-results-view");
+  rv.style.display="block";
+  rv.scrollIntoView({behavior:"smooth",block:"start"});
+  const dimScores={};
+  SECTIONS.forEach(s=>{dimScores[s.key]=Object.values(answers[s.key]||{}).reduce((a,v)=>a+v,0);});
+  const totalScore=Object.values(dimScores).reduce((a,v)=>a+v,0);
+  const totalMax=Object.values(DIM_MAX).reduce((a,v)=>a+v,0);
+  const totalPct=pct(totalScore,totalMax);
+  const tier=TIERS.find(t=>totalPct>=t.min&&totalPct<=t.max)||TIERS[TIERS.length-1];
+
+  const rh=document.getElementById("ra-results-head");
+  if(rh){
+    rh.innerHTML=`<div class="ra-score-banner">
+      <div class="ra-score-circle" style="background:${tier.color};">${totalPct}%</div>
+      <div><p class="ra-score-tier">${tier.title}</p><p class="ra-score-desc">${tier.description}</p></div>
+    </div>`;
+  }
+
+  const dimGrid=document.getElementById("ra-dim-grid");
+  dimGrid.innerHTML=`<div class="ra-results-eyebrow" style="grid-column:1/-1;">Dimension breakdown</div>`+SECTIONS.map(s=>{
+    const score=dimScores[s.key];const max=DIM_MAX[s.key];const p=pct(score,max);
+    const color=barColor(p);const st=statusLabel(p);
+    return`<div class="ra-dim-card">
+      <p class="ra-dim-name">${DIM_NAMES[s.key]} Readiness</p>
+      <div class="ra-dim-bar-row">
+        <div class="ra-dim-bar-track"><div class="ra-dim-bar-fill" style="width:${p}%;background:${color};"></div></div>
+        <span class="ra-dim-bar-pct" style="color:${color};">${p}%</span>
       </div>
-      <p class="ra-dim-label">${dimTier}</p>
+      <div class="ra-dim-label-row">
+        <span class="ra-dim-score-text">${score} / ${max}</span>
+        <span class="ra-dim-status" style="color:${color};">${st.label}</span>
+      </div>
+      <p style="font-size:12px;color:#999;margin:6px 0 0;font-style:italic;">${DIM_CONTEXT[s.key]}</p>
     </div>`;
   }).join("");
 
-  document.getElementById("ra-progress-fill").style.width = "100%";
+  // Gap analysis
+  const gaps=SECTIONS.map(s=>({key:s.key,p:pct(dimScores[s.key],DIM_MAX[s.key])})).sort((a,b)=>a.p-b.p).slice(0,3);
+  const gapSection=document.getElementById("ra-gap-section");
+  if(gapSection){
+    gapSection.innerHTML=`<div class="ra-gap-header">
+      <div class="eyebrow">YOUR PRIORITIES</div>
+      <h3>Where to focus first</h3>
+      <p id="ra-gap-intro">${totalPct<60?"These dimensions have foundational gaps. Addressing them before launching a programme significantly reduces delivery risk.":"These are the dimensions with the most room to improve. Addressing them will sharpen the conditions for success."}</p>
+    </div>
+    <div id="ra-gap-cards">${gaps.map(g=>{
+      const color=barColor(g.p);const level=g.p<40?"low":g.p<65?"mid":"high";
+      const tag=g.p<40?"Priority":g.p<65?"Develop":"Strengthen";
+      return`<div class="ra-gap-card" style="border-left-color:${color};">
+        <div class="ra-gap-card-top">
+          <span class="ra-gap-card-name">${DIM_NAMES[g.key]}</span>
+          <span class="ra-gap-tag" style="background:${color};">${tag}</span>
+          <span class="ra-gap-card-pct" style="color:${color};">${g.p}%</span>
+        </div>
+        <p class="ra-gap-context">${DIM_CONTEXT[g.key]}</p>
+        <p class="ra-gap-action">${GAP_SHIFTS[g.key][level]}</p>
+      </div>`;
+    }).join("")}</div>`;
+  }
 }
 
-document.getElementById("ra-next").addEventListener("click", () => {
-  const { res, allAnswered } = collectSection(currentSection);
-  if (!allAnswered) {
-    document.getElementById("ra-required-note").textContent = "Please answer all questions in this section before continuing.";
-    return;
-  }
-  answers[SECTIONS[currentSection].key] = res;
-
-  if (currentSection === SECTIONS.length - 1) {
-    showResults();
-  } else {
-    currentSection++;
-    renderSection(currentSection);
-    document.getElementById("ra-form-view").scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+document.getElementById("ra-next").addEventListener("click",()=>{
+  const{res,allAnswered}=collectSection(currentSection);
+  if(!allAnswered){document.getElementById("ra-required-note").textContent="Please answer all questions before continuing.";return;}
+  answers[SECTIONS[currentSection].key]=res;
+  if(currentSection===SECTIONS.length-1){showResults();}
+  else{currentSection++;renderSection(currentSection);document.getElementById("ra-form-view").scrollIntoView({behavior:"smooth",block:"start"});}
+});
+document.getElementById("ra-prev").addEventListener("click",()=>{
+  const{res}=collectSection(currentSection);
+  answers[SECTIONS[currentSection].key]=res;
+  currentSection--;renderSection(currentSection);
+  document.getElementById("ra-form-view").scrollIntoView({behavior:"smooth",block:"start"});
+});
+document.getElementById("ra-download-btn").addEventListener("click",()=>{
+  const dimScores={};
+  SECTIONS.forEach(s=>{dimScores[s.key]=Object.values(answers[s.key]||{}).reduce((a,v)=>a+v,0);});
+  const totalScore=Object.values(dimScores).reduce((a,v)=>a+v,0);
+  const totalMax=Object.values(DIM_MAX).reduce((a,v)=>a+v,0);
+  const totalPct=pct(totalScore,totalMax);
+  const tier=TIERS.find(t=>totalPct>=t.min&&totalPct<=t.max)||TIERS[TIERS.length-1];
+  const w=window.open("","_blank");
+  w.document.write(buildPrintHTML(dimScores,tier,totalPct));
+  w.document.close();
+});
+document.getElementById("ra-restart-btn").addEventListener("click",()=>{
+  Object.keys(answers).forEach(k=>delete answers[k]);
+  currentSection=0;
+  document.getElementById("ra-results-view").style.display="none";
+  const fv=document.getElementById("ra-form-view");fv.style.display="block";
+  renderSection(0);fv.scrollIntoView({behavior:"smooth",block:"start"});
 });
 
-document.getElementById("ra-prev").addEventListener("click", () => {
-  const { res } = collectSection(currentSection);
-  answers[SECTIONS[currentSection].key] = res;
-  currentSection--;
-  renderSection(currentSection);
-  document.getElementById("ra-form-view").scrollIntoView({ behavior: "smooth", block: "start" });
-});
-
-document.getElementById("ra-download-btn").addEventListener("click", () => { window.print(); });
-document.getElementById("ra-restart-btn").addEventListener("click", () => {
-  Object.keys(answers).forEach(k => delete answers[k]);
-  currentSection = 0;
-  document.getElementById("ra-results-view").style.display = "none";
-  document.getElementById("ra-form-view").style.display = "block";
-  renderSection(0);
-  document.getElementById("ra-form-view").scrollIntoView({ behavior: "smooth", block: "start" });
-});
-
-// Init
 renderSection(0);
 </script>
