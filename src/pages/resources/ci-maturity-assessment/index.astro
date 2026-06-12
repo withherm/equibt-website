@@ -22,7 +22,7 @@ import "../../../styles/resources.css";
           </div>
           <div class="eyebrow">ASSESSMENT</div>
           <h1>Where does your CI capability actually sit?</h1>
-          <p class="res-hero-lede">20 questions across five dimensions. Know where you are today and what it takes to move up a tier, not just a score. Results generated here — nothing stored or sent.</p>
+          <p class="res-hero-lede">20 questions across five dimensions. Know where you are today and what it takes to move up a tier, not just a score. Results generated here: nothing stored or sent.</p>
           <div class="res-hero-actions">
             <a href="#assessment" class="btn-primary">Start the assessment</a>
             <a href="/contact/" class="btn-text"><span class="link-label">Talk it through instead</span> <span class="ar">&rsaquo;</span></a>
@@ -55,7 +55,7 @@ import "../../../styles/resources.css";
           </div>
           <div class="ra-anon" id="ra-anon-notice">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="7" width="12" height="8" rx="2" stroke="#26245C" stroke-width="1.5"/><path d="M5 7V5a3 3 0 0 1 6 0v2" stroke="#26245C" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <span>Anonymous — your answers are not stored or sent. Results appear only in this browser window.</span>
+            <span>Anonymous: your answers are not stored or sent. Results appear only in this browser window.</span>
           </div>
           <form id="ra-form" novalidate>
             <div id="ra-questions"></div>
@@ -68,7 +68,7 @@ import "../../../styles/resources.css";
         </div>
 
         <div id="ra-results-view" style="display:none;">
-          <div class="ra-results-head">
+          <div class="ra-results-head" id="ra-results-head">
             <div class="eyebrow">YOUR MATURITY TIER</div>
             <h2 id="ra-tier-title"></h2>
             <p id="ra-tier-description" class="ra-tier-desc"></p>
@@ -119,8 +119,8 @@ import "../../../styles/resources.css";
 .ra-tool{padding:72px 56px 88px;background:#F5F3EE;}
 
 /* Flat button override inside nav row */
-.ra-nav .btn-primary{box-shadow:none!important;transform:none!important;}
-.ra-nav .btn-primary:hover{box-shadow:none!important;transform:none!important;background:#2f2d6e;}
+.ra-nav button.btn-primary{border:none!important;-webkit-appearance:none!important;appearance:none!important;box-shadow:none!important;transform:none!important;}
+.ra-nav button.btn-primary:hover{border:none!important;box-shadow:none!important;transform:none!important;background:#2f2d6e;}
 
 /* ── Stepper ── */
 .ra-stepper{display:flex;align-items:flex-start;margin-bottom:44px;}
@@ -147,7 +147,7 @@ import "../../../styles/resources.css";
 
 /* ── Column header row ── */
 .ra-q-header{display:grid;grid-template-columns:1fr auto;gap:24px;padding:0 28px 12px;border-bottom:1px solid #e0ddd5;margin-bottom:0;}
-.ra-q-header-labels{display:grid;grid-template-columns:repeat(5,52px);gap:6px;text-align:center;}
+.ra-q-header-labels{display:grid;grid-template-columns:repeat(5,72px);gap:4px;text-align:center;}
 .ra-q-header-labels span{font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.06em;color:#999;text-transform:uppercase;line-height:1.3;}
 
 /* ── Question rows ── */
@@ -156,16 +156,16 @@ import "../../../styles/resources.css";
 .ra-q-item:first-child{border-top:1px solid #e0ddd5;border-radius:0;}
 .ra-q-item:last-child{border-radius:0 0 12px 12px;}
 .ra-q-item.has-error{background:#fff9f7;}
-.ra-q-text{font-size:15px;font-weight:500;color:#26245C;margin:0;line-height:1.55;}
-.ra-q-num{color:#999;font-weight:400;margin-right:4px;}
+.ra-q-text{font-size:18px;font-weight:500;color:#26245C;margin:0;line-height:1.55;}
+.ra-q-num{font-family:"Montserrat",Arial,sans-serif;font-size:14px;font-weight:700;color:#C15F3C;margin-right:6px;}
 
 /* ── Likert radio circles ── */
-.ra-likert{display:grid;grid-template-columns:repeat(5,52px);gap:6px;}
+.ra-likert{display:grid;grid-template-columns:repeat(5,72px);gap:4px;}
 .ra-likert label{display:flex;justify-content:center;align-items:center;cursor:pointer;}
 .ra-likert input[type="radio"]{
   -webkit-appearance:none;appearance:none;
   width:26px;height:26px;
-  border:2px solid #d4d0c8;border-radius:50%;
+  border:2px solid #a8a29e;border-radius:50%;
   cursor:pointer;position:relative;flex-shrink:0;
   transition:border-color .15s,background .15s;
 }
@@ -209,7 +209,7 @@ import "../../../styles/resources.css";
 .ra-gap-header h3{font-size:22px;font-weight:700;color:#26245C;margin:0 0 8px;}
 .ra-gap-header p{font-size:16px;color:#666;margin:0;}
 .ra-gap-cards{display:flex;flex-direction:column;gap:16px;}
-.ra-gap-card{background:#fff;border:1px solid #e0ddd5;border-left:4px solid #e0ddd5;border-radius:0 12px 12px 0;padding:20px 24px;}
+.ra-gap-card{background:#fff;border:1px solid #e0ddd5;border-top:3px solid #e0ddd5;border-radius:12px;padding:20px 24px;}
 .ra-gap-card-top{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
 .ra-gap-card-name{font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#26245C;}
 .ra-gap-tag{padding:2px 10px;border-radius:999px;font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;color:#fff;}
@@ -241,9 +241,31 @@ import "../../../styles/resources.css";
   .ra-tool{padding:48px 20px 64px;}
   .ra-dim-grid{grid-template-columns:1fr;}
   .ra-q-item{grid-template-columns:1fr;gap:12px;}
-  .ra-q-header{display:none;}
+  /* ra-q-header shown with abbreviated labels - see below */
   .ra-likert{grid-template-columns:repeat(5,1fr);}
   .ra-step-label{display:none;}
+}
+
+/* ── abbreviated labels (desktop full, mobile short) ── */
+.lbl-short{display:none;}
+/* ── legend ── */
+.ra-legend{display:flex;flex-wrap:wrap;gap:12px 28px;margin-bottom:32px;padding:14px 20px;background:#fff;border:1px solid #e0ddd5;border-radius:10px;}
+.ra-legend-item{display:flex;align-items:center;gap:8px;font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:600;color:#444;letter-spacing:.04em;}
+.ra-legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.ra-legend-range{font-weight:400;color:#999;margin-left:2px;}
+/* ── dim card icon header ── */
+.ra-dim-card-head{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+.ra-dim-icon{display:flex;align-items:center;flex-shrink:0;}
+.ra-dim-name-text{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin:0;}
+/* ── suggested action label ── */
+.ra-gap-action-label{font-family:"Montserrat",Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#aaa;margin:14px 0 4px;}
+/* ── score tier desc on screen ── */
+.ra-tier-desc{font-size:18px;color:#555;line-height:1.6;margin:8px 0 0;}
+@media(max-width:760px){
+  .lbl-full{display:none;}
+  .lbl-short{display:inline;}
+  .ra-q-header{display:grid !important;}
+  .ra-q-header-labels span{font-size:9px;}
 }
 </style>
 <script>
@@ -254,10 +276,10 @@ const SECTIONS = [
     title: "Leadership & Governance",
     note: "Does leadership actively own and govern the CI programme?",
     questions: [
-      "Senior leaders visibly participate in CI reviews, improvement events, or problem-solving — not just receive reports about them.",
+      "Senior leaders visibly participate in CI reviews, improvement events, or problem-solving: not just receive reports about them.",
       "There is a named owner or sponsor for the CI programme with genuine accountability for its results.",
       "CI performance and outcomes are reviewed at board or executive level on a regular cycle.",
-      "Dedicated resources — time, budget, and people — are allocated to CI activities as a standing commitment."
+      "Dedicated resources: time, budget, and people: are allocated to CI activities as a standing commitment."
     ]
   },
   {
@@ -290,9 +312,9 @@ const SECTIONS = [
     title: "Operating Rhythm",
     note: "Is CI embedded in how the organisation runs day to day?",
     questions: [
-      "Teams meet regularly to review operational performance — daily huddles, weekly reviews, or similar.",
+      "Teams meet regularly to review operational performance: daily huddles, weekly reviews, or similar.",
       "Improvement actions are tracked and followed up in a structured way, not just agreed and forgotten.",
-      "Visual management is in place — boards, dashboards, or similar that make performance visible to the team.",
+      "Visual management is in place: boards, dashboards, or similar that make performance visible to the team.",
       "Improvement work is part of normal operations, not a separate initiative running alongside BAU."
     ]
   },
@@ -311,16 +333,24 @@ const SECTIONS = [
 ];
 
 const LABELS = ["Strongly disagree","Disagree","Neutral","Agree","Strongly agree"];
+const LABELS_SHORT = ["SD","D","N","A","SA"];
 const DIM_NAMES = {
   leadership:"Leadership & Governance",process:"Process Stability",
   methods:"Methods & Tools",rhythm:"Operating Rhythm",measurement:"Measurement & Review"
 };
 const DIM_CONTEXT = {
-  leadership:"Whether CI is actively owned at senior level — not just reported to it.",
+  leadership:"Whether CI is actively owned at senior level: not just reported to it.",
   process:"Whether your processes are stable, visible, and measured at the point of work.",
   methods:"Whether structured problem-solving is the norm, not the exception.",
-  rhythm:"Whether CI is embedded in daily operations — reviews, boards, and follow-through.",
+  rhythm:"Whether CI is embedded in daily operations: reviews, boards, and follow-through.",
   measurement:"Whether improvement is quantified and linked to business outcomes."
+};
+const DIM_ICONS={
+  leadership:'<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 16.5c0-3.038 2.462-5.5 5.5-5.5s5.5 2.462 5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
+  process:'<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2.5 5.5h13M2.5 9h9M2.5 12.5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
+  methods:'<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="3" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="7.5" width="10" height="3" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="12" width="7" height="3" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>',
+  rhythm:'<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M9 5v4l2.5 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  measurement:'<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="12.5" width="3" height="4" rx=".5" stroke="currentColor" stroke-width="1.5"/><rect x="7.5" y="8.5" width="3" height="8" rx=".5" stroke="currentColor" stroke-width="1.5"/><rect x="13" y="4.5" width="3" height="12" rx=".5" stroke="currentColor" stroke-width="1.5"/></svg>',
 };
 const TIERS = [
   {min:0,max:39,title:"Developing",color:"#C15F3C",description:"CI activity is ad hoc and reactive. Improvement depends on individual effort rather than system. The priority is building foundations: stable processes, a visible sponsor, and a basic measurement rhythm."},
@@ -331,29 +361,29 @@ const TIERS = [
 ];
 const GAP_SHIFTS = {
   leadership:{
-    low:"Secure a named executive sponsor with genuine accountability for CI outcomes — not just a champion who receives reports.",
+    low:"Secure a named executive sponsor with genuine accountability for CI outcomes: not just a champion who receives reports.",
     mid:"Move CI from being reported to leadership to being actively owned by it. The test: do senior leaders participate in CI events, or just review the slides?",
     high:"Deepen leadership participation from governance to visible involvement in improvement events."
   },
   process:{
     low:"Document and stabilise key processes before attempting to improve them. You cannot improve what you cannot see.",
     mid:"Build measurement at the point of work, not just end-of-process reporting. Variation managed upstream costs a fraction of variation caught downstream.",
-    high:"Move variation management from reactive to proactive — make it visible to the people doing the work, not just managers."
+    high:"Move variation management from reactive to proactive: make it visible to the people doing the work, not just managers."
   },
   methods:{
     low:"Introduce a consistent problem-solving method and make its use the organisational standard, not the exception. Start with one method applied rigorously.",
     mid:"Extend structured methods beyond the trained few. When only certain people use the tools, results are personality-dependent rather than system-dependent.",
-    high:"Integrate methodology into how improvement is commissioned and reviewed — not just how it is executed."
+    high:"Integrate methodology into how improvement is commissioned and reviewed: not just how it is executed."
   },
   rhythm:{
-    low:"Establish regular performance review routines — at minimum weekly — with the teams doing the work. Cadence matters more than the format.",
+    low:"Establish regular performance review routines: at minimum weekly: with the teams doing the work. Cadence matters more than the format.",
     mid:"Make improvement actions visible and actively tracked. A managed backlog beats a list reviewed quarterly. The question is not what was agreed but what changed.",
     high:"Move from improvement as initiative to improvement as operating model."
   },
   measurement:{
     low:"Define baseline metrics for key processes before any improvement activity starts. Without a baseline, you cannot demonstrate value or course-correct.",
     mid:"Shift from snapshot reporting to trend tracking. A number reported once tells you where you are. A trend tells you whether you are improving.",
-    high:"Quantify improvement outcomes in financial terms and close the loop to benefit realisation — not just task completion."
+    high:"Quantify improvement outcomes in financial terms and close the loop to benefit realisation: not just task completion."
   }
 };
 
@@ -369,10 +399,10 @@ function barColor(p){
   return"#26245C";
 }
 function statusLabel(p){
-  if(p<40)return{label:"Needs attention",note:"Below 40% — foundational work needed before other dimensions can build on this."};
-  if(p<60)return{label:"Developing",note:"40–59% — some structure is in place but inconsistent."};
-  if(p<75)return{label:"Progressing",note:"60–74% — a structured approach is taking hold."};
-  return{label:"Strong",note:"75%+ — this dimension is well embedded."};
+  if(p<40)return{label:"Needs attention",note:"Below 40%: foundational work needed before other dimensions can build on this."};
+  if(p<60)return{label:"Developing",note:"40:59%: some structure is in place but inconsistent."};
+  if(p<75)return{label:"Progressing",note:"60:74%: a structured approach is taking hold."};
+  return{label:"Strong",note:"75%+: this dimension is well embedded."};
 }
 function getGlobalQ(si,qi){
   let n=1;
@@ -404,7 +434,7 @@ function renderSection(idx){
 
   updateStepper(idx);
 
-  const colHeaders=`<div class="ra-q-header"><div></div><div class="ra-q-header-labels">${LABELS.map(l=>`<span>${l}</span>`).join("")}</div></div>`;
+  const colHeaders=`<div class="ra-q-header"><div></div><div class="ra-q-header-labels">${LABELS.map((l,i)=>`<span><span class="lbl-full">${l}</span><span class="lbl-short">${LABELS_SHORT[i]}</span></span>`).join("")}</div></div>`;
   document.getElementById("ra-questions").innerHTML=colHeaders+`<ul class="ra-q-list">${
     s.questions.map((q,qi)=>`<li class="ra-q-item" id="ra-q-${qi}">
       <p class="ra-q-text"><span class="ra-q-num">${getGlobalQ(idx,qi)}.</span> ${q}</p>
@@ -433,10 +463,10 @@ function buildPrintHTML(dimScores,tier,totalPct){
   const cards=SECTIONS.map(s=>{
     const sc=dimScores[s.key];const p=pct(sc,SCORE_MAX);const color=barColor(p);
     const st=statusLabel(p);
-    return`<div style="background:#fff;border:1px solid #ddd;border-left:4px solid ${color};border-radius:0 8px 8px 0;padding:16px 20px;margin-bottom:10px;">
+    return`<div style="background:#fff;border:1px solid #ddd;border-top:3px solid ${color};border-radius:8px;padding:16px 20px;margin-bottom:10px;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
         <span style="font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#666;">${DIM_NAMES[s.key]}</span>
-        <span style="font-size:12px;font-weight:700;color:${color};">${st.label} — ${p}%</span>
+        <span style="font-size:12px;font-weight:700;color:${color};">${st.label}: ${p}%</span>
       </div>
       <div style="height:10px;background:#e8e6e2;border-radius:5px;margin-bottom:8px;overflow:hidden;">
         <div style="height:100%;width:${p}%;background:${color};border-radius:5px;"></div>
@@ -448,11 +478,11 @@ function buildPrintHTML(dimScores,tier,totalPct){
     .sort((a,b)=>a.p-b.p).slice(0,3).map(g=>{
       const color=barColor(g.p);const level=g.p<40?"low":g.p<65?"mid":"high";
       return`<div style="margin-bottom:14px;padding:14px 18px;border:1px solid #ddd;border-radius:8px;background:#fff;">
-        <div style="font-size:11px;font-weight:700;font-family:Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:${color};margin-bottom:6px;">${DIM_NAMES[g.key]} — ${g.p}%</div>
+        <div style="font-size:11px;font-weight:700;font-family:Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:${color};margin-bottom:6px;">${DIM_NAMES[g.key]}: ${g.p}%</div>
         <div style="font-size:13px;color:#444;line-height:1.5;">${GAP_SHIFTS[g.key][level]}</div>
       </div>`;
     }).join("");
-  return`<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>CI Maturity Results — EQUIBT</title>
+  return`<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>CI Maturity Results: EQUIBT</title>
 <style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Georgia,serif;color:#1a1a2e;background:#fff;padding:40px 48px;max-width:760px;margin:0 auto;font-size:14px;}h1{font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999;margin-bottom:6px;}h2{font-family:Arial,sans-serif;font-size:30px;font-weight:700;color:#1a1a2e;margin-bottom:10px;}.print-btn{display:block;margin-bottom:32px;padding:10px 22px;background:#1a1a2e;color:#fff;border:none;border-radius:6px;font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;}@media print{.print-btn{display:none;}}</style>
 </head><body>
 <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
@@ -473,7 +503,7 @@ function buildPrintHTML(dimScores,tier,totalPct){
 <div style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:10px;">DIMENSION BREAKDOWN</div>
 ${cards}
 <div style="margin-top:24px;border-top:1px solid #ddd;padding-top:20px;">
-  <div style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:6px;">PRIORITIES — WHERE TO FOCUS FIRST</div>
+  <div style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:6px;">PRIORITIES: WHERE TO FOCUS FIRST</div>
   <div style="font-size:13px;color:#666;margin-bottom:14px;">These are the three lowest-scoring dimensions. Improving them will have the greatest impact on moving up a tier.</div>
   ${gapItems}
 </div>
@@ -512,7 +542,7 @@ function showResults(){
     const score=dimScores[s.key];const p=pct(score,SCORE_MAX);
     const color=barColor(p);const st=statusLabel(p);
     return`<div class="ra-dim-card">
-      <p class="ra-dim-name">${DIM_NAMES[s.key]}</p>
+      <div class="ra-dim-card-head"><span class="ra-dim-icon" style="color:${color};">${DIM_ICONS[s.key]||''}</span><p class="ra-dim-name-text">${DIM_NAMES[s.key]}</p></div>
       <div class="ra-dim-bar-row">
         <div class="ra-dim-bar-track"><div class="ra-dim-bar-fill" style="width:${p}%;background:${color};"></div></div>
         <span class="ra-dim-bar-pct" style="color:${color};">${p}%</span>
@@ -527,23 +557,28 @@ function showResults(){
 
   // Gap analysis
   const sorted=SECTIONS.map(s=>({key:s.key,p:pct(dimScores[s.key],SCORE_MAX)})).sort((a,b)=>a.p-b.p);
-  const gaps=sorted.slice(0,3);
+  const gaps=sorted;
   const gapIntro=totalPct<60
     ?"These three dimensions are your lowest-scoring areas and need foundational work before other dimensions can build on them."
     :"These are the dimensions with the most room to improve. Addressing them will have the greatest impact on moving up a tier.";
+
+  // Legend
+  const lgd=document.createElement('div');lgd.className='ra-legend';
+  lgd.innerHTML='<span class="ra-legend-item"><span class="ra-legend-dot" style="background:#C15F3C;"></span>Needs attention<span class="ra-legend-range">(below 40%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#E09C50;"></span>Developing<span class="ra-legend-range">(40-59%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#7A8591;"></span>Progressing<span class="ra-legend-range">(60-74%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#26245C;"></span>Strong<span class="ra-legend-range">(75% +)</span></span>';
+  dimGrid.after(lgd);
   document.getElementById("ra-gap-intro").textContent=gapIntro;
   document.getElementById("ra-gap-cards").innerHTML=gaps.map(g=>{
     const p=g.p;const color=barColor(p);
     const level=p<40?"low":p<65?"mid":"high";
-    const tag=p<40?"Priority":p<65?"Develop":"Strengthen";
-    return`<div class="ra-gap-card" style="border-left-color:${color};">
+    const tag=p<40?"Priority":p<65?"Develop":p<75?"Strengthen":"Strong";
+    return`<div class="ra-gap-card" style="border-top-color:${color};">
       <div class="ra-gap-card-top">
         <span class="ra-gap-card-name">${DIM_NAMES[g.key]}</span>
         <span class="ra-gap-tag" style="background:${color};">${tag}</span>
         <span class="ra-gap-card-pct" style="color:${color};">${p}%</span>
       </div>
       <p class="ra-gap-context">${DIM_CONTEXT[g.key]}</p>
-      <p class="ra-gap-action">${GAP_SHIFTS[g.key][level]}</p>
+      <p class="ra-gap-action-label">Suggested action</p><p class="ra-gap-action">${GAP_SHIFTS[g.key][level]}</p>
     </div>`;
   }).join("");
 }
