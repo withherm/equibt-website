@@ -607,6 +607,7 @@ a{color:inherit;}
 <div class="page-head" style="padding-top:0;">
   <p style="margin:0;color:var(--caption);font-family:'Lora',serif;font-style:italic;font-size:15px;">Changelog (EQT-276, 2026-06-08): the in-scope blocks were rebuilt to match the shipped EQT-253 (services) and EQT-254 (industries) conversions. Authority for exact values: <strong>DESIGN_LEARNINGS_v6x.md → "Rollout page-type locks"</strong> and <strong>EQUIBT_V6X_UI_TRANSLATION.md</strong> (EQT-253 R1-R4, EQT-254 R1-R5), plus the merged <code>ServicePage.astro</code> / industries <code>_sector.astro</code> / <code>index.astro</code>. Where this file and those disagree, the merged code wins.</p>
   <p style="margin:12px 0 0;color:var(--caption);font-family:'Lora',serif;font-style:italic;font-size:15px;">Changelog (EQT-256/257, 2026-06-09): shipped About, How We Work, Contact and the Capability Statement (Cowork build). New/changed as-built patterns NOT yet redrawn as blocks here — see <strong>DESIGN_LEARNINGS_v6x.md → EQT-256/257 rollout locks</strong> and <strong>EQUIBT_V6X_UI_TRANSLATION.md → EQT-256/257 amendments</strong> for the authority: (a) the side-bleed callout used as an asymmetric PAIR (navy-wash left bleed + white hairline right bleed); (b) Our Story hanging-label rows with an inline line-art glyph per note; (c) the How-We-Work in-room/out-of-room PRINCIPLE pair under its own eyebrow; (d) the Capability Statement MERGED industries+proof as a 2x2 quadrant of beige sector tiles (fixed head height so proof points start flush); (e) the LMI handover on About/HWW/Capability with eyebrow <code>OUR TRAINING DIVISION</code>; (f) the Contact form with a real Cloudflare Turnstile CAPTCHA + monochrome map. Site-wide: geography = Australia only; artwork redraw narrowed to hero/CTA + deliverables + sector identity + service icons (general + sector-challenge glyphs stay line-art). The built pages (<code>about.astro</code>, <code>how-we-work.astro</code>, <code>capability-statement.astro</code>, <code>contact.astro</code> + <code>about.css</code>/<code>contact.css</code>) win over this file.</p>
+  <p style="margin:12px 0 0;color:var(--caption);font-family:'Lora',serif;font-style:italic;font-size:15px;">Changelog (EQT-309, 2026-06-12): shipped the interactive resource tools, including two scored assessments (<code>/resources/transformation-readiness-assessment/</code>, <code>/resources/ci-maturity-assessment/</code>). NOT redrawn as blocks here; the live pages are the reference. New as-built patterns, authority in <strong>DESIGN_LEARNINGS_v6x.md &rarr; "Interactive resource tools &mdash; assessments"</strong> and <strong>EQUIBT_V6X_UI_TRANSLATION.md &rarr; EQT-309 amendments</strong>: (a) ONE 4-band rating scale across overall + dimensions + pills + legend + print (Needs attention &lt;40 / Developing 40-64 / Established 65-74 / Strong 75+); (b) traffic-light scoring colours as a scoped exception to navy/terracotta, brand chrome unchanged; (c) a STATE-AWARE hero (intro + Start gate &rarr; tool-name-only question state &rarr; results headline + prose + score circle); (d) close rhythm white "Work with us" then beige "Build with us" LMI handover (alternation replaces the hairlines); (e) print/PDF mirroring the results hero with near-black text + a full "Your responses" list. The built pages (<code>src/pages/resources/*/index.astro</code> + <code>resources.css</code>) win over this file.</p>
 </div>
 
 <!-- 00 SITE NAV -->
@@ -1573,6 +1574,56 @@ a{color:inherit;}
       <a href="#">Where to start</a>
     </div>
     <p style="margin:22px 0 0;color:var(--caption);font-family:'Lora',serif;font-style:italic;font-size:15px;">In the build: <code>position:sticky; top:var(--nav-h);</code> directly below the opaque main nav (not <code>top:0</code>), left-aligned to the wide grid axis; the active state follows the section in view via IntersectionObserver. Links are plain in-page anchors, keyboard reachable. The marker is the only moving part.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="label"><span class="num">38</span><span class="name">Interactive assessment — results (EQT-309)</span><span class="note">Static snapshot of the live scored-assessment results (Transformation Readiness + CI Maturity, <code>/resources/...</code>). Authority: <strong>DESIGN_LEARNINGS_v6x "Interactive resource tools — assessments"</strong> + <strong>EQUIBT_V6X_UI_TRANSLATION EQT-309 amendments</strong>. ONE 4-band scale across overall result + dimensions + pills + legend + print (Needs attention &lt;40 / Developing 40-64 / Established 65-74 / Strong 75+). Traffic-light scoring colours are a DELIBERATE scoped exception to navy/terracotta, confined to the score readout (bars, dots, pills, the score circle, status text); all other page chrome stays brand. Score circle + pills + status text use the band TEXT shade; bars + dots use the band BRIGHT shade. State-aware hero: intro (Start gate, the only CTAs) → question (tool name only) → results (headline + prose + score circle, shown here). The live JS computes <code>band(pct)</code>; this is a render reference only, not wired.</span></div>
+  <div class="stage white">
+    <!-- results hero (compact, results state) -->
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:28px;border-bottom:1px solid var(--hairline);padding-bottom:26px;margin-bottom:26px;">
+      <div style="flex:1;min-width:0;">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(26px,2.6vw,34px);color:#2E7D32;line-height:1.12;margin:0 0 10px;">Your transformation readiness is strong</h2>
+        <p style="margin:0;color:var(--mid-grey);font-family:'Lora',serif;font-size:18px;line-height:1.5;max-width:560px;">Strong readiness across most dimensions. Proceed with clear mitigation plans for any remaining gaps, and keep rigour on measurement and leadership visibility throughout delivery.</p>
+      </div>
+      <div style="width:128px;height:128px;border-radius:50%;background:#2E7D32;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:34px;flex-shrink:0;">87%</div>
+    </div>
+    <!-- dimension cards: one per band to show the full traffic-light range -->
+    <div style="background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:18px 22px;margin-bottom:12px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <span style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid-grey);">Leadership readiness</span>
+        <span style="margin-left:auto;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.08em;color:#fff;background:#C62828;border-radius:999px;padding:3px 11px;">Needs attention</span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:#C62828;">20%</span>
+      </div>
+      <div style="height:10px;background:#e8e6e2;border-radius:5px;overflow:hidden;"><div style="height:100%;width:20%;background:#E23B33;border-radius:5px;"></div></div>
+      <div style="margin-top:8px;font-family:'Lora',serif;font-size:14px;color:var(--caption);">5 / 25</div>
+    </div>
+    <div style="background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:18px 22px;margin-bottom:12px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <span style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid-grey);">Operational readiness</span>
+        <span style="margin-left:auto;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.08em;color:#fff;background:#B07A00;border-radius:999px;padding:3px 11px;">Established</span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:#B07A00;">68%</span>
+      </div>
+      <div style="height:10px;background:#e8e6e2;border-radius:5px;overflow:hidden;"><div style="height:100%;width:68%;background:#F4C20D;border-radius:5px;"></div></div>
+      <div style="margin-top:8px;font-family:'Lora',serif;font-size:14px;color:var(--caption);">17 / 25</div>
+    </div>
+    <div style="background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:18px 22px;margin-bottom:18px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <span style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid-grey);">Change readiness</span>
+        <span style="margin-left:auto;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.08em;color:#fff;background:#2E7D32;border-radius:999px;padding:3px 11px;">Strong</span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:#2E7D32;">92%</span>
+      </div>
+      <div style="height:10px;background:#e8e6e2;border-radius:5px;overflow:hidden;"><div style="height:100%;width:92%;background:#46A546;border-radius:5px;"></div></div>
+      <div style="margin-top:8px;font-family:'Lora',serif;font-size:14px;color:var(--caption);">23 / 25</div>
+    </div>
+    <!-- legend -->
+    <div style="display:flex;flex-wrap:wrap;gap:8px 22px;padding:10px 16px;border:1px solid var(--hairline);border-radius:8px;">
+      <span style="display:flex;align-items:center;gap:7px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;color:var(--mid-grey);"><span style="width:9px;height:9px;border-radius:50%;background:#E23B33;"></span>Needs attention <span style="font-weight:400;color:var(--caption);">(below 40%)</span></span>
+      <span style="display:flex;align-items:center;gap:7px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;color:var(--mid-grey);"><span style="width:9px;height:9px;border-radius:50%;background:#F2912E;"></span>Developing <span style="font-weight:400;color:var(--caption);">(40-64%)</span></span>
+      <span style="display:flex;align-items:center;gap:7px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;color:var(--mid-grey);"><span style="width:9px;height:9px;border-radius:50%;background:#F4C20D;"></span>Established <span style="font-weight:400;color:var(--caption);">(65-74%)</span></span>
+      <span style="display:flex;align-items:center;gap:7px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;color:var(--mid-grey);"><span style="width:9px;height:9px;border-radius:50%;background:#46A546;"></span>Strong <span style="font-weight:400;color:var(--caption);">(75%+)</span></span>
+    </div>
+    <p style="margin:22px 0 0;color:var(--caption);font-family:'Lora',serif;font-style:italic;font-size:15px;">In the build: a single <code>band(pct)</code> returns both shades (bar = bright, text/pill/circle = dark) and drives the overall result, every dimension, the legend and the print/PDF. The hero carries three states (intro/question/results); the score circle replaces the gauge motif on results. Print mirrors this layout with near-black text and a full "Your responses" list. Live: <code>src/pages/resources/transformation-readiness-assessment/index.astro</code> + <code>ci-maturity-assessment</code>.</p>
   </div>
 </section>
 

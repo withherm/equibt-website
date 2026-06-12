@@ -308,6 +308,40 @@ This works because CSS `:hover` propagates through the DOM tree to absolutely-po
 
 **Sector subnav overflow chevrons (EQT-296).** The subnav tab strip (`.sector-subnav-inner`) is `overflow-x:auto; scrollbar-width:none`, so on narrow widths clipped tabs (e.g. "Where to start") had no discoverability cue. `‹`/`›` chevrons (`.sector-subnav-arrow`, abs-positioned over each edge with a short white fade) show only when `.sector-subnav` has `.can-scroll-prev`/`.can-scroll-next` — toggled by `initialiseSubnavOverflow()` reading `scrollLeft`/`scrollWidth` on scroll/resize. Tapping nudges the strip by 0.7×clientWidth. No chevrons when everything fits.
 
+### Interactive resource tools — assessments (EQT-309, shipped 2026-06-12)
+
+Two scored assessments live at `/resources/transformation-readiness-assessment/` and `/resources/ci-maturity-assessment/` (Astro static page + vanilla JS state, no framework island, no server, no email gate). These set the reusable pattern for any future on-site scored tool. The other four EQT-309 resources (government checklist, consulting brief template, engagement model, CI framework) shipped earlier in the same issue; the assessment UX below is the as-built standard.
+
+**One rating scale, used everywhere on the tool (the key lock).** A single 4-band scale drives the overall result, every dimension, the tag pills, the legend and the print output, with matching thresholds so the headline band always agrees with the legend. Earlier builds had three competing vocabularies (overall tier names, dimension status, gap tags) at three different thresholds, which produced a "68% = Developing" headline against a legend that called 65-74% "Progressing". Resolved to one `band(pct)` function:
+- **Needs attention** — below 40%
+- **Developing** — 40-64%
+- **Established** — 65-74%
+- **Strong** — 75%+
+
+**Scoring colours = traffic light (DELIBERATE SCOPED EXCEPTION to the navy + terracotta palette).** Assessment scoring is functional data display, not brand chrome, so it uses a red→orange→amber→green progression. Bars and legend dots use the bright shade; text, pills and the score circle use a slightly darker shade of the same hue for legibility on white:
+
+| Band | Bar / dot | Text / pill / circle |
+|---|---|---|
+| Needs attention | `#E23B33` | `#C62828` |
+| Developing | `#F2912E` | `#D9730B` |
+| Established | `#F4C20D` | `#B07A00` |
+| Strong | `#46A546` | `#2E7D32` |
+
+The brand navy/terracotta still owns all non-scoring chrome on the page (nav, breadcrumb, hero, buttons, stepper, likert controls). Traffic-light is confined to the score readout. Recorded in `BRAND_SYSTEM.md` and `COLOUR_USAGE_RULES.md` (Rule 4) so it is not read as off-brand.
+
+**State-aware hero (intro → question → results).** The hero is not static; it carries the tool through three states, and the questions are gated behind a Start click (the first page is a true intro, not a long scroll with the form already open):
+- **Intro:** full hero — H1 question, lede, privacy line, gauge motif, `Start the assessment` (primary) + `Talk it through instead` (text link). This is the ONLY state that carries CTAs.
+- **Question:** hero collapses to the tool name only (H1), no lede, no motif (blank right column is intentional), shorter padding (`.res-hero.is-compact`). The section stepper + questions sit below.
+- **Results:** hero becomes the result — H1 reads "Your transformation readiness is developing" / "Your CI maturity is strong" (grammar special-cased so "Needs attention" reads "Your … needs attention"), the tier description as prose, and the score circle (band text colour, white %) replacing the gauge on the right. `Start again` returns to the intro.
+
+This refines the EQT-285 "no primary CTA in hero" lock for interactive tools: the Start button is the tool's function, not a hard-sell, and it appears on the intro state only.
+
+**Close-section rhythm (assessment pages).** Below the tool: white "Work with us" (`WORK WITH US` / "Rather have us run it with you?", EQUIBT contact) then beige "Build with us" (`BUILD WITH US` / "Build the capability in-house", the LMI handover). The white→beige alternation is the separator, so the LMI band's top/bottom hairlines are dropped (the "alternate, don't rule" divider rule). Scoped to the assessment pages via the page `<style is:global>` so other resource pages are untouched.
+
+**Print / PDF output (`window.print()` on a generated tab, dedicated layout).** Arranged to mirror the results hero: EQUIBT wordmark top-right + tool-name title across the top on a 2px rule; then the result headline + tier-description prose on the left with the score circle on the right; DIMENSION BREAKDOWN cards; colour legend; a full **Your responses** list (every question with the answer chosen); then a footer with "Generated [date] · Anonymous results" and `www.equibt.com`. Print body text is near-black (`#0d0d0d` body, `#2a2a2a` labels/scores, `#1a1a1a` legend) — print greys must be far darker than screen greys or the PDF reads fuzzy. The browser tab `<title>` is the tool name ("Transformation Readiness Assessment — Results"), not a generic "Results".
+
+**Text contrast (older-exec audience).** Use the dark tokens, not washed-out greys: body/action text `var(--mid-grey)` `#2B2B2B`, secondary (scores, captions, italic context) `var(--caption)` `#5A5A5A`. Avoid `#999`/`#aaa` for any content text. Sizes were lifted a step (action 16px, context/score 14px, dimension labels 12px). The redundant lower-case status word under each bar was removed — the coloured pill carries the band name once.
+
 ## Process notes
 
 - Build runs via Codex on branch `eqt-245` (single canonical clone); Herman/Cowork review screenshots and the file directly. Codex's screenshot environment was blocked this session, and self-checks are not trusted for sign-off (past false passes). Six correction rounds (R1-R6) produced this set. Icon options and the Govern-tick exploration are recorded in `EQUIBT_V6X_ICON_OPTIONS.html`, `EQUIBT_V6X_GOVERN_TICK_OPTIONS.html`, `EQUIBT_V6X_GOVERN_FINAL.html` (Docs/EQUIBT).

@@ -237,3 +237,22 @@ Full detail and exact values: `DESIGN_LEARNINGS_v6x.md` → the EQT-256/257 roll
 | Capability "how to engage" / facts | facts rows | REMOVED (Herman). |
 | Contact form | hairline inputs | v6x hairline inputs kept; heading "Let's talk about your operation." (Herman re-allowed "Let's talk" as a HEADING; the CTA button stays "Get in touch"). CAPTCHA = **real Cloudflare Turnstile** (interim TEST sitekey; production key + server-side verification at go-live EQT-262) + honeypot; `mailto:` action interim. |
 | Contact REACH US | email + LinkedIn | monochrome Google-Maps embed left + details right (real Melbourne office + Melbourne/Sydney numbers + email + LinkedIn). Heading "Reach us directly." |
+
+## EQT-309 amendments (interactive resource tools — assessments, shipped 2026-06-12)
+
+Full detail and exact values: `DESIGN_LEARNINGS_v6x.md` → "Interactive resource tools — assessments". Two scored assessments (`/resources/transformation-readiness-assessment/`, `/resources/ci-maturity-assessment/`), Astro page + vanilla JS state, no server, no email gate. This is the as-built standard for any future on-site scored tool.
+
+**New component rows (additions to the tables above):**
+
+| Component | prior | v6x as built (EQT-309) |
+|---|---|---|
+| Resource = scored assessment | n/a (resource cards were download/landing) | Single-page tool with JS state: section stepper + likert questions → score → results. No box clutter; hairline question rows; native radio likert (5 columns, Strongly disagree → Strongly agree). |
+| Rating scale (overall + dimensions + pills + legend + print) | three competing vocabularies/thresholds | ONE `band(pct)` scale, single set of thresholds: **Needs attention** <40, **Developing** 40-64, **Established** 65-74, **Strong** 75+. The headline band always matches the legend. |
+| Scoring colours | navy/terracotta brand chrome | Traffic-light, scoped to the score readout only (bar/dot bright, text/pill/circle darker): attention `#E23B33`/`#C62828`, developing `#F2912E`/`#D9730B`, established `#F4C20D`/`#B07A00`, strong `#46A546`/`#2E7D32`. Deliberate scoped exception to the brand palette; all non-scoring chrome stays navy/terracotta. |
+| Assessment hero | static hero | STATE-AWARE: intro (full hero + Start gate + the only CTAs) → question (tool name H1 only, `.res-hero.is-compact`, blank motif column) → results (result H1 "Your <subject> is <band>", tier prose, score circle replacing the motif). Refines the EQT-285 "no hero CTA" lock: Start is the tool's function, intro state only. |
+| Score circle (`.ra-hero-score`) | n/a | round, band text colour, white %, sits in the hero art column on results; `clamp(116px,13vw,150px)`. |
+| Dimension card | gap tags + duplicate status word | icon + name + coloured band pill + % in the head; bar fill (bright band); `x / y` under it; italic context; suggested action in the right column. The redundant lower-case status word was removed (the pill carries the band once). |
+| Print / PDF | (interim circle-left) | mirrors the results hero: EQUIBT wordmark top-right + tool-name title on a 2px rule → result headline + prose left, score circle right → DIMENSION BREAKDOWN cards → legend → full **Your responses** list → footer (date + `www.equibt.com`). Near-black print greys (`#0d0d0d`/`#2a2a2a`/`#1a1a1a`); tab `<title>` = tool name. |
+| Close rhythm (assessment pages) | beige tool → beige LMI | white "Work with us" (EQUIBT contact) → beige "Build with us" (LMI handover, eyebrow `BUILD WITH US`). Alternation is the separator, so the LMI band hairlines are dropped. Scoped via the page style block. |
+
+**Text contrast lock (carried site-relevant):** content text uses `var(--mid-grey)` `#2B2B2B` (body/action) and `var(--caption)` `#5A5A5A` (scores/captions); never `#999`/`#aaa` for content. Audience is corporate/gov, not teens — size up rather than down. Print greys must be far darker than screen greys (near-black) or the PDF reads fuzzy.
