@@ -173,16 +173,22 @@ import "../../../styles/resources.css";
 .ra-required-note{color:#C15F3C;font-size:14px;min-height:20px;margin:8px 0 0;}
 
 /* ── Results: overall score ── */
-.ra-score-banner{display:flex;align-items:center;gap:32px;background:#fff;border:1px solid #e0ddd5;border-radius:14px;padding:28px 32px;margin-bottom:32px;}
-.ra-score-circle{width:88px;height:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:"Montserrat",Arial,sans-serif;font-size:24px;font-weight:700;color:#fff;}
-.ra-score-tier{font-size:26px;font-weight:700;margin:0 0 6px;color:#26245C;}
+.ra-score-bar-wrap{background:#fff;border:1px solid #e0ddd5;border-radius:14px;padding:28px 32px;margin-bottom:32px;}
+.ra-score-bar-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;}
+.ra-score-eyebrow{font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;}
+.ra-score-tier-name{font-family:"Montserrat",Arial,sans-serif;font-size:20px;font-weight:700;}
+.ra-score-bar-track-outer{height:32px;background:#e8e6e2;border-radius:16px;overflow:hidden;margin-bottom:16px;}
+.ra-score-bar-fill-outer{height:100%;background:#103E8C;border-radius:16px;transition:width .8s ease;}
 .ra-score-desc{font-size:15px;color:#666;line-height:1.55;margin:0;}
 
 /* ── Results: dimension grid ── */
 .ra-results-head{margin-bottom:28px;}
 .ra-results-head .eyebrow{margin-bottom:10px;}
 .ra-results-eyebrow{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:16px;}
-.ra-dim-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:40px;}
+.ra-dim-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:32px;}
+.ra-combined-card{background:#fff;border:1px solid #e0ddd5;border-radius:12px;padding:20px 24px;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:start;}
+.ra-combined-left{padding-right:24px;}
+.ra-combined-right{padding-left:24px;background:#faf9f7;border-radius:0 10px 10px 0;margin:-20px -24px -20px 0;padding:20px 24px;}
 .ra-dim-card{background:#fff;border:1px solid #e0ddd5;border-radius:12px;padding:22px 24px;}
 .ra-dim-name{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin:0 0 12px;}
 .ra-dim-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
@@ -200,7 +206,7 @@ import "../../../styles/resources.css";
 .ra-gap-header h3{font-size:22px;font-weight:700;color:#26245C;margin:0 0 8px;}
 .ra-gap-header p{font-size:16px;color:#666;margin:0;}
 .ra-gap-cards{display:flex;flex-direction:column;gap:16px;}
-.ra-gap-card{background:#fff;border:1px solid #e0ddd5;border-top:3px solid #e0ddd5;border-radius:12px;padding:20px 24px;}
+.ra-gap-card{background:#fff;border:1px solid #e0ddd5;border-radius:12px;padding:20px 24px;}
 .ra-gap-card-top{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
 .ra-gap-card-name{font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#26245C;}
 .ra-gap-tag{padding:2px 10px;border-radius:999px;font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;color:#fff;}
@@ -215,6 +221,8 @@ import "../../../styles/resources.css";
 .ra-cta-strip .eyebrow{margin-bottom:10px;}
 .ra-cta-strip p{margin:0 0 16px;color:#666;font-size:18px;}
 
+.ra-section-icon-inline{display:inline-flex;align-items:center;margin-right:10px;vertical-align:middle;color:#C15F3C;}
+.ra-section-icon-inline svg{width:24px;height:24px;}
 /* ── Section divider (two beige sections meet) ── */
 .res-ld-close{border-top:1px solid #d4d0c8;}
 
@@ -225,8 +233,8 @@ import "../../../styles/resources.css";
   .ra-tool{padding:0;background:#fff;}
   .res-inner{max-width:100%;}
   #ra-results-view{display:block!important;}
-  .ra-dim-grid{grid-template-columns:repeat(2,1fr);}
-  .ra-score-banner,.ra-dim-card,.ra-gap-card{border:1px solid #ccc;break-inside:avoid;}
+  .ra-dim-grid{flex-direction:column;}
+  .ra-score-bar-wrap,.ra-combined-card{border:1px solid #ccc;break-inside:avoid;}
 }
 @media(max-width:760px){
   .ra-tool{padding:48px 20px 64px;}
@@ -307,6 +315,7 @@ const SECTIONS = [
 ];
 
 const LABELS=["Strongly disagree","Disagree","Neutral","Agree","Strongly agree"];
+const LABELS_SHORT=["SD","D","N","A","SA"];
 const DIM_NAMES={leadership:"Leadership",operational:"Operational",change:"Change",measurement:"Measurement"};
 const DIM_MAX={leadership:25,operational:25,change:25,measurement:20};
 const DIM_CONTEXT={
@@ -376,7 +385,7 @@ function updateStepper(idx){
 function renderSection(idx){
   const s=SECTIONS[idx];
   document.getElementById("ra-section-label").textContent=s.label;
-  document.getElementById("ra-section-title").textContent=s.title;
+  document.getElementById("ra-section-title").innerHTML=`<span class="ra-section-icon-inline">${DIM_ICONS[s.key]||''}</span>${s.title}`;
   document.getElementById("ra-section-note").textContent=s.note;
   const saved=answers[s.key]||{};
   const anon=document.getElementById("ra-anon-notice");
@@ -407,23 +416,20 @@ function buildPrintHTML(dimScores,tier,totalPct){
   const date=new Date().toLocaleDateString("en-AU",{day:"numeric",month:"long",year:"numeric"});
   const cards=SECTIONS.map(s=>{
     const sc=dimScores[s.key];const max=DIM_MAX[s.key];const p=pct(sc,max);const color=barColor(p);const st=statusLabel(p);
-    return`<div style="background:#fff;border:1px solid #ddd;border-left:4px solid ${color};border-radius:0 8px 8px 0;padding:16px 20px;margin-bottom:10px;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-        <span style="font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#666;">${DIM_NAMES[s.key]} Readiness</span>
-        <span style="font-size:12px;font-weight:700;color:${color};">${st.label}: ${p}%</span>
+    const level=p<40?"low":p<65?"mid":"high";
+    const iconSvg=(DIM_ICONS[s.key]||"").replace(/stroke="currentColor"/g,`stroke="${color}"`);
+    return`<div style="background:#fff;border:1px solid #ddd;border-radius:8px;padding:14px 18px;margin-bottom:10px;display:grid;grid-template-columns:55% 45%;gap:16px;align-items:start;">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">${iconSvg}<span style="font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555;">${DIM_NAMES[s.key]} Readiness</span><span style="margin-left:auto;font-size:12px;font-weight:700;color:${color};">${st.label}: ${p}%</span></div>
+        <div style="height:10px;background:#e8e6e2;border-radius:5px;margin-bottom:6px;overflow:hidden;"><div style="height:100%;width:${p}%;background:${color};border-radius:5px;"></div></div>
+        <div style="font-size:11px;color:#999;">${sc} / ${max}</div>
       </div>
-      <div style="height:10px;background:#e8e6e2;border-radius:5px;margin-bottom:8px;overflow:hidden;"><div style="height:100%;width:${p}%;background:${color};border-radius:5px;"></div></div>
-      <div style="font-size:12px;color:#888;">${sc} / ${max} · ${DIM_CONTEXT[s.key]}</div>
+      <div style="background:#f8f7f4;border-radius:6px;padding:10px 12px;">
+        <div style="font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#aaa;margin-bottom:5px;">SUGGESTED ACTION</div>
+        <div style="font-size:11px;color:#444;line-height:1.5;">${GAP_SHIFTS[s.key][level]}</div>
+      </div>
     </div>`;
   }).join("");
-  const gapItems=SECTIONS.map(s=>({key:s.key,p:pct(dimScores[s.key],DIM_MAX[s.key])}))
-    .sort((a,b)=>a.p-b.p).map(g=>{
-      const color=barColor(g.p);const level=g.p<40?"low":g.p<65?"mid":"high";
-      return`<div style="margin-bottom:14px;padding:14px 18px;border:1px solid #ddd;border-radius:8px;background:#fff;">
-        <div style="font-size:11px;font-weight:700;font-family:Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:${color};margin-bottom:6px;">${DIM_NAMES[g.key]}: ${g.p}%</div>
-        <div style="font-size:13px;color:#444;line-height:1.5;">${GAP_SHIFTS[g.key][level]}</div>
-      </div>`;
-    }).join("");
   return`<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Transformation Readiness Results: EQUIBT</title>
 <style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Georgia,serif;color:#1a1a2e;background:#fff;padding:40px 48px;max-width:760px;margin:0 auto;font-size:14px;}.print-btn{display:block;margin-bottom:32px;padding:10px 22px;background:#1a1a2e;color:#fff;border:none;border-radius:6px;font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;}@media print{.print-btn{display:none;}}</style>
 </head><body>
@@ -433,21 +439,17 @@ function buildPrintHTML(dimScores,tier,totalPct){
   <div style="font-size:12px;color:#999;margin-top:4px;">Generated ${date} · Anonymous results</div>
 </div>
 <div style="margin-bottom:28px;">
-  <div style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:8px;">YOUR READINESS</div>
-  <div style="display:flex;align-items:center;gap:16px;margin-bottom:10px;">
-    <div style="width:64px;height:64px;border-radius:50%;background:${tier.color};display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:18px;font-weight:700;color:#fff;flex-shrink:0;">${totalPct}%</div>
-    <div>
-      <div style="font-family:Arial,sans-serif;font-size:26px;font-weight:700;color:${tier.color};margin-bottom:4px;">${tier.title}</div>
-      <div style="font-size:13px;color:#555;line-height:1.5;max-width:520px;">${tier.description}</div>
-    </div>
+  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;">
+    <span style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;">YOUR READINESS SCORE</span>
+    <span style="font-family:Arial,sans-serif;font-size:18px;font-weight:700;color:${tier.color};">${tier.title} · ${totalPct}%</span>
   </div>
+  <div style="height:24px;background:#e8e6e2;border-radius:12px;overflow:hidden;margin-bottom:12px;">
+    <div style="height:100%;width:${totalPct}%;background:#103E8C;border-radius:12px;"></div>
+  </div>
+  <div style="font-size:13px;color:#555;line-height:1.5;">${tier.description}</div>
 </div>
 <div style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:10px;">DIMENSION BREAKDOWN</div>
 ${cards}
-<div style="margin-top:24px;border-top:1px solid #ddd;padding-top:20px;">
-  <div style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:14px;">PRIORITIES: WHERE TO FOCUS FIRST</div>
-  ${gapItems}
-</div>
 </body></html>`;
 }
 
@@ -468,59 +470,35 @@ function showResults(){
   const tierDescEl=document.getElementById("ra-tier-description");
   if(tierDescEl) tierDescEl.textContent=tier.description;
   const rh=document.getElementById("ra-results-head");
-  if(rh){
-    rh.innerHTML=`<div class="ra-score-banner">
-      <div class="ra-score-circle" style="background:${tier.color};">${totalPct}%</div>
-      <div><p class="ra-score-tier">${tier.title}</p><p class="ra-score-desc">${tier.description}</p></div>
-    </div>`;
+  if(rh&&!rh.querySelector(".ra-score-bar-fill-outer")){
+    const banner=document.createElement("div");
+    banner.className="ra-score-bar-wrap";
+    banner.innerHTML=`<div class="ra-score-bar-header"><span class="ra-score-eyebrow">YOUR READINESS SCORE</span><span class="ra-score-tier-name" style="color:${tier.color};">${tier.title} · ${totalPct}%</span></div><div class="ra-score-bar-track-outer"><div class="ra-score-bar-fill-outer" style="width:${totalPct}%;"></div></div><p class="ra-score-desc">${tier.description}</p>`;
+    rh.innerHTML="";
+    rh.appendChild(banner);
   }
 
   const dimGrid=document.getElementById("ra-dim-grid");
-  dimGrid.innerHTML=`<div class="ra-results-eyebrow" style="grid-column:1/-1;">Dimension breakdown</div>`+SECTIONS.map(s=>{
+  document.getElementById("ra-gap-section").style.display="none";
+  document.querySelectorAll(".ra-legend").forEach(el=>el.remove());
+  dimGrid.innerHTML=SECTIONS.map(s=>{
     const score=dimScores[s.key];const max=DIM_MAX[s.key];const p=pct(score,max);
     const color=barColor(p);const st=statusLabel(p);
-    return`<div class="ra-dim-card">
-      <div class="ra-dim-card-head"><span class="ra-dim-icon" style="color:${color};">${DIM_ICONS[s.key]||''}</span><p class="ra-dim-name-text">${DIM_NAMES[s.key]} Readiness</p></div>
-      <div class="ra-dim-bar-row">
-        <div class="ra-dim-bar-track"><div class="ra-dim-bar-fill" style="width:${p}%;background:${color};"></div></div>
-        <span class="ra-dim-bar-pct" style="color:${color};">${p}%</span>
+    const level=p<40?"low":p<65?"mid":"high";
+    const tag=p<40?"Priority":p<65?"Develop":p<75?"Strengthen":"Strong";
+    return`<div class="ra-combined-card">
+      <div class="ra-combined-left">
+        <div class="ra-dim-card-head"><span class="ra-dim-icon" style="color:${color};">${DIM_ICONS[s.key]||''}</span><p class="ra-dim-name-text">${DIM_NAMES[s.key]} Readiness</p><span class="ra-gap-tag" style="background:${color};margin-left:auto;">${tag}</span><span style="font-family:'Montserrat',Arial,sans-serif;font-size:12px;font-weight:700;color:${color};margin-left:8px;">${p}%</span></div>
+        <div class="ra-dim-bar-row"><div class="ra-dim-bar-track"><div class="ra-dim-bar-fill" style="width:${p}%;background:${color};"></div></div></div>
+        <div class="ra-dim-label-row"><span class="ra-dim-score-text">${score} / ${max}</span><span class="ra-dim-status" style="color:${color};">${st.label}</span></div>
+        <p style="font-size:12px;color:#999;margin:4px 0 0;font-style:italic;">${DIM_CONTEXT[s.key]}</p>
       </div>
-      <div class="ra-dim-label-row">
-        <span class="ra-dim-score-text">${score} / ${max}</span>
-        <span class="ra-dim-status" style="color:${color};">${st.label}</span>
+      <div class="ra-combined-right">
+        <p class="ra-gap-action-label">Suggested action</p>
+        <p class="ra-gap-action">${GAP_SHIFTS[s.key][level]}</p>
       </div>
-      <p style="font-size:12px;color:#999;margin:6px 0 0;font-style:italic;">${DIM_CONTEXT[s.key]}</p>
     </div>`;
   }).join("");
-
-  // Legend
-  const lgd=document.createElement('div');lgd.className='ra-legend';
-  lgd.innerHTML='<span class="ra-legend-item"><span class="ra-legend-dot" style="background:#C15F3C;"></span>Needs attention<span class="ra-legend-range">(below 40%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#E09C50;"></span>Developing<span class="ra-legend-range">(40-59%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#7A8591;"></span>Progressing<span class="ra-legend-range">(60-74%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#26245C;"></span>Strong<span class="ra-legend-range">(75% +)</span></span>';
-  dimGrid.after(lgd);
-
-  // Gap analysis
-  const gaps=SECTIONS.map(s=>({key:s.key,p:pct(dimScores[s.key],DIM_MAX[s.key])})).sort((a,b)=>a.p-b.p);
-  const gapSection=document.getElementById("ra-gap-section");
-  if(gapSection){
-    gapSection.innerHTML=`<div class="ra-gap-header">
-      <div class="eyebrow">YOUR PRIORITIES</div>
-      <h3>Where to focus first</h3>
-      <p id="ra-gap-intro">${totalPct<60?"These dimensions have foundational gaps. Addressing them before launching a programme significantly reduces delivery risk.":"These are the dimensions with the most room to improve. Addressing them will sharpen the conditions for success."}</p>
-    </div>
-    <div id="ra-gap-cards">${gaps.map(g=>{
-      const color=barColor(g.p);const level=g.p<40?"low":g.p<65?"mid":"high";
-      const tag=g.p<40?"Priority":g.p<65?"Develop":g.p<75?"Strengthen":"Strong";
-      return`<div class="ra-gap-card" style="border-top-color:${color};">
-        <div class="ra-gap-card-top">
-          <span class="ra-gap-card-name">${DIM_NAMES[g.key]}</span>
-          <span class="ra-gap-tag" style="background:${color};">${tag}</span>
-          <span class="ra-gap-card-pct" style="color:${color};">${g.p}%</span>
-        </div>
-        <p class="ra-gap-context">${DIM_CONTEXT[g.key]}</p>
-        <p class="ra-gap-action-label">Suggested action</p><p class="ra-gap-action">${GAP_SHIFTS[g.key][level]}</p>
-      </div>`;
-    }).join("")}</div>`;
-  }
 }
 
 document.getElementById("ra-next").addEventListener("click",()=>{
