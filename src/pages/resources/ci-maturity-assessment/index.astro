@@ -20,9 +20,9 @@ import "../../../styles/resources.css";
             <span class="res-crumb-sep">&rsaquo;</span>
             <span>CI Maturity Assessment</span>
           </div>
-          <div class="eyebrow">ASSESSMENT</div>
           <h1>Where does your CI capability actually sit?</h1>
-          <p class="res-hero-lede">20 questions across five dimensions. Know where you are today and what it takes to move up a tier, not just a score. Results generated here: nothing stored or sent.</p>
+          <p class="res-hero-lede">20 questions across five dimensions. Know where you are today and what it takes to move up a tier, not just a score.</p>
+          <p class="ra-hero-privacy">Your answers are generated in this browser only. Nothing is stored or sent.</p>
           <div class="res-hero-actions">
             <a href="#assessment" class="btn-primary">Start the assessment</a>
             <a href="/contact/" class="btn-text"><span class="link-label">Talk it through instead</span> <span class="ar">&rsaquo;</span></a>
@@ -37,6 +37,11 @@ import "../../../styles/resources.css";
     <section class="ra-tool res-reveal" id="assessment">
       <div class="res-inner">
         <div id="ra-form-view">
+          <div class="ra-section-head" id="ra-section-head">
+            <div class="eyebrow" id="ra-section-label">SECTION 1 OF 5</div>
+            <h2 id="ra-section-title">Leadership &amp; Governance</h2>
+            <p class="ra-section-note" id="ra-section-note">Does leadership actively own and govern the CI programme?</p>
+          </div>
           <nav class="ra-stepper" id="ra-stepper" aria-label="Assessment sections">
             <div class="ra-step is-active" data-step="0"><div class="ra-step-dot">1</div><span class="ra-step-label">Leadership</span></div>
             <div class="ra-step-line"></div>
@@ -48,15 +53,6 @@ import "../../../styles/resources.css";
             <div class="ra-step-line"></div>
             <div class="ra-step" data-step="4"><div class="ra-step-dot">5</div><span class="ra-step-label">Measurement</span></div>
           </nav>
-          <div class="ra-section-head">
-            <div class="eyebrow" id="ra-section-label">SECTION 1 OF 5</div>
-            <h2 id="ra-section-title">Leadership &amp; Governance</h2>
-            <p class="ra-section-note" id="ra-section-note">Does leadership actively own and govern the CI programme?</p>
-          </div>
-          <div class="ra-anon" id="ra-anon-notice">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="7" width="12" height="8" rx="2" stroke="#26245C" stroke-width="1.5"/><path d="M5 7V5a3 3 0 0 1 6 0v2" stroke="#26245C" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <span>Anonymous: your answers are not stored or sent. Results appear only in this browser window.</span>
-          </div>
           <form id="ra-form" novalidate>
             <div id="ra-questions"></div>
             <div class="ra-nav">
@@ -119,19 +115,20 @@ import "../../../styles/resources.css";
 .ra-tool{padding:72px 56px 88px;background:#F5F3EE;}
 
 /* Flat button override inside nav row */
-.ra-nav button.btn-primary{border:none!important;-webkit-appearance:none!important;appearance:none!important;box-shadow:none!important;transform:none!important;}
-.ra-nav button.btn-primary:hover{border:none!important;box-shadow:none!important;transform:none!important;background:#2f2d6e;}
+.ra-nav button.btn-primary,.ra-results-actions button.btn-primary{border:none!important;-webkit-appearance:none!important;appearance:none!important;box-shadow:none!important;transform:none!important;}
+.ra-nav button.btn-primary:hover,.ra-results-actions button.btn-primary:hover{border:none!important;box-shadow:none!important;transform:none!important;background:#2f2d6e;}
+.ra-results-actions button.btn-text{border:none;background:transparent;cursor:pointer;padding:0;}
 
 /* ── Stepper ── */
-.ra-stepper{display:flex;align-items:flex-start;margin-bottom:44px;}
-.ra-step{display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0;min-width:64px;}
-.ra-step-dot{width:32px;height:32px;border-radius:50%;border:2px solid #d4d0c8;background:#fff;display:flex;align-items:center;justify-content:center;font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;color:#999;transition:all .2s;line-height:1;}
+.ra-stepper{display:flex;align-items:flex-start;margin:0 0 20px;}
+.ra-step{display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0;min-width:48px;}
+.ra-step-dot{width:24px;height:24px;border-radius:50%;border:2px solid #d4d0c8;background:#fff;display:flex;align-items:center;justify-content:center;font-family:"Montserrat",Arial,sans-serif;font-size:9px;font-weight:700;color:#999;transition:all .2s;line-height:1;}
 .ra-step.is-active .ra-step-dot{background:#C15F3C;border-color:#C15F3C;color:#fff;}
 .ra-step.is-done .ra-step-dot{background:#26245C;border-color:#26245C;color:#fff;}
-.ra-step-label{font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.06em;color:#999;text-transform:uppercase;text-align:center;white-space:nowrap;}
+.ra-step-label{font-family:"Montserrat",Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:.06em;color:#999;text-transform:uppercase;text-align:center;white-space:nowrap;}
 .ra-step.is-active .ra-step-label{color:#C15F3C;}
 .ra-step.is-done .ra-step-label{color:#26245C;}
-.ra-step-line{flex:1;height:2px;background:#d4d0c8;margin:15px 4px 0;transition:background .2s;min-width:16px;}
+.ra-step-line{flex:1;height:2px;background:#d4d0c8;margin:11px 2px 0;transition:background .2s;min-width:12px;}
 .ra-step-line.is-done{background:#26245C;}
 
 /* ── Anonymity notice ── */
@@ -140,7 +137,11 @@ import "../../../styles/resources.css";
 .ra-anon span{font-size:13px;font-weight:500;color:#666;}
 
 /* ── Section head ── */
-.ra-section-head{margin-bottom:36px;}
+.ra-hero-privacy{font-size:13px;color:#999;margin:0 0 28px;}
+.res-hero .res-crumb,.res-hero .res-crumb a,.res-hero .res-crumb span{color:#C15F3C;}
+.res-hero .res-crumb-sep{color:#C15F3C;}
+.res-hero .eyebrow{display:none;}
+.ra-section-head{margin-bottom:28px;}
 .ra-section-head .eyebrow{margin-bottom:12px;}
 .ra-section-head h2{font-size:clamp(26px,2.6vw,34px);font-weight:700;margin:0 0 12px;}
 .ra-section-note{color:#666;font-size:18px;margin:0;}
@@ -182,13 +183,13 @@ import "../../../styles/resources.css";
 .ra-required-note{color:#C15F3C;font-size:14px;min-height:20px;margin:8px 0 0;}
 
 /* ── Results: overall score ── */
-.ra-score-bar-wrap{background:#fff;border:1px solid #e0ddd5;border-radius:14px;padding:28px 32px;margin-bottom:32px;}
-.ra-score-bar-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;}
-.ra-score-eyebrow{font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;}
-.ra-score-tier-name{font-family:"Montserrat",Arial,sans-serif;font-size:20px;font-weight:700;}
-.ra-score-bar-track-outer{height:32px;background:#e8e6e2;border-radius:16px;overflow:hidden;margin-bottom:16px;}
-.ra-score-bar-fill-outer{height:100%;background:#103E8C;border-radius:16px;transition:width .8s ease;}
+.ra-score-banner{display:flex;align-items:center;gap:28px;background:#fff;border:1px solid #e0ddd5;border-radius:14px;padding:24px 28px;margin-bottom:28px;}
+.ra-score-circle{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:"Montserrat",Arial,sans-serif;font-size:22px;font-weight:700;color:#fff;}
+.ra-score-tier{font-size:22px;font-weight:700;margin:0 0 4px;color:#26245C;}
 .ra-score-desc{font-size:15px;color:#666;line-height:1.55;margin:0;}
+.ra-legend{display:flex;flex-wrap:wrap;gap:6px 20px;margin:0 0 24px;padding:10px 16px;background:#fff;border:1px solid #e0ddd5;border-radius:8px;}
+.ra-legend-item{display:flex;align-items:center;gap:6px;font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:600;color:#666;letter-spacing:.04em;}
+.ra-legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
 
 /* ── Results: dimension grid ── */
 .ra-results-head{margin-bottom:28px;}
@@ -244,7 +245,7 @@ import "../../../styles/resources.css";
   .res-inner{max-width:100%;}
   #ra-results-view{display:block!important;}
   .ra-dim-grid{flex-direction:column;}
-  .ra-score-bar-wrap,.ra-combined-card{border:1px solid #ccc;break-inside:avoid;}
+  .ra-score-banner,.ra-combined-card{border:1px solid #ccc;break-inside:avoid;}
 }
 @media(max-width:760px){
   .ra-tool{padding:48px 20px 64px;}
@@ -285,10 +286,10 @@ const SECTIONS = [
     title: "Leadership & Governance",
     note: "Does leadership actively own and govern the CI programme?",
     questions: [
-      "Senior leaders visibly participate in CI reviews, improvement events, or problem-solving: not just receive reports about them.",
-      "There is a named owner or sponsor for the CI programme with genuine accountability for its results.",
-      "CI performance and outcomes are reviewed at board or executive level on a regular cycle.",
-      "Dedicated resources: time, budget, and people: are allocated to CI activities as a standing commitment."
+      "Our senior leaders visibly participate in CI reviews, improvement events, or problem-solving — not just receive reports about them.",
+      "We have a named owner or sponsor for the CI programme with genuine accountability for its results.",
+      "We review CI performance and outcomes at board or executive level on a regular cycle.",
+      "We allocate dedicated resources — time, budget, and people — to CI as a standing commitment."
     ]
   },
   {
@@ -297,10 +298,10 @@ const SECTIONS = [
     title: "Process Stability",
     note: "Are your processes stable and visible enough to improve?",
     questions: [
-      "Key processes are documented with clear standard operating procedures that are actually used.",
-      "Performance is measured at the point where work happens, not only reported at the end.",
-      "Variation in outputs is visible and understood by the people doing the work, not just managers.",
-      "Process problems are systematically identified and addressed before they escalate to failures or complaints."
+      "Our key processes are documented with clear standard operating procedures that people actually use.",
+      "We measure performance at the point where work happens, not only report it at the end.",
+      "Variation in our outputs is visible and understood by the people doing the work, not just managers.",
+      "We identify and address process problems systematically before they escalate to failures or complaints."
     ]
   },
   {
@@ -309,10 +310,10 @@ const SECTIONS = [
     title: "Methods & Tools",
     note: "Are structured improvement methods being used consistently?",
     questions: [
-      "Staff use structured problem-solving methods (e.g. A3, PDCA, 8D) rather than jumping to solutions.",
-      "Root cause analysis is completed before fixes are implemented.",
-      "Improvement tools are applied consistently across teams, not just in pockets where individuals know them.",
-      "The organisation has a recognised improvement methodology that applies across programmes and functions."
+      "Our staff use structured problem-solving methods (e.g. A3, PDCA, 8D) rather than jumping to solutions.",
+      "We complete root cause analysis before implementing fixes.",
+      "We apply improvement tools consistently across teams, not just in pockets where individuals know them.",
+      "We have a recognised improvement methodology that applies across programmes and functions."
     ]
   },
   {
@@ -321,10 +322,10 @@ const SECTIONS = [
     title: "Operating Rhythm",
     note: "Is CI embedded in how the organisation runs day to day?",
     questions: [
-      "Teams meet regularly to review operational performance: daily huddles, weekly reviews, or similar.",
-      "Improvement actions are tracked and followed up in a structured way, not just agreed and forgotten.",
-      "Visual management is in place: boards, dashboards, or similar that make performance visible to the team.",
-      "Improvement work is part of normal operations, not a separate initiative running alongside BAU."
+      "Our teams meet regularly to review operational performance — daily huddles, weekly reviews, or similar.",
+      "We track and follow up improvement actions in a structured way, not just agree and forget them.",
+      "We have visual management in place — boards, dashboards, or similar — that makes performance visible to the team.",
+      "Improvement work is part of our normal operations, not a separate initiative running alongside BAU."
     ]
   },
   {
@@ -333,10 +334,10 @@ const SECTIONS = [
     title: "Measurement & Review",
     note: "Can you tell whether improvement is actually happening?",
     questions: [
-      "KPIs are defined and consistently measured for all key processes.",
-      "Performance trends are tracked over time, not just reported as a point-in-time snapshot.",
-      "Improvement outcomes are quantified in financial or operational terms and reported to leadership.",
-      "Lessons learned from improvement projects are captured and shared across teams."
+      "We have defined KPIs that are consistently measured across all key processes.",
+      "We track performance trends over time, not just report them as a point-in-time snapshot.",
+      "We quantify improvement outcomes in financial or operational terms and report them to leadership.",
+      "We capture lessons learned from improvement projects and share them across teams."
     ]
   }
 ];
@@ -494,18 +495,16 @@ function buildPrintHTML(dimScores,tier,totalPct){
   <h1>EQUIBT · CI Maturity Assessment</h1>
   <div style="font-size:12px;color:#999;margin-top:4px;">Generated ${date} · Anonymous results</div>
 </div>
-<div style="margin-bottom:28px;">
-  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;">
-    <span style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;">YOUR MATURITY SCORE</span>
-    <span style="font-family:Arial,sans-serif;font-size:18px;font-weight:700;color:${tier.color};">${tier.title} · ${totalPct}%</span>
+<div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+  <div style="width:64px;height:64px;border-radius:50%;background:${tier.color};display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:18px;font-weight:700;color:#fff;flex-shrink:0;">${totalPct}%</div>
+  <div>
+    <div style="font-family:Arial,sans-serif;font-size:22px;font-weight:700;color:${tier.color};margin-bottom:4px;">${tier.title}</div>
+    <div style="font-size:13px;color:#555;line-height:1.5;max-width:480px;">${tier.description}</div>
   </div>
-  <div style="height:24px;background:#e8e6e2;border-radius:12px;overflow:hidden;margin-bottom:12px;">
-    <div style="height:100%;width:${totalPct}%;background:#103E8C;border-radius:12px;"></div>
-  </div>
-  <div style="font-size:13px;color:#555;line-height:1.5;">${tier.description}</div>
 </div>
 <div style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:10px;">DIMENSION BREAKDOWN</div>
 ${cards}
+<div style="display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:16px;padding:8px 14px;border:1px solid #e0ddd5;border-radius:6px;"><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#666;"><span style="width:7px;height:7px;border-radius:50%;background:#C15F3C;display:inline-block;flex-shrink:0;"></span>Needs attention (&lt;40%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#666;"><span style="width:7px;height:7px;border-radius:50%;background:#E09C50;display:inline-block;flex-shrink:0;"></span>Developing (40–64%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#666;"><span style="width:7px;height:7px;border-radius:50%;background:#7A8591;display:inline-block;flex-shrink:0;"></span>Progressing (65–74%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#666;"><span style="width:7px;height:7px;border-radius:50%;background:#26245C;display:inline-block;flex-shrink:0;"></span>Strong (75%+)</span></div>
 
 </body></html>`;
 }
@@ -528,10 +527,10 @@ function showResults(){
   document.getElementById("ra-tier-description").textContent=tier.description;
   // Add score circle to results head
   const rh=document.getElementById("ra-results-head");
-  if(!rh.querySelector(".ra-score-bar-fill-outer")){
+if(!rh.querySelector(".ra-score-circle")){
     const banner=document.createElement("div");
-    banner.className="ra-score-bar-wrap";
-    banner.innerHTML=`<div class="ra-score-bar-header"><span class="ra-score-eyebrow">YOUR MATURITY SCORE</span><span class="ra-score-tier-name" style="color:${tier.color};">${tier.title} · ${totalPct}%</span></div><div class="ra-score-bar-track-outer"><div class="ra-score-bar-fill-outer" style="width:${totalPct}%;"></div></div><p class="ra-score-desc">${tier.description}</p>`;
+    banner.className="ra-score-banner";
+    banner.innerHTML=`<div class="ra-score-circle" style="background:${tier.color};">${totalPct}%</div><div><p class="ra-score-tier" style="color:${tier.color};">${tier.title}</p><p class="ra-score-desc">${tier.description}</p></div>`;
     rh.innerHTML="";
     rh.appendChild(banner);
   }

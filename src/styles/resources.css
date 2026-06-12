@@ -16,7 +16,7 @@
 
 /* ====================  HUB  ==================== */
 /* Hero (asymmetric, white) — shared by the hub and the wizard */
-.res-hero{padding:124px 56px 52px;background:#fff;border-bottom:1px solid var(--hairline);}
+.res-hero{padding:80px 56px 36px;background:#fff;border-bottom:1px solid var(--hairline);}
 .res-hero-inner{
   max-width:var(--wide);
   margin:0 auto;
@@ -283,7 +283,7 @@
 }
 
 @media(max-width:760px){
-  .res-hero{padding:96px 26px 52px;}
+  .res-hero{padding:60px 26px 32px;}
   .res-list,.res-faq,.res-wiz{padding:64px 26px;}
   .res-more,.res-lmi,.res-edu{padding:72px 26px;}
   .res-ld-hero{padding:96px 26px 56px;}
