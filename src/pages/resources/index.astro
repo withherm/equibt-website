@@ -37,7 +37,7 @@ const categoryMap: Record<string, string> = {
 };
 
 // Hub grid: exclude Capability Statement (moved to About nav).
-const hubResources = resources.filter((r) => r.slug !== "capability-statement");
+const hubResources = resources.filter((r) => r.slug !== "capability-statement" && r.slug !== "engagement-model");
 
 const faqs = [
   {
