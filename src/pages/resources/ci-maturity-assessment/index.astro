@@ -363,11 +363,10 @@ const DIM_ICONS={
   measurement:'<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="12.5" width="3" height="4" rx=".5" stroke="currentColor" stroke-width="1.5"/><rect x="7.5" y="8.5" width="3" height="8" rx=".5" stroke="currentColor" stroke-width="1.5"/><rect x="13" y="4.5" width="3" height="12" rx=".5" stroke="currentColor" stroke-width="1.5"/></svg>',
 };
 const TIERS = [
-  {min:0,max:39,title:"Developing",color:"#C15F3C",description:"CI activity is ad hoc and reactive. Improvement depends on individual effort rather than system. The priority is building foundations: stable processes, a visible sponsor, and a basic measurement rhythm."},
-  {min:40,max:59,title:"Emerging",color:"#E09C50",description:"Some structure is in place, but it is inconsistent across the organisation. Pockets of good practice exist but have not spread. Focus on standardising what is working and building leadership governance."},
-  {min:60,max:74,title:"Establishing",color:"#7A8591",description:"A structured approach is developing and spreading. Most dimensions are moving in the right direction. The focus now is on embedding operating rhythm so that CI does not depend on external prompting."},
-  {min:75,max:89,title:"Sustaining",color:"#26245C",description:"CI is embedded and largely self-reinforcing. Performance is tracked and reviewed at the right levels. The shift is from maintaining the system to improving the improvement system itself."},
-  {min:90,max:100,title:"Leading",color:"#26245C",description:"Best-in-class CI capability. The organisation is continuously innovating its own improvement system. The focus is on sustaining pace and not letting standards drift."}
+  {min:0,max:39,title:"Needs attention",color:"#C62828",description:"CI activity is ad hoc and reactive. Improvement depends on individual effort rather than system. The priority is building foundations: stable processes, a visible sponsor, and a basic measurement rhythm."},
+  {min:40,max:64,title:"Developing",color:"#D9730B",description:"Some structure is in place, but it is inconsistent across the organisation. Pockets of good practice exist but have not spread. Focus on standardising what is working and building leadership governance."},
+  {min:65,max:74,title:"Established",color:"#B07A00",description:"A structured approach is developing and spreading. Most dimensions are moving in the right direction. The focus now is on embedding operating rhythm so that CI does not depend on external prompting."},
+  {min:75,max:100,title:"Strong",color:"#2E7D32",description:"CI is embedded and largely self-reinforcing. Performance is tracked and reviewed at the right levels. The shift is from maintaining the system to improving the improvement system itself."}
 ];
 const GAP_SHIFTS = {
   leadership:{
@@ -402,18 +401,14 @@ let currentSection = 0;
 const answers = {};
 
 function pct(score,max){return Math.round((score/max)*100);}
-function barColor(p){
-  if(p<40)return"#C15F3C";
-  if(p<60)return"#E09C50";
-  if(p<75)return"#7A8591";
-  return"#26245C";
+function band(p){
+  if(p<40)return{label:"Needs attention",range:"below 40%",bar:"#E23B33",text:"#C62828"};
+  if(p<65)return{label:"Developing",range:"40–64%",bar:"#F2912E",text:"#D9730B"};
+  if(p<75)return{label:"Established",range:"65–74%",bar:"#F4C20D",text:"#B07A00"};
+  return{label:"Strong",range:"75%+",bar:"#46A546",text:"#2E7D32"};
 }
-function statusLabel(p){
-  if(p<40)return{label:"Needs attention",note:"Below 40%: foundational work needed before other dimensions can build on this."};
-  if(p<60)return{label:"Developing",note:"40:59%: some structure is in place but inconsistent."};
-  if(p<75)return{label:"Progressing",note:"60:74%: a structured approach is taking hold."};
-  return{label:"Strong",note:"75%+: this dimension is well embedded."};
-}
+function barColor(p){return band(p).bar;}
+function statusLabel(p){return{label:band(p).label};}
 function getGlobalQ(si,qi){
   let n=1;
   for(let i=0;i<si;i++) n+=SECTIONS[i].questions.length;
@@ -480,13 +475,13 @@ function buildPrintHTML(dimScores,tier,totalPct){
     return`<div style="margin-bottom:18px;page-break-inside:avoid;"><div style="font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.04em;color:#1a1a2e;margin-bottom:4px;">${s.title}</div>${rows}</div>`;
   }).join("");
   const cards=SECTIONS.map(s=>{
-    const sc=dimScores[s.key];const p=pct(sc,SCORE_MAX);const color=barColor(p);
-    const st=statusLabel(p);const level=p<40?"low":p<65?"mid":"high";
-    const iconSvg=(DIM_ICONS[s.key]||'').replace(/stroke="currentColor"/g,`stroke="${color}"`);
+    const sc=dimScores[s.key];const p=pct(sc,SCORE_MAX);const b=band(p);
+    const level=p<40?"low":p<65?"mid":"high";
+    const iconSvg=(DIM_ICONS[s.key]||'').replace(/stroke="currentColor"/g,`stroke="${b.text}"`);
     return`<div style="background:#fff;border:1px solid #ddd;border-radius:8px;padding:14px 18px;margin-bottom:10px;display:grid;grid-template-columns:55% 45%;gap:16px;align-items:start;">
       <div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">${iconSvg}<span style="font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555;">${DIM_NAMES[s.key]}</span><span style="margin-left:auto;font-size:12px;font-weight:700;color:${color};">${st.label}: ${p}%</span></div>
-        <div style="height:10px;background:#e8e6e2;border-radius:5px;margin-bottom:6px;overflow:hidden;"><div style="height:100%;width:${p}%;background:${color};border-radius:5px;"></div></div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">${iconSvg}<span style="font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555;">${DIM_NAMES[s.key]}</span><span style="margin-left:auto;font-size:12px;font-weight:700;color:${b.text};">${b.label}: ${p}%</span></div>
+        <div style="height:10px;background:#e8e6e2;border-radius:5px;margin-bottom:6px;overflow:hidden;"><div style="height:100%;width:${p}%;background:${b.bar};border-radius:5px;"></div></div>
         <div style="font-size:11px;color:#999;">${sc} / ${SCORE_MAX}</div>
       </div>
       <div style="background:#f8f7f4;border-radius:6px;padding:10px 12px;">
@@ -496,7 +491,7 @@ function buildPrintHTML(dimScores,tier,totalPct){
     </div>`;
   }).join("");
   // actions now inline in each card
-  return`<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>CI Maturity Results: EQUIBT</title>
+  return`<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>CI Maturity Assessment — Results</title>
 <style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Georgia,serif;color:#1a1a2e;background:#fff;padding:40px 48px;max-width:760px;margin:0 auto;font-size:14px;}h1{font-family:Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#555;margin-bottom:6px;}h2{font-family:Arial,sans-serif;font-size:30px;font-weight:700;color:#1a1a2e;margin-bottom:10px;}.print-btn{display:block;margin-bottom:32px;padding:10px 22px;background:#1a1a2e;color:#fff;border:none;border-radius:6px;font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;}@media print{.print-btn{display:none;}}</style>
 </head><body>
 <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
@@ -513,7 +508,7 @@ function buildPrintHTML(dimScores,tier,totalPct){
 </div>
 <div style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:10px;">DIMENSION BREAKDOWN</div>
 ${cards}
-<div style="display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:16px;padding:8px 14px;border:1px solid #e0ddd5;border-radius:6px;"><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#666;"><span style="width:7px;height:7px;border-radius:50%;background:#C15F3C;display:inline-block;flex-shrink:0;"></span>Needs attention (&lt;40%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#666;"><span style="width:7px;height:7px;border-radius:50%;background:#E09C50;display:inline-block;flex-shrink:0;"></span>Developing (40–64%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#666;"><span style="width:7px;height:7px;border-radius:50%;background:#7A8591;display:inline-block;flex-shrink:0;"></span>Progressing (65–74%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#666;"><span style="width:7px;height:7px;border-radius:50%;background:#26245C;display:inline-block;flex-shrink:0;"></span>Strong (75%+)</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:16px;padding:8px 14px;border:1px solid #e0ddd5;border-radius:6px;"><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#666;"><span style="width:7px;height:7px;border-radius:50%;background:#E23B33;display:inline-block;flex-shrink:0;"></span>Needs attention (&lt;40%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#666;"><span style="width:7px;height:7px;border-radius:50%;background:#F2912E;display:inline-block;flex-shrink:0;"></span>Developing (40–64%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#666;"><span style="width:7px;height:7px;border-radius:50%;background:#F4C20D;display:inline-block;flex-shrink:0;"></span>Established (65–74%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#666;"><span style="width:7px;height:7px;border-radius:50%;background:#46A546;display:inline-block;flex-shrink:0;"></span>Strong (75%+)</span></div>
 <div style="margin-top:30px;font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:12px;">Your Responses</div>
 ${responses}
 <div style="margin-top:24px;padding-top:14px;border-top:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;font-family:Arial,sans-serif;font-size:11px;color:#999;">
@@ -554,14 +549,13 @@ if(!rh.querySelector(".ra-score-circle")){
   document.getElementById("ra-gap-section").style.display="none";
   dimGrid.innerHTML=SECTIONS.map(s=>{
     const score=dimScores[s.key];const p=pct(score,SCORE_MAX);
-    const color=barColor(p);const st=statusLabel(p);
+    const b=band(p);
     const level=p<40?"low":p<65?"mid":"high";
-    const tag=p<40?"Priority":p<65?"Develop":p<75?"Strengthen":"Strong";
     return`<div class="ra-combined-card">
       <div class="ra-combined-left">
-        <div class="ra-dim-card-head"><span class="ra-dim-icon" style="color:${color};">${DIM_ICONS[s.key]||''}</span><p class="ra-dim-name-text">${DIM_NAMES[s.key]}</p><span class="ra-gap-tag" style="background:${color};margin-left:auto;">${tag}</span><span style="font-family:'Montserrat',Arial,sans-serif;font-size:12px;font-weight:700;color:${color};margin-left:8px;">${p}%</span></div>
-        <div class="ra-dim-bar-row"><div class="ra-dim-bar-track"><div class="ra-dim-bar-fill" style="width:${p}%;background:${color};"></div></div></div>
-        <div class="ra-dim-label-row"><span class="ra-dim-score-text">${score} / ${SCORE_MAX}</span><span class="ra-dim-status" style="color:${color};">${st.label}</span></div>
+        <div class="ra-dim-card-head"><span class="ra-dim-icon" style="color:${b.text};">${DIM_ICONS[s.key]||''}</span><p class="ra-dim-name-text">${DIM_NAMES[s.key]}</p><span class="ra-gap-tag" style="background:${b.text};margin-left:auto;">${b.label}</span><span style="font-family:'Montserrat',Arial,sans-serif;font-size:12px;font-weight:700;color:${b.text};margin-left:8px;">${p}%</span></div>
+        <div class="ra-dim-bar-row"><div class="ra-dim-bar-track"><div class="ra-dim-bar-fill" style="width:${p}%;background:${b.bar};"></div></div></div>
+        <div class="ra-dim-label-row"><span class="ra-dim-score-text">${score} / ${SCORE_MAX}</span></div>
         <p style="font-size:12px;color:#999;margin:4px 0 0;font-style:italic;">${DIM_CONTEXT[s.key]}</p>
       </div>
       <div class="ra-combined-right">
@@ -581,18 +575,17 @@ if(!rh.querySelector(".ra-score-circle")){
   // Legend
   document.querySelectorAll(".ra-legend").forEach(el=>el.remove());
   const lgd=document.createElement('div');lgd.className='ra-legend';
-  lgd.innerHTML='<span class="ra-legend-item"><span class="ra-legend-dot" style="background:#C15F3C;"></span>Needs attention<span class="ra-legend-range">(below 40%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#E09C50;"></span>Developing<span class="ra-legend-range">(40-59%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#7A8591;"></span>Progressing<span class="ra-legend-range">(60-74%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#26245C;"></span>Strong<span class="ra-legend-range">(75% +)</span></span>';
+  lgd.innerHTML='<span class="ra-legend-item"><span class="ra-legend-dot" style="background:#E23B33;"></span>Needs attention<span class="ra-legend-range">(below 40%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#F2912E;"></span>Developing<span class="ra-legend-range">(40–64%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#F4C20D;"></span>Established<span class="ra-legend-range">(65–74%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#46A546;"></span>Strong<span class="ra-legend-range">(75%+)</span></span>';
   dimGrid.after(lgd);
   document.getElementById("ra-gap-intro").textContent=gapIntro;
   document.getElementById("ra-gap-cards").innerHTML=gaps.map(g=>{
-    const p=g.p;const color=barColor(p);
+    const p=g.p;const b=band(p);
     const level=p<40?"low":p<65?"mid":"high";
-    const tag=p<40?"Priority":p<65?"Develop":p<75?"Strengthen":"Strong";
-    return`<div class="ra-gap-card" style="border-top-color:${color};">
+    return`<div class="ra-gap-card" style="border-top-color:${b.bar};">
       <div class="ra-gap-card-top">
         <span class="ra-gap-card-name">${DIM_NAMES[g.key]}</span>
-        <span class="ra-gap-tag" style="background:${color};">${tag}</span>
-        <span class="ra-gap-card-pct" style="color:${color};">${p}%</span>
+        <span class="ra-gap-tag" style="background:${b.text};">${b.label}</span>
+        <span class="ra-gap-card-pct" style="color:${b.text};">${p}%</span>
       </div>
       <p class="ra-gap-context">${DIM_CONTEXT[g.key]}</p>
       <p class="ra-gap-action-label">Suggested action</p><p class="ra-gap-action">${GAP_SHIFTS[g.key][level]}</p>
