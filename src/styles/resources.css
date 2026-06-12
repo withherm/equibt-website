@@ -16,7 +16,7 @@
 
 /* ====================  HUB  ==================== */
 /* Hero (asymmetric, white) — shared by the hub and the wizard */
-.res-hero{padding:124px 56px 60px;background:#fff;border-bottom:1px solid var(--hairline);}
+.res-hero{padding:124px 56px 52px;background:#fff;border-bottom:1px solid var(--hairline);}
 .res-hero-inner{
   max-width:var(--wide);
   margin:0 auto;
@@ -30,19 +30,17 @@
 .res-hero-lede{max-width:640px;margin:0 0 36px;color:var(--mid-grey);font-size:22px;line-height:1.42;}
 .res-hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:22px;}
 
-/* "Not sure where to start" — navy-wash callout bleeding off the LEFT viewport edge */
-.res-frame{padding:64px 56px;background:#fff;}
-.res-frame-bleed{
-  margin-left:calc((100% - 100vw) / 2);
-  width:calc((100vw - 100%) / 2 + 820px);
-  padding:40px 40px 42px;
-  padding-left:calc((100vw - 100%) / 2);
-  background:#E8ECF5;
-  border-radius:0 16px 16px 0;
+/* Filter chips (reuses ins-chip pattern) */
+.res-filter{display:flex;flex-wrap:wrap;gap:10px;padding-top:32px;}
+.res-chip{
+  min-height:38px;padding:0 18px;border:1px solid var(--hairline);
+  border-radius:999px;background:#fff;color:var(--navy);
+  font-family:"Montserrat",Arial,sans-serif;font-size:11px;
+  font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  cursor:pointer;transition:background .18s ease,border-color .18s ease,color .18s ease;
 }
-.res-frame-inner{max-width:780px;}
-.res-frame .eyebrow{margin-bottom:14px;}
-.res-frame-line{margin:0 0 var(--link-gap);color:var(--near-black);font-size:22px;line-height:1.45;}
+.res-chip.is-active{border-color:var(--terracotta);background:var(--terracotta);color:#fff;}
+.res-card.is-hidden{display:none;}
 
 /* Resource grid */
 .res-list{padding:88px 56px;background:#F5F3EE;}
@@ -94,14 +92,33 @@
 .res-more h2{max-width:600px;margin:0;font-size:clamp(28px,2.8vw,36px);font-weight:700;line-height:1.1;}
 .res-more p{max-width:580px;margin:18px 0 32px;color:var(--mid-grey);font-size:22px;line-height:1.45;}
 
-/* Common questions */
+/* Common questions — collapsible details/summary */
 .res-faq{padding:88px 56px;background:#F5F3EE;}
 .res-faq .eyebrow{margin-bottom:28px;}
 .res-faq-list{display:flex;flex-direction:column;}
-.res-faq-row{padding:30px 0;border-top:1px solid var(--hairline);}
+.res-faq-row{border-top:1px solid var(--hairline);}
 .res-faq-row:last-child{border-bottom:1px solid var(--hairline);}
-.res-faq-q{margin:0 0 14px;max-width:760px;color:var(--navy);font-size:clamp(20px,2vw,24px);font-weight:700;line-height:1.2;}
-.res-faq-a{margin:0;max-width:880px;color:var(--mid-grey);font-size:20px;line-height:1.5;}
+.res-faq-q{
+  cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:baseline;gap:24px;
+  padding:24px 0;max-width:none;
+  color:var(--navy);font-family:"Montserrat",Arial,sans-serif;
+  font-size:clamp(18px,2vw,22px);font-weight:700;line-height:1.2;
+}
+.res-faq-q::-webkit-details-marker{display:none;}
+.res-faq-q::after{content:"+";color:var(--terracotta);font-weight:700;font-size:22px;flex:0 0 auto;}
+.res-faq-row[open] .res-faq-q::after{content:"\2212";}
+.res-faq-q:hover{color:var(--terracotta);}
+.res-faq-a{margin:0 0 24px;max-width:880px;color:var(--mid-grey);font-size:20px;line-height:1.5;}
+
+/* LMI handoff */
+.res-lmi{padding:72px 56px;background:#F5F3EE;}
+.res-lmi-inner{padding:54px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
+.res-lmi-inner .eyebrow{margin-bottom:18px;}
+.res-lmi-inner h2{max-width:640px;margin:0;font-size:clamp(28px,3vw,36px);font-weight:700;line-height:1.1;}
+.res-lmi-copy{max-width:760px;margin:18px 0 26px;color:var(--mid-grey);font-size:22px;line-height:1.45;}
+.res-lmi-logo-link{display:inline-block;width:min(250px,100%);margin:0 0 var(--link-gap);color:inherit;text-decoration:none;}
+.res-lmi-logo-img{display:block;width:100%;height:auto;}
+.res-lmi .btn-text{display:table;margin-top:var(--link-gap,22px);}
 
 /* ====================  LANDING TEMPLATE  ==================== */
 .res-crumb{
@@ -247,7 +264,7 @@
 
 /* ====================  RESPONSIVE  ==================== */
 @media(max-width:1120px){
-  .res-hero,.res-frame,.res-list,.res-more,.res-faq,
+  .res-hero,.res-list,.res-more,.res-faq,.res-lmi,
   .res-ld-hero,.res-ld-inside,.res-ld-related,.res-ld-close,
   .res-wiz,.res-edu{padding-left:36px;padding-right:36px;}
 }
@@ -264,15 +281,11 @@
   .res-choice-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   .res-rec-grid{grid-template-columns:1fr;}
 }
-/* Below tablet: drop the left bleed so the callout can't overflow. */
-@media(max-width:860px){
-  .res-frame-bleed{margin-left:0;width:auto;max-width:780px;padding-left:34px;border-radius:16px;}
-}
+
 @media(max-width:760px){
   .res-hero{padding:96px 26px 52px;}
-  .res-frame{padding:48px 26px;}
   .res-list,.res-faq,.res-wiz{padding:64px 26px;}
-  .res-more,.res-edu{padding:72px 26px;}
+  .res-more,.res-lmi,.res-edu{padding:72px 26px;}
   .res-ld-hero{padding:96px 26px 56px;}
   .res-ld-inside,.res-ld-related{padding:60px 26px;}
   .res-ld-close{padding:72px 26px;}
@@ -285,7 +298,7 @@
   .res-frame-bleed{padding:30px 24px 32px;}
 }
 @media(max-width:460px){
-  .res-hero,.res-frame,.res-list,.res-more,.res-faq,
+  .res-hero,.res-list,.res-more,.res-faq,.res-lmi,
   .res-ld-hero,.res-ld-inside,.res-ld-related,.res-ld-close,
   .res-wiz,.res-edu{padding-left:22px;padding-right:22px;}
 }

@@ -1,0 +1,531 @@
+---
+import Footer from "../../components/Footer.astro";
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import AlignTarget from "../../components/icons/glyphs/AlignTarget.astro";
+import RootCause from "../../components/icons/glyphs/RootCause.astro";
+import "../../styles/resources.css";
+
+// Six DMAICO stations, de-coloured to v6x monochrome (six-colour pill system retired).
+// Geometry is preserved from the v5x prototype; colour is applied in JS as navy/terracotta/grey.
+const stations = [
+  { key: "frame", line1: "Problem", line2: "Framing", href: "/services/frame/", x: 18, y: 82, w: 128, h: 80, cx: 82 },
+  { key: "plan", line1: "Operations", line2: "Diagnostic", href: "/services/plan/", x: 180, y: 82, w: 140, h: 80, cx: 250 },
+  { key: "solve", line1: "Iterative", line2: "Improvement", href: "/services/solve/", x: 354, y: 82, w: 140, h: 80, cx: 424 },
+  { key: "evolve", line1: "Rapid", line2: "Pilot", href: "/services/evolve/", x: 532, y: 82, w: 128, h: 80, cx: 596 },
+  { key: "govern", line1: "Architecture", line2: "& Governance", href: "/services/govern/", x: 694, y: 82, w: 152, h: 80, cx: 770 },
+  { key: "scale", line1: "Operational", line2: "Embedding", href: "/services/scale/", x: 880, y: 82, w: 152, h: 80, cx: 956 },
+];
+---
+
+<Layout
+  title="Frame your problem | EQUIBT Resources"
+  description="Define the operational problem before you choose a fix. A quick three-step tool that frames what you are dealing with and points you to where to start."
+>
+  <Nav />
+  <main>
+    <section class="res-hero res-reveal">
+      <div class="res-hero-inner">
+        <div class="res-hero-copy">
+          <div class="res-crumb">
+            <a href="/resources/">Resources</a>
+            <span class="res-crumb-sep">&rsaquo;</span>
+            <span>Frame your problem</span>
+          </div>
+          <div class="eyebrow">FRAME YOUR PROBLEM</div>
+          <h1>Frame the problem before you fix it.</h1>
+          <p class="res-hero-lede">Most failed improvement work goes wrong at the start, on a problem that was never properly defined. Use this to get clear on what you are actually trying to solve, then go straight to the part of our work that fits. No form, no pitch.</p>
+          <div class="res-hero-actions">
+            <a href="#problem-selector" class="btn-text"><span class="link-label">Frame your problem</span> <span class="ar">&rsaquo;</span></a>
+          </div>
+        </div>
+        <div class="res-hero-art" aria-hidden="true">
+          <span><AlignTarget /></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="res-wiz res-reveal" id="problem-selector">
+      <div class="res-inner">
+        <div class="res-wiz-head">
+          <div class="eyebrow">WHERE ARE YOU</div>
+          <h2>Let's narrow it down.</h2>
+          <p class="res-wiz-note">Pick the concern first, then the situation, then the detail that makes it sharper. We will frame what that usually means and point you to where to start.</p>
+        </div>
+
+        <div class="res-wiz-shell">
+          <div class="res-wiz-meta">
+            <div>
+              <div class="res-step-indicator" data-step-indicator>Step 1 of 3</div>
+              <ol class="res-breadcrumb" data-breadcrumb aria-label="Selected problem path"></ol>
+            </div>
+            <button class="res-reset" type="button" data-start-over>Start over</button>
+          </div>
+
+          <div class="res-wiz-step is-active" data-step="1">
+            <p class="res-step-q">What pressure are you trying to understand?</p>
+            <div class="res-choice-grid" data-concern-options></div>
+          </div>
+          <div class="res-wiz-step" data-step="2">
+            <p class="res-step-q">Which of these sounds like your situation?</p>
+            <div class="res-choice-grid" data-situation-options></div>
+          </div>
+          <div class="res-wiz-step" data-step="3">
+            <p class="res-step-q" data-sharpener-question></p>
+            <div class="res-choice-grid" data-sharpener-options></div>
+          </div>
+
+          <div class="res-rec" data-recommendation>
+            <div class="res-rec-panel">
+              <span class="eyebrow res-panel-eyebrow">WHAT THIS USUALLY MEANS</span>
+              <p class="res-framed" data-framed-problem></p>
+              <div class="res-path">
+                <span class="eyebrow res-panel-eyebrow">THE PATH</span>
+                <p class="res-path-copy">Improvement work runs left to right, from naming the problem to making it hold. You are entering it at the highlighted stage. The stages to its right are what usually follow.</p>
+                <div class="res-station-map" data-station-map aria-label="Service pathway station map">
+                  <svg viewBox="0 0 1040 220" role="img" aria-label="Problem Framing, Operations Diagnostic, Iterative Improvement, Rapid Pilot, Architecture and Governance, Operational Embedding service progression">
+                    <line x1="82" y1="122" x2="960" y2="122" stroke="rgba(38,36,92,0.18)" stroke-width="3" stroke-linecap="round" />
+                    <line data-forward-line x1="82" y1="122" x2="82" y2="122" stroke="#C15F3C" stroke-width="3" stroke-linecap="round" opacity="0" />
+                    <text class="res-station-start" data-start-marker x="82" y="48" text-anchor="middle" fill="#C15F3C" opacity="0">You start here</text>
+                    {stations.map((s) => (
+                      <a class="res-station-pill" href={s.href} aria-label={`${s.line1} ${s.line2}`} data-station={s.key} data-x={s.x} data-y={s.y} data-w={s.w} data-h={s.h} data-cx={s.cx}>
+                        <rect x={s.x} y={s.y} width={s.w} height={s.h} rx="40" fill="#fff" stroke="rgba(38,36,92,0.22)" stroke-width="1.5" />
+                        <text class="res-station-label" x={s.cx} y="116" text-anchor="middle" fill="#7A8591"><tspan x={s.cx} dy="0">{s.line1}</tspan><tspan x={s.cx} dy="18">{s.line2}</tspan></text>
+                      </a>
+                    ))}
+                    <text class="res-station-anchor" x="82" y="200" text-anchor="middle">Name the problem</text>
+                    <text class="res-station-anchor" x="956" y="200" text-anchor="middle">Runs without you</text>
+                  </svg>
+                </div>
+              </div>
+              <div class="res-rec-grid">
+                <article class="res-rec-card">
+                  <h3>What you can do</h3>
+                  <p>Start here before you choose a fix.</p>
+                  <ol class="res-diy" data-diy-list></ol>
+                </article>
+                <article class="res-rec-card">
+                  <span class="eyebrow res-rec-pillar" data-pillar-badge>FRAME</span>
+                  <h3>What we do</h3>
+                  <p data-we-do-output></p>
+                  <a href="/services/frame/" class="btn-text res-pathway-link" data-pathway-link><span class="link-label" data-pathway-label>Explore Problem Framing</span> <span class="ar">&rsaquo;</span></a>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="res-edu res-reveal">
+      <div class="res-inner">
+        <div class="res-edu-copy">
+          <div class="eyebrow">WHY THIS MATTERS</div>
+          <h2>A clear problem is half the work.</h2>
+          <p>A well-framed problem is specific, measurable, and agreed. It says what is happening, where, how big it is, and why it matters, without naming a solution. Get that right and the rest of the work has somewhere to aim. Get it wrong and even good execution solves the wrong thing.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="res-ld-close res-reveal">
+      <div class="res-inner">
+        <div class="res-ld-close-grid">
+          <div class="res-ld-close-copy">
+            <div class="eyebrow">WORK WITH US</div>
+            <h2>Rather just talk it through?</h2>
+            <p>If you would rather describe the problem to someone than work through it alone, get in touch. Send the problem in plain words, not a polished brief. That is enough to start.</p>
+            <a href="/contact/" class="btn-primary">Get in touch</a>
+          </div>
+          <div class="res-ld-close-art" aria-hidden="true">
+            <span><RootCause /></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  // ---- Problem-framing wizard (ported from the v5x prototype; station map de-coloured to v6x). ----
+  const steps = Array.from(document.querySelectorAll<HTMLElement>("[data-step]"));
+  const stepIndicator = document.querySelector<HTMLElement>("[data-step-indicator]");
+  const breadcrumb = document.querySelector<HTMLElement>("[data-breadcrumb]");
+  const startOver = document.querySelector<HTMLButtonElement>("[data-start-over]");
+  const concernOptions = document.querySelector<HTMLElement>("[data-concern-options]");
+  const situationOptions = document.querySelector<HTMLElement>("[data-situation-options]");
+  const sharpenerQuestion = document.querySelector<HTMLElement>("[data-sharpener-question]");
+  const sharpenerOptions = document.querySelector<HTMLElement>("[data-sharpener-options]");
+  const recommendation = document.querySelector<HTMLElement>("[data-recommendation]");
+  const stationMap = document.querySelector<HTMLElement>("[data-station-map]");
+  const stationPills = Array.from(document.querySelectorAll<SVGAElement>("[data-station]"));
+  const framedProblem = document.querySelector<HTMLElement>("[data-framed-problem]");
+  const diyList = document.querySelector<HTMLElement>("[data-diy-list]");
+  const weDo = document.querySelector<HTMLElement>("[data-we-do-output]");
+  const pathwayLink = document.querySelector<HTMLAnchorElement>("[data-pathway-link]");
+  const pathwayLabel = document.querySelector<HTMLElement>("[data-pathway-label]");
+  const pillarBadge = document.querySelector<HTMLElement>("[data-pillar-badge]");
+  const startMarker = document.querySelector<SVGTextElement>("[data-start-marker]");
+  const forwardLine = document.querySelector<SVGLineElement>("[data-forward-line]");
+
+  type Concern = { id: string; label: string; phrase: string; helper?: string };
+  type Situation = {
+    id: string; label: string; pillar: string; publicName: string;
+    station: string; route: string; clause: string; firstJob: string;
+    diy: string[]; weDo: string;
+  };
+  type Sharpener = { id: string; label: string; qualifier: string };
+
+  let currentStep = 1;
+  let selectedConcern: Concern | null = null;
+  let selectedSituation: Situation | null = null;
+  let selectedSharpener: Sharpener | null = null;
+
+  const concerns: Concern[] = [
+    { id: "cost", label: "Cost", helper: "Margins, cost to serve, rework, waste.", phrase: "a cost problem" },
+    { id: "time", label: "Time", helper: "Cycle time, delays, backlogs, slow turnaround.", phrase: "a speed problem" },
+    { id: "quality", label: "Quality", helper: "Errors, defects, inconsistency, variation.", phrase: "a quality problem" },
+    { id: "risk", label: "Risk", helper: "Compliance, control, audit, safety.", phrase: "a risk and control problem" },
+    { id: "growth", label: "Growth", helper: "Capacity, throughput, scaling demand.", phrase: "a growth problem" },
+    { id: "people", label: "People", helper: "Capability, reliance on key people, turnover.", phrase: "a capability problem" },
+  ];
+
+  const situations: Situation[] = [
+    {
+      id: "frame", label: "We do not agree on what the problem is.", pillar: "FRAME",
+      publicName: "Problem Framing", station: "frame", route: "/services/frame/",
+      clause: "have not yet defined",
+      firstJob: "The first job is to agree on the real problem, in one sentence everyone signs up to, before any solution is on the table.",
+      diy: [
+        "Get the people who see it differently in one room and write a single problem statement: what is happening, where, how big, and why it matters, with no solution named.",
+        "Test it: can everyone restate it the same way? If not, it is not framed yet.",
+        "Park every proposed solution on a separate list until the problem is agreed.",
+      ],
+      weDo: "We run the framing with your team and leave you with a problem everyone owns.",
+    },
+    {
+      id: "plan", label: "We cannot see what is really happening.", pillar: "PLAN",
+      publicName: "Operations Diagnostic", station: "plan", route: "/services/plan/",
+      clause: "cannot yet see clearly",
+      firstJob: "The first job is to measure the operation as it actually runs, end to end, so the problem is located before anyone acts.",
+      diy: [
+        "Map the process as it actually runs, step by step, with the people who do the work.",
+        "Put a number on each step: time, volume, rework, hand-offs. Walk it end to end.",
+        "Look for where work waits or loops back. The problem usually sits there.",
+      ],
+      weDo: "We run the diagnostic and hand you the full picture of where the problem sits.",
+    },
+    {
+      id: "solve", label: "We know the problem but not the fix.", pillar: "SOLVE",
+      publicName: "Iterative Improvement", station: "solve", route: "/services/solve/",
+      clause: "can name but have not solved",
+      firstJob: "The first job is root cause analysis and solution design, with your team building the capability to keep improving after.",
+      diy: [
+        "Find the root cause before designing anything: keep asking why until you reach something you can act on.",
+        "Design the smallest change that fixes the cause, not the symptom.",
+        "Decide up front how you will know it worked: the measure and the baseline.",
+      ],
+      weDo: "We run root cause and solution design with you, and build the capability to keep improving.",
+    },
+    {
+      id: "evolve", label: "We have a fix but it is risky to commit.", pillar: "EVOLVE",
+      publicName: "Rapid Pilot", station: "evolve", route: "/services/evolve/",
+      clause: "have a fix for but cannot yet safely commit to",
+      firstJob: "The first job is to validate the fix small and fast, so you commit on evidence rather than hope.",
+      diy: [
+        "Run the fix in one team or one slice first, with a clear before-and-after measure.",
+        "Set the success bar, and a stop rule, before you start.",
+        "Let the pilot result decide the rollout, not opinion.",
+      ],
+      weDo: "We design and run the pilot so you commit on evidence.",
+    },
+    {
+      id: "govern", label: "It works, but it keeps drifting back.", pillar: "GOVERN",
+      publicName: "Architecture and Governance", station: "govern", route: "/services/govern/",
+      clause: "keep solving but cannot make hold",
+      firstJob: "The first job is the governance that holds the gain: process architecture, control plans, dashboards, and clear escalation.",
+      diy: [
+        "Name an owner for the improved process and the measure that proves it is holding.",
+        "Build the control in: a standard, a simple dashboard, and a trigger for stepping in.",
+        "Review it on a set rhythm until holding the gain is just how the work runs.",
+      ],
+      weDo: "We build the governance that holds the gain after we leave.",
+    },
+    {
+      id: "scale", label: "It works in one place, we need it everywhere.", pillar: "SCALE",
+      publicName: "Operational Embedding", station: "scale", route: "/services/scale/",
+      clause: "have proven in one place but not yet scaled",
+      firstJob: "The first job is to embed and scale the proven way of working so it runs the same everywhere, without you.",
+      diy: [
+        "Write the proven way of working down as a clear standard others can follow.",
+        "Roll it out team by team: adapt the edges, keep the core fixed.",
+        "Build in onboarding and a check so new teams run it the same way.",
+      ],
+      weDo: "We embed and scale the proven way so it runs without us.",
+    },
+  ];
+
+  const sharpeners: Record<string, { question: string; options: Sharpener[] }> = {
+    frame: {
+      question: "Why is the problem unclear?",
+      options: [
+        { id: "different-teams", label: "Different teams describe it differently.", qualifier: "because each team sees a different piece of it" },
+        { id: "jump-to-solutions", label: "We jump to solutions before defining it.", qualifier: "because the conversation keeps jumping to solutions" },
+      ],
+    },
+    plan: {
+      question: "Is it one part of the process, or all of it?",
+      options: [
+        { id: "one-step", label: "One step or team.", qualifier: "and it sits in one step you can point to" },
+        { id: "end-to-end", label: "The whole process, start to finish.", qualifier: "and it runs across the whole process, not one step" },
+      ],
+    },
+    solve: {
+      question: "What happened with past fixes?",
+      options: [
+        { id: "no-fix", label: "We have not tried a fix yet.", qualifier: "and no fix has been tried yet" },
+        { id: "did-not-hold", label: "Past fixes did not hold.", qualifier: "and past fixes did not hold" },
+      ],
+    },
+    evolve: {
+      question: "What makes it risky to roll out?",
+      options: [
+        { id: "cost-disruption", label: "Rolling it out is costly or disruptive.", qualifier: "because a full rollout is costly or disruptive" },
+        { id: "scale-unclear", label: "We are not sure it will work everywhere.", qualifier: "because you are not yet sure it will work everywhere" },
+      ],
+    },
+    govern: {
+      question: "Why doesn't it stick?",
+      options: [
+        { id: "attention-moves", label: "Attention moves on.", qualifier: "because attention moves on once the project ends" },
+        { id: "no-owner", label: "No clear owner or control.", qualifier: "because no one owns the control that keeps it in place" },
+      ],
+    },
+    scale: {
+      question: "What's stopping it spreading to other teams?",
+      options: [
+        { id: "sites-differ", label: "Each site does it differently.", qualifier: "because each site does it its own way" },
+        { id: "no-standard", label: "No standard way of working.", qualifier: "because there is no standard way of working yet" },
+      ],
+    },
+  };
+
+  function setStationState(station: SVGAElement, isActive: boolean) {
+    const rect = station.querySelector("rect")!;
+    const label = station.querySelector("text")!;
+    const x = Number(station.dataset.x);
+    const y = Number(station.dataset.y);
+    const width = Number(station.dataset.w);
+    const height = Number(station.dataset.h);
+    const centre = Number(station.dataset.cx);
+    const activeWidth = width * 1.1;
+    const activeHeight = height * 1.1;
+    rect.setAttribute("x", String(isActive ? centre - activeWidth / 2 : x));
+    rect.setAttribute("y", String(isActive ? y - (activeHeight - height) / 2 : y));
+    rect.setAttribute("width", String(isActive ? activeWidth : width));
+    rect.setAttribute("height", String(isActive ? activeHeight : height));
+    rect.setAttribute("rx", String((isActive ? activeHeight : height) / 2));
+    rect.setAttribute("fill", isActive ? "#26245C" : "#fff");
+    rect.setAttribute("stroke", isActive ? "none" : "rgba(38,36,92,0.22)");
+    label.setAttribute("fill", isActive ? "#fff" : "#7A8591");
+    label.setAttribute("font-size", isActive ? "13.2" : "12");
+  }
+
+  function makeChoiceCard(label: string, helper?: string, isSelected = false) {
+    const card = document.createElement("button");
+    card.className = "res-choice";
+    card.type = "button";
+    card.setAttribute("aria-pressed", String(isSelected));
+    if (isSelected) card.classList.add("is-selected");
+    const heading = document.createElement("h3");
+    heading.textContent = label;
+    card.appendChild(heading);
+    if (helper) {
+      const h = document.createElement("p");
+      h.textContent = helper;
+      card.appendChild(h);
+    }
+    return card;
+  }
+
+  function renderConcernOptions() {
+    if (!concernOptions) return;
+    concernOptions.innerHTML = "";
+    concerns.forEach((concern) => {
+      const card = makeChoiceCard(concern.label, concern.helper, selectedConcern?.id === concern.id);
+      card.addEventListener("click", () => {
+        selectedConcern = concern;
+        selectedSituation = null;
+        selectedSharpener = null;
+        showStep(2);
+      });
+      concernOptions.appendChild(card);
+    });
+  }
+
+  function renderSituationOptions() {
+    if (!situationOptions) return;
+    situationOptions.innerHTML = "";
+    situations.forEach((situation) => {
+      const card = makeChoiceCard(situation.label, undefined, selectedSituation?.id === situation.id);
+      card.addEventListener("click", () => {
+        selectedSituation = situation;
+        selectedSharpener = null;
+        renderSharpenerOptions();
+        showStep(3);
+      });
+      situationOptions.appendChild(card);
+    });
+  }
+
+  function renderSharpenerOptions() {
+    if (!sharpenerOptions || !sharpenerQuestion) return;
+    sharpenerOptions.innerHTML = "";
+    if (!selectedSituation || !sharpeners[selectedSituation.id]) {
+      sharpenerQuestion.textContent = "";
+      return;
+    }
+    const sharpener = sharpeners[selectedSituation.id];
+    sharpenerQuestion.textContent = sharpener.question;
+    sharpener.options.forEach((option) => {
+      const card = makeChoiceCard(option.label, undefined, selectedSharpener?.id === option.id);
+      card.addEventListener("click", () => {
+        selectedSharpener = option;
+        showRecommendation();
+      });
+      sharpenerOptions.appendChild(card);
+    });
+  }
+
+  function updateStepIndicator() {
+    if (stepIndicator) stepIndicator.textContent = `Step ${currentStep} of 3`;
+  }
+
+  function updateBreadcrumb() {
+    if (!breadcrumb) return;
+    breadcrumb.innerHTML = "";
+    const crumbs = [
+      selectedConcern && { label: selectedConcern.label, step: 1 },
+      selectedSituation && { label: selectedSituation.label, step: 2 },
+      selectedSharpener && { label: selectedSharpener.label, step: 3 },
+    ].filter(Boolean) as { label: string; step: number }[];
+
+    crumbs.forEach((crumb) => {
+      const item = document.createElement("li");
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = crumb.label;
+      button.addEventListener("click", () => {
+        if (crumb.step === 1) {
+          selectedSituation = null;
+          selectedSharpener = null;
+        }
+        if (crumb.step === 2) selectedSharpener = null;
+        showStep(crumb.step);
+      });
+      item.appendChild(button);
+      breadcrumb.appendChild(item);
+    });
+  }
+
+  function setActiveStation(activeStation = "") {
+    const hasActive = Boolean(activeStation);
+    if (startMarker) startMarker.setAttribute("opacity", hasActive ? "1" : "0");
+    let activeCentre = 0;
+    stationPills.forEach((station) => {
+      const isActive = station.dataset.station === activeStation;
+      if (isActive) activeCentre = Number(station.dataset.cx);
+      setStationState(station, isActive);
+    });
+    if (startMarker && hasActive) startMarker.setAttribute("x", String(activeCentre));
+    if (forwardLine) {
+      if (hasActive) {
+        forwardLine.setAttribute("x1", String(activeCentre));
+        forwardLine.setAttribute("x2", "960");
+        forwardLine.setAttribute("opacity", "1");
+      } else {
+        forwardLine.setAttribute("opacity", "0");
+      }
+    }
+    if (hasActive && stationMap) {
+      stationMap.scrollLeft = Math.max(0, activeCentre - stationMap.clientWidth / 2);
+    }
+  }
+
+  function clearRecommendation() {
+    if (framedProblem) framedProblem.textContent = "";
+    if (diyList) diyList.innerHTML = "";
+    if (weDo) weDo.textContent = "";
+    if (pathwayLabel) pathwayLabel.textContent = "";
+    if (pathwayLink) pathwayLink.removeAttribute("href");
+    if (pillarBadge) pillarBadge.textContent = "";
+  }
+
+  function showStep(step: number) {
+    currentStep = step;
+    steps.forEach((item) => item.classList.toggle("is-active", Number(item.dataset.step) === currentStep));
+    recommendation?.classList.remove("is-active");
+    stationMap?.classList.remove("is-active");
+    setActiveStation("");
+    clearRecommendation();
+    updateStepIndicator();
+    updateBreadcrumb();
+    renderConcernOptions();
+    renderSituationOptions();
+    if (currentStep === 3) renderSharpenerOptions();
+  }
+
+  function showRecommendation() {
+    if (!selectedConcern || !selectedSituation || !selectedSharpener) return;
+    currentStep = 3;
+    steps.forEach((item) => item.classList.remove("is-active"));
+    recommendation?.classList.add("is-active");
+    stationMap?.classList.add("is-active");
+
+    if (framedProblem)
+      framedProblem.textContent = `You have ${selectedConcern.phrase} you ${selectedSituation.clause}, ${selectedSharpener.qualifier}.`;
+    if (diyList) {
+      diyList.innerHTML = "";
+      selectedSituation.diy.forEach((step) => {
+        const item = document.createElement("li");
+        item.textContent = step;
+        diyList.appendChild(item);
+      });
+    }
+    if (weDo) weDo.textContent = selectedSituation.weDo;
+    if (pathwayLink) pathwayLink.href = selectedSituation.route;
+    if (pathwayLabel) pathwayLabel.textContent = `Explore ${selectedSituation.publicName}`;
+    if (pillarBadge) pillarBadge.textContent = selectedSituation.pillar;
+    setActiveStation(selectedSituation.station);
+    updateStepIndicator();
+    updateBreadcrumb();
+  }
+
+  function resetWizard() {
+    selectedConcern = null;
+    selectedSituation = null;
+    selectedSharpener = null;
+    showStep(1);
+  }
+
+  startOver?.addEventListener("click", resetWizard);
+  showStep(1);
+
+  // ---- One reveal per section ----
+  function initialiseResReveals() {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const sections = Array.from(document.querySelectorAll(".res-reveal"));
+    if (reduceMotion || !("IntersectionObserver" in window)) return;
+    document.documentElement.classList.add("res-reveal-enabled");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  initialiseResReveals();
+</script>
