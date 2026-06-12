@@ -30,6 +30,12 @@
 .res-hero-lede{max-width:640px;margin:0 0 36px;color:var(--mid-grey);font-size:22px;line-height:1.42;}
 .res-hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:22px;}
 
+/* Assessment hero states: compact (question) + results (headline + prose + score circle) */
+.res-hero.is-compact{padding-top:48px;padding-bottom:40px;}
+.res-hero.is-compact h1{margin-bottom:14px;}
+.res-hero.is-compact .res-hero-lede{margin-bottom:0;}
+.ra-hero-score{width:clamp(116px,13vw,150px);aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:"Montserrat",Arial,sans-serif;font-weight:700;font-size:clamp(30px,3.2vw,38px);}
+
 /* Filter chips (reuses ins-chip pattern) */
 .res-filter{display:flex;flex-wrap:wrap;gap:10px;padding-top:32px;}
 .res-chip{
