@@ -55,10 +55,10 @@ export const resources: Resource[] = [
     summary:
       "19 questions across four readiness dimensions: leadership, operational, change, and measurement. Use it before committing budget to a transformation programme.",
     glyph: "Gauge",
-    action: "download",
-    href: "#",
-    actionLabel: "Download",
-    landing: true,
+    action: "view",
+    href: "/resources/transformation-readiness-assessment/",
+    actionLabel: "Start assessment",
+    landing: false,
     lede:
       "Most transformation programmes fail on readiness, not ambition. Use this to test whether the conditions for success are in place before you commit budget.",
     whatsInside: [
@@ -79,10 +79,10 @@ export const resources: Resource[] = [
     summary:
       "20 questions across five CI dimensions. Diagnose where your capability stands and what it takes to move up a tier.",
     glyph: "Loop",
-    action: "download",
-    href: "#",
-    actionLabel: "Download",
-    landing: true,
+    action: "view",
+    href: "/resources/ci-maturity-assessment/",
+    actionLabel: "Start assessment",
+    landing: false,
     lede:
       "Know where your continuous improvement capability actually sits today, and what it takes to move up a tier rather than stall.",
     whatsInside: [
@@ -103,10 +103,10 @@ export const resources: Resource[] = [
     summary:
       "A framework for CI programmes that hold after the consultants leave. Covers the four components every programme needs: management system, methodology, capability, and measurement.",
     glyph: "Charter",
-    action: "download",
-    href: "#",
-    actionLabel: "Download",
-    landing: true,
+    action: "view",
+    href: "/resources/ci-programme-design-framework/",
+    actionLabel: "Explore framework",
+    landing: false,
     lede:
       "A continuous improvement programme holds or it drifts. This framework sets out the four components that keep it holding after the consultants leave.",
     whatsInside: [
@@ -127,10 +127,10 @@ export const resources: Resource[] = [
     summary:
       "How an engagement runs from first conversation to handover. What to expect, what you commit to, and what close looks like.",
     glyph: "Transfer",
-    action: "download",
-    href: "#",
-    actionLabel: "Download",
-    landing: true,
+    action: "view",
+    href: "/resources/engagement-model/",
+    actionLabel: "View model",
+    landing: false,
     lede:
       "Know exactly how working with us runs before you start, from first conversation to a handover that leaves the capability with your team.",
     whatsInside: [
@@ -163,11 +163,11 @@ export const resources: Resource[] = [
     summary:
       "25 items across three phases: before you start, during delivery, and at close. Includes common government programme failure modes.",
     glyph: "DocTick",
-    action: "download",
-    href: "#",
-    actionLabel: "Download",
+    action: "view",
+    href: "/resources/government-programme-checklist/",
+    actionLabel: "Open checklist",
     gov: true,
-    landing: true,
+    landing: false,
     lede:
       "Government programmes fail in predictable ways. This 25-item checklist covers what to get right before you start, during delivery, and at close.",
     whatsInside: [
@@ -188,10 +188,10 @@ export const resources: Resource[] = [
     summary:
       "A template for briefing external consultants. Covers problem statement, scope, success criteria, commercial expectations, and evaluation criteria.",
     glyph: "DocReport",
-    action: "download",
-    href: "#",
-    actionLabel: "Download",
-    landing: true,
+    action: "view",
+    href: "/resources/consulting-brief-template/",
+    actionLabel: "Build your brief",
+    landing: false,
     lede:
       "A sharp brief gets you a sharp engagement. This template forces the discipline that makes external work land, before you issue it.",
     whatsInside: [
