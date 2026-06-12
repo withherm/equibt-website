@@ -94,18 +94,6 @@ import "../../../styles/resources.css";
       </div>
     </section>
 
-    <section class="res-lmi res-reveal">
-      <div class="res-inner res-lmi-inner">
-        <div class="eyebrow">TRAINING</div>
-        <h2>Build the capability in-house.</h2>
-        <p class="res-lmi-copy">Lean Methods Institute delivers the same Lean and AI methods we use in an engagement, taught to your team in your operations context, not generic simulations. The capability stays with them after we step out.</p>
-        <a href="https://leanmethods.com.au" class="res-lmi-logo-link" aria-label="Lean Methods Institute">
-          <img src={lmiLogo.src} class="res-lmi-logo-img" alt="Lean Methods Institute" loading="lazy" />
-        </a>
-        <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
-      </div>
-    </section>
-
     <section class="res-ld-close res-reveal">
       <div class="res-inner">
         <div class="res-ld-close-grid">
@@ -119,6 +107,18 @@ import "../../../styles/resources.css";
             <span><Loop /></span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="res-lmi res-reveal">
+      <div class="res-inner res-lmi-inner">
+        <div class="eyebrow">BUILD WITH US</div>
+        <h2>Build the capability in-house.</h2>
+        <p class="res-lmi-copy">Lean Methods Institute delivers the same Lean and AI methods we use in an engagement, taught to your team in your operations context, not generic simulations. The capability stays with them after we step out.</p>
+        <a href="https://leanmethods.com.au" class="res-lmi-logo-link" aria-label="Lean Methods Institute">
+          <img src={lmiLogo.src} class="res-lmi-logo-img" alt="Lean Methods Institute" loading="lazy" />
+        </a>
+        <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span>&nbsp;&nbsp;<span class="ar">&rsaquo;</span></a>
       </div>
     </section>
   </main>
@@ -159,7 +159,7 @@ import "../../../styles/resources.css";
 .ra-section-head{margin-bottom:28px;}
 .ra-section-head .eyebrow{margin-bottom:12px;}
 .ra-section-head h2{font-size:clamp(26px,2.6vw,34px);font-weight:700;margin:0 0 12px;}
-.ra-section-note{color:#666;font-size:18px;margin:0;}
+.ra-section-note{color:var(--mid-grey);font-size:19px;margin:0;}
 
 /* ── Column header row ── */
 .ra-q-header{display:grid;grid-template-columns:1fr auto;gap:24px;padding:0 28px 12px;border-bottom:1px solid #e0ddd5;margin-bottom:0;}
@@ -201,9 +201,9 @@ import "../../../styles/resources.css";
 .ra-score-banner{display:flex;align-items:center;gap:28px;background:#fff;border:1px solid #e0ddd5;border-radius:14px;padding:24px 28px;margin-bottom:28px;}
 .ra-score-circle{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:"Montserrat",Arial,sans-serif;font-size:22px;font-weight:700;color:#fff;}
 .ra-score-tier{font-size:22px;font-weight:700;margin:0 0 4px;color:#26245C;}
-.ra-score-desc{font-size:15px;color:#666;line-height:1.55;margin:0;}
+.ra-score-desc{font-size:16px;color:var(--caption);line-height:1.55;margin:0;}
 .ra-legend{display:flex;flex-wrap:wrap;gap:6px 20px;margin:0 0 24px;padding:10px 16px;background:#fff;border:1px solid #e0ddd5;border-radius:8px;}
-.ra-legend-item{display:flex;align-items:center;gap:6px;font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:600;color:#666;letter-spacing:.04em;}
+.ra-legend-item{display:flex;align-items:center;gap:6px;font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:600;color:var(--mid-grey);letter-spacing:.04em;}
 .ra-legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
 
 /* ── Results: dimension grid ── */
@@ -215,13 +215,13 @@ import "../../../styles/resources.css";
 .ra-combined-left{padding-right:24px;}
 .ra-combined-right{padding-left:24px;border-left:none;}
 .ra-dim-card{background:#fff;border:1px solid #e0ddd5;border-radius:12px;padding:22px 24px;}
-.ra-dim-name{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin:0 0 12px;}
+.ra-dim-name{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--caption);margin:0 0 12px;}
 .ra-dim-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
 .ra-dim-bar-track{flex:1;height:12px;background:#e8e6e2;border-radius:6px;overflow:hidden;}
 .ra-dim-bar-fill{height:100%;border-radius:6px;transition:width .6s ease .1s;}
 .ra-dim-bar-pct{font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;min-width:36px;text-align:right;}
 .ra-dim-label-row{display:flex;justify-content:space-between;align-items:baseline;}
-.ra-dim-score-text{font-size:13px;color:#999;}
+.ra-dim-score-text{font-size:14px;color:var(--caption);}
 .ra-dim-status{font-size:12px;font-weight:700;font-family:"Montserrat",Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;}
 
 /* ── Gap analysis ── */
@@ -229,22 +229,22 @@ import "../../../styles/resources.css";
 .ra-gap-header{margin-bottom:20px;}
 .ra-gap-header .eyebrow{margin-bottom:8px;}
 .ra-gap-header h3{font-size:22px;font-weight:700;color:#26245C;margin:0 0 8px;}
-.ra-gap-header p{font-size:16px;color:#666;margin:0;}
+.ra-gap-header p{font-size:16px;color:var(--mid-grey);margin:0;}
 .ra-gap-cards{display:flex;flex-direction:column;gap:16px;}
 .ra-gap-card{background:#fff;border:1px solid #e0ddd5;border-radius:12px;padding:20px 24px;}
 .ra-gap-card-top{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
 .ra-gap-card-name{font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#26245C;}
 .ra-gap-tag{padding:2px 10px;border-radius:999px;font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;color:#fff;}
 .ra-gap-card-pct{margin-left:auto;font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;}
-.ra-gap-context{font-size:13px;color:#999;margin:0 0 10px;font-style:italic;}
-.ra-gap-action{font-size:15px;color:#444;margin:0;line-height:1.55;}
+.ra-gap-context{font-size:14px;color:var(--caption);margin:0 0 10px;font-style:italic;}
+.ra-gap-action{font-size:16px;color:var(--mid-grey);margin:0;line-height:1.55;}
 .ra-gap-action strong{color:#26245C;font-weight:600;}
 
 /* ── CTA strip ── */
 .ra-results-actions{display:flex;align-items:center;gap:24px;margin-bottom:40px;}
 .ra-cta-strip{padding:32px;background:#fff;border:1px solid #e0ddd5;border-radius:12px;}
 .ra-cta-strip .eyebrow{margin-bottom:10px;}
-.ra-cta-strip p{margin:0 0 16px;color:#666;font-size:18px;}
+.ra-cta-strip p{margin:0 0 16px;color:var(--mid-grey);font-size:18px;}
 
 .ra-section-icon-inline{display:inline-flex;align-items:center;margin-right:10px;vertical-align:middle;color:#C15F3C;}
 .ra-section-icon-inline svg{width:24px;height:24px;}
@@ -275,17 +275,17 @@ import "../../../styles/resources.css";
 .lbl-short{display:none;}
 /* ── legend ── */
 .ra-legend{display:flex;flex-wrap:wrap;gap:12px 28px;margin-bottom:32px;padding:14px 20px;background:#fff;border:1px solid #e0ddd5;border-radius:10px;}
-.ra-legend-item{display:flex;align-items:center;gap:8px;font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:600;color:#444;letter-spacing:.04em;}
+.ra-legend-item{display:flex;align-items:center;gap:8px;font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:600;color:var(--mid-grey);letter-spacing:.04em;}
 .ra-legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.ra-legend-range{font-weight:400;color:#999;margin-left:2px;}
+.ra-legend-range{font-weight:400;color:var(--caption);margin-left:2px;}
 /* ── dim card icon header ── */
 .ra-dim-card-head{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
 .ra-dim-icon{display:flex;align-items:center;flex-shrink:0;}
-.ra-dim-name-text{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin:0;}
+.ra-dim-name-text{font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mid-grey);margin:0;}
 /* ── suggested action label ── */
-.ra-gap-action-label{font-family:"Montserrat",Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#aaa;margin:14px 0 4px;}
+.ra-gap-action-label{font-family:"Montserrat",Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--caption);margin:14px 0 4px;}
 /* ── score tier desc on screen ── */
-.ra-tier-desc{font-size:18px;color:#555;line-height:1.6;margin:8px 0 0;}
+.ra-tier-desc{font-size:18px;color:var(--mid-grey);line-height:1.6;margin:8px 0 0;}
 @media(max-width:760px){
   .lbl-full{display:none;}
   .lbl-short{display:inline;}
@@ -486,7 +486,7 @@ function buildPrintHTML(dimScores,tier,totalPct){
     const saved=answers[s.key]||{};
     const rows=s.questions.map((q,qi)=>{
       const v=saved[qi];const ans=v?LABELS[v-1]:"Not answered";
-      return`<div style="display:grid;grid-template-columns:1fr auto;gap:16px;padding:7px 0;border-bottom:1px solid #eee;align-items:start;"><div style="font-size:12px;color:#333;line-height:1.5;">${q}</div><div style="font-family:Arial,sans-serif;font-size:11px;font-weight:700;color:${v?'#26245C':'#bbb'};white-space:nowrap;">${ans}</div></div>`;
+      return`<div style="display:grid;grid-template-columns:1fr auto;gap:16px;padding:7px 0;border-bottom:1px solid #eee;align-items:start;"><div style="font-size:12px;color:#1f1f1f;line-height:1.5;">${q}</div><div style="font-family:Arial,sans-serif;font-size:11px;font-weight:700;color:${v?'#26245C':'#bbb'};white-space:nowrap;">${ans}</div></div>`;
     }).join("");
     return`<div style="margin-bottom:18px;page-break-inside:avoid;"><div style="font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.04em;color:#1a1a2e;margin-bottom:4px;">${s.title}</div>${rows}</div>`;
   }).join("");
@@ -496,13 +496,13 @@ function buildPrintHTML(dimScores,tier,totalPct){
     const iconSvg=(DIM_ICONS[s.key]||'').replace(/stroke="currentColor"/g,`stroke="${b.text}"`);
     return`<div style="background:#fff;border:1px solid #ddd;border-radius:8px;padding:14px 18px;margin-bottom:10px;display:grid;grid-template-columns:55% 45%;gap:16px;align-items:start;">
       <div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">${iconSvg}<span style="font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555;">${DIM_NAMES[s.key]}</span><span style="margin-left:auto;font-size:12px;font-weight:700;color:${b.text};">${b.label}: ${p}%</span></div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">${iconSvg}<span style="font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1f1f1f;">${DIM_NAMES[s.key]}</span><span style="margin-left:auto;font-size:12px;font-weight:700;color:${b.text};">${b.label}: ${p}%</span></div>
         <div style="height:10px;background:#e8e6e2;border-radius:5px;margin-bottom:6px;overflow:hidden;"><div style="height:100%;width:${p}%;background:${b.bar};border-radius:5px;"></div></div>
-        <div style="font-size:11px;color:#999;">${sc} / ${SCORE_MAX}</div>
+        <div style="font-size:11px;color:#555;">${sc} / ${SCORE_MAX}</div>
       </div>
       <div style="background:#f8f7f4;border-radius:6px;padding:10px 12px;">
-        <div style="font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#aaa;margin-bottom:5px;">SUGGESTED ACTION</div>
-        <div style="font-size:11px;color:#444;line-height:1.5;">${GAP_SHIFTS[s.key][level]}</div>
+        <div style="font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#666;margin-bottom:5px;">SUGGESTED ACTION</div>
+        <div style="font-size:11px;color:#1f1f1f;line-height:1.5;">${GAP_SHIFTS[s.key][level]}</div>
       </div>
     </div>`;
   }).join("");
@@ -518,16 +518,16 @@ function buildPrintHTML(dimScores,tier,totalPct){
 <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:28px;">
   <div style="flex:1;min-width:0;">
     <div style="font-family:Arial,sans-serif;font-size:24px;font-weight:700;color:${b.text};line-height:1.15;margin-bottom:8px;">${resultHeadline(b.label)}</div>
-    <div style="font-size:13px;color:#555;line-height:1.5;max-width:520px;">${tier.description}</div>
+    <div style="font-size:13px;color:#222;line-height:1.5;max-width:520px;">${tier.description}</div>
   </div>
   <div style="width:96px;height:96px;border-radius:50%;background:${b.text};display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:26px;font-weight:700;color:#fff;flex-shrink:0;">${totalPct}%</div>
 </div>
-<div style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:10px;">DIMENSION BREAKDOWN</div>
+<div style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#555;margin-bottom:10px;">DIMENSION BREAKDOWN</div>
 ${cards}
-<div style="display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:16px;padding:8px 14px;border:1px solid #e0ddd5;border-radius:6px;"><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#666;"><span style="width:7px;height:7px;border-radius:50%;background:#E23B33;display:inline-block;flex-shrink:0;"></span>Needs attention (&lt;40%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#666;"><span style="width:7px;height:7px;border-radius:50%;background:#F2912E;display:inline-block;flex-shrink:0;"></span>Developing (40–64%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#666;"><span style="width:7px;height:7px;border-radius:50%;background:#F4C20D;display:inline-block;flex-shrink:0;"></span>Established (65–74%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#666;"><span style="width:7px;height:7px;border-radius:50%;background:#46A546;display:inline-block;flex-shrink:0;"></span>Strong (75%+)</span></div>
-<div style="margin-top:30px;font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:12px;">Your Responses</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:16px;padding:8px 14px;border:1px solid #e0ddd5;border-radius:6px;"><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#333;"><span style="width:7px;height:7px;border-radius:50%;background:#E23B33;display:inline-block;flex-shrink:0;"></span>Needs attention (&lt;40%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#333;"><span style="width:7px;height:7px;border-radius:50%;background:#F2912E;display:inline-block;flex-shrink:0;"></span>Developing (40–64%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#333;"><span style="width:7px;height:7px;border-radius:50%;background:#F4C20D;display:inline-block;flex-shrink:0;"></span>Established (65–74%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#333;"><span style="width:7px;height:7px;border-radius:50%;background:#46A546;display:inline-block;flex-shrink:0;"></span>Strong (75%+)</span></div>
+<div style="margin-top:30px;font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#555;margin-bottom:12px;">Your Responses</div>
 ${responses}
-<div style="margin-top:24px;padding-top:14px;border-top:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;font-family:Arial,sans-serif;font-size:11px;color:#999;">
+<div style="margin-top:24px;padding-top:14px;border-top:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;font-family:Arial,sans-serif;font-size:11px;color:#555;">
   <span>Generated ${date} · Anonymous results</span>
   <span style="font-weight:700;color:#26245C;">www.equibt.com</span>
 </div>
@@ -563,7 +563,7 @@ function showResults(){
         <div class="ra-dim-card-head"><span class="ra-dim-icon" style="color:${b.text};">${DIM_ICONS[s.key]||''}</span><p class="ra-dim-name-text">${DIM_NAMES[s.key]}</p><span class="ra-gap-tag" style="background:${b.text};margin-left:auto;">${b.label}</span><span style="font-family:'Montserrat',Arial,sans-serif;font-size:12px;font-weight:700;color:${b.text};margin-left:8px;">${p}%</span></div>
         <div class="ra-dim-bar-row"><div class="ra-dim-bar-track"><div class="ra-dim-bar-fill" style="width:${p}%;background:${b.bar};"></div></div></div>
         <div class="ra-dim-label-row"><span class="ra-dim-score-text">${score} / ${SCORE_MAX}</span></div>
-        <p style="font-size:12px;color:#999;margin:4px 0 0;font-style:italic;">${DIM_CONTEXT[s.key]}</p>
+        <p style="font-size:14px;color:#5A5A5A;margin:4px 0 0;font-style:italic;">${DIM_CONTEXT[s.key]}</p>
       </div>
       <div class="ra-combined-right">
         <p class="ra-gap-action-label">Suggested action</p>
