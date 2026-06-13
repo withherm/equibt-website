@@ -18,6 +18,14 @@ const arc = [
   { Glyph: Evidence, heading: "Run a governed pilot.", body: "We prove the redesign on a contained slice with the controls already in place, so the gain is real and measured before it scales.", connector: "Then we hand it back" },
   { Glyph: Transfer, heading: "Hand over for sustainment.", body: "The handover makes sustainment your team's job, not an assumption. We leave when the operating rhythm, measures, governance and handover are strong enough to run without us." },
 ];
+
+const methods = [
+  { name: "Lean Business Analysis", body: "Frame the right problem before work starts, so teams stop solving the wrong one." },
+  { name: "Lean", body: "Strip waste and make work flow, so the operation costs less to run." },
+  { name: "Lean Six Sigma (DMAIC)", body: "Find the root cause with evidence and fix efficiency, variation and bottlenecks so the gain holds." },
+  { name: "Lean Service Design", body: "Redesign a service end to end, front-stage and back-stage, so customer experience and the operation improve together." },
+  { name: "Lean Agile", body: "Run initiatives in short, focused cycles so change actually ships." },
+];
 ---
 
 <Layout
@@ -128,7 +136,30 @@ const arc = [
       </div>
     </section>
 
-    <!-- 5. LMI HANDOVER (story-framed: why we built LMI) -->
+    <!-- 5. THE METHODS WE APPLY -->
+    <section class="about-section white about-reveal">
+      <div class="about-inner">
+        <div class="about-head">
+          <div class="eyebrow">THE METHODS WE APPLY</div>
+          <h2 class="about-title">The problem decides the method.</h2>
+          <p>We are not framework-first, but we use frameworks and tools when they are appropriate and productive. The problem decides the method, not habit. We are not best-practice parrots because these methods are how we run our own operation and what our training division teaches. Lived mastery, not theory. We eat our own dog food.</p>
+        </div>
+        <div class="about-cols">
+          {methods.map((method) => (
+            <div class="about-col">
+              <h3>{method.name}</h3>
+              <p>{method.body}</p>
+            </div>
+          ))}
+        </div>
+        <div class="about-principle-head about-prose">
+          <p>We apply these on your problems; our training division, Lean Methods Institute, teaches them to your people.</p>
+          <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. LMI HANDOVER (story-framed: why we built LMI) -->
     <section class="about-section white about-lmi about-reveal">
       <div class="about-inner">
         <div class="eyebrow">OUR TRAINING DIVISION</div>
@@ -141,7 +172,7 @@ const arc = [
       </div>
     </section>
 
-    <!-- 6. CLOSING CTA (light, copy left + motif right) -->
+    <!-- 7. CLOSING CTA (light, copy left + motif right) -->
     <section class="about-section beige about-cta about-reveal">
       <div class="about-inner about-cta-grid">
         <div class="about-cta-copy">
