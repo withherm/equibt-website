@@ -675,6 +675,7 @@ a.method-work-case:focus h3{color:var(--terracotta);}
 .method-work-case .btn-text{
   display:table;
   margin-top:var(--link-gap);
+  margin-left:92px;
 }
 .method-forward{
   max-width:820px;
@@ -727,5 +728,6 @@ a.method-work-case:focus h3{color:var(--terracotta);}
     font-size:34px;
   }
   .method-work-case-inner{grid-template-columns:48px minmax(0,1fr);gap:18px;}
+  .method-work-case .btn-text{margin-left:66px;}
   .method-work-icon{width:42px;height:42px;}
 }
