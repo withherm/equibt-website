@@ -6,8 +6,8 @@ const methodData = {
   title: "Lean Business Analysis | EQUIBT",
   description: "How EQUIBT applies Lean Business Analysis to define the real problem, lock scope, and establish requirements that hold.",
   methodName: "Lean Business Analysis",
-  heroTitle: "Solve the right problem before scoping the work.",
-  heroOverview: "Lean Business Analysis is how we turn a fuzzy brief into the right problem to solve before any money goes near a solution. We separate the problem from the assumed fix, test the scope against the outcome you actually need, and lock requirements in writing. You start delivery with an agreed problem, an agreed scope, and requirements that hold up when things change.",
+  heroTitle: "Define the real problem, scope and requirements before work starts.",
+  heroOverview: "Lean Business Analysis turns a fuzzy brief into the right problem to solve before money goes near a solution. The problem is separated from the assumed fix, scope is tested against the outcome that matters, and requirements are set in writing. Delivery begins with an agreed problem, an agreed scope, and requirements that hold when conditions change.",
   definition: "Lean Business Analysis is how we cut a fuzzy brief down to the real problem, the real scope, and the requirements that will not get reworked.",
   cheatSheet: {
     whatItIs: "Pin down the real problem and lock scope before money gets spent on a solution.",
@@ -28,20 +28,26 @@ const methodData = {
     phases: ["FRAME", "PLAN"],
   },
   work: {
-    caseSlugs: ["platform-migration-review", "planning-architecture"],
+    cases: [
+      { slug: "platform-migration-review", icon: "financial-services" },
+      { slug: "planning-architecture", icon: "manufacturing" },
+    ],
   },
   lmiLabel: "Explore training at Lean Methods Institute",
   ctaLine: "Bring us a problem that looks like this.",
   ctaBody: "Tell us where the work is getting stuck. We will tell you straight whether this is the right method, and whether we are the right firm for it.",
 };
 
-const cases = await getCollection("cases", ({ id, data }) => methodData.work.caseSlugs.includes(id) && !data.draft);
+const caseSlugs = methodData.work.cases.map((item) => item.slug);
+const cases = await getCollection("cases", ({ id, data }) => caseSlugs.includes(id) && !data.draft);
 const casesBySlug = new Map(cases.map((entry) => [entry.id, entry]));
-const workCases = methodData.work.caseSlugs.map((slug) => {
+const workCases = methodData.work.cases.map((item) => {
+  const { slug } = item;
   const entry = casesBySlug.get(slug);
   if (!entry) throw new Error(`Missing case study: ${slug}`);
   return {
     slug,
+    icon: item.icon,
     sector: entry.data.sector,
     metric: entry.data.metric,
     caption: entry.data.caption,

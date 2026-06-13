@@ -15,6 +15,7 @@ interface FrameworkItem {
 
 interface WorkCase {
   slug: string;
+  icon: "financial-services" | "government" | "utilities" | "manufacturing";
   sector: string;
   metric: string;
   caption?: string;
@@ -116,13 +117,6 @@ const { data } = Astro.props;
               <div class="eyebrow">THE PROBLEM</div>
               <p>{data.cheatSheet.problem}</p>
             </article>
-            <article>
-              <div class="eyebrow">HOW WE APPLY IT</div>
-              <p>{data.cheatSheet.application}</p>
-              <div class="method-phase-row" aria-label="DMAICO phases this method touches">
-                {data.application.phases.map((phase) => <a href={`/services/${phase.toLowerCase()}/`}>{phase}</a>)}
-              </div>
-            </article>
           </div>
         </div>
       </div>
@@ -140,13 +134,16 @@ const { data } = Astro.props;
           <div class="method-work-list">
             {data.work.cases.map((item) => {
               const caseBody = (
-                <>
-                  <div class="case-sector">{item.sector}</div>
-                  <div class="case-number">{item.metric}</div>
-                  {item.caption && <div class="case-caption">{item.caption}</div>}
-                  <h3>{item.title}</h3>
-                  <p class="method-work-context">{item.problem}</p>
-                </>
+                <div class="method-work-case-inner">
+                  <span class="method-work-icon" aria-hidden="true"><Icon name={item.icon} /></span>
+                  <div class="method-work-copy">
+                    <div class="case-sector">{item.sector}</div>
+                    <div class="case-number">{item.metric}</div>
+                    {item.caption && <div class="case-caption">{item.caption}</div>}
+                    <h3>{item.title}</h3>
+                    <p class="method-work-context">{item.problem}</p>
+                  </div>
+                </div>
               );
               return item.fullStudy ? (
                 <a href={`/our-work/${item.slug}/`} class="method-work-case">
@@ -172,8 +169,12 @@ const { data } = Astro.props;
           <p>{data.ctaBody}</p>
           <a href="/contact/" class="btn-primary">Get in touch</a>
         </div>
-        <div class="ow-cta-art" aria-hidden="true">
-          <span><Icon name="hero-motif" /></span>
+        <div class="method-cta-application">
+          <div class="eyebrow">HOW WE APPLY IT</div>
+          <p>{data.cheatSheet.application}</p>
+          <div class="method-phase-row" aria-label="DMAICO phases this method touches">
+            {data.application.phases.map((phase) => <a href={`/services/${phase.toLowerCase()}/`}>{phase}</a>)}
+          </div>
         </div>
       </div>
     </section>
