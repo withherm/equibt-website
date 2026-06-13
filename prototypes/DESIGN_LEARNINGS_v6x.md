@@ -8,7 +8,7 @@ _CANONICAL (EQT-252). The single source of truth for v6x visual work; supersedes
 
 Blended **Anthropic-style editorial calm** (air, white + beige, large clean type) with a **hand-drawn line-art signature** (engineering-schematic SVG, not stock icons, not AI raster). Terracotta is the single accent.
 
-Guardrail: deliberately NOT a monochrome Orgonomics clone (competitor-adjacent-identity risk). Take craft and restraint, leave the wellness register. Do not copy any competitor's icons or SVGs: original set only.
+Guardrail: deliberately NOT a monochrome Orgonomics clone (competitor-adjacent-identity risk). Take craft and restraint, leave the wellness register. Do not copy any competitor's icons or SVGs: original set only. _(UI/utility exception, 2026-06-13: Forma Regular is the functional/system icon set per the exception in "Line-art and icons"; bespoke originals remain for the brand/illustrative layer: hero, pillar, sector and feature-card icons.)_
 
 Root problem v6x fixes: v5x read "too structured." Cure is two parts, not one: (1) hand-drawn line-art as texture, AND (2) broken layout regularity (asymmetric placement, varied section rhythm, off-grid art bleeding into whitespace). Decoration alone does not fix rigidity. Checklist line: "Layout rhythm varied and asymmetric; structure softened, not just decorated."
 
@@ -35,6 +35,8 @@ Root problem v6x fixes: v5x read "too structured." Cure is two parts, not one: (
 - Section divider = contained 2px navy bisection line (within content max-width), but ONLY where two CONSECUTIVE same-colour sections meet. Where sections already alternate white/beige, the colour change is the separator: no divider. Remove unearned rules.
 
 ## Line-art and icons
+
+> **STOCK-ICON EXCEPTION: UI / UTILITY LAYER (locked 2026-06-13, Herman sign-off).** The "no stock icons / original set only" rule is relaxed for the functional/system layer ONLY. **Icons8 Forma Regular** (one family, one weight, rounded corners; no Light/Thin/Bold, no Sharp, no two-tone/Material) is now the standard for: nav and utility glyphs (chevrons, close, search, hamburger, social, arrows), form affordances, plus internal collateral, decks and app/training UI. **The brand/illustrative layer stays bespoke hand-drawn line-art: hero motifs, pillar icons, sector icons, and feature/difference card icons.** Forma is a poor fit there by our own rules and must not replace them. Colour: recolour Forma to navy `#26245C` via `fill:currentColor`; on public pages utility glyphs are small and single-colour (no accent tile). A two-tone treatment (glyph on a soft terracotta `#C15F3C` tile) exists for collateral/app/deck use, not for public-site brand icons. Shared with LMI (same icons, slate `#2C3E50` + crimson `#A51C30`). Catalogues: `Docs/LMI/ARTWORK/ICONS8_FORMA/ICON_CATALOGUE.html` (full 3,446) and `ICON_CATALOGUE_CORE.html` (curated 600, two-tone).
 
 - Hand-drawn **single-weight navy `#26245C`** SVG, **one terracotta accent** per illustration, slightly off-straight (crafted, not mechanical). _(Variable-weight line-art was explored 2026-06-05 and PARKED: the redrawn variable-weight set read rougher and less consistent than the merged single-weight icons. Single-weight stands for now. Revisit the idiom as part of EQT-251 if pursued. Exploration kept for reference: `Docs/EQUIBT/EQUIBT_V6X_PILLAR_ICONS_v1.html`, `Docs/EQUIBT/EQUIBT_V6X_ICON_WEIGHT_COMPARISON.html`.)_
 - One hero motif (tangle-resolving-into-a-clear-path) + one icon per DMAICO pillar + sector motifs.
