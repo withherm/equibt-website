@@ -80,6 +80,11 @@ interface StepConfig {
   linkLabel?: string;
 }
 
+interface MethodLink {
+  name: string;
+  href: string;
+}
+
 interface ServicePageData {
   title: string;
   description: string;
@@ -88,6 +93,7 @@ interface ServicePageData {
   serviceName: string;
   heroTitle: string;
   heroSubhead: string;
+  methods?: MethodLink[];
   situationTitle: string;
   situation: string[];
   whyTitle: string;
@@ -148,7 +154,17 @@ const deliverablesCarouselId = `${data.pillar}-deliverables-carousel`;
         <div class="service-hero-copy">
           <div class="eyebrow">{data.eyebrow}</div>
           <h1>{data.heroTitle}</h1>
-          <p class="service-hero-subhead">{data.heroSubhead}</p>
+          <p class:list={["service-hero-subhead", { "has-methods": data.methods?.length }]}>{data.heroSubhead}</p>
+          {data.methods && data.methods.length > 0 && (
+            <div class="service-hero-methods">
+              <span class="eyebrow">Methods we use here</span>
+              <div class="service-hero-method-links">
+                {data.methods.map((method) => (
+                  <a href={method.href} class="btn-text"><span class="link-label">{method.name}</span> <span class="ar">&rsaquo;</span></a>
+                ))}
+              </div>
+            </div>
+          )}
           <div class="service-actions">
             <a href="/contact/" class="btn-primary">Get in touch</a>
             <a href="/our-work/" class="btn-text"><span class="link-label">View our work</span> <span class="ar">&rsaquo;</span></a>

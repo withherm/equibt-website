@@ -16,6 +16,10 @@
   line-height:1.08;
 }
 .service-hero-subhead{max-width:620px;margin:0 0 42px;color:var(--near-black);font-size:22px;line-height:1.4;}
+.service-hero-subhead.has-methods{margin-bottom:22px;}
+.service-hero-methods{display:grid;gap:10px;margin:0 0 36px;}
+.service-hero-methods .eyebrow{margin:0;}
+.service-hero-method-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
 .service-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
 .service-hero-art{display:flex;align-items:center;justify-content:flex-end;align-self:center;}
 .service-hero-art span{display:block;height:auto;transform:translateX(4vw);}

@@ -20,11 +20,11 @@ const arc = [
 ];
 
 const methods = [
-  { name: "Lean Business Analysis", body: "Frame the right problem before work starts, so teams stop solving the wrong one." },
-  { name: "Lean", body: "Strip waste and make work flow, so the operation costs less to run." },
-  { name: "Lean Six Sigma (DMAIC)", body: "Find the root cause with evidence and fix efficiency, variation and bottlenecks so the gain holds." },
-  { name: "Lean Service Design", body: "Redesign a service end to end, front-stage and back-stage, so customer experience and the operation improve together." },
-  { name: "Lean Agile", body: "Run initiatives in short, focused cycles so change actually ships." },
+  { name: "Lean Business Analysis", href: "/methods/lean-business-analysis/", body: "Frame the right problem before work starts, so teams stop solving the wrong one." },
+  { name: "Lean", href: "/methods/lean/", body: "Strip waste and make work flow, so the operation costs less to run." },
+  { name: "Lean Six Sigma (DMAIC)", href: "/methods/lean-six-sigma/", body: "Find the root cause with evidence and fix efficiency, variation and bottlenecks so the gain holds." },
+  { name: "Lean Service Design", href: "/methods/lean-service-design/", body: "Redesign a service end to end, front-stage and back-stage, so customer experience and the operation improve together." },
+  { name: "Lean Agile", href: "/methods/lean-agile/", body: "Run initiatives in short, focused cycles so change actually ships." },
 ];
 ---
 
@@ -147,7 +147,7 @@ const methods = [
         <div class="about-cols">
           {methods.map((method) => (
             <div class="about-col">
-              <h3>{method.name}</h3>
+              <h3><a href={method.href}>{method.name}</a></h3>
               <p>{method.body}</p>
             </div>
           ))}

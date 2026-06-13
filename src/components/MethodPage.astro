@@ -28,19 +28,18 @@ interface MethodPageData {
   title: string;
   description: string;
   methodName: string;
-  heroTitle: string;
+  cheatSheetTitle: string;
   heroOverview: string;
-  definition: string;
   cheatSheet: {
     whatItIs: string;
     frameworkTitle: string;
     frameworkItems: FrameworkItem[];
     when: string;
     whatYouGet: string;
-    problem: string;
-    application: string;
   };
+  problem: string;
   application: {
+    body: string;
     phases: string[];
   };
   work: {
@@ -79,7 +78,7 @@ const { data } = Astro.props;
       <div class="service-inner">
         <div class="service-head">
           <div class="eyebrow">1-MINUTE CHEAT SHEET</div>
-          <h2 class="service-title">{data.heroTitle}</h2>
+          <h2 class="service-title">{data.cheatSheetTitle}</h2>
         </div>
         <div class="method-cheat-grid">
           <div class="method-framework" aria-label={`${data.methodName} framework`}>
@@ -115,7 +114,7 @@ const { data } = Astro.props;
             </article>
             <article>
               <div class="eyebrow">THE PROBLEM</div>
-              <p>{data.cheatSheet.problem}</p>
+              <p>{data.problem}</p>
             </article>
           </div>
         </div>
@@ -171,7 +170,7 @@ const { data } = Astro.props;
         </div>
         <div class="method-cta-application">
           <div class="eyebrow">HOW WE APPLY IT</div>
-          <p>{data.cheatSheet.application}</p>
+          <p>{data.application.body}</p>
           <div class="method-phase-row" aria-label="DMAICO phases this method touches">
             {data.application.phases.map((phase) => <a href={`/services/${phase.toLowerCase()}/`}>{phase}</a>)}
           </div>

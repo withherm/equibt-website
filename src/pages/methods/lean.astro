@@ -1,0 +1,67 @@
+---
+import { getCollection } from "astro:content";
+import MethodPage from "../../components/MethodPage.astro";
+
+const methodData = {
+  title: "Lean | EQUIBT",
+  description: "How EQUIBT applies Lean to take waste, delay and cost out of how everyday work flows.",
+  methodName: "Lean",
+  cheatSheetTitle: "Take the waste out of how the work flows.",
+  heroOverview: "Lean takes the waste, delay and cost out of how everyday work flows. The value stream is mapped, value-add is separated from the rest, rework loops are cut, and what should not vary is standardised. The operation comes out faster, cheaper to serve, and consistent regardless of who is doing the work.",
+  cheatSheet: {
+    frameworkTitle: "VSQ",
+    frameworkItems: [
+      { key: "V", label: "Value", body: "Cut what the customer would never pay for." },
+      { key: "S", label: "Speed", body: "Clear the delays and rework loops so work flows." },
+      { key: "Q", label: "Quality", body: "Standardise what should not vary so output holds." },
+    ],
+    whatItIs: "Take waste, delay and cost out of how the work flows.",
+    when: "Work is slow, costs too much to serve, or quality swings depending on who does it.",
+    whatYouGet: "Faster flow, lower cost-to-serve, consistent output.",
+  },
+  problem: "Work moves slowly, costs too much to serve, and quality swings by who does it. The waste is rarely where people assume: the flow is the issue, not the effort.",
+  application: {
+    body: "We run the standard DMAIC cycle through a Value, Speed, Quality lens, pulled by three levers: value flow, how people work together, and leadership. We use Value Stream Mapping to frame the problem, diagnose the waste, and redesign the operating model. We own the VSQ emphasis and the levers, not DMAIC itself.",
+    phases: ["FRAME", "SOLVE", "SCALE"],
+  },
+  work: {
+    cases: [
+      { slug: "capability-framework", icon: "utilities" },
+      { slug: "channel-effectiveness", icon: "utilities" },
+      { slug: "finance-reporting-cycle", icon: "financial-services" },
+      { slug: "mortgage-lead-leakage", icon: "financial-services" },
+    ],
+  },
+  lmiLabel: "Explore training at Lean Methods Institute",
+  ctaLine: "Bring us a problem that looks like this.",
+  ctaBody: "Tell us where the work is getting stuck. We will tell you straight whether this is the right method, and whether we are the right firm for it.",
+};
+
+const caseSlugs = methodData.work.cases.map((item) => item.slug);
+const cases = await getCollection("cases", ({ id, data }) => caseSlugs.includes(id) && !data.draft);
+const casesBySlug = new Map(cases.map((entry) => [entry.id, entry]));
+const workCases = methodData.work.cases.map((item) => {
+  const { slug } = item;
+  const entry = casesBySlug.get(slug);
+  if (!entry) throw new Error(`Missing case study: ${slug}`);
+  return {
+    slug,
+    icon: item.icon,
+    sector: entry.data.sector,
+    metric: entry.data.metric,
+    caption: entry.data.caption,
+    title: entry.data.title,
+    problem: entry.data.problem,
+    fullStudy: entry.data.fullStudy,
+  };
+});
+
+const pageData = {
+  ...methodData,
+  work: {
+    cases: workCases,
+  },
+};
+---
+
+<MethodPage data={pageData} />

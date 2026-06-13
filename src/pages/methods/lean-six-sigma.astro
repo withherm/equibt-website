@@ -1,0 +1,67 @@
+---
+import { getCollection } from "astro:content";
+import MethodPage from "../../components/MethodPage.astro";
+
+const methodData = {
+  title: "Lean Six Sigma | EQUIBT",
+  description: "How EQUIBT applies Lean Six Sigma to settle recurring operational problems with evidence and controls.",
+  methodName: "Lean Six Sigma",
+  cheatSheetTitle: "Settle it with evidence, not opinion.",
+  heroOverview: "Lean Six Sigma settles a costly, recurring problem with evidence instead of opinion. The variation is mapped, the root cause is found and proven with data, and controls are built to hold the fix in place. The problem is actually solved, with the proof behind it and controls so it does not drift back.",
+  cheatSheet: {
+    frameworkTitle: "DMAIC",
+    frameworkItems: [
+      { key: "D", label: "Define", body: "Frame the problem and what good looks like." },
+      { key: "M", label: "Measure", body: "Measure the variation where it actually happens." },
+      { key: "A", label: "Analyse", body: "Find the root cause, not the loudest symptom." },
+      { key: "I", label: "Improve", body: "Prove the fix with data, not opinion." },
+      { key: "C", label: "Control", body: "Lock in controls so it does not drift back." },
+    ],
+    whatItIs: "Get to the root cause of a costly, recurring problem and prove the fix.",
+    when: "A problem keeps coming back, there is variation or defects, and the debate has run on opinion.",
+    whatYouGet: "Evidence, a proven fix, controls so it does not drift back.",
+  },
+  problem: "A problem keeps coming back. There is variation, defects, a bottleneck nobody can pin down, and the debate has run on opinion for months.",
+  application: {
+    body: "Touches FRAME, SOLVE, EVOLVE and GOVERN: its Define step is our FRAME. We map the variation, find root cause, prove it with data, then build controls so it does not drift back. DMAIC is the five-phase cycle inside Lean Six Sigma; DMAICO is our high-level approach: we own the emphasis, not the cycle.",
+    phases: ["FRAME", "SOLVE", "EVOLVE", "GOVERN"],
+  },
+  work: {
+    cases: [
+      { slug: "grant-process-rework", icon: "government" },
+      { slug: "investigation-cycle-time", icon: "government" },
+    ],
+  },
+  lmiLabel: "Explore training at Lean Methods Institute",
+  ctaLine: "Bring us a problem that looks like this.",
+  ctaBody: "Tell us where the work is getting stuck. We will tell you straight whether this is the right method, and whether we are the right firm for it.",
+};
+
+const caseSlugs = methodData.work.cases.map((item) => item.slug);
+const cases = await getCollection("cases", ({ id, data }) => caseSlugs.includes(id) && !data.draft);
+const casesBySlug = new Map(cases.map((entry) => [entry.id, entry]));
+const workCases = methodData.work.cases.map((item) => {
+  const { slug } = item;
+  const entry = casesBySlug.get(slug);
+  if (!entry) throw new Error(`Missing case study: ${slug}`);
+  return {
+    slug,
+    icon: item.icon,
+    sector: entry.data.sector,
+    metric: entry.data.metric,
+    caption: entry.data.caption,
+    title: entry.data.title,
+    problem: entry.data.problem,
+    fullStudy: entry.data.fullStudy,
+  };
+});
+
+const pageData = {
+  ...methodData,
+  work: {
+    cases: workCases,
+  },
+};
+---
+
+<MethodPage data={pageData} />
