@@ -4,7 +4,7 @@ How every v5x UI pattern translates into the v6x direction (Anthropic editorial 
 
 _SYNCED TO THE MERGED HOME (EQT-245/250/251) before the EQT-253 page conversions. Where this doc and the built home disagree, the home (`src/pages/index.astro`, `src/styles/home.css`, `src/styles/base.css`, `src/styles/tokens.css`) and `prototypes/DESIGN_LEARNINGS_v6x.md` are the authority. Key post-build locks now reflected here: Lora body **22px** (not 20px), the terracotta **`›` chevron link system** (not `→`), pillar/sector icons uniform **110px**, Open Sans dropped site-wide, `--link-gap:22px` standardised, eyebrow-to-title gap 14px._
 
-**Icon system (2026-06-13):** functional/utility glyphs (chevrons, close, search, hamburger, social, arrows, form affordances) use **Icons8 Forma Regular** in navy `#26245C`, single-colour, via `fill:currentColor`. The brand/illustrative icons (hero, pillar, sector, feature/difference cards) stay bespoke hand-drawn line-art. See `DESIGN_LEARNINGS_v6x.md` ("Line-art and icons") and the catalogues in `Docs/LMI/ARTWORK/ICONS8_FORMA/` (`ICON_CATALOGUE.html`, `ICON_CATALOGUE_CORE.html`).
+**Icon system (2026-06-13):** **Icons8 Forma Regular** (navy `#26245C` via `fill:currentColor`) covers pillar icons, sector icons, feature/difference card icons AND all functional/utility glyphs (chevrons, close, search, hamburger, social, arrows, form affordances). Only **hero motifs, brand marks and genuine illustration stay bespoke** hand-drawn line-art. See `DESIGN_LEARNINGS_v6x.md` ("Line-art and icons", STOCK-ICON SCOPE) and the catalogues in `Docs/LMI/ARTWORK/ICONS8_FORMA/` (`ICON_CATALOGUE.html`, `ICON_CATALOGUE_CORE.html`).
 
 ## The governing principle
 
