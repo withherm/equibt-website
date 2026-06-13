@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content";
+import MethodPage from "../../components/MethodPage.astro";
+
+const methodData = {
+  title: "Lean Business Analysis | EQUIBT",
+  description: "How EQUIBT applies Lean Business Analysis to define the real problem, lock scope, and establish requirements that hold.",
+  methodName: "Lean Business Analysis",
+  heroTitle: "Solve the right problem before scoping the work.",
+  definition: "Lean Business Analysis is how we cut a fuzzy brief down to the real problem, the real scope, and the requirements that will not get reworked.",
+  cheatSheet: {
+    whatItIs: "Pin down the real problem and lock scope before money gets spent on a solution.",
+    frameworkTitle: "SCOPE",
+    frameworkItems: [
+      { key: "S", label: "Situation", body: "Investigate what is actually happening." },
+      { key: "C", label: "Context", body: "Map whose problem it is, who is affected, and which perspectives matter." },
+      { key: "O", label: "Options", body: "Surface the paths that are open." },
+      { key: "P", label: "Priorities", body: "Separate what the business needs from what it merely wants." },
+      { key: "E", label: "Establish requirements", body: "Define what good looks like, in writing." },
+    ],
+    when: "The brief is vague, stakeholders disagree on the problem, or requirements keep moving.",
+    whatYouGet: "An agreed problem, agreed scope, requirements that hold.",
+    problem: "Stalled programmes are often scoped against the wrong problem, so requirements move and rework shows up late.",
+    application: "We separate the problem from the assumed solution, test scope against the outcome, and lock requirements that hold under change.",
+  },
+  application: {
+    phases: ["FRAME", "PLAN"],
+  },
+  work: {
+    caseSlugs: ["platform-migration-review", "planning-architecture"],
+  },
+  lmiLabel: "Explore training at Lean Methods Institute",
+  ctaLine: "Bring us a problem that looks like this.",
+  ctaBody: "Tell us where the work is getting stuck. We will tell you straight whether this is the right method, and whether we are the right firm for it.",
+};
+
+const cases = await getCollection("cases", ({ id, data }) => methodData.work.caseSlugs.includes(id) && !data.draft);
+const casesBySlug = new Map(cases.map((entry) => [entry.id, entry]));
+const workCases = methodData.work.caseSlugs.map((slug) => {
+  const entry = casesBySlug.get(slug);
+  if (!entry) throw new Error(`Missing case study: ${slug}`);
+  return {
+    slug,
+    sector: entry.data.sector,
+    metric: entry.data.metric,
+    caption: entry.data.caption,
+    title: entry.data.title,
+    problem: entry.data.problem,
+    fullStudy: entry.data.fullStudy,
+  };
+});
+
+const pageData = {
+  ...methodData,
+  work: {
+    cases: workCases,
+  },
+};
+---
+
+<MethodPage data={pageData} />

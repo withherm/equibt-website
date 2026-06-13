@@ -162,6 +162,7 @@ h1,h2,h3,p{margin-top:0;}
   transition:transform .18s ease;
 }
 .btn-text .ar,.flag-link .ar,.training-link .ar{color:currentColor;font-size:18px;font-weight:800;line-height:.8;transition:transform .16s ease;}
+.btn-text .ar{margin-left:3px;}
 .btn-text:hover .link-label::after,.btn-text:focus .link-label::after,.flag-link:hover .link-label::after,.flag-link:focus .link-label::after,.training-link:hover .link-label::after,.training-link:focus .link-label::after{transform:scaleX(1);}
 .btn-text:hover .ar,.btn-text:focus .ar,.flag-link:hover .ar,.flag-link:focus .ar,.training-link:hover .ar,.training-link:focus .ar{transition-delay:.18s;}
 .btn-text:hover .ar,.btn-text:focus .ar,.flag-link:hover .ar,.flag-link:focus .ar,.training-link:hover .ar,.training-link:focus .ar{transform:translateX(4px);}
