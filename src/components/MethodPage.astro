@@ -28,6 +28,7 @@ interface MethodPageData {
   description: string;
   methodName: string;
   heroTitle: string;
+  heroOverview: string;
   definition: string;
   cheatSheet: {
     whatItIs: string;
@@ -65,8 +66,7 @@ const { data } = Astro.props;
         <div class="service-hero-copy">
           <div class="eyebrow">METHOD</div>
           <h1>{data.methodName}</h1>
-          <p class="service-hero-subhead">{data.heroTitle}</p>
-          <p class="method-definition">{data.definition}</p>
+          <p class="method-definition">{data.heroOverview}</p>
         </div>
         <div class="service-hero-art" aria-hidden="true">
           <span><Icon name="hero-motif" /></span>
@@ -78,7 +78,7 @@ const { data } = Astro.props;
       <div class="service-inner">
         <div class="service-head">
           <div class="eyebrow">1-MINUTE CHEAT SHEET</div>
-          <h2 class="service-title">{data.methodName}</h2>
+          <h2 class="service-title">{data.heroTitle}</h2>
         </div>
         <div class="method-cheat-grid">
           <div class="method-framework" aria-label={`${data.methodName} framework`}>

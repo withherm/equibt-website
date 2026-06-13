@@ -481,9 +481,8 @@
 /* Method explainer pages */
 .method-hero{
   padding-top:62px;
-  padding-bottom:56px;
+  padding-bottom:46px;
 }
-.method-hero .service-hero-subhead{margin-bottom:18px;}
 .method-hero .service-hero-copy{min-width:0;max-width:100%;}
 .method-hero-inner{align-items:center;}
 .method-hero .service-hero-art svg{width:min(300px,28vw);}
@@ -494,7 +493,10 @@
   font-size:22px;
   line-height:1.42;
 }
-.method-cheat{border-top:1px solid var(--hairline);}
+.method-cheat{
+  padding-top:74px;
+  border-top:1px solid var(--hairline);
+}
 .method-cheat-grid{
   display:grid;
   grid-template-columns:minmax(0,.58fr) minmax(320px,.42fr);
@@ -669,8 +671,9 @@ a.method-work-case:focus h3{color:var(--terracotta);}
 @media(max-width:760px){
   .method-hero{
     padding-top:44px;
-    padding-bottom:44px;
+    padding-bottom:36px;
   }
+  .method-cheat{padding-top:52px;}
   .method-hero .service-hero-art svg{width:min(210px,58vw);}
   .method-framework{padding:26px;}
   .method-framework-head{display:block;}
@@ -688,5 +691,4 @@ a.method-work-case:focus h3{color:var(--terracotta);}
     max-width:320px;
     font-size:34px;
   }
-  .method-hero .service-hero-subhead{max-width:320px;}
 }
