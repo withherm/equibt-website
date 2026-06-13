@@ -88,6 +88,7 @@ interface ServicePageData {
   serviceName: string;
   heroTitle: string;
   heroSubhead: string;
+  methods?: string;
   situationTitle: string;
   situation: string[];
   whyTitle: string;
@@ -148,7 +149,13 @@ const deliverablesCarouselId = `${data.pillar}-deliverables-carousel`;
         <div class="service-hero-copy">
           <div class="eyebrow">{data.eyebrow}</div>
           <h1>{data.heroTitle}</h1>
-          <p class="service-hero-subhead">{data.heroSubhead}</p>
+          <p class:list={["service-hero-subhead", { "has-methods": data.methods }]}>{data.heroSubhead}</p>
+          {data.methods && (
+            <p class="service-hero-methods">
+              <span>METHODS WE BRING</span>
+              {data.methods}
+            </p>
+          )}
           <div class="service-actions">
             <a href="/contact/" class="btn-primary">Get in touch</a>
             <a href="/our-work/" class="btn-text"><span class="link-label">View our work</span> <span class="ar">&rsaquo;</span></a>
@@ -381,6 +388,44 @@ const deliverablesCarouselId = `${data.pillar}-deliverables-carousel`;
   </main>
   <Footer />
 </Layout>
+
+<style>
+  .service-hero-subhead.has-methods{margin-bottom:18px;}
+  .service-hero-methods{
+    max-width:620px;
+    margin:0 0 40px;
+    padding-top:14px;
+    border-top:1px solid var(--hairline);
+    color:var(--near-black);
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    font-family:"Montserrat",Arial,sans-serif;
+    font-size:13px;
+    font-weight:600;
+    line-height:1.45;
+  }
+  .service-hero-methods::before{
+    content:"";
+    width:26px;
+    height:2px;
+    background:var(--terracotta);
+    flex:0 0 auto;
+    transform:translateY(-3px);
+  }
+  .service-hero-methods span{
+    color:var(--muted);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  @media(max-width:760px){
+    .service-hero-methods{font-size:12px;gap:10px;flex-wrap:wrap;}
+    .service-hero-methods::before{width:22px;}
+  }
+</style>
 
 <script>
   function initialiseServiceCarousel(carousel) {
