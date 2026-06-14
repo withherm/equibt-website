@@ -368,6 +368,8 @@ Global change made this issue: `.btn-text .ar` gained a small left gap (`margin-
 
 Correction rule: the How We Apply It prose is plain language. DMAICO phase wayfinding lives in the chips only, never recited in prose.
 
+Service-pillar method block rule: after the deliverables carousel, the service page renders eyebrow `THE METHODS BEHIND THIS WORK` followed by per-method descriptor and link in a two-column layout. Every pillar carries two methods in this order: FRAME = Lean Business Analysis + Lean Service Design; PLAN = Lean Business Analysis + Lean; SOLVE = Lean Six Sigma + Lean Business Analysis; EVOLVE = Lean Agile + Lean Service Design; GOVERN = Lean Six Sigma + Lean Business Analysis; SCALE = Lean Agile + Lean Business Analysis.
+
 ## Process notes
 
 - Build runs via Codex on branch `eqt-245` (single canonical clone); Herman/Cowork review screenshots and the file directly. Codex's screenshot environment was blocked this session, and self-checks are not trusted for sign-off (past false passes). Six correction rounds (R1-R6) produced this set. Icon options and the Govern-tick exploration are recorded in `EQUIBT_V6X_ICON_OPTIONS.html`, `EQUIBT_V6X_GOVERN_TICK_OPTIONS.html`, `EQUIBT_V6X_GOVERN_FINAL.html` (Docs/EQUIBT).

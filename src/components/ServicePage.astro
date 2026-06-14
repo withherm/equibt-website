@@ -83,6 +83,7 @@ interface StepConfig {
 interface MethodLink {
   name: string;
   href: string;
+  blurb: string;
 }
 
 interface ServicePageData {
@@ -276,11 +277,13 @@ const deliverablesCarouselId = `${data.pillar}-deliverables-carousel`;
         </div>
         {data.methods && data.methods.length > 0 && (
           <div class="service-deliverable-methods">
-            <span class="eyebrow">METHODS WE USE HERE</span>
-            <p>The named methods we draw on most in this work.</p>
-            <div class="service-deliverable-method-links">
+            <span class="eyebrow">THE METHODS BEHIND THIS WORK</span>
+            <div class="service-deliverable-method-grid">
               {data.methods.map((method) => (
-                <a href={method.href} class="btn-text"><span class="link-label">{method.name}</span> <span class="ar">&rsaquo;</span></a>
+                <article class="service-deliverable-method">
+                  <a href={method.href} class="btn-text"><span class="link-label">{method.name}</span> <span class="ar">&rsaquo;</span></a>
+                  <p>{method.blurb}</p>
+                </article>
               ))}
             </div>
           </div>
