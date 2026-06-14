@@ -33,11 +33,11 @@ interface MethodPageData {
   cheatSheet: {
     whatItIs: string;
     frameworkTitle: string;
+    frameworkSubtitle?: string;
     frameworkItems: FrameworkItem[];
-    when: string;
+    whenUseful: string;
     whatYouGet: string;
   };
-  problem: string;
   application: {
     body: string;
     phases: string[];
@@ -85,6 +85,7 @@ const { data } = Astro.props;
             <div class="method-framework-head">
               <span>Framework</span>
               <h3>{data.cheatSheet.frameworkTitle}</h3>
+              {data.cheatSheet.frameworkSubtitle && <p class="method-framework-subtitle">{data.cheatSheet.frameworkSubtitle}</p>}
             </div>
             <!-- METHOD FRAMEWORK DIAGRAM: hand-drawn SVG to be inserted (EQT-322 follow-up) -->
             <div class="method-framework-items">
@@ -105,16 +106,12 @@ const { data } = Astro.props;
               <p>{data.cheatSheet.whatItIs}</p>
             </article>
             <article>
-              <div class="eyebrow">WHEN TO REACH FOR IT</div>
-              <p>{data.cheatSheet.when}</p>
+              <div class="eyebrow">WHEN IT IS USEFUL</div>
+              <p>{data.cheatSheet.whenUseful}</p>
             </article>
             <article>
               <div class="eyebrow">WHAT YOU GET</div>
               <p>{data.cheatSheet.whatYouGet}</p>
-            </article>
-            <article>
-              <div class="eyebrow">THE PROBLEM</div>
-              <p>{data.problem}</p>
             </article>
           </div>
         </div>

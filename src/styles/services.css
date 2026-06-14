@@ -545,6 +545,14 @@
   font-weight:700;
   line-height:.95;
 }
+.method-framework-subtitle{
+  margin:6px 0 0;
+  color:var(--navy);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:21px;
+  font-weight:700;
+  line-height:1.18;
+}
 .method-framework-items{
   display:grid;
   gap:0;
@@ -563,7 +571,7 @@
   justify-content:center;
   width:48px;
   height:48px;
-  border:1px solid currentColor;
+  border:2.5px solid currentColor;
   border-radius:50%;
   color:var(--terracotta);
   font-family:"Montserrat",Arial,sans-serif;
