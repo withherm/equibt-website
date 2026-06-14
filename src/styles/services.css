@@ -499,6 +499,8 @@
 }
 .method-hero .service-hero-copy{min-width:0;max-width:100%;}
 .method-hero-inner{align-items:center;}
+.method-hero .service-hero-art{justify-content:center;}
+.method-hero .service-hero-art span{transform:none;}
 .method-hero .service-hero-art svg{width:min(200px,20vw);}
 .method-definition{
   max-width:620px;
@@ -548,13 +550,20 @@
   font-weight:700;
   line-height:.95;
 }
+.method-framework-title{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:3px;
+  text-align:right;
+}
 .method-framework-subtitle{
-  margin:6px 0 0;
+  margin:0;
   color:var(--navy);
   font-family:"Montserrat",Arial,sans-serif;
-  font-size:21px;
+  font-size:20px;
   font-weight:700;
-  line-height:1.18;
+  line-height:1.05;
 }
 .method-framework-items{
   display:grid;
@@ -731,7 +740,7 @@ a.method-work-case:focus h3{color:var(--terracotta);}
   .method-hero .service-hero-art svg{width:min(190px,52vw);}
   .method-framework{padding:26px;}
   .method-framework-head{display:block;}
-  .method-framework-head h3{margin-top:10px;}
+  .method-framework-title{align-items:flex-start;text-align:left;margin-top:10px;}
   .method-framework-item{grid-template-columns:48px minmax(0,1fr);gap:16px;}
   .method-framework-key{width:42px;height:42px;font-size:20px;}
   .method-definition,.method-at-glance p,.method-forward,.method-cta-application p{font-size:20px;}

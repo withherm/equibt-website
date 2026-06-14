@@ -28,7 +28,7 @@ interface MethodPageData {
   title: string;
   description: string;
   methodName: string;
-  heroIcon: "method-lean-business-analysis" | "method-lean" | "method-lean-six-sigma" | "method-lean-service-design" | "method-lean-agile";
+  heroIcon: "method-lean-business-analysis-hero" | "method-lean-hero" | "method-lean-six-sigma-hero" | "method-lean-service-design-hero" | "method-lean-agile-hero";
   cheatSheetTitle: string;
   heroOverview: string;
   cheatSheet: {
@@ -85,8 +85,10 @@ const { data } = Astro.props;
           <div class="method-framework" aria-label={`${data.methodName} framework`}>
             <div class="method-framework-head">
               <span>Framework</span>
-              <h3>{data.cheatSheet.frameworkTitle}</h3>
-              {data.cheatSheet.frameworkSubtitle && <p class="method-framework-subtitle">{data.cheatSheet.frameworkSubtitle}</p>}
+              <div class="method-framework-title">
+                <h3>{data.cheatSheet.frameworkTitle}</h3>
+                {data.cheatSheet.frameworkSubtitle && <p class="method-framework-subtitle">{data.cheatSheet.frameworkSubtitle}</p>}
+              </div>
             </div>
             <!-- METHOD FRAMEWORK DIAGRAM: hand-drawn SVG to be inserted (EQT-322 follow-up) -->
             <div class="method-framework-items">
