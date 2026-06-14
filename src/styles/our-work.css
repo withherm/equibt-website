@@ -1,39 +1,35 @@
 /* Our Work index + case study pages (EQT-255). v6x. References tokens.css; does not redefine tokens. */
 
 /* ---- Big hand-drawn hero/section art (mirrors services.css stroke handling) ---- */
-.ow-hero-art,.ow-case-hero-art,.ow-cta-art{display:flex;align-items:center;justify-content:flex-end;align-self:center;}
-.ow-hero-art span,.ow-case-hero-art span{display:block;height:auto;transform:translateX(3vw);}
+.ow-case-hero-art,.ow-cta-art{display:flex;align-items:center;justify-content:flex-end;align-self:center;}
+.ow-case-hero-art span{display:block;height:auto;transform:translateX(3vw);}
 .ow-cta-art span{display:block;height:auto;}
-.ow-hero-art svg,.ow-case-hero-art svg{display:block;width:min(460px,42vw);height:auto;overflow:visible;}
+.ow-case-hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}
 .ow-cta-art svg{display:block;width:min(300px,28vw);height:auto;overflow:visible;}
-.ow-hero-art svg .hd,.ow-hero-art svg .hd-f1,.ow-hero-art svg .hd-f2,.ow-hero-art svg .hd-f3,
-.ow-hero-art svg[stroke]:not([stroke="none"]),.ow-hero-art svg [stroke]:not([stroke="none"]),
 .ow-case-hero-art svg .hd,.ow-case-hero-art svg .hd-f1,.ow-case-hero-art svg .hd-f2,.ow-case-hero-art svg .hd-f3,
 .ow-case-hero-art svg[stroke]:not([stroke="none"]),.ow-case-hero-art svg [stroke]:not([stroke="none"]),
 .ow-cta-art svg .hd,.ow-cta-art svg .hd-f1,.ow-cta-art svg .hd-f2,.ow-cta-art svg .hd-f3,
 .ow-cta-art svg[stroke]:not([stroke="none"]),.ow-cta-art svg [stroke]:not([stroke="none"]){
   stroke-width:.25;stroke-linecap:round;stroke-linejoin:round;
 }
-.ow-hero-art svg .hd-acc,.ow-hero-art svg [stroke="#C15F3C"],
 .ow-case-hero-art svg .hd-acc,.ow-case-hero-art svg [stroke="#C15F3C"],
 .ow-cta-art svg .hd-acc,.ow-cta-art svg [stroke="#C15F3C"]{stroke-width:.2875;}
-.ow-hero-art svg[viewBox="0 0 80 80"][stroke]:not([stroke="none"]),.ow-hero-art svg[viewBox="0 0 80 80"] [stroke]:not([stroke="none"]),
 .ow-case-hero-art svg[viewBox="0 0 80 80"][stroke]:not([stroke="none"]),.ow-case-hero-art svg[viewBox="0 0 80 80"] [stroke]:not([stroke="none"]),
 .ow-cta-art svg[viewBox="0 0 80 80"][stroke]:not([stroke="none"]),.ow-cta-art svg[viewBox="0 0 80 80"] [stroke]:not([stroke="none"]){stroke-width:.31;}
-.ow-hero-art svg[viewBox="0 0 80 80"] [stroke="#C15F3C"],
 .ow-case-hero-art svg[viewBox="0 0 80 80"] [stroke="#C15F3C"],
 .ow-cta-art svg[viewBox="0 0 80 80"] [stroke="#C15F3C"]{stroke-width:.3565;}
 
 /* ---- Index hero (asymmetric, white) ---- */
-.ow-hero{padding:124px 56px 52px;background:#fff;}
+.ow-hero{padding:80px 56px 48px;background:#fff;}
 .ow-hero-inner{
   max-width:var(--wide);
   margin:0 auto;
   display:grid;
-  grid-template-columns:minmax(0,1.04fr) minmax(320px,.96fr);
+  grid-template-columns:minmax(0,1fr);
   gap:40px;
   align-items:start;
 }
+.ow-hero-inner > *{min-width:0;}
 .ow-hero .eyebrow{margin-bottom:32px;}
 .ow-hero h1{max-width:740px;margin:0 0 26px;font-size:clamp(40px,3.4vw,46px);font-weight:700;line-height:1.08;}
 .ow-hero-lede{max-width:640px;margin:0 0 18px;color:var(--near-black);font-size:22px;line-height:1.42;}
@@ -100,7 +96,7 @@
 .ow-case .btn-text{margin-top:16px;}
 
 /* ---- Case study hero ---- */
-.ow-case-hero{padding:120px 56px 92px;background:#fff;}
+.ow-case-hero{padding:80px 56px 64px;background:#fff;}
 .ow-case-hero-inner{max-width:var(--wide);margin:0 auto;}
 /* Top row: copy left, motif right. The stat band sits full-width BELOW this row,
    so the motif reads above the three boxes. */
@@ -110,6 +106,7 @@
   gap:40px;
   align-items:center;
 }
+.ow-case-hero-top > *{min-width:0;}
 .ow-case-hero .eyebrow{margin-bottom:28px;}
 .ow-case-hero h1{max-width:760px;margin:0 0 26px;font-size:clamp(40px,3.4vw,46px);font-weight:700;line-height:1.08;}
 .ow-case-subhead{max-width:680px;margin:0;color:var(--near-black);font-size:22px;line-height:1.42;}
@@ -209,9 +206,9 @@
    shows a stacked hero next to a still-three-up stat band. */
 @media(max-width:960px){
   .ow-hero-inner,.ow-case-hero-top{grid-template-columns:1fr;gap:40px;}
-  .ow-hero-art,.ow-case-hero-art{justify-content:flex-start;}
-  .ow-hero-art span,.ow-case-hero-art span{transform:none;}
-  .ow-hero-art svg,.ow-case-hero-art svg{width:min(360px,68vw);}
+  .ow-case-hero-art{justify-content:flex-start;}
+  .ow-case-hero-art span{transform:none;}
+  .ow-case-hero-art svg{width:min(190px,42vw);}
   .ow-cta-grid{grid-template-columns:1fr;gap:36px;}
   .ow-cta-art{justify-content:flex-start;}
   .ow-cta-art svg{width:min(260px,56vw);}
@@ -231,7 +228,9 @@
   .ow-case-hero{padding:84px 26px 60px;}
   .ow-section{padding:72px 26px;--ow-gutter:26px;}
   .ow-flagship{padding:60px 26px;}
-  .ow-hero h1,.ow-case-hero h1{font-size:40px;}
+  .ow-hero-copy,.ow-case-copy{width:calc(100vw - 52px);max-width:100%;}
+  .ow-hero h1,.ow-case-hero h1{width:calc(100vw - 52px);max-width:calc(100vw - 52px);font-size:40px;overflow-wrap:anywhere;}
+  .ow-hero-lede,.ow-case-subhead{width:calc(100vw - 52px);max-width:calc(100vw - 52px);overflow-wrap:anywhere;}
   .ow-hero-lede,.ow-case-subhead,.ow-pillar-intro,.ow-journey-step p,.ow-cta-copy p{font-size:20px;}
   .ow-hero-actions,.ow-case-actions{flex-direction:column;align-items:flex-start;}
   .ow-journey-step{grid-template-columns:52px minmax(0,1fr);gap:24px;}

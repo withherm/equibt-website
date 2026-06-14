@@ -151,8 +151,10 @@ The v6x type pairing (Montserrat + Lora 22px body) and the six-colour pillar ret
 These are the locked deltas from the two conversions that merged after the home build. Exact values are taken from the shipped CSS, not from the briefs. They govern every later page conversion (EQT-255..259).
 
 ### Sub-page hero (services + industries)
-- Size the hero SVG **directly** at `width:min(540px,48vw)` (home parity). Wrapper-clamp sizing was tried (EQT-253 R1) and rejected — it did not land visually (R2).
+- Site-wide hero art size is locked to `--hero-art-w:min(210px,22vw)` in `tokens.css`; Resources, service pillar, method, industry sector, and case-study hero art must reference `var(--hero-art-w)` rather than copying the literal value (EQT-324).
+- Desktop hero bands should stay compact, roughly 5-6x the main nav height. If art or padding pushes the next real section below the fold, shrink the hero before adding more structure (EQT-324).
 - **Fine-line interim treatment (R4):** a hero-scoped stroke override thins the lines so the visual weight matches the home hero. Shipped value: **`stroke-width:.25`** scoped to `.service-hero-art svg .hd/.hd-f1/.hd-f2/.hd-f3` plus a catch-all for icons that carry `stroke` as an SVG attribute (CSS beats presentation attributes). The terracotta accent keeps its weight ratio; round caps stay; the override must never leak beyond the hero wrapper. Industry sector heroes use the identical override. This is interim until the EQT-275 Affinity hero scenes swap in at the marked seam (content-only).
+- Interim line-art `hero-motif` art was removed from the Home, About, Capability Statement, Services hub, and Our Work hub heroes. Redo those hero scenes under EQT-275; do not re-add the interim motif (EQT-324).
 - No hero metric band on industry pages: every figure lives in the proof carousel (EQT-254). The hairline metric band stays available where a page has genuine hero stats (case study, EQT-255).
 
 ### CTA equation (service pages)

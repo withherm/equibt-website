@@ -1,4 +1,4 @@
-.industry-hero{padding:124px 56px 112px;background:#fff;}
+.industry-hero{padding:80px 56px 72px;background:#fff;}
 .industry-hero-inner{
   max-width:var(--wide);
   margin:0 auto;
@@ -29,7 +29,7 @@
 .industry-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:42px;}
 .industry-hero-art{display:flex;align-items:center;justify-content:flex-end;align-self:center;}
 .industry-hero-art > span{display:block;transform:translateX(4vw);}
-.industry-hero-art svg{display:block;width:min(540px,48vw);height:auto;overflow:visible;}
+.industry-hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}
 .industry-hero-art svg .hd,
 .industry-hero-art svg .hd-f1,
 .industry-hero-art svg .hd-f2,
@@ -682,7 +682,7 @@
   .industry-hero-inner{grid-template-columns:1fr;gap:48px;}
   .industry-hero-art{justify-content:flex-start;}
   .industry-hero-art > span,.industry-hero-cluster{transform:none;}
-  .industry-hero-art svg{width:min(100%,420px);}
+  .industry-hero-art svg{width:min(190px,42vw);}
   .industry-hero-cluster{justify-content:start;width:100%;}
   .industry-hero-cluster span{width:min(210px,40vw);}
   .formula-grid{grid-template-columns:1fr;}
