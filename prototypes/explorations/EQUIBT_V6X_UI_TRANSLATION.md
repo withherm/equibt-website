@@ -258,3 +258,20 @@ Full detail and exact values: `DESIGN_LEARNINGS_v6x.md` → "Interactive resourc
 | Close rhythm (assessment pages) | beige tool → beige LMI | white "Work with us" (EQUIBT contact) → beige "Build with us" (LMI handover, eyebrow `BUILD WITH US`). Alternation is the separator, so the LMI band hairlines are dropped. Scoped via the page style block. |
 
 **Text contrast lock (carried site-relevant):** content text uses `var(--mid-grey)` `#2B2B2B` (body/action) and `var(--caption)` `#5A5A5A` (scores/captions); never `#999`/`#aaa` for content. Audience is corporate/gov, not teens — size up rather than down. Print greys must be far darker than screen greys (near-black) or the PDF reads fuzzy.
+
+## EQT-322 amendments (method explainer pages, archetype locked 2026-06-13)
+
+Full detail and exact section/voice rules: `DESIGN_LEARNINGS_v6x.md` → "Method explainer pages". New page type at `/methods/<slug>/` (five named methods), no nav item, no index, reached only from the service-pillar method line and the How We Work list. Component `src/components/MethodPage.astro` (mirrors `ServicePage`), thin route per method passing a typed `data` object. Lean Business Analysis is the locked archetype (four correction rounds); Stage 2 clones it.
+
+**New component rows (additions to the tables above):**
+
+| Component | prior | v6x as built (EQT-322) |
+|---|---|---|
+| Method hero | (service hero) | Half-height service hero (`.method-hero`, padding ~62/56, motif `min(300px,28vw)`). Eyebrow `METHOD`; H1 = method name; body = an IMPERSONAL authority-tone overview (purpose/approach/outcomes, no "we"/"you"). Reuses `service-hero-art` + `Icon hero-motif`. |
+| 1-minute cheat sheet | n/a | Two columns. Left = framework styled-text box (terracotta letter circles, navy headings) + commented hand-drawn-diagram insertion point, no visible placeholder. Title = the verb-first one-line description (NOT the method name). Right = What it is / When / What you get / The problem. |
+| Framework box | n/a | Letter/short keys + label + action-first description (every item starts with a verb). EQUIBT-owned frameworks (SCOPE, DRIVE) named as ours; standard cycles (DMAIC, DMADV) shown as background structure, emphasis/harmonisation owned not the cycle. DMAIC vs DMAICO kept distinct. |
+| In Our Work proof point | (ow case card) | Industry `<Icon>` + sector + metric + verb-first title + one-line context from the case `problem` field. Links to `/our-work/<slug>/` only when `fullStudy`; compact cases are text, no dead links. Icon passed per case in route data (`work.cases = [{slug, icon}]`). |
+| Work With Us CTA | (ow-cta-grid motif right) | `ow-cta-grid`, eyebrow `WORK WITH US`, copy + prose + button left; the HOW WE APPLY IT block (eyebrow + succinct "we" prose + clickable DMAICO phase chips → `/services/<phase>/`) occupies the right column in place of the motif. |
+| LMI handover | (case-page handover) | Standard treatment, beige band under the CTA. Method pages DO carry it (EQUIBT-applies / LMI-teaches cross-link). btn-text "Explore training at Lean Methods Institute". |
+| Close rhythm (method pages) | n/a | cheat (white) → In Our Work (beige) → Work With Us (white) → LMI (beige). |
+| `.btn-text .ar` (site-wide) | chevron jammed to label | `margin-left:3px` gap added globally so the `›` breathes. |

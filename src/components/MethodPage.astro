@@ -1,0 +1,258 @@
+---
+import Footer from "./Footer.astro";
+import Icon from "./icons/Icon.astro";
+import Layout from "../layouts/Layout.astro";
+import Nav from "./Nav.astro";
+import lmiLogo from "../../brand/assets/logos/lmi/LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg";
+import "../styles/services.css";
+import "../styles/our-work.css";
+
+interface FrameworkItem {
+  key: string;
+  label: string;
+  body?: string;
+}
+
+interface WorkCase {
+  slug: string;
+  icon: "financial-services" | "government" | "utilities" | "manufacturing";
+  sector: string;
+  metric: string;
+  caption?: string;
+  title: string;
+  problem: string;
+  fullStudy: boolean;
+}
+
+interface MethodPageData {
+  title: string;
+  description: string;
+  methodName: string;
+  heroIcon: "method-lean-business-analysis-hero" | "method-lean-hero" | "method-lean-six-sigma-hero" | "method-lean-service-design-hero" | "method-lean-agile-hero";
+  cheatSheetTitle: string;
+  heroOverview: string;
+  cheatSheet: {
+    whatItIs: string;
+    frameworkTitle: string;
+    frameworkSubtitle?: string;
+    frameworkItems: FrameworkItem[];
+    whenUseful: string;
+    whatYouGet: string;
+  };
+  whyLean?: {
+    heading: string;
+    hook: string;
+    sameFoundation: string;
+    differences: { lead: string; body: string }[];
+    methodLean: { lead: string; body: string };
+    summary: string;
+  };
+  application: {
+    body: string;
+    phases: string[];
+  };
+  work: {
+    cases: WorkCase[];
+    forwardStatement?: string;
+  };
+  lmiLabel: string;
+  ctaLine: string;
+  ctaBody: string;
+}
+
+interface Props {
+  data: MethodPageData;
+}
+
+const { data } = Astro.props;
+---
+
+<Layout title={data.title} description={data.description}>
+  <Nav />
+  <main>
+    <section class="service-hero method-hero service-reveal">
+      <div class="service-hero-inner method-hero-inner">
+        <div class="service-hero-copy">
+          <div class="eyebrow">METHOD</div>
+          <h1>{data.methodName}</h1>
+          <p class="method-definition">{data.heroOverview}</p>
+        </div>
+        <div class="service-hero-art" aria-hidden="true">
+          <span><Icon name={data.heroIcon} /></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-section white method-cheat service-reveal">
+      <div class="service-inner">
+        <div class="service-head">
+          <div class="eyebrow">1-MINUTE CHEAT SHEET</div>
+          <h2 class="service-title">{data.cheatSheetTitle}</h2>
+        </div>
+        <div class="method-cheat-grid">
+          <div class="method-framework" aria-label={`${data.methodName} framework`}>
+            <div class="method-framework-head">
+              <span>Framework</span>
+              <div class="method-framework-title">
+                <h3>{data.cheatSheet.frameworkTitle}</h3>
+                {data.cheatSheet.frameworkSubtitle && <p class="method-framework-subtitle">{data.cheatSheet.frameworkSubtitle}</p>}
+              </div>
+            </div>
+            <!-- METHOD FRAMEWORK DIAGRAM: hand-drawn SVG to be inserted (EQT-322 follow-up) -->
+            <div class="method-framework-items">
+              {data.cheatSheet.frameworkItems.map((item) => (
+                <div class="method-framework-item">
+                  <span class="method-framework-key">{item.key}</span>
+                  <div>
+                    <strong>{item.label}</strong>
+                    {item.body && <p>{item.body}</p>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="method-at-glance">
+            <article>
+              <div class="eyebrow">WHAT IT IS</div>
+              <p>{data.cheatSheet.whatItIs}</p>
+            </article>
+            <article>
+              <div class="eyebrow">WHEN IT IS USEFUL</div>
+              <p>{data.cheatSheet.whenUseful}</p>
+            </article>
+            <article>
+              <div class="eyebrow">WHAT YOU GET</div>
+              <p>{data.cheatSheet.whatYouGet}</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {data.whyLean && (
+      <section class="service-section beige method-why service-reveal">
+        <div class="service-inner">
+          <div class="service-head">
+            <div class="eyebrow">HOW IT DIFFERS</div>
+            <h2 class="service-title">{data.whyLean.heading}</h2>
+          </div>
+          <div class="service-callout">
+            <p class="service-callout-lead">{data.whyLean.hook}</p>
+          </div>
+          <div class="method-why-grid">
+            <div class="method-why-same">
+              <p class="method-why-col-head">Same foundation</p>
+              <p>{data.whyLean.sameFoundation}</p>
+            </div>
+            <div class="method-why-diff">
+              <p class="method-why-col-head">What is different</p>
+              <div class="method-why-list">
+                {data.whyLean.differences.map((item) => (
+                  <div class="method-why-item">
+                    <strong>{item.lead}</strong>
+                    <p>{item.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div class="method-why-lean">
+            <strong>{data.whyLean.methodLean.lead}</strong>
+            <p>{data.whyLean.methodLean.body}</p>
+          </div>
+          <p class="method-why-summary">{data.whyLean.summary}</p>
+        </div>
+      </section>
+    )}
+
+    <section class="service-section beige method-work-section service-reveal">
+      <div class="service-inner">
+        <div class="service-head">
+          <div class="eyebrow">IN OUR WORK</div>
+          <h2 class="service-title">Proven in practice.</h2>
+        </div>
+        {data.work.forwardStatement ? (
+          <p class="method-forward">{data.work.forwardStatement}</p>
+        ) : (
+          <div class="method-work-list">
+            {data.work.cases.map((item) => {
+              const caseBody = (
+                <div class="method-work-case-inner">
+                  <span class="method-work-icon" aria-hidden="true"><Icon name={item.icon} /></span>
+                  <div class="method-work-copy">
+                    <div class="case-sector">{item.sector}</div>
+                    <div class="case-number">{item.metric}</div>
+                    {item.caption && <div class="case-caption">{item.caption}</div>}
+                    <h3>{item.title}</h3>
+                    <p class="method-work-context">{item.problem}</p>
+                  </div>
+                </div>
+              );
+              return item.fullStudy ? (
+                <a href={`/our-work/${item.slug}/`} class="method-work-case">
+                  {caseBody}
+                  <span class="btn-text"><span class="link-label">Full case study</span> <span class="ar">&rsaquo;</span></span>
+                </a>
+              ) : (
+                <article class="method-work-case">
+                  {caseBody}
+                </article>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </section>
+
+    <section class="ow-section white method-cta-section ow-reveal">
+      <div class="ow-inner ow-cta-grid">
+        <div class="ow-cta-copy">
+          <div class="eyebrow">WORK WITH US</div>
+          <h2>{data.ctaLine}</h2>
+          <p>{data.ctaBody}</p>
+          <a href="/contact/" class="btn-primary">Get in touch</a>
+        </div>
+        <div class="method-cta-application">
+          <div class="eyebrow">HOW WE APPLY IT</div>
+          <p>{data.application.body}</p>
+          <div class="method-phase-row" aria-label="DMAICO phases this method touches">
+            {data.application.phases.map((phase) => <a href={`/services/${phase.toLowerCase()}/`}>{phase}</a>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ow-section beige ow-lmi ow-reveal">
+      <div class="ow-inner">
+        <div class="eyebrow">TRAINING</div>
+        <h2 class="ow-lmi-title">Build this capability inside your team.</h2>
+        <p class="ow-lmi-copy">Lean Methods Institute teaches the same method we use in the room: applied to real operating problems, not generic examples, so your team can keep the discipline after we step out.</p>
+        <a href="https://leanmethods.com.au" class="ow-lmi-logo-link" aria-label="Lean Methods Institute">
+          <img src={lmiLogo.src} class="ow-lmi-logo-img" alt="Lean Methods Institute" loading="lazy" />
+        </a>
+        <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">{data.lmiLabel}</span> <span class="ar">&rsaquo;</span></a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  function initialiseMethodReveals() {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const sections = Array.from(document.querySelectorAll(".service-reveal, .ow-reveal"));
+    if (reduceMotion || !("IntersectionObserver" in window)) return;
+    document.documentElement.classList.add("service-reveal-enabled");
+    document.documentElement.classList.add("ow-reveal-enabled");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.16 });
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  initialiseMethodReveals();
+</script>

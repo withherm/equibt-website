@@ -1,0 +1,82 @@
+---
+import { getCollection } from "astro:content";
+import MethodPage from "../../components/MethodPage.astro";
+
+const methodData = {
+  title: "Lean | EQUIBT",
+  description: "How EQUIBT applies Lean to take waste, delay and cost out of how everyday work flows.",
+  methodName: "Lean",
+  heroIcon: "method-lean-hero",
+  cheatSheetTitle: "Take the waste out of how the work flows.",
+  heroOverview: "Lean takes the waste, delay and cost out of how everyday work flows. The value stream is mapped, value-add is separated from the rest, rework loops are cut, and what should not vary is standardised. The operation comes out faster, cheaper to serve, and consistent regardless of who is doing the work.",
+  cheatSheet: {
+    frameworkTitle: "DMAIC",
+    frameworkSubtitle: "(Improve Workflow)",
+    frameworkItems: [
+      { key: "D", label: "Define", body: "Define the flow problem and what good looks like." },
+      { key: "M", label: "Measure", body: "Measure where time, cost and rework actually go." },
+      { key: "A", label: "Analyse", body: "Find where value stalls, not where effort goes." },
+      { key: "I", label: "Improve", body: "Cut the waste and make the work flow." },
+      { key: "C", label: "Control", body: "Standardise what should not vary so the gain holds." },
+    ],
+    whatItIs: "Take waste, delay and cost out of how the work flows.",
+    whenUseful: "Work is slow, costs too much to serve, or quality swings with who does it, and the waste is rarely where people assume: the flow is the issue, not the effort.",
+    whatYouGet: "Faster flow, lower cost-to-serve, consistent output.",
+  },
+  whyLean: {
+    heading: "Why Lean, not Lean Six Sigma",
+    hook: "Lean and Lean Six Sigma overlap, but they answer different questions. Lean is about flow: strip the waste, delay and cost so the work moves. Reach for it when the operation is slow or expensive to run and the real issue is how the work flows, not why a result keeps varying.",
+    sameFoundation: "Both are evidence-led and run the same disciplined cycle: define the problem, measure where it actually happens, improve, and hold the gain. Both build the capability in your team rather than dependency on us. They are tools from the same kit.",
+    differences: [
+      { lead: "The question is flow.", body: "Lean asks why the work is slow or expensive to run, and removes the waste, waiting and handoffs in the way so value moves." },
+      { lead: "Fast to see, fast to fix.", body: "Flow problems are often visible on the floor and fixable without a long measurement study, so Lean moves quickly." },
+      { lead: "When to reach for Six Sigma instead.", body: "If the problem is a result that keeps varying or defecting and opinion has not settled it, that is a root-cause question, and we will tell you so." },
+    ],
+    methodLean: { lead: "And the method itself is lean.", body: "We use the fewest tools that move the work, value stream over template stack, in plain language, so your team can run it without us." },
+    summary: "Lean makes the work flow. Lean Six Sigma makes the outcome reliable. Reach for Lean when the question is how the work moves.",
+  },
+  application: {
+    body: "We use it to find where time, cost and rework pile up, then redesign how the work flows: separating what adds value from what does not, cutting the rework loops, and standardising what should not vary.",
+    phases: ["FRAME", "SOLVE", "SCALE"],
+  },
+  work: {
+    cases: [
+      { slug: "capability-framework", icon: "utilities" },
+      { slug: "channel-effectiveness", icon: "utilities" },
+      { slug: "finance-reporting-cycle", icon: "financial-services" },
+      { slug: "mortgage-lead-leakage", icon: "financial-services" },
+    ],
+  },
+  lmiLabel: "Explore training at Lean Methods Institute",
+  ctaLine: "Bring us a problem that looks like this.",
+  ctaBody: "Tell us where the work is getting stuck. We will tell you straight whether this is the right method, and whether we are the right firm for it.",
+};
+
+const caseSlugs = methodData.work.cases.map((item) => item.slug);
+const cases = await getCollection("cases", ({ id, data }) => caseSlugs.includes(id) && !data.draft);
+const casesBySlug = new Map(cases.map((entry) => [entry.id, entry]));
+const workCases = methodData.work.cases.map((item) => {
+  const { slug } = item;
+  const entry = casesBySlug.get(slug);
+  if (!entry) throw new Error(`Missing case study: ${slug}`);
+  return {
+    slug,
+    icon: item.icon,
+    sector: entry.data.sector,
+    metric: entry.data.metric,
+    caption: entry.data.caption,
+    title: entry.data.title,
+    problem: entry.data.problem,
+    fullStudy: entry.data.fullStudy,
+  };
+});
+
+const pageData = {
+  ...methodData,
+  work: {
+    cases: workCases,
+  },
+};
+---
+
+<MethodPage data={pageData} />

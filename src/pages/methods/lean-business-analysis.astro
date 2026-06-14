@@ -1,0 +1,79 @@
+---
+import { getCollection } from "astro:content";
+import MethodPage from "../../components/MethodPage.astro";
+
+const methodData = {
+  title: "Lean Business Analysis | EQUIBT",
+  description: "How EQUIBT applies Lean Business Analysis to define the real problem, lock scope, and establish requirements that hold.",
+  methodName: "Lean Business Analysis",
+  heroIcon: "method-lean-business-analysis-hero",
+  cheatSheetTitle: "Define the real problem, scope and requirements before work starts.",
+  heroOverview: "Lean Business Analysis turns a fuzzy brief into the right problem to solve before money goes near a solution. The problem is separated from the assumed fix, scope is tested against the outcome that matters, and requirements are set in writing. Delivery begins with an agreed problem, an agreed scope, and requirements that hold when conditions change.",
+  cheatSheet: {
+    whatItIs: "Pin down the real problem and lock scope before money gets spent on a solution.",
+    frameworkTitle: "SCOPE",
+    frameworkItems: [
+      { key: "S", label: "Situation", body: "Investigate what is actually happening." },
+      { key: "C", label: "Context", body: "Map whose problem it is and who is affected." },
+      { key: "O", label: "Outcome", body: "Separate the real problem from the assumed fix." },
+      { key: "P", label: "Parameters", body: "Define scope, assumptions, dependencies and risks." },
+      { key: "E", label: "Expectations", body: "Consolidate the requirements in writing: what Done looks like." },
+    ],
+    whenUseful: "The brief is vague, stakeholders disagree on the problem, or requirements keep moving, so work gets scoped against the wrong thing and the rework shows up late.",
+    whatYouGet: "An agreed problem, agreed scope, requirements that hold.",
+  },
+  whyLean: {
+    heading: "Why Lean Business Analysis, not conventional BA",
+    hook: "Conventional business analysis documents requirements for a solution that has usually already been chosen. Lean Business Analysis works one step earlier: it defines the real problem and what counts as value, then scopes the work that moves the outcome, before a single requirement is written.",
+    sameFoundation: "The craft is the same. Stakeholder analysis, structured elicitation, clear written requirements, traceability. The discipline of asking precise questions and modelling how the work really flows is shared ground, and we hold to it.",
+    differences: [
+      { lead: "Problem before solution.", body: "Conventional BA often takes the brief and the chosen fix as given. We define the real problem first, so the analysis serves the outcome, not the org chart." },
+      { lead: "Scope set by value.", body: "We define value from the outcome and the customer, then scope only the work that delivers it, and name the assumptions, dependencies and risks that come with it. Effort goes where it pays." },
+      { lead: "Requirements that hold.", body: "Conventional specs are written early and exhaustively, then go stale when conditions change. We write fewer requirements, tied to a measurable definition of Done, so they survive change." },
+    ],
+    methodLean: { lead: "And the method itself is lean.", body: "Conventional BA can bury a project in overlapping templates and framework jargon. We use the fewest tools that do the job and name things plainly, so your team can run the method without us." },
+    summary: "Conventional BA asks what the requirements are. Lean Business Analysis asks what the real problem is, what counts as value, and the least you must build to move the outcome.",
+  },
+  application: {
+    body: "We bring it in at the start of an engagement, to cut a vague brief down to the real problem and the real scope, then lock requirements that hold up when things change.",
+    phases: ["FRAME", "PLAN"],
+  },
+  work: {
+    cases: [
+      { slug: "platform-migration-review", icon: "financial-services" },
+      { slug: "planning-architecture", icon: "manufacturing" },
+    ],
+  },
+  lmiLabel: "Explore training at Lean Methods Institute",
+  ctaLine: "Bring us a problem that looks like this.",
+  ctaBody: "Tell us where the work is getting stuck. We will tell you straight whether this is the right method, and whether we are the right firm for it.",
+};
+
+const caseSlugs = methodData.work.cases.map((item) => item.slug);
+const cases = await getCollection("cases", ({ id, data }) => caseSlugs.includes(id) && !data.draft);
+const casesBySlug = new Map(cases.map((entry) => [entry.id, entry]));
+const workCases = methodData.work.cases.map((item) => {
+  const { slug } = item;
+  const entry = casesBySlug.get(slug);
+  if (!entry) throw new Error(`Missing case study: ${slug}`);
+  return {
+    slug,
+    icon: item.icon,
+    sector: entry.data.sector,
+    metric: entry.data.metric,
+    caption: entry.data.caption,
+    title: entry.data.title,
+    problem: entry.data.problem,
+    fullStudy: entry.data.fullStudy,
+  };
+});
+
+const pageData = {
+  ...methodData,
+  work: {
+    cases: workCases,
+  },
+};
+---
+
+<MethodPage data={pageData} />

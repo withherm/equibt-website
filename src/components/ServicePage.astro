@@ -80,6 +80,13 @@ interface StepConfig {
   linkLabel?: string;
 }
 
+interface MethodLink {
+  name: string;
+  href: string;
+  icon: "method-lean-business-analysis" | "method-lean" | "method-lean-six-sigma" | "method-lean-service-design" | "method-lean-agile";
+  blurb: string;
+}
+
 interface ServicePageData {
   title: string;
   description: string;
@@ -88,6 +95,7 @@ interface ServicePageData {
   serviceName: string;
   heroTitle: string;
   heroSubhead: string;
+  methods?: MethodLink[];
   situationTitle: string;
   situation: string[];
   whyTitle: string;
@@ -268,6 +276,22 @@ const deliverablesCarouselId = `${data.pillar}-deliverables-carousel`;
             </button>
           </div>
         </div>
+        {data.methods && data.methods.length > 0 && (
+          <div class="service-deliverable-methods">
+            <span class="eyebrow">THE METHODS BEHIND THIS WORK</span>
+            <div class="service-deliverable-method-grid">
+              {data.methods.map((method) => (
+                <article class="service-deliverable-method">
+                  <div class="service-deliverable-method-head">
+                    <span class="service-deliverable-method-icon" aria-hidden="true"><Icon name={method.icon} /></span>
+                    <a href={method.href} class="btn-text"><span class="link-label">{method.name}</span> <span class="ar">&rsaquo;</span></a>
+                  </div>
+                  <p>{method.blurb}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
 

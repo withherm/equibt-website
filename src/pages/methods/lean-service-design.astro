@@ -1,0 +1,82 @@
+---
+import { getCollection } from "astro:content";
+import MethodPage from "../../components/MethodPage.astro";
+
+const methodData = {
+  title: "Lean Service Design | EQUIBT",
+  description: "How EQUIBT applies Lean Service Design to redesign services around the customer and the operation.",
+  methodName: "Lean Service Design",
+  heroIcon: "method-lean-service-design-hero",
+  cheatSheetTitle: "Redesign the service around the customer, end to end.",
+  heroOverview: "Lean Service Design redesigns a service end to end so it works for the customer and the operation at once. The journey is mapped from the outside in, set against the service blueprint and value stream from the inside out, and the breaks are found. The result is one designed service rather than a chain of handoffs the customer has to feel.",
+  cheatSheet: {
+    frameworkTitle: "DMADV",
+    frameworkItems: [
+      { key: "D", label: "Define", body: "Define the service goals and what the customer counts as quality." },
+      { key: "M", label: "Measure", body: "Set the metrics and baseline service, needs and risks." },
+      { key: "A", label: "Analyse", body: "Develop and weigh service design options against customer needs." },
+      { key: "D", label: "Design", body: "Build and prototype the service, ironing out the weak points." },
+      { key: "V", label: "Verify", body: "Prove the redesigned service works in real conditions before launch." },
+    ],
+    whatItIs: "Redesign a service end to end so it works for the customer and the operation.",
+    whenUseful: "Complaints are up, the experience is inconsistent, and a fix in one team breaks another: the journey was never designed, it accreted, and the customer feels the seams.",
+    whatYouGet: "One designed service, not a chain of handoffs.",
+  },
+  whyLean: {
+    heading: "Why Lean Service Design, not conventional Service Design or Human-Centred Design",
+    hook: "Human-Centred Design produces a service customers rate. The design may not have factored in that the operation has to run it, at cost, every day. Lean Service Design keeps the customer at the centre and designs the service the operation can actually deliver and sustain.",
+    sameFoundation: "We use the human-centred toolkit and we mean it. Journey mapping, service blueprinting, front-stage and back-stage, co-design with the people who do the work, prototyping. The customer stays at the centre. Lean Service Design is not a rejection of Human-Centred Design, it brings the operation into the room.",
+    differences: [
+      { lead: "Customer and operation, together.", body: "Human-Centred Design optimises the experience. We design for what the customer wants and what the operation can run without heroics, at a cost it can carry." },
+      { lead: "Designed around value and flow.", body: "We keep what the customer values and design out the steps, handoffs and waste that add cost but no value, so the service flows instead of stalling between teams." },
+      { lead: "Evidence, not only empathy.", body: "Alongside customer research, we baseline the service, set metrics, and prove the redesign in a controlled pilot under real conditions before launch." },
+      { lead: "Built to be run and held.", body: "Human-Centred Design usually hands over a blueprint. We design the standards, controls and ownership that keep the service working after launch, not just the day it goes live." },
+    ],
+    methodLean: { lead: "And the method itself is lean.", body: "Service design can pile up personas, maps and ceremonies until the toolkit outweighs the result. We use the fewest tools that move the work, in plain language, so your team can run it without us." },
+    summary: "Human-Centred Design designs the experience the customer wants. Lean Service Design designs the service the customer wants and the operation can actually run, proven before it scales.",
+  },
+  application: {
+    body: "We use it to redesign a service end to end, mapping the journey from the customer's side and the operation's side together, finding where it breaks, and rebuilding it as one designed service rather than a chain of handoffs.",
+    phases: ["FRAME", "SOLVE", "EVOLVE"],
+  },
+  work: {
+    cases: [
+      { slug: "complaint-resolution-time", icon: "government" },
+      { slug: "quote-process-redesign", icon: "manufacturing" },
+      { slug: "retention-save-rate", icon: "utilities" },
+      { slug: "self-serve-deflection", icon: "manufacturing" },
+    ],
+  },
+  lmiLabel: "Explore training at Lean Methods Institute",
+  ctaLine: "Bring us a problem that looks like this.",
+  ctaBody: "Tell us where the work is getting stuck. We will tell you straight whether this is the right method, and whether we are the right firm for it.",
+};
+
+const caseSlugs = methodData.work.cases.map((item) => item.slug);
+const cases = await getCollection("cases", ({ id, data }) => caseSlugs.includes(id) && !data.draft);
+const casesBySlug = new Map(cases.map((entry) => [entry.id, entry]));
+const workCases = methodData.work.cases.map((item) => {
+  const { slug } = item;
+  const entry = casesBySlug.get(slug);
+  if (!entry) throw new Error(`Missing case study: ${slug}`);
+  return {
+    slug,
+    icon: item.icon,
+    sector: entry.data.sector,
+    metric: entry.data.metric,
+    caption: entry.data.caption,
+    title: entry.data.title,
+    problem: entry.data.problem,
+    fullStudy: entry.data.fullStudy,
+  };
+});
+
+const pageData = {
+  ...methodData,
+  work: {
+    cases: workCases,
+  },
+};
+---
+
+<MethodPage data={pageData} />
