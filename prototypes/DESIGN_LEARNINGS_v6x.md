@@ -366,6 +366,8 @@ Framework box rules: **every item description starts with an action verb.** EQUI
 
 Global change made this issue: `.btn-text .ar` gained a small left gap (`margin-left:3px`) so the chevron is not jammed against the label — site-wide. Took four correction rounds on the Lean Business Analysis archetype before lock (bespoke blocks → reuse v6x patterns; hero card → line-art motif; standalone Problem/Apply sections → folded into cheat sheet then Apply relocated to the CTA; dog-food block → standard LMI handover; method-name de-duplicated; hero overview made impersonal). Stage 2 clones the locked archetype to the other four.
 
+Correction rule: the How We Apply It prose is plain language. DMAICO phase wayfinding lives in the chips only, never recited in prose.
+
 ## Process notes
 
 - Build runs via Codex on branch `eqt-245` (single canonical clone); Herman/Cowork review screenshots and the file directly. Codex's screenshot environment was blocked this session, and self-checks are not trusted for sign-off (past false passes). Six correction rounds (R1-R6) produced this set. Icon options and the Govern-tick exploration are recorded in `EQUIBT_V6X_ICON_OPTIONS.html`, `EQUIBT_V6X_GOVERN_TICK_OPTIONS.html`, `EQUIBT_V6X_GOVERN_FINAL.html` (Docs/EQUIBT).

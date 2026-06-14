@@ -16,10 +16,6 @@
   line-height:1.08;
 }
 .service-hero-subhead{max-width:620px;margin:0 0 42px;color:var(--near-black);font-size:22px;line-height:1.4;}
-.service-hero-subhead.has-methods{margin-bottom:22px;}
-.service-hero-methods{display:grid;gap:10px;margin:0 0 36px;}
-.service-hero-methods .eyebrow{margin:0;}
-.service-hero-method-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
 .service-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
 .service-hero-art{display:flex;align-items:center;justify-content:flex-end;align-self:center;}
 .service-hero-art span{display:block;height:auto;transform:translateX(4vw);}
@@ -81,6 +77,15 @@
 .service-col p{margin:0;color:var(--mid-grey);font-size:22px;}
 
 .service-carousel{position:relative;}
+.service-deliverable-methods{
+  max-width:760px;
+  margin-top:38px;
+  padding-top:26px;
+  border-top:1px solid var(--hairline);
+}
+.service-deliverable-methods .eyebrow{margin:0 0 12px;}
+.service-deliverable-methods p{margin:0;color:var(--mid-grey);font-size:18px;line-height:1.5;}
+.service-deliverable-method-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:14px;}
 .deliverables-index{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));

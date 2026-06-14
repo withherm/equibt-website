@@ -154,17 +154,7 @@ const deliverablesCarouselId = `${data.pillar}-deliverables-carousel`;
         <div class="service-hero-copy">
           <div class="eyebrow">{data.eyebrow}</div>
           <h1>{data.heroTitle}</h1>
-          <p class:list={["service-hero-subhead", { "has-methods": data.methods?.length }]}>{data.heroSubhead}</p>
-          {data.methods && data.methods.length > 0 && (
-            <div class="service-hero-methods">
-              <span class="eyebrow">Methods we use here</span>
-              <div class="service-hero-method-links">
-                {data.methods.map((method) => (
-                  <a href={method.href} class="btn-text"><span class="link-label">{method.name}</span> <span class="ar">&rsaquo;</span></a>
-                ))}
-              </div>
-            </div>
-          )}
+          <p class="service-hero-subhead">{data.heroSubhead}</p>
           <div class="service-actions">
             <a href="/contact/" class="btn-primary">Get in touch</a>
             <a href="/our-work/" class="btn-text"><span class="link-label">View our work</span> <span class="ar">&rsaquo;</span></a>
@@ -284,6 +274,17 @@ const deliverablesCarouselId = `${data.pillar}-deliverables-carousel`;
             </button>
           </div>
         </div>
+        {data.methods && data.methods.length > 0 && (
+          <div class="service-deliverable-methods">
+            <span class="eyebrow">METHODS WE USE HERE</span>
+            <p>The named methods we draw on most in this work.</p>
+            <div class="service-deliverable-method-links">
+              {data.methods.map((method) => (
+                <a href={method.href} class="btn-text"><span class="link-label">{method.name}</span> <span class="ar">&rsaquo;</span></a>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
 
