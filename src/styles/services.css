@@ -498,8 +498,12 @@
   padding-bottom:46px;
 }
 .method-hero .service-hero-copy{min-width:0;max-width:100%;}
-.method-hero-inner{align-items:center;}
-.method-hero .service-hero-art{justify-content:center;}
+.method-hero-inner{align-items:start;}
+.method-hero .service-hero-art{
+  align-self:start;
+  justify-content:center;
+  padding-top:clamp(36px,5vw,58px);
+}
 .method-hero .service-hero-art span{transform:none;}
 .method-hero .service-hero-art svg{width:min(200px,20vw);}
 .method-definition{
@@ -728,6 +732,17 @@ a.method-work-case:focus h3{color:var(--terracotta);}
 @media(max-width:960px){
   .method-cheat-grid{grid-template-columns:1fr;gap:36px;}
 }
+@media(max-width:1120px) and (min-width:761px){
+  .method-hero-inner{
+    grid-template-columns:minmax(0,1fr) minmax(220px,.38fr);
+    gap:30px;
+  }
+  .method-hero .service-hero-art{
+    justify-content:center;
+    padding-top:clamp(34px,5vw,52px);
+  }
+  .method-hero .service-hero-art svg{width:min(200px,20vw);}
+}
 @media(max-width:860px){
   .method-work-list{grid-template-columns:1fr;gap:0;}
 }
@@ -736,6 +751,7 @@ a.method-work-case:focus h3{color:var(--terracotta);}
     padding-top:44px;
     padding-bottom:36px;
   }
+  .method-hero .service-hero-art{padding-top:0;}
   .method-cheat{padding-top:52px;}
   .method-hero .service-hero-art svg{width:min(190px,52vw);}
   .method-framework{padding:26px;}
@@ -759,7 +775,7 @@ a.method-work-case:focus h3{color:var(--terracotta);}
   .method-work-icon{width:42px;height:42px;}
 }
 
-/* WHY LEAN section (method pages) */
+/* HOW IT DIFFERS section (method pages) */
 .method-why-grid{
   display:grid;
   grid-template-columns:0.85fr 1.15fr;
@@ -776,7 +792,7 @@ a.method-work-case:focus h3{color:var(--terracotta);}
   text-transform:uppercase;
   color:var(--terracotta);
 }
-.method-why-same > p{
+.method-why-same > p:not(.method-why-col-head){
   margin:0;
   color:var(--mid-grey);
   font-size:21px;
@@ -789,6 +805,7 @@ a.method-work-case:focus h3{color:var(--terracotta);}
   display:block;
   margin:0 0 8px;
   color:var(--navy);
+  font-family:"Montserrat",Arial,sans-serif;
   font-size:21px;
   font-weight:700;
   line-height:1.25;
@@ -796,15 +813,15 @@ a.method-work-case:focus h3{color:var(--terracotta);}
 .method-why-item p{margin:0;color:var(--mid-grey);font-size:20px;line-height:1.55;}
 .method-why-lean{
   margin-top:50px;
-  padding:30px 34px;
-  background:#fff;
-  border-left:3px solid var(--terracotta);
-  border-radius:0 12px 12px 0;
+  padding:24px 0;
+  border-top:1px solid var(--hairline);
+  border-bottom:1px solid var(--hairline);
 }
 .method-why-lean strong{
   display:block;
   margin:0 0 8px;
   color:var(--navy);
+  font-family:"Montserrat",Arial,sans-serif;
   font-size:21px;
   font-weight:700;
 }
@@ -813,7 +830,8 @@ a.method-work-case:focus h3{color:var(--terracotta);}
   margin:46px 0 0;
   max-width:900px;
   color:var(--navy);
-  font-size:25px;
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:21px;
   font-weight:600;
   line-height:1.4;
 }
@@ -822,6 +840,6 @@ a.method-work-case:focus h3{color:var(--terracotta);}
 }
 @media (max-width:720px){
   .method-why-summary{font-size:21px;}
-  .method-why-same > p,.method-why-item p,.method-why-lean p{font-size:18px;}
+  .method-why-same > p:not(.method-why-col-head),.method-why-item p,.method-why-lean p{font-size:18px;}
   .method-why-item strong,.method-why-lean strong{font-size:19px;}
 }

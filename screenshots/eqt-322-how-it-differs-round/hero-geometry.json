@@ -1,0 +1,92 @@
+[
+  {
+    "slug": "lean-business-analysis",
+    "width": 1100,
+    "copyCenterY": 315,
+    "artCenterY": 295,
+    "deltaY": -20,
+    "artLeft": 827,
+    "copyRight": 759
+  },
+  {
+    "slug": "lean",
+    "width": 1100,
+    "copyCenterY": 299,
+    "artCenterY": 295,
+    "deltaY": -4,
+    "artLeft": 827,
+    "copyRight": 759
+  },
+  {
+    "slug": "lean-six-sigma",
+    "width": 1100,
+    "copyCenterY": 299,
+    "artCenterY": 295,
+    "deltaY": -4,
+    "artLeft": 827,
+    "copyRight": 759
+  },
+  {
+    "slug": "lean-service-design",
+    "width": 1100,
+    "copyCenterY": 299,
+    "artCenterY": 295,
+    "deltaY": -4,
+    "artLeft": 827,
+    "copyRight": 759
+  },
+  {
+    "slug": "lean-agile",
+    "width": 1100,
+    "copyCenterY": 299,
+    "artCenterY": 295,
+    "deltaY": -4,
+    "artLeft": 827,
+    "copyRight": 759
+  },
+  {
+    "slug": "lean-business-analysis",
+    "width": 1280,
+    "copyCenterY": 317,
+    "artCenterY": 301,
+    "deltaY": -16,
+    "artLeft": 847,
+    "copyRight": 633
+  },
+  {
+    "slug": "lean",
+    "width": 1280,
+    "copyCenterY": 301,
+    "artCenterY": 301,
+    "deltaY": 0,
+    "artLeft": 847,
+    "copyRight": 633
+  },
+  {
+    "slug": "lean-six-sigma",
+    "width": 1280,
+    "copyCenterY": 301,
+    "artCenterY": 301,
+    "deltaY": 0,
+    "artLeft": 847,
+    "copyRight": 633
+  },
+  {
+    "slug": "lean-service-design",
+    "width": 1280,
+    "copyCenterY": 317,
+    "artCenterY": 301,
+    "deltaY": -16,
+    "artLeft": 847,
+    "copyRight": 633
+  },
+  {
+    "slug": "lean-agile",
+    "width": 1280,
+    "copyCenterY": 301,
+    "artCenterY": 301,
+    "deltaY": 0,
+    "artLeft": 847,
+    "copyRight": 633
+  }
+]

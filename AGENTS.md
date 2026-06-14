@@ -64,6 +64,7 @@ Codex does not replace or configure Hermes. It handles code execution tasks assi
 - Access the GOS-OBSIDIAN vault (no file access outside GitHub repos)
 - Design or make visual decisions (that is Skye's role)
 - Make autonomous product or architecture decisions — brief Herman first
+- **Write, rephrase, expand or "tidy" any user-facing copy (HARD RULE).** All site copy (headings, body, eyebrows, labels, microcopy, framework text, comparison sections) is authored by Claude/Cowork for one consistent voice. Wire in the copy you are given, verbatim. If copy is missing for a section, STOP and request it — do not draft it yourself. (Codex-written copy in the EQT-322 method "How it differs" sections drifted off-voice; this rule exists to prevent that.)
 
 ---
 
