@@ -275,3 +275,13 @@ Full detail and exact section/voice rules: `DESIGN_LEARNINGS_v6x.md` → "Method
 | LMI handover | (case-page handover) | Standard treatment, beige band under the CTA. Method pages DO carry it (EQUIBT-applies / LMI-teaches cross-link). btn-text "Explore training at Lean Methods Institute". |
 | Close rhythm (method pages) | n/a | cheat (white) → In Our Work (beige) → Work With Us (white) → LMI (beige). |
 | `.btn-text .ar` (site-wide) | chevron jammed to label | `margin-left:3px` gap added globally so the `›` breathes. |
+
+## EQT-325 amendments (methods hub comparison grid, shipped 2026-06-14)
+
+Full detail and exact values: `DESIGN_LEARNINGS_v6x.md` → "Methods hub + comparison grid". New page at `/methods/` (the index EQT-322 omitted), surfaced as an About dropdown item "Methods we apply" (reverses the no-index/no-nav guardrail, deliberate). A product-comparison MATRIX rendered on the v6x system: methods as columns, plain-language use cases as rows grouped by the six DMAICO phases, three-level traffic-light cells. DMAICO stays the spine (rows grouped by phase); the acronym is never printed on the page (hero copy is problem-first).
+
+| Component | prior | v6x as built (EQT-325) |
+|---|---|---|
+| Methods hub / comparison matrix | n/a (methods had no index) | Real `<table>` in `src/pages/methods/index.astro`, scoped `.method-hub`/`.method-matrix`. Five method columns: bare Forma Regular icon (no circle) + name link + sub-label, equal widths (`table-layout:fixed` + `min-width`), header rows aligned (name `min-height:42px`), NO navy band and NO rules of any kind (no terracotta underline, no vertical/horizontal dividers). Corner label bottom-aligned. Phase rows = light beige band + hairline top/bottom only (not dark), carrying the pillar `<Icon>` + phase-word link + animated `btn-text` gloss link, both to `/services/<pillar>/`. Sticky first column + horizontal scroll ≤390px. |
+| Traffic-light cell (Lead / Supporting / Minimal) | n/a | Deliberate scoped off-brand signal layer (cf. EQT-309 scoring colours), the only off-brand element, scoped to matrix cells: Lead green `#2F9E6B` + white SVG tick, Supporting amber `#E2A12F` filled, Minimal grey `#D5D0C6` outline + ~8px dot. Legend Lead method / Supporting / Minimal. Accessible: table semantics, per-cell `title` + sr-only label, not colour-only. "Lead" not "good" (fit-to-problem, not quality). |
+| Methods-hub close rhythm | n/a | hero → matrix (white) → framing beige (eyebrow `HOW THEY FIT` + title "Run them as one engagement, not five separate tools.") → CTA white → LMI/Training handover beige LAST. |
