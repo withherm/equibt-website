@@ -39,6 +39,14 @@ interface MethodPageData {
     whenUseful: string;
     whatYouGet: string;
   };
+  whyLean?: {
+    heading: string;
+    hook: string;
+    sameFoundation: string;
+    differences: { lead: string; body: string }[];
+    methodLean: { lead: string; body: string };
+    summary: string;
+  };
   application: {
     body: string;
     phases: string[];
@@ -120,6 +128,42 @@ const { data } = Astro.props;
         </div>
       </div>
     </section>
+
+    {data.whyLean && (
+      <section class="service-section beige method-why service-reveal">
+        <div class="service-inner">
+          <div class="service-head">
+            <div class="eyebrow">WHY LEAN</div>
+            <h2 class="service-title">{data.whyLean.heading}</h2>
+          </div>
+          <div class="service-callout">
+            <p class="service-callout-lead">{data.whyLean.hook}</p>
+          </div>
+          <div class="method-why-grid">
+            <div class="method-why-same">
+              <p class="method-why-col-head">Same foundation</p>
+              <p>{data.whyLean.sameFoundation}</p>
+            </div>
+            <div class="method-why-diff">
+              <p class="method-why-col-head">What is different</p>
+              <div class="method-why-list">
+                {data.whyLean.differences.map((item) => (
+                  <div class="method-why-item">
+                    <strong>{item.lead}</strong>
+                    <p>{item.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div class="method-why-lean">
+            <strong>{data.whyLean.methodLean.lead}</strong>
+            <p>{data.whyLean.methodLean.body}</p>
+          </div>
+          <p class="method-why-summary">{data.whyLean.summary}</p>
+        </div>
+      </section>
+    )}
 
     <section class="service-section beige method-work-section service-reveal">
       <div class="service-inner">
