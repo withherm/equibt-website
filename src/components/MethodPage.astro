@@ -28,6 +28,7 @@ interface MethodPageData {
   title: string;
   description: string;
   methodName: string;
+  heroIcon: "method-lean-business-analysis" | "method-lean" | "method-lean-six-sigma" | "method-lean-service-design" | "method-lean-agile";
   cheatSheetTitle: string;
   heroOverview: string;
   cheatSheet: {
@@ -69,7 +70,7 @@ const { data } = Astro.props;
           <p class="method-definition">{data.heroOverview}</p>
         </div>
         <div class="service-hero-art" aria-hidden="true">
-          <span><Icon name="hero-motif" /></span>
+          <span><Icon name={data.heroIcon} /></span>
         </div>
       </div>
     </section>

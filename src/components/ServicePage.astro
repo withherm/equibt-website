@@ -83,6 +83,7 @@ interface StepConfig {
 interface MethodLink {
   name: string;
   href: string;
+  icon: "method-lean-business-analysis" | "method-lean" | "method-lean-six-sigma" | "method-lean-service-design" | "method-lean-agile";
   blurb: string;
 }
 
@@ -281,7 +282,10 @@ const deliverablesCarouselId = `${data.pillar}-deliverables-carousel`;
             <div class="service-deliverable-method-grid">
               {data.methods.map((method) => (
                 <article class="service-deliverable-method">
-                  <a href={method.href} class="btn-text"><span class="link-label">{method.name}</span> <span class="ar">&rsaquo;</span></a>
+                  <div class="service-deliverable-method-head">
+                    <span class="service-deliverable-method-icon" aria-hidden="true"><Icon name={method.icon} /></span>
+                    <a href={method.href} class="btn-text"><span class="link-label">{method.name}</span> <span class="ar">&rsaquo;</span></a>
+                  </div>
                   <p>{method.blurb}</p>
                 </article>
               ))}

@@ -86,6 +86,9 @@
 .service-deliverable-methods .eyebrow{margin:0 0 18px;}
 .service-deliverable-method-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px;}
 .service-deliverable-method:only-child{grid-column:1 / -1;}
+.service-deliverable-method-head{display:flex;align-items:center;gap:16px;}
+.service-deliverable-method-icon{display:block;flex:0 0 48px;width:48px;height:48px;}
+.service-deliverable-method-icon svg{display:block;width:100%;height:100%;}
 .service-deliverable-method p{max-width:420px;margin:10px 0 0;color:var(--mid-grey);font-size:18px;line-height:1.5;}
 .deliverables-index{
   display:grid;
@@ -496,7 +499,7 @@
 }
 .method-hero .service-hero-copy{min-width:0;max-width:100%;}
 .method-hero-inner{align-items:center;}
-.method-hero .service-hero-art svg{width:min(300px,28vw);}
+.method-hero .service-hero-art svg{width:min(200px,20vw);}
 .method-definition{
   max-width:620px;
   margin:0;
@@ -725,7 +728,7 @@ a.method-work-case:focus h3{color:var(--terracotta);}
     padding-bottom:36px;
   }
   .method-cheat{padding-top:52px;}
-  .method-hero .service-hero-art svg{width:min(210px,58vw);}
+  .method-hero .service-hero-art svg{width:min(190px,52vw);}
   .method-framework{padding:26px;}
   .method-framework-head{display:block;}
   .method-framework-head h3{margin-top:10px;}
