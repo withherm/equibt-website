@@ -72,6 +72,8 @@ Codex does not replace or configure Hermes. It handles code execution tasks assi
 
 **EQUIBT:** B2B advisory. Six locked pillars (DMAICO): FRAME, PLAN, SOLVE, EVOLVE, GOVERN, SCALE. Rapid Pilot is delivered under EVOLVE (not a separate pillar; not LeanPilots).
 
+Icons: new pages use the shared Forma <Icon> components (Icons8 Forma Regular; navy + one terracotta accent for pillar/sector/feature, single navy for functional UI). Never author a new bespoke glyph except hero motifs, brand marks, or genuine illustration.
+
 **LMI:** Training. Tagline: "We build lean, AI-capable teams."
 
 **CUBOROO:** Squarespace only. Never WordPress.
