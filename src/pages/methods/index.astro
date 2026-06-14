@@ -1,0 +1,236 @@
+---
+import Footer from "../../components/Footer.astro";
+import Icon from "../../components/icons/Icon.astro";
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import lmiLogo from "../../../brand/assets/logos/lmi/LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg";
+import "../../styles/services.css";
+import "../../styles/our-work.css";
+
+const methods = [
+  { key: "lean", name: "Lean", href: "/methods/lean/", icon: "method-lean", subLabel: "flow & waste" },
+  { key: "leanSixSigma", name: "Lean Six Sigma", href: "/methods/lean-six-sigma/", icon: "method-lean-six-sigma", subLabel: "evidence & control" },
+  { key: "leanBusinessAnalysis", name: "Lean Business Analysis", href: "/methods/lean-business-analysis/", icon: "method-lean-business-analysis", subLabel: "problem & scope" },
+  { key: "leanServiceDesign", name: "Lean Service Design", href: "/methods/lean-service-design/", icon: "method-lean-service-design", subLabel: "end-to-end service" },
+  { key: "leanAgile", name: "Lean Agile", href: "/methods/lean-agile/", icon: "method-lean-agile", subLabel: "delivery in cycles" },
+] as const;
+
+const phases = [
+  {
+    name: "FRAME",
+    pillar: "frame",
+    gloss: "Define the real problem",
+    rows: [
+      { useCase: "Turn a vague brief into the real problem to solve", lead: ["leanBusinessAnalysis"], supporting: [] },
+      { useCase: "Understand who the problem affects and what they need", lead: ["leanBusinessAnalysis"], supporting: ["leanServiceDesign"] },
+      { useCase: "See where the work breaks down before you have data", lead: ["lean"], supporting: ["leanBusinessAnalysis"] },
+    ],
+  },
+  {
+    name: "PLAN",
+    pillar: "plan",
+    gloss: "Diagnose how the operation runs",
+    rows: [
+      { useCase: "Get an honest baseline of current performance", lead: ["lean"], supporting: ["leanSixSigma", "leanBusinessAnalysis"] },
+      { useCase: "Find where time, cost and rework actually go", lead: ["lean"], supporting: ["leanSixSigma"] },
+      { useCase: "Decide which few problems are worth solving", lead: ["leanBusinessAnalysis"], supporting: ["leanSixSigma"] },
+    ],
+  },
+  {
+    name: "SOLVE",
+    pillar: "solve",
+    gloss: "Get to the root cause and fix it",
+    rows: [
+      { useCase: "Settle a recurring problem with evidence, not opinion", lead: ["leanSixSigma"], supporting: [] },
+      { useCase: "Cut variation and defects out of a process", lead: ["leanSixSigma"], supporting: ["lean"] },
+      { useCase: "Redesign a customer journey that keeps failing", lead: ["leanServiceDesign"], supporting: ["leanBusinessAnalysis"] },
+    ],
+  },
+  {
+    name: "EVOLVE",
+    pillar: "evolve",
+    gloss: "Get the change delivered",
+    rows: [
+      { useCase: "Move an approved change from plan to delivered", lead: ["leanAgile"], supporting: [] },
+      { useCase: "Pilot a new way of working in short cycles", lead: ["leanAgile"], supporting: ["leanServiceDesign"] },
+      { useCase: "Redesign and test a service before full launch", lead: ["leanServiceDesign"], supporting: ["leanAgile"] },
+    ],
+  },
+  {
+    name: "GOVERN",
+    pillar: "govern",
+    gloss: "Make the gain hold",
+    rows: [
+      { useCase: "Put controls in so a fix does not drift back", lead: ["leanSixSigma"], supporting: [] },
+      { useCase: "Set the rules, roles and checks around a process", lead: ["leanBusinessAnalysis"], supporting: ["leanSixSigma"] },
+      { useCase: "Keep quality steady when volume or people change", lead: ["leanSixSigma"], supporting: ["lean"] },
+    ],
+  },
+  {
+    name: "SCALE",
+    pillar: "scale",
+    gloss: "Embed it in the operation",
+    rows: [
+      { useCase: "Make a new way of working the standard way", lead: ["lean"], supporting: ["leanAgile"] },
+      { useCase: "Roll an improvement across teams or sites", lead: ["leanAgile"], supporting: ["leanBusinessAnalysis"] },
+      { useCase: "Build the capability so it runs without us", lead: ["leanBusinessAnalysis"], supporting: ["leanAgile"] },
+    ],
+  },
+] as const;
+
+function getFit(row: typeof phases[number]["rows"][number], methodKey: typeof methods[number]["key"]) {
+  if ((row.lead as readonly string[]).includes(methodKey)) return "lead";
+  if ((row.supporting as readonly string[]).includes(methodKey)) return "supporting";
+  return "minimal";
+}
+
+const fitLabels = {
+  lead: "Lead",
+  supporting: "Supporting",
+  minimal: "Minimal",
+} as const;
+---
+
+<Layout
+  title="Match the method to the problem. | EQUIBT"
+  description="Every engagement begins with a problem and the outcome it demands, not a method chosen from habit. We hold five named methods, each suited to a different kind of problem, and we apply the one that fits. The method follows the problem. We run our own operation on these methods, and our training division teaches them."
+>
+  <Nav />
+  <main class="method-hub">
+    <section class="service-hero method-hero method-hub-hero service-reveal">
+      <div class="service-hero-inner method-hero-inner">
+        <div class="service-hero-copy">
+          <div class="eyebrow">METHODS WE APPLY</div>
+          <h1>Match the method to the problem.</h1>
+          <p class="method-definition">Every engagement begins with a problem and the outcome it demands, not a method chosen from habit. We hold five named methods, each suited to a different kind of problem, and we apply the one that fits. The method follows the problem. We run our own operation on these methods, and our training division teaches them.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-section white method-hub-matrix-section service-reveal">
+      <div class="service-inner">
+        <div class="method-matrix-scroll" tabindex="0" aria-label="Match the method to the problem.">
+          <table class="method-matrix">
+            <thead>
+              <tr>
+                <th scope="col" class="method-matrix-corner">Where the problem sits &rsaquo; the method that fits</th>
+                {methods.map((method) => (
+                  <th scope="col" class="method-matrix-method">
+                    <div class="method-matrix-method-card">
+                      <span class="method-matrix-method-icon" aria-hidden="true"><Icon name={method.icon} /></span>
+                      <a href={method.href} class="method-matrix-method-link">
+                        <span class="method-matrix-method-name">{method.name}</span>
+                      </a>
+                      <span class="method-matrix-method-sub">{method.subLabel}</span>
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {phases.map((phase) => (
+                <>
+                  <tr class="method-matrix-phase">
+                    <th scope="rowgroup" colspan="6">
+                      <a href={`/services/${phase.pillar}/`} class="method-matrix-phase-name">
+                        <span class="method-matrix-phase-icon" aria-hidden="true"><Icon name={phase.pillar} /></span>
+                        <span>{phase.name}</span>
+                      </a>
+                      <a href={`/services/${phase.pillar}/`} class="btn-text method-matrix-phase-gloss">
+                        <span class="link-label">{phase.gloss}</span> <span class="ar">&rsaquo;</span>
+                      </a>
+                    </th>
+                  </tr>
+                  {phase.rows.map((row) => (
+                    <tr class="method-matrix-usecase-row">
+                      <th scope="row" class="method-matrix-usecase">{row.useCase}</th>
+                      {methods.map((method) => {
+                        const fit = getFit(row, method.key);
+                        const label = fitLabels[fit];
+                        return (
+                          <td class={`method-matrix-cell is-${fit}`} title={`${method.name}: ${label}`}>
+                            <span class={`method-matrix-dot is-${fit}`} aria-hidden="true">
+                              {fit === "lead" && (
+                                <svg viewBox="0 0 24 24" fill="none">
+                                  <path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                              )}
+                            </span>
+                            <span class="method-hub-sr-only">{method.name}: {label} for {row.useCase}</span>
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  ))}
+                </>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="method-matrix-legend" aria-label="Legend">
+          <span><span class="method-matrix-dot is-lead" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>Lead method</span>
+          <span><span class="method-matrix-dot is-supporting" aria-hidden="true"></span>Supporting</span>
+          <span><span class="method-matrix-dot is-minimal" aria-hidden="true"></span>Minimal</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-section beige method-hub-framing service-reveal">
+      <div class="service-inner">
+        <div class="service-head">
+          <div class="eyebrow">HOW THEY FIT</div>
+          <h2 class="service-title">Run them as one engagement, not five separate tools.</h2>
+        </div>
+        <p>These methods are not standalone tools. We sequence them across an engagement, from first problem to embedded result. See how they come together in <a href="/how-we-work/">How We Work</a>, or where each one applies on <a href="/services/">the service pillars</a>.</p>
+      </div>
+    </section>
+
+    <section class="ow-section white method-hub-cta ow-reveal">
+      <div class="ow-inner ow-cta-grid">
+        <div class="ow-cta-copy">
+          <div class="eyebrow">WORK WITH US</div>
+          <h2>Bring us a problem that looks like this.</h2>
+          <p>Tell us where the work is getting stuck. We will tell you straight which method fits, and whether we are the right firm for it.</p>
+          <a href="/contact/" class="btn-primary">Get in touch</a>
+        </div>
+        <div class="ow-cta-art" aria-hidden="true">
+          <span><Icon name="hero-motif" /></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ow-section beige ow-lmi ow-reveal">
+      <div class="ow-inner">
+        <div class="eyebrow">TRAINING</div>
+        <h2 class="ow-lmi-title">We apply these methods. Lean Methods Institute teaches them.</h2>
+        <p class="ow-lmi-copy">We run our own operation on these five methods, and we apply them on your problems. Our training division, Lean Methods Institute, teaches them to your people and certifies the capability.</p>
+        <a href="https://leanmethods.com.au" class="ow-lmi-logo-link" aria-label="Lean Methods Institute">
+          <img src={lmiLogo.src} class="ow-lmi-logo-img" alt="Lean Methods Institute" loading="lazy" />
+        </a>
+        <a href="https://leanmethods.com.au" class="btn-text"><span class="link-label">Explore training at Lean Methods Institute</span> <span class="ar">&rsaquo;</span></a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  function initialiseMethodHubReveals() {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const sections = Array.from(document.querySelectorAll(".service-reveal, .ow-reveal"));
+    if (reduceMotion || !("IntersectionObserver" in window)) return;
+    document.documentElement.classList.add("service-reveal-enabled");
+    document.documentElement.classList.add("ow-reveal-enabled");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.16 });
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  initialiseMethodHubReveals();
+</script>
