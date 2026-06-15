@@ -100,7 +100,38 @@
 
       <a href="/our-work/" class="nav-link">Our Work</a>
       <a href="/insights/" class="nav-link">Insights</a>
-      <a href="/resources/" class="nav-link">Resources</a>
+
+      <!-- Resources dropdown -->
+      <div class="nav-item has-dropdown" data-dropdown>
+        <div class="nav-item-row">
+          <a href="/resources/" class="nav-link">Resources</a>
+          <button class="nav-chevron-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Toggle Resources submenu">
+            <span class="nav-chevron" aria-hidden="true">&#8964;</span>
+          </button>
+        </div>
+        <ul class="nav-dropdown" role="menu">
+          <li role="none">
+            <a href="/resources/#methods" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-label">Method guides</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="/resources/#guides" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-label">Guides and frameworks</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="/resources/#tools" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-label">Tools and assessments</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="/resources/#templates" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-label">Templates and checklists</span>
+            </a>
+          </li>
+        </ul>
+      </div>
 
       <!-- About dropdown -->
       <div class="nav-item has-dropdown" data-dropdown>
@@ -114,11 +145,6 @@
           <li role="none">
             <a href="/how-we-work/" role="menuitem" class="nav-dropdown-item">
               <span class="nav-dropdown-label">How We Work</span>
-            </a>
-          </li>
-          <li role="none">
-            <a href="/methods/" role="menuitem" class="nav-dropdown-item">
-              <span class="nav-dropdown-label">Methods we apply</span>
             </a>
           </li>
           <li role="none">
