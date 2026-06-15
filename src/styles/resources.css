@@ -5,8 +5,11 @@
 .res-inner{max-width:var(--max);margin:0 auto;}
 
 /* Line-art glyphs ship literal strokes (~2.8 on a 64 viewBox); thin them when scaled up for hero/section art. */
-.res-hero-art,.res-more-art,.res-ld-hero-art,.res-ld-close-art{display:flex;align-items:center;justify-content:flex-end;}
-.res-hero-art span,.res-more-art span,.res-ld-hero-art span,.res-ld-close-art span{display:block;height:auto;transform:translateX(2vw);}
+.res-hero-art,.res-more-art,.res-ld-hero-art,.res-ld-close-art{display:flex;align-items:center;}
+.res-hero-art,.res-ld-hero-art{justify-content:center;}
+.res-more-art,.res-ld-close-art{justify-content:flex-end;}
+.res-hero-art span,.res-more-art span,.res-ld-hero-art span,.res-ld-close-art span{display:block;height:auto;}
+.res-more-art span,.res-ld-close-art span{transform:translateX(2vw);}
 .res-hero-art svg,.res-ld-hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}
 .res-more-art svg,.res-ld-close-art svg{display:block;width:min(170px,22vw);height:auto;overflow:visible;}
 .res-hero-art svg [stroke]:not([stroke="none"]),
@@ -276,9 +279,9 @@
 }
 @media(max-width:960px){
   .res-hero-inner,.res-ld-hero-inner{grid-template-columns:1fr;gap:36px;}
-  .res-hero-art,.res-ld-hero-art{justify-content:flex-start;}
+  .res-hero-art,.res-ld-hero-art{justify-content:center;}
   .res-hero-art span,.res-ld-hero-art span{transform:none;}
-  .res-hero-art svg,.res-ld-hero-art svg{width:min(190px,42vw);}
+  .res-hero-art svg,.res-ld-hero-art svg{width:var(--hero-art-w);}
   .res-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   .res-more-grid,.res-ld-close-grid{grid-template-columns:1fr;gap:32px;}
   .res-more-art,.res-ld-close-art{justify-content:flex-start;}
