@@ -1,14 +1,15 @@
 /* .hd / .hd-acc / .hd-f1..f3 stroke classes moved to base.css (EQT-251): the icon library is shared site-wide. */
 
-.hero{padding:124px 56px 112px;background:#fff;}
+.hero{padding:72px 56px 64px;background:#fff;}
 .hero-inner{
   max-width:var(--wide);
   margin:0 auto;
   display:grid;
-  grid-template-columns:minmax(0,1.02fr) minmax(380px,0.98fr);
+  grid-template-columns:minmax(0,1fr);
   gap:36px;
   align-items:start;
 }
+.hero-inner > *{min-width:0;}
 .hero .eyebrow{margin-bottom:32px;}
 .hero h1{
   max-width:720px;
@@ -26,9 +27,6 @@
   line-height:1.4;
 }
 .hero-actions{display:flex;flex-wrap:wrap;gap:24px;align-items:center;}
-.hero-art{display:flex;justify-content:flex-end;align-items:center;align-self:center;}
-.hero-art svg{width:min(540px,48vw);height:auto;overflow:visible;}
-
 .section{padding:130px 56px;}
 .section.white{background:#fff;}
 .section.beige{background:var(--off-white);}
@@ -365,8 +363,6 @@
 @media(max-width:1120px){
   .hero,.section{padding-left:36px;padding-right:36px;}
   .hero-inner,.training-inner{grid-template-columns:1fr;gap:48px;}
-  .hero-art{justify-content:flex-start;}
-  .hero-art svg{width:min(100%,420px);}
   .flagship{grid-template-columns:1fr;}
   .flagship.is-expanded{padding-left:0;}
   .flagship-media{padding:0 56px 56px;justify-content:flex-start;}
@@ -377,8 +373,9 @@
 @media(max-width:760px){
   p,.section-intro,.statement-row p,.svc-body p,.ind-row p,.case-block p:not(.case-label),.cta-light p{font-size:20px;}
   .hero{padding:72px 26px 76px;}
-  .hero h1{font-size:40px;}
-  .hero-subhead{font-size:20px;}
+  .hero-content{width:calc(100vw - 52px);max-width:100%;}
+  .hero h1{width:calc(100vw - 52px);max-width:calc(100vw - 52px);font-size:36px;overflow-wrap:anywhere;}
+  .hero-subhead{width:calc(100vw - 52px);max-width:calc(100vw - 52px);font-size:20px;overflow-wrap:anywhere;}
   .section{padding:86px 26px;}
   .statement-row,.svc-row,.ind-row,.case,.logo-strip{grid-template-columns:1fr;gap:18px;}
   .statement-row{padding:34px 0;}

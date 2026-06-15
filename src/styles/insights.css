@@ -1,9 +1,11 @@
 /* Insights (blog) index + post template (EQT-258). v6x. References tokens.css; does not redefine tokens. */
 
 /* ---- Shared line-art motif (interim DocReport glyph, fine-lined for hero scale) ---- */
-.ins-hero-art,.ins-post-hero-art,.ins-close-art{display:flex;align-items:center;justify-content:flex-end;}
-.ins-hero-art span,.ins-post-hero-art span{display:block;height:auto;transform:translateX(2vw);}
-.ins-hero-art svg,.ins-post-hero-art svg{display:block;width:min(200px,22vw);height:auto;overflow:visible;}
+.ins-hero-art,.ins-post-hero-art,.ins-close-art{display:flex;align-items:center;}
+.ins-hero-art,.ins-post-hero-art{justify-content:center;}
+.ins-close-art{justify-content:flex-end;}
+.ins-hero-art span,.ins-post-hero-art span{display:block;height:auto;}
+.ins-hero-art svg,.ins-post-hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}
 .ins-close-art svg{display:block;width:min(180px,22vw);height:auto;overflow:visible;}
 /* DocReport ships literal strokes at 2.8 on a 64 viewBox; thin them down when scaled up. */
 .ins-hero-art svg [stroke]:not([stroke="none"]),
@@ -276,9 +278,9 @@
 }
 @media(max-width:960px){
   .ins-hero-inner,.ins-post-hero-inner{grid-template-columns:1fr;gap:36px;}
-  .ins-hero-art,.ins-post-hero-art{justify-content:flex-start;}
+  .ins-hero-art,.ins-post-hero-art{justify-content:center;}
   .ins-hero-art span,.ins-post-hero-art span{transform:none;}
-  .ins-hero-art svg,.ins-post-hero-art svg{width:min(180px,42vw);}
+  .ins-hero-art svg,.ins-post-hero-art svg{width:var(--hero-art-w);}
   .ins-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   .ins-close-grid{grid-template-columns:1fr;gap:32px;}
   .ins-close-art{justify-content:flex-start;}

@@ -12,4 +12,5 @@
   --max:1180px;
   --wide:1320px;
   --link-gap:22px;
+  --hero-art-w:min(210px,22vw);
 }

@@ -12,10 +12,13 @@
   gap:36px;
   align-items:start;
 }
+.about-hero-inner > *{min-width:0;}
 .about-hero .eyebrow{margin-bottom:32px;}
 .about-hero h1{max-width:740px;margin:0 0 28px;font-size:clamp(40px,3.4vw,46px);font-weight:700;line-height:1.08;}
 .about-hero-subhead{max-width:600px;margin:0 0 40px;color:var(--near-black);font-size:22px;line-height:1.42;}
 .about-hero-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.about-hero.no-hero-art{padding:80px 56px 72px;}
+.about-hero.no-hero-art .about-hero-inner{grid-template-columns:minmax(0,1fr);}
 
 /* Hero art: the 520-viewBox hero-motif renders at its native weight (home parity). */
 .about-hero-art{display:flex;align-items:center;justify-content:flex-end;align-self:center;}
@@ -207,7 +210,9 @@
 @media(max-width:760px){
   .about-hero{padding:72px 26px 72px;}
   .about-section{padding:72px 26px;--about-gutter:26px;}
-  .about-hero h1{font-size:40px;}
+  .about-hero-content{width:calc(100vw - 52px);max-width:100%;}
+  .about-hero h1{width:calc(100vw - 52px);max-width:calc(100vw - 52px);font-size:40px;overflow-wrap:anywhere;}
+  .about-hero-subhead{width:calc(100vw - 52px);max-width:calc(100vw - 52px);overflow-wrap:anywhere;}
   .about-hero-subhead,.about-head p,.about-prose p,.about-row-body,.about-arc-step p,.about-col p,.about-cta p,.about-compare-item{font-size:20px;}
   .about-hero-actions{flex-direction:column;align-items:flex-start;}
   .about-arc-step{grid-template-columns:52px minmax(0,1fr);gap:24px;}
