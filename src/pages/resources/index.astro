@@ -220,4 +220,10 @@ const faqs = [
   chips.forEach((chip) => chip.addEventListener("click", () => {
     activateFilter((chip as HTMLElement).dataset.filter ?? "all");
   }));
+
+  // Handle hash changes when already on /resources/ (e.g. nav dropdown click)
+  window.addEventListener("hashchange", () => {
+    const hash = window.location.hash.replace("#", "");
+    activateFilter(validFilters.includes(hash) ? hash : "all");
+  });
 </script>
