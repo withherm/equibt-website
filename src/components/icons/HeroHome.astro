@@ -1,0 +1,6 @@
+---
+import handoff from "../../../prototypes/HERO_ICON_HANDOFF.json";
+
+const svg = handoff.components.find((entry) => entry.hero_name === "hero-home")?.svg ?? "";
+---
+<Fragment set:html={svg} />

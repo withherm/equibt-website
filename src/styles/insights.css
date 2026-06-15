@@ -1,14 +1,13 @@
 /* Insights (blog) index + post template (EQT-258). v6x. References tokens.css; does not redefine tokens. */
 
-/* ---- Shared line-art motif (interim DocReport glyph, fine-lined for hero scale) ---- */
+/* ---- Shared hero and line-art motif surfaces ---- */
 .ins-hero-art,.ins-post-hero-art,.ins-close-art{display:flex;align-items:center;}
 .ins-hero-art,.ins-post-hero-art{justify-content:center;}
 .ins-close-art{justify-content:flex-end;}
 .ins-hero-art span,.ins-post-hero-art span{display:block;height:auto;}
 .ins-hero-art svg,.ins-post-hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}
 .ins-close-art svg{display:block;width:min(180px,22vw);height:auto;overflow:visible;}
-/* DocReport ships literal strokes at 2.8 on a 64 viewBox; thin them down when scaled up. */
-.ins-hero-art svg [stroke]:not([stroke="none"]),
+/* DocReport ships literal strokes at 2.8 on a 64 viewBox; thin it down when scaled up. */
 .ins-post-hero-art svg [stroke]:not([stroke="none"]),
 .ins-close-art svg [stroke]:not([stroke="none"]){stroke-width:1.1;}
 
