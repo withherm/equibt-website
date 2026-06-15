@@ -287,6 +287,18 @@ This works because CSS `:hover` propagates through the DOM tree to absolutely-po
 
 **Insights filter chips live in `.ins-hero`, not `.ins-list`.** The chips were originally rendered at the top of the `.ins-list` section (inside `.ins-inner`). This put them below the hero section with a large section-gap between the hero heading and the filter row, requiring the user to scroll before filtering. Fix: move `.ins-filter` into `.ins-hero` (after `.ins-hero-inner`), wrapped in `.ins-inner` for max-width alignment. Hero bottom padding reduced 104px → 52px; list top padding reduced 64px → 48px. The chips now sit visually adjacent to the hero copy.
 
+### Resources nav dropdown + method cards on /resources/ (EQT-323, In Review PR #71)
+
+**Resources converted from flat link to dropdown.** The nav item `<a href="/resources/">Resources</a>` is now a `[data-dropdown]` div using the same `.nav-item has-dropdown` pattern as Services, Industries, and About. Four items: Method guides (`/resources/#methods`), Guides and frameworks (`/resources/#guides`), Tools and assessments (`/resources/#tools`), Templates and checklists (`/resources/#templates`). All links go to `/resources/` with a URL hash — no separate hub page.
+
+**"Methods we apply" removed from About dropdown.** `/methods/` is no longer in the nav. The individual method pages remain accessible via the method guide cards on `/resources/` and via direct URL. About retains: How We Work, Capability Statement, Engagement Model.
+
+**`/resources/` hub: Methods chip + hash preselection added.** New `Methods` chip inserted after `All` (order: All · Methods · Guides · Templates · Tools). Five method guide entries added to `src/data/resources.ts` with `tag: "METHOD GUIDE"` → category `"methods"`. Each card links to the existing `/methods/<slug>/` page (`landing: false`, `action: "view"`, `actionLabel: "Read guide"`). The `Network` glyph (Lean Service Design) was already in the Astro component folder and was added to the glyphs map.
+
+**Hash-aware filter JS.** `activateFilter(filterValue)` is now a named function. On page load, `window.location.hash` is read and the matching chip is activated. Chip clicks call `activateFilter` and update the hash via `history.replaceState` (no scroll jump, no full navigation). Valid hashes: `#methods`, `#guides`, `#templates`, `#tools`. Invalid/absent hash defaults to "all".
+
+**EQT-326 (Resources guide entry for /methods/) is resolved** by this issue. No new page was created — the `/resources/#methods` filter IS the entry point.
+
 ### Post-merge UI polishes (EQT-283 follow-up, shipped 2026-06-10)
 
 **Nav link hover colour = terracotta (commit 178b939).** Top-level `.nav-link:hover` and `.nav-link:focus` changed from navy to terracotta, matching the site's hover language for all other interactive elements. The chevron also transitions to terracotta on parent hover via `.nav-item:hover .nav-chevron{color:var(--terracotta);}`. The `color` property was added to the chevron's `transition` declaration alongside `transform`.
@@ -391,7 +403,7 @@ Section order: compact `.method-hero` -> the comparison grid (white) -> framing 
 - **Grading is authored and honest** (Cowork-owned copy, hard rule). One lead per row; supporting only where a method genuinely contributes; everything else minimal. The spread is the point: Lean Business Analysis is the connective method and leads most framing/scope/govern rows; Lean Six Sigma clusters in Solve and Govern; Lean Agile in Evolve and Scale; Lean Service Design leads only the two journey rows (it is the narrowest, honestly shown); Lean leads diagnosis and standard work.
 - **Accessibility, not colour-only.** Real table semantics (`th scope` on methods, use cases, and phase rowgroups); every cell carries a `title` plus a visually-hidden "Method: Level for use case" string; the dot is `aria-hidden`. The grid is a keyboard-focusable scroll region with a **sticky first column + horizontal scroll** below ~390px (method columns scroll, use-case labels stay), never collapsing or dropping columns.
 
-Took several Herman review rounds off the first (heavy) build: navy header band + black phase bands -> light; icon circles dropped; terracotta header underline removed (hard no); columns equalised and header rows aligned to remove the need for any dividers; minimal dot enlarged; Training/CTA swapped; "DMAICO" stripped from page copy; framing section given eyebrow `HOW THEY FIT` + title "Run them as one engagement, not five separate tools." The standalone sign-off mock is `Runtime/01_Projects/Active/EQT325_METHODS_HUB_GRID_MOCK.html` (vault). The Resources-hub entry point for the same page is queued as EQT-326.
+Took several Herman review rounds off the first (heavy) build: navy header band + black phase bands -> light; icon circles dropped; terracotta header underline removed (hard no); columns equalised and header rows aligned to remove the need for any dividers; minimal dot enlarged; Training/CTA swapped; "DMAICO" stripped from page copy; framing section given eyebrow `HOW THEY FIT` + title "Run them as one engagement, not five separate tools." The standalone sign-off mock is `Runtime/01_Projects/Active/EQT325_METHODS_HUB_GRID_MOCK.html` (vault). The Resources-hub entry point for the same page is delivered as part of EQT-323 (see nav section below).
 
 ## Process notes
 
