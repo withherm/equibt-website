@@ -220,4 +220,9 @@ const faqs = [
   chips.forEach((chip) => chip.addEventListener("click", () => {
     activateFilter((chip as HTMLElement).dataset.filter ?? "all");
   }));
+
+  window.addEventListener("hashchange", () => {
+    const h = window.location.hash.replace("#", "");
+    activateFilter(validFilters.includes(h) ? h : "all");
+  });
 </script>

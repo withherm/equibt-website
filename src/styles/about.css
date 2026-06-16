@@ -21,7 +21,7 @@
 .about-hero.no-hero-art .about-hero-inner{grid-template-columns:minmax(0,1fr);}
 
 /* Hero art: the 520-viewBox hero-motif renders at its native weight (home parity). */
-.about-hero-art{display:flex;align-items:center;justify-content:flex-end;align-self:center;}
+.about-hero-art{display:flex;align-items:center;justify-content:center;align-self:center;}
 .about-hero-art span{display:block;height:auto;}
 .about-hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}
 
