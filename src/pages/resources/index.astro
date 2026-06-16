@@ -220,4 +220,12 @@ const faqs = [
   chips.forEach((chip) => chip.addEventListener("click", () => {
     activateFilter((chip as HTMLElement).dataset.filter ?? "all");
   }));
+
+  // Re-filter when the hash changes (e.g. switching via the Resources nav dropdown
+  // while already on /resources/). replaceState in activateFilter does not fire
+  // hashchange, so there is no loop.
+  window.addEventListener("hashchange", () => {
+    const h = window.location.hash.replace("#", "");
+    activateFilter(validFilters.includes(h) ? h : "all");
+  });
 </script>

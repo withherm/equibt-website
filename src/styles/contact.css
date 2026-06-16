@@ -22,7 +22,7 @@
 .cx-hero-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
 
 /* Hero art: the 520-viewBox hero-motif renders at its native weight (home parity). */
-.cx-hero-art{display:flex;align-items:center;justify-content:flex-end;align-self:center;}
+.cx-hero-art{display:flex;align-items:center;justify-content:center;align-self:center;}
 .cx-hero-art span{display:block;height:auto;}
 .cx-hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}
 
