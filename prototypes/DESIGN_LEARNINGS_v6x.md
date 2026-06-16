@@ -396,3 +396,18 @@ Took several Herman review rounds off the first (heavy) build: navy header band 
 ## Process notes
 
 - Build runs via Codex on branch `eqt-245` (single canonical clone); Herman/Cowork review screenshots and the file directly. Codex's screenshot environment was blocked this session, and self-checks are not trusted for sign-off (past false passes). Six correction rounds (R1-R6) produced this set. Icon options and the Govern-tick exploration are recorded in `EQUIBT_V6X_ICON_OPTIONS.html`, `EQUIBT_V6X_GOVERN_TICK_OPTIONS.html`, `EQUIBT_V6X_GOVERN_FINAL.html` (Docs/EQUIBT).
+
+## Hero Forma icon set + Resources nav order (shipped 2026-06-16)
+
+Interim site-wide hero icons. Replaces the EQT-324 stripped / line-art hero art with one filled **Forma Regular** icon per hero. EQT-275 bespoke Affinity hero scenes still supersede this set; this is the deploy-now interim.
+
+- **Ten hero icons,** navy glyph (`var(--navy)`) + a single terracotta accent (`var(--terracotta)`). Forma Regular catalogue names: home = Plant, services hub = Honeycombs, industries hub = Categorize, our-work hub = Positive Dynamic, insights = Lighthouse, about = Biotech (DNA), how-we-work = Handshake Heart, capability statement = Leadership, engagement model = Module, contact = Chat.
+- **Source + components.** The SVGs live in `prototypes/HERO_ICON_HANDOFF.json`. Each `src/components/icons/Hero*.astro` is a **thin wrapper** that reads its entry from that JSON and renders it with `<Fragment set:html={svg} />`. Registered in `Icon.astro` as `hero-<slot>` (`hero-home`, `hero-service-hub`, etc.). `HeroMotif.astro` stays in the codebase, unused.
+- **Filled, not stroked (HARD constraint).** Forma icons are fill paths (no strokes). The thin-line / thin-accent-stroke hero look is **not achievable** on them in CSS, and the Forma Thin weight would be a separate throwaway export. Do not attempt it; the thin-line hero aesthetic is EQT-275's bespoke scenes.
+- **Size token.** `--hero-art-w: min(240px,26vw)` in `tokens.css` (scaled up from the EQT-324 `min(210px,22vw)`); every hero icon references the token, never a literal.
+- **Centred.** All hero art columns are `justify-content:center`, including `.about-hero-art` (Home/About/How We Work) and `.cx-hero-art` (Capability/Contact), which EQT-324 had left `flex-end` because those heroes carried no art at the time. CTA-band art (`.about-cta-art`, `.cx-cta-art`, `.ow-cta-art`) stays right-aligned.
+- **Industries hub.** The four-icon 2x2 cluster is retired; a single `hero-industry-hub` (Categorize) sits in the standard art column.
+- **About DNA accent.** Biotech has no catalogue accent path, so the second helix rung is recoloured terracotta via a **clipped overlay**: a terracotta copy of the glyph clipped to `<rect x="145" y="95" width="240" height="30">` (viewBox 0 0 375 375). The clip clears the left strand so the bar reads as a clean rung. Verify clip renders in a real engine (cairosvg / browser); ImageMagick mis-renders clipPaths.
+- **Resources nav dropdown order** now matches the filter chips: Method guides, Guides and frameworks, Templates and checklists, Tools and assessments (templates before tools). Items deep-link to `/resources/#<filter>`. A `hashchange` listener re-applies the filter when the hash changes while already on `/resources/` (the on-load read + chip-click handlers did not cover same-page nav-dropdown switching).
+
+**Process lessons banked:** `git fetch && git pull` main before cutting any branch, a stale local main made the centring branch conflict (PR #74) and forced a clean redo. GitHub raw and Cloudflare both cache for minutes; confirm merges via `git pull` and live changes via hard-refresh, never an immediate raw fetch.

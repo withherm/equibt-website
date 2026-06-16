@@ -6,6 +6,8 @@ _SYNCED TO THE MERGED HOME (EQT-245/250/251) before the EQT-253 page conversions
 
 **Icon system (2026-06-13):** **Icons8 Forma Regular** (navy `#26245C` via `fill:currentColor`) covers pillar icons, sector icons, feature/difference card icons AND all functional/utility glyphs (chevrons, close, search, hamburger, social, arrows, form affordances). Only **hero motifs, brand marks and genuine illustration stay bespoke** hand-drawn line-art. See `DESIGN_LEARNINGS_v6x.md` ("Line-art and icons", STOCK-ICON SCOPE) and the catalogues in `Docs/LMI/ARTWORK/ICONS8_FORMA/` (`ICON_CATALOGUE.html`, `ICON_CATALOGUE_CORE.html`).
 
+**Hero icon update (2026-06-16):** hero motifs are now an interim **Forma Regular** layer as well, one filled icon per hero (navy glyph + a single terracotta accent), sized `var(--hero-art-w) = min(240px,26vw)`, centred in the hero art column. This is the deploy-now interim; the bespoke hand-drawn hero scenes remain EQT-275 and still supersede it. Forma is filled (no strokes), so the thin-line hero look is not achievable on it. Full set, per-page mapping, the JSON-wrapper component pattern and the Resources nav dropdown order fix are in `DESIGN_LEARNINGS_v6x.md` -> "Hero Forma icon set + Resources nav order".
+
 ## The governing principle
 
 v5x leans on one move for everything: filled background + drop shadow + rounded box + hover lift. That is what makes the site read boxy and templated. v6x replaces that default with **open editorial layout on hairlines**. A box must be *earned*: use a real bordered or filled card only for a genuinely bounded object (one dark feature card, an image, a data record). Everything else is content on whitespace, separated by 1px hairlines.
