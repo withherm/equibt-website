@@ -1,5 +1,6 @@
 ---
 import Footer from "../components/Footer.astro";
+import Icon from "../components/icons/Icon.astro";
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Roadmap from "../components/icons/glyphs/Roadmap.astro";
@@ -21,12 +22,15 @@ import "../styles/about.css";
   <Nav />
   <main>
     <!-- 1. HERO -->
-    <section class="about-hero no-hero-art about-reveal">
+    <section class="about-hero about-reveal">
       <div class="about-hero-inner">
         <div class="about-hero-content">
           <div class="eyebrow">ABOUT</div>
           <h1>We make operational improvement hold.</h1>
           <p class="about-hero-subhead">EQUIBT is an operational improvement advisory. We work with complex service organisations across Australia to build the capability, systems and governance that keep improvement in place after we leave.</p>
+        </div>
+        <div class="about-hero-art" aria-hidden="true">
+          <span><Icon name="hero-about" /></span>
         </div>
       </div>
     </section>

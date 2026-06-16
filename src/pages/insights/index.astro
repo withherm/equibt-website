@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Footer from "../../components/Footer.astro";
+import Icon from "../../components/icons/Icon.astro";
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import DocReport from "../../components/icons/glyphs/DocReport.astro";
@@ -33,8 +34,7 @@ const pillars = ["FRAME", "PLAN", "SOLVE", "EVOLVE", "GOVERN", "SCALE"] as const
           <p class="ins-hero-lede">Short, specific reads on diagnosing and fixing operations. Written for the people who run them.</p>
         </div>
         <div class="ins-hero-art" aria-hidden="true">
-          <!-- hero art: line-art document/field-notes motif, fine-line interim: bespoke Insights hero art swaps in here later (artwork-authority, EQT-274/275) -->
-          <span><DocReport /></span>
+          <span><Icon name="hero-insights" /></span>
         </div>
       </div>
       <div class="ins-inner">

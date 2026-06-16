@@ -1,8 +1,8 @@
 ---
 import Footer from "../components/Footer.astro";
+import Icon from "../components/icons/Icon.astro";
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
-import Dialogue from "../components/icons/glyphs/Dialogue.astro";
 import "../styles/contact.css";
 
 const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC 3000, Australia");
@@ -22,9 +22,8 @@ const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC
           <h1>Start with a 15-minute conversation.</h1>
           <p class="cx-hero-subhead">It is enough to tell you whether EQUIBT is the right fit for your operation. No obligation.</p>
         </div>
-        <div class="cx-hero-art glyph" aria-hidden="true">
-          <!-- hero art: firm motif at hero scale, fine-line interim — page hero scene swaps in here later (artwork-authority, EQT-274/275) -->
-          <Dialogue />
+        <div class="cx-hero-art" aria-hidden="true">
+          <span><Icon name="hero-contact" /></span>
         </div>
       </div>
     </section>

@@ -458,7 +458,7 @@
   text-anchor:middle;
 }
 .stt-ptr{stroke:var(--terracotta);stroke-width:2.3;stroke-linecap:round;fill:none;}
-.service-hub-hero .service-hero-inner{grid-template-columns:minmax(0,1fr);}
+.service-hub-hero .service-hero-inner{grid-template-columns:minmax(0,1.02fr) minmax(380px,.98fr);}
 /* R5: LMI capability-training handover band */
 /* R10: kill footer gap — match industries hub lmi-handover bottom spacing */
 .service-hub-lmi{padding-bottom:56px;}
@@ -473,6 +473,9 @@
   .service-hub-icon{width:110px;height:110px;}
   .service-hub-cta-grid{grid-template-columns:1fr;}
   .service-hub-cta-art{justify-self:start;width:min(220px,80vw);min-height:220px;}
+}
+@media(max-width:1120px){
+  .service-hub-hero .service-hero-inner{grid-template-columns:1fr;}
 }
 @media(max-width:760px){
   .service-hub-body p,.cta-light-hub p,.service-head-note,.service-hub-lmi-copy{font-size:20px;}
