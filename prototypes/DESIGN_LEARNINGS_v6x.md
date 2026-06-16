@@ -357,6 +357,14 @@ This refines the EQT-285 "no primary CTA in hero" lock for interactive tools: th
 
 **Text contrast (older-exec audience).** Use the dark tokens, not washed-out greys: body/action text `var(--mid-grey)` `#2B2B2B`, secondary (scores, captions, italic context) `var(--caption)` `#5A5A5A`. Avoid `#999`/`#aaa` for any content text. Sizes were lifted a step (action 16px, context/score 14px, dimension labels 12px). The redundant lower-case status word under each bar was removed — the coloured pill carries the band name once.
 
+### Interactive resource tools — document builders (EQT-328, shipped 2026-06-17)
+
+The Project Charter tool at `/resources/project-charter/` reuses the assessment shell as a non-scored builder: Astro static page, vanilla JS state, no server, no email gate, nothing stored. It keeps the same intro-to-tool pattern, compact stepper, Back/Next navigation, and print/PDF output, but assembles a document instead of calculating a score. This is the shared builder shell for future document tools, including EQT-329.
+
+**Builder form chrome.** Use the v6x hairline field system, not raw browser form styling: 1px hairline border, no fill, terracotta focus ring, Montserrat uppercase field labels, Lora input/textarea text, full-width fields, generous vertical spacing, and textareas with a comfortable min-height. Repeatable sections can show the permitted rows up front when that avoids extra button microcopy.
+
+**Builder review output.** The review step is a clean document preview, not a live two-column form preview. Omit blank sections entirely, preserve the authored section order, and print the assembled document with the EQUIBT wordmark, Montserrat headings, Lora body, dark print greys, and the fixed footer line.
+
 ### Method explainer pages (EQT-322, archetype locked 2026-06-13)
 
 New page type. Routes `/methods/<slug>/` for the five named methods (Lean Business Analysis, Lean, Lean Six Sigma, Lean Service Design, Lean Agile). **No nav item, no `/methods/` index.** Reached only contextually: the service-pillar "Methods we use here" line (links into `/methods/<slug>/`) and the How We Work methods list. Subordinate to DMAICO, **application angle** (how EQUIBT applies the method and what a client gets), never curriculum (LMI teaches). Component `src/components/MethodPage.astro`, fed a typed `data` object per thin route, mirrors `ServicePage.astro`. Method-specific CSS scoped under `.method-*`; hero/CTA/LMI reuse existing patterns, do not reinvent.

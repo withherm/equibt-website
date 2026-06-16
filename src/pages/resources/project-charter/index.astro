@@ -1,0 +1,465 @@
+---
+import Footer from "../../../components/Footer.astro";
+import Layout from "../../../layouts/Layout.astro";
+import Nav from "../../../components/Nav.astro";
+import DocReport from "../../../components/icons/glyphs/DocReport.astro";
+import "../../../styles/resources.css";
+---
+
+<Layout
+  title="Project Charter | EQUIBT Resources"
+  description="A sharp charter aligns the sponsor, the problem and the scope before work begins. Work through each step, then download a clean charter. Nothing is sent or stored."
+>
+  <Nav />
+  <main>
+    <section class="res-hero res-reveal" id="pc-hero">
+      <div class="res-hero-inner">
+        <div class="res-hero-copy">
+          <div class="res-crumb">
+            <a href="/resources/">Resources</a>
+            <span class="res-crumb-sep">&rsaquo;</span>
+            <span>Project Charter</span>
+          </div>
+          <div class="eyebrow">TEMPLATE</div>
+          <div id="pc-hero-body">
+            <h1>Charter the project before you start it.</h1>
+            <p class="res-hero-lede">A sharp charter aligns the sponsor, the problem and the scope before work begins. Work through each step, then download a clean charter. Nothing is sent or stored.</p>
+            <div class="res-hero-actions">
+              <button type="button" class="btn-primary" id="pc-start-btn">Start the charter</button>
+              <a href="/contact/" class="btn-text"><span class="link-label">Talk it through instead</span> <span class="ar">&rsaquo;</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="res-hero-art" id="pc-hero-art" aria-hidden="true">
+          <span><DocReport /></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="pc-tool res-reveal" id="project-charter-tool">
+      <div class="res-inner">
+        <div id="pc-form-view" hidden>
+          <div class="pc-section-head">
+            <div class="eyebrow" id="pc-section-label">STEP 1 OF 7</div>
+            <h2 id="pc-section-title">The basics</h2>
+          </div>
+          <nav class="pc-stepper" id="pc-stepper" aria-label="Project Charter steps">
+            <div class="pc-step is-active" data-step="0"><div class="pc-step-dot">1</div><span class="pc-step-label">The basics</span></div>
+            <div class="pc-step-line"></div>
+            <div class="pc-step" data-step="1"><div class="pc-step-dot">2</div><span class="pc-step-label">The problem</span></div>
+            <div class="pc-step-line"></div>
+            <div class="pc-step" data-step="2"><div class="pc-step-dot">3</div><span class="pc-step-label">The goal</span></div>
+            <div class="pc-step-line"></div>
+            <div class="pc-step" data-step="3"><div class="pc-step-dot">4</div><span class="pc-step-label">Scope</span></div>
+            <div class="pc-step-line"></div>
+            <div class="pc-step" data-step="4"><div class="pc-step-dot">5</div><span class="pc-step-label">The people</span></div>
+            <div class="pc-step-line"></div>
+            <div class="pc-step" data-step="5"><div class="pc-step-dot">6</div><span class="pc-step-label">The plan</span></div>
+            <div class="pc-step-line"></div>
+            <div class="pc-step" data-step="6"><div class="pc-step-dot">7</div><span class="pc-step-label">Review and download</span></div>
+          </nav>
+          <form id="pc-form" novalidate>
+            <div id="pc-fields"></div>
+            <div class="pc-nav">
+              <button type="button" class="btn-text" id="pc-prev"><span class="ar pc-back-ar">&rsaquo;</span> <span class="link-label">Back</span></button>
+              <button type="button" class="btn-primary" id="pc-next">Next</button>
+            </div>
+          </form>
+        </div>
+
+        <div id="pc-review-view" hidden>
+          <div class="pc-section-head">
+            <div class="eyebrow">STEP 7 OF 7</div>
+            <h2>Review and download</h2>
+          </div>
+          <div class="pc-review-actions">
+            <button type="button" class="btn-primary" id="pc-download-btn">Download charter</button>
+            <button type="button" class="btn-text" id="pc-back-edit-btn"><span class="link-label">Back to edit</span></button>
+          </div>
+          <article class="pc-doc" id="pc-doc" aria-live="polite"></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="res-ld-close res-reveal">
+      <div class="res-inner">
+        <div class="res-ld-close-grid">
+          <div class="res-ld-close-copy">
+            <div class="eyebrow">WORK WITH US</div>
+            <h2>Rather have us run it with you?</h2>
+            <p>These tools do real work on their own. If you would rather describe the problem to someone, get in touch.</p>
+            <a href="/contact/" class="btn-primary">Get in touch</a>
+          </div>
+          <div class="res-ld-close-art" aria-hidden="true">
+            <span><DocReport /></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style is:global>
+.pc-tool{padding:72px 56px 88px;background:#F5F3EE;}
+.res-ld-close.res-reveal{background:#fff;}
+.pc-section-head{margin-bottom:28px;}
+.pc-section-head .eyebrow{margin-bottom:12px;}
+.pc-section-head h2{font-size:clamp(26px,2.6vw,34px);font-weight:700;margin:0;color:var(--navy);}
+
+.pc-stepper{display:flex;align-items:flex-start;margin:0 0 34px;}
+.pc-step{display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0;min-width:48px;}
+.pc-step-dot{width:24px;height:24px;border-radius:50%;border:2px solid #d4d0c8;background:#fff;display:flex;align-items:center;justify-content:center;font-family:"Montserrat",Arial,sans-serif;font-size:9px;font-weight:700;color:#777;transition:all .2s;line-height:1;}
+.pc-step.is-active .pc-step-dot{background:#C15F3C;border-color:#C15F3C;color:#fff;}
+.pc-step.is-done .pc-step-dot{background:#26245C;border-color:#26245C;color:#fff;}
+.pc-step-label{font-family:"Montserrat",Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:.06em;color:#777;text-transform:uppercase;text-align:center;white-space:nowrap;}
+.pc-step.is-active .pc-step-label{color:#C15F3C;}
+.pc-step.is-done .pc-step-label{color:#26245C;}
+.pc-step-line{flex:1;height:2px;background:#d4d0c8;margin:11px 2px 0;transition:background .2s;min-width:12px;}
+.pc-step-line.is-done{background:#26245C;}
+
+.pc-panel{background:#fff;border:1px solid var(--hairline);border-radius:16px;padding:34px 36px;}
+.pc-field-grid{display:grid;gap:28px;}
+.pc-field{display:grid;gap:10px;}
+.pc-label,.pc-table-label{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);}
+.pc-prompt{margin:0;color:var(--caption);font-size:16px;line-height:1.42;}
+.pc-input,.pc-textarea{
+  width:100%;box-sizing:border-box;
+  background:transparent;border:1px solid var(--hairline);border-radius:8px;
+  padding:15px 16px;
+  font-family:"Lora",Georgia,serif;font-size:20px;font-weight:500;line-height:1.45;color:var(--near-black);
+  outline:none;transition:border-color .15s,box-shadow .15s;resize:vertical;
+}
+.pc-input:focus,.pc-textarea:focus{border-color:#C15F3C;box-shadow:0 0 0 3px rgba(193,95,60,.16);}
+.pc-textarea{min-height:138px;}
+.pc-repeat{display:grid;gap:18px;}
+.pc-repeat-row{display:grid;gap:14px;padding:20px;border:1px solid var(--hairline);border-radius:12px;background:#fff;}
+.pc-measure-row{grid-template-columns:repeat(3,minmax(0,1fr));}
+.pc-phase-row{grid-template-columns:repeat(2,minmax(0,1fr));}
+.pc-repeat-cell{display:grid;gap:8px;}
+.pc-table-label{font-size:10px;color:var(--caption);}
+.pc-nav{display:flex;align-items:center;gap:24px;margin-top:28px;}
+.pc-nav button.btn-primary,.pc-review-actions button.btn-primary{border:none!important;-webkit-appearance:none!important;appearance:none!important;box-shadow:none!important;transform:none!important;}
+.pc-nav button.btn-primary:hover,.pc-review-actions button.btn-primary:hover{border:none!important;box-shadow:none!important;transform:none!important;background:#2f2d6e;}
+.pc-nav button.btn-text,.pc-review-actions button.btn-text{border:none;background:transparent;cursor:pointer;padding:0;}
+.pc-back-ar{transform:rotate(180deg);}
+
+.pc-review-actions{display:flex;align-items:center;gap:24px;margin:0 0 28px;}
+.pc-doc{background:#fff;border:1px solid var(--hairline);border-radius:16px;padding:44px 50px;color:#161616;}
+.pc-doc-logo{display:flex;justify-content:flex-end;margin-bottom:22px;}
+.pc-doc-logo svg{height:28px;width:auto;display:block;}
+.pc-doc h1{margin:0 0 6px;color:var(--navy);font-size:32px;line-height:1.12;}
+.pc-doc-project{margin:0 0 26px;color:var(--mid-grey);font-size:22px;line-height:1.35;}
+.pc-doc-section{padding:20px 0;border-top:1px solid var(--hairline);break-inside:avoid;}
+.pc-doc-section h2{margin:0 0 10px;color:var(--navy);font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.pc-doc-section p{margin:0;color:#161616;font-size:18px;line-height:1.55;white-space:pre-wrap;}
+.pc-doc-table{width:100%;border-collapse:collapse;margin-top:6px;font-size:16px;line-height:1.45;}
+.pc-doc-table th{font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);text-align:left;padding:0 12px 10px 0;border-bottom:1px solid var(--hairline);}
+.pc-doc-table td{padding:12px 12px 12px 0;border-bottom:1px solid rgba(38,36,92,.09);vertical-align:top;white-space:pre-wrap;}
+.pc-doc-footer{margin:28px 0 0;padding-top:14px;border-top:1px solid var(--hairline);font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#2a2a2a;}
+
+@media print{
+  nav,footer,.res-hero,.res-ld-close,.pc-section-head,.pc-stepper,.pc-review-actions,#pc-form-view{display:none!important;}
+  .pc-tool{padding:0;background:#fff;}
+  .res-inner{max-width:100%;}
+  #pc-review-view{display:block!important;}
+  .pc-doc{border:none;border-radius:0;padding:0;box-shadow:none;}
+  .pc-doc-section{border-top:1px solid #ccc;}
+  .pc-doc-table th{border-bottom:1px solid #bbb;}
+  .pc-doc-table td{border-bottom:1px solid #ddd;}
+  body{background:#fff;}
+}
+@media(max-width:900px){
+  .pc-tool{padding:48px 24px 64px;}
+  .pc-panel,.pc-doc{padding:28px 24px;}
+  .pc-step-label{display:none;}
+  .pc-measure-row,.pc-phase-row{grid-template-columns:1fr;}
+}
+@media(max-width:560px){
+  .pc-tool{padding-left:22px;padding-right:22px;}
+  .pc-panel,.pc-doc{padding:24px 20px;}
+  .pc-doc h1{font-size:28px;}
+  .pc-doc-project{font-size:20px;}
+  .pc-review-actions,.pc-nav{align-items:flex-start;flex-direction:column;}
+}
+</style>
+
+<script>
+const PRINT_LOGO = `<svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT"><g fill="#2C3E50"><path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/><path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/><path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/><path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/><path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/><path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/></g><path fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/></svg>`;
+
+const steps = [
+  {
+    title: "The basics",
+    fields: [
+      { key: "projectName", label: "Project name", prompt: "What is the project called?", type: "input" },
+      { key: "organisation", label: "Organisation or team", prompt: "Whose operation is this?", type: "input" },
+      { key: "sponsor", label: "Sponsor", prompt: "Who owns the outcome and clears the path?", type: "input" },
+      { key: "preparedBy", label: "Prepared by (optional)", prompt: "Your name.", type: "input" },
+    ],
+  },
+  {
+    title: "The problem",
+    fields: [
+      { key: "problem", label: "Problem statement", prompt: "What is happening, where, and why it matters. Describe the problem, not the solution.", type: "textarea" },
+      { key: "evidence", label: "Evidence", prompt: "What tells you this is real: data, symptoms, or observations.", type: "textarea" },
+      { key: "cost", label: "Cost of doing nothing", prompt: "What this problem costs if it is left alone.", type: "textarea" },
+    ],
+  },
+  {
+    title: "The goal",
+    fields: [
+      { key: "objective", label: "Objective", prompt: "What success looks like, in one sentence. Make it measurable.", type: "textarea" },
+      { key: "measures", kind: "measures" },
+    ],
+  },
+  {
+    title: "Scope",
+    fields: [
+      { key: "inScope", label: "In scope", prompt: "What this project covers: processes, teams, sites, time periods.", type: "textarea" },
+      { key: "outOfScope", label: "Out of scope", prompt: "What it deliberately does not cover. Boundaries protect the work.", type: "textarea" },
+      { key: "constraints", label: "Constraints and assumptions", prompt: "What you must work within, and what you are taking as given.", type: "textarea" },
+    ],
+  },
+  {
+    title: "The people",
+    fields: [
+      { key: "processOwner", label: "Process owner", prompt: "Who owns the process day to day.", type: "input" },
+      { key: "coreTeam", label: "Core team", prompt: "Who does the work.", type: "textarea" },
+      { key: "stakeholders", label: "Stakeholders", prompt: "Who is affected or must be kept informed.", type: "textarea" },
+    ],
+  },
+  {
+    title: "The plan",
+    fields: [
+      { key: "phases", kind: "phases" },
+      { key: "risks", label: "Key risks", prompt: "What could derail this, and how you will watch for it.", type: "textarea" },
+    ],
+  },
+];
+
+const state = {
+  projectName: "",
+  organisation: "",
+  sponsor: "",
+  preparedBy: "",
+  problem: "",
+  evidence: "",
+  cost: "",
+  objective: "",
+  inScope: "",
+  outOfScope: "",
+  constraints: "",
+  processOwner: "",
+  coreTeam: "",
+  stakeholders: "",
+  risks: "",
+  measures: Array.from({ length: 3 }, () => ({ measure: "", baseline: "", target: "" })),
+  phases: Array.from({ length: 5 }, () => ({ phase: "", timing: "" })),
+};
+
+let currentStep = 0;
+
+function escHtml(value) {
+  return String(value || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function valueOf(key) {
+  return String(state[key] || "").trim();
+}
+
+function updateStepper(idx) {
+  document.querySelectorAll(".pc-step").forEach((el, i) => {
+    el.classList.remove("is-active", "is-done");
+    if (i === idx) el.classList.add("is-active");
+    else if (i < idx) el.classList.add("is-done");
+  });
+  document.querySelectorAll(".pc-step-line").forEach((el, i) => {
+    el.classList.toggle("is-done", i < idx);
+  });
+}
+
+function fieldMarkup(field) {
+  const id = `pc-${field.key}`;
+  const promptId = `${id}-prompt`;
+  const input = field.type === "textarea"
+    ? `<textarea class="pc-textarea" id="${id}" name="${field.key}" aria-describedby="${promptId}">${escHtml(state[field.key])}</textarea>`
+    : `<input class="pc-input" type="text" id="${id}" name="${field.key}" value="${escHtml(state[field.key])}" aria-describedby="${promptId}" />`;
+  return `<div class="pc-field">
+    <label class="pc-label" for="${id}">${field.label}</label>
+    <p class="pc-prompt" id="${promptId}">${field.prompt}</p>
+    ${input}
+  </div>`;
+}
+
+function measuresMarkup() {
+  return `<div class="pc-repeat">${state.measures.map((row, idx) => `
+    <div class="pc-repeat-row pc-measure-row">
+      <div class="pc-repeat-cell">
+        <label class="pc-table-label" for="pc-measure-${idx}">Measure</label>
+        <p class="pc-prompt" id="pc-measure-${idx}-prompt">What you will move</p>
+        <input class="pc-input" type="text" id="pc-measure-${idx}" value="${escHtml(row.measure)}" data-repeat="measures" data-row="${idx}" data-field="measure" aria-describedby="pc-measure-${idx}-prompt" />
+      </div>
+      <div class="pc-repeat-cell">
+        <label class="pc-table-label" for="pc-baseline-${idx}">Baseline</label>
+        <p class="pc-prompt" id="pc-baseline-${idx}-prompt">Where it is today</p>
+        <input class="pc-input" type="text" id="pc-baseline-${idx}" value="${escHtml(row.baseline)}" data-repeat="measures" data-row="${idx}" data-field="baseline" aria-describedby="pc-baseline-${idx}-prompt" />
+      </div>
+      <div class="pc-repeat-cell">
+        <label class="pc-table-label" for="pc-target-${idx}">Target</label>
+        <p class="pc-prompt" id="pc-target-${idx}-prompt">Where it needs to be</p>
+        <input class="pc-input" type="text" id="pc-target-${idx}" value="${escHtml(row.target)}" data-repeat="measures" data-row="${idx}" data-field="target" aria-describedby="pc-target-${idx}-prompt" />
+      </div>
+    </div>
+  `).join("")}</div>`;
+}
+
+function phasesMarkup() {
+  return `<div class="pc-repeat">${state.phases.map((row, idx) => `
+    <div class="pc-repeat-row pc-phase-row">
+      <div class="pc-repeat-cell">
+        <label class="pc-table-label" for="pc-phase-${idx}">Phase</label>
+        <p class="pc-prompt" id="pc-phase-${idx}-prompt">The stage</p>
+        <input class="pc-input" type="text" id="pc-phase-${idx}" value="${escHtml(row.phase)}" data-repeat="phases" data-row="${idx}" data-field="phase" aria-describedby="pc-phase-${idx}-prompt" />
+      </div>
+      <div class="pc-repeat-cell">
+        <label class="pc-table-label" for="pc-timing-${idx}">Target timing</label>
+        <p class="pc-prompt" id="pc-timing-${idx}-prompt">When it lands</p>
+        <input class="pc-input" type="text" id="pc-timing-${idx}" value="${escHtml(row.timing)}" data-repeat="phases" data-row="${idx}" data-field="timing" aria-describedby="pc-timing-${idx}-prompt" />
+      </div>
+    </div>
+  `).join("")}</div>`;
+}
+
+function renderStep(idx) {
+  const step = steps[idx];
+  currentStep = idx;
+  document.getElementById("pc-section-label").textContent = `STEP ${idx + 1} OF 7`;
+  document.getElementById("pc-section-title").textContent = step.title;
+  updateStepper(idx);
+  document.getElementById("pc-fields").innerHTML = `<div class="pc-panel"><div class="pc-field-grid">${
+    step.fields.map((field) => {
+      if (field.kind === "measures") return measuresMarkup();
+      if (field.kind === "phases") return phasesMarkup();
+      return fieldMarkup(field);
+    }).join("")
+  }</div></div>`;
+  document.getElementById("pc-prev").style.display = idx > 0 ? "inline-flex" : "none";
+  bindInputs();
+}
+
+function bindInputs() {
+  document.querySelectorAll("#pc-fields [name]").forEach((el) => {
+    el.addEventListener("input", () => {
+      state[el.name] = el.value;
+    });
+  });
+  document.querySelectorAll("#pc-fields [data-repeat]").forEach((el) => {
+    el.addEventListener("input", () => {
+      const group = el.dataset.repeat;
+      const row = Number(el.dataset.row);
+      const field = el.dataset.field;
+      state[group][row][field] = el.value;
+    });
+  });
+}
+
+function rowsWithValues(rows, keys) {
+  return rows
+    .map((row) => {
+      const clean = {};
+      keys.forEach((key) => { clean[key] = String(row[key] || "").trim(); });
+      return clean;
+    })
+    .filter((row) => keys.some((key) => row[key]));
+}
+
+function textSection(title, key) {
+  const value = valueOf(key);
+  if (!value) return "";
+  return `<section class="pc-doc-section"><h2>${title}</h2><p>${escHtml(value)}</p></section>`;
+}
+
+function tableSection(title, headers, rows) {
+  if (!rows.length) return "";
+  return `<section class="pc-doc-section"><h2>${title}</h2><table class="pc-doc-table"><thead><tr>${
+    headers.map((header) => `<th>${header.label}</th>`).join("")
+  }</tr></thead><tbody>${
+    rows.map((row) => `<tr>${headers.map((header) => `<td>${escHtml(row[header.key])}</td>`).join("")}</tr>`).join("")
+  }</tbody></table></section>`;
+}
+
+function renderCharter() {
+  const measures = rowsWithValues(state.measures, ["measure", "baseline", "target"]);
+  const phases = rowsWithValues(state.phases, ["phase", "timing"]);
+  const projectName = valueOf("projectName");
+  document.getElementById("pc-doc").innerHTML = `
+    <div class="pc-doc-logo">${PRINT_LOGO}</div>
+    <h1>Project Charter</h1>
+    ${projectName ? `<p class="pc-doc-project">${escHtml(projectName)}</p>` : ""}
+    ${textSection("Organisation", "organisation")}
+    ${textSection("Sponsor", "sponsor")}
+    ${textSection("Prepared by", "preparedBy")}
+    ${textSection("Problem statement", "problem")}
+    ${textSection("Evidence", "evidence")}
+    ${textSection("Cost of doing nothing", "cost")}
+    ${textSection("Objective", "objective")}
+    ${tableSection("Measures", [
+      { label: "Measure", key: "measure" },
+      { label: "Baseline", key: "baseline" },
+      { label: "Target", key: "target" },
+    ], measures)}
+    ${textSection("In scope", "inScope")}
+    ${textSection("Out of scope", "outOfScope")}
+    ${textSection("Constraints and assumptions", "constraints")}
+    ${textSection("Process owner", "processOwner")}
+    ${textSection("Core team", "coreTeam")}
+    ${textSection("Stakeholders", "stakeholders")}
+    ${tableSection("Phases", [
+      { label: "Phase", key: "phase" },
+      { label: "Target timing", key: "timing" },
+    ], phases)}
+    ${textSection("Key risks", "risks")}
+    <p class="pc-doc-footer">Drafted with the EQUIBT Project Charter tool · www.equibt.com</p>
+  `;
+}
+
+function showReview() {
+  renderCharter();
+  document.getElementById("pc-form-view").hidden = true;
+  document.getElementById("pc-review-view").hidden = false;
+  updateStepper(6);
+  document.getElementById("project-charter-tool").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function showForm(idx) {
+  document.getElementById("pc-review-view").hidden = true;
+  document.getElementById("pc-form-view").hidden = false;
+  renderStep(idx);
+  document.getElementById("project-charter-tool").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function startCharter() {
+  document.getElementById("pc-hero").classList.add("is-compact");
+  document.getElementById("pc-hero-body").innerHTML = `<h1>Project Charter</h1>`;
+  document.getElementById("pc-hero-art").innerHTML = "";
+  showForm(0);
+}
+
+document.getElementById("pc-start-btn").addEventListener("click", startCharter);
+document.getElementById("pc-next").addEventListener("click", () => {
+  if (currentStep === steps.length - 1) showReview();
+  else showForm(currentStep + 1);
+});
+document.getElementById("pc-prev").addEventListener("click", () => {
+  showForm(Math.max(0, currentStep - 1));
+});
+document.getElementById("pc-back-edit-btn").addEventListener("click", () => {
+  showForm(steps.length - 1);
+});
+document.getElementById("pc-download-btn").addEventListener("click", () => {
+  renderCharter();
+  window.print();
+});
+
+renderStep(0);
+</script>
