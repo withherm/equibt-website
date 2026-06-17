@@ -359,11 +359,13 @@ This refines the EQT-285 "no primary CTA in hero" lock for interactive tools: th
 
 ### Interactive resource tools — document builders (EQT-328, shipped 2026-06-17)
 
-The Project Charter tool at `/resources/project-charter/` reuses the assessment shell as a non-scored builder: Astro static page, vanilla JS state, no server, no email gate, nothing stored. It keeps the same intro-to-tool pattern, compact stepper, Back/Next navigation, and print/PDF output, but assembles a document instead of calculating a score. This is the shared builder shell for future document tools, including EQT-329.
+The Improvement Project Canvas at `/resources/improvement-project-canvas/` reuses the assessment shell as a non-scored builder: Astro static page, vanilla JS state, no server, no email gate, nothing stored. It keeps the same intro-to-tool pattern, compact stepper, Back/Next navigation, review step, and print/PDF output, but assembles a one-page canvas instead of calculating a score.
 
-**Builder form chrome.** Use the v6x hairline field system, not raw browser form styling: 1px hairline border, no fill, terracotta focus ring, Montserrat uppercase field labels, Lora input/textarea text, full-width fields, generous vertical spacing, and textareas with a comfortable min-height. Repeatable sections can show the permitted rows up front when that avoids extra button microcopy.
+**Builder form chrome.** Use the v6x hairline field system, not raw browser form styling: solid white fields on the beige tool ground, 1px hairline border, terracotta focus ring, Montserrat uppercase field labels, Lora input/textarea text, full-width fields, generous vertical spacing, and textareas with a comfortable min-height. Do not put the fields inside a white inner card; unfocused fields must still read clearly.
 
-**Builder review output.** The review step is a clean document preview, not a live two-column form preview. Omit blank sections entirely, preserve the authored section order, and print the assembled document with the EQUIBT wordmark, Montserrat headings, Lora body, dark print greys, and the fixed footer line.
+**Canvas review output.** The review step is a clean canvas preview. The output is a four-column grid: Why, What, Who & When, Where. Each column carries three fixed cells, and all twelve cells always render even when blank because the canvas is the framework. Use restrained v6x chrome: hairline cells with no fill, navy Montserrat uppercase cell headings, Lora near-black body text, and only a small muted accent per column, such as a thin colour rule above the column header. Do not use bright filled borders or coloured cell backgrounds.
+
+**Clean takeaway page.** The download action opens a chrome-free print page containing only the assembled canvas plus top actions. The print action uses `window.print()`, print CSS hides the actions, and the page sets `@page { size: A4 landscape }` so the four-column canvas prints cleanly. On screen the canvas stays four columns on desktop, then stacks to two columns and one column on narrow widths.
 
 ### Method explainer pages (EQT-322, archetype locked 2026-06-13)
 

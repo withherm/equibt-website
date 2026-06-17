@@ -237,15 +237,15 @@ export const resources: Resource[] = [
     },
   },
   {
-    slug: "project-charter",
+    slug: "improvement-project-canvas",
     tag: "TEMPLATE",
-    title: "Project Charter",
+    title: "Improvement Project Canvas",
     summary:
-      "A sharp charter aligns the sponsor, the problem and the scope before work begins. Work through each step, then download a clean charter. Nothing is sent or stored.",
+      "One page that aligns the why, the what, the who and the where before work begins. Work through each part, then download a clean canvas. Nothing is sent or stored.",
     glyph: "DocReport",
     action: "view",
-    href: "/resources/project-charter/",
-    actionLabel: "Start the charter",
+    href: "/resources/improvement-project-canvas/",
+    actionLabel: "Start the canvas",
     landing: false,
   },
 ];
