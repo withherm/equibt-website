@@ -333,19 +333,17 @@ function applicableGroups() {
   }).filter((phase) => phase.items.length);
 }
 
-function docItemMarkup(item) {
+function docRowMarkup(item) {
   const responsible = String(item.responsible || "").trim();
   const targetDate = String(item.targetDate || "").trim();
   const note = String(item.note || "").trim();
-  return `<li class="ipc-doc-item">
-    <p class="ipc-doc-text">${escHtml(item.text)}</p>
-    <div class="ipc-doc-meta">
-      <span>${item.completed ? "Completed" : "To do"}</span>
-      ${responsible ? `<span>Responsible: ${escHtml(responsible)}</span>` : ""}
-      ${targetDate ? `<span>Target completion date: ${escHtml(targetDate)}</span>` : ""}
-      ${note ? `<span>Note: ${escHtml(note)}</span>` : ""}
-    </div>
-  </li>`;
+  return `<tr>
+    <td class="ipc-doc-status">${item.completed ? "Completed" : "To do"}</td>
+    <td class="ipc-doc-action">${escHtml(item.text)}</td>
+    <td>${responsible ? escHtml(responsible) : ""}</td>
+    <td class="ipc-doc-date">${targetDate ? escHtml(targetDate) : ""}</td>
+    <td>${note ? escHtml(note) : ""}</td>
+  </tr>`;
 }
 
 function renderTakeaway() {
@@ -362,9 +360,20 @@ function renderTakeaway() {
     ${applicableGroups().map((group) => `
       <section class="ipc-doc-phase">
         <h2>${group.title}</h2>
-        <ul class="ipc-doc-list">
-          ${group.items.map(docItemMarkup).join("")}
-        </ul>
+        <table class="ipc-doc-table">
+          <thead>
+            <tr>
+              <th class="ipc-th-status">Status</th>
+              <th class="ipc-th-action">Action</th>
+              <th>Responsible</th>
+              <th>Target date</th>
+              <th>Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${group.items.map(docRowMarkup).join("")}
+          </tbody>
+        </table>
       </section>
     `).join("")}
     <p class="ipc-doc-footer">Completed with the EQUIBT Improvement Programme Checklist &middot; www.equibt.com</p>
@@ -381,12 +390,13 @@ function printPageHtml() {
 <title>Improvement Programme Checklist</title>
 <style>
 :root{--navy:#26245C;--hairline:rgba(38,36,92,.18);--near-black:#161616;--mid-grey:#2B2B2B;}
+@page{size:A4 landscape;margin:14mm;}
 *{box-sizing:border-box;}
 body{margin:0;background:#F5F3EE;color:#161616;font-family:"Lora",Georgia,serif;}
 .ipc-print-actions{display:flex;align-items:center;gap:24px;padding:24px 32px;background:#F5F3EE;}
 .btn-primary{display:inline-flex;align-items:center;justify-content:center;background:#26245C;color:#fff;border:0;border-radius:999px;padding:12px 20px;font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;}
 .btn-text{font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#26245C;text-decoration:none;}
-.ipc-print-shell{max-width:980px;margin:0 auto;padding:24px 32px 42px;}
+.ipc-print-shell{max-width:1180px;margin:0 auto;padding:24px 32px 42px;}
 .ipc-doc{background:#fff;border:1px solid var(--hairline);border-radius:8px;padding:32px;color:#161616;}
 .ipc-doc-logo{display:flex;justify-content:flex-end;margin-bottom:22px;}
 .ipc-doc-logo svg{height:28px;width:auto;display:block;}
@@ -394,13 +404,17 @@ body{margin:0;background:#F5F3EE;color:#161616;font-family:"Lora",Georgia,serif;
 .ipc-doc-head h1{margin:0;color:#26245C;font-family:"Montserrat",Arial,sans-serif;font-size:32px;line-height:1.12;}
 .ipc-doc-subhead{display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 0 0;padding:0;list-style:none;}
 .ipc-doc-subhead li{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#2a2a2a;}
-.ipc-doc-phase{break-inside:avoid;margin:28px 0 0;}
-.ipc-doc-phase h2{margin:0 0 16px;color:#26245C;font-family:"Montserrat",Arial,sans-serif;font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
-.ipc-doc-list{display:grid;gap:10px;margin:0;padding:0;list-style:none;}
-.ipc-doc-item{border-top:1px solid var(--hairline);padding-top:10px;}
-.ipc-doc-text{margin:0;color:#161616;font-size:17px;line-height:1.45;}
-.ipc-doc-meta{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:6px;}
-.ipc-doc-meta span{font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#2a2a2a;}
+.ipc-doc-phase{margin:28px 0 0;}
+.ipc-doc-phase h2{margin:0 0 12px;color:#26245C;font-family:"Montserrat",Arial,sans-serif;font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+.ipc-doc-table{width:100%;border-collapse:collapse;margin:0;table-layout:fixed;}
+.ipc-doc-table thead{display:table-header-group;}
+.ipc-doc-table tr{break-inside:avoid;}
+.ipc-doc-table th{text-align:left;font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#26245C;border-bottom:2px solid var(--hairline);padding:0 12px 8px 0;vertical-align:bottom;}
+.ipc-doc-table td{font-family:"Lora",Georgia,serif;font-size:14px;line-height:1.4;color:#161616;border-bottom:1px solid var(--hairline);padding:9px 12px 9px 0;vertical-align:top;overflow-wrap:break-word;}
+.ipc-th-status{width:90px;}
+.ipc-th-action{width:34%;}
+.ipc-doc-status{font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#2a2a2a;white-space:nowrap;}
+.ipc-doc-date{white-space:nowrap;}
 .ipc-doc-footer{margin:28px 0 0;padding-top:14px;border-top:1px solid var(--hairline);font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.04em;color:#2a2a2a;}
 @media(max-width:620px){.ipc-print-actions{padding:20px;align-items:flex-start;flex-direction:column;}.ipc-print-shell{padding:20px;}.ipc-doc{padding:22px 18px;}}
 @media print{
