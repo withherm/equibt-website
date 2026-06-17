@@ -237,28 +237,16 @@ export const resources: Resource[] = [
     },
   },
   {
-    slug: "consulting-brief-template",
+    slug: "improvement-project-canvas",
     tag: "TEMPLATE",
-    title: "Consulting Brief Template",
+    title: "Improvement Project Canvas",
     summary:
-      "A template for briefing external consultants. Covers problem statement, scope, success criteria, commercial expectations, and evaluation criteria.",
+      "One page that aligns the why, the what, the who and the where before work begins. Work through each part, then download a clean canvas. Nothing is sent or stored.",
     glyph: "DocReport",
     action: "view",
-    href: "/resources/consulting-brief-template/",
-    actionLabel: "Build your brief",
+    href: "/resources/improvement-project-canvas/",
+    actionLabel: "Start the canvas",
     landing: false,
-    lede:
-      "A sharp brief gets you a sharp engagement. This template forces the discipline that makes external work land, before you issue it.",
-    whatsInside: [
-      "Prompts for the problem statement, scope, and success criteria",
-      "Operating conditions and commercial expectations to set out up front",
-      "Evaluation criteria so you can compare responses on substance",
-    ],
-    related: {
-      kicker: "FRAME · DEFINE",
-      title: "Problem Framing",
-      href: "/services/frame/",
-    },
   },
 ];
 
