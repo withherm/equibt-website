@@ -3,7 +3,28 @@ import Footer from "../../../components/Footer.astro";
 import Layout from "../../../layouts/Layout.astro";
 import Nav from "../../../components/Nav.astro";
 import Charter from "../../../components/icons/glyphs/Charter.astro";
+import ControlPanel from "../../../components/icons/glyphs/ControlPanel.astro";
+import Workflow from "../../../components/icons/glyphs/Workflow.astro";
+import People from "../../../components/icons/glyphs/People.astro";
+import DashboardGauge from "../../../components/icons/glyphs/DashboardGauge.astro";
+import Info from "../../../components/icons/glyphs/Info.astro";
+import DraftingCompass from "../../../components/icons/glyphs/DraftingCompass.astro";
+import HighRisk from "../../../components/icons/glyphs/HighRisk.astro";
+import Checkmark from "../../../components/icons/glyphs/Checkmark.astro";
 import "../../../styles/resources.css";
+
+const compIcons = {
+  "Management System": ControlPanel,
+  "Methodology": Workflow,
+  "Capability": People,
+  "Measurement": DashboardGauge,
+};
+const cardIcons = {
+  "What it is": Info,
+  "How it is designed": DraftingCompass,
+  "What goes wrong": HighRisk,
+  "How you know it is working": Checkmark,
+};
 
 const components = [
   {
@@ -140,11 +161,13 @@ const components = [
         </div>
 
         <div class="fw-components" id="fw-components">
-          {components.map((comp) => (
+          {components.map((comp) => {
+            const CompIcon = compIcons[comp.title];
+            return (
             <div class="fw-component" id={`fw-comp-${comp.num}`}>
               <button class="fw-comp-btn" type="button" aria-expanded="false" aria-controls={`fw-comp-detail-${comp.num}`}>
                 <div class="fw-comp-left">
-                  <span class="fw-comp-num">{comp.num}</span>
+                  <span class="fw-comp-ic" aria-hidden="true">{CompIcon && <CompIcon />}</span>
                   <div class="fw-comp-meta">
                     <span class="fw-comp-title">{comp.title}</span>
                     <span class="fw-comp-tagline">{comp.tagline}</span>
@@ -155,16 +178,23 @@ const components = [
               <div class="fw-comp-detail" id={`fw-comp-detail-${comp.num}`} hidden>
                 <p class="fw-comp-summary">{comp.summary}</p>
                 <div class="fw-sections-grid">
-                  {comp.sections.map(s => (
-                    <div class={`fw-section-card${s.head === "How you know it is working" ? " fw-section-card--payoff" : ""}`}>
-                      <p class="fw-section-head">{s.head}</p>
+                  {comp.sections.map(s => {
+                    const CardIcon = cardIcons[s.head];
+                    return (
+                    <div class="fw-section-card">
+                      <div class="fw-section-head-row">
+                        <span class="fw-card-ic" aria-hidden="true">{CardIcon && <CardIcon />}</span>
+                        <p class="fw-section-head">{s.head}</p>
+                      </div>
                       <p class="fw-section-body">{s.body}</p>
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         <div class="fw-cta-strip">
@@ -213,13 +243,9 @@ const components = [
 .fw-comp-btn:focus-visible{outline:2px solid var(--terracotta);outline-offset:3px;}
 .fw-comp-btn[aria-expanded="true"]{border-color:var(--navy);border-bottom-left-radius:0;border-bottom-right-radius:0;}
 
-.fw-comp-left{display:flex;align-items:flex-start;gap:20px;flex:1;}
-.fw-comp-num{
-  font-family:"Montserrat",Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;
-  color:#fff;background:var(--navy);
-  width:36px;height:36px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
+.fw-comp-left{display:flex;align-items:center;gap:18px;flex:1;}
+.fw-comp-ic{width:42px;height:42px;flex:0 0 42px;}
+.fw-comp-ic svg{width:100%;height:100%;display:block;}
 .fw-comp-meta{display:flex;flex-direction:column;gap:4px;}
 .fw-comp-title{font-family:"Montserrat",Arial,sans-serif;font-size:21px;font-weight:700;color:var(--navy);line-height:1.25;}
 .fw-comp-tagline{font-size:16px;color:var(--muted);line-height:1.45;max-width:68ch;}
@@ -234,23 +260,20 @@ const components = [
   padding:0 30px 32px;
 }
 .fw-comp-summary{
-  position:relative;
   font-size:19px;color:var(--mid-grey);padding-top:28px;margin:0 0 28px;
   line-height:1.55;max-width:68ch;
-}
-.fw-comp-summary::before{
-  content:"";display:block;width:74px;height:2px;background:var(--terracotta);
-  margin:0 0 24px;
 }
 .fw-sections-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
 .fw-section-card{
   background:#fff;border:1px solid var(--hairline);border-radius:16px;
   padding:24px 24px 26px;
 }
-.fw-section-card--payoff{border-top-color:var(--terracotta);border-top-width:3px;}
+.fw-section-head-row{display:flex;align-items:center;gap:9px;margin:0 0 12px;}
+.fw-card-ic{width:20px;height:20px;flex:0 0 20px;}
+.fw-card-ic svg{width:100%;height:100%;display:block;}
 .fw-section-head{
   font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--navy);margin:0 0 12px;
+  text-transform:uppercase;color:var(--navy);margin:0;
 }
 .fw-section-body{
   font-family:"Lora",Georgia,serif;font-size:18px;font-weight:500;color:#161616;
@@ -267,7 +290,7 @@ const components = [
   .fw-components{gap:16px;}
   .fw-comp-btn{gap:14px;padding:20px;}
   .fw-comp-left{gap:14px;}
-  .fw-comp-num{width:32px;height:32px;font-size:12px;}
+  .fw-comp-ic{width:36px;height:36px;flex-basis:36px;}
   .fw-comp-title{font-size:19px;}
   .fw-toggle-mark{font-size:28px;flex-basis:24px;}
   .fw-comp-detail{padding:0 20px 24px;}
