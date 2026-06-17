@@ -329,7 +329,9 @@ For read pages that use accordion panels, prefer a `+` / `-` text affordance ove
 
 Expanded panels should avoid idiosyncratic prose stacks. Use a repeated four-card structure where the content supports it: What it is / How it is designed / What goes wrong / How you know it is working. The repeated labels make the page scannable without rewriting the authored copy.
 
-The expanded card set should follow the v6x hairline system: white cards, 1px hairline border, rounded corners, no filled beige sub-cards. On desktop, lay four cards out as a balanced 2x2 grid with generous gaps and readable measure; on mobile, stack to one column. The payoff card, "How you know it is working", can take a subtle terracotta cue such as a thin top rule so the grid has rhythm and the outcome reads as the point of the panel.
+The expanded card set should follow the v6x hairline system: white cards, 1px hairline border, rounded corners, no filled beige sub-cards. On desktop, lay four cards out as a balanced 2x2 grid with generous gaps and readable measure; on mobile, stack to one column.
+
+**Hard NOs (corrected after the EQT-330 live review, 2026-06-17).** No accent top-bars or coloured rules on top of boxes or cards, and no 01/02/03/04 numbering. Both read as template/AI-slop and break v6x restraint. The first EQT-330 build shipped a terracotta payoff-card top-rule and kept legacy number circles; both were removed. For rhythm and hierarchy use icons, type and spacing instead. Each component carries a Forma Regular icon (navy `#26245C` with one terracotta `#C15F3C` accent sub-shape, the same accent-stroke treatment as the method icons) in place of the number, and each sub-card carries its own small Forma icon (22px). Glyph components live in `src/components/icons/glyphs/` (ControlPanel, Workflow, People, DashboardGauge, Info, DraftingCompass, HighRisk, Checkmark).
 
 ### Interactive resource tools — assessments (EQT-309, shipped 2026-06-12)
 
