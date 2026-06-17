@@ -1,3 +1,64 @@
+---
+import { categoryMap, resources } from "../data/resources";
+
+const TERRACOTTA = "#C15F3C";
+const activeStyle = `color:${TERRACOTTA}`;
+const pathname = Astro.url.pathname;
+
+const normalisePath = (path: string) => {
+  const withoutHash = path.split("#")[0] || "/";
+  if (withoutHash === "/") return "/";
+  return withoutHash.endsWith("/") ? withoutHash : `${withoutHash}/`;
+};
+
+const currentPath = normalisePath(pathname);
+const isCurrentPath = (href: string) => normalisePath(href) === currentPath;
+
+let activeSection:
+  | "services"
+  | "industries"
+  | "our-work"
+  | "insights"
+  | "resources"
+  | "about"
+  | undefined;
+
+if (currentPath.startsWith("/services/")) {
+  activeSection = "services";
+} else if (currentPath.startsWith("/industries/")) {
+  activeSection = "industries";
+} else if (currentPath.startsWith("/our-work/")) {
+  activeSection = "our-work";
+} else if (currentPath.startsWith("/insights/")) {
+  activeSection = "insights";
+} else if (currentPath.startsWith("/resources/")) {
+  activeSection = "resources";
+} else if (
+  currentPath === "/about/" ||
+  currentPath.startsWith("/about/") ||
+  currentPath === "/how-we-work/" ||
+  currentPath === "/capability-statement/"
+) {
+  activeSection = "about";
+}
+
+const currentResource = resources.find((resource) => isCurrentPath(resource.href));
+const activeResourceCategory =
+  activeSection === "resources" && currentResource
+    ? categoryMap[currentResource.tag]
+    : undefined;
+const activeResourceSubmenuHref = activeResourceCategory
+  ? `/resources/#${activeResourceCategory}`
+  : undefined;
+
+const isActiveTop = (section: typeof activeSection) => activeSection === section;
+const isActiveSubmenu = (section: typeof activeSection, href: string) => {
+  if (section !== activeSection) return false;
+  if (section === "resources") return href === activeResourceSubmenuHref;
+  return isCurrentPath(href);
+};
+---
+
 <nav class="site-nav" id="site-nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo" aria-label="EQUIBT home">
@@ -21,44 +82,44 @@
       <!-- Services dropdown -->
       <div class="nav-item has-dropdown" data-dropdown>
         <div class="nav-item-row">
-          <a href="/services/" class="nav-link">Services</a>
+          <a href="/services/" class="nav-link" style={isActiveTop("services") ? activeStyle : undefined} aria-current={isActiveTop("services") ? "page" : undefined}>Services</a>
           <button class="nav-chevron-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Toggle Services submenu">
             <span class="nav-chevron" aria-hidden="true">&#8964;</span>
           </button>
         </div>
         <ul class="nav-dropdown" role="menu">
           <li role="none">
-            <a href="/services/frame/" role="menuitem" class="nav-dropdown-item">
+            <a href="/services/frame/" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("services", "/services/frame/") ? activeStyle : undefined} aria-current={isActiveSubmenu("services", "/services/frame/") ? "page" : undefined}>
               <span class="nav-dropdown-eyebrow">FRAME · DEFINE</span>
               <span class="nav-dropdown-label">Problem Framing</span>
             </a>
           </li>
           <li role="none">
-            <a href="/services/plan/" role="menuitem" class="nav-dropdown-item">
+            <a href="/services/plan/" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("services", "/services/plan/") ? activeStyle : undefined} aria-current={isActiveSubmenu("services", "/services/plan/") ? "page" : undefined}>
               <span class="nav-dropdown-eyebrow">PLAN · MEASURE</span>
               <span class="nav-dropdown-label">Operations Diagnostic</span>
             </a>
           </li>
           <li role="none">
-            <a href="/services/solve/" role="menuitem" class="nav-dropdown-item">
+            <a href="/services/solve/" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("services", "/services/solve/") ? activeStyle : undefined} aria-current={isActiveSubmenu("services", "/services/solve/") ? "page" : undefined}>
               <span class="nav-dropdown-eyebrow">SOLVE · ANALYSE</span>
               <span class="nav-dropdown-label">Iterative Improvement</span>
             </a>
           </li>
           <li role="none">
-            <a href="/services/evolve/" role="menuitem" class="nav-dropdown-item">
+            <a href="/services/evolve/" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("services", "/services/evolve/") ? activeStyle : undefined} aria-current={isActiveSubmenu("services", "/services/evolve/") ? "page" : undefined}>
               <span class="nav-dropdown-eyebrow">EVOLVE · IMPROVE</span>
               <span class="nav-dropdown-label">Rapid Pilot</span>
             </a>
           </li>
           <li role="none">
-            <a href="/services/govern/" role="menuitem" class="nav-dropdown-item">
+            <a href="/services/govern/" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("services", "/services/govern/") ? activeStyle : undefined} aria-current={isActiveSubmenu("services", "/services/govern/") ? "page" : undefined}>
               <span class="nav-dropdown-eyebrow">GOVERN · CONTROL</span>
               <span class="nav-dropdown-label">Architecture &amp; Governance</span>
             </a>
           </li>
           <li role="none">
-            <a href="/services/scale/" role="menuitem" class="nav-dropdown-item">
+            <a href="/services/scale/" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("services", "/services/scale/") ? activeStyle : undefined} aria-current={isActiveSubmenu("services", "/services/scale/") ? "page" : undefined}>
               <span class="nav-dropdown-eyebrow">SCALE · OPERATE</span>
               <span class="nav-dropdown-label">Operational Embedding</span>
             </a>
@@ -69,64 +130,64 @@
       <!-- Industries dropdown -->
       <div class="nav-item has-dropdown" data-dropdown>
         <div class="nav-item-row">
-          <a href="/industries/" class="nav-link">Industries</a>
+          <a href="/industries/" class="nav-link" style={isActiveTop("industries") ? activeStyle : undefined} aria-current={isActiveTop("industries") ? "page" : undefined}>Industries</a>
           <button class="nav-chevron-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Toggle Industries submenu">
             <span class="nav-chevron" aria-hidden="true">&#8964;</span>
           </button>
         </div>
         <ul class="nav-dropdown" role="menu">
           <li role="none">
-            <a href="/industries/financial-services/" role="menuitem" class="nav-dropdown-item">
+            <a href="/industries/financial-services/" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("industries", "/industries/financial-services/") ? activeStyle : undefined} aria-current={isActiveSubmenu("industries", "/industries/financial-services/") ? "page" : undefined}>
               <span class="nav-dropdown-label">Financial Services</span>
             </a>
           </li>
           <li role="none">
-            <a href="/industries/government/" role="menuitem" class="nav-dropdown-item">
+            <a href="/industries/government/" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("industries", "/industries/government/") ? activeStyle : undefined} aria-current={isActiveSubmenu("industries", "/industries/government/") ? "page" : undefined}>
               <span class="nav-dropdown-label">Government and Public Sector</span>
             </a>
           </li>
           <li role="none">
-            <a href="/industries/utilities/" role="menuitem" class="nav-dropdown-item">
+            <a href="/industries/utilities/" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("industries", "/industries/utilities/") ? activeStyle : undefined} aria-current={isActiveSubmenu("industries", "/industries/utilities/") ? "page" : undefined}>
               <span class="nav-dropdown-label">Utilities</span>
             </a>
           </li>
           <li role="none">
-            <a href="/industries/manufacturing/" role="menuitem" class="nav-dropdown-item">
+            <a href="/industries/manufacturing/" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("industries", "/industries/manufacturing/") ? activeStyle : undefined} aria-current={isActiveSubmenu("industries", "/industries/manufacturing/") ? "page" : undefined}>
               <span class="nav-dropdown-label">Advanced Manufacturing</span>
             </a>
           </li>
         </ul>
       </div>
 
-      <a href="/our-work/" class="nav-link">Our Work</a>
-      <a href="/insights/" class="nav-link">Insights</a>
+      <a href="/our-work/" class="nav-link" style={isActiveTop("our-work") ? activeStyle : undefined} aria-current={isActiveTop("our-work") ? "page" : undefined}>Our Work</a>
+      <a href="/insights/" class="nav-link" style={isActiveTop("insights") ? activeStyle : undefined} aria-current={isActiveTop("insights") ? "page" : undefined}>Insights</a>
 
       <!-- Resources dropdown -->
       <div class="nav-item has-dropdown" data-dropdown>
         <div class="nav-item-row">
-          <a href="/resources/" class="nav-link">Resources</a>
+          <a href="/resources/" class="nav-link" style={isActiveTop("resources") ? activeStyle : undefined} aria-current={isActiveTop("resources") ? "page" : undefined}>Resources</a>
           <button class="nav-chevron-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Toggle Resources submenu">
             <span class="nav-chevron" aria-hidden="true">&#8964;</span>
           </button>
         </div>
         <ul class="nav-dropdown" role="menu">
           <li role="none">
-            <a href="/resources/#methods" role="menuitem" class="nav-dropdown-item">
+            <a href="/resources/#methods" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("resources", "/resources/#methods") ? activeStyle : undefined} aria-current={isActiveSubmenu("resources", "/resources/#methods") ? "page" : undefined}>
               <span class="nav-dropdown-label">Method guides</span>
             </a>
           </li>
           <li role="none">
-            <a href="/resources/#guides" role="menuitem" class="nav-dropdown-item">
+            <a href="/resources/#guides" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("resources", "/resources/#guides") ? activeStyle : undefined} aria-current={isActiveSubmenu("resources", "/resources/#guides") ? "page" : undefined}>
               <span class="nav-dropdown-label">Guides and frameworks</span>
             </a>
           </li>
           <li role="none">
-            <a href="/resources/#templates" role="menuitem" class="nav-dropdown-item">
+            <a href="/resources/#templates" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("resources", "/resources/#templates") ? activeStyle : undefined} aria-current={isActiveSubmenu("resources", "/resources/#templates") ? "page" : undefined}>
               <span class="nav-dropdown-label">Templates and checklists</span>
             </a>
           </li>
           <li role="none">
-            <a href="/resources/#tools" role="menuitem" class="nav-dropdown-item">
+            <a href="/resources/#tools" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("resources", "/resources/#tools") ? activeStyle : undefined} aria-current={isActiveSubmenu("resources", "/resources/#tools") ? "page" : undefined}>
               <span class="nav-dropdown-label">Tools and assessments</span>
             </a>
           </li>
@@ -136,24 +197,24 @@
       <!-- About dropdown -->
       <div class="nav-item has-dropdown" data-dropdown>
         <div class="nav-item-row">
-          <a href="/about/" class="nav-link">About</a>
+          <a href="/about/" class="nav-link" style={isActiveTop("about") ? activeStyle : undefined} aria-current={isActiveTop("about") ? "page" : undefined}>About</a>
           <button class="nav-chevron-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Toggle About submenu">
             <span class="nav-chevron" aria-hidden="true">&#8964;</span>
           </button>
         </div>
         <ul class="nav-dropdown" role="menu">
           <li role="none">
-            <a href="/how-we-work/" role="menuitem" class="nav-dropdown-item">
+            <a href="/how-we-work/" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("about", "/how-we-work/") ? activeStyle : undefined} aria-current={isActiveSubmenu("about", "/how-we-work/") ? "page" : undefined}>
               <span class="nav-dropdown-label">How We Work</span>
             </a>
           </li>
           <li role="none">
-            <a href="/capability-statement/" role="menuitem" class="nav-dropdown-item">
+            <a href="/capability-statement/" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("about", "/capability-statement/") ? activeStyle : undefined} aria-current={isActiveSubmenu("about", "/capability-statement/") ? "page" : undefined}>
               <span class="nav-dropdown-label">Capability Statement</span>
             </a>
           </li>
           <li role="none">
-            <a href="/resources/engagement-model/" role="menuitem" class="nav-dropdown-item">
+            <a href="/resources/engagement-model/" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("about", "/resources/engagement-model/") ? activeStyle : undefined} aria-current={isActiveSubmenu("about", "/resources/engagement-model/") ? "page" : undefined}>
               <span class="nav-dropdown-label">Engagement Model</span>
             </a>
           </li>

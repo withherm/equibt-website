@@ -444,3 +444,7 @@ Interim site-wide hero icons. Replaces the EQT-324 stripped / line-art hero art 
 - **Resources nav dropdown order** now matches the filter chips: Method guides, Guides and frameworks, Templates and checklists, Tools and assessments (templates before tools). Items deep-link to `/resources/#<filter>`. A `hashchange` listener re-applies the filter when the hash changes while already on `/resources/` (the on-load read + chip-click handlers did not cover same-page nav-dropdown switching).
 
 **Process lessons banked:** `git fetch && git pull` main before cutting any branch, a stale local main made the centring branch conflict (PR #74) and forced a clean redo. GitHub raw and Cloudflare both cache for minutes; confirm merges via `git pull` and live changes via hard-refresh, never an immediate raw fetch.
+
+### Resource detail hero and nav location (EQT-333 / EQT-334, 2026-06-17)
+
+Resource detail pages now rely on the sticky top nav for location instead of hero breadcrumbs. The hero H1 is the canonical resource name, with the existing eyebrow kept only where it already existed; the two assessment tools keep their no-eyebrow structure. `categoryMap` lives in `src/data/resources.ts` so the Resources hub filters and the Nav submenu use the same tag-to-category mapping. Active nav state is text-colour only: terracotta `#C15F3C` plus `aria-current="page"`, with no bar, underline, rule or other marker.

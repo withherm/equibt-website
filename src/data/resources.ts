@@ -35,6 +35,17 @@ export interface Resource {
   related?: RelatedLink;
 }
 
+// Maps a resource `tag` to its hub category / filter id (and Resources submenu hash).
+export const categoryMap: Record<string, string> = {
+  "METHOD GUIDE": "methods",
+  "ASSESSMENT": "tools",
+  "GUIDE / FRAMEWORK": "guides",
+  "GUIDE": "guides",
+  "CALCULATOR": "tools",
+  "CHECKLIST / TEMPLATE": "templates",
+  "TEMPLATE": "templates",
+};
+
 export const resources: Resource[] = [
   {
     slug: "method-lean",

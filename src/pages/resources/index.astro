@@ -2,7 +2,7 @@
 import Footer from "../../components/Footer.astro";
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
-import { resources } from "../../data/resources";
+import { categoryMap, resources } from "../../data/resources";
 import lmiLogo from "../../../brand/assets/logos/lmi/LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg";
 import "../../styles/resources.css";
 
@@ -36,17 +36,6 @@ const glyphs = {
   MethodLeanServiceDesign,
   MethodLeanAgile,
 } as Record<string, any>;
-
-// Category mapping for filter chips.
-const categoryMap: Record<string, string> = {
-  "METHOD GUIDE": "methods",
-  "ASSESSMENT": "tools",
-  "GUIDE / FRAMEWORK": "guides",
-  "GUIDE": "guides",
-  "CALCULATOR": "tools",
-  "CHECKLIST / TEMPLATE": "templates",
-  "TEMPLATE": "templates",
-};
 
 // Hub grid: exclude Capability Statement (moved to About nav).
 const hubResources = resources.filter((r) => r.slug !== "capability-statement" && r.slug !== "engagement-model");
