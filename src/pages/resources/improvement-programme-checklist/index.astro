@@ -1,0 +1,464 @@
+---
+import Footer from "../../../components/Footer.astro";
+import Layout from "../../../layouts/Layout.astro";
+import Nav from "../../../components/Nav.astro";
+import DocTick from "../../../components/icons/glyphs/DocTick.astro";
+import "../../../styles/resources.css";
+---
+
+<Layout
+  title="Improvement Programme Checklist | EQUIBT Resources"
+  description="25 checks across three phases. What to get right before you start, while it runs, and at close."
+>
+  <Nav />
+  <main>
+    <section class="res-hero res-reveal">
+      <div class="res-hero-inner">
+        <div class="res-hero-copy">
+          <div class="res-crumb">
+            <a href="/resources/">Resources</a>
+            <span class="res-crumb-sep">&rsaquo;</span>
+            <span>Improvement Programme Checklist</span>
+          </div>
+          <div class="eyebrow">CHECKLIST</div>
+          <h1>Improvement Programme Checklist</h1>
+          <p class="res-hero-lede">25 checks across three phases: what to get right before you start, while it runs, and at close. Mark what is in place, what is still to do, and what does not apply. Download your action list. Nothing is sent or stored.</p>
+          <div class="res-hero-actions">
+            <a href="#checklist" class="btn-primary">Open the checklist</a>
+            <a href="/contact/" class="btn-text"><span class="link-label">Talk it through instead</span> <span class="ar">&rsaquo;</span></a>
+          </div>
+        </div>
+        <div class="res-hero-art" aria-hidden="true">
+          <span><DocTick /></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ipc-tool res-reveal" id="checklist">
+      <div class="res-inner">
+        <div class="ipc-programme">
+          <div class="ipc-field">
+            <label for="ipc-programme-name">Programme name</label>
+            <input id="ipc-programme-name" type="text" data-programme-field="name" />
+          </div>
+          <div class="ipc-field">
+            <label for="ipc-programme-target">Programme target completion date</label>
+            <input id="ipc-programme-target" type="date" data-programme-field="targetDate" />
+          </div>
+        </div>
+
+        <nav class="ipc-stepper" id="ipc-stepper" aria-label="Improvement Programme Checklist steps">
+          <div class="ipc-step is-active" data-step="0"><div class="ipc-step-dot">1</div><span class="ipc-step-label">Before you start</span></div>
+          <div class="ipc-step-line"></div>
+          <div class="ipc-step" data-step="1"><div class="ipc-step-dot">2</div><span class="ipc-step-label">While it runs</span></div>
+          <div class="ipc-step-line"></div>
+          <div class="ipc-step" data-step="2"><div class="ipc-step-dot">3</div><span class="ipc-step-label">At close</span></div>
+        </nav>
+
+        <div id="ipc-phase-view"></div>
+
+        <div class="ipc-nav">
+          <button type="button" class="btn-text" id="ipc-prev"><span class="ar ipc-back-ar">&rsaquo;</span> <span class="link-label">Back</span></button>
+          <button type="button" class="btn-primary" id="ipc-next">Next</button>
+          <button type="button" class="btn-primary" id="ipc-download-btn" hidden>Download your action list</button>
+          <button type="button" class="btn-text" id="ipc-reset-btn"><span class="link-label">Reset all</span></button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style is:global>
+.ipc-tool{padding:72px 56px 88px;background:#F5F3EE;}
+.ipc-programme{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,320px);gap:18px;max-width:980px;margin-bottom:34px;}
+.ipc-field{display:grid;gap:7px;}
+.ipc-field label,.ipc-completed label{font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);}
+.ipc-field input{width:100%;box-sizing:border-box;background:#fff;border:1px solid var(--hairline);border-radius:8px;padding:10px 12px;font-family:"Lora",Georgia,serif;font-size:16px;font-weight:500;line-height:1.35;color:var(--near-black);outline:none;transition:border-color .15s,box-shadow .15s;}
+.ipc-field input:focus{border-color:#C15F3C;box-shadow:0 0 0 3px rgba(193,95,60,.16);}
+
+.ipc-stepper{display:flex;align-items:flex-start;margin:0 0 34px;max-width:980px;}
+.ipc-step{display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0;min-width:88px;}
+.ipc-step-dot{width:24px;height:24px;border-radius:50%;border:2px solid #d4d0c8;background:#fff;display:flex;align-items:center;justify-content:center;font-family:"Montserrat",Arial,sans-serif;font-size:9px;font-weight:700;color:#777;transition:all .2s;line-height:1;}
+.ipc-step.is-active .ipc-step-dot{background:#C15F3C;border-color:#C15F3C;color:#fff;}
+.ipc-step.is-done .ipc-step-dot{background:#26245C;border-color:#26245C;color:#fff;}
+.ipc-step-label{font-family:"Montserrat",Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:.06em;color:#777;text-transform:uppercase;text-align:center;white-space:nowrap;}
+.ipc-step.is-active .ipc-step-label{color:#C15F3C;}
+.ipc-step.is-done .ipc-step-label{color:#26245C;}
+.ipc-step-line{flex:1;height:2px;background:#d4d0c8;margin:11px 2px 0;transition:background .2s;min-width:12px;}
+.ipc-step-line.is-done{background:#26245C;}
+
+.ipc-phase{margin-bottom:34px;}
+.ipc-phase-head{max-width:980px;margin-bottom:22px;}
+.ipc-section-label{margin-bottom:12px;}
+.ipc-phase-title{font-size:clamp(26px,2.6vw,34px);font-weight:700;color:var(--navy);margin:0 0 12px;}
+.ipc-phase-insight{margin:0;color:var(--mid-grey);font-size:20px;line-height:1.48;}
+.ipc-items{display:flex;flex-direction:column;gap:14px;list-style:none;margin:0;padding:0;}
+.ipc-item{background:#fff;border:1px solid var(--hairline);border-radius:8px;padding:18px 20px;transition:border-color .15s,background .15s,opacity .15s;}
+.ipc-item.is-completed{border-color:rgba(38,36,92,.34);background:#fbfbff;}
+.ipc-item.is-na{background:#ECE9E2;opacity:.72;}
+.ipc-item-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:start;}
+.ipc-item-text{margin:0;color:var(--near-black);font-size:19px;line-height:1.45;}
+.ipc-item.is-na .ipc-item-text{color:#6d6a64;}
+.ipc-applicability{display:flex;align-items:center;gap:14px;border:0;margin:0;padding:0;}
+.ipc-applicability label{display:flex;align-items:center;gap:6px;font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap;cursor:pointer;}
+.ipc-applicability input{width:16px;height:16px;margin:0;accent-color:var(--navy);}
+.ipc-fields{display:grid;grid-template-columns:minmax(0,220px) minmax(0,220px) minmax(0,1fr) auto;gap:14px;align-items:end;margin-top:16px;}
+.ipc-completed{display:flex;align-items:center;min-height:41px;}
+.ipc-completed label{display:flex;align-items:center;gap:8px;cursor:pointer;}
+.ipc-completed input{width:18px;height:18px;margin:0;accent-color:var(--navy);}
+.ipc-warning{margin:10px 0 0;color:#6d625a;font-size:15px;line-height:1.4;}
+.ipc-nav{display:flex;align-items:center;gap:24px;margin-top:28px;}
+.ipc-nav button.btn-primary{border:none!important;-webkit-appearance:none!important;appearance:none!important;box-shadow:none!important;transform:none!important;}
+.ipc-nav button.btn-primary:hover{border:none!important;box-shadow:none!important;transform:none!important;background:#2f2d6e;}
+.ipc-nav button.btn-text{border:none;background:transparent;cursor:pointer;padding:0;}
+.ipc-back-ar{transform:rotate(180deg);}
+
+.ipc-doc{background:#fff;border:1px solid var(--hairline);border-radius:8px;padding:36px;color:#161616;}
+.ipc-doc-logo{display:flex;justify-content:flex-end;margin-bottom:22px;}
+.ipc-doc-logo svg{height:28px;width:auto;display:block;}
+.ipc-doc-head{margin-bottom:28px;}
+.ipc-doc-head h1{margin:0;color:var(--navy);font-size:32px;line-height:1.12;}
+.ipc-doc-subhead{display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 0 0;padding:0;list-style:none;}
+.ipc-doc-subhead li{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#2a2a2a;}
+.ipc-doc-phase{break-inside:avoid;margin:28px 0 0;}
+.ipc-doc-phase h2{margin:0 0 16px;color:var(--navy);font-family:"Montserrat",Arial,sans-serif;font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+.ipc-doc-list{display:grid;gap:10px;margin:0;padding:0;list-style:none;}
+.ipc-doc-item{border-top:1px solid var(--hairline);padding-top:10px;}
+.ipc-doc-text{margin:0;color:#161616;font-size:17px;line-height:1.45;}
+.ipc-doc-meta{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:6px;}
+.ipc-doc-meta span{font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#2a2a2a;}
+.ipc-doc-footer{margin:28px 0 0;padding-top:14px;border-top:1px solid var(--hairline);font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.04em;color:#2a2a2a;}
+
+@media(max-width:900px){
+  .ipc-tool{padding:48px 24px 64px;}
+  .ipc-programme{grid-template-columns:1fr;}
+  .ipc-step-label{display:none;}
+  .ipc-step{min-width:48px;}
+  .ipc-item-top{grid-template-columns:1fr;gap:12px;}
+  .ipc-fields{grid-template-columns:1fr;}
+  .ipc-nav{align-items:flex-start;flex-direction:column;}
+}
+@media(max-width:520px){
+  .ipc-applicability{align-items:flex-start;flex-direction:column;gap:8px;}
+}
+</style>
+
+<script>
+const PRINT_LOGO = `<svg viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT"><g fill="#2C3E50"><path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/><path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/><path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/><path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/><path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/><path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/></g><path fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/></svg>`;
+
+const PHASES = [
+  {
+    title: "Before you start",
+    insight: "Most programmes are lost here, not in delivery. A soft sponsor, a vague problem or a fuzzy boundary will resurface later as scope creep, stalled decisions and a result no one will own.",
+    items: [
+      "Document the programme mandate and have the accountable executive approve it.",
+      "Write a clear problem statement before proposing any solution.",
+      "Name an executive sponsor with budget authority and confirm they accept the role.",
+      "Form a steering group with agreed membership and terms of reference.",
+      "Document the in-scope and out-of-scope boundaries and have them signed off.",
+      "Map dependencies on other projects and teams, and notify their owners.",
+      "Identify affected staff and their representatives, and put a consultation plan in place.",
+      "Capture baseline data for every metric the programme intends to move.",
+      "Identify and plan for procurement and contracting needs.",
+      "Start a risk register and name the initial programme risks."
+    ]
+  },
+  {
+    title: "While it runs",
+    insight: "Delivery problems are usually governance problems. When the board drifts, decisions go unrecorded and benefits tracking is deferred, the programme keeps moving but stops being steered.",
+    items: [
+      "Hold steering group meetings to a set schedule, with quorum each time.",
+      "Record every material decision, and the reasoning, in a decisions log.",
+      "Report progress to the sponsor and key stakeholders on time.",
+      "Review and update risks and issues at each governance meeting.",
+      "Run scope changes through a change control process.",
+      "Resource programme commitments alongside people's business-as-usual.",
+      "Track benefits from the start rather than deferring them to the end.",
+      "Capture lessons as they happen rather than reconstructing them later.",
+      "Communicate to affected staff on schedule.",
+      "Keep procurement and contract milestones on track."
+    ]
+  },
+  {
+    title: "At close",
+    insight: "A programme that closes without transferring ownership and proving benefits will quietly unravel. Closure is where the gains are locked in or lost.",
+    items: [
+      "Have the sponsor formally sign off every in-scope deliverable.",
+      "Quantify the benefits, and plan how to realise the ones still to come.",
+      "Hand ownership to the team that will run it day to day.",
+      "Schedule a post-implementation review within 90 days.",
+      "Archive programme records where the organisation can find them."
+    ]
+  }
+];
+
+const programme = { name: "", targetDate: "" };
+const state = PHASES.flatMap((phase) => phase.items.map(() => ({
+  applicable: true,
+  completed: false,
+  responsible: "",
+  targetDate: "",
+  note: "",
+})));
+let currentStep = 0;
+
+function escHtml(value) {
+  return String(value || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function globalIdx(phaseIdx, itemIdx) {
+  let n = 0;
+  for (let i = 0; i < phaseIdx; i++) n += PHASES[i].items.length;
+  return n + itemIdx;
+}
+
+function updateStepper(idx) {
+  document.querySelectorAll(".ipc-step").forEach((el, i) => {
+    el.classList.remove("is-active", "is-done");
+    if (i === idx) el.classList.add("is-active");
+    else if (i < idx) el.classList.add("is-done");
+  });
+  document.querySelectorAll(".ipc-step-line").forEach((el, i) => {
+    el.classList.toggle("is-done", i < idx);
+  });
+}
+
+function shouldWarnDate(phaseIdx, row) {
+  return phaseIdx === 0 && programme.targetDate && row.targetDate && row.targetDate > programme.targetDate;
+}
+
+function itemMarkup(item, phaseIdx, itemIdx) {
+  const gi = globalIdx(phaseIdx, itemIdx);
+  const row = state[gi];
+  const isNa = !row.applicable;
+  const isCompleted = row.completed;
+  const radioName = `ipc-applicable-${gi}`;
+  return `<li class="ipc-item${isNa ? " is-na" : ""}${isCompleted ? " is-completed" : ""}" data-gi="${gi}" data-phase="${phaseIdx}">
+    <div class="ipc-item-top">
+      <p class="ipc-item-text">${item}</p>
+      <fieldset class="ipc-applicability">
+        <label>
+          <input type="radio" name="${radioName}" data-action="applicable" value="true" ${row.applicable ? "checked" : ""} />
+          <span>Applicable</span>
+        </label>
+        ${isCompleted ? "" : `<label>
+          <input type="radio" name="${radioName}" data-action="applicable" value="false" ${!row.applicable ? "checked" : ""} />
+          <span>Not applicable</span>
+        </label>`}
+      </fieldset>
+    </div>
+    ${row.applicable ? `<div class="ipc-fields">
+      <div class="ipc-field">
+        <label for="ipc-responsible-${gi}">Responsible</label>
+        <input id="ipc-responsible-${gi}" type="text" data-field="responsible" value="${escHtml(row.responsible)}" />
+      </div>
+      <div class="ipc-field">
+        <label for="ipc-target-date-${gi}">Target completion date</label>
+        <input id="ipc-target-date-${gi}" type="date" data-field="targetDate" value="${escHtml(row.targetDate)}" />
+      </div>
+      <div class="ipc-field">
+        <label for="ipc-note-${gi}">Note</label>
+        <input id="ipc-note-${gi}" type="text" data-field="note" value="${escHtml(row.note)}" />
+      </div>
+      <div class="ipc-completed">
+        <label>
+          <input type="checkbox" data-action="completed" ${row.completed ? "checked" : ""} />
+          <span>Completed</span>
+        </label>
+      </div>
+    </div>
+    ${shouldWarnDate(phaseIdx, row) ? `<p class="ipc-warning">This target date falls after your programme target completion date.</p>` : ""}` : ""}
+  </li>`;
+}
+
+function renderStep(idx) {
+  currentStep = idx;
+  const phase = PHASES[idx];
+  updateStepper(idx);
+  document.getElementById("ipc-phase-view").innerHTML = `
+    <section class="ipc-phase">
+      <header class="ipc-phase-head">
+        <div class="eyebrow ipc-section-label">STEP ${idx + 1} OF 3</div>
+        <h2 class="ipc-phase-title">${phase.title}</h2>
+        <p class="ipc-phase-insight">${phase.insight}</p>
+      </header>
+      <ul class="ipc-items">
+        ${phase.items.map((item, itemIdx) => itemMarkup(item, idx, itemIdx)).join("")}
+      </ul>
+    </section>
+  `;
+  document.getElementById("ipc-prev").style.display = idx > 0 ? "inline-flex" : "none";
+  document.getElementById("ipc-next").hidden = idx === PHASES.length - 1;
+  document.getElementById("ipc-download-btn").hidden = idx !== PHASES.length - 1;
+  bindStepInputs();
+}
+
+function bindStepInputs() {
+  document.querySelectorAll("[data-action='applicable']").forEach((el) => {
+    el.addEventListener("change", () => {
+      const item = el.closest(".ipc-item");
+      const gi = Number(item.dataset.gi);
+      state[gi].applicable = el.value === "true";
+      if (!state[gi].applicable) state[gi].completed = false;
+      renderStep(currentStep);
+    });
+  });
+  document.querySelectorAll("[data-action='completed']").forEach((el) => {
+    el.addEventListener("change", () => {
+      const item = el.closest(".ipc-item");
+      const gi = Number(item.dataset.gi);
+      state[gi].completed = el.checked;
+      if (state[gi].completed) state[gi].applicable = true;
+      renderStep(currentStep);
+    });
+  });
+  document.querySelectorAll("[data-field]").forEach((el) => {
+    el.addEventListener("input", () => {
+      const item = el.closest(".ipc-item");
+      const gi = Number(item.dataset.gi);
+      state[gi][el.dataset.field] = el.value;
+      if (el.dataset.field === "targetDate") renderStep(currentStep);
+    });
+  });
+}
+
+function applicableGroups() {
+  return PHASES.map((phase, pi) => {
+    const items = phase.items.map((text, ii) => {
+      const gi = globalIdx(pi, ii);
+      return { text, ...state[gi] };
+    }).filter((item) => item.applicable);
+    return { title: phase.title, items };
+  }).filter((phase) => phase.items.length);
+}
+
+function docItemMarkup(item) {
+  const responsible = String(item.responsible || "").trim();
+  const targetDate = String(item.targetDate || "").trim();
+  const note = String(item.note || "").trim();
+  return `<li class="ipc-doc-item">
+    <p class="ipc-doc-text">${escHtml(item.text)}</p>
+    <div class="ipc-doc-meta">
+      <span>${item.completed ? "Completed" : "To do"}</span>
+      ${responsible ? `<span>Responsible: ${escHtml(responsible)}</span>` : ""}
+      ${targetDate ? `<span>Target completion date: ${escHtml(targetDate)}</span>` : ""}
+      ${note ? `<span>Note: ${escHtml(note)}</span>` : ""}
+    </div>
+  </li>`;
+}
+
+function renderTakeaway() {
+  const subhead = [
+    programme.name.trim() ? `<li>Programme name: ${escHtml(programme.name.trim())}</li>` : "",
+    programme.targetDate ? `<li>Programme target completion date: ${escHtml(programme.targetDate)}</li>` : "",
+  ].filter(Boolean).join("");
+  return `
+    <div class="ipc-doc-logo">${PRINT_LOGO}</div>
+    <div class="ipc-doc-head">
+      <h1>Improvement Programme Checklist</h1>
+      ${subhead ? `<ul class="ipc-doc-subhead">${subhead}</ul>` : ""}
+    </div>
+    ${applicableGroups().map((group) => `
+      <section class="ipc-doc-phase">
+        <h2>${group.title}</h2>
+        <ul class="ipc-doc-list">
+          ${group.items.map(docItemMarkup).join("")}
+        </ul>
+      </section>
+    `).join("")}
+    <p class="ipc-doc-footer">Completed with the EQUIBT Improvement Programme Checklist &middot; www.equibt.com</p>
+  `;
+}
+
+function printPageHtml() {
+  const checklistUrl = `${window.location.origin}/resources/improvement-programme-checklist/`;
+  return `<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Improvement Programme Checklist</title>
+<style>
+:root{--navy:#26245C;--hairline:rgba(38,36,92,.18);--near-black:#161616;--mid-grey:#2B2B2B;}
+*{box-sizing:border-box;}
+body{margin:0;background:#F5F3EE;color:#161616;font-family:"Lora",Georgia,serif;}
+.ipc-print-actions{display:flex;align-items:center;gap:24px;padding:24px 32px;background:#F5F3EE;}
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;background:#26245C;color:#fff;border:0;border-radius:999px;padding:12px 20px;font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;}
+.btn-text{font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#26245C;text-decoration:none;}
+.ipc-print-shell{max-width:980px;margin:0 auto;padding:24px 32px 42px;}
+.ipc-doc{background:#fff;border:1px solid var(--hairline);border-radius:8px;padding:32px;color:#161616;}
+.ipc-doc-logo{display:flex;justify-content:flex-end;margin-bottom:22px;}
+.ipc-doc-logo svg{height:28px;width:auto;display:block;}
+.ipc-doc-head{margin-bottom:28px;}
+.ipc-doc-head h1{margin:0;color:#26245C;font-family:"Montserrat",Arial,sans-serif;font-size:32px;line-height:1.12;}
+.ipc-doc-subhead{display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 0 0;padding:0;list-style:none;}
+.ipc-doc-subhead li{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#2a2a2a;}
+.ipc-doc-phase{break-inside:avoid;margin:28px 0 0;}
+.ipc-doc-phase h2{margin:0 0 16px;color:#26245C;font-family:"Montserrat",Arial,sans-serif;font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+.ipc-doc-list{display:grid;gap:10px;margin:0;padding:0;list-style:none;}
+.ipc-doc-item{border-top:1px solid var(--hairline);padding-top:10px;}
+.ipc-doc-text{margin:0;color:#161616;font-size:17px;line-height:1.45;}
+.ipc-doc-meta{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:6px;}
+.ipc-doc-meta span{font-family:"Montserrat",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#2a2a2a;}
+.ipc-doc-footer{margin:28px 0 0;padding-top:14px;border-top:1px solid var(--hairline);font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.04em;color:#2a2a2a;}
+@media(max-width:620px){.ipc-print-actions{padding:20px;align-items:flex-start;flex-direction:column;}.ipc-print-shell{padding:20px;}.ipc-doc{padding:22px 18px;}}
+@media print{
+  body{background:#fff;}
+  .ipc-print-actions{display:none!important;}
+  .ipc-print-shell{max-width:none;margin:0;padding:0;}
+  .ipc-doc{border:0;border-radius:0;padding:0;}
+}
+</style>
+</head>
+<body>
+<div class="ipc-print-actions">
+  <button type="button" class="btn-primary" onclick="window.print()">Print or save as PDF</button>
+  <a href="${checklistUrl}" class="btn-text">Back to the checklist</a>
+</div>
+<main class="ipc-print-shell">
+  <article class="ipc-doc">${renderTakeaway()}</article>
+</main>
+</body>
+</html>`;
+}
+
+function openPrintPage() {
+  const printWindow = window.open("", "_blank");
+  if (!printWindow) return;
+  printWindow.document.open();
+  printWindow.document.write(printPageHtml());
+  printWindow.document.close();
+}
+
+document.querySelectorAll("[data-programme-field]").forEach((el) => {
+  el.addEventListener("input", () => {
+    programme[el.dataset.programmeField] = el.value;
+    renderStep(currentStep);
+  });
+});
+document.getElementById("ipc-prev").addEventListener("click", () => {
+  renderStep(Math.max(0, currentStep - 1));
+  document.getElementById("checklist").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+document.getElementById("ipc-next").addEventListener("click", () => {
+  renderStep(Math.min(PHASES.length - 1, currentStep + 1));
+  document.getElementById("checklist").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+document.getElementById("ipc-download-btn").addEventListener("click", openPrintPage);
+document.getElementById("ipc-reset-btn").addEventListener("click", () => {
+  programme.name = "";
+  programme.targetDate = "";
+  document.querySelectorAll("[data-programme-field]").forEach((el) => { el.value = ""; });
+  state.forEach((item) => {
+    item.applicable = true;
+    item.completed = false;
+    item.responsible = "";
+    item.targetDate = "";
+    item.note = "";
+  });
+  renderStep(0);
+});
+
+renderStep(0);
+</script>
