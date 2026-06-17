@@ -212,23 +212,23 @@ export const resources: Resource[] = [
     landing: false,
   },
   {
-    slug: "government-programme-checklist",
+    slug: "improvement-programme-checklist",
     tag: "CHECKLIST / TEMPLATE",
-    title: "Government Programme Checklist",
+    title: "Improvement Programme Checklist",
     summary:
-      "25 items across three phases: before you start, during delivery, and at close. Includes common government programme failure modes.",
+      "25 checks across three phases. What to get right before you start, while it runs, and at close.",
     glyph: "DocTick",
     action: "view",
-    href: "/resources/government-programme-checklist/",
-    actionLabel: "Open checklist",
+    href: "/resources/improvement-programme-checklist/",
+    actionLabel: "Open the checklist",
     gov: true,
     landing: false,
     lede:
-      "Government programmes fail in predictable ways. This 25-item checklist covers what to get right before you start, during delivery, and at close.",
+      "25 checks across three phases: what to get right before you start, while it runs, and at close. Mark what is in place, what is still to do, and what does not apply. Download your gaps as an action list. Nothing is sent or stored.",
     whatsInside: [
-      "Governance readiness checks before you start",
-      "Operating-rhythm checks for during the programme",
-      "Handover-readiness checks at close, plus common government failure modes to watch for",
+      "Before you start",
+      "While it runs",
+      "At close",
     ],
     related: {
       kicker: "GOVERN · CONTROL",
