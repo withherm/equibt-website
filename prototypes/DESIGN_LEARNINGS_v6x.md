@@ -8,6 +8,15 @@ _CANONICAL (EQT-252). The single source of truth for v6x visual work; supersedes
 
 All user-facing copy on the site, headings, body, eyebrows, labels, microcopy, framework text and comparison sections, is authored by Claude (Cowork) so the site holds ONE consistent voice. Build agents (Codex, Claude Code) must NOT write, rephrase, expand or "tidy" site copy: they wire in the copy supplied, verbatim. If a section needs copy that has not been provided, STOP and request it, do not draft it. (This rule exists because the EQT-322 method "How it differs" sections drifted off-voice, with invented headings and phrasing, when a build agent filled copy gaps itself.)
 
+## How we work: interactive tools + the design-doc system (2026-06-17)
+
+**Interactive resource tools (canvas, assessments, checklist).** All built on one shared shell: an Astro static page + vanilla JS state, no server, no framework island, no email gate, nothing stored. The Transformation Readiness Assessment set the scored pattern; the Improvement Project Canvas (EQT-328) extended it to a non-scored document builder, and the same shell carries the planning/gap checklist (EQT-329). Intro -> stepper -> review -> chrome-free print/PDF takeaway. Cowork authors ALL copy (the hard rule above) and, when the source assets are vault-side (e.g. Forma SVGs, which Codex cannot reach), Cowork also integrates the build directly via file edits and Herman commits; otherwise a build agent works from a copy-locked, plan-gated brief and opens a draft PR. Field-level conventions: an inline `e.g.` example under each prompt (never pre-filled into the field, it would ride into the download), per-field character caps via native `maxlength` (the hard stop guarantees the cell fits), and a live "N left" counter (EQT-332). As-built specifics are in the "Interactive resource tools" sections below.
+
+**The three canonical v6x design docs (all in `prototypes/`, never edit the `Docs/EQUIBT` copies, those are redirect stubs):**
+- **`DESIGN_LEARNINGS_v6x.md`** (this file): the pattern and "why" authority, the as-built lessons. Where any doc disagrees with the built site, the built site + this file win.
+- **`explorations/EQUIBT_V6X_UI_TRANSLATION.md`**: the component translation reference, how each v5x UI pattern becomes its v6x treatment (tokens, hairlines-not-boxes, icon system).
+- **`explorations/EQUIBT_V6X_DIRECTION_EXPLORATION_v6.html`**: the visual direction sandbox where the v6x look was explored before build.
+
 ## Direction / idiom
 
 Blended **Anthropic-style editorial calm** (air, white + beige, large clean type) with a **hand-drawn line-art signature** (engineering-schematic SVG, not stock icons, not AI raster). Terracotta is the single accent.
