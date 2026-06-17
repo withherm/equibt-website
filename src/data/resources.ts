@@ -221,7 +221,6 @@ export const resources: Resource[] = [
     action: "view",
     href: "/resources/improvement-programme-checklist/",
     actionLabel: "Open the checklist",
-    gov: true,
     landing: false,
     lede:
       "25 checks across three phases: what to get right before you start, while it runs, and at close. Mark what is in place, what is still to do, and what does not apply. Download your gaps as an action list. Nothing is sent or stored.",
