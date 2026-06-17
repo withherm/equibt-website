@@ -23,7 +23,7 @@ import "../../../styles/resources.css";
           <div class="eyebrow">TEMPLATE</div>
           <div id="pc-hero-body">
             <h1>Map the whole project on one page.</h1>
-            <p class="res-hero-lede">One page that aligns the why, the what, the who and the where before work begins. Work through each part, then download a clean canvas. Nothing is sent or stored.</p>
+            <p class="res-hero-lede">One page that aligns the why, the what, the who and the where before work begins. Each field is capped on purpose, so a sharp canvas fits on a single page. Work through each part, then download it. Nothing is sent or stored.</p>
             <div class="res-hero-actions">
               <button type="button" class="btn-primary" id="pc-start-btn">Start the canvas</button>
               <a href="/contact/" class="btn-text"><span class="link-label">Talk it through instead</span> <span class="ar">&rsaquo;</span></a>
@@ -107,10 +107,13 @@ import "../../../styles/resources.css";
   background:#fff;border:1px solid var(--hairline);border-radius:8px;
   padding:15px 16px;
   font-family:"Lora",Georgia,serif;font-size:20px;font-weight:500;line-height:1.45;color:var(--near-black);
-  outline:none;transition:border-color .15s,box-shadow .15s;resize:vertical;
+  outline:none;transition:border-color .15s,box-shadow .15s;resize:none;
 }
 .pc-input:focus,.pc-textarea:focus{border-color:#C15F3C;box-shadow:0 0 0 3px rgba(193,95,60,.16);}
-.pc-textarea{min-height:138px;}
+.pc-textarea{height:120px;}
+.pc-example{margin:-2px 0 0;color:var(--muted);font-size:14px;font-style:italic;line-height:1.4;}
+.pc-count{margin-top:-2px;font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--muted);text-align:right;}
+.pc-count.is-low{color:#C15F3C;}
 .pc-nav{display:flex;align-items:center;gap:24px;margin-top:28px;}
 .pc-nav button.btn-primary,.pc-review-actions button.btn-primary,.pc-print-actions button.btn-primary{border:none!important;-webkit-appearance:none!important;appearance:none!important;box-shadow:none!important;transform:none!important;}
 .pc-nav button.btn-primary:hover,.pc-review-actions button.btn-primary:hover,.pc-print-actions button.btn-primary:hover{border:none!important;box-shadow:none!important;transform:none!important;background:#2f2d6e;}
@@ -159,34 +162,34 @@ const steps = [
   {
     title: "Why",
     fields: [
-      { key: "projectName", label: "Project name", prompt: "What is the project called?", type: "input" },
-      { key: "situation", label: "Situation", prompt: "The facts and data about the situation that justify the project.", type: "textarea" },
-      { key: "problemStatement", label: "Problem statement", prompt: "The pain points from that situation. Be specific and measurable.", type: "textarea" },
-      { key: "implications", label: "Implications", prompt: "The cost of the problem: losses, missed opportunities, unmet demand.", type: "textarea" },
+      { key: "projectName", label: "Project name", prompt: "What is the project called?", type: "input", limit: 50, example: "e.g. Reduce invoice rework in Accounts Payable" },
+      { key: "situation", label: "Situation", prompt: "The facts and data about the situation that justify the project.", type: "textarea", limit: 160, example: "e.g. AP handles ~4,000 invoices a month; 18% need rework; two staff lose half their week to it." },
+      { key: "problemStatement", label: "Problem statement", prompt: "The pain points from that situation. Be specific and measurable.", type: "textarea", limit: 150, example: "e.g. Rework adds six days to payment cycle time and risks supplier late fees." },
+      { key: "implications", label: "Implications", prompt: "The cost of the problem: losses, missed opportunities, unmet demand.", type: "textarea", limit: 150, example: "e.g. About $180k a year in wasted effort and late fees; supplier trust slipping." },
     ],
   },
   {
     title: "What",
     fields: [
-      { key: "customerNeeds", label: "Customer needs", prompt: "The performance standards that must be met to satisfy the customer.", type: "textarea" },
-      { key: "objective", label: "Objective", prompt: "What success looks like, in one sentence. Make it specific, measurable and time-bound.", type: "textarea" },
-      { key: "benefits", label: "Benefits", prompt: "The value created: hard and soft benefits.", type: "textarea" },
+      { key: "customerNeeds", label: "Customer needs", prompt: "The performance standards that must be met to satisfy the customer.", type: "textarea", limit: 140, example: "e.g. Suppliers paid accurately, within agreed terms, every time." },
+      { key: "objective", label: "Objective", prompt: "What success looks like, in one sentence. Make it specific, measurable and time-bound.", type: "textarea", limit: 130, example: "e.g. Cut invoice rework from 18% to under 5% by Q4." },
+      { key: "benefits", label: "Benefits", prompt: "The value created: hard and soft benefits.", type: "textarea", limit: 140, example: "e.g. Fewer late fees, faster payment cycle, two staff freed for better work." },
     ],
   },
   {
     title: "Who & When",
     fields: [
-      { key: "stakeholders", label: "Stakeholders", prompt: "People or teams with an interest in, or affected by, the project.", type: "textarea" },
-      { key: "team", label: "Team", prompt: "The people doing the work, and their roles.", type: "textarea" },
-      { key: "timeline", label: "Timeline", prompt: "The high-level phases, as milestones.", type: "textarea" },
+      { key: "stakeholders", label: "Stakeholders", prompt: "People or teams with an interest in, or affected by, the project.", type: "textarea", limit: 140, example: "e.g. AP team, Procurement, the Finance lead, key suppliers." },
+      { key: "team", label: "Team", prompt: "The people doing the work, and their roles.", type: "textarea", limit: 130, example: "e.g. AP lead as owner, two processors, a Finance analyst." },
+      { key: "timeline", label: "Timeline", prompt: "The high-level phases, as milestones.", type: "textarea", limit: 140, example: "e.g. Discovery (2 wks), Diagnostic (3 wks), Pilot (6 wks), Rollout, Embed." },
     ],
   },
   {
     title: "Where",
     fields: [
-      { key: "inScope", label: "In scope", prompt: "What the project covers: processes, teams, sites, time periods.", type: "textarea" },
-      { key: "outOfScope", label: "Out of scope", prompt: "What it deliberately excludes. Boundaries protect the work.", type: "textarea" },
-      { key: "assumptions", label: "Assumptions", prompt: "What you are assuming about external factors and constraints.", type: "textarea" },
+      { key: "inScope", label: "In scope", prompt: "What the project covers: processes, teams, sites, time periods.", type: "textarea", limit: 150, example: "e.g. Supplier invoices handled by the AP shared-service team." },
+      { key: "outOfScope", label: "Out of scope", prompt: "What it deliberately excludes. Boundaries protect the work.", type: "textarea", limit: 140, example: "e.g. Employee expense claims; the planned ERP upgrade." },
+      { key: "assumptions", label: "Assumptions", prompt: "What you are assuming about external factors and constraints.", type: "textarea", limit: 140, example: "e.g. Current ERP stays in place; no headcount change during the pilot." },
     ],
   },
 ];
@@ -270,13 +273,16 @@ function updateStepper(idx) {
 function fieldMarkup(field) {
   const id = `pc-${field.key}`;
   const promptId = `${id}-prompt`;
+  const left = field.limit - String(state[field.key] || "").length;
   const input = field.type === "textarea"
-    ? `<textarea class="pc-textarea" id="${id}" name="${field.key}" aria-describedby="${promptId}">${escHtml(state[field.key])}</textarea>`
-    : `<input class="pc-input" type="text" id="${id}" name="${field.key}" value="${escHtml(state[field.key])}" aria-describedby="${promptId}" />`;
+    ? `<textarea class="pc-textarea" id="${id}" name="${field.key}" maxlength="${field.limit}" aria-describedby="${promptId}">${escHtml(state[field.key])}</textarea>`
+    : `<input class="pc-input" type="text" id="${id}" name="${field.key}" maxlength="${field.limit}" value="${escHtml(state[field.key])}" aria-describedby="${promptId}" />`;
   return `<div class="pc-field">
     <label class="pc-label" for="${id}">${field.label}</label>
     <p class="pc-prompt" id="${promptId}">${field.prompt}</p>
+    <p class="pc-example">${field.example}</p>
     ${input}
+    <div class="pc-count${left <= 20 ? " is-low" : ""}" id="${id}-count">${left} left</div>
   </div>`;
 }
 
@@ -296,8 +302,14 @@ function renderStep(idx) {
 
 function bindInputs() {
   document.querySelectorAll("#pc-fields [name]").forEach((el) => {
+    const counter = document.getElementById(`pc-${el.name}-count`);
     el.addEventListener("input", () => {
       state[el.name] = el.value;
+      if (counter) {
+        const left = el.maxLength - el.value.length;
+        counter.textContent = `${left} left`;
+        counter.classList.toggle("is-low", left <= 20);
+      }
     });
   });
 }
