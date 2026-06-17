@@ -23,6 +23,17 @@ let activeSection:
   | "about"
   | undefined;
 
+// Engagement Model lives at /resources/engagement-model/ but is surfaced in the
+// About dropdown (it is excluded from the Resources hub), so it belongs to the
+// About section. List it with the other About destinations and check About
+// before the generic /resources/ rule so the pathname does not claim it.
+const aboutPaths = new Set([
+  "/about/",
+  "/how-we-work/",
+  "/capability-statement/",
+  "/resources/engagement-model/",
+]);
+
 if (currentPath.startsWith("/services/")) {
   activeSection = "services";
 } else if (currentPath.startsWith("/industries/")) {
@@ -31,15 +42,10 @@ if (currentPath.startsWith("/services/")) {
   activeSection = "our-work";
 } else if (currentPath.startsWith("/insights/")) {
   activeSection = "insights";
+} else if (aboutPaths.has(currentPath) || currentPath.startsWith("/about/")) {
+  activeSection = "about";
 } else if (currentPath.startsWith("/resources/")) {
   activeSection = "resources";
-} else if (
-  currentPath === "/about/" ||
-  currentPath.startsWith("/about/") ||
-  currentPath === "/how-we-work/" ||
-  currentPath === "/capability-statement/"
-) {
-  activeSection = "about";
 }
 
 const currentResource = resources.find((resource) => isCurrentPath(resource.href));
