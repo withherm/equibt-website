@@ -23,15 +23,13 @@ let activeSection:
   | "about"
   | undefined;
 
-// Engagement Model lives at /resources/engagement-model/ but is surfaced in the
-// About dropdown (it is excluded from the Resources hub), so it belongs to the
-// About section. List it with the other About destinations and check About
-// before the generic /resources/ rule so the pathname does not claim it.
+// Engagement Model is excluded from the Resources hub and lives with the
+// About destinations, so it belongs to the About section.
 const aboutPaths = new Set([
   "/about/",
   "/how-we-work/",
   "/capability-statement/",
-  "/resources/engagement-model/",
+  "/about/engagement-model/",
 ]);
 
 if (currentPath.startsWith("/services/")) {
@@ -220,7 +218,7 @@ const isActiveSubmenu = (section: typeof activeSection, href: string) => {
             </a>
           </li>
           <li role="none">
-            <a href="/resources/engagement-model/" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("about", "/resources/engagement-model/") ? activeStyle : undefined} aria-current={isActiveSubmenu("about", "/resources/engagement-model/") ? "page" : undefined}>
+            <a href="/about/engagement-model/" role="menuitem" class="nav-dropdown-item" style={isActiveSubmenu("about", "/about/engagement-model/") ? activeStyle : undefined} aria-current={isActiveSubmenu("about", "/about/engagement-model/") ? "page" : undefined}>
               <span class="nav-dropdown-label">Engagement Model</span>
             </a>
           </li>

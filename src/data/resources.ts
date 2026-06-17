@@ -194,7 +194,7 @@ export const resources: Resource[] = [
       "How an engagement runs from first conversation to handover. What to expect, what you commit to, and what close looks like.",
     glyph: "Transfer",
     action: "view",
-    href: "/resources/engagement-model/",
+    href: "/about/engagement-model/",
     actionLabel: "View model",
     landing: false,
     lede:
