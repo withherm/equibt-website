@@ -323,6 +323,14 @@ This works because CSS `:hover` propagates through the DOM tree to absolutely-po
 
 **Sector subnav overflow chevrons (EQT-296).** The subnav tab strip (`.sector-subnav-inner`) is `overflow-x:auto; scrollbar-width:none`, so on narrow widths clipped tabs (e.g. "Where to start") had no discoverability cue. `‹`/`›` chevrons (`.sector-subnav-arrow`, abs-positioned over each edge with a short white fade) show only when `.sector-subnav` has `.can-scroll-prev`/`.can-scroll-next` — toggled by `initialiseSubnavOverflow()` reading `scrollLeft`/`scrollWidth` on scroll/resize. Tapping nudges the strip by 0.7×clientWidth. No chevrons when everything fits.
 
+### Read-page accordion pattern (EQT-330, shipped 2026-06-17)
+
+For read pages that use accordion panels, prefer a `+` / `-` text affordance over a chevron when the interaction is expand/collapse rather than navigation. Keep the control a real button with `aria-expanded`, `aria-controls` and keyboard behaviour intact.
+
+Expanded panels should avoid idiosyncratic prose stacks. Use a repeated four-card structure where the content supports it: What it is / How it is designed / What goes wrong / How you know it is working. The repeated labels make the page scannable without rewriting the authored copy.
+
+The expanded card set should follow the v6x hairline system: white cards, 1px hairline border, rounded corners, no filled beige sub-cards. On desktop, lay four cards out as a balanced 2x2 grid with generous gaps and readable measure; on mobile, stack to one column. The payoff card, "How you know it is working", can take a subtle terracotta cue such as a thin top rule so the grid has rhythm and the outcome reads as the point of the panel.
+
 ### Interactive resource tools — assessments (EQT-309, shipped 2026-06-12)
 
 Two scored assessments live at `/resources/transformation-readiness-assessment/` and `/resources/ci-maturity-assessment/` (Astro static page + vanilla JS state, no framework island, no server, no email gate). These set the reusable pattern for any future on-site scored tool. The other four EQT-309 resources (government checklist, consulting brief template, engagement model, CI framework) shipped earlier in the same issue; the assessment UX below is the as-built standard.
