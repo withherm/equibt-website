@@ -1,0 +1,236 @@
+---
+import Footer from "../../../components/Footer.astro";
+import Icon from "../../../components/icons/Icon.astro";
+import Layout from "../../../layouts/Layout.astro";
+import Nav from "../../../components/Nav.astro";
+import Transfer from "../../../components/icons/glyphs/Transfer.astro";
+import "../../../styles/resources.css";
+
+const phases = [
+  {
+    key: "discovery",
+    num: "01",
+    title: "Discovery",
+    timing: "Week 1–2",
+    summary: "We agree what we are solving and whether we are the right fit for it.",
+    detail: [
+      { head: "What happens", body: "An initial conversation to understand the operational problem, the context, and the constraints. We do not pitch services in this session — we ask questions." },
+      { head: "What you commit to", body: "A 60–90 minute conversation with the people who know the problem, not just the people who commissioned the work." },
+      { head: "What we produce", body: "A written proposal that describes the problem as we understand it, the scope we recommend, the approach, and what success looks like. If we think a different path is better, we say so." },
+      { head: "Gate to proceed", body: "Proposal accepted and scope agreed in writing. We do not start delivery without a signed scope." }
+    ]
+  },
+  {
+    key: "diagnosis",
+    num: "02",
+    title: "Diagnosis",
+    timing: "Weeks 2–4",
+    summary: "We look at what is actually happening before we recommend anything.",
+    detail: [
+      { head: "What happens", body: "Data gathering, process observation, and stakeholder interviews. We are looking for the real cause of performance gaps, not the presenting symptom." },
+      { head: "What you commit to", body: "Access to the relevant processes, data, and people. A named internal point of contact who can open doors." },
+      { head: "What we produce", body: "A current-state assessment with findings, root causes, and a prioritised gap analysis. This document drives everything that follows." },
+      { head: "Gate to proceed", body: "Assessment findings reviewed and accepted. Priorities agreed. This is often where scope gets refined." }
+    ]
+  },
+  {
+    key: "design",
+    num: "03",
+    title: "Design",
+    timing: "Weeks 3–5",
+    summary: "We design a solution that fits the actual problem, not a generic one.",
+    detail: [
+      { head: "What happens", body: "Solution design, intervention planning, and stakeholder validation. We test proposals against the operating reality before committing to them." },
+      { head: "What you commit to", body: "Honest feedback on the proposed solution before it goes to delivery. If something will not work operationally, now is when to say so." },
+      { head: "What we produce", body: "An implementation plan with milestones, ownership, resources required, and a benefits realisation framework." },
+      { head: "Gate to proceed", body: "Plan approved by the sponsor. Roles and resource commitments confirmed." }
+    ]
+  },
+  {
+    key: "delivery",
+    num: "04",
+    title: "Delivery",
+    timing: "Weeks 5–16 (varies by scope)",
+    summary: "We run the work with your team, not at them.",
+    detail: [
+      { head: "What happens", body: "Facilitated implementation, capability building, and structured progress reviews. We work alongside your people, not as a parallel team that hands something over at the end." },
+      { head: "What you commit to", body: "Staff availability to participate in the work. Leadership visibility at governance check-ins. Active management of change resistance — not leaving it to us." },
+      { head: "What we produce", body: "Progress reports at agreed intervals. Issue and decision logs. Demonstrable movement on the metrics agreed in the diagnosis phase." },
+      { head: "Gate to proceed", body: "Each milestone is reviewed before the next phase is approved. We do not run through gates on autopilot." }
+    ]
+  },
+  {
+    key: "handover",
+    num: "05",
+    title: "Handover",
+    timing: "Final 2 weeks",
+    summary: "We make sure the capability stays when we leave.",
+    detail: [
+      { head: "What happens", body: "Knowledge transfer, sustainability check, and a structured close-out. We test that the team can run the new way of working without us before we leave." },
+      { head: "What you commit to", body: "A named operational owner for each element being handed over. Confirmation that governance, measurement, and operating rhythms are in place." },
+      { head: "What we produce", body: "Handover documentation, a 90-day sustainability plan, and a post-engagement review. Benefit realisation is tracked for 90 days after close." },
+      { head: "What good close looks like", body: "Your team is running the new state. Performance is measurable. The improvement does not depend on us being there." }
+    ]
+  }
+];
+---
+
+<Layout
+  title="EQUIBT Engagement Model | Resources"
+  description="How an EQUIBT engagement runs from first conversation to handover. What to expect, what you commit to, and what close looks like."
+>
+  <Nav />
+  <main>
+    <section class="res-hero res-reveal">
+      <div class="res-hero-inner">
+        <div class="res-hero-copy">
+          <div class="eyebrow">GUIDE</div>
+          <h1>EQUIBT Engagement Model</h1>
+          <p class="res-hero-lede">From first conversation to a handover that leaves the capability with your team. Click each phase to see what happens, what you commit to, and what we produce.</p>
+          <div class="res-hero-actions">
+            <a href="#engagement-model" class="btn-text"><span class="link-label">Explore the model</span> <span class="ar">&rsaquo;</span></a>
+            <a href="/contact/" class="btn-text"><span class="link-label">Get in touch</span> <span class="ar">&rsaquo;</span></a>
+          </div>
+        </div>
+        <div class="res-hero-art" aria-hidden="true">
+          <span><Icon name="hero-engagement-model" /></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="em-tool res-reveal" id="engagement-model">
+      <div class="res-inner">
+        <div class="em-timeline" id="em-timeline">
+          {phases.map((phase, i) => (
+            <div class="em-phase" data-key={phase.key} id={`em-phase-${phase.key}`}>
+              <button class="em-phase-btn" type="button" aria-expanded="false" aria-controls={`em-phase-detail-${phase.key}`}>
+                <div class="em-phase-left">
+                  <span class="em-phase-num">{phase.num}</span>
+                  <div class="em-phase-meta">
+                    <span class="em-phase-title">{phase.title}</span>
+                    <span class="em-phase-timing">{phase.timing}</span>
+                  </div>
+                </div>
+                <p class="em-phase-summary">{phase.summary}</p>
+                <span class="em-chevron" aria-hidden="true">&#x203A;</span>
+              </button>
+              <div class="em-phase-detail" id={`em-phase-detail-${phase.key}`} hidden>
+                <div class="em-detail-grid">
+                  {phase.detail.map(d => (
+                    <div class="em-detail-card">
+                      <p class="em-detail-head">{d.head}</p>
+                      <p class="em-detail-body">{d.body}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {i < phases.length - 1 && <div class="em-connector" aria-hidden="true"></div>}
+            </div>
+          ))}
+        </div>
+        <div class="em-cta-strip">
+          <div class="eyebrow">NEXT STEP</div>
+          <p>A plain description of the operational issue or goal is enough to start a conversation.</p>
+          <a href="/contact/" class="btn-primary">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="res-ld-close res-reveal">
+      <div class="res-inner">
+        <div class="res-ld-close-grid">
+          <div class="res-ld-close-copy">
+            <div class="eyebrow">WORK WITH US</div>
+            <h2>Ready to start a conversation?</h2>
+            <p>Get in touch. We will tell you honestly whether what you are describing fits how we work.</p>
+            <a href="/contact/" class="btn-primary">Get in touch</a>
+          </div>
+          <div class="res-ld-close-art" aria-hidden="true">
+            <span><Transfer /></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+.em-tool{padding:72px 56px 88px;background:#F5F3EE;}
+
+.em-timeline{display:flex;flex-direction:column;gap:0;margin-bottom:48px;}
+
+.em-phase{position:relative;}
+.em-connector{width:2px;height:24px;background:var(--hairline);margin-left:32px;}
+
+.em-phase-btn{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;gap:24px;
+  width:100%;text-align:left;
+  background:#fff;border:1px solid var(--hairline);border-radius:12px;
+  padding:24px 28px;cursor:pointer;
+  transition:border-color .15s,background .15s;
+}
+.em-phase-btn:hover{border-color:var(--terracotta);}
+.em-phase[aria-expanded="true"] .em-phase-btn,
+.em-phase-btn[aria-expanded="true"]{border-color:var(--navy);border-bottom-left-radius:0;border-bottom-right-radius:0;}
+
+.em-phase-left{display:flex;align-items:center;gap:16px;flex:0 0 auto;}
+.em-phase-num{
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:13px;font-weight:700;letter-spacing:.08em;
+  color:#fff;background:var(--navy);
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.em-phase-meta{display:flex;flex-direction:column;gap:2px;}
+.em-phase-title{font-size:19px;font-weight:700;color:var(--navy);}
+.em-phase-timing{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);}
+.em-phase-summary{font-size:17px;color:var(--mid-grey);margin:0;line-height:1.4;}
+.em-chevron{font-size:22px;color:var(--muted);transition:transform .2s ease;display:inline-block;flex:0 0 auto;}
+.em-phase-btn[aria-expanded="true"] .em-chevron{transform:rotate(90deg);}
+
+.em-phase-detail{
+  background:#fff;border:1px solid var(--navy);border-top:none;
+  border-bottom-left-radius:12px;border-bottom-right-radius:12px;
+  padding:0 28px 28px;
+}
+.em-detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding-top:24px;}
+.em-detail-card{padding:18px 20px;background:#F5F3EE;border-radius:8px;}
+.em-detail-head{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin:0 0 8px;}
+.em-detail-body{font-size:16px;color:var(--mid-grey);margin:0;line-height:1.5;}
+
+.em-cta-strip{padding:32px;background:#fff;border:1px solid var(--hairline);border-radius:12px;}
+.em-cta-strip .eyebrow{margin-bottom:10px;}
+.em-cta-strip p{margin:0 0 18px;color:var(--mid-grey);font-size:18px;}
+
+@media(max-width:900px){
+  .em-phase-btn{grid-template-columns:auto 1fr auto;gap:16px;}
+  .em-detail-grid{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  .em-tool{padding:48px 24px 64px;}
+  .em-phase-btn{grid-template-columns:1fr auto;gap:12px;}
+  .em-phase-left{grid-column:1/-1;}
+  .em-phase-summary{grid-column:1;}
+}
+</style>
+
+<script>
+document.querySelectorAll(".em-phase-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    const detailId = btn.getAttribute("aria-controls");
+    const detail = document.getElementById(detailId);
+    btn.setAttribute("aria-expanded", !expanded);
+    if (expanded) {
+      detail.hidden = true;
+    } else {
+      detail.hidden = false;
+      detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  });
+});
+</script>

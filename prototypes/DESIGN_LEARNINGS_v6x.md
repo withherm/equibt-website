@@ -448,3 +448,5 @@ Interim site-wide hero icons. Replaces the EQT-324 stripped / line-art hero art 
 ### Resource detail hero and nav location (EQT-333 / EQT-334, 2026-06-17)
 
 Resource detail pages now rely on the sticky top nav for location instead of hero breadcrumbs. The hero H1 is the canonical resource name, with the existing eyebrow kept only where it already existed; the two assessment tools keep their no-eyebrow structure. `categoryMap` lives in `src/data/resources.ts` so the Resources hub filters and the Nav submenu use the same tag-to-category mapping. Active nav state is text-colour only: terracotta `#C15F3C` plus `aria-current="page"`, with no bar, underline, rule or other marker.
+
+**Engagement Model URL (EQT-336, 2026-06-18).** Engagement Model is an About dropdown item, not a Resources hub item, so the canonical route is `/about/engagement-model/`. The former Resources route remains only as a 301 redirect stub.
