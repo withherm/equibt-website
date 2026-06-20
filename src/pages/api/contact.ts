@@ -25,6 +25,9 @@ type ContactEnv = RuntimeEnv & {
 
 type LocalsWithRuntimeEnv = {
   runtime: Runtime & {
+    cf?: {
+      country?: string;
+    };
     env: ContactEnv;
   };
 };
@@ -111,7 +114,7 @@ export const POST: APIRoute = async ({ locals, request }) => {
       return jsonResponse({ ok: true });
     }
 
-    const token = trimToMax(body["cf-turnstile-response"], SHORT_FIELD_MAX);
+    const token = String(body["cf-turnstile-response"] ?? "").trim();
     const ip = request.headers.get("CF-Connecting-IP");
     const verified = token.length > 0 && (await verifyTurnstile(env, token, ip));
 
@@ -132,7 +135,10 @@ export const POST: APIRoute = async ({ locals, request }) => {
 
     const createdAt = new Date().toISOString();
     const userAgent = request.headers.get("user-agent");
-    const country = (request as CloudflareRequest).cf?.country ?? null;
+    const country =
+      (locals as unknown as LocalsWithRuntimeEnv).runtime.cf?.country ??
+      (request as CloudflareRequest).cf?.country ??
+      null;
 
     await env.DB.prepare(
       `INSERT INTO submissions (
