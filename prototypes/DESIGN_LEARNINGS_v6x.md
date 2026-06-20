@@ -19,6 +19,12 @@ All user-facing copy on the site, headings, body, eyebrows, labels, microcopy, f
 - **`explorations/EQUIBT_V6X_UI_TRANSLATION.md`**: the component translation reference, how each v5x UI pattern becomes its v6x treatment (tokens, hairlines-not-boxes, icon system).
 - **`explorations/EQUIBT_V6X_DIRECTION_EXPLORATION_v6.html`**: the visual direction sandbox where the v6x look was explored before build.
 
+## Contact form handler (EQT-337, 2026-06-20)
+
+The contact page now posts to an Astro server endpoint at `/api/contact` rather than a `mailto:` action. The endpoint runs on the `@astrojs/cloudflare` adapter with `prerender = false`, reads runtime bindings from `locals.runtime.env`, verifies Cloudflare Turnstile server-side, silently drops the honeypot, validates the required fields, stores the submission in D1, then sends a Resend notification. D1 is the source of record, so a Resend failure is logged but does not fail the submission after the row is captured.
+
+Required runtime values: `DB`, `PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`, `RESEND_API_KEY`, optional `CONTACT_TO`, and optional `CONTACT_FROM`. The root `wrangler.toml` only declares the local-dev D1 binding for the Cloudflare adapter platform proxy; production bindings and secrets stay in the Cloudflare dashboard.
+
 ## Direction / idiom
 
 Blended **Anthropic-style editorial calm** (air, white + beige, large clean type) with a **hand-drawn line-art signature** (engineering-schematic SVG, not stock icons, not AI raster). Terracotta is the single accent.
