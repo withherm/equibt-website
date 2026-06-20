@@ -1,36 +1,10 @@
-import type { Runtime } from "@astrojs/cloudflare";
-import type { APIRoute } from "astro";
-
-export const prerender = false;
-
-type D1PreparedStatement = {
-  bind: (...values: Array<string | null>) => {
-    run: () => Promise<unknown>;
-  };
-};
-
-type D1Database = {
-  prepare: (query: string) => D1PreparedStatement;
-};
-
-type RuntimeEnv = Runtime extends { env: infer Env } ? Env : Record<string, unknown>;
-
-type ContactEnv = RuntimeEnv & {
+interface Env {
   DB: D1Database;
   TURNSTILE_SECRET_KEY: string;
   RESEND_API_KEY: string;
   CONTACT_TO?: string;
   CONTACT_FROM?: string;
-};
-
-type LocalsWithRuntimeEnv = {
-  runtime: Runtime & {
-    cf?: {
-      country?: string;
-    };
-    env: ContactEnv;
-  };
-};
+}
 
 type CloudflareRequest = Request & {
   cf?: {
@@ -87,7 +61,7 @@ async function readBody(request: Request) {
   );
 }
 
-async function verifyTurnstile(env: ContactEnv, token: string, remoteIp: string | null) {
+async function verifyTurnstile(env: Env, token: string, remoteIp: string | null) {
   const body = new URLSearchParams();
   body.set("secret", env.TURNSTILE_SECRET_KEY);
   body.set("response", token);
@@ -104,9 +78,9 @@ async function verifyTurnstile(env: ContactEnv, token: string, remoteIp: string 
   return result.success === true;
 }
 
-export const POST: APIRoute = async ({ locals, request }) => {
+export const onRequestPost: PagesFunction<Env> = async (context) => {
   try {
-    const env = (locals as unknown as LocalsWithRuntimeEnv).runtime.env;
+    const { request, env } = context;
     const body = await readBody(request);
     const honeypot = trimToMax(body.company_website, SHORT_FIELD_MAX);
 
@@ -135,10 +109,7 @@ export const POST: APIRoute = async ({ locals, request }) => {
 
     const createdAt = new Date().toISOString();
     const userAgent = request.headers.get("user-agent");
-    const country =
-      (locals as unknown as LocalsWithRuntimeEnv).runtime.cf?.country ??
-      (request as CloudflareRequest).cf?.country ??
-      null;
+    const country = (request as CloudflareRequest).cf?.country ?? null;
 
     await env.DB.prepare(
       `INSERT INTO submissions (
