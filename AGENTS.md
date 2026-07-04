@@ -1,5 +1,5 @@
 # Codex Project GOS — Operating Instructions
-_Last updated: 2026-06-11 (staleness refresh) | Platform: OpenAI Codex (cloud code agent, GitHub access, no vault access)_
+_Last updated: 2026-07-04 (Codex cloud loop turn-on) | Platform: OpenAI Codex (cloud code agent, GitHub access, no vault access)_
 
 ---
 
@@ -13,6 +13,14 @@ Code agent for GOS build tasks. Codex operates from Linear issues and GitHub —
 
 1. Read the assigned Linear issue at `linear.app/equibt` (team EQUIBT, key EQT). Understand the spec, scope, and acceptance criteria before writing any code.
 2. Do not start without a Linear issue. If none exists, ask Herman to create one.
+
+## Plan-gate (before writing code)
+
+Show your plan and the exact file list before writing any code. Wait for that to be acceptable, then build. Do not expand beyond the files you named.
+
+## Scope fence
+
+Touch only the files the issue names. If the work seems to need another file, stop and say so in a Linear comment rather than editing it.
 
 ---
 
@@ -36,6 +44,11 @@ Code agent for GOS build tasks. Codex operates from Linear issues and GitHub —
 7. Update issue status: In Progress → In Review after the PR is open. Do NOT self-mark Done. An issue moves to Done only after its PR is merged to main, and Herman makes that move. "Done" = merged and live, not "code written."
 
 To pick up the next task: read the Linear board, take the highest-priority Backlog issue in the relevant project.
+
+## Verify against the deployed URL, not just the build
+
+`npm run build` passing does NOT mean the feature works. For any server behaviour (form handlers, API routes), hit the actual deployed preview URL and confirm the real response.
+On this stack (Astro `output: "static"` + `@astrojs/cloudflare`, deployed as a Cloudflare Pages project serving `dist/client`), on-demand server routes do NOT run: an Astro `prerender = false` endpoint returns 405. Server handlers MUST be Cloudflare Pages Functions in `/functions` (e.g. `functions/api/contact.ts`, `onRequestPost`, bindings via `context.env`).
 
 ---
 
