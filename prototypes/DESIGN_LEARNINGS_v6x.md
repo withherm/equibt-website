@@ -426,6 +426,11 @@ Section order: compact `.method-hero` -> the comparison grid (white) -> framing 
 
 Took several Herman review rounds off the first (heavy) build: navy header band + black phase bands -> light; icon circles dropped; terracotta header underline removed (hard no); columns equalised and header rows aligned to remove the need for any dividers; minimal dot enlarged; Training/CTA swapped; "DMAICO" stripped from page copy; framing section given eyebrow `HOW THEY FIT` + title "Run them as one engagement, not five separate tools." The standalone sign-off mock is `Runtime/01_Projects/Active/EQT325_METHODS_HUB_GRID_MOCK.html` (vault). The Resources-hub entry point for the same page is queued as EQT-326.
 
+
+### Site-wide production analytics (EQT-338, 2026-07-04)
+
+GA4 and Microsoft Clarity are wired in `src/components/BaseHead.astro` only when their public build-time env vars exist. `PUBLIC_GA4_ID` renders the GA4 `gtag.js` loader and config snippet. `PUBLIC_CLARITY_ID` renders the Microsoft Clarity loader. If either env var is unset, that snippet renders nothing, which keeps preview and staging builds analytics-clean. Real IDs are Cloudflare Pages Production env vars, not repo values.
+
 ## Process notes
 
 - Build runs via Codex on branch `eqt-245` (single canonical clone); Herman/Cowork review screenshots and the file directly. Codex's screenshot environment was blocked this session, and self-checks are not trusted for sign-off (past false passes). Six correction rounds (R1-R6) produced this set. Icon options and the Govern-tick exploration are recorded in `EQUIBT_V6X_ICON_OPTIONS.html`, `EQUIBT_V6X_GOVERN_TICK_OPTIONS.html`, `EQUIBT_V6X_GOVERN_FINAL.html` (Docs/EQUIBT).
