@@ -149,7 +149,7 @@
   align-items:center;
 }
 .doc-panel{
-  aspect-ratio:4/3;
+  aspect-ratio:1.42/1;
   border:1px solid var(--hairline);
   border-radius:8px;
   background:var(--off-white);

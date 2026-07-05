@@ -1,4 +1,8 @@
 ---
+import SOLVE_DEL_1_RCA from "../../../assets/deliverables/SOLVE/SOLVE-DEL-1-RCA.png";
+import SOLVE_DEL_2_DESIGN from "../../../assets/deliverables/SOLVE/SOLVE-DEL-2-DESIGN.png";
+import SOLVE_DEL_3_CBA from "../../../assets/deliverables/SOLVE/SOLVE-DEL-3-CBA.png";
+import SOLVE_DEL_4_READINESS from "../../../assets/deliverables/SOLVE/SOLVE-DEL-4-READINESS.png";
 import ServicePage from "../../components/ServicePage.astro";
 
 const data = {
@@ -42,10 +46,10 @@ const data = {
   deliverablesTitle: "Four deliverables. Analysis to design.",
   deliverablesIntro: "These are the outputs that move your team from diagnostic findings to a costed future state ready for validation.",
   deliverables: [
-    { title: "Root Cause Analysis Report", body: "The tested cause chain behind the operational failure, with evidence for what is driving the symptom.", glyph: "doc-chart" },
-    { title: "Future State Design", body: "A complete operational design covering process flows, role definitions, decision rights, technology requirements, and performance targets.", glyph: "doc-report" },
-    { title: "Cost-Benefit Analysis", body: "The quantified case for the design choices, including trade-offs, expected benefit, implementation effort, and risk.", glyph: "doc-chart" },
-    { title: "Implementation Readiness Assessment", body: "A readiness view of what must be true before the solution can be piloted or deployed with confidence.", glyph: "doc-chart" }
+    { title: "Root Cause Analysis Report", body: "The tested cause chain behind the operational failure, with evidence for what is driving the symptom.", glyph: "doc-chart", image: SOLVE_DEL_1_RCA.src },
+    { title: "Future State Design", body: "A complete operational design covering process flows, role definitions, decision rights, technology requirements, and performance targets.", glyph: "doc-report", image: SOLVE_DEL_2_DESIGN.src },
+    { title: "Cost-Benefit Analysis", body: "The quantified case for the design choices, including trade-offs, expected benefit, implementation effort, and risk.", glyph: "doc-chart", image: SOLVE_DEL_3_CBA.src },
+    { title: "Implementation Readiness Assessment", body: "A readiness view of what must be true before the solution can be piloted or deployed with confidence.", glyph: "doc-chart", image: SOLVE_DEL_4_READINESS.src }
   ],
   cases: [
     {
