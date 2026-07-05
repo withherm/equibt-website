@@ -1,4 +1,8 @@
 ---
+import GOVERN_DEL_1_ARCH from "../../../assets/deliverables/GOVERN/GOVERN-DEL-1-ARCH.png";
+import GOVERN_DEL_2_CONTROL from "../../../assets/deliverables/GOVERN/GOVERN-DEL-2-CONTROL.png";
+import GOVERN_DEL_3_DASH from "../../../assets/deliverables/GOVERN/GOVERN-DEL-3-DASH.png";
+import GOVERN_DEL_4_AIFRAME from "../../../assets/deliverables/GOVERN/GOVERN-DEL-4-AIFRAME.png";
 import ServicePage from "../../components/ServicePage.astro";
 
 const data = {
@@ -42,10 +46,10 @@ const data = {
   deliverablesTitle: "Four deliverables. Infrastructure that holds.",
   deliverablesIntro: "These are the outputs that make governance specific, owned, and maintainable inside the operation.",
   deliverables: [
-    { title: "Process Architecture Document", body: "The operating architecture for the improved process, including ownership, decisions, handoffs, and control points.", glyph: "doc-report" },
-    { title: "Control Plans", body: "The practical control system: measures, thresholds, owners, escalation paths, review cadence, and correction triggers.", glyph: "doc-calendar" },
-    { title: "Monitoring Dashboard Specification", body: "The dashboard requirements that make drift visible and actionable for the owners who need to intervene.", glyph: "doc-chart" },
-    { title: "AI Governance Framework", body: "The ownership, validation, oversight, and escalation framework for AI-assisted or automated operating work.", glyph: "doc-report" }
+    { title: "Process Architecture Document", body: "The operating architecture for the improved process, including ownership, decisions, handoffs, and control points.", glyph: "doc-report", image: GOVERN_DEL_1_ARCH.src },
+    { title: "Control Plans", body: "The practical control system: measures, thresholds, owners, escalation paths, review cadence, and correction triggers.", glyph: "doc-calendar", image: GOVERN_DEL_2_CONTROL.src },
+    { title: "Monitoring Dashboard Specification", body: "The dashboard requirements that make drift visible and actionable for the owners who need to intervene.", glyph: "doc-chart", image: GOVERN_DEL_3_DASH.src },
+    { title: "AI Governance Framework", body: "The ownership, validation, oversight, and escalation framework for AI-assisted or automated operating work.", glyph: "doc-report", image: GOVERN_DEL_4_AIFRAME.src }
   ],
   cases: [
     {

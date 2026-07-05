@@ -1,4 +1,8 @@
 ---
+import SCALE_DEL_1_PLAYBOOK from "../../../assets/deliverables/SCALE/SCALE-DEL-1-PLAYBOOK.png";
+import SCALE_DEL_2_AUTO from "../../../assets/deliverables/SCALE/SCALE-DEL-2-AUTO.png";
+import SCALE_DEL_3_CAPABILITY from "../../../assets/deliverables/SCALE/SCALE-DEL-3-CAPABILITY.png";
+import SCALE_DEL_4_CI from "../../../assets/deliverables/SCALE/SCALE-DEL-4-CI.png";
 import ServicePage from "../../components/ServicePage.astro";
 
 const data = {
@@ -42,10 +46,10 @@ const data = {
   deliverablesTitle: "Four deliverables. Deployment to independence.",
   deliverablesIntro: "These are the outputs that help your teams deploy the validated way of working, operate it independently, and keep improving.",
   deliverables: [
-    { title: "Standardisation Playbook", body: "The operating playbook that defines the standard, the permitted variation, and how teams should run the new way of working.", glyph: "doc-report" },
-    { title: "Automation Deployment Package", body: "The deployment assets for approved automation, including governance, oversight, exception handling, and drift controls.", glyph: "doc-tick" },
-    { title: "Capability Transfer Programme", body: "The training and transfer plan that builds the internal capability needed to run and improve the operation independently.", glyph: "doc-calendar" },
-    { title: "Continuous Improvement System", body: "The routines, measures, review cadence, and ownership model that keep the operation learning after the project closes.", glyph: "doc-report" }
+    { title: "Standardisation Playbook", body: "The operating playbook that defines the standard, the permitted variation, and how teams should run the new way of working.", glyph: "doc-report", image: SCALE_DEL_1_PLAYBOOK.src },
+    { title: "Automation Deployment Package", body: "The deployment assets for approved automation, including governance, oversight, exception handling, and drift controls.", glyph: "doc-tick", image: SCALE_DEL_2_AUTO.src },
+    { title: "Capability Transfer Programme", body: "The training and transfer plan that builds the internal capability needed to run and improve the operation independently.", glyph: "doc-calendar", image: SCALE_DEL_3_CAPABILITY.src },
+    { title: "Continuous Improvement System", body: "The routines, measures, review cadence, and ownership model that keep the operation learning after the project closes.", glyph: "doc-report", image: SCALE_DEL_4_CI.src }
   ],
   cases: [
     {

@@ -1,4 +1,8 @@
 ---
+import FRAME_DEL_1_SPINREPORT from "../../../assets/deliverables/FRAME/FRAME-DEL-1-SPINREPORT.png";
+import FRAME_DEL_2_CHARTER from "../../../assets/deliverables/FRAME/FRAME-DEL-2-CHARTER.png";
+import FRAME_DEL_3_CRITERIA from "../../../assets/deliverables/FRAME/FRAME-DEL-3-CRITERIA.png";
+import FRAME_DEL_4_RECORD from "../../../assets/deliverables/FRAME/FRAME-DEL-4-RECORD.png";
 import ServicePage from "../../components/ServicePage.astro";
 
 const data = {
@@ -42,10 +46,10 @@ const data = {
   deliverablesTitle: "Four deliverables. Aligned from day one.",
   deliverablesIntro: "Each deliverable is a practical working asset, not a slide deck for the shelf.",
   deliverables: [
-    { title: "SPIN Workshop Report", body: "The agreed problem statement, competing hypotheses surfaced and resolved, implications mapped, and the non-negotiables each stakeholder brought.", glyph: "doc-report" },
-    { title: "Project Charter", body: "The governance document for everything that follows: scope boundaries, exclusions, success criteria, timeline, and stakeholder sign-off.", glyph: "doc-tick" },
-    { title: "Success Criteria Framework", body: "Specific, measurable success criteria the PLAN diagnostic can baseline against, written so every stakeholder reads the target the same way.", glyph: "doc-tick" },
-    { title: "SPIN Workshop Record", body: "A complete facilitated record of the hypotheses explored, evidence tested, and reasoning behind the agreed problem statement.", glyph: "doc-report" }
+    { title: "SPIN Workshop Report", body: "The agreed problem statement, competing hypotheses surfaced and resolved, implications mapped, and the non-negotiables each stakeholder brought.", glyph: "doc-report", image: FRAME_DEL_1_SPINREPORT.src },
+    { title: "Project Charter", body: "The governance document for everything that follows: scope boundaries, exclusions, success criteria, timeline, and stakeholder sign-off.", glyph: "doc-tick", image: FRAME_DEL_2_CHARTER.src },
+    { title: "Success Criteria Framework", body: "Specific, measurable success criteria the PLAN diagnostic can baseline against, written so every stakeholder reads the target the same way.", glyph: "doc-tick", image: FRAME_DEL_3_CRITERIA.src },
+    { title: "SPIN Workshop Record", body: "A complete facilitated record of the hypotheses explored, evidence tested, and reasoning behind the agreed problem statement.", glyph: "doc-report", image: FRAME_DEL_4_RECORD.src }
   ],
   cases: [
     {

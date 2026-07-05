@@ -1,4 +1,8 @@
 ---
+import PLAN_DEL_1_ASSESSMENT from "../../../assets/deliverables/PLAN/PLAN-DEL-1-ASSESSMENT.png";
+import PLAN_DEL_2_CAPGAP from "../../../assets/deliverables/PLAN/PLAN-DEL-2-CAPGAP.png";
+import PLAN_DEL_3_ROADMAP from "../../../assets/deliverables/PLAN/PLAN-DEL-3-ROADMAP.png";
+import PLAN_DEL_4_PATHWAY from "../../../assets/deliverables/PLAN/PLAN-DEL-4-PATHWAY.png";
 import ServicePage from "../../components/ServicePage.astro";
 
 const data = {
@@ -42,10 +46,10 @@ const data = {
   deliverablesTitle: "Four deliverables. All actionable.",
   deliverablesIntro: "These are the inputs that make everything after PLAN faster, cheaper, and more targeted.",
   deliverables: [
-    { title: "Current-State Assessment", body: "A clear evidence base for how the operation works now, where friction sits, and which constraints are measurable.", glyph: "doc-chart" },
-    { title: "Capability Gap Analysis", body: "An honest assessment of what your team can carry independently and where training, support, or change capability needs to come first.", glyph: "doc-chart" },
-    { title: "Prioritised Improvement Roadmap", body: "A sequenced roadmap that shows where to start, what to defer, and which initiatives should not be funded yet.", glyph: "doc-calendar" },
-    { title: "Engagement Pathway Recommendation", body: "A practical view of the right next step: build improvement capability, validate a direction with a pilot, or commit to a deeper redesign.", glyph: "doc-calendar" }
+    { title: "Current-State Assessment", body: "A clear evidence base for how the operation works now, where friction sits, and which constraints are measurable.", glyph: "doc-chart", image: PLAN_DEL_1_ASSESSMENT.src },
+    { title: "Capability Gap Analysis", body: "An honest assessment of what your team can carry independently and where training, support, or change capability needs to come first.", glyph: "doc-chart", image: PLAN_DEL_2_CAPGAP.src },
+    { title: "Prioritised Improvement Roadmap", body: "A sequenced roadmap that shows where to start, what to defer, and which initiatives should not be funded yet.", glyph: "doc-calendar", image: PLAN_DEL_3_ROADMAP.src },
+    { title: "Engagement Pathway Recommendation", body: "A practical view of the right next step: build improvement capability, validate a direction with a pilot, or commit to a deeper redesign.", glyph: "doc-calendar", image: PLAN_DEL_4_PATHWAY.src }
   ],
   cases: [
     {
