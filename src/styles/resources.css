@@ -309,3 +309,5 @@
   .res-ld-hero,.res-ld-inside,.res-ld-related,.res-ld-close,
   .res-wiz,.res-edu{padding-left:22px;padding-right:22px;}
 }
+
+.res-hero .res-inner{max-width:var(--wide);}

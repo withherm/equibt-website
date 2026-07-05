@@ -19,7 +19,7 @@
   display:grid;
   grid-template-columns:minmax(0,1.04fr) minmax(260px,.96fr);
   gap:40px;
-  align-items:center;
+  align-items:start;
 }
 .ins-hero .eyebrow{margin-bottom:32px;}
 .ins-hero h1{max-width:740px;margin:0 0 24px;font-size:clamp(40px,3.4vw,46px);font-weight:700;line-height:1.08;}

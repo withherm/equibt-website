@@ -32,8 +32,8 @@ Root problem v6x fixes: v5x read "too structured." Cure is two parts, not one: (
 ## Type
 
 - Headings **Montserrat 700**, letter-spacing -0.012em. Retained for brand continuity with Lean Methods.
-- Body **Lora 500, 22px**, line-height 1.45, near-black `#161616`. (Raised from 20px: Lora's lower x-height reads small next to the reference serif. The gap was the font's x-height, not the point size.)
-- Hero subhead Lora 500 ~22px / 1.4. Supporting/descriptions default to body size; minimise font-size variation, do not invent smaller grey sizes for sub-lines.
+- Body **Lora 500, 19px**, line-height ~1.45, near-black `#161616` / mid-grey `#2B2B2B`. **Revised 2026-07-05 (Herman, live review):** dropped from 22px after auditing real font-size drift across the site (18-22px scattered across card summaries, method blurbs, and section copy) — 19px is the single sitewide standard for all body/paragraph copy outside the top hero section. Confirmed against a live size comparison mockup.
+- Hero subhead Lora 500 **22px** / 1.4, in the top hero section of each page only (the paragraph directly under the page H1, e.g. `service-hero-subhead`, `ow-hero-lede`, `res-hero-lede`, `ins-hero-lede`). **Revised 2026-07-05:** this is now intentionally larger than body (22px vs 19px) to balance against the H1, reversing the prior "minimise font-size variation" guidance. Do not use 22px anywhere outside a top hero subhead/lede.
 - **Captions in italic Lora**: metric captions, evidence source lines, flagship metric label, sector result descriptors. Functional labels (eyebrows, kickers, data labels) stay Montserrat.
 - **H1 `clamp(40px, 3.4vw, 46px)`** — reduced from the inherited v5x H1 (clamp 52-56) to sit between the old H1 and H2. v6x type-scale change. H2 unchanged.
 
