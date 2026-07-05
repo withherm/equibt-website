@@ -1,4 +1,8 @@
 ---
+import EVOLVE_DEL_1_PILOT from "../../../assets/deliverables/EVOLVE/EVOLVE-DEL-1-PILOT.png";
+import EVOLVE_DEL_2_BRD from "../../../assets/deliverables/EVOLVE/EVOLVE-DEL-2-BRD.png";
+import EVOLVE_DEL_3_IMPL from "../../../assets/deliverables/EVOLVE/EVOLVE-DEL-3-IMPL.png";
+import EVOLVE_DEL_4_AUTHBRIEF from "../../../assets/deliverables/EVOLVE/EVOLVE-DEL-4-AUTHBRIEF.png";
 import ServicePage from "../../components/ServicePage.astro";
 
 const data = {
@@ -42,10 +46,10 @@ const data = {
   deliverablesTitle: "Four deliverables. Validated, then specified.",
   deliverablesIntro: "These are the outputs that move your team from a designed solution to confident deployment readiness.",
   deliverables: [
-    { title: "Pilot Results Report", body: "The evidence from the pilot: what worked, what failed, what changed, and whether the solution is ready to move.", glyph: "doc-chart" },
-    { title: "Business Requirements Document", body: "The requirements that emerge from validated learning, covering process, system, data, control, and adoption needs.", glyph: "doc-report" },
-    { title: "Implementation and Change Management Plan", body: "A practical plan for moving from pilot to deployment while protecting continuity, adoption, and governance.", glyph: "doc-calendar" },
-    { title: "Deployment Authorisation Brief", body: "The decision brief that shows what has been validated and what must be true before the full operation commits.", glyph: "doc-tick" }
+    { title: "Pilot Results Report", body: "The evidence from the pilot: what worked, what failed, what changed, and whether the solution is ready to move.", glyph: "doc-chart", image: EVOLVE_DEL_1_PILOT.src },
+    { title: "Business Requirements Document", body: "The requirements that emerge from validated learning, covering process, system, data, control, and adoption needs.", glyph: "doc-report", image: EVOLVE_DEL_2_BRD.src },
+    { title: "Implementation and Change Management Plan", body: "A practical plan for moving from pilot to deployment while protecting continuity, adoption, and governance.", glyph: "doc-calendar", image: EVOLVE_DEL_3_IMPL.src },
+    { title: "Deployment Authorisation Brief", body: "The decision brief that shows what has been validated and what must be true before the full operation commits.", glyph: "doc-tick", image: EVOLVE_DEL_4_AUTHBRIEF.src }
   ],
   cases: [
     {

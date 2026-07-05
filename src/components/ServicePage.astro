@@ -59,6 +59,7 @@ interface Deliverable {
   title: string;
   body: string;
   glyph: GlyphName;
+  image?: string;
 }
 
 interface CaseStudy {
@@ -253,8 +254,17 @@ const deliverablesCarouselId = `${data.pillar}-deliverables-carousel`;
               return (
                 <article class="service-slide">
                   <div class="doc-panel" aria-hidden="true">
-                    <!-- placeholder document panel — real mockup image swaps in here later (EQT-274) -->
-                    <span><Glyph /></span>
+                    <span class="doc-panel-fallback"><Glyph /></span>
+                    {item.image && (
+                      <img
+                        class="doc-panel-image"
+                        src={item.image}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        onerror="this.hidden = true"
+                      />
+                    )}
                   </div>
                   <div class="slide-copy">
                     <h3>{item.title}</h3>
@@ -454,3 +464,24 @@ const deliverablesCarouselId = `${data.pillar}-deliverables-carousel`;
 
   initialiseServiceReveals();
 </script>
+<style>
+  .doc-panel {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .doc-panel-fallback {
+    position: relative;
+    z-index: 1;
+  }
+
+  .doc-panel-image {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+</style>
