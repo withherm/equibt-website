@@ -12,7 +12,7 @@
 .ins-close-art svg [stroke]:not([stroke="none"]){stroke-width:1.1;}
 
 /* ---- Index hero (asymmetric, white; height parity with Contact hero) ---- */
-.ins-hero{padding:124px 56px 52px;background:#fff;border-bottom:1px solid var(--hairline);}
+.ins-hero{padding:80px 56px 52px;background:#fff;border-bottom:1px solid var(--hairline);}
 .ins-hero-inner{
   max-width:var(--wide);
   margin:0 auto;

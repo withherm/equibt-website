@@ -4,7 +4,7 @@
    import (clean firewall). */
 
 /* ---- Hero (asymmetric, white) ---- */
-.cx-hero{padding:124px 56px 112px;background:#fff;}
+.cx-hero{padding:80px 56px 112px;background:#fff;}
 .cx-hero-inner{
   max-width:var(--wide);
   margin:0 auto;
