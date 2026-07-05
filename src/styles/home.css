@@ -58,7 +58,7 @@
 }
 .statement-row:last-child{border-bottom:1px solid var(--hairline);}
 .statement-row h3{margin:0;color:var(--navy);font-size:23px;font-weight:700;line-height:1.2;}
-.statement-row p{margin:0;color:var(--mid-grey);font-size:22px;}
+.statement-row p{margin:0;color:var(--mid-grey);font-size:19px;}
 
 .svc-list{margin-top:20px;}
 .svc-row{
@@ -84,7 +84,7 @@
   text-transform:uppercase;
 }
 .svc-body h3{margin:0 0 10px;font-size:26px;font-weight:700;line-height:1.16;}
-.svc-body p{max-width:660px;margin:0 0 var(--link-gap);color:var(--mid-grey);font-size:22px;}
+.svc-body p{max-width:660px;margin:0 0 var(--link-gap);color:var(--mid-grey);font-size:19px;}
 
 .evidence{max-width:940px;}
 .ev-row{padding:24px 0;border-top:1px solid var(--hairline);}
@@ -169,7 +169,7 @@
   margin:18px 0 0;
   color:rgba(245,243,238,0.82);
   font-weight:400;
-  font-size:22px;
+  font-size:19px;
   line-height:1.5;
 }
 .flag-metric{display:flex;align-items:baseline;gap:14px;margin-top:28px;flex-wrap:wrap;}
@@ -256,7 +256,7 @@
   font-weight:700;
   letter-spacing:0.04em;
 }
-.ind-row p{max-width:720px;margin:0 0 var(--link-gap);color:var(--mid-grey);font-size:22px;}
+.ind-row p{max-width:720px;margin:0 0 var(--link-gap);color:var(--mid-grey);font-size:19px;}
 
 .case-list{display:flex;flex-direction:column;gap:0;}
 .case{
@@ -296,7 +296,7 @@
   letter-spacing:0.14em;
   text-transform:uppercase;
 }
-.case-block p:not(.case-label){margin:0;color:var(--mid-grey);font-size:22px;}
+.case-block p:not(.case-label){margin:0;color:var(--mid-grey);font-size:19px;}
 .case .btn-text{margin-top:var(--link-gap);}
 
 .pathway svg{width:100%;height:auto;overflow:visible;}
@@ -376,11 +376,10 @@
   .logo-marks{grid-template-columns:repeat(3,minmax(0,1fr));}
 }
 @media(max-width:760px){
-  p,.section-intro,.statement-row p,.svc-body p,.ind-row p,.case-block p:not(.case-label),.cta-light p{font-size:20px;}
   .hero{padding:72px 26px 76px;}
   .hero-content{width:calc(100vw - 52px);max-width:100%;}
   .hero h1{width:calc(100vw - 52px);max-width:calc(100vw - 52px);font-size:36px;overflow-wrap:anywhere;}
-  .hero-subhead{width:calc(100vw - 52px);max-width:calc(100vw - 52px);font-size:20px;overflow-wrap:anywhere;}
+  .hero-subhead{width:calc(100vw - 52px);max-width:calc(100vw - 52px);font-size:19px;overflow-wrap:anywhere;}
   .hero-art svg{width:var(--hero-art-w);}
   .section{padding:86px 26px;}
   .statement-row,.svc-row,.ind-row,.case,.logo-strip{grid-template-columns:1fr;gap:18px;}

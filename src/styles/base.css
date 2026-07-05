@@ -5,13 +5,13 @@ body{
   background:#fff;
   color:var(--near-black);
   font-family:"Lora",Georgia,serif;
-  font-size:22px;
+  font-size:19px;
   font-weight:500;
   line-height:1.45;
   -webkit-font-smoothing:antialiased;
 }
 body.nav-open{overflow:hidden;}
-p{font-family:"Lora",Georgia,serif;font-size:22px;font-weight:500;line-height:1.45;}
+p{font-family:"Lora",Georgia,serif;font-size:19px;font-weight:500;line-height:1.45;}
 a{color:inherit;}
 h1,h2,h3{font-family:"Montserrat",Arial,sans-serif;letter-spacing:-0.012em;color:var(--navy);}
 h1,h2,h3,p{margin-top:0;}
@@ -260,7 +260,6 @@ h1,h2,h3,p{margin-top:0;}
   .footer-inner{grid-template-columns:1fr 1fr;gap:44px;}
 }
 @media(max-width:760px){
-  body{font-size:20px;}
   .nav-inner{height:72px;padding-left:22px;padding-right:22px;}
   .nav-toggle{display:inline-flex;}
   .nav-links{

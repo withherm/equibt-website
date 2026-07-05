@@ -92,7 +92,7 @@
 .ins-card:focus-visible .ins-card-arrow .link-label::after{transform:scaleX(1);}
 .ins-card:hover .ins-card-arrow .ar,
 .ins-card:focus-visible .ins-card-arrow .ar{transform:translateX(4px);transition-delay:.18s;}
-.ins-empty{margin:40px 0 0;color:var(--mid-grey);font-size:20px;font-style:italic;}
+.ins-empty{margin:40px 0 0;color:var(--mid-grey);font-size:19px;font-style:italic;}
 
 /* ====================  POST  ==================== */
 .ins-post-hero{padding:124px 56px 76px;background:#fff;}
@@ -129,7 +129,7 @@
 
 /* Lede: quiet plain prose, NO box */
 .ins-lede{margin:0 0 44px;}
-.ins-lede p{margin:0 0 14px;color:var(--near-black);font-size:24px;line-height:1.5;}
+.ins-lede p{margin:0 0 14px;color:var(--near-black);font-size:19px;line-height:1.5;}
 .ins-lede p:last-child{margin-bottom:0;}
 
 /* Skim label shared by both boxes */
@@ -170,7 +170,7 @@
   border-radius:0 16px 16px 0;
 }
 .ins-try-inner{max-width:720px;}
-.ins-try p{margin:0 0 14px;color:var(--mid-grey);font-size:20px;line-height:1.5;}
+.ins-try p{margin:0 0 14px;color:var(--mid-grey);font-size:19px;line-height:1.5;}
 .ins-try p:last-child{margin-bottom:0;}
 .ins-skim-lead{color:var(--near-black);font-family:"Montserrat",Arial,sans-serif;font-size:19px;font-weight:700;line-height:1.3;letter-spacing:-.01em;margin:0 0 14px;}
 
@@ -180,7 +180,7 @@
 /* Rendered markdown body */
 .ins-body{margin:0 0 8px;}
 .ins-body > :first-child{margin-top:0;}
-.ins-body p{margin:0 0 24px;color:var(--mid-grey);font-size:22px;line-height:1.5;}
+.ins-body p{margin:0 0 24px;color:var(--mid-grey);font-size:19px;line-height:1.5;}
 .ins-body h2{
   margin:48px 0 20px;
   padding-top:26px;
@@ -251,13 +251,13 @@
 .ins-close-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.5fr);gap:48px;align-items:center;}
 .ins-close .eyebrow{margin-bottom:20px;}
 .ins-close h2{max-width:620px;margin:0;font-size:clamp(30px,3vw,38px);font-weight:700;line-height:1.08;}
-.ins-close p{max-width:600px;margin:18px 0 32px;color:var(--mid-grey);font-size:22px;line-height:1.45;}
+.ins-close p{max-width:600px;margin:18px 0 32px;color:var(--mid-grey);font-size:19px;line-height:1.45;}
 
 /* ---- LMI training handover (beige band, 702 mark, leanmethods.com.au) ---- */
 .ins-lmi{padding:72px 56px;background:#F5F3EE;}
 .ins-lmi-inner{padding:54px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
 .ins-lmi-inner h2{max-width:640px;margin:0;font-size:clamp(28px,3vw,36px);font-weight:700;line-height:1.1;}
-.ins-lmi-copy{max-width:760px;margin:18px 0 26px;color:var(--mid-grey);font-size:22px;line-height:1.45;}
+.ins-lmi-copy{max-width:760px;margin:18px 0 26px;color:var(--mid-grey);font-size:19px;line-height:1.45;}
 .ins-lmi-logo-link{display:inline-block;width:min(250px,100%);margin:0 0 var(--link-gap);color:inherit;text-decoration:none;}
 .ins-lmi-logo-img{display:block;width:100%;height:auto;}
 .ins-lmi .btn-text{display:table;margin-top:var(--link-gap,22px);}
@@ -298,10 +298,8 @@
   .ins-close{padding:72px 26px;}
   .ins-lmi{padding:56px 26px;}
   .ins-hero h1,.ins-post-hero h1{font-size:38px;}
-  .ins-hero-lede{font-size:20px;}
+  .ins-hero-lede{font-size:19px;}
   .ins-grid{grid-template-columns:1fr;}
-  .ins-lede p{font-size:21px;}
-  .ins-body p{font-size:20px;}
   .ins-skim-tldr{padding:26px 24px 28px;}
   .ins-try{padding-top:28px;padding-bottom:30px;padding-right:24px;}
 }
