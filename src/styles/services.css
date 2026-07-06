@@ -18,7 +18,7 @@
 }
 .service-hero-subhead{max-width:620px;margin:0 0 42px;color:var(--near-black);font-size:22px;line-height:1.4;}
 .service-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
-.service-hero-art{display:flex;align-items:center;justify-content:center;align-self:start;}
+.service-hero-art{display:flex;align-items:center;justify-content:center;align-self:center;}
 .service-hero-art span{display:block;height:auto;}
 .service-hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}
 .service-hero-art svg .hd,
