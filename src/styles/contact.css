@@ -22,14 +22,14 @@
 .cx-hero-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
 
 /* Hero art: the 520-viewBox hero-motif renders at its native weight (home parity). */
-.cx-hero-art{display:flex;align-items:center;justify-content:center;align-self:center;}
+.cx-hero-art{display:flex;align-items:center;justify-content:flex-end;align-self:start;padding-top:var(--hero-art-top-offset);padding-right:var(--hero-art-inset);}
 .cx-hero-art span{display:block;height:auto;}
 .cx-hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}
 
 /* Glyph hero (Contact, 64-viewBox Dialogue): fine-line interim treatment so the blown-up
    icon strokes match the home hero weight (mirrors about/services/our-work hero art).
    Override is scoped to the hero wrapper and never leaks. */
-.cx-hero-art.glyph svg{width:min(420px,38vw);}
+.cx-hero-art.glyph svg{width:var(--hero-art-w);}
 .cx-hero-art.glyph svg .hd,
 .cx-hero-art.glyph svg .hd-f1,
 .cx-hero-art.glyph svg .hd-f2,

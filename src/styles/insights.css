@@ -2,7 +2,7 @@
 
 /* ---- Shared hero and line-art motif surfaces ---- */
 .ins-hero-art,.ins-post-hero-art,.ins-close-art{display:flex;align-items:center;}
-.ins-hero-art,.ins-post-hero-art{justify-content:center;}
+.ins-hero-art,.ins-post-hero-art{justify-content:flex-end;align-self:start;padding-top:var(--hero-art-top-offset);padding-right:var(--hero-art-inset);}
 .ins-close-art{justify-content:flex-end;}
 .ins-hero-art span,.ins-post-hero-art span{display:block;height:auto;}
 .ins-hero-art svg,.ins-post-hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}

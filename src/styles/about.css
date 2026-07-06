@@ -21,14 +21,14 @@
 .about-hero.no-hero-art .about-hero-inner{grid-template-columns:minmax(0,1fr);}
 
 /* Hero art: the 520-viewBox hero-motif renders at its native weight (home parity). */
-.about-hero-art{display:flex;align-items:center;justify-content:center;align-self:center;}
+.about-hero-art{display:flex;align-items:center;justify-content:flex-end;align-self:start;padding-top:var(--hero-art-top-offset);padding-right:var(--hero-art-inset);}
 .about-hero-art span{display:block;height:auto;}
 .about-hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}
 
 /* Glyph hero (How We Work, 64-viewBox Transfer): fine-line interim treatment so the
    blown-up icon strokes match the home hero weight (mirrors services/our-work hero art).
    Override is scoped to the hero wrapper and never leaks. */
-.about-hero-art.glyph svg{width:min(420px,38vw);}
+.about-hero-art.glyph svg{width:var(--hero-art-w);}
 .about-hero-art.glyph svg .hd,
 .about-hero-art.glyph svg .hd-f1,
 .about-hero-art.glyph svg .hd-f2,

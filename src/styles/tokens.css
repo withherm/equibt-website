@@ -12,5 +12,9 @@
   --max:1180px;
   --wide:1320px;
   --link-gap:22px;
-  --hero-art-w:min(240px,26vw);
+  --hero-art-w:min(312px,34vw);
+  --hero-art-top-offset:46px;   /* drop canvas top from eyebrow to H1 top */
+  --hero-art-inset:85px;        /* right indent ~half the nav Get-in-touch button */
 }
+
+@media(max-width:960px){:root{--hero-art-top-offset:0px;--hero-art-inset:0px;}}

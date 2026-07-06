@@ -27,7 +27,7 @@
 }
 .industry-hero-body{color:var(--mid-grey);}
 .industry-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:42px;}
-.industry-hero-art{display:flex;align-items:center;justify-content:center;align-self:center;}
+.industry-hero-art{display:flex;align-items:center;justify-content:flex-end;align-self:start;padding-top:var(--hero-art-top-offset);padding-right:var(--hero-art-inset);}
 .industry-hero-art > span{display:block;}
 .industry-hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}
 

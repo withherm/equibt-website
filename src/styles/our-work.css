@@ -2,7 +2,7 @@
 
 /* ---- Big hand-drawn hero/section art (mirrors services.css stroke handling) ---- */
 .ow-hero-art,.ow-case-hero-art,.ow-cta-art{display:flex;align-items:center;align-self:center;}
-.ow-hero-art,.ow-case-hero-art{justify-content:center;}
+.ow-hero-art,.ow-case-hero-art{justify-content:flex-end;align-self:start;padding-top:var(--hero-art-top-offset);padding-right:var(--hero-art-inset);}
 .ow-cta-art{justify-content:flex-end;}
 .ow-hero-art span{display:block;height:auto;}
 .ow-case-hero-art span{display:block;height:auto;}

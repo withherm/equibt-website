@@ -10,7 +10,7 @@
   align-items:start;
 }
 .hero-inner > *{min-width:0;}
-.hero-art{display:flex;align-items:center;justify-content:center;align-self:center;}
+.hero-art{display:flex;align-items:center;justify-content:flex-end;align-self:start;padding-top:var(--hero-art-top-offset);padding-right:var(--hero-art-inset);}
 .hero-art span{display:block;height:auto;}
 .hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}
 .hero .eyebrow{margin-bottom:32px;}
