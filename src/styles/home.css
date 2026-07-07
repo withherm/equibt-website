@@ -10,7 +10,7 @@
   align-items:start;
 }
 .hero-inner > *{min-width:0;}
-.hero-art{display:flex;align-items:center;justify-content:flex-end;align-self:start;padding-top:var(--hero-art-top-offset);padding-right:var(--hero-art-inset);}
+.hero-art{display:flex;align-items:flex-start;justify-content:flex-end;align-self:start;padding-top:46px;padding-right:var(--hero-art-inset);}
 .hero-art span{display:block;height:auto;}
 .hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}
 .hero .eyebrow{margin-bottom:32px;}
@@ -375,9 +375,11 @@
 }
 .cta-light p{max-width:660px;margin:24px 0 40px;color:var(--mid-grey);}
 
-/* Home hero test: shrink the art toward mobile size while staying two-column */
-@media(max-width:1000px){
-  .hero-art svg{width:min(220px,26vw);}
+/* Home hero: cap the text so it never reflows, and pack the shrinking art beside it (no mid-width gap) */
+@media(max-width:1120px){
+  .hero-inner{grid-template-columns:minmax(0,640px) auto;justify-content:start;gap:48px;}
+  .hero-art{padding-right:0;}
+  .hero-art svg{width:min(240px,26vw);}
 }
 @media(max-width:1120px){
   .hero,.section{padding-left:36px;padding-right:36px;}
@@ -389,6 +391,13 @@
   .flagship.is-expanded .flagship-media img{width:min(100%,460px);}
   .logo-marks{grid-template-columns:repeat(3,minmax(0,1fr));}
 }
+/* Home hero: once it can't sit beside the prose, stack and drop to the small mobile size */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:36px;}
+  .hero-art{justify-content:center;align-items:center;padding-top:0;padding-right:0;}
+  .hero-art span{transform:none;}
+  .hero-art svg{width:min(200px,56vw);}
+}
 @media(max-width:760px){
   .hero{padding:72px 26px 76px;}
   .hero-inner{grid-template-columns:1fr;gap:36px;}
@@ -397,7 +406,7 @@
   .hero-content{width:calc(100vw - 52px);max-width:100%;}
   .hero h1{width:calc(100vw - 52px);max-width:calc(100vw - 52px);font-size:36px;overflow-wrap:anywhere;}
   .hero-subhead{width:calc(100vw - 52px);max-width:calc(100vw - 52px);font-size:19px;overflow-wrap:anywhere;}
-  .hero-art svg{width:var(--hero-art-w);}
+  .hero-art svg{width:min(200px,56vw);}
   .section{padding:86px 26px;}
   .statement-row,.svc-row,.ind-row,.case,.logo-strip{grid-template-columns:1fr;gap:18px;}
   .ind-row{padding:30px 16px;margin-inline:-16px;}
