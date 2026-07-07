@@ -36,10 +36,10 @@
 .cx-hero-art.glyph svg .hd-f3,
 .cx-hero-art.glyph svg[stroke]:not([stroke="none"]),
 .cx-hero-art.glyph svg [stroke]:not([stroke="none"]){
-  stroke-width:.35;stroke-linecap:round;stroke-linejoin:round;
+  stroke-linecap:round;stroke-linejoin:round;
 }
 .cx-hero-art.glyph svg .hd-acc,
-.cx-hero-art.glyph svg [stroke="#C15F3C"]{stroke-width:.4;}
+.cx-hero-art.glyph svg [stroke="#C15F3C"]{}
 
 /* ---- Sections ---- */
 .cx-section{--cx-gutter:56px;padding:120px var(--cx-gutter);}
@@ -251,9 +251,9 @@
 .cx-cta-art svg{display:block;width:min(300px,28vw);height:auto;overflow:visible;}
 .cx-cta-art svg .hd,.cx-cta-art svg .hd-f1,.cx-cta-art svg .hd-f2,.cx-cta-art svg .hd-f3,
 .cx-cta-art svg[stroke]:not([stroke="none"]),.cx-cta-art svg [stroke]:not([stroke="none"]){
-  stroke-width:.5;stroke-linecap:round;stroke-linejoin:round;
+  stroke-linecap:round;stroke-linejoin:round;
 }
-.cx-cta-art svg .hd-acc,.cx-cta-art svg [stroke="#C15F3C"]{stroke-width:.575;}
+.cx-cta-art svg .hd-acc,.cx-cta-art svg [stroke="#C15F3C"]{}
 
 /* ---- Scroll reveal: one per section, fade + 8px rise, once ---- */
 .cx-reveal-enabled .cx-reveal > .cx-inner,

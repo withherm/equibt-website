@@ -13,7 +13,7 @@
 .res-hero-art svg,.res-ld-hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}
 .res-more-art svg,.res-ld-close-art svg{display:block;width:min(170px,22vw);height:auto;overflow:visible;}
 .res-more-art svg [stroke]:not([stroke="none"]),
-.res-ld-close-art svg [stroke]:not([stroke="none"]){stroke-width:1.1;}
+.res-ld-close-art svg [stroke]:not([stroke="none"]){}
 
 /* ====================  HUB  ==================== */
 /* Hero (asymmetric, white) — shared by the hub and the wizard */
@@ -69,7 +69,7 @@
 .res-card-top{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
 .res-card-glyph{display:inline-flex;flex:0 0 auto;width:46px;height:46px;}
 .res-card-glyph svg{display:block;width:100%;height:100%;overflow:visible;}
-.res-card-glyph svg [stroke]:not([stroke="none"]){stroke-width:2;}
+.res-card-glyph svg [stroke]:not([stroke="none"]){}
 .res-card-tag{margin-bottom:0;font-size:11px;}
 .res-card-title{margin:0 0 12px;font-size:23px;font-weight:700;line-height:1.16;color:var(--navy);}
 .res-card-title a{color:inherit;text-decoration:none;transition:color .18s ease;}

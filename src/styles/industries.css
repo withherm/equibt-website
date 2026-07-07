@@ -442,12 +442,12 @@
 .cta-art svg .hd-f3,
 .cta-art svg[stroke]:not([stroke="none"]),
 .cta-art svg [stroke]:not([stroke="none"]){
-  stroke-width:.25;
+  
   stroke-linecap:round;
   stroke-linejoin:round;
 }
 .cta-art svg .hd-acc,
-.cta-art svg [stroke="#C15F3C"]{stroke-width:.2875;}
+.cta-art svg [stroke="#C15F3C"]{}
 .cta-art-cluster{
   width:min(340px,36vw);
   display:grid;

@@ -14,14 +14,14 @@
 .ow-case-hero-art svg[stroke]:not([stroke="none"]),.ow-case-hero-art svg [stroke]:not([stroke="none"]),
 .ow-cta-art svg .hd,.ow-cta-art svg .hd-f1,.ow-cta-art svg .hd-f2,.ow-cta-art svg .hd-f3,
 .ow-cta-art svg[stroke]:not([stroke="none"]),.ow-cta-art svg [stroke]:not([stroke="none"]){
-  stroke-width:.25;stroke-linecap:round;stroke-linejoin:round;
+  stroke-linecap:round;stroke-linejoin:round;
 }
 .ow-case-hero-art svg .hd-acc,.ow-case-hero-art svg [stroke="#C15F3C"],
-.ow-cta-art svg .hd-acc,.ow-cta-art svg [stroke="#C15F3C"]{stroke-width:.2875;}
+.ow-cta-art svg .hd-acc,.ow-cta-art svg [stroke="#C15F3C"]{}
 .ow-case-hero-art svg[viewBox="0 0 80 80"][stroke]:not([stroke="none"]),.ow-case-hero-art svg[viewBox="0 0 80 80"] [stroke]:not([stroke="none"]),
-.ow-cta-art svg[viewBox="0 0 80 80"][stroke]:not([stroke="none"]),.ow-cta-art svg[viewBox="0 0 80 80"] [stroke]:not([stroke="none"]){stroke-width:.31;}
+.ow-cta-art svg[viewBox="0 0 80 80"][stroke]:not([stroke="none"]),.ow-cta-art svg[viewBox="0 0 80 80"] [stroke]:not([stroke="none"]){}
 .ow-case-hero-art svg[viewBox="0 0 80 80"] [stroke="#C15F3C"],
-.ow-cta-art svg[viewBox="0 0 80 80"] [stroke="#C15F3C"]{stroke-width:.3565;}
+.ow-cta-art svg[viewBox="0 0 80 80"] [stroke="#C15F3C"]{}
 
 /* ---- Index hero (asymmetric, white) ---- */
 .ow-hero{padding:80px 56px 48px;background:#fff;}

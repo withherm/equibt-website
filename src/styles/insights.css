@@ -9,7 +9,7 @@
 .ins-close-art svg{display:block;width:min(180px,22vw);height:auto;overflow:visible;}
 /* DocReport ships literal strokes at 2.8 on a 64 viewBox; thin it down when scaled up. */
 .ins-post-hero-art svg [stroke]:not([stroke="none"]),
-.ins-close-art svg [stroke]:not([stroke="none"]){stroke-width:1.1;}
+.ins-close-art svg [stroke]:not([stroke="none"]){}
 
 /* ---- Index hero (asymmetric, white; height parity with Contact hero) ---- */
 .ins-hero{padding:80px 56px 52px;background:#fff;border-bottom:1px solid var(--hairline);}

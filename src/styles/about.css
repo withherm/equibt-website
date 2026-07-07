@@ -35,10 +35,10 @@
 .about-hero-art.glyph svg .hd-f3,
 .about-hero-art.glyph svg[stroke]:not([stroke="none"]),
 .about-hero-art.glyph svg [stroke]:not([stroke="none"]){
-  stroke-width:.35;stroke-linecap:round;stroke-linejoin:round;
+  stroke-linecap:round;stroke-linejoin:round;
 }
 .about-hero-art.glyph svg .hd-acc,
-.about-hero-art.glyph svg [stroke="#C15F3C"]{stroke-width:.4;}
+.about-hero-art.glyph svg [stroke="#C15F3C"]{}
 
 /* ---- Sections ---- */
 .about-section{--about-gutter:56px;padding:120px var(--about-gutter);}
@@ -172,9 +172,9 @@ main > .about-section:last-child{padding-bottom:64px;}  /* trim gap before foote
 .about-cta-art svg{display:block;width:min(300px,28vw);height:auto;overflow:visible;}
 .about-cta-art svg .hd,.about-cta-art svg .hd-f1,.about-cta-art svg .hd-f2,.about-cta-art svg .hd-f3,
 .about-cta-art svg[stroke]:not([stroke="none"]),.about-cta-art svg [stroke]:not([stroke="none"]){
-  stroke-width:.5;stroke-linecap:round;stroke-linejoin:round;
+  stroke-linecap:round;stroke-linejoin:round;
 }
-.about-cta-art svg .hd-acc,.about-cta-art svg [stroke="#C15F3C"]{stroke-width:.575;}
+.about-cta-art svg .hd-acc,.about-cta-art svg [stroke="#C15F3C"]{}
 
 /* ---- Scroll reveal: one per section, fade + 8px rise, once ---- */
 .about-reveal-enabled .about-reveal > .about-inner,
