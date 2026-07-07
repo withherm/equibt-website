@@ -7,6 +7,11 @@ import "@fontsource/lora/500-italic.css";
 import "../styles/tokens.css";
 import "../styles/base.css";
 import BaseHead from "../components/BaseHead.astro";
+// Preload the primary web fonts so text paints in Lora/Montserrat on first frame
+// (kills the fallback-font flash/reflow on reload, worst on mobile).
+import montserrat700 from "@fontsource/montserrat/files/montserrat-latin-700-normal.woff2?url";
+import lora400 from "@fontsource/lora/files/lora-latin-400-normal.woff2?url";
+import lora500 from "@fontsource/lora/files/lora-latin-500-normal.woff2?url";
 
 interface Props {
   title?: string;
@@ -28,6 +33,9 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" href={montserrat700} as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href={lora400} as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href={lora500} as="font" type="font/woff2" crossorigin="anonymous" />
     <BaseHead title={title} description={description} image={image} canonical={canonical} />
     <slot name="head" />
   </head>

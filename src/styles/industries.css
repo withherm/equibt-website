@@ -736,3 +736,7 @@
     padding-right:22px;
   }
 }
+
+/* SECTORS: challenges + where-to-start + pathway on white, matching the tab strip (heading stays on beige) */
+.selector-panel-wrap{max-width:none;background:#fff;border-bottom:1px solid var(--hairline);padding-block:40px 52px;}
+.selector-panel-wrap > .sector-selector{max-width:var(--max);margin:0 auto;}
