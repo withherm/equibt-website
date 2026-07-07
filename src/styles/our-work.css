@@ -248,3 +248,4 @@
   .ow-section{--ow-gutter:22px;}
   .ow-flagship-inner{padding:40px 26px;}
 }
+.ow-case-onrequest{display:inline-block;color:var(--mid-grey);font-size:15px;font-style:italic;}

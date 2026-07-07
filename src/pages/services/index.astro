@@ -173,4 +173,15 @@ const stations = [
   syncNavHeight();
   window.addEventListener("resize", syncNavHeight);
   initialiseReveal();
+
+  // Pathway: label defaults to FRAME and persists; hover/focus moves it and keeps it.
+  const stationLinks = Array.from(document.querySelectorAll(".station-link"));
+  if (stationLinks.length) {
+    const setActive = (el) => stationLinks.forEach((s) => s.classList.toggle("is-active", s === el));
+    setActive(stationLinks[0]);
+    stationLinks.forEach((s) => {
+      s.addEventListener("mouseenter", () => setActive(s));
+      s.addEventListener("focus", () => setActive(s));
+    });
+  }
 </script>

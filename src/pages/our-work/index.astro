@@ -77,8 +77,10 @@ const groups = pillarGroups
                   <div class="ow-case-metric">{c.metric}</div>
                   <h3>{c.title}</h3>
                   <p class="ow-case-context">{c.problem}</p>
-                  {c.fullStudy && (
+                  {c.fullStudy ? (
                     <a href={`/our-work/${entry.id}/`} class="btn-text"><span class="link-label">Full case study</span> <span class="ar">&rsaquo;</span></a>
+                  ) : (
+                    <span class="ow-case-onrequest">More detail on request.</span>
                   )}
                 </article>
               );
