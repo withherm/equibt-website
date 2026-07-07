@@ -60,7 +60,7 @@
 .statement-row h3{margin:0;color:var(--navy);font-size:23px;font-weight:700;line-height:1.2;}
 .statement-row p{margin:0;color:var(--mid-grey);font-size:19px;}
 
-.svc-list{margin-top:20px;border-top:1px solid var(--hairline);}
+.svc-list{margin-top:20px;margin-left:110px;border-top:1px solid var(--hairline);}
 .svc-row{
   display:grid;
   grid-template-columns:150px minmax(0,1fr);
@@ -242,7 +242,7 @@
 .logo-marks .client-logo:nth-child(20){max-height:44px;}
 
 .industry-list{display:flex;flex-direction:column;}
-.industry-list{border-top:1px solid var(--hairline);}
+.industry-list{margin-left:110px;border-top:1px solid var(--hairline);}
 .ind-row{
   display:grid;
   grid-template-columns:150px minmax(0,1fr);
@@ -396,6 +396,7 @@
   .section{padding:86px 26px;}
   .statement-row,.svc-row,.ind-row,.case,.logo-strip{grid-template-columns:1fr;gap:18px;}
   .ind-row{padding:30px 16px;margin-inline:-16px;}
+  .svc-list,.industry-list{margin-left:0;}
   .statement-row{padding:34px 0;}
   .svc-row{padding:34px 16px;margin-inline:-16px;}
   .svc-icon{width:110px;height:110px;}
