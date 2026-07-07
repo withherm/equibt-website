@@ -1,6 +1,7 @@
 ---
 import Footer from "../components/Footer.astro";
 import Icon from "../components/icons/Icon.astro";
+import AlignTarget from "../components/icons/glyphs/AlignTarget.astro";
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import "../styles/home.css";
@@ -375,11 +376,14 @@ import "../styles/home.css";
   </section>
 
   <section class="section beige cta-light">
-    <div class="section-inner">
-      <div class="eyebrow">START HERE</div>
-      <h2 class="section-title">Start where the work actually is.</h2>
-      <p>Most operations leaders know something needs to change. Fewer know where to start. Tell us what you are seeing and we will point you to the right starting point, even if that turns out not to be us. You'll hear back from a person, not an auto-reply.</p>
-      <a href="/contact/" class="btn-primary">Get in touch</a>
+    <div class="section-inner home-cta-grid">
+      <div class="home-cta-copy">
+        <div class="eyebrow">START HERE</div>
+        <h2 class="section-title">Start where the work actually is.</h2>
+        <p>Most operations leaders know something needs to change. Fewer know where to start. Tell us what you are seeing and we will point you to the right starting point, even if that turns out not to be us. You'll hear back from a person, not an auto-reply.</p>
+        <a href="/contact/" class="btn-primary">Get in touch</a>
+      </div>
+      <div class="home-cta-art" aria-hidden="true"><span><AlignTarget /></span></div>
     </div>
   </section>
 </main>

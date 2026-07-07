@@ -402,3 +402,13 @@
   .hero-actions{align-items:flex-start;flex-direction:column;}
   .logo-marks{grid-template-columns:1fr;}
 }
+
+/* Home CTA (START HERE): copy left, line-art glyph right */
+.cta-light .home-cta-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
+.home-cta-art{display:flex;justify-content:flex-end;}
+.home-cta-art svg{display:block;width:min(300px,26vw);height:auto;overflow:visible;}
+@media(max-width:860px){
+  .cta-light .home-cta-grid{grid-template-columns:1fr;gap:28px;}
+  .home-cta-art{justify-content:flex-start;}
+  .home-cta-art svg{width:200px;}
+}
