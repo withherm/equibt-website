@@ -281,6 +281,9 @@
 .next-col.is-current h3{color:var(--muted);}
 
 .cta-equation{padding:48px;border-radius:20px;background:var(--dark-slate);}
+.service-cta-band{padding:0;background:transparent;}
+.service-cta-band .service-inner{max-width:none;margin:0;padding:0;}
+.service-cta-band .cta-equation{padding:96px max(56px,calc((100vw - var(--max)) / 2));border-radius:0;}
 .cta-equation h2{
   max-width:720px;
   margin:0;
@@ -361,12 +364,14 @@
   .pathway-box{padding:18px 14px 18px;}
   .next-grid{margin-top:36px;}
   .cta-equation{padding:34px 26px;}
+  .service-cta-band .cta-equation{padding:64px 26px;}
 }
 @media(max-width:460px){
   .service-hero,.service-section{padding-left:22px;padding-right:22px;}
   .service-section{--service-page-gutter:22px;}
   .service-actions{align-items:flex-start;flex-direction:column;}
   .service-callout{padding-right:22px;}
+  .service-cta-band .cta-equation{padding:56px 22px;}
 }
 
 /* ── Services hub ──────────────────────────────────────────────── */
