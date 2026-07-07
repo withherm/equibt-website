@@ -21,7 +21,7 @@
 .about-hero.no-hero-art .about-hero-inner{grid-template-columns:minmax(0,1fr);}
 
 /* Hero art: the 520-viewBox hero-motif renders at its native weight (home parity). */
-.about-hero-art{display:flex;align-items:center;justify-content:flex-end;align-self:start;padding-top:var(--hero-art-top-offset);padding-right:var(--hero-art-inset);}
+.about-hero-art{display:flex;align-items:flex-start;justify-content:flex-end;align-self:start;padding-top:46px;padding-right:var(--hero-art-inset);}
 .about-hero-art span{display:block;height:auto;}
 .about-hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}
 
@@ -191,13 +191,17 @@ main > .about-section:last-child{padding-bottom:64px;}  /* trim gap before foote
 @media(max-width:1120px){
   .about-hero,.about-section{padding-left:36px;padding-right:36px;}
   .about-section{--about-gutter:36px;}
+  .about-hero-inner{grid-template-columns:minmax(0,640px) auto;justify-content:start;gap:48px;}
+  .about-hero-art{padding-right:0;}
+  .about-hero-art svg{width:min(240px,26vw);}
+  .about-hero-art.glyph svg{width:min(240px,26vw);}
 }
 @media(max-width:960px){
-  .about-hero-inner{grid-template-columns:1fr;gap:44px;}
-  .about-hero-art{justify-content:center;}
+  .about-hero-inner{grid-template-columns:1fr;gap:36px;}
+  .about-hero-art{justify-content:center;align-items:center;padding-top:0;padding-right:0;}
   .about-hero-art span{transform:none;}
-  .about-hero-art svg{width:var(--hero-art-w);}
-  .about-hero-art.glyph svg{width:min(320px,60vw);}
+  .about-hero-art svg{width:min(200px,56vw);}
+  .about-hero-art.glyph svg{width:min(200px,56vw);}
   .about-cols{grid-template-columns:1fr;gap:0;}
   .about-col{padding-top:24px;}
   .about-col + .about-col{margin-top:4px;}

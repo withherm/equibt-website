@@ -2,7 +2,7 @@
 
 /* ---- Big hand-drawn hero/section art (mirrors services.css stroke handling) ---- */
 .ow-hero-art,.ow-case-hero-art,.ow-cta-art{display:flex;align-items:center;align-self:center;}
-.ow-hero-art,.ow-case-hero-art{justify-content:flex-end;align-self:start;padding-top:var(--hero-art-top-offset);padding-right:var(--hero-art-inset);}
+.ow-hero-art,.ow-case-hero-art{align-items:flex-start;justify-content:flex-end;align-self:start;padding-top:46px;padding-right:var(--hero-art-inset);}
 .ow-cta-art{justify-content:flex-end;}
 .ow-hero-art span{display:block;height:auto;}
 .ow-case-hero-art span{display:block;height:auto;}
@@ -205,15 +205,18 @@
   .ow-hero,.ow-section,.ow-case-hero,.ow-flagship{padding-left:36px;padding-right:36px;}
   .ow-section{--ow-gutter:36px;}
   .ow-flagship-inner{padding:48px 40px;}
+  .ow-hero-inner,.ow-case-hero-top{grid-template-columns:minmax(0,640px) auto;justify-content:start;gap:48px;}
+  .ow-hero-art,.ow-case-hero-art{padding-right:0;}
+  .ow-hero-art svg,.ow-case-hero-art svg{width:min(240px,26vw);}
 }
 /* Hero, stat band and CTA all move to single column together, so the page never
    shows a stacked hero next to a still-three-up stat band. */
 @media(max-width:960px){
-  .ow-hero-inner,.ow-case-hero-top{grid-template-columns:1fr;gap:40px;}
-  .ow-hero-art,.ow-case-hero-art{justify-content:center;}
+  .ow-hero-inner,.ow-case-hero-top{grid-template-columns:1fr;gap:36px;}
+  .ow-hero-art,.ow-case-hero-art{justify-content:center;align-items:center;padding-top:0;padding-right:0;}
   .ow-hero-art span,.ow-case-hero-art span{transform:none;}
-  .ow-hero-art svg{width:var(--hero-art-w);}
-  .ow-case-hero-art svg{width:var(--hero-art-w);}
+  .ow-hero-art svg{width:min(200px,56vw);}
+  .ow-case-hero-art svg{width:min(200px,56vw);}
   .ow-cta-grid{grid-template-columns:1fr;gap:36px;}
   .ow-cta-art{justify-content:flex-start;}
   .ow-cta-art svg{width:min(260px,56vw);}

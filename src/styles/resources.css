@@ -6,7 +6,7 @@
 
 /* Line-art glyphs ship literal strokes (~2.8 on a 64 viewBox); thin them when scaled up for section art. */
 .res-hero-art,.res-more-art,.res-ld-hero-art,.res-ld-close-art{display:flex;align-items:center;}
-.res-hero-art,.res-ld-hero-art{justify-content:flex-end;align-self:start;padding-top:var(--hero-art-top-offset);padding-right:var(--hero-art-inset);}
+.res-hero-art,.res-ld-hero-art{align-items:flex-start;justify-content:flex-end;align-self:start;padding-top:46px;padding-right:var(--hero-art-inset);}
 .res-more-art,.res-ld-close-art{justify-content:flex-end;}
 .res-hero-art span,.res-more-art span,.res-ld-hero-art span,.res-ld-close-art span{display:block;height:auto;}
 .res-more-art span,.res-ld-close-art span{transform:translateX(2vw);}
@@ -274,12 +274,15 @@
   .res-hero,.res-list,.res-more,.res-faq,.res-lmi,
   .res-ld-hero,.res-ld-inside,.res-ld-related,.res-ld-close,
   .res-wiz,.res-edu{padding-left:36px;padding-right:36px;}
+  .res-hero-inner,.res-ld-hero-inner{grid-template-columns:minmax(0,640px) auto;justify-content:start;gap:48px;}
+  .res-hero-art,.res-ld-hero-art{padding-right:0;}
+  .res-hero-art svg,.res-ld-hero-art svg{width:min(240px,26vw);}
 }
 @media(max-width:960px){
   .res-hero-inner,.res-ld-hero-inner{grid-template-columns:1fr;gap:36px;}
-  .res-hero-art,.res-ld-hero-art{justify-content:center;}
+  .res-hero-art,.res-ld-hero-art{justify-content:center;align-items:center;padding-top:0;padding-right:0;}
   .res-hero-art span,.res-ld-hero-art span{transform:none;}
-  .res-hero-art svg,.res-ld-hero-art svg{width:var(--hero-art-w);}
+  .res-hero-art svg,.res-ld-hero-art svg{width:min(200px,56vw);}
   .res-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   .res-more-grid,.res-ld-close-grid{grid-template-columns:1fr;gap:32px;}
   .res-more-art,.res-ld-close-art{justify-content:flex-start;}

@@ -22,7 +22,7 @@
 .cx-hero-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
 
 /* Hero art: the 520-viewBox hero-motif renders at its native weight (home parity). */
-.cx-hero-art{display:flex;align-items:center;justify-content:flex-end;align-self:start;padding-top:var(--hero-art-top-offset);padding-right:var(--hero-art-inset);}
+.cx-hero-art{display:flex;align-items:flex-start;justify-content:flex-end;align-self:start;padding-top:46px;padding-right:var(--hero-art-inset);}
 .cx-hero-art span{display:block;height:auto;}
 .cx-hero-art svg{display:block;width:var(--hero-art-w);height:auto;overflow:visible;}
 
@@ -270,13 +270,17 @@
 @media(max-width:1120px){
   .cx-hero,.cx-section{padding-left:36px;padding-right:36px;}
   .cx-section{--cx-gutter:36px;}
+  .cx-hero-inner{grid-template-columns:minmax(0,640px) auto;justify-content:start;gap:48px;}
+  .cx-hero-art{padding-right:0;}
+  .cx-hero-art svg{width:min(240px,26vw);}
+  .cx-hero-art.glyph svg{width:min(240px,26vw);}
 }
 @media(max-width:960px){
-  .cx-hero-inner{grid-template-columns:1fr;gap:44px;}
-  .cx-hero-art{justify-content:center;}
+  .cx-hero-inner{grid-template-columns:1fr;gap:36px;}
+  .cx-hero-art{justify-content:center;align-items:center;padding-top:0;padding-right:0;}
   .cx-hero-art span{transform:none;}
-  .cx-hero-art svg{width:var(--hero-art-w);}
-  .cx-hero-art.glyph svg{width:min(320px,60vw);}
+  .cx-hero-art svg{width:min(200px,56vw);}
+  .cx-hero-art.glyph svg{width:min(200px,56vw);}
   .cx-cols{grid-template-columns:1fr;gap:0;}
   .cx-col{padding-top:24px;}
   .cx-col + .cx-col{margin-top:4px;}
