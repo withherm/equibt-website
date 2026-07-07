@@ -487,16 +487,27 @@ if (pathwaySvg && stations.length) {
     setPathwayLabel(activeStation);
   });
 
+  const stationHref = (station) => {
+    const key = station.dataset.key;
+    return key ? `/services/${key.toLowerCase()}/` : null;
+  };
   stations.forEach((station) => {
+    const href = stationHref(station);
+    if (href) {
+      station.setAttribute("role", "link");
+      station.setAttribute("aria-label", `${station.dataset.key} service`);
+    }
     station.addEventListener("mouseenter", () => selectStation(station));
     station.addEventListener("click", () => {
       selectStation(station);
+      if (href) window.location.href = href;
     });
     station.addEventListener("focus", () => selectStation(station));
     station.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
         selectStation(station);
+        if (href) window.location.href = href;
       }
     });
   });
