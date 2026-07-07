@@ -267,13 +267,15 @@
 .selector-panel .btn-text{margin-top:var(--link-gap);}
 
 .proof-shell{
-  max-width:var(--max);
-  margin:0 auto;
-  padding:48px;
-  border-radius:22px;
+  max-width:none;
+  margin:0;
+  padding:96px max(56px,calc((100vw - var(--max)) / 2));
+  border-radius:0;
   background:#202946;
   color:var(--off-white);
 }
+/* Client Results: full-bleed dark band, no beige surround (EQT live review) */
+#results.industry-section{padding:0;background:transparent;}
 .proof-shell .eyebrow.light{color:var(--off-white);}
 .proof-shell .eyebrow.light::before{background:var(--terracotta);}
 .proof-shell h2{

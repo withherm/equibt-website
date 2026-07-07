@@ -377,12 +377,16 @@
   grid-template-columns:150px minmax(0,1fr);
   gap:44px;
   align-items:start;
-  padding:48px 0;
-  border-top:1px solid var(--hairline);
+  padding:48px 24px;
+  margin-inline:-24px;
+  border-bottom:1px solid var(--hairline);
+  border-radius:18px;
   color:inherit;
   text-decoration:none;
+  transition:background .18s ease, border-color .18s ease;
 }
-.service-hub-row:first-child{border-top:none;}
+.service-hub-row:last-child{border-bottom:none;}
+.service-hub-row:hover{background:#fff;border-color:transparent;}
 .service-hub-icon{width:110px;height:110px;display:block;margin-top:0;}
 .service-hub-icon svg{width:100%;height:100%;overflow:visible;}
 .service-hub-kicker{

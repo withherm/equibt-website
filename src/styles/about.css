@@ -103,6 +103,7 @@ main > .about-section:last-child{padding-bottom:64px;}  /* trim gap before foote
 .about-compare{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
 .about-compare-col{}
 .about-compare-col .eyebrow{margin-bottom:6px;}
+.about-compare-col .compare-head{margin:0 0 6px;color:var(--navy);font-family:"Montserrat",Arial,sans-serif;font-size:21px;font-weight:700;line-height:1.25;}
 .about-compare-item{padding:20px 0;border-top:1px solid var(--hairline);color:var(--near-black);font-size:21px;line-height:1.35;}
 
 /* ---- Hanging-label editorial rows (beliefs + story field notes) ---- */
