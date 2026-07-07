@@ -65,6 +65,9 @@ interface Props {
 }
 
 const { data } = Astro.props;
+const _hookParts = data.whyLean.hook.split(/(?<=\.)\s+/);
+const whyLeanHookLead = _hookParts[0];
+const whyLeanHookRest = _hookParts.slice(1).join(" ");
 ---
 
 <Layout title={data.title} description={data.description}>
@@ -137,7 +140,8 @@ const { data } = Astro.props;
             <h2 class="service-title">{data.whyLean.heading}</h2>
           </div>
           <div class="service-callout">
-            <p class="service-callout-lead">{data.whyLean.hook}</p>
+            <p class="service-callout-lead">{whyLeanHookLead}</p>
+            {whyLeanHookRest && <p>{whyLeanHookRest}</p>}
           </div>
           <div class="method-why-grid">
             <div class="method-why-same">
