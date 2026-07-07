@@ -118,7 +118,7 @@
 .res-faq-a{margin:0 0 24px;max-width:880px;color:var(--mid-grey);font-size:19px;line-height:1.5;}
 
 /* LMI handoff */
-.res-lmi{padding:72px 56px;background:#F5F3EE;}
+.res-lmi{padding:72px 56px;background:#fff;}
 .res-lmi-inner{padding:54px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
 .res-lmi-inner .eyebrow{margin-bottom:18px;}
 .res-lmi-inner h2{max-width:640px;margin:0;font-size:clamp(28px,3vw,36px);font-weight:700;line-height:1.1;}

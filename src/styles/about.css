@@ -42,6 +42,7 @@
 
 /* ---- Sections ---- */
 .about-section{--about-gutter:56px;padding:120px var(--about-gutter);}
+main > .about-section:last-child{padding-bottom:64px;}  /* trim gap before footer; footer has its own top space */
 .about-section.white{background:#fff;}
 .about-section.beige{background:var(--off-white);}
 .about-inner{max-width:var(--max);margin:0 auto;}

@@ -297,10 +297,10 @@ const SECTIONS = [
     title: "Leadership & Governance",
     note: "Does leadership actively own and govern the CI programme?",
     questions: [
-      "Our senior leaders visibly participate in CI reviews, improvement events, or problem-solving — not just receive reports about them.",
+      "Our senior leaders visibly participate in CI reviews, improvement events, or problem-solving: not just receive reports about them.",
       "We have a named owner or sponsor for the CI programme with genuine accountability for its results.",
       "We review CI performance and outcomes at board or executive level on a regular cycle.",
-      "We allocate dedicated resources — time, budget, and people — to CI as a standing commitment."
+      "We allocate dedicated resources (time, budget, and people) to CI as a standing commitment."
     ]
   },
   {
@@ -333,9 +333,9 @@ const SECTIONS = [
     title: "Operating Rhythm",
     note: "Is CI embedded in how the organisation runs day to day?",
     questions: [
-      "Our teams meet regularly to review operational performance — daily huddles, weekly reviews, or similar.",
+      "Our teams meet regularly to review operational performance: daily huddles, weekly reviews, or similar.",
       "We track and follow up improvement actions in a structured way, not just agree and forget them.",
-      "We have visual management in place — boards, dashboards, or similar — that makes performance visible to the team.",
+      "We have visual management in place (boards, dashboards, or similar) that makes performance visible to the team.",
       "Improvement work is part of our normal operations, not a separate initiative running alongside BAU."
     ]
   },
@@ -414,8 +414,8 @@ const answers = {};
 function pct(score,max){return Math.round((score/max)*100);}
 function band(p){
   if(p<40)return{label:"Needs attention",range:"below 40%",bar:"#E23B33",text:"#C62828"};
-  if(p<65)return{label:"Developing",range:"40–64%",bar:"#F2912E",text:"#D9730B"};
-  if(p<75)return{label:"Established",range:"65–74%",bar:"#F4C20D",text:"#B07A00"};
+  if(p<65)return{label:"Developing",range:"40-64%",bar:"#F2912E",text:"#D9730B"};
+  if(p<75)return{label:"Established",range:"65-74%",bar:"#F4C20D",text:"#B07A00"};
   return{label:"Strong",range:"75%+",bar:"#46A546",text:"#2E7D32"};
 }
 function barColor(p){return band(p).bar;}
@@ -503,7 +503,7 @@ function buildPrintHTML(dimScores,tier,totalPct){
     </div>`;
   }).join("");
   // actions now inline in each card
-  return`<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>CI Maturity Assessment — Results</title>
+  return`<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>CI Maturity Assessment: Results</title>
 <style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Georgia,serif;color:#1a1a2e;background:#fff;padding:40px 48px;max-width:760px;margin:0 auto;font-size:14px;}h1{font-family:Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#2a2a2a;margin-bottom:6px;}h2{font-family:Arial,sans-serif;font-size:30px;font-weight:700;color:#1a1a2e;margin-bottom:10px;}.print-btn{display:block;margin-bottom:32px;padding:10px 22px;background:#1a1a2e;color:#fff;border:none;border-radius:6px;font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;}@media print{.print-btn{display:none;}}</style>
 </head><body>
 <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
@@ -520,7 +520,7 @@ function buildPrintHTML(dimScores,tier,totalPct){
 </div>
 <div style="font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#2a2a2a;margin-bottom:10px;">DIMENSION BREAKDOWN</div>
 ${cards}
-<div style="display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:16px;padding:8px 14px;border:1px solid #e0ddd5;border-radius:6px;"><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#1a1a1a;"><span style="width:7px;height:7px;border-radius:50%;background:#E23B33;display:inline-block;flex-shrink:0;"></span>Needs attention (&lt;40%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#1a1a1a;"><span style="width:7px;height:7px;border-radius:50%;background:#F2912E;display:inline-block;flex-shrink:0;"></span>Developing (40–64%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#1a1a1a;"><span style="width:7px;height:7px;border-radius:50%;background:#F4C20D;display:inline-block;flex-shrink:0;"></span>Established (65–74%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#1a1a1a;"><span style="width:7px;height:7px;border-radius:50%;background:#46A546;display:inline-block;flex-shrink:0;"></span>Strong (75%+)</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:16px;padding:8px 14px;border:1px solid #e0ddd5;border-radius:6px;"><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#1a1a1a;"><span style="width:7px;height:7px;border-radius:50%;background:#E23B33;display:inline-block;flex-shrink:0;"></span>Needs attention (&lt;40%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#1a1a1a;"><span style="width:7px;height:7px;border-radius:50%;background:#F2912E;display:inline-block;flex-shrink:0;"></span>Developing (40-64%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#1a1a1a;"><span style="width:7px;height:7px;border-radius:50%;background:#F4C20D;display:inline-block;flex-shrink:0;"></span>Established (65-74%)</span><span style="display:flex;align-items:center;gap:5px;font-family:Arial,sans-serif;font-size:10px;color:#1a1a1a;"><span style="width:7px;height:7px;border-radius:50%;background:#46A546;display:inline-block;flex-shrink:0;"></span>Strong (75%+)</span></div>
 <div style="margin-top:30px;font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#2a2a2a;margin-bottom:12px;">Your Responses</div>
 ${responses}
 <div style="margin-top:24px;padding-top:14px;border-top:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;font-family:Arial,sans-serif;font-size:11px;color:#2a2a2a;">
@@ -578,7 +578,7 @@ function showResults(){
   // Legend
   document.querySelectorAll(".ra-legend").forEach(el=>el.remove());
   const lgd=document.createElement('div');lgd.className='ra-legend';
-  lgd.innerHTML='<span class="ra-legend-item"><span class="ra-legend-dot" style="background:#E23B33;"></span>Needs attention<span class="ra-legend-range">(below 40%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#F2912E;"></span>Developing<span class="ra-legend-range">(40–64%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#F4C20D;"></span>Established<span class="ra-legend-range">(65–74%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#46A546;"></span>Strong<span class="ra-legend-range">(75%+)</span></span>';
+  lgd.innerHTML='<span class="ra-legend-item"><span class="ra-legend-dot" style="background:#E23B33;"></span>Needs attention<span class="ra-legend-range">(below 40%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#F2912E;"></span>Developing<span class="ra-legend-range">(40-64%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#F4C20D;"></span>Established<span class="ra-legend-range">(65-74%)</span></span><span class="ra-legend-item"><span class="ra-legend-dot" style="background:#46A546;"></span>Strong<span class="ra-legend-range">(75%+)</span></span>';
   dimGrid.after(lgd);
   document.getElementById("ra-gap-intro").textContent=gapIntro;
   document.getElementById("ra-gap-cards").innerHTML=gaps.map(g=>{

@@ -102,11 +102,11 @@ const groups = pillarGroups
       </div>
     </section>
 
-    <section class="ow-section beige ow-lmi ow-reveal">
+    <section class:list={["ow-section", groups.length % 2 === 0 ? "white" : "beige", "ow-lmi", "ow-reveal"]}>
       <div class="ow-inner">
         <div class="eyebrow">TRAINING</div>
         <h2 class="ow-lmi-title">Build the capability your operation runs on.</h2>
-        <p class="ow-lmi-copy">Lean Methods Institute contextualises our training to your operations context — not generic case studies or simulations. Your team learns the methods behind this work so the capability stays with them.</p>
+        <p class="ow-lmi-copy">Lean Methods Institute contextualises our training to your operations context: not generic case studies or simulations. Your team learns the methods behind this work so the capability stays with them.</p>
         <a href="https://leanmethods.com.au" class="ow-lmi-logo-link" aria-label="Lean Methods Institute">
           <img src={lmiLogo.src} class="ow-lmi-logo-img" alt="Lean Methods Institute" loading="lazy" />
         </a>

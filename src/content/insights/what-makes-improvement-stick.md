@@ -2,7 +2,7 @@
 title: "Cycle time from 52 days to 31. Nine months of improvement. Eighteen months later, back to 44."
 pillar: "SOLVE"
 phase: "Analyse"
-summary: "A utilities company improved their complaint resolution process over 9 months. At 18 months, cycle time was back to 44 days. The post-mortem found three failure points: measurement ownership, improvement capability, and documentation — all design decisions made at the start."
+summary: "A utilities company improved their complaint resolution process over 9 months. At 18 months, cycle time was back to 44 days. The post-mortem found three failure points: measurement ownership, improvement capability, and documentation, all design decisions made at the start."
 readTime: "4 min read"
 order: 18
 lede:

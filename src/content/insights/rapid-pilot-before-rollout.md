@@ -17,7 +17,7 @@ tldr:
 aeo: "A rapid pilot reveals what design workshops cannot: real volume, real exceptions, and capability gaps that only appear under operating conditions. Edge cases surface in pilots in days; the same cases surface after rollout in months. The pilot is not rehearsal of a finished design. It is the final stage."
 tryThis:
   heading: "Define three specific questions the pilot must answer before you approve scale."
-  body: "Before the pilot starts, write down three specific outcomes it needs to confirm before full rollout is approved. Not 'does it work' — something specific: does handling time hold when complaint volume is elevated, does the training gap close with a single session, does the team leader have what they need to coach. Defining the criteria before the pilot starts makes the go or no-go decision objective."
+  body: "Before the pilot starts, write down three specific outcomes it needs to confirm before full rollout is approved. Not 'does it work' , something specific: does handling time hold when complaint volume is elevated, does the training gap close with a single session, does the team leader have what they need to coach. Defining the criteria before the pilot starts makes the go or no-go decision objective."
 related:
   label: "Related service"
   title: "This thinking sits inside our Rapid Pilot service."

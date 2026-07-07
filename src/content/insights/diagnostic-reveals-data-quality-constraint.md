@@ -6,7 +6,7 @@ summary: "A state government agency redesigned their approvals process three tim
 readTime: "4 min read"
 order: 8
 lede:
-  - "A state government agency responsible for business licence approvals had redesigned their end-to-end process three times since 2022. Each time, the new process looked faster on paper. Each time, cycle time stayed between 28 and 34 days against a target of 15."
+  - "A state government agency responsible for business licence approvals had redesigned their end-to-end process three times in recent years. Each time, the new process looked faster on paper. Each time, cycle time stayed between 28 and 34 days against a target of 15."
   - "The diagnostic mapped the process. Then it measured something the redesigns had not."
 tldr:
   - "Three redesigns failed because the constraint was not the process itself."
