@@ -1,10 +1,43 @@
 ---
+import { getCollection } from "astro:content";
 import Footer from "../components/Footer.astro";
 import Icon from "../components/icons/Icon.astro";
 import AlignTarget from "../components/icons/glyphs/AlignTarget.astro";
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import "../styles/home.css";
+
+// Published case studies for the "Proven in practice" carousel.
+const caseSectorIcons = {
+  "Bank": "financial-services",
+  "Specialty Insurer": "insurance",
+  "Property Group": "property",
+  "Public-sector regulator": "government",
+  "Industry Ombudsman": "government",
+  "Government Department": "government",
+  "Privacy Regulator": "government",
+  "Energy Retailer": "utilities",
+  "Energy Network": "utilities",
+  "Industrial Manufacturer": "manufacturing",
+  "FMCG": "fmcg",
+  "Chemical Sales": "chemicals",
+};
+const caseCaptions = {
+  "mortgage-lead-leakage": "mortgage lead leakage",
+  "platform-migration-review": "prioritised actions",
+  "investigation-cycle-time": "investigation cycle time",
+  "retention-save-rate": "retention save rate",
+  "policy-development-cycle": "first-iteration policy draft",
+  "self-serve-deflection": "manual transactions deflected",
+  "finance-reporting-cycle": "close-to-board reporting cycle",
+};
+const pillarOrder = ["FRAME", "PLAN", "SOLVE", "EVOLVE", "GOVERN", "SCALE"];
+const homeCases = (await getCollection("cases", ({ data }) => data.fullStudy && !data.draft))
+  .sort((a, b) =>
+    (pillarOrder.indexOf(a.data.pillar) - pillarOrder.indexOf(b.data.pillar)) ||
+    (a.data.order - b.data.order) ||
+    a.data.title.localeCompare(b.data.title)
+  );
 ---
 
 <Layout
@@ -144,9 +177,9 @@ import "../styles/home.css";
       <div class="flagship">
         <div class="flagship-copy">
           <div class="eyebrow light">OUR WORK · FLAGSHIP</div>
-          <h3>Redesigned customer retention across five call-centre partners.</h3>
+          <h3>Redesigned customer retention across three call-centre partners.</h3>
           <p class="flag-copy">Churn was high and each partner ran its own retention method with no shared data. We mapped the end-to-end process, fixed the failure points, and handed the teams a model they now run without us.</p>
-          <div class="flag-metric"><strong>18% to 24%</strong><span>retention save rate</span></div>
+          <div class="flag-metric"><strong>18% to 29%</strong><span>retention save rate</span></div>
           <a href="/our-work/" class="flag-link"><span class="link-label">Read the case</span> <span class="ar">&rsaquo;</span></a>
         </div>
         <div class="flagship-media" aria-hidden="true">
@@ -242,35 +275,41 @@ import "../styles/home.css";
         <h2 class="section-title">Proven in practice.</h2>
         <p class="section-intro">Problem, approach and outcome stay visible, without dressing anonymised work as a marketing claim.</p>
       </div>
-      <div class="case-list">
-        <article class="case">
-          <div>
-            <div class="case-sector">Energy retailer</div>
-            <div class="case-number">18% to 24%</div>
-            <div class="case-caption">retention save rate</div>
+      <div class="hp-cases" data-hp-cases>
+        <div class="hp-cases-viewport">
+          <button class="hp-cases-arrow hp-cases-arrow--prev" type="button" data-hp-prev aria-label="Previous case">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 L8 12 L15 19"/></svg>
+          </button>
+          <div class="hp-cases-track" role="region" aria-label="Published case studies">
+            {homeCases.map((entry) => {
+              const c = entry.data;
+              const caption = caseCaptions[entry.id] ?? c.caption;
+              return (
+                <article class="case hp-case-slide">
+                  <div class="hp-case-meta">
+                    <span class="hp-case-icon" aria-hidden="true"><Icon name={caseSectorIcons[c.sector] ?? "financial-services"} /></span>
+                    <div class="case-sector">{c.sector}</div>
+                    <div class="case-number">{c.metric}</div>
+                    {caption && <div class="case-caption">{caption}</div>}
+                  </div>
+                  <div>
+                    <h3>{c.title}</h3>
+                    <div class="case-block"><p class="case-label">Problem</p><p>{c.problem}</p></div>
+                    <div class="case-block"><p class="case-label">Approach</p><p>{c.approach}</p></div>
+                    <div class="case-block"><p class="case-label">Outcome</p><p>{c.outcome}</p></div>
+                    <a href={`/our-work/${entry.id}/`} class="btn-text"><span class="link-label">Read the case</span> <span class="ar">&rsaquo;</span></a>
+                  </div>
+                </article>
+              );
+            })}
           </div>
-          <div>
-            <h3>Redesigned the customer retention process.</h3>
-            <div class="case-block"><p class="case-label">Problem</p><p>High churn across the residential customer base. Third-party call centres were operating without data integration or a consistent retention method, and each centre was running its own approach with little visibility of outcomes.</p></div>
-            <div class="case-block"><p class="case-label">Approach</p><p>Mapped the end-to-end retention process across the call-centre partners, identified the failure points driving churn, and redesigned the process with the retention teams.</p></div>
-            <div class="case-block"><p class="case-label">Outcome</p><p>The retention model now runs independently across partner teams without external support.</p></div>
-            <a href="/our-work/" class="btn-text"><span class="link-label">View our work</span> <span class="ar">&rsaquo;</span></a>
-          </div>
-        </article>
-        <article class="case">
-          <div>
-            <div class="case-sector">Utilities ombudsman</div>
-            <div class="case-number">52 to 31 days</div>
-            <div class="case-caption">investigation cycle time</div>
-          </div>
-          <div>
-            <h3>Standardised the investigation process across teams.</h3>
-            <div class="case-block"><p class="case-label">Problem</p><p>Five investigation teams were each running a different variant of the complaints process. A large backlog was building, resolution times varied by team, and the variation was creating compliance exposure.</p></div>
-            <div class="case-block"><p class="case-label">Approach</p><p>Mapped the existing process across all five teams, identified variation points and root causes, and worked with investigators to redesign one standard process.</p></div>
-            <div class="case-block"><p class="case-label">Outcome</p><p>All teams now operate from a single consistent investigation process with independent improvement capability.</p></div>
-            <a href="/our-work/" class="btn-text"><span class="link-label">View our work</span> <span class="ar">&rsaquo;</span></a>
-          </div>
-        </article>
+          <button class="hp-cases-arrow hp-cases-arrow--next" type="button" data-hp-next aria-label="Next case">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 L16 12 L9 19"/></svg>
+          </button>
+        </div>
+        <div class="hp-cases-dots" aria-hidden="true">
+          {homeCases.map((_, i) => <span class:list={["hp-cases-dot", { "is-active": i === 0 }]}></span>)}
+        </div>
       </div>
     </div>
   </section>
@@ -541,6 +580,30 @@ if (flagship) {
   updateFlagshipState();
   window.addEventListener("scroll", scheduleFlagshipUpdate, { passive:true });
   window.addEventListener("resize", scheduleFlagshipUpdate);
+}
+
+// "Proven in practice" case carousel: side arrows + dots (mirrors the service carousel).
+const hpCases = document.querySelector("[data-hp-cases]");
+if (hpCases) {
+  const track = hpCases.querySelector(".hp-cases-track");
+  const prevBtn = hpCases.querySelector("[data-hp-prev]");
+  const nextBtn = hpCases.querySelector("[data-hp-next]");
+  const dots = Array.from(hpCases.querySelectorAll(".hp-cases-dot"));
+  const firstSlide = track ? track.querySelector(".hp-case-slide") : null;
+  const step = () => firstSlide ? firstSlide.getBoundingClientRect().width : (track ? track.clientWidth : 0);
+  const syncDots = () => {
+    if (!track) return;
+    const i = Math.max(0, Math.min(dots.length - 1, Math.round(track.scrollLeft / (step() || 1))));
+    dots.forEach((dot, p) => dot.classList.toggle("is-active", p === i));
+  };
+  prevBtn?.addEventListener("click", () => track?.scrollBy({ left: -step(), behavior: "smooth" }));
+  nextBtn?.addEventListener("click", () => track?.scrollBy({ left: step(), behavior: "smooth" }));
+  dots.forEach((dot, p) => dot.addEventListener("click", () => track?.scrollTo({ left: p * step(), behavior: "smooth" })));
+  let hpFrame = null;
+  track?.addEventListener("scroll", () => {
+    if (hpFrame) return;
+    hpFrame = window.requestAnimationFrame(() => { hpFrame = null; syncDots(); });
+  }, { passive: true });
 }
 </script>
 </Layout>
