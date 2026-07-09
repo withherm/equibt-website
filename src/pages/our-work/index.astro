@@ -22,8 +22,8 @@ const pillarGroups = [
 // Map each case sector to one of the four parent industry icons.
 const sectorIcons = {
   "Bank": "financial-services",
-  "Specialty Insurer": "financial-services",
-  "Property Group": "financial-services",
+  "Specialty Insurer": "insurance",
+  "Property Group": "property",
   "Public-sector regulator": "government",
   "Privacy Regulator": "government",
   "Government Department": "government",
@@ -31,8 +31,8 @@ const sectorIcons = {
   "Energy Retailer": "utilities",
   "Energy Network": "utilities",
   "Industrial Manufacturer": "manufacturing",
-  "FMCG": "manufacturing",
-  "Chemical Sales": "manufacturing",
+  "FMCG": "fmcg",
+  "Chemical Sales": "chemicals",
 } as const;
 const sectorIconFor = (sector) => sectorIcons[sector] ?? "financial-services";
 
