@@ -54,7 +54,10 @@ const pillars = ["FRAME", "PLAN", "SOLVE", "EVOLVE", "GOVERN", "SCALE"] as const
             const d = post.data;
             return (
               <a class="ins-card" href={`/insights/${post.id}/`} data-pillar={d.pillar.toLowerCase()}>
-                <div class="eyebrow ins-kicker">{kicker(d.pillar, d.phase)}</div>
+                <div class="ins-card-top">
+                  {d.pillar && <span class="ins-card-glyph" aria-hidden="true"><Icon name={d.pillar.toLowerCase()} /></span>}
+                  <span class="eyebrow ins-kicker">{kicker(d.pillar, d.phase)}</span>
+                </div>
                 <h2 class="ins-card-title">{d.title}</h2>
                 <p class="ins-card-summary">{d.summary}</p>
                 <div class="ins-card-foot">
