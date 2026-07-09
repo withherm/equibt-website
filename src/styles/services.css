@@ -437,8 +437,8 @@
   justify-content:flex-end;
   align-items:center;
   justify-self:end;
-  width:min(260px,34vw);
-  min-height:280px;
+  width:min(170px,22vw);
+  min-height:0;
 }
 .service-hub-cta-art svg{
   display:block;
@@ -498,7 +498,7 @@
   .service-hub-row{grid-template-columns:1fr;gap:18px;padding:38px 16px;margin-inline:-16px;}
   .service-hub-icon{width:110px;height:110px;}
   .service-hub-cta-grid{grid-template-columns:1fr;}
-  .service-hub-cta-art{justify-self:start;width:min(220px,80vw);min-height:220px;}
+  .service-hub-cta-art{justify-self:start;width:min(160px,40vw);min-height:0;}
 }
 @media(max-width:1120px){
   .service-hub-hero .service-hero-inner{grid-template-columns:minmax(0,640px) auto;justify-content:start;gap:48px;}

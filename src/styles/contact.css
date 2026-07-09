@@ -248,7 +248,7 @@
 .cx-cta-copy h2{max-width:640px;margin:0 0 20px;font-size:clamp(30px,3vw,38px);font-weight:700;line-height:1.08;}
 .cx-cta-copy p{max-width:600px;margin:0 0 32px;color:var(--mid-grey);font-size:19px;line-height:1.45;}
 .cx-cta-art{display:flex;align-items:center;justify-content:flex-end;}
-.cx-cta-art svg{display:block;width:min(300px,28vw);height:auto;overflow:visible;}
+.cx-cta-art svg{display:block;width:min(170px,22vw);height:auto;overflow:visible;}
 .cx-cta-art svg .hd,.cx-cta-art svg .hd-f1,.cx-cta-art svg .hd-f2,.cx-cta-art svg .hd-f3,
 .cx-cta-art svg[stroke]:not([stroke="none"]),.cx-cta-art svg [stroke]:not([stroke="none"]){
   stroke-linecap:round;stroke-linejoin:round;
@@ -288,7 +288,7 @@
   .cx-proof-group{padding-top:8px;}
   .cx-cta-grid{grid-template-columns:1fr;gap:36px;}
   .cx-cta-art{justify-content:flex-start;}
-  .cx-cta-art svg{width:min(260px,56vw);}
+  .cx-cta-art svg{width:min(160px,40vw);}
 }
 @media(max-width:860px){
   .cx-row{grid-template-columns:1fr;gap:12px;}

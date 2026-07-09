@@ -438,9 +438,11 @@
   justify-content:flex-end;
   align-items:center;
   justify-self:end;
-  width:min(260px,34vw);
-  min-height:280px;
+  width:min(170px,22vw);
+  min-height:0;
 }
+/* the industries-hub 2x2 cluster keeps its larger footprint */
+.cta-art.cta-art-cluster{width:min(300px,30vw);}
 .cta-art > svg{
   display:block;
   width:100%;
@@ -724,9 +726,9 @@
   .sector-row-icon{width:28px;height:28px;}
   .sector-row h3{margin:0;font-size:15px;line-height:1.2;min-height:0;}
   .cta-art{justify-content:flex-start;}
-  .cta-art{justify-self:start;width:min(260px,80vw);min-height:260px;}
+  .cta-art{justify-self:start;width:min(160px,40vw);min-height:0;}
   .cta-art > svg{width:100%;}
-  .cta-art-cluster{justify-self:start;width:min(300px,82vw);}
+  .cta-art.cta-art-cluster{justify-self:start;width:min(300px,82vw);}
   .shape-item{padding:18px 0;border-left:0;border-top:1px solid var(--hairline);}
   .shape-item:first-child{border-top:0;padding-top:0;}
   .proof-slide{flex-basis:86%;}
