@@ -455,3 +455,25 @@ Interim site-wide hero icons. Replaces the EQT-324 stripped / line-art hero art 
 Resource detail pages now rely on the sticky top nav for location instead of hero breadcrumbs. The hero H1 is the canonical resource name, with the existing eyebrow kept only where it already existed; the two assessment tools keep their no-eyebrow structure. `categoryMap` lives in `src/data/resources.ts` so the Resources hub filters and the Nav submenu use the same tag-to-category mapping. Active nav state is text-colour only: terracotta `#C15F3C` plus `aria-current="page"`, with no bar, underline, rule or other marker.
 
 **Engagement Model URL (EQT-336, 2026-06-18).** Engagement Model is an About dropdown item, not a Resources hub item, so the canonical route is `/about/engagement-model/`. The former Resources route remains only as a 301 redirect stub.
+
+### Carousel controls, industries polish, sector-icon completion (2026-07-09)
+
+**Service-page carousels (shared `ServicePage.astro`, all six pillars).** Controls split: prev/next arrows sit on the left and right edges of the slide, vertically centred, not bunched below. Markup wraps the track in `.service-viewport` (position:relative) with the two `.carousel-arrow` buttons absolutely positioned (`top:50%`, `left:-14px` / `right:-14px`, `z-index:3`); `.carousel-controls` below now holds only the centred dots. Arrows are 48px circular white buttons, `1px var(--hairline)` border, `0 6px 18px rgba(38,36,92,.14)` shadow, invert to navy on hover. Mobile (≤860px): 42px, inset to 2px.
+
+**Industries "One method. Calibrated to your sector." formula section.** Box borders lifted from a faint hairline to `1.5px rgba(38,36,92,.24)` + `0 12px 30px rgba(38,36,92,.08)` shadow so the three cards read off the white. The `×` and `=` operators recoloured terracotta. Sector icons added above each shape-strip label.
+
+**Shape strip ("One method, four different shapes").** Each sector now lists three positive outcomes, each with a masked navy tick bullet (`.shape-outcomes li::before` = SVG check via CSS `mask`, 16px, `background:var(--navy)`). Copy is outcome categories, not numbers (anonymised-client rule holds).
+
+**Sector selector: trainline + callouts.** The DMAICO trainline moved out of full-width and into the "Where to start" column, under the sentence and Explore link (`.pathway-box.hub-pathway` nested inside the second `.sector-panel-card`; station labels bumped to 15px for legibility at half width). DMAICO phase names in the sentence are bolded navy via `boldPhases()` + `set:html` (SSR) and an innerHTML regex replace (JS on select). The two recommended stations carry a terracotta leader line + label callout: first recommended = **START HERE**, second = **THEN** (`.station-callout`, shown only on `.is-recommended`, text driven by `recommended[0]`/`recommended[1]`, updates on sector change).
+
+**List-marker convention (banked).** Tick = positive outcome/result. Circle-with-exclamation = challenge/problem (`.sector-challenges li::before`, navy circle `content:"!"` white). The plain square bullet is retired.
+
+**Sector line-art set completed.** Added Property, FMCG, Insurance, Chemicals to the sector icons (Affinity centreline exports, viewBox 375, navy + one terracotta accent, round caps), as top-level `src/components/icons/{Property,Fmcg,Insurance,Chemicals}.astro`, registered in `Icon.astro` (`property`, `fmcg`, `insurance`, `chemicals`). These four had no honest home in the original four (financial-services / government / utilities / manufacturing), which is why force-mapping them read as off. Our Work maps each case's free-text sector to an icon via the `sectorIcons` table in `our-work/index.astro`.
+
+**Root-cause CTA art.** New `RootCauseCta.astro` (CTA-rca export) registered as `root-cause` in the global `Icon.astro`. This fixed the Our Work CTA, which referenced an unregistered `root-cause` name and threw "Unable to render Svg" on build. The small `glyphs/RootCause.astro` used across deliverables and problem sections is unchanged, deliberately a different, smaller mark from the CTA illustration.
+
+**Service hub hero → v3.** Swapped the `hero-service-hub` entry in `prototypes/HERO_ICON_HANDOFF.json` to the v3 open-book icon, colours normalised from Affinity rgb to `var(--navy)`/`var(--terracotta)` to match the hero-set token convention.
+
+**Mobile row-icon indent fix.** `.service-hub-row` at ≤860px kept `padding:38px 0` while the desktop `margin-inline:-24px` bleed stayed, pushing the service-list icons left of the content axis on narrow screens. Changed to `padding:38px 16px; margin-inline:-16px` to match the home `.svc-row` idiom, so icons stay on the content axis (16px bleed for the hover fill).
+
+**Icon colour convention (clarified).** Top-level `src/components/icons/*.astro` (industry + sector marks) use hardcoded hex/rgb, matching their siblings. `glyphs/*` and the hero JSON use `var(--navy)`/`var(--terracotta)`. New sector icons follow the hardcoded convention; the hero v3 was converted to tokens because it joins the hero set.

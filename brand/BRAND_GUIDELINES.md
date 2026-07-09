@@ -193,6 +193,13 @@ Monoline, single colour, no fill. Architectural geometry, not generic stock icon
 | Colour | Single colour per icon. Corporate Layer: navy (EQUIBT) or slate. Framework Teaching Layer: the step colour. |
 | Banned | Multi-colour icons, gradients, drop shadows, sparkles layered on utility icons, hand-drawn strokes, generic Iconfinder / stock-set output. |
 
+### EQUIBT public-site line-art layer (web)
+
+The EQUIBT marketing site runs a separate hand-drawn line-art layer for its pillar, sector and illustrative marks (this is the deliberate exception to the monoline-stock rule above; utility/nav glyphs stay Forma Regular). Spec: viewBox `0 0 375 375`, navy `#26245C` strokes, round caps and joins, exactly one terracotta `#C15F3C` accent element per icon, single weight. Full detail lives in `prototypes/DESIGN_LEARNINGS_v6x.md`.
+
+- **Sector set (complete, 2026-07-09):** financial-services, government, utilities, manufacturing, property, fmcg, insurance, chemicals. The last four were added because the case-study sectors (Property Group, FMCG, Chemical Sales, Specialty Insurer) had no honest fit in the original four.
+- **List markers (web).** Positive outcome/result = navy tick. Challenge/problem = navy circle with a white exclamation. Do not use a plain square bullet. Keep the two markers distinct so outcome lists and problem lists read differently at a glance.
+
 ---
 
 ## 06 — Layout & spacing
@@ -356,6 +363,12 @@ Authority on conflict: this guideline, mirrored in DESIGN_LEARNINGS_v3 hard-rule
 ### Section pattern
 
 Every content section follows the same anatomy: eyebrow (label), H2 (sentence-case), short supporting paragraph, then the section content. No decorative dividers between sections. Background tone alternation does the separation work (off-white → `#F5F5F5` → off-white).
+
+### Interaction patterns (added 2026-07-09)
+
+- **Carousel controls.** Prev/next arrows sit on the left and right edges of the slide, vertically centred (circular white buttons, hairline border, soft shadow, invert to navy on hover). Dot indicators sit centred below the slide. Do not bunch arrows and dots together in one corner.
+- **Trainline / pathway callouts.** When a pathway highlights a recommended sequence, the recommended stations carry a terracotta leader line and a short label above them (first = START HERE, second = THEN). Where a pathway supports a "where to start" panel, it sits inside that panel column, not full-width beneath it.
+- **List-icon indent (responsive).** Icon-plus-text list rows that bleed their hover fill past the container on desktop (negative `margin-inline` + matching padding) must keep matching horizontal padding at mobile breakpoints, so the icon stays on the content axis instead of sliding to the viewport edge. Match the home service-list idiom.
 
 ---
 
