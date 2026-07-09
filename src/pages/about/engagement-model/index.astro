@@ -4,10 +4,10 @@ import Icon from "../../../components/icons/Icon.astro";
 import Layout from "../../../layouts/Layout.astro";
 import Nav from "../../../components/Nav.astro";
 import Transfer from "../../../components/icons/glyphs/Transfer.astro";
-import Dialogue from "../../../components/icons/glyphs/Dialogue.astro";
-import RootCause from "../../../components/icons/glyphs/RootCause.astro";
+import Frame from "../../../components/icons/Frame.astro";
+import Solve from "../../../components/icons/Solve.astro";
 import DraftingCompass from "../../../components/icons/glyphs/DraftingCompass.astro";
-import Workflow from "../../../components/icons/glyphs/Workflow.astro";
+import Evolve from "../../../components/icons/Evolve.astro";
 import Loop from "../../../components/icons/glyphs/Loop.astro";
 import People from "../../../components/icons/glyphs/People.astro";
 import DocReport from "../../../components/icons/glyphs/DocReport.astro";
@@ -84,10 +84,10 @@ const phases = [
 
 // Reused glyphs (no bespoke draw). Phases by key, subsections by head.
 const phaseIcons = {
-  discovery: Dialogue,
-  diagnosis: RootCause,
+  discovery: Frame,
+  diagnosis: Solve,
   design: DraftingCompass,
-  delivery: Workflow,
+  delivery: Evolve,
   handover: Transfer,
 };
 const detailIcons = {
@@ -124,7 +124,7 @@ const detailIcons = {
 
     <section class="em-tool res-reveal" id="engagement-model">
       <div class="res-inner">
-        <div class="eyebrow em-eyebrow">A GLIMPSE INTO OUR ENGAGEMENTS</div>
+        <div class="eyebrow em-eyebrow">THE ENGAGEMENT, PHASE BY PHASE</div>
         <div class="em-timeline" id="em-timeline">
           {phases.map((phase, i) => {
             const PhaseIcon = phaseIcons[phase.key];
