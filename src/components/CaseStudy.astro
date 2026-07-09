@@ -264,11 +264,15 @@ const pointerD = currentIndex >= 0 ? `M${calloutX} 34 L${stations[currentIndex].
     function update() {
       const rect = card.getBoundingClientRect();
       const visible = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
-      const coverage = clamp(visible / window.innerHeight, 0, 1);
-      if (!expanded && coverage >= 0.32) {
+      // coverage relative to the card's own height, so the short text-only
+      // outcome card still trips the threshold (the viewport-relative version
+      // never reached it because the card is small).
+      const denom = Math.max(1, Math.min(rect.height, window.innerHeight));
+      const coverage = clamp(visible / denom, 0, 1);
+      if (!expanded && coverage >= 0.6) {
         expanded = true;
         card.classList.add("is-expanded");
-      } else if (expanded && coverage < 0.28) {
+      } else if (expanded && coverage < 0.45) {
         expanded = false;
         card.classList.remove("is-expanded");
       }
