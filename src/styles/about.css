@@ -104,7 +104,33 @@ main > .about-section:last-child{padding-bottom:64px;}  /* trim gap before foote
 .about-compare-col{}
 .about-compare-col .eyebrow{margin-bottom:6px;}
 .about-compare-col .compare-head{margin:0 0 6px;color:var(--navy);font-family:"Montserrat",Arial,sans-serif;font-size:21px;font-weight:700;line-height:1.25;}
-.about-compare-item{padding:20px 0;border-top:1px solid var(--hairline);color:var(--near-black);font-size:21px;line-height:1.35;}
+.about-compare-item{display:flex;align-items:flex-start;gap:15px;padding:20px 0;border-top:1px solid var(--hairline);color:var(--near-black);font-size:21px;line-height:1.35;}
+.about-compare-col.is-are .about-compare-item::before{
+  content:"";
+  flex:0 0 auto;
+  width:19px;
+  height:19px;
+  margin-top:.28em;
+  background:var(--navy);
+  -webkit-mask:no-repeat center/100% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M5 12.5 L10 17.5 L19 6.5'/%3E%3C/svg%3E");
+  mask:no-repeat center/100% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M5 12.5 L10 17.5 L19 6.5'/%3E%3C/svg%3E");
+}
+.about-compare-col.is-not .about-compare-item::before{
+  content:"!";
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  width:20px;
+  height:20px;
+  margin-top:.24em;
+  border-radius:50%;
+  background:var(--navy);
+  color:#fff;
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:13px;
+  font-weight:800;
+  line-height:1;
+}
 
 /* ---- Hanging-label editorial rows (beliefs + story field notes) ---- */
 .about-rows{display:flex;flex-direction:column;}
@@ -154,7 +180,59 @@ main > .about-section:last-child{padding-bottom:64px;}  /* trim gap before foote
 
 /* ---- Two-column principle pair (reuses .about-cols at two columns) ---- */
 .about-cols.two{grid-template-columns:1fr 1fr;}
-.about-principle-head{margin-top:76px;}
+
+/* ---- "When we stay, when we leave" — connected endpoint panel that echoes THE ARC (nodes + line) ---- */
+.about-principle{
+  margin-top:52px;
+  padding:40px 44px 44px;
+  background:#fff;
+  border:1px solid var(--hairline);
+  border-radius:18px;
+  box-shadow:0 14px 34px rgba(38,36,92,.07);
+}
+.about-principle-head{margin:0 0 30px;}
+.about-principle-head .about-title{margin-bottom:0;}
+.about-principle-pair{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:64px;
+}
+/* the engagement span: hairline joining the two endpoint nodes */
+.about-principle-pair::before{
+  content:"";
+  position:absolute;
+  top:12px;
+  left:12px;
+  right:12px;
+  height:2px;
+  background:var(--hairline);
+}
+.about-principle-end{position:relative;padding-top:46px;}
+.about-principle-node{
+  position:absolute;
+  top:0;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  background:#fff;
+  border:2.6px solid var(--terracotta);
+  z-index:1;
+}
+.about-principle-node::after{content:"";position:absolute;inset:6px;border-radius:50%;background:var(--terracotta);}
+.about-principle-node.is-start{left:0;}
+.about-principle-node.is-end{right:0;}
+.about-principle-tag{
+  margin-bottom:8px;
+  color:var(--terracotta);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.about-principle-end h3{margin:0 0 12px;color:var(--navy);font-size:23px;font-weight:700;line-height:1.18;}
+.about-principle-end p{margin:0;color:var(--mid-grey);font-size:19px;line-height:1.42;}
 
 /* ---- LMI training handover (full-colour 702 transparent mark, leanmethods.com.au) ---- */
 .about-lmi .eyebrow{margin-bottom:14px;}
@@ -214,6 +292,11 @@ main > .about-section:last-child{padding-bottom:64px;}  /* trim gap before foote
   .about-compare-col + .about-compare-col{margin-top:36px;}
   .about-row{grid-template-columns:1fr;gap:12px;}
   .about-logo-marks{grid-template-columns:repeat(3,minmax(0,1fr));gap:30px 28px;}
+  .about-principle{padding:28px 22px 30px;}
+  .about-principle-pair{grid-template-columns:1fr;gap:30px;}
+  .about-principle-pair::before{display:none;}
+  .about-principle-end{padding-top:0;}
+  .about-principle-node{position:static;display:block;margin-bottom:14px;}
 }
 @media(max-width:760px){
   .about-hero{padding:72px 26px 72px;}
