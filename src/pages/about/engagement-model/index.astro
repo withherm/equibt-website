@@ -124,6 +124,7 @@ const detailIcons = {
 
     <section class="em-tool res-reveal" id="engagement-model">
       <div class="res-inner">
+        <div class="eyebrow em-eyebrow">A GLIMPSE INTO OUR ENGAGEMENTS</div>
         <div class="em-timeline" id="em-timeline">
           {phases.map((phase, i) => {
             const PhaseIcon = phaseIcons[phase.key];
@@ -131,7 +132,6 @@ const detailIcons = {
             <div class="em-phase" data-key={phase.key} id={`em-phase-${phase.key}`}>
               <button class="em-phase-btn" type="button" aria-expanded="false" aria-controls={`em-phase-detail-${phase.key}`}>
                 <div class="em-phase-left">
-                  <span class="em-phase-num">{phase.num}</span>
                   {PhaseIcon && <span class="em-phase-glyph" aria-hidden="true"><PhaseIcon /></span>}
                   <div class="em-phase-meta">
                     <span class="em-phase-title">{phase.title}</span>
@@ -159,11 +159,6 @@ const detailIcons = {
               {i < phases.length - 1 && <div class="em-connector" aria-hidden="true"></div>}
             </div>
           );})}
-        </div>
-        <div class="em-cta-strip">
-          <div class="eyebrow">NEXT STEP</div>
-          <p>A plain description of the operational issue or goal is enough to start a conversation.</p>
-          <a href="/contact/" class="btn-primary">Get in touch</a>
         </div>
       </div>
     </section>
@@ -208,16 +203,9 @@ const detailIcons = {
 .em-phase[aria-expanded="true"] .em-phase-btn,
 .em-phase-btn[aria-expanded="true"]{border-color:var(--navy);border-bottom-left-radius:0;border-bottom-right-radius:0;}
 
+.em-eyebrow{margin-bottom:22px;}
 .em-phase-left{display:flex;align-items:center;gap:16px;flex:0 0 auto;}
-.em-phase-num{
-  font-family:"Montserrat",Arial,sans-serif;
-  font-size:13px;font-weight:700;letter-spacing:.08em;
-  color:#fff;background:var(--navy);
-  width:36px;height:36px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-}
-.em-phase-glyph{display:inline-flex;flex:0 0 auto;width:40px;height:40px;}
+.em-phase-glyph{display:inline-flex;flex:0 0 auto;width:44px;height:44px;}
 .em-phase-glyph svg{display:block;width:100%;height:100%;overflow:visible;}
 .em-phase-meta{display:flex;flex-direction:column;gap:2px;}
 .em-phase-title{font-size:19px;font-weight:700;color:var(--navy);}
@@ -238,9 +226,6 @@ const detailIcons = {
 .em-detail-glyph svg{display:block;width:100%;height:100%;overflow:visible;}
 .em-detail-body{font-size:16px;color:var(--mid-grey);margin:0;line-height:1.5;}
 
-.em-cta-strip{padding:32px;background:#fff;border:1px solid var(--hairline);border-radius:12px;}
-.em-cta-strip .eyebrow{margin-bottom:10px;}
-.em-cta-strip p{margin:0 0 18px;color:var(--mid-grey);font-size:18px;}
 
 @media(max-width:900px){
   .em-phase-btn{grid-template-columns:auto 1fr auto;gap:16px;}
