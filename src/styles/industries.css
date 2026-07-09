@@ -534,6 +534,18 @@
   text-transform:uppercase;
 }
 .shape-item p{margin:0;color:var(--mid-grey);font-size:19px;}
+.shape-outcomes{list-style:none;margin:0;padding:0;}
+.shape-outcomes li{display:flex;align-items:flex-start;gap:9px;padding:5px 0;color:var(--mid-grey);font-size:18px;line-height:1.35;}
+.shape-outcomes li::before{
+  content:"";
+  flex:0 0 auto;
+  width:16px;
+  height:16px;
+  margin-top:.18em;
+  background:var(--navy);
+  -webkit-mask:no-repeat center/100% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M5 12.5 L10 17.5 L19 6.5'/%3E%3C/svg%3E");
+  mask:no-repeat center/100% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M5 12.5 L10 17.5 L19 6.5'/%3E%3C/svg%3E");
+}
 .formula-takeaway-panel{
   margin:38px calc((100vw - min(var(--max),100vw)) / -2) 0 0;
   padding:34px max(56px,calc((100vw - var(--max)) / 2 + 56px)) 34px 0;
@@ -614,7 +626,22 @@
 .sector-panel-card h3{margin:0 0 12px;font-size:23px;font-weight:700;}
 .sector-challenges{list-style:none;margin:0;padding:0;border-top:1px solid var(--hairline);}
 .sector-challenges li{display:flex;align-items:flex-start;gap:14px;padding:13px 0;border-bottom:1px solid var(--hairline);color:var(--mid-grey);font-size:19px;}
-.sector-challenges li::before{content:"";flex:0 0 auto;width:9px;height:9px;margin-top:.5em;background:var(--navy);}
+.sector-challenges li::before{
+  content:"!";
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  width:19px;
+  height:19px;
+  margin-top:.2em;
+  border-radius:50%;
+  background:var(--navy);
+  color:#fff;
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:13px;
+  font-weight:800;
+  line-height:1;
+}
 .sector-panel-card p{margin:0 0 var(--link-gap);color:var(--mid-grey);font-size:19px;}
 .sector-panel-card [data-sector-pathway] strong{font-weight:700;color:var(--navy);}
 .hub-pathway{
