@@ -28,7 +28,7 @@ const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC
       </div>
     </section>
 
-    <!-- 2. THE FORM (right after the hero; v6x hairline inputs; mailto interim, no live handler this issue) -->
+    <!-- 2. THE FORM (right after the hero; v6x hairline inputs) -->
     <section class="cx-section beige cx-reveal" id="contact-form">
       <div class="cx-inner">
         <div class="cx-head">
@@ -36,7 +36,7 @@ const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC
           <h2 class="cx-title">Let's talk about your operation.</h2>
           <p>A plain description of the operational issue or goal is enough to start.</p>
         </div>
-        <form class="cx-form" action="mailto:hello@equibt.com" method="post" enctype="text/plain">
+        <form class="cx-form" method="post">
           <div class="cx-form-row">
             <div class="cx-field">
               <label for="first-name">First name <span class="cx-req" aria-hidden="true">*</span></label>
@@ -67,9 +67,7 @@ const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC
           </div>
           <div class="cx-field cx-captcha">
             <span class="cx-captcha-label">Verification <span class="cx-req" aria-hidden="true">*</span></span>
-            <!-- Cloudflare Turnstile. Interim TEST sitekey (always passes); the production sitekey
-                 + server-side token verification land with the form handler at go-live (EQT-262). -->
-            <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-theme="light"></div>
+            <div class="cf-turnstile" data-sitekey={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY} data-theme="light"></div>
             <p class="cx-field-error" id="captcha-error" hidden>Please complete the verification.</p>
           </div>
           <div class="cx-hp" aria-hidden="true">
@@ -79,8 +77,10 @@ const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC
             <button class="btn-primary" type="submit">Get in touch</button>
             <p class="cx-form-note">Prefer email? Write to <a href="mailto:hello@equibt.com">hello@equibt.com</a> directly.</p>
           </div>
+          <p class="cx-field-error" id="contact-error" hidden>Something went wrong, please email <a href="mailto:hello@equibt.com">hello@equibt.com</a>.</p>
           <p class="cx-form-legend"><span class="cx-req">*</span> required</p>
         </form>
+        <p class="cx-form-note" id="contact-success" role="status" hidden>Thanks, we'll be in touch.</p>
       </div>
     </section>
 
@@ -151,21 +151,51 @@ const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC
     }
     initialiseContactReveals();
 
-    // Bot gate: Cloudflare Turnstile + honeypot (client side). The TEST sitekey always passes;
-    // the production sitekey and SERVER-SIDE token verification land with the form handler at
-    // go-live (EQT-262) - a static page cannot verify the token on its own.
     function initialiseContactGuard() {
       const form = document.querySelector(".cx-form");
       if (!form) return;
-      form.addEventListener("submit", (event) => {
+      const captchaError = document.getElementById("captcha-error");
+      const contactError = document.getElementById("contact-error");
+      const success = document.getElementById("contact-success");
+      const submit = form.querySelector('button[type="submit"]');
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (captchaError) captchaError.hidden = true;
+        if (contactError) contactError.hidden = true;
+
         const honeypot = form.querySelector('[name="company_website"]');
         const token = form.querySelector('[name="cf-turnstile-response"]');
-        const error = document.getElementById("captcha-error");
         const tokenOk = token && "value" in token && String(token.value).length > 0;
         const honeypotTripped = honeypot && "value" in honeypot && String(honeypot.value).length > 0;
-        if (honeypotTripped || !tokenOk) {
-          event.preventDefault();
-          if (!tokenOk && error) error.hidden = false;
+        if (honeypotTripped) return;
+        if (!tokenOk) {
+          if (captchaError) captchaError.hidden = false;
+          return;
+        }
+
+        if (submit) submit.setAttribute("disabled", "true");
+
+        try {
+          const response = await fetch("/api/contact", {
+            method: "POST",
+            body: new FormData(form),
+          });
+          const result = await response.json().catch(() => null);
+
+          if (response.ok && result && result.ok === true) {
+            form.hidden = true;
+            if (success) success.hidden = false;
+            return;
+          }
+
+          if (contactError) contactError.hidden = false;
+          window.turnstile?.reset();
+        } catch {
+          if (contactError) contactError.hidden = false;
+          window.turnstile?.reset();
+        } finally {
+          if (!form.hidden && submit) submit.removeAttribute("disabled");
         }
       });
     }
