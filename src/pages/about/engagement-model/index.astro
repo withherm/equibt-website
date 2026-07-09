@@ -5,7 +5,7 @@ import Layout from "../../../layouts/Layout.astro";
 import Nav from "../../../components/Nav.astro";
 import Transfer from "../../../components/icons/glyphs/Transfer.astro";
 import Frame from "../../../components/icons/Frame.astro";
-import Solve from "../../../components/icons/Solve.astro";
+import RootCause from "../../../components/icons/glyphs/RootCause.astro";
 import DraftingCompass from "../../../components/icons/glyphs/DraftingCompass.astro";
 import Evolve from "../../../components/icons/Evolve.astro";
 import Loop from "../../../components/icons/glyphs/Loop.astro";
@@ -85,7 +85,7 @@ const phases = [
 // Reused glyphs (no bespoke draw). Phases by key, subsections by head.
 const phaseIcons = {
   discovery: Frame,
-  diagnosis: Solve,
+  diagnosis: RootCause,
   design: DraftingCompass,
   delivery: Evolve,
   handover: Transfer,
@@ -173,7 +173,7 @@ const detailIcons = {
             <a href="/contact/" class="btn-primary">Get in touch</a>
           </div>
           <div class="res-ld-close-art" aria-hidden="true">
-            <span><Transfer /></span>
+            <span><Frame /></span>
           </div>
         </div>
       </div>
@@ -183,9 +183,9 @@ const detailIcons = {
 </Layout>
 
 <style>
-.em-tool{padding:72px 56px 88px;background:#F5F3EE;}
+.em-tool{padding:72px 56px 32px;background:#F5F3EE;}
 
-.em-timeline{display:flex;flex-direction:column;gap:0;margin-bottom:48px;}
+.em-timeline{display:flex;flex-direction:column;gap:0;margin-bottom:0;}
 
 .em-phase{position:relative;}
 .em-connector{width:2px;height:24px;background:var(--hairline);margin-left:32px;}
@@ -232,7 +232,7 @@ const detailIcons = {
   .em-detail-grid{grid-template-columns:1fr;}
 }
 @media(max-width:640px){
-  .em-tool{padding:48px 24px 64px;}
+  .em-tool{padding:48px 24px 28px;}
   .em-phase-btn{grid-template-columns:1fr auto;gap:12px;}
   .em-phase-left{grid-column:1/-1;}
   .em-phase-summary{grid-column:1;}
