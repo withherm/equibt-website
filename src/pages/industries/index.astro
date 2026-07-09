@@ -100,6 +100,15 @@ const sectors = [
 ] as const;
 
 const initialSector = sectors[0];
+
+// Bold the DMAICO phase names inside the "where to start" sentence so the
+// recommended path is easy to follow. Content is authored (no user input).
+const PHASE_RE = /\b(FRAME|PLAN|SOLVE|EVOLVE|GOVERN|SCALE)\b/g;
+const boldPhases = (s) => (s || "").replace(PHASE_RE, "<strong>$1</strong>");
+
+// Callout above the two recommended stations, in order: first is the start.
+const calloutFor = (pillar, recommended) =>
+  recommended[0] === pillar ? "START HERE" : recommended[1] === pillar ? "THEN" : "";
 ---
 
 <Layout
@@ -165,21 +174,25 @@ const initialSector = sectors[0];
               </article>
               <article class="sector-panel-card">
                 <h3>Where to start</h3>
-                <p data-sector-pathway>{initialSector.pathway}</p>
+                <p data-sector-pathway set:html={boldPhases(initialSector.pathway)}></p>
                 <a href={initialSector.href} class="btn-text" data-sector-link><span class="link-label">{initialSector.label}</span> <span class="ar">&rsaquo;</span></a>
+                <div class="pathway-box hub-pathway">
+                  <svg viewBox="0 0 1040 150" role="img" aria-label="Selected sector recommended service pathway">
+                    <path class="pathway-line hd-f2" d="M70 100 Q300 90 520 99 Q760 109 970 98"/>
+                    {stations.map((station) => (
+                      <a href={serviceMeta[station.pillar].href} class:list={["station-link", { "is-recommended": initialSector.recommended.includes(station.pillar) }]} data-station={station.pillar} aria-label={`${station.key} service`}>
+                        <g class="station-callout" aria-hidden="true">
+                          <line class="station-callout-line" x1={station.x} y1="82" x2={station.x} y2="62"/>
+                          <text class="station-callout-label" x={station.x} y="50" data-station-callout>{calloutFor(station.pillar, initialSector.recommended)}</text>
+                        </g>
+                        <circle class="station-ring" cx={station.x} cy={station.y}/>
+                        <circle class="station-core" cx={station.x} cy={station.y}/>
+                        <text class="station-label" x={station.x} y="138">{station.key}</text>
+                      </a>
+                    ))}
+                  </svg>
+                </div>
               </article>
-            </div>
-            <div class="pathway-box hub-pathway">
-              <svg viewBox="0 0 1040 150" role="img" aria-label="Selected sector recommended service pathway">
-                <path class="pathway-line hd-f2" d="M70 100 Q300 90 520 99 Q760 109 970 98"/>
-                {stations.map((station) => (
-                  <a href={serviceMeta[station.pillar].href} class:list={["station-link", { "is-recommended": initialSector.recommended.includes(station.pillar) }]} data-station={station.pillar} aria-label={`${station.key} service`}>
-                    <circle class="station-ring" cx={station.x} cy={station.y}/>
-                    <circle class="station-core" cx={station.x} cy={station.y}/>
-                    <text class="station-label" x={station.x} y="138">{station.key}</text>
-                  </a>
-                ))}
-              </svg>
             </div>
           </div>
         </div>
@@ -335,7 +348,7 @@ const initialSector = sectors[0];
         item.setAttribute("aria-pressed", active ? "true" : "false");
       });
       setList((row.dataset.challenges || "").split("|").filter(Boolean));
-      if (pathway) pathway.textContent = row.dataset.pathway || "";
+      if (pathway) pathway.innerHTML = (row.dataset.pathway || "").replace(/\b(FRAME|PLAN|SOLVE|EVOLVE|GOVERN|SCALE)\b/g, "<strong>$1</strong>");
       if (link) {
         link.setAttribute("href", row.dataset.href || "#");
         const label = link.querySelector(".link-label");
@@ -343,8 +356,14 @@ const initialSector = sectors[0];
       }
       stations.forEach((station) => station.classList.remove("is-recommended"));
       stations.forEach((station) => {
-        if (recommended.includes(station.dataset.station || "")) {
+        const pillar = station.dataset.station || "";
+        if (recommended.includes(pillar)) {
           station.classList.add("is-recommended");
+        }
+        const callout = station.querySelector("[data-station-callout]");
+        if (callout) {
+          callout.textContent = recommended[0] === pillar ? "START HERE"
+            : recommended[1] === pillar ? "THEN" : "";
         }
       });
       if (opts && opts.scroll) revealPanel();

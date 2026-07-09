@@ -19,6 +19,23 @@ const pillarGroups = [
   { pillar: "SCALE", icon: "scale", eyebrow: "SCALE · OPERATE", intro: "Standards embedded so the new way of working scales without us." },
 ] as const;
 
+// Map each case sector to one of the four parent industry icons.
+const sectorIcons = {
+  "Bank": "financial-services",
+  "Specialty Insurer": "financial-services",
+  "Property Group": "financial-services",
+  "Public-sector regulator": "government",
+  "Privacy Regulator": "government",
+  "Government Department": "government",
+  "Utilities Ombudsman": "government",
+  "Energy Retailer": "utilities",
+  "Energy Network": "utilities",
+  "Industrial Manufacturer": "manufacturing",
+  "FMCG": "manufacturing",
+  "Chemical Sales": "manufacturing",
+} as const;
+const sectorIconFor = (sector) => sectorIcons[sector] ?? "financial-services";
+
 const groups = pillarGroups
   .map((group) => ({
     ...group,
@@ -73,6 +90,7 @@ const groups = pillarGroups
               const c = entry.data;
               return (
                 <article class="ow-case">
+                  <span class="ow-case-icon" aria-hidden="true"><Icon name={sectorIconFor(c.sector)} /></span>
                   <div class="ow-case-sector">{c.sector}</div>
                   <div class="ow-case-metric">{c.metric}</div>
                   <h3>{c.title}</h3>

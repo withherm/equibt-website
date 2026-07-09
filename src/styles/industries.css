@@ -399,6 +399,17 @@
 .station-link.is-recommended .station-ring{r:11px;stroke:var(--terracotta);stroke-width:2.6;}
 .station-link.is-recommended .station-core{r:4px;fill:var(--terracotta);}
 .station-link.is-recommended .station-label{fill:var(--navy);}
+.station-callout{opacity:0;transition:opacity .18s ease;}
+.station-link.is-recommended .station-callout{opacity:1;}
+.station-callout-line{stroke:var(--terracotta);stroke-width:2;stroke-linecap:round;}
+.station-callout-label{
+  fill:var(--terracotta);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:1px;
+  text-anchor:middle;
+}
 .entry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;margin-top:48px;}
 .entry-card{padding-top:22px;border-top:1px solid var(--hairline);}
 .entry-icon{display:block;width:50px;height:50px;margin-bottom:14px;}
@@ -602,16 +613,21 @@
 .sector-panel-card{padding-top:22px;border-top:1px solid var(--hairline);}
 .sector-panel-card h3{margin:0 0 12px;font-size:23px;font-weight:700;}
 .sector-challenges{list-style:none;margin:0;padding:0;border-top:1px solid var(--hairline);}
-.sector-challenges li{padding:13px 0;border-bottom:1px solid var(--hairline);color:var(--mid-grey);font-size:19px;}
+.sector-challenges li{display:flex;align-items:flex-start;gap:14px;padding:13px 0;border-bottom:1px solid var(--hairline);color:var(--mid-grey);font-size:19px;}
+.sector-challenges li::before{content:"";flex:0 0 auto;width:9px;height:9px;margin-top:.5em;background:var(--navy);}
 .sector-panel-card p{margin:0 0 var(--link-gap);color:var(--mid-grey);font-size:19px;}
+.sector-panel-card [data-sector-pathway] strong{font-weight:700;color:var(--navy);}
 .hub-pathway{
-  margin-top:50px;
+  margin-top:34px;
   padding:0;
   border:0;
   border-radius:0;
   background:transparent;
   overflow:visible;
 }
+/* Trainline now lives inside the "Where to start" column: give the labels a
+   touch more size so they stay legible at half width. */
+.hub-pathway .station-label{font-size:15px;}
 
 .industry-reveal-enabled .industry-reveal > .industry-inner,
 .industry-reveal-enabled .industry-reveal > .industry-hero-inner,
