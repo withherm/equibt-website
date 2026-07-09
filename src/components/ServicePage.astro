@@ -248,6 +248,10 @@ const deliverablesCarouselId = `${data.pillar}-deliverables-carousel`;
               </button>
             ))}
           </div>
+          <div class="service-viewport">
+          <button class="carousel-arrow carousel-arrow--prev" type="button" data-carousel-prev aria-label="Previous deliverable">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 L8 12 L15 19"/></svg>
+          </button>
           <div class="service-track" id={deliverablesCarouselId} role="region" aria-label={`${data.serviceName} deliverables carousel`}>
             {data.deliverables.map((item) => {
               const Glyph = glyphs[item.glyph];
@@ -274,16 +278,14 @@ const deliverablesCarouselId = `${data.pillar}-deliverables-carousel`;
               );
             })}
           </div>
+          <button class="carousel-arrow carousel-arrow--next" type="button" data-carousel-next aria-label="Next deliverable">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 L16 12 L9 19"/></svg>
+          </button>
+          </div>
           <div class="carousel-controls">
             <div class="carousel-dots" aria-hidden="true">
               {data.deliverables.map((_, index) => <span class:list={["carousel-dot", { "is-active": index === 0 }]}></span>)}
             </div>
-            <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Previous deliverable">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 L8 12 L15 19"/></svg>
-            </button>
-            <button class="carousel-arrow" type="button" data-carousel-next aria-label="Next deliverable">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 L16 12 L9 19"/></svg>
-            </button>
           </div>
         </div>
         {data.methods && data.methods.length > 0 && (
