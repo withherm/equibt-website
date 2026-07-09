@@ -20,7 +20,7 @@ stats:
     caption: "reclaimed each reporting cycle"
 problemFull: "The month-end close through to board reporting was resource-intensive and largely manual. Work passed through many team handoffs with long lead times, and the cycle consumed most of the finance team's capacity each month. That left almost no room for analysis or error correction before board deadlines. The team was assembling the numbers under pressure rather than interpreting them."
 approachFull: "We mapped the full reporting flow from close to board pack and pinpointed the manual handoffs and rework loops adding time and effort. The finance team redesigned the process with us and we specified automation for the highest-volume manual steps. We documented the future-state process so the team could own and run it rather than depend on us to keep it going. The aim throughout was a cycle the team could operate and govern themselves."
-resultFull: "The reporting cycle fell from 18 days to 5, and manual handoffs dropped from 12 to 5. The finance team reclaimed roughly 110 hours each reporting cycle, worth about $210K a year in staff time once the redesign was fully adopted. The team now runs the redesigned process and has the room to analyse before deadlines rather than scramble to hit them."
+resultFull: "The reporting cycle fell from 18 days to 5, and manual handoffs dropped from 12 to 5. The finance team reclaimed roughly 110 hours each reporting cycle once the redesign was fully adopted. The team now runs the redesigned process and has the room to analyse before deadlines rather than scramble to hit them."
 flagship:
   quote: "Close-to-board reporting went from 18 days to 5, and the finance team now runs the redesigned process with room to analyse before deadlines."
 related:

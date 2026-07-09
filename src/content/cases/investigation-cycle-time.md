@@ -1,6 +1,6 @@
 ---
 title: "Cut investigation cycle time across the teams."
-sector: "Utilities Ombudsman"
+sector: "Industry Ombudsman"
 pillar: "SOLVE"
 order: 1
 metric: "52 to 31 days"
