@@ -198,20 +198,23 @@ main > .about-section:last-child{padding-bottom:64px;}  /* trim gap before foote
   grid-template-columns:1fr 1fr;
   gap:64px;
 }
-/* the engagement span: hairline joining the two endpoint nodes */
+/* the engagement span: a short centred hairline joining the two endpoint nodes
+   (each node is centred over its column, so the line runs 25% -> 75%) */
 .about-principle-pair::before{
   content:"";
   position:absolute;
   top:12px;
-  left:12px;
-  right:12px;
+  left:25%;
+  right:25%;
   height:2px;
   background:var(--hairline);
 }
-.about-principle-end{position:relative;padding-top:46px;}
+.about-principle-end{position:relative;padding-top:46px;text-align:center;}
 .about-principle-node{
   position:absolute;
   top:0;
+  left:50%;
+  transform:translateX(-50%);
   width:24px;
   height:24px;
   border-radius:50%;
@@ -220,8 +223,6 @@ main > .about-section:last-child{padding-bottom:64px;}  /* trim gap before foote
   z-index:1;
 }
 .about-principle-node::after{content:"";position:absolute;inset:6px;border-radius:50%;background:var(--terracotta);}
-.about-principle-node.is-start{left:0;}
-.about-principle-node.is-end{right:0;}
 .about-principle-tag{
   margin-bottom:8px;
   color:var(--terracotta);
@@ -296,7 +297,7 @@ main > .about-section:last-child{padding-bottom:64px;}  /* trim gap before foote
   .about-principle-pair{grid-template-columns:1fr;gap:30px;}
   .about-principle-pair::before{display:none;}
   .about-principle-end{padding-top:0;}
-  .about-principle-node{position:static;display:block;margin-bottom:14px;}
+  .about-principle-node{position:static;transform:none;display:block;margin:0 auto 14px;}
 }
 @media(max-width:760px){
   .about-hero{padding:72px 26px 72px;}
