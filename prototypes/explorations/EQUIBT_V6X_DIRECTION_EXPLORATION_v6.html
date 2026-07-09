@@ -1813,5 +1813,26 @@ document.querySelectorAll('[data-proof-carousel]').forEach(function(c){
     </div>
   </div>
 </section>
+<section style="max-width:1180px;margin:80px auto 60px;padding:40px 32px 0;font-family:Montserrat,Arial,sans-serif;color:#161616;border-top:1px solid rgba(38,36,92,.13);">
+  <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C15F3C;">2026-07-09 reference (documentation, session 2)</div>
+  <h2 style="font-size:28px;color:#26245C;margin:10px 0 14px;">Card interactions + outcome animation</h2>
+  <p style="font-size:15px;line-height:1.6;color:#2B2B2B;max-width:820px;">Card hover is now consistent: white cards lift, darken their border, and turn the title terracotta. On beige sections the hover fill is white; on white sections it is beige (Our Work index cards). Resources cards became full-card clickable via a stretched-link <code>::after</code> on the action, with the same lift. The Our Work case-study outcome card gained the home flagship expand-on-scroll (centred rounded card to full-bleed band). Engagement model phases and subsection cards reuse existing glyphs (Frame, RootCause, DraftingCompass, Evolve, Transfer; Loop, People, DocReport, DocTick), phase numbers removed. CTA hero art normalised to min(170px,22vw). Authority: <code>DESIGN_LEARNINGS_v6x.md</code> ("Engagement model, outcome animation, card interactions").</p>
+  <div style="display:flex;gap:22px;flex-wrap:wrap;margin-top:20px;">
+    <div style="width:230px;background:#F5F3EE;border-radius:14px;padding:18px;">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#5A5A5A;margin-bottom:10px;">On beige: hover fill white</div>
+      <div style="background:#fff;border:1px solid rgba(38,36,92,.30);border-radius:12px;padding:16px;transform:translateY(-3px);box-shadow:0 10px 24px rgba(38,36,92,.10);">
+        <div style="color:#C15F3C;font-weight:800;font-size:15px;">Card title</div>
+        <div style="color:#2B2B2B;font-size:13px;margin-top:4px;">lifts, border darkens, title terracotta</div>
+      </div>
+    </div>
+    <div style="width:230px;background:#fff;border:1px solid rgba(38,36,92,.13);border-radius:14px;padding:18px;">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#5A5A5A;margin-bottom:10px;">On white: hover fill beige</div>
+      <div style="background:#F5F3EE;border-radius:12px;padding:16px;transform:translateY(-3px);">
+        <div style="color:#C15F3C;font-weight:800;font-size:15px;">Card title</div>
+        <div style="color:#2B2B2B;font-size:13px;margin-top:4px;">same lift, fill flips to beige</div>
+      </div>
+    </div>
+  </div>
+</section>
 </body>
 </html>

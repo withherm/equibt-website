@@ -369,6 +369,10 @@ Every content section follows the same anatomy: eyebrow (label), H2 (sentence-ca
 - **Carousel controls.** Prev/next arrows sit on the left and right edges of the slide, vertically centred (circular white buttons, hairline border, soft shadow, invert to navy on hover). Dot indicators sit centred below the slide. Do not bunch arrows and dots together in one corner.
 - **Trainline / pathway callouts.** When a pathway highlights a recommended sequence, the recommended stations carry a terracotta leader line and a short label above them (first = START HERE, second = THEN). Where a pathway supports a "where to start" panel, it sits inside that panel column, not full-width beneath it.
 - **List-icon indent (responsive).** Icon-plus-text list rows that bleed their hover fill past the container on desktop (negative `margin-inline` + matching padding) must keep matching horizontal padding at mobile breakpoints, so the icon stays on the content axis instead of sliding to the viewport edge. Match the home service-list idiom.
+- **Card hover.** White cards lift (`translateY(-3px)`), darken their border, and turn the title terracotta on hover. On a tinted (beige) section the hover fill flips to white; on a white section it flips to beige. Keep the two tones opposite so cards read as lifting off the section.
+- **Full-card click.** When a whole card should be clickable, use a stretched-link `::after{position:absolute;inset:0}` on the card's primary action link, with the card `position:relative`. Never nest anchors. Exclude non-navigable states (e.g. "coming soon").
+- **CTA hero art size.** The WORK-WITH-US CTA illustration is `min(170px, 22vw)` desktop, `min(160px, 40vw)` mobile, consistent across pages. Multi-icon clusters may run larger.
+- **Dark flagship / outcome card.** The dark quote/outcome card expands on scroll from a centred rounded card to a full-bleed band (in at >=32% viewport coverage, out below 28%). Deliberate exception; reserved for the single flagship or case-study outcome moment.
 
 ---
 

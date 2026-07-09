@@ -477,3 +477,22 @@ Resource detail pages now rely on the sticky top nav for location instead of her
 **Mobile row-icon indent fix.** `.service-hub-row` at ≤860px kept `padding:38px 0` while the desktop `margin-inline:-24px` bleed stayed, pushing the service-list icons left of the content axis on narrow screens. Changed to `padding:38px 16px; margin-inline:-16px` to match the home `.svc-row` idiom, so icons stay on the content axis (16px bleed for the hover fill).
 
 **Icon colour convention (clarified).** Top-level `src/components/icons/*.astro` (industry + sector marks) use hardcoded hex/rgb, matching their siblings. `glyphs/*` and the hero JSON use `var(--navy)`/`var(--terracotta)`. New sector icons follow the hardcoded convention; the hero v3 was converted to tokens because it joins the hero set.
+
+### Engagement model, outcome animation, card interactions (2026-07-09, session 2)
+
+**Insights index cards.** Pillar icon added beside the kicker eyebrow (mirrors the Resources card top row): `.ins-card-top` holds `.ins-card-glyph` + kicker.
+
+**Insights detail hero.** Now renders the pillar icon at hero scale (`<Icon name={pillar.toLowerCase()} />`), matching the corresponding service page hero, replacing the generic DocReport glyph. The small DocReport glyph is retained for the detail-page CTA art.
+
+**How We Work "How we operate".** WE ARE items carry the navy tick, WE ARE NOT items carry the navy circle-exclamation (the banked marker convention). The "When we stay, when we leave" block was rebuilt from two floating columns into a white panel with two terracotta endpoint nodes joined by a short centred hairline (runs 25% to 75%), each column centre-aligned under its node, echoing THE ARC's node-and-line motif directly above. Mobile stacks centred with the line hidden.
+
+**Engagement model (`/about/engagement-model/`).** Phases and the four subsection cards use reused glyphs (no bespoke draw). Final phase icons: Discovery = Frame, Diagnosis = RootCause (RCA), Design = DraftingCompass, Delivery = Evolve, Handover = Transfer. Subsections: What happens = Loop, What you commit to = People, What we produce = DocReport, Gate to proceed / What good close looks like = DocTick. Also: removed the 01-05 phase numbers (no-numbering rule), added the eyebrow "A GLIMPSE INTO OUR ENGAGEMENTS", removed the duplicate NEXT STEP strip (the WORK WITH US section below already does that job), tightened the gap above that CTA, and set the CTA art to the Frame icon.
+
+**Our Work case study outcome card.** The dark "THE OUTCOME" card (`.ow-flagship-inner`) now has the home flagship's expand-on-scroll effect: an 80% centred rounded card that grows to a full-bleed edge-to-edge dark band at >=32% viewport coverage and eases back below 28%. The JS mirrors the home flagship thresholds. No image (deliberate: text-only outcome).
+
+**CTA hero art size (site-wide).** The WORK-WITH-US CTA hero icons on About / How We Work, Capability Statement, Our Work, the Industries sector pages, and the Services hub were normalised to `min(170px,22vw)` desktop / `min(160px,40vw)` mobile, matching the engagement-model CTA (`.res-ld-close-art`). The Industries-hub 2x2 cluster (`.cta-art-cluster`) keeps its larger footprint. Home CTA art left as-is.
+
+**Card hover conventions (banked).**
+- **Our Work index cards** (`.ow-case`): adaptive hover highlight, white fill on beige sections and beige (`--off-white`) fill on white sections, with a rounded-card `margin-inline` bleed, matching the home What-we-do rows.
+- **Resources cards** (`.res-card`): full-card clickable via a stretched link on the action (`.res-card-action::after{position:absolute;inset:0}`), plus the Insights-card hover (border darken + `translateY(-3px)` lift + title terracotta). "Coming soon" cards are excluded (no destination).
+- General rule: white cards lift, darken their border, and turn the title terracotta on hover; on a tinted section the fill flips to the opposite tone (white on beige, beige on white). Full-card click uses a stretched-link `::after` on the card's primary action, never nested anchors.
