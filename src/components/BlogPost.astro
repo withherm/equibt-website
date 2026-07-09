@@ -2,6 +2,7 @@
 import Footer from "./Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import Nav from "./Nav.astro";
+import Icon from "./icons/Icon.astro";
 import DocReport from "./icons/glyphs/DocReport.astro";
 import "../styles/insights.css";
 
@@ -59,8 +60,7 @@ const pointerD = currentIndex >= 0 ? `M${calloutX} 34 L${stations[currentIndex].
             {data.readTime && <p class="ins-post-time">{data.readTime}</p>}
           </div>
           <div class="ins-post-hero-art" aria-hidden="true">
-            <!-- post motif: line-art document/field-notes idiom, fine-line interim: bespoke post art swaps in here later (artwork-authority, EQT-274/275) -->
-            <span><DocReport /></span>
+            <span data-hero-icon><Icon name={data.pillar.toLowerCase()} /></span>
           </div>
         </div>
       </header>
