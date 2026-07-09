@@ -4,6 +4,14 @@ import Icon from "../../../components/icons/Icon.astro";
 import Layout from "../../../layouts/Layout.astro";
 import Nav from "../../../components/Nav.astro";
 import Transfer from "../../../components/icons/glyphs/Transfer.astro";
+import Dialogue from "../../../components/icons/glyphs/Dialogue.astro";
+import RootCause from "../../../components/icons/glyphs/RootCause.astro";
+import DraftingCompass from "../../../components/icons/glyphs/DraftingCompass.astro";
+import Workflow from "../../../components/icons/glyphs/Workflow.astro";
+import Loop from "../../../components/icons/glyphs/Loop.astro";
+import People from "../../../components/icons/glyphs/People.astro";
+import DocReport from "../../../components/icons/glyphs/DocReport.astro";
+import DocTick from "../../../components/icons/glyphs/DocTick.astro";
 import "../../../styles/resources.css";
 
 const phases = [
@@ -73,6 +81,22 @@ const phases = [
     ]
   }
 ];
+
+// Reused glyphs (no bespoke draw). Phases by key, subsections by head.
+const phaseIcons = {
+  discovery: Dialogue,
+  diagnosis: RootCause,
+  design: DraftingCompass,
+  delivery: Workflow,
+  handover: Transfer,
+};
+const detailIcons = {
+  "What happens": Loop,
+  "What you commit to": People,
+  "What we produce": DocReport,
+  "Gate to proceed": DocTick,
+  "What good close looks like": DocTick,
+};
 ---
 
 <Layout
@@ -101,11 +125,14 @@ const phases = [
     <section class="em-tool res-reveal" id="engagement-model">
       <div class="res-inner">
         <div class="em-timeline" id="em-timeline">
-          {phases.map((phase, i) => (
+          {phases.map((phase, i) => {
+            const PhaseIcon = phaseIcons[phase.key];
+            return (
             <div class="em-phase" data-key={phase.key} id={`em-phase-${phase.key}`}>
               <button class="em-phase-btn" type="button" aria-expanded="false" aria-controls={`em-phase-detail-${phase.key}`}>
                 <div class="em-phase-left">
                   <span class="em-phase-num">{phase.num}</span>
+                  {PhaseIcon && <span class="em-phase-glyph" aria-hidden="true"><PhaseIcon /></span>}
                   <div class="em-phase-meta">
                     <span class="em-phase-title">{phase.title}</span>
                     <span class="em-phase-timing">{phase.timing}</span>
@@ -116,17 +143,22 @@ const phases = [
               </button>
               <div class="em-phase-detail" id={`em-phase-detail-${phase.key}`} hidden>
                 <div class="em-detail-grid">
-                  {phase.detail.map(d => (
+                  {phase.detail.map(d => {
+                    const DIcon = detailIcons[d.head];
+                    return (
                     <div class="em-detail-card">
-                      <p class="em-detail-head">{d.head}</p>
+                      <p class="em-detail-head">
+                        {DIcon && <span class="em-detail-glyph" aria-hidden="true"><DIcon /></span>}
+                        <span>{d.head}</span>
+                      </p>
                       <p class="em-detail-body">{d.body}</p>
                     </div>
-                  ))}
+                  );})}
                 </div>
               </div>
               {i < phases.length - 1 && <div class="em-connector" aria-hidden="true"></div>}
             </div>
-          ))}
+          );})}
         </div>
         <div class="em-cta-strip">
           <div class="eyebrow">NEXT STEP</div>
@@ -185,6 +217,8 @@ const phases = [
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;
 }
+.em-phase-glyph{display:inline-flex;flex:0 0 auto;width:40px;height:40px;}
+.em-phase-glyph svg{display:block;width:100%;height:100%;overflow:visible;}
 .em-phase-meta{display:flex;flex-direction:column;gap:2px;}
 .em-phase-title{font-size:19px;font-weight:700;color:var(--navy);}
 .em-phase-timing{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);}
@@ -199,7 +233,9 @@ const phases = [
 }
 .em-detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding-top:24px;}
 .em-detail-card{padding:18px 20px;background:#F5F3EE;border-radius:8px;}
-.em-detail-head{font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin:0 0 8px;}
+.em-detail-head{display:flex;align-items:center;gap:10px;font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin:0 0 8px;}
+.em-detail-glyph{display:inline-flex;flex:0 0 auto;width:26px;height:26px;}
+.em-detail-glyph svg{display:block;width:100%;height:100%;overflow:visible;}
 .em-detail-body{font-size:16px;color:var(--mid-grey);margin:0;line-height:1.5;}
 
 .em-cta-strip{padding:32px;background:#fff;border:1px solid var(--hairline);border-radius:12px;}
