@@ -495,7 +495,7 @@
 .service-hub-lmi-logo-link{display:inline-block;width:min(250px,100%);margin:0 0 var(--link-gap);color:inherit;text-decoration:none;}
 .service-hub-lmi-logo-img{display:block;width:100%;height:auto;}
 @media(max-width:860px){
-  .service-hub-row{grid-template-columns:1fr;gap:18px;padding:38px 0;}
+  .service-hub-row{grid-template-columns:1fr;gap:18px;padding:38px 16px;margin-inline:-16px;}
   .service-hub-icon{width:110px;height:110px;}
   .service-hub-cta-grid{grid-template-columns:1fr;}
   .service-hub-cta-art{justify-self:start;width:min(220px,80vw);min-height:220px;}
