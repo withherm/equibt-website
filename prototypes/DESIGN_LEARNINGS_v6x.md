@@ -512,3 +512,7 @@ Resource detail pages now rely on the sticky top nav for location instead of her
 **Home "Proven in practice" is now a case carousel.** Replaced the two hardcoded home cases with a data-driven carousel of every `fullStudy` case (`homeCases` via `getCollection`, sorted by DMAICO pillar then `order`). Each slide carries its sector icon (`caseSectorIcons` map), the adaptive beige hover (white section), and the standard side-arrow + centred-dot controls (`.hp-cases-*`, JS mirrors the service carousel). Metric captions live in a `caseCaptions` map in `index.astro` (home-presentation detail, not the case files). Any future promoted case appears here automatically.
 
 **Home flagship figures aligned.** The home flagship card was corrected to match the retention case: "three call-centre partners" (not five) and "18% to 29%" (not 24%). Keep the home flagship and the retention case in sync since they are the same engagement.
+
+### Contact form live handler (2026-07-10, EQT-337)
+
+Contact form now posts to `/api/contact` Pages Function (Turnstile server-verify + D1 `submissions` + Resend). No client IP stored (country only).
