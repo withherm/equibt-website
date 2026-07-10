@@ -59,7 +59,7 @@ const homeCases = (await getCollection("cases", ({ data }) => data.fullStudy && 
         </div>
       </div>
       <div class="hero-art" aria-hidden="true">
-        <span data-hero-icon><span data-hero-orbit style="display:block"><Icon name="hero-home" /></span></span>
+        <span data-hero-icon><Icon name="hero-home" /></span>
       </div>
     </div>
   </section>
@@ -605,48 +605,6 @@ if (hpCases) {
     hpFrame = window.requestAnimationFrame(() => { hpFrame = null; syncDots(); });
   }, { passive: true });
 }
-
-// Home hero soft orbit — one-shot settle. Locked params, do not tune.
-(function () {
-  var wrap = document.querySelector("[data-hero-orbit]");
-  if (!wrap) return;
-
-  var DURATION_MS = 12000; // one 12s loop
-  var X_AMP = 5;           // ±5px horizontal
-  var ROT_AMP = 1;         // ±1° z-rotate
-  var Y_QUARTER = 2;       // vertical dip at quarter cycle
-  var Y_PEAK = 3;          // vertical dip at half cycle
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-  function rest() { wrap.style.transform = "none"; }
-  if (reduce.matches) { rest(); return; }
-
-  var start = performance.now();
-  var done = false;
-
-  function pose(t01) {
-    var theta = t01 * Math.PI * 2;
-    var x = X_AMP * Math.sin(theta);
-    var b = Y_QUARTER - Y_PEAK / 2;
-    var y = -(Y_PEAK / 2) * (1 - Math.cos(theta)) - (b / 2) * (1 - Math.cos(2 * theta));
-    var rot = ROT_AMP * Math.sin(theta);
-    return "translate(" + x.toFixed(3) + "px, " + y.toFixed(3) + "px) rotate(" + rot.toFixed(3) + "deg)";
-  }
-
-  function tick(now) {
-    if (done) return;
-    var elapsed = now - start;
-    if (elapsed >= DURATION_MS) {
-      rest(); // loop ends exactly at rest, lands clean with no jump
-      done = true;
-      return;
-    }
-    wrap.style.transform = pose((elapsed % DURATION_MS) / DURATION_MS);
-    requestAnimationFrame(tick);
-  }
-
-  requestAnimationFrame(tick);
-})();
 
 </script>
 </Layout>
