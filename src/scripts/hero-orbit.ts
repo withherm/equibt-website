@@ -1,7 +1,7 @@
 // One-shot soft-orbit settle on every page hero. Locked feel, do not tune.
 const REF_WIDTH = 300;   // home hero art reference width (px)
-const DURATION_MS = 12000;
-const X_REF = 8;         // ±px at reference width
+const DURATION_MS = 8000;
+const X_REF = 4;         // ±px at reference width
 const YQ_REF = 2;        // vertical dip at quarter cycle, at reference width
 const YPEAK_REF = 3;     // vertical dip at half cycle, at reference width
 const ROT_AMP = 1;       // ±deg, size-independent
