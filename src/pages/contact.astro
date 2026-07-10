@@ -185,6 +185,9 @@ const mapQuery = encodeURIComponent("Level 15, 470 Collins Street, Melbourne VIC
           if (response.ok && result && result.ok === true) {
             form.hidden = true;
             if (success) success.hidden = false;
+            const head = form.closest(".cx-section")?.querySelector(".cx-head");
+            if (head) head.hidden = true;
+            success?.scrollIntoView({ behavior: "smooth", block: "center" });
             return;
           }
           if (contactError) contactError.hidden = false;

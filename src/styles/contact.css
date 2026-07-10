@@ -167,6 +167,12 @@
 
 /* ---- Contact form: v6x hairline inputs (1px border, no fill) ---- */
 .cx-form{max-width:680px;display:grid;gap:18px;}
+/* Response state: hide the form + intro heading once submitted, show the thank-you. */
+.cx-form[hidden],.cx-head[hidden]{display:none!important;}
+.cx-form-success{max-width:680px;}
+.cx-form-success h2{margin:0 0 10px;}
+.cx-form-success p{margin:0;color:var(--caption);font-family:"Lora",Georgia,serif;font-size:18px;line-height:1.5;}
+.cx-form-success a{color:var(--terracotta);text-decoration:underline;text-underline-offset:3px;font-weight:600;}
 .cx-field{display:grid;gap:8px;}
 .cx-field label{color:var(--navy);font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;line-height:1.2;text-transform:uppercase;}
 .cx-field input,.cx-field textarea{
