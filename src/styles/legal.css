@@ -1,0 +1,17 @@
+/* ---- Legal pages (Privacy, Terms): simple long-form prose, v6x tokens ---- */
+.legal-wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+.legal-hero{padding:96px 0 28px;}
+.legal-hero h1{font-family:"Montserrat",Arial,sans-serif;font-weight:700;color:var(--navy);font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-0.01em;margin:14px 0 0;}
+.legal-lead{font-family:"Lora",Georgia,serif;color:var(--caption);font-size:20px;line-height:1.5;margin:18px 0 0;}
+.legal-updated{font-family:"Montserrat",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:20px 0 0;}
+.legal-body{padding:8px 0 96px;}
+.legal-prose h2{font-family:"Montserrat",Arial,sans-serif;font-weight:700;color:var(--navy);font-size:22px;line-height:1.25;margin:44px 0 12px;}
+.legal-prose h2:first-child{margin-top:8px;}
+.legal-prose h3{font-family:"Montserrat",Arial,sans-serif;font-weight:700;color:var(--navy);font-size:15px;letter-spacing:.02em;line-height:1.35;margin:24px 0 6px;}
+.legal-prose p{font-family:"Lora",Georgia,serif;color:var(--near-black);font-size:18px;line-height:1.65;margin:0 0 16px;}
+.legal-prose ul{margin:0 0 16px;padding-left:22px;}
+.legal-prose li{font-family:"Lora",Georgia,serif;color:var(--near-black);font-size:18px;line-height:1.6;margin:0 0 8px;}
+.legal-prose a{color:var(--terracotta);text-decoration:underline;text-underline-offset:3px;font-weight:600;}
+.legal-prose strong{font-weight:600;color:var(--near-black);}
+.legal-prose .legal-contact{border-top:1px solid var(--hairline);margin-top:36px;padding-top:20px;}
+@media(max-width:560px){.legal-hero{padding:72px 0 22px;}.legal-prose h2{font-size:20px;}}

@@ -210,6 +210,8 @@
 .cx-req{color:var(--terracotta);}
 .cx-opt{color:var(--muted);font-weight:600;}
 .cx-form-legend{margin:0;color:var(--caption);font-family:"Lora",Georgia,serif;font-size:16px;}
+.cx-form-privacy{margin:10px 0 0;color:var(--caption);font-family:"Lora",Georgia,serif;font-size:15px;line-height:1.5;}
+.cx-form-privacy a{color:var(--terracotta);text-decoration:underline;text-underline-offset:3px;font-weight:600;}
 .cx-form-legend .cx-req{font-family:"Montserrat",Arial,sans-serif;}
 .cx-field-error{margin:2px 0 0;color:var(--terracotta);font-family:"Montserrat",Arial,sans-serif;font-size:13px;font-weight:600;letter-spacing:.01em;}
 .cx-captcha input{max-width:200px;}
