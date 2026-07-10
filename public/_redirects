@@ -1,0 +1,67 @@
+# EQUIBT 301 redirects: old Squarespace URLs -> new Astro site (Gate 2, EQT-262/EQT-280)
+# Cloudflare Pages _redirects. Format: /from /to 301. First match wins, top to bottom.
+# Built 2026-07-10 from https://equibt.com/sitemap.xml (46 pages).
+# New-site internal 301s (engagement-model, consulting-brief-template, government-programme-checklist)
+# are handled in-app via Astro.redirect and are intentionally not duplicated here.
+
+# --- Blog -> Insights (old 2012-13 posts, content not migrated) ---
+/blog                              /insights/            301
+/blog/*                            /insights/            301
+
+# --- Service pillars: strong 1:1 to DMAICO public service names ---
+/operations-diagnostic             /services/plan/       301
+/rapid-pilot                       /services/evolve/     301
+/process-architecture              /services/govern/     301
+
+# --- Old service pages: best-fit pillar (Herman, 2026-07-10) ---
+/operational-reengineering         /services/solve/      301
+/continuous-improvement            /services/evolve/     301
+/workflow-management               /services/plan/       301
+
+# --- Old service / solutions / retired practices -> services hub ---
+/what-we-do                        /services/            301
+/our-solutions                     /services/            301
+/our-services-1                    /services/            301
+/targeted-solutions-1              /services/            301
+/marketing-brand-practice          /services/            301
+/sales-commercial-practice         /services/            301
+/engagement-people-practice        /services/            301
+
+# --- Methods ---
+/our-methods                       /methods/             301
+/lean-agile-practice               /methods/lean-agile/  301
+/lean-agile-six-sigma-consultancy  /                     301
+
+# --- How we work ---
+/our-approach                      /how-we-work/         301
+
+# --- About cluster ---
+/our-story                         /about/               301
+/our-story-2                       /about/               301
+/our-team                          /about/               301
+
+# --- Proof / work ---
+/our-experience                    /our-work/            301
+/our-clients                       /our-work/            301
+/case-studies-list                 /our-work/            301
+/case-study                        /our-work/            301
+/case-study-1                      /our-work/            301
+/case-study-2                      /our-work/            301
+/case-study-3                      /our-work/            301
+/case-study-4                      /our-work/            301
+
+# --- Contact ---
+/contact-us                        /contact/             301
+/contact-us-home-2                 /contact/             301
+/usp-contacts                      /contact/             301
+/book-coaching-herman              /contact/             301
+/learn-more                        /contact/             301
+
+# --- Legal ---
+/privacy-policy                    /privacy/             301
+/terms-of-use                      /                     301
+
+# --- Dead client-specific / old home ---
+/nomura/disc-eng                   /                     301
+/readme-pacific                    /                     301
+/home-old                          /                     301
