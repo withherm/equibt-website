@@ -372,7 +372,15 @@ Every content section follows the same anatomy: eyebrow (label), H2 (sentence-ca
 - **Card hover.** White cards lift (`translateY(-3px)`), darken their border, and turn the title terracotta on hover. On a tinted (beige) section the hover fill flips to white; on a white section it flips to beige. Keep the two tones opposite so cards read as lifting off the section.
 - **Full-card click.** When a whole card should be clickable, use a stretched-link `::after{position:absolute;inset:0}` on the card's primary action link, with the card `position:relative`. Never nest anchors. Exclude non-navigable states (e.g. "coming soon").
 - **CTA hero art size.** The WORK-WITH-US CTA illustration is `min(170px, 22vw)` desktop, `min(160px, 40vw)` mobile, consistent across pages. Multi-icon clusters may run larger.
-- **Dark flagship / outcome card.** The dark quote/outcome card expands on scroll from a centred rounded card to a full-bleed band (in at >=32% viewport coverage, out below 28%). Deliberate exception; reserved for the single flagship or case-study outcome moment.
+- **Dark flagship / outcome card.** The dark quote/outcome card expands on scroll from a centred rounded card to a full-bleed band. The home flagship triggers on viewport coverage; the shorter case-study outcome card triggers relative to its own height (expand at >=60% of the card in view). Deliberate exception; reserved for the single flagship or case-study outcome moment.
+- **Case carousels.** Multi-item case sections use the shared carousel idiom: side arrows (circular, on the slide edges, invert to navy on hover) and centred dots below. Data-driven from published cases where possible, so figures and labels stay in sync.
+
+### Case study content (public site)
+
+- **Anonymous, always.** Use anonymised sector labels (e.g. "Bank", "Industry Ombudsman", "Specialty Insurer"), never client names, even for publicly referenceable clients. Prefer the least-identifying label that is still accurate.
+- **No dollar benefit figures in public copy.** Show operational outcomes (rates, cycle time, handoffs, deflection). Keep dollar estimates internal (the case register), not on the page.
+- **Realised, not hedged.** For real anonymised engagements, present the result plainly (no "projected" qualifier) and mark the case as non-illustrative. Reserve "illustrative" for composite or hypothetical examples.
+- **One engagement, one set of numbers.** Where the same engagement appears in more than one place (home flagship and its case page), keep the figures identical.
 
 ---
 

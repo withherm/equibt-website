@@ -497,3 +497,22 @@ Resource detail pages now rely on the sticky top nav for location instead of her
 - **Our Work index cards** (`.ow-case`): adaptive hover highlight, white fill on beige sections and beige (`--off-white`) fill on white sections, with a rounded-card `margin-inline` bleed, matching the home What-we-do rows.
 - **Resources cards** (`.res-card`): full-card clickable via a stretched link on the action (`.res-card-action::after{position:absolute;inset:0}`), plus the Insights-card hover (border darken + `translateY(-3px)` lift + title terracotta). "Coming soon" cards are excluded (no destination).
 - General rule: white cards lift, darken their border, and turn the title terracotta on hover; on a tinted section the fill flips to the opposite tone (white on beige, beige on white). Full-card click uses a stretched-link `::after` on the card's primary action, never nested anchors.
+
+### Case study batch 2 + home Our Work carousel (2026-07-10, session 3)
+
+**Case studies: 7 full pages now published.** Promoted five card-only cases to full case study pages (retention-save-rate, investigation-cycle-time, finance-reporting-cycle, platform-migration-review, self-serve-deflection), joining mortgage-lead-leakage and policy-development-cycle. Source of truth is `Docs/EQUIBT/EQUIBT_Case_Study_Register_v1.md` (CS-01 to CS-24, moved out of `ARCHIVE/`). Data model: set `fullStudy: true` and add `heroSubhead`, `pathwaySummary`, `stats[]`, `problemFull`, `approachFull`, `resultFull`, `flagship{quote}`, `related[]`; the page (`CaseStudy.astro`) is entirely frontmatter-driven, no per-page build. Brief: `Runtime/01_Projects/Active/COWORK_BRIEF_CASE_STUDIES_BATCH2_v1.md`.
+
+**Case study content policy (banked).**
+- **Anonymous, always.** Use the anonymised `sector` label; never the register's client names, even where a client is "publicly referenceable". "Industry Ombudsman" replaced "Utilities Ombudsman" as a broader, less-identifying label (few utilities ombudsmen exist in AU).
+- **No dollar benefit figures in public case copy.** Keep operational metrics (save rate, days, handoffs, deflection); strip specific dollar amounts from `heroSubhead`, `stats`, and `resultFull`. The register keeps the money for internal use.
+- **`illustrative: false`** for register-backed cases (real anonymised engagements). Present realised results without "projected" hedging where the outcome is real.
+
+**Outcome-card expand fix.** The case-study "THE OUTCOME" card's expand-on-scroll was calibrated to the home flagship's viewport-coverage threshold (32%), which a short text-only card never reaches. Changed the case-study trigger to be relative to the card's own height (`visible / min(cardHeight, viewport)`, expand at >=0.6, collapse at <0.45) so it fires on short cards. The home flagship keeps its viewport-relative logic.
+
+**Home "Proven in practice" is now a case carousel.** Replaced the two hardcoded home cases with a data-driven carousel of every `fullStudy` case (`homeCases` via `getCollection`, sorted by DMAICO pillar then `order`). Each slide carries its sector icon (`caseSectorIcons` map), the adaptive beige hover (white section), and the standard side-arrow + centred-dot controls (`.hp-cases-*`, JS mirrors the service carousel). Metric captions live in a `caseCaptions` map in `index.astro` (home-presentation detail, not the case files). Any future promoted case appears here automatically.
+
+**Home flagship figures aligned.** The home flagship card was corrected to match the retention case: "three call-centre partners" (not five) and "18% to 29%" (not 24%). Keep the home flagship and the retention case in sync since they are the same engagement.
+
+### Contact form live handler (2026-07-10, EQT-337)
+
+Contact form now posts to `/api/contact` Pages Function (Turnstile server-verify + D1 `submissions` + Resend). No client IP stored (country only).
