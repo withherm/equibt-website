@@ -7,7 +7,6 @@ metric: "18 to 5 days"
 problem: "The close-to-board reporting cycle was long, manual, and full of handoffs, leaving no room for analysis before deadlines."
 approach: "The finance team mapped the full flow, cut the rework loops, and specified automation for the highest-volume manual steps."
 outcome: "We cut the close-to-board reporting cycle from 18 to 5 days and gave the finance team room to analyse before deadlines."
-illustrative: false
 fullStudy: true
 heroSubhead: "Close-to-board reporting cut from 18 days to 5, manual handoffs more than halved, and about 110 hours a cycle handed back to a finance team that now owns the redesigned process."
 pathwaySummary: "Mapped the full close-to-board flow, cut the rework loops, then specified the automation and handed the future-state process to the team."

@@ -195,7 +195,7 @@ Monoline, single colour, no fill. Architectural geometry, not generic stock icon
 
 ### EQUIBT public-site line-art layer (web)
 
-The EQUIBT marketing site runs a separate hand-drawn line-art layer for its pillar, sector and illustrative marks (this is the deliberate exception to the monoline-stock rule above; utility/nav glyphs stay Forma Regular). Spec: viewBox `0 0 375 375`, navy `#26245C` strokes, round caps and joins, exactly one terracotta `#C15F3C` accent element per icon, single weight. Full detail lives in `prototypes/DESIGN_LEARNINGS_v6x.md`.
+The EQUIBT marketing site runs a separate hand-drawn line-art layer for its pillar and sector marks (this is the deliberate exception to the monoline-stock rule above; utility/nav glyphs stay Forma Regular). Spec: viewBox `0 0 375 375`, navy `#26245C` strokes, round caps and joins, exactly one terracotta `#C15F3C` accent element per icon, single weight. Full detail lives in `prototypes/DESIGN_LEARNINGS_v6x.md`.
 
 - **Sector set (complete, 2026-07-09):** financial-services, government, utilities, manufacturing, property, fmcg, insurance, chemicals. The last four were added because the case-study sectors (Property Group, FMCG, Chemical Sales, Specialty Insurer) had no honest fit in the original four.
 - **List markers (web).** Positive outcome/result = navy tick. Challenge/problem = navy circle with a white exclamation. Do not use a plain square bullet. Keep the two markers distinct so outcome lists and problem lists read differently at a glance.
@@ -379,7 +379,7 @@ Every content section follows the same anatomy: eyebrow (label), H2 (sentence-ca
 
 - **Anonymous, always.** Use anonymised sector labels (e.g. "Bank", "Industry Ombudsman", "Specialty Insurer"), never client names, even for publicly referenceable clients. Prefer the least-identifying label that is still accurate.
 - **No dollar benefit figures in public copy.** Show operational outcomes (rates, cycle time, handoffs, deflection). Keep dollar estimates internal (the case register), not on the page.
-- **Realised, not hedged.** For real anonymised engagements, present the result plainly (no "projected" qualifier) and mark the case as non-illustrative. Reserve "illustrative" for composite or hypothetical examples.
+- **Realised, not hedged.** All case studies are real anonymised engagements. Present the result plainly (no "projected" qualifier). Do not publish composite or hypothetical examples.
 - **One engagement, one set of numbers.** Where the same engagement appears in more than one place (home flagship and its case page), keep the figures identical.
 
 ---

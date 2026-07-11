@@ -294,7 +294,7 @@ All files contain `@media` blocks. This passes the presence check, but many mobi
 
 ### Accessibility quick scan
 
-Most major illustrative SVGs have either `aria-hidden="true"` on their container or `aria-label` on the SVG. This is acceptable for decorative hero art. However, many inline SVG icons inside buttons/links do not declare `aria-hidden="true"`, which is a minor accessibility clean-up item.
+Most major decorative SVGs have either `aria-hidden="true"` on their container or `aria-label` on the SVG. This is acceptable for decorative hero art. However, many inline SVG icons inside buttons/links do not declare `aria-hidden="true"`, which is a minor accessibility clean-up item.
 
 ## Ordered discrepancy list
 

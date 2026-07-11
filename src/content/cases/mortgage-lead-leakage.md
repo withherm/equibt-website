@@ -7,7 +7,6 @@ metric: "30% to 10%"
 problem: "The mortgage business was losing 30% of inbound leads before an application was lodged, and approvals were slow and inconsistent."
 approach: "The team mapped the end-to-end process across direct and broker channels, activated 50 priority improvements, and redesigned the lead-to-application flow."
 outcome: "We cut lead leakage from 30% to 10%, lifted unconditional approvals, and handed the teams a process they now run themselves."
-illustrative: false
 fullStudy: true
 heroSubhead: "Lead leakage cut from 30% to 10%, unconditional approvals up 13 points in three months, and a board-approved digital roadmap the teams now run on their own."
 pathwaySummary: "Mapped the end-to-end flow, piloted the redesign across both channels, then handed it back to the teams."

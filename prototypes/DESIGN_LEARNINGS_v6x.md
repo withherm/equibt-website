@@ -209,11 +209,11 @@ These are the locked deltas from the two conversions that merged after the home 
 
 ### Our Work index + case study (EQT-255, shipped 2026-06-08)
 
-Architecture: a `cases` content collection (`src/content/cases/*.md`) drives both surfaces. The index reads the collection and groups by pillar; `src/pages/our-work/[slug].astro` renders `src/components/CaseStudy.astro` for entries flagged `fullStudy` only. Styles in `src/styles/our-work.css` (own `.ow-*` classes, references tokens, does not import services.css). A study gets a `/our-work/<slug>/` page ONLY where full Problem/Approach/Result copy exists; other index rows do not link out. Schema fields: `title, sector, pillar, order, metric, caption?, problem, approach, outcome, illustrative, fullStudy, heroSubhead?, pathwaySummary?, problemFull?/approachFull?/resultFull?, stats[]?, flagship?, related[]?, draft`.
+Architecture: a `cases` content collection (`src/content/cases/*.md`) drives both surfaces. The index reads the collection and groups by pillar; `src/pages/our-work/[slug].astro` renders `src/components/CaseStudy.astro` for entries flagged `fullStudy` only. Styles in `src/styles/our-work.css` (own `.ow-*` classes, references tokens, does not import services.css). A study gets a `/our-work/<slug>/` page ONLY where full Problem/Approach/Result copy exists; other index rows do not link out. Schema fields: `title, sector, pillar, order, metric, caption?, problem, approach, outcome, fullStudy, heroSubhead?, pathwaySummary?, problemFull?/approachFull?/resultFull?, stats[]?, flagship?, related[]?, draft`.
 
 **Index — compact proof grid (NOT tall open P/A/O rows).** The brief's full-width Problem/Approach/Outcome rows read too tall and repetitive (Herman, R-feedback). Shipped instead: a **two-column** de-boxed grid on top hairlines; each case = italic-Lora sector descriptor + big navy metric + verb-first H3 + ONE context line (the Problem line). Full Problem/Approach/Outcome stay in the data for detail pages, not shown on the index. Each pillar group carries its hand-drawn pillar `<Icon>` on the left axis + monochrome dotted eyebrow (`PLAN · MEASURE` etc.) + the source intro line. Verb-first Outcome lines were authored per case (tied to the existing metric, no new numbers — Herman approved) and live in the data.
 - **Sector descriptor = italic Lora** on case rows (the italic-captions rule). NB this differs from the services-page OUR WORK section, which still uses caps-terracotta sector; reconcile later.
-- **Illustrative markers fully removed from output** (Herman override of the brief's "preserve `<!-- ILLUSTRATIVE -->`"): no HTML comment, no visible label. The `illustrative` flag stays in the schema/data, unrendered.
+- **Illustrative markers and schema field fully removed** (Herman override, July 2026): no HTML comment, no visible label, no schema field. All case studies are real anonymised engagements.
 - Index carries NO LMI handover (only case pages do).
 
 **Case study page order:** hero → WHERE THIS FITS (trainline) → THE WORK (journey) → flagship dark moment → RELATED → WORK WITH US CTA → LMI handover.
@@ -505,7 +505,7 @@ Resource detail pages now rely on the sticky top nav for location instead of her
 **Case study content policy (banked).**
 - **Anonymous, always.** Use the anonymised `sector` label; never the register's client names, even where a client is "publicly referenceable". "Industry Ombudsman" replaced "Utilities Ombudsman" as a broader, less-identifying label (few utilities ombudsmen exist in AU).
 - **No dollar benefit figures in public case copy.** Keep operational metrics (save rate, days, handoffs, deflection); strip specific dollar amounts from `heroSubhead`, `stats`, and `resultFull`. The register keeps the money for internal use.
-- **`illustrative: false`** for register-backed cases (real anonymised engagements). Present realised results without "projected" hedging where the outcome is real.
+- All cases are register-backed (real anonymised engagements). Present realised results without "projected" hedging.
 
 **Outcome-card expand fix.** The case-study "THE OUTCOME" card's expand-on-scroll was calibrated to the home flagship's viewport-coverage threshold (32%), which a short text-only card never reaches. Changed the case-study trigger to be relative to the card's own height (`visible / min(cardHeight, viewport)`, expand at >=0.6, collapse at <0.45) so it fires on short cards. The home flagship keeps its viewport-relative logic.
 

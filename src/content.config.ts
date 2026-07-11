@@ -42,7 +42,6 @@ const cases = defineCollection({
     problem: z.string(),
     approach: z.string(),
     outcome: z.string(),
-    illustrative: z.boolean().default(false),
     fullStudy: z.boolean().default(false),
     // full-study-only fields
     heroSubhead: z.string().optional(),

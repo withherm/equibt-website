@@ -103,7 +103,7 @@ Source: `equibt_our_work_prototype_v5x.html`. Copy is the authority; lift it ver
 
 - Each pillar group = a section with a **monochrome dotted eyebrow** carrying the locked pillar phrasing (e.g. `PLAN · MEASURE`) and the source's pillar intro line as the section sub-line. No pillar colour, no coloured band.
 - Each case entry = a **de-boxed editorial row on a top hairline** (reuse the `case` / `case-meta` / `case-block` / `case-label` pattern from `ServicePage.astro` §OUR WORK and `services.css`): left meta column = italic sector descriptor + big navy metric + italic caption; right = verb-first H3 + `Problem` / `Approach` / `Outcome` hanging-label blocks + a `Full case study ›` chevron link to `/our-work/<slug>/` (only for cases that have a full study; section 7). No boxes, no drop shadows, no `pillar-badge`, no `Read the case / Hide` disclosure toggle (the v6x row shows the content open on hairlines).
-- Preserve any `<!-- ILLUSTRATIVE -->` markers exactly where the source has them; carry the `illustrative` flag through the case data. Do not add or strip markers.
+[RETIRED] Illustrative flag and markers removed (July 2026). All cases are real anonymised engagements.
 - Keep grouping order and case order from the source.
 
 **5.3 Closing CTA** (LIGHT, block 22; the v5x dark `cta-panel` is retired). Eyebrow `WORK WITH US`, the source's headline ("Put a complex operation on firmer footing.") rendered verb-first compliant — keep "Put a complex operation on firmer footing." (already verb-first), support line if the source has one, navy `Get in touch` button to `/contact/`.
@@ -132,9 +132,9 @@ Source: `equibt_case_study_prototype_v5x.html` (the worked example is the mortga
 
 ## 7. Case study architecture (decide at plan-gate)
 
-A `cases` content collection already exists in `src/content.config.ts` (schema: `title`, `sector`, `stat`, `illustrative`) and `src/content/cases/` is empty (`.gitkeep`). Two clean options:
+A `cases` content collection already exists in `src/content.config.ts` (schema: `title`, `sector`, `stat`) and `src/content/cases/` is empty (`.gitkeep`). Two clean options:
 
-- **(Recommended) Content collection:** extend the `cases` schema in `content.config.ts` with the fields these pages need (e.g. `slug`/derived, `pillar`, `descriptor`, `metric`, `caption`, `problem`, `approach`, `outcome`, summary-band `stats[]`, `related[]`, `illustrative`, `draft`). Author each study as `src/content/cases/<slug>.md`. The index reads the collection and groups by pillar; `[slug].astro` renders via `CaseStudy.astro`. This matches the existing scaffolding and the empty-collection build warning.
+- **(Recommended) Content collection:** extend the `cases` schema in `content.config.ts` with the fields these pages need (e.g. `slug`/derived, `pillar`, `descriptor`, `metric`, `caption`, `problem`, `approach`, `outcome`, summary-band `stats[]`, `related[]`, `draft`). Author each study as `src/content/cases/<slug>.md`. The index reads the collection and groups by pillar; `[slug].astro` renders via `CaseStudy.astro`. This matches the existing scaffolding and the empty-collection build warning.
 - **(Alternative) Flat data + pages:** a typed data object + flat `our-work/<slug>.astro` wrappers, mirroring the services `data` + `ServicePage.astro` pattern.
 
 Edit ONLY the `cases` block of `content.config.ts`; leave `insights` untouched. Confirm your choice, the schema, and the field list at plan-gate.
@@ -152,7 +152,7 @@ Edit ONLY the `cases` block of `content.config.ts`; leave `insights` untouched. 
 - [ ] At most ONE dark moment per page; flat dark field, not full-bleed; tone distinct from home/services/industries per the page-type rule. Closing CTAs are light.
 - [ ] Italic Lora captions; Lora 22px body; type matches the merged home/services. One reveal per section; no `reveal-d1..d3` stagger.
 - [ ] Verb-first headlines throughout; firm "we"; no named individual; no em/en dashes; no dates/years; no public prices; anonymised client descriptors; no visible DMAICO.
-- [ ] `<!-- ILLUSTRATIVE -->` markers preserved exactly; `illustrative` flag carried in the data; none added or stripped.
+[RETIRED] Illustrative markers removed (July 2026).
 - [ ] No LMI handover on Our Work (services parity).
 
 When done: open a PR, post the PR URL as a comment on Linear **EQT-255**, list the changed files, and confirm the build. Do NOT mark the issue Done — Herman/Cowork sets Done after merge and live verify.
@@ -165,7 +165,7 @@ The build was shipped with these approved deviations from the spec above. The ca
 
 1. **Index is a compact two-column proof grid, not open P/A/O rows** (§5.2). The full-width Problem/Approach/Outcome rows read too tall and repetitive. Each case shows italic sector + big metric + verb-first H3 + one context line (the Problem). Full P/A/O stays in the case data for detail pages.
 2. **Invented verb-first Outcome lines** per case (tied to the existing metric, no new numbers) — Herman approved, overriding "do not invent case content".
-3. **`<!-- ILLUSTRATIVE -->` markers removed entirely** from output, plus no visible label (§5.2 / acceptance bullet reversed). The `illustrative` flag stays in the data, unrendered.
+3. **Illustrative concept fully retired** (July 2026): schema field, HTML markers and visible labels all removed. All cases are real anonymised engagements.
 4. **LMI handover ADDED to each case page, industry-relevant** (§5.3 / acceptance "No LMI handover" reversed). Industry pulled from the case's related Industry link. Index still has no handover.
 5. **WHERE THIS FITS (trainline) moved directly under the hero** (was inside Related, §6.4); heading is a per-case `pathwaySummary`; station marker reads `THIS ENGAGEMENT` (not `YOU ARE HERE`).
 6. **THE WORK rebuilt as one connected journey** on a single vertical spine with line-art glyph nodes + connector captions, not three alternating hairline-block sections.

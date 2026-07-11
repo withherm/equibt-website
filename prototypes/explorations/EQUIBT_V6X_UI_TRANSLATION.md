@@ -195,7 +195,7 @@ Industry-specific locks from the conversion. Full consolidated set with exact va
 
 1. **Our Work index is a compact two-column proof grid,** not the brief's tall open Problem/Approach/Outcome rows (too tall and repetitive). Each case: italic-Lora sector + big navy metric + verb-first H3 + one context line (the Problem line). Full P/A/O kept in the case data for detail pages. Pillar group = hand-drawn pillar icon + monochrome dotted eyebrow + intro.
 2. **Invented Outcome lines** (verb-first, tied to each metric, no new numbers) authored per case and held in the data; Herman approved.
-3. **Illustrative markers removed from public output** entirely (no `<!-- ILLUSTRATIVE -->`, no visible label); the `illustrative` flag stays in data, unrendered. (Override of the brief's "preserve markers".)
+3. **Illustrative concept fully retired** (July 2026): schema field, HTML markers and visible labels all removed. All cases are real anonymised engagements.
 4. **Case hero:** copy + motif in a top row, the hairline three-metric band runs full width below, motif above the boxes. Top row + band + CTA art share one ≤960px collapse.
 5. **THE WORK = one connected journey on a single vertical spine** with line-art glyph nodes and terracotta connector captions, not three alternating sections.
 6. **WHERE THIS FITS = the trainline moved directly under the hero;** heading is a per-case `pathwaySummary`; station marker reads `THIS ENGAGEMENT` (not `YOU ARE HERE`); "Follow the workstream." retired.

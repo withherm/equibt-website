@@ -41,15 +41,15 @@ Acceptance: `/services/` returns 200, reads as the same site, all six `Explore` 
 
 ---
 
-## Item 3 — Replace or remove the illustrative industry metrics  (branch `eqt-286-prelaunch-fixes`)
+## Item 3 — [DONE] Replace placeholder industry metrics with real anonymised figures  (branch `eqt-286-prelaunch-fixes`)
 
-`src/pages/industries/_sector.astro` Financial Services + Utilities proof slides carry figures (23%, 18%, 11 days, 27%, etc.) explicitly commented `ILLUSTRATIVE: replace with real anonymised figure before launch`. They render as real claims — a fabrication risk. **Do NOT invent numbers** (Herman confirmed 2026-06-09: no faked proof on a procurement-facing site).
+`src/pages/industries/_sector.astro` Financial Services + Utilities proof slides carry figures (23%, 18%, 11 days, 27%, etc.) that were placeholder figures. They render as real claims — a fabrication risk. **Do NOT invent numbers** (Herman confirmed 2026-06-09: no faked proof on a procurement-facing site).
 
-**DECISION (Herman): reuse the REAL anonymised metrics EQUIBT already publishes** on Home / Our Work / Capability Statement, mapped to the sector. Replace the ILLUSTRATIVE slides with these (drop the ILLUSTRATIVE comments; keep the anonymised client descriptors):
+**DECISION (Herman): reuse the REAL anonymised metrics EQUIBT already publishes** on Home / Our Work / Capability Statement, mapped to the sector. Replace the placeholder slides with these (keep the anonymised client descriptors):
 - **Financial Services:** "Cut mortgage lead leakage across direct and broker channels from **30% to 10%**." (Bank); "Cut the close-to-board reporting cycle from **18 to 5 days**." (Property Group).
 - **Utilities:** "Cut investigation cycle time across the teams, from **52 to 31 days**." (Utilities Ombudsman); "Lifted the residential retention save rate from **18% to 24%**." (Energy Retailer).
 
-The carousel is shorter (two real slides per sector) but every figure is true and already vetted elsewhere on the site. If a sector ends up with only confirmed real slides, that is fine. Check Government + Manufacturing for the same ILLUSTRATIVE comments; reuse the existing real anonymised figures for those sectors too (Government: 28%→9% grant-processing rework, Government Department; 67→38 days complaint resolution, Privacy Regulator. Manufacturing: 38% deflected, Industrial Manufacturer; 12 steps cut, Chemical Sales) where they apply. Do NOT add a visible "illustrative" label.
+The carousel is shorter (two real slides per sector) but every figure is true and already vetted elsewhere on the site. If a sector ends up with only confirmed real slides, that is fine. Check Government + Manufacturing for any remaining placeholders; reuse the existing real anonymised figures for those sectors too (Government: 28%→9% grant-processing rework, Government Department; 67→38 days complaint resolution, Privacy Regulator. Manufacturing: 38% deflected, Industrial Manufacturer; 12 steps cut, Chemical Sales) where they apply. 
 
 ---
 
@@ -121,7 +121,7 @@ Re-verify after R10-R11: no large gap before the footer; hub hero height matches
 
 - [ ] Item 1: About hero says "across Australia" (NZ gone); committed on `eqt-256-about-v6x`, PR #41 re-pushed.
 - [ ] Item 2: `src/pages/services/index.astro` created; `/services/` returns 200; six `Explore` links resolve; reads on-system; no Nav edit.
-- [ ] Item 3: no `ILLUSTRATIVE` placeholder figures render as live claims anywhere; either real confirmed figures swapped in or the slides removed; no invented numbers; no visible "illustrative" label.
+- [x] Item 3: all placeholder figures replaced with real confirmed anonymised metrics. No invented numbers.
 - [ ] Item 4: "firmer footing" gone from all five files; replacements verb-first, context-appropriate; "Get in touch" buttons intact.
 - [ ] `npm run build` green; changed surfaces eyeballed desktop + mobile; zero new horizontal overflow at 390px; no other files touched.
 - [ ] Two PRs: the re-pushed eqt-256 (#41) for item 1, and a new PR for `eqt-286-prelaunch-fixes` (items 2-4). Post both URLs on Linear **EQT-286**. Do NOT mark Done — Herman/Cowork sets Done after merge AND Cloudflare deploy AND live verify.

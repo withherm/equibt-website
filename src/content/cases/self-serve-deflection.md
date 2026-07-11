@@ -7,7 +7,6 @@ metric: "38% deflected"
 problem: "An existing customer portal handled a fraction of its intended volume, with most enquiries escalating to manual handling."
 approach: "The team mapped why customers abandoned self-serve, redesigned the service process, and specified the rebuild for the vendor."
 outcome: "We redesigned self-serve to deflect 38% of manual transactions and specified the rebuild for the vendor."
-illustrative: false
 fullStudy: true
 heroSubhead: "A redesigned self-serve process and a full vendor-ready specification that deflects 38% of manual transactions, with the internal team owning the rebuild."
 pathwaySummary: "Mapped why customers abandoned self-serve, redesigned the service process, then specified the rebuild for the vendor with the internal team owning it."

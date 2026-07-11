@@ -8,7 +8,6 @@ caption: "first-iteration policy draft"
 problem: "A public-sector regulator needed a policy position on a public-interest matter. The conventional drafting path runs nine to twelve months before a first version is ready for review."
 approach: "We ran the development the Lean Agile way: a timeboxed, short-cycle effort working in increments rather than holding back for one complete draft."
 outcome: "A first-iteration draft in about three months, roughly 60 to 70% faster to first draft. The draft then continued through standard legal and compliance review."
-illustrative: false
 fullStudy: true
 heroSubhead: "A first-iteration policy draft in about three months instead of nine to twelve, roughly 60 to 70% faster to a first version, delivered in short cycles and then carried into standard legal and compliance review."
 pathwaySummary: "Set the direction, ran the drafting in short increments, and validated each iteration against the outcome rather than the plan."

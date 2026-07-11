@@ -7,7 +7,6 @@ metric: "18% to 29%"
 problem: "Churn was high across the residential base and third-party call centres ran without data integration or a consistent retention method."
 approach: "The retention teams mapped the end-to-end process, integrated the data flow, and introduced a sales-as-a-service model."
 outcome: "We lifted the residential save rate from 18% to 29% on a retention method the teams now run themselves."
-illustrative: false
 fullStudy: true
 heroSubhead: "Residential retention save rate lifted from 18% to 29%, call handling 22% more efficient, and a sales-as-a-service retention model the teams now run without outside support."
 pathwaySummary: "Mapped the retention process across all three call-centre partners, piloted the redesign, then rolled it out and handed it back to the teams."
