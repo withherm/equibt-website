@@ -121,9 +121,11 @@ const relatedTools = [
   },
 ];
 
-// HowTo step text as specified in the EQT-377 addendum (A5).
+// HowTo steps (EQT-377 addendum A5): each step's text is that box's question
+// verbatim. Situation follows the canvas question, per Herman's call on the
+// addendum's step 1 wording.
 const howToSteps = [
-  { name: "Situation", text: "What is happening now? Set the context with real numbers, and say what changed recently." },
+  { name: "Situation", text: fields[0].question },
   { name: "Problem", text: "Who is affected and what goes wrong? One person. One moment." },
   { name: "Reality", text: "What evidence or real-world voice confirms it? How many people you talked to, and one thing one of them actually said." },
   { name: "Impact", text: "What does the problem cost or risk? Use hours, dollars, days or people." },
