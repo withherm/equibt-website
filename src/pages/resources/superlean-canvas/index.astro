@@ -2,7 +2,11 @@
 import Footer from "../../../components/Footer.astro";
 import Layout from "../../../layouts/Layout.astro";
 import Nav from "../../../components/Nav.astro";
+import DocReport from "../../../components/icons/glyphs/DocReport.astro";
 import "../../../styles/resources.css";
+
+// Page intro. Printed above the canvas as well as shown in the hero.
+const intro = "Six boxes. One word: SPRINT. Fill them in and you have a proposal. Leave one blank and that gap is the first question you will be asked.";
 
 // One small line icon per SPRINT letter (EQT-377 addendum A6). Same idiom as the
 // assessment-page dimension icons: 18px, single weight, currentColor, no fill.
@@ -176,13 +180,20 @@ const faqLd = {
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqLd)} is:inline />
   <Nav />
   <main class="sc-main">
+    <section class="res-hero sc-hero">
+      <div class="res-hero-inner">
+        <div class="res-hero-copy">
+          <h1>Superlean Canvas</h1>
+          <p class="res-hero-lede">{intro}</p>
+        </div>
+        <div class="res-hero-art" aria-hidden="true">
+          <span><DocReport /></span>
+        </div>
+      </div>
+    </section>
+
     <section class="sc-tool">
       <div class="res-inner sc-shell">
-        <header class="sc-header">
-          <h1>Superlean Canvas</h1>
-          <p>Six boxes. One word: SPRINT. Fill them in and you have a proposal. Leave one blank and you have a gap a judge will find.</p>
-        </header>
-
         <div class="sc-controls">
           <button type="button" class="btn-text" id="sc-example"><span class="link-label">Show the example</span></button>
           <button type="button" class="btn-primary" id="sc-print">Print or save as PDF</button>
@@ -247,11 +258,9 @@ const faqLd = {
 </Layout>
 
 <style is:global>
-.sc-tool{padding:64px 56px 80px;background:#f5f3ee;}
+.sc-hero .res-hero-lede{margin-bottom:0;}
+.sc-tool{padding:56px 56px 80px;background:#f5f3ee;}
 .sc-shell{max-width:1180px;}
-.sc-header{max-width:820px;margin-bottom:28px;}
-.sc-header h1{margin:0 0 14px;color:var(--navy);font-size:clamp(38px,5vw,64px);line-height:1.04;}
-.sc-header p{margin:0;color:var(--mid-grey);font-size:20px;line-height:1.55;}
 .sc-controls{display:flex;align-items:center;flex-wrap:wrap;gap:18px 24px;margin-bottom:36px;padding-bottom:26px;border-bottom:1px solid var(--hairline);}
 .sc-controls button{cursor:pointer;}
 .sc-controls button.btn-primary{border:0;appearance:none;box-shadow:none;transform:none;}
@@ -293,17 +302,19 @@ const faqLd = {
 .sc-related-card:focus-visible .sc-related-link .ar{transform:translateX(4px);transition-delay:.18s;}
 
 @media(max-width:900px){.sc-tool{padding:48px 24px 64px;}.sc-grid{grid-template-columns:1fr;}.sc-faq{padding:56px 24px;}.sc-related{padding:56px 24px 68px;}.sc-related-grid{grid-template-columns:1fr;}}
-@media(max-width:520px){.sc-tool{padding:38px 18px 52px;}.sc-header h1{font-size:38px;}.sc-header p{font-size:18px;}.sc-controls{align-items:flex-start;flex-direction:column;}.sc-card{padding:20px 18px;}.sc-question{font-size:17px;}.sc-feedback{display:block;}.sc-check{display:block;margin-top:6px;text-align:left;}.sc-faq{padding:44px 18px;}.sc-related{padding:44px 18px 56px;}.sc-related-card{padding:22px 18px;}}
+@media(max-width:520px){.sc-tool{padding:38px 18px 52px;}.sc-controls{align-items:flex-start;flex-direction:column;}.sc-card{padding:20px 18px;}.sc-question{font-size:17px;}.sc-feedback{display:block;}.sc-check{display:block;margin-top:6px;text-align:left;}.sc-faq{padding:44px 18px;}.sc-related{padding:44px 18px 56px;}.sc-related-card{padding:22px 18px;}}
 @page{size:A4 portrait;margin:9mm;}
 @media print{
-  nav,footer,.sc-controls,.sc-hint,.sc-feedback,.sc-card-icon,.sc-faq,.sc-related{display:none!important;}
+  nav,footer,.sc-controls,.sc-hint,.sc-feedback,.sc-card-icon,.sc-faq,.sc-related,
+  .sc-hero .res-hero-art{display:none!important;}
   html,body{width:210mm;height:297mm;background:#fff!important;}
   body{print-color-adjust:exact;-webkit-print-color-adjust:exact;}
+  .sc-hero{padding:0!important;background:#fff!important;border:0!important;}
+  .sc-hero .res-hero-inner{display:block;max-width:none;margin:0 0 5mm;}
+  .sc-hero h1{max-width:none;font-size:23pt;line-height:1.05;margin:0 0 2mm;}
+  .sc-hero .res-hero-lede{max-width:none;font-size:9.5pt;line-height:1.35;margin:0;}
   .sc-tool{padding:0!important;background:#fff!important;}
   .sc-shell{width:auto;max-width:none;padding:0!important;}
-  .sc-header{max-width:none;margin:0 0 5mm;}
-  .sc-header h1{font-size:23pt;line-height:1.05;margin:0 0 2mm;}
-  .sc-header p{font-size:9.5pt;line-height:1.35;}
   .sc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3mm;}
   .sc-card{border-radius:0;padding:3.2mm;break-inside:avoid;min-height:0;}
   .sc-card-head{gap:2mm;margin-bottom:2mm;}
@@ -319,12 +330,12 @@ const faqLd = {
 const STORAGE_KEY = "equibt-superlean-canvas";
 const letters = ["S", "P", "R", "I", "N", "T"];
 const examples = {
-  S: "Our school has 340 Year 11 students. In October they sit four exams in nine days. We have two school counsellors and the wait is two weeks. So help arrives after the exams are over.",
-  P: "The students who struggle are not the ones with a diagnosis. They freeze. In the week before exams they sit down at seven, open six subjects, choose none, and lose the whole evening.",
-  R: 'We talked to twelve Year 11 students. Nine described the same night. One said: "I sat down at seven. At ten I still had not opened anything. So I felt worse."',
-  I: "One lost night is about three hours of study. Over a nine day exam block that is up to 27 hours, which is more revision than a whole subject gets. Help from the counsellor arrives after the exams finish.",
-  N: "A mobile app with one screen. You paste in your subject list. It picks the single next task and starts a two minute timer. We looked at three options and we are trying this one first because it is the only one we can build by Monday.",
-  T: 'Version one must get a student from "I cannot choose" to "I have started" in under two minutes. Nothing else ships. If it cannot beat a blank desk in two minutes, it has failed.',
+  S: "We handle about 1,200 applications a year. Since the intake form changed in March, more than half arrive incomplete. Two officers now spend their mornings chasing missing details, and the queue has grown every month since.",
+  P: "The officer who opens the queue at eight starts the same file for the third time. Reads it, finds the income evidence missing, writes to the applicant, closes it again. When the reply lands two weeks later the context is gone and the reading starts over.",
+  R: 'We sat with nine officers across two teams. Seven described the same loop. One said: "I never finish a file the first time I open it. I move it along and hope the next person has what I need."',
+  I: "Each incomplete file costs about 40 minutes of chasing. At roughly 600 incomplete files a year that is 400 hours, close to a quarter of a full time role, spent asking for things the form should have collected at the start.",
+  N: "Make the intake form refuse to submit without the three documents that cause most of the rework. We looked at rewriting the guidance and at adding a triage step before assessment. We are trying the form first because it stops the rework where it starts and we can change it this month.",
+  T: "Version one must cut incomplete submissions from more than half to under 20 per cent within two months. Nothing else counts. If officers are still chasing the same three documents after that, the change has failed.",
 };
 const values = Object.fromEntries(letters.map((letter) => [letter, ""]));
 let ownValues = null;
