@@ -39,6 +39,7 @@ export interface Resource {
 export const categoryMap: Record<string, string> = {
   "METHOD GUIDE": "methods",
   "ASSESSMENT": "tools",
+  "CANVAS": "tools",
   "GUIDE / FRAMEWORK": "guides",
   "GUIDE": "guides",
   "CALCULATOR": "tools",
@@ -112,6 +113,18 @@ export const resources: Resource[] = [
     action: "view",
     href: "/capability-statement/",
     actionLabel: "View",
+    landing: false,
+  },
+  {
+    slug: "superlean-canvas",
+    tag: "CANVAS",
+    title: "Superlean Canvas",
+    summary:
+      "Six questions that turn a rough idea into a proposal you can hand to someone: Situation, Problem, Reality, Impact, Notion, Test. Use it before you ask anyone for budget, time or a decision.",
+    glyph: "DocReport",
+    action: "view",
+    href: "/resources/superlean-canvas/",
+    actionLabel: "START CANVAS",
     landing: false,
   },
   {
