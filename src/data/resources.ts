@@ -35,7 +35,8 @@ export interface Resource {
   related?: RelatedLink;
 }
 
-// Maps a resource `tag` to its hub category / filter id (and Resources submenu hash).
+// Maps a resource `tag` to its primary hub category / filter id (and Resources
+// submenu hash). Stays 1:1, Nav.astro resolves a single submenu hash from it.
 export const categoryMap: Record<string, string> = {
   "METHOD GUIDE": "methods",
   "ASSESSMENT": "tools",
@@ -46,6 +47,20 @@ export const categoryMap: Record<string, string> = {
   "CHECKLIST / TEMPLATE": "templates",
   "TEMPLATE": "templates",
 };
+
+// Extra hub filters a tag also belongs to, on top of its `categoryMap` primary.
+// The hub grid matches on the union; the Resources submenu still uses the primary
+// only. EQT-377: the Superlean Canvas is a fillable template as well as a tool,
+// so its card has to come back under both Templates and Tools.
+export const extraCategoryMap: Record<string, string[]> = {
+  "CANVAS": ["templates"],
+};
+
+// All hub filter ids a tag matches, primary first.
+export function categoriesFor(tag: string): string[] {
+  const primary = categoryMap[tag] ?? "all";
+  return [primary, ...(extraCategoryMap[tag] ?? [])];
+}
 
 export const resources: Resource[] = [
   {

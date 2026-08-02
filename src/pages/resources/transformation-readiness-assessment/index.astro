@@ -80,6 +80,19 @@ import "../../../styles/resources.css";
       </div>
     </section>
 
+    <section class="ra-related res-reveal">
+      <div class="res-inner">
+        <h2 class="ra-related-title">Related tools</h2>
+        <div class="ra-related-grid">
+          <a class="ra-related-card" href="/resources/superlean-canvas/">
+            <span class="ra-related-name">Superlean Canvas</span>
+            <span class="ra-related-summary">Six questions that turn a rough idea into a one page proposal. Use it before the programme exists.</span>
+            <span class="btn-text ra-related-link"><span class="link-label">Open the tool</span> <span class="ar">&rsaquo;</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section class="res-ld-close res-reveal">
       <div class="res-inner">
         <div class="res-ld-close-grid">
@@ -234,10 +247,25 @@ import "../../../styles/resources.css";
 /* ── Section divider (two beige sections meet) ── */
 .res-ld-close{border-top:1px solid #d4d0c8;}
 
+/* ── Related tools (EQT-377). Screen only, excluded from print. ── */
+.ra-related{padding:76px 56px;background:#fff;border-top:1px solid #d4d0c8;}
+.ra-related-title{margin:0 0 26px;color:#26245C;font-size:clamp(28px,2.8vw,36px);font-weight:700;line-height:1.1;}
+.ra-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:620px;}
+.ra-related-card{display:flex;flex-direction:column;padding:28px;background:#fff;border:1px solid var(--hairline);border-radius:12px;color:inherit;text-decoration:none;transition:border-color .18s ease,transform .18s ease;}
+.ra-related-card:hover,.ra-related-card:focus-visible{border-color:rgba(38,36,92,0.30);transform:translateY(-3px);}
+.ra-related-name{display:block;margin-bottom:12px;color:#26245C;font-family:"Montserrat",Arial,sans-serif;font-size:22px;font-weight:700;line-height:1.16;transition:color .18s ease;}
+.ra-related-card:hover .ra-related-name,.ra-related-card:focus-visible .ra-related-name{color:#C15F3C;}
+.ra-related-summary{display:block;margin-bottom:22px;color:var(--mid-grey);font-size:18px;line-height:1.45;}
+.ra-related-link{margin-top:auto;}
+.ra-related-card:hover .ra-related-link .link-label::after,
+.ra-related-card:focus-visible .ra-related-link .link-label::after{transform:scaleX(1);}
+.ra-related-card:hover .ra-related-link .ar,
+.ra-related-card:focus-visible .ra-related-link .ar{transform:translateX(4px);transition-delay:.18s;}
+
 /* ── Print ── */
 @media print{
   nav,footer,.res-ld-close,.res-hero,.ra-nav,.ra-results-actions,.ra-cta-strip,
-  .ra-stepper,.ra-section-head,#ra-form-view{display:none!important;}
+  .ra-stepper,.ra-section-head,.ra-related,#ra-form-view{display:none!important;}
   .ra-tool{padding:0;background:#fff;}
   .res-inner{max-width:100%;}
   #ra-results-view{display:block!important;}
@@ -246,6 +274,8 @@ import "../../../styles/resources.css";
 }
 @media(max-width:760px){
   .ra-tool{padding:48px 20px 64px;}
+  .ra-related{padding:52px 20px;}
+  .ra-related-card{padding:22px 20px;}
   .ra-dim-grid{grid-template-columns:1fr;}
   .ra-q-item{grid-template-columns:1fr;gap:12px;}
   /* ra-q-header shown with abbreviated labels */
