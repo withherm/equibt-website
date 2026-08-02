@@ -1,0 +1,435 @@
+---
+import Footer from "../../../components/Footer.astro";
+import Layout from "../../../layouts/Layout.astro";
+import Nav from "../../../components/Nav.astro";
+import DocReport from "../../../components/icons/glyphs/DocReport.astro";
+import "../../../styles/resources.css";
+
+// Page intro. Printed above the canvas as well as shown in the hero.
+const intro = "Six boxes. One word: SPRINT. Fill them in and you have a proposal. Leave one blank and that gap is the first question you will be asked.";
+
+// One small line icon per SPRINT letter (EQT-377 addendum A6). Same idiom as the
+// assessment-page dimension icons: 18px, single weight, currentColor, no fill.
+// The letter badge stays dominant; the icon sits muted beside the label.
+const icons = {
+  chart:
+    '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2.5 2.5v13h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 12l3-3.6 2.4 1.9L15.2 5.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  alert:
+    '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 2.8 2.2 15.2h13.6L9 2.8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 7v3.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M9 12.7h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+  speech:
+    '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="2.5" y="3.2" width="13" height="9" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 12.2v3.4l3.4-3.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  scales:
+    '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 3v12.4M6 15.4h6M3.4 5.6h11.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3.4 5.8 1.5 10.1h3.8L3.4 5.8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M14.6 5.8l-1.9 4.3h3.8l-1.9-4.3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>',
+  bulb:
+    '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.9 12.1a4.6 4.6 0 1 1 4.2 0v1.7H6.9v-1.7Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7.4 15.6h3.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
+  target:
+    '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="9" r="3.1" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="9" r=".9" stroke="currentColor" stroke-width="1.5"/></svg>',
+};
+
+const fields = [
+  {
+    letter: "S",
+    label: "Situation",
+    icon: icons.chart,
+    question: "What is happening now? Your first 20 seconds. One moment, one number, why this year. Do not name your product.",
+    hint: "Aim for under 55 words. That is about 20 seconds out loud.",
+    placeholder: "Who has this problem, how many of them, and what changed recently?",
+  },
+  {
+    letter: "P",
+    label: "Problem",
+    icon: icons.alert,
+    question: "Who is affected and what goes wrong? One person. One moment.",
+    hint: "When [who] is [doing what] at [when], they [what goes wrong], because [why].",
+    placeholder: "Describe one bad moment for one specific person. No product, no features.",
+  },
+  {
+    letter: "R",
+    label: "Reality",
+    icon: icons.speech,
+    question: "What evidence or real-world voice confirms it? How many people you talked to, and one thing one of them actually said.",
+    hint: "A quote is the difference between a problem and a guess.",
+    placeholder: 'We talked to ___ people. ___ said the same thing. One of them said: "..."',
+  },
+  {
+    letter: "I",
+    label: "Impact",
+    icon: icons.scales,
+    question: "What does the problem cost or risk? Use hours, dollars, days or people.",
+    hint: "No number means you wrote an opinion.",
+    placeholder: "Put a number on it. How much time, money or opportunity is lost?",
+  },
+  {
+    letter: "N",
+    label: "Notion",
+    icon: icons.bulb,
+    question: "What solution or change might address it? One idea that might work, not the only one.",
+    hint: "Be concrete. Name the thing, not the theme. If you have more than one, write the one you would try first and say why.",
+    placeholder: "What is it, what does someone do with it, and why this one first?",
+  },
+  {
+    letter: "T",
+    label: "Test",
+    icon: icons.target,
+    question: "What must it achieve to be worth going on with? Add a target you can measure.",
+    hint: "Two tests means you have not chosen yet.",
+    placeholder: "Version one must ______ . We will know it works when ______ .",
+  },
+];
+
+const pageTitle = "Superlean Canvas: one page proposal and problem statement template | EQUIBT";
+const pageDescription =
+  "A free six question canvas that turns a rough idea into a one page proposal. Set out the situation, the problem, the evidence, the impact, the proposed change and the test it must pass. Fill it in online and print to PDF.";
+const canonicalPath = "/resources/superlean-canvas/";
+const canonicalUrl = new URL(canonicalPath, Astro.site ?? new URL(Astro.url.origin)).href;
+// No bespoke hero raster exists for this page, so the site Open Graph image stands in.
+const ogImage = "/og-default.png";
+
+const faqs = [
+  {
+    q: "What is the Superlean Canvas?",
+    a: "The Superlean Canvas is a six question template for turning a rough idea into a one page proposal. You answer six questions in order and the answers become the case for acting. It is built for the point before a business case exists, when you have a hunch and need to work out whether it is worth anyone's time.",
+  },
+  {
+    q: "What does SPRINT stand for?",
+    a: "SPRINT is the six questions on the canvas. Situation, what is happening now. Problem, who is affected and what goes wrong. Reality, what evidence or real world voice confirms it. Impact, what the problem costs or risks. Notion, what solution or change might address it. Test, what it must achieve to be worth going on with.",
+  },
+  {
+    q: "When should you use it?",
+    a: "Use it before you ask anyone for budget, time or a decision. It suits the early stage of an improvement idea, a change proposal or a new service, when the problem is still loosely defined and you need to test whether it holds up. Fifteen minutes on the canvas usually shows you which box you cannot fill in, and that box is your next piece of work.",
+  },
+  {
+    q: "How is it different from a Lean Canvas?",
+    a: "A Lean Canvas describes a business model. The Superlean Canvas describes a single problem and the case for acting on it. If you are working out how a venture makes money, use a Lean Canvas. If you are working out whether a problem is real and worth solving, use this one.",
+  },
+  {
+    q: "How is it different from a project charter?",
+    a: "A project charter is the approved document. The Superlean Canvas is what you write before you have one. A charter assumes the problem, the scope and the goal are already agreed. This canvas is how you get them agreed, and it is short enough to throw away if the idea does not survive.",
+  },
+  {
+    q: "Do I need an account?",
+    a: "No. There is no sign up and nothing is sent anywhere. What you type stays in your browser, and you can print it to PDF or download it as text at any time.",
+  },
+];
+
+const relatedTools = [
+  {
+    title: "Transformation Readiness Assessment",
+    summary: "19 questions across leadership, operational, change and measurement readiness. Use it once the idea has become a programme.",
+    href: "/resources/transformation-readiness-assessment/",
+  },
+  {
+    title: "Continuous Improvement Maturity Assessment",
+    summary: "20 questions across five capability dimensions. Use it to see where your improvement capability stands today.",
+    href: "/resources/ci-maturity-assessment/",
+  },
+];
+
+// HowTo steps (EQT-377 addendum A5): each step's text is that box's question
+// verbatim. Situation follows the canvas question, per Herman's call on the
+// addendum's step 1 wording.
+const howToSteps = [
+  { name: "Situation", text: fields[0].question },
+  { name: "Problem", text: "Who is affected and what goes wrong? One person. One moment." },
+  { name: "Reality", text: "What evidence or real-world voice confirms it? How many people you talked to, and one thing one of them actually said." },
+  { name: "Impact", text: "What does the problem cost or risk? Use hours, dollars, days or people." },
+  { name: "Notion", text: "What solution or change might address it? One idea that might work, not the only one." },
+  { name: "Test", text: "What must it achieve to be worth going on with? Add a target you can measure." },
+];
+
+const webApplicationLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Superlean Canvas",
+  description: pageDescription,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Any modern web browser",
+  url: canonicalUrl,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "AUD" },
+  publisher: { "@type": "Organization", name: "EQUIBT Group" },
+  creator: { "@type": "Organization", name: "EQUIBT Group" },
+};
+
+const howToLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How to turn an idea into a one page proposal",
+  description: "Answer six questions in order. Situation, Problem, Reality, Impact, Notion, Test.",
+  step: howToSteps.map((step, index) => ({
+    "@type": "HowToStep",
+    position: index + 1,
+    name: step.name,
+    text: step.text,
+  })),
+};
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: { "@type": "Answer", text: faq.a },
+  })),
+};
+---
+
+<Layout title={pageTitle} description={pageDescription} canonical={canonicalPath} image={ogImage}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(webApplicationLd)} is:inline />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(howToLd)} is:inline />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqLd)} is:inline />
+  <Nav />
+  <main class="sc-main">
+    <section class="res-hero sc-hero">
+      <div class="res-hero-inner">
+        <div class="res-hero-copy">
+          <h1>Superlean Canvas</h1>
+          <p class="res-hero-lede">{intro}</p>
+        </div>
+        <div class="res-hero-art" aria-hidden="true">
+          <span><DocReport /></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="sc-tool">
+      <div class="res-inner sc-shell">
+        <div class="sc-controls">
+          <button type="button" class="btn-text" id="sc-example"><span class="link-label">Show the example</span></button>
+          <button type="button" class="btn-primary" id="sc-print">Print or save as PDF</button>
+          <button type="button" class="btn-text" id="sc-download"><span class="link-label">Download as text</span></button>
+          <button type="button" class="btn-text" id="sc-clear"><span class="link-label">Clear</span></button>
+        </div>
+
+        <form class="sc-grid" id="sc-form">
+          {fields.map((field) => (
+            <section class="sc-card" data-letter={field.letter}>
+              <header class="sc-card-head">
+                <span class="sc-badge" aria-hidden="true">{field.letter}</span>
+                <h2>{field.label}</h2>
+                <span class="sc-card-icon" aria-hidden="true" set:html={field.icon} />
+              </header>
+              <label class="sc-question" for={`sc-${field.letter.toLowerCase()}`}>{field.question}</label>
+              <p class="sc-hint">{field.hint}</p>
+              <textarea id={`sc-${field.letter.toLowerCase()}`} name={field.letter} placeholder={field.placeholder} rows="4"></textarea>
+              <div class="sc-feedback">
+                <span class="sc-count" id={`sc-${field.letter.toLowerCase()}-count`}>0 words</span>
+                <span class="sc-check" id={`sc-${field.letter.toLowerCase()}-check`} aria-live="polite"></span>
+              </div>
+            </section>
+          ))}
+        </form>
+
+        <p class="sc-rule">One rule before you start. Every box is answered by a real person, not by you and not by AI. If you cannot quote someone, you are guessing.</p>
+      </div>
+    </section>
+
+    <section class="sc-faq">
+      <div class="res-inner">
+        <h2 class="sc-section-title">Common questions</h2>
+        <div class="res-faq-list">
+          {faqs.map((faq) => (
+            <details class="res-faq-row">
+              <summary class="res-faq-q">{faq.q}</summary>
+              <p class="res-faq-a">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sc-related">
+      <div class="res-inner">
+        <h2 class="sc-section-title">Related tools</h2>
+        <p class="sc-related-intro">Two more EQUIBT tools for the stage after this one.</p>
+        <div class="sc-related-grid">
+          {relatedTools.map((tool) => (
+            <a class="sc-related-card" href={tool.href}>
+              <span class="sc-related-title">{tool.title}</span>
+              <span class="sc-related-summary">{tool.summary}</span>
+              <span class="btn-text sc-related-link"><span class="link-label">Open the tool</span> <span class="ar">&rsaquo;</span></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style is:global>
+.sc-hero .res-hero-lede{margin-bottom:0;}
+.sc-tool{padding:56px 56px 80px;background:#f5f3ee;}
+.sc-shell{max-width:1180px;}
+.sc-controls{display:flex;align-items:center;flex-wrap:wrap;gap:18px 24px;margin-bottom:36px;padding-bottom:26px;border-bottom:1px solid var(--hairline);}
+.sc-controls button{cursor:pointer;}
+.sc-controls button.btn-primary{border:0;appearance:none;box-shadow:none;transform:none;}
+.sc-controls button.btn-primary:hover{border:0;box-shadow:none;transform:none;background:#2f2d6e;}
+.sc-controls button.btn-text{border:0;background:transparent;padding:0;}
+.sc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;}
+.sc-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--hairline);border-radius:10px;padding:24px;min-width:0;}
+.sc-card-head{display:flex;align-items:center;gap:12px;margin-bottom:15px;}
+.sc-badge{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;flex:0 0 34px;border-radius:50%;background:var(--navy);color:#fff;font-family:"Montserrat",Arial,sans-serif;font-size:14px;font-weight:700;}
+.sc-card h2{margin:0;color:var(--navy);font-family:"Montserrat",Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.sc-card-icon{display:inline-flex;align-items:center;flex:0 0 auto;color:var(--muted);opacity:.72;}
+.sc-card-icon svg{display:block;width:18px;height:18px;}
+.sc-question{display:block;margin:0 0 9px;color:var(--near-black);font-size:18px;font-weight:600;line-height:1.45;}
+.sc-hint{margin:0 0 14px;color:var(--muted);font-size:14px;font-style:italic;line-height:1.45;}
+.sc-card textarea{width:100%;min-height:126px;box-sizing:border-box;margin-top:auto;padding:14px 15px;resize:none;overflow:hidden;background:#fff;border:1px solid var(--hairline);border-radius:8px;outline:none;color:var(--near-black);font-family:"Lora",Georgia,serif;font-size:17px;line-height:1.48;transition:border-color .15s,box-shadow .15s;}
+.sc-card textarea:focus{border-color:#c15f3c;box-shadow:0 0 0 3px rgba(193,95,60,.16);}
+.sc-card textarea::placeholder{color:#777;opacity:1;}
+.sc-feedback{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;min-height:20px;margin-top:9px;}
+.sc-count{flex:0 0 auto;color:var(--muted);font-family:"Montserrat",Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.05em;}
+.sc-count.is-alert,.sc-check{color:#c15f3c;}
+.sc-check{text-align:right;font-size:13px;font-weight:600;line-height:1.35;}
+.sc-rule{margin:32px 0 0;padding:22px 0 0;border-top:1px solid var(--hairline);color:var(--navy);font-size:18px;font-weight:600;line-height:1.5;}
+
+/* ── Common questions / Related tools (screen only, excluded from print) ── */
+.sc-faq{padding:80px 56px;background:#fff;}
+.sc-related{padding:76px 56px 88px;background:#f5f3ee;border-top:1px solid var(--hairline);}
+.sc-section-title{margin:0 0 26px;color:var(--navy);font-size:clamp(28px,2.8vw,36px);font-weight:700;line-height:1.1;}
+.sc-related-intro{max-width:640px;margin:-12px 0 30px;color:var(--mid-grey);font-size:19px;line-height:1.45;}
+.sc-related-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;}
+.sc-related-card{display:flex;flex-direction:column;padding:28px;background:#fff;border:1px solid var(--hairline);border-radius:12px;color:inherit;text-decoration:none;transition:border-color .18s ease,transform .18s ease;}
+.sc-related-card:hover,.sc-related-card:focus-visible{border-color:rgba(38,36,92,0.30);transform:translateY(-3px);}
+.sc-related-title{display:block;margin-bottom:12px;color:var(--navy);font-family:"Montserrat",Arial,sans-serif;font-size:22px;font-weight:700;line-height:1.16;transition:color .18s ease;}
+.sc-related-card:hover .sc-related-title,.sc-related-card:focus-visible .sc-related-title{color:var(--terracotta);}
+.sc-related-summary{display:block;margin-bottom:22px;color:var(--mid-grey);font-size:18px;line-height:1.45;}
+.sc-related-link{margin-top:auto;}
+.sc-related-card:hover .sc-related-link .link-label::after,
+.sc-related-card:focus-visible .sc-related-link .link-label::after{transform:scaleX(1);}
+.sc-related-card:hover .sc-related-link .ar,
+.sc-related-card:focus-visible .sc-related-link .ar{transform:translateX(4px);transition-delay:.18s;}
+
+@media(max-width:900px){.sc-tool{padding:48px 24px 64px;}.sc-grid{grid-template-columns:1fr;}.sc-faq{padding:56px 24px;}.sc-related{padding:56px 24px 68px;}.sc-related-grid{grid-template-columns:1fr;}}
+@media(max-width:520px){.sc-tool{padding:38px 18px 52px;}.sc-controls{align-items:flex-start;flex-direction:column;}.sc-card{padding:20px 18px;}.sc-question{font-size:17px;}.sc-feedback{display:block;}.sc-check{display:block;margin-top:6px;text-align:left;}.sc-faq{padding:44px 18px;}.sc-related{padding:44px 18px 56px;}.sc-related-card{padding:22px 18px;}}
+@page{size:A4 portrait;margin:9mm;}
+@media print{
+  nav,footer,.sc-controls,.sc-hint,.sc-feedback,.sc-card-icon,.sc-faq,.sc-related,
+  .sc-hero .res-hero-art{display:none!important;}
+  html,body{width:210mm;height:297mm;background:#fff!important;}
+  body{print-color-adjust:exact;-webkit-print-color-adjust:exact;}
+  .sc-hero{padding:0!important;background:#fff!important;border:0!important;}
+  .sc-hero .res-hero-inner{display:block;max-width:none;margin:0 0 5mm;}
+  .sc-hero h1{max-width:none;font-size:23pt;line-height:1.05;margin:0 0 2mm;}
+  .sc-hero .res-hero-lede{max-width:none;font-size:9.5pt;line-height:1.35;margin:0;}
+  .sc-tool{padding:0!important;background:#fff!important;}
+  .sc-shell{width:auto;max-width:none;padding:0!important;}
+  .sc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3mm;}
+  .sc-card{border-radius:0;padding:3.2mm;break-inside:avoid;min-height:0;}
+  .sc-card-head{gap:2mm;margin-bottom:2mm;}
+  .sc-badge{width:7mm;height:7mm;flex-basis:7mm;font-size:8pt;}
+  .sc-card h2{font-size:8pt;}
+  .sc-question{font-size:8.5pt;line-height:1.25;margin-bottom:2mm;}
+  .sc-card textarea{min-height:0;height:auto;margin:0;padding:2.2mm;border-radius:0;font-size:8.2pt;line-height:1.28;overflow:hidden;}
+  .sc-rule{margin:4mm 0 0;padding:3mm 0 0;font-size:8.5pt;line-height:1.3;}
+}
+</style>
+
+<script>
+const STORAGE_KEY = "equibt-superlean-canvas";
+const letters = ["S", "P", "R", "I", "N", "T"];
+const examples = {
+  S: "We handle about 1,200 applications a year. Since the intake form changed in March, more than half arrive incomplete. Two officers now spend their mornings chasing missing details, and the queue has grown every month since.",
+  P: "The officer who opens the queue at eight starts the same file for the third time. Reads it, finds the income evidence missing, writes to the applicant, closes it again. When the reply lands two weeks later the context is gone and the reading starts over.",
+  R: 'We sat with nine officers across two teams. Seven described the same loop. One said: "I never finish a file the first time I open it. I move it along and hope the next person has what I need."',
+  I: "Each incomplete file costs about 40 minutes of chasing. At roughly 600 incomplete files a year that is 400 hours, close to a quarter of a full time role, spent asking for things the form should have collected at the start.",
+  N: "Make the intake form refuse to submit without the three documents that cause most of the rework. We looked at rewriting the guidance and at adding a triage step before assessment. We are trying the form first because it stops the rework where it starts and we can change it this month.",
+  T: "Version one must cut incomplete submissions from more than half to under 20 per cent within two months. Nothing else counts. If officers are still chasing the same three documents after that, the change has failed.",
+};
+const values = Object.fromEntries(letters.map((letter) => [letter, ""]));
+let ownValues = null;
+let showingExample = false;
+
+function words(value) {
+  const trimmed = value.trim();
+  return trimmed ? trimmed.split(/\s+/).length : 0;
+}
+function inputFor(letter) { return document.getElementById(`sc-${letter.toLowerCase()}`); }
+function grow(input) {
+  input.style.height = "auto";
+  input.style.height = `${Math.max(126, input.scrollHeight)}px`;
+}
+function save() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(values)); } catch (_) {}
+}
+function check(letter, value) {
+  if (!value.trim()) return "";
+  if (letter === "S" && words(value) > 55) return "Too long for 20 seconds. Cut it to 55 words.";
+  if (letter === "P") {
+    const match = value.match(/\b(apps?|platform|website|software|ai|solution|users?|system|tool)\b/i);
+    if (match) return `You named a solution: "${match[0]}". Describe the pain, not the fix.`;
+  }
+  if (letter === "R" && !/["“”]/.test(value)) return "No quote yet. Put one real sentence in their words.";
+  if ((letter === "I" || letter === "T") && !/\d/.test(value)) return "No number in here yet. Add hours, dollars, days or people.";
+  if (letter === "N" && words(value) < 12) return "Too vague. Say what it is and what someone does with it.";
+  return "";
+}
+function render(letter) {
+  const input = inputFor(letter);
+  const count = words(input.value);
+  const countNode = document.getElementById(`sc-${letter.toLowerCase()}-count`);
+  countNode.textContent = `${count} ${count === 1 ? "word" : "words"}`;
+  countNode.classList.toggle("is-alert", letter === "S" && count > 55);
+  document.getElementById(`sc-${letter.toLowerCase()}-check`).textContent = check(letter, input.value);
+  grow(input);
+}
+function setInputs(nextValues, persist) {
+  letters.forEach((letter) => {
+    values[letter] = nextValues[letter] || "";
+    inputFor(letter).value = values[letter];
+    render(letter);
+  });
+  if (persist) save();
+}
+try {
+  const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+  if (stored && typeof stored === "object") letters.forEach((letter) => { values[letter] = typeof stored[letter] === "string" ? stored[letter] : ""; });
+} catch (_) {}
+setInputs(values, false);
+
+letters.forEach((letter) => inputFor(letter).addEventListener("input", (event) => {
+  values[letter] = event.currentTarget.value;
+  render(letter);
+  if (!showingExample) save();
+}));
+document.getElementById("sc-example").addEventListener("click", () => {
+  const label = document.querySelector("#sc-example .link-label");
+  if (showingExample) {
+    showingExample = false;
+    setInputs(ownValues || values, false);
+    ownValues = null;
+    label.textContent = "Show the example";
+  } else {
+    ownValues = { ...values };
+    showingExample = true;
+    setInputs(examples, false);
+    label.textContent = "Back to my canvas";
+  }
+});
+document.getElementById("sc-clear").addEventListener("click", () => {
+  if (!window.confirm("Clear")) return;
+  showingExample = false;
+  ownValues = null;
+  document.querySelector("#sc-example .link-label").textContent = "Show the example";
+  setInputs(Object.fromEntries(letters.map((letter) => [letter, ""])), true);
+});
+document.getElementById("sc-download").addEventListener("click", () => {
+  const content = letters.map((letter) => {
+    const label = document.querySelector(`[data-letter="${letter}"] h2`).textContent.toUpperCase();
+    return `${label}\n${values[letter].trim() || "(blank)"}`;
+  }).join("\n\n");
+  const url = URL.createObjectURL(new Blob([content], { type: "text/plain;charset=utf-8" }));
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "superlean-canvas.txt";
+  link.click();
+  URL.revokeObjectURL(url);
+});
+document.getElementById("sc-print").addEventListener("click", () => {
+  const heights = letters.map((letter) => inputFor(letter).style.height);
+  letters.forEach((letter) => { const input = inputFor(letter); input.style.height = `${input.scrollHeight}px`; });
+  window.print();
+  letters.forEach((letter, index) => { inputFor(letter).style.height = heights[index]; });
+});
+</script>

@@ -3,7 +3,7 @@ import Footer from "../../components/Footer.astro";
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Icon from "../../components/icons/Icon.astro";
-import { categoryMap, resources } from "../../data/resources";
+import { categoriesFor, resources } from "../../data/resources";
 import lmiLogo from "../../../brand/assets/logos/lmi/LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg";
 import "../../styles/resources.css";
 
@@ -90,7 +90,8 @@ const faqs = [
         <div class="res-grid">
           {hubResources.map((r) => {
             const Glyph = glyphs[r.glyph];
-            const category = categoryMap[r.tag] ?? "all";
+            // Space-separated: a card can sit under more than one filter.
+            const category = categoriesFor(r.tag).join(" ");
             return (
               <article class:list={["res-card", { "is-soon": r.action === "soon" }]} data-category={category}>
                 <div class="res-card-top">
@@ -187,7 +188,7 @@ const faqs = [
 
   initialiseResReveals();
 
-  // Filter chips — URL hash preselection
+  // Filter chips: URL hash preselection
   const chips = Array.from(document.querySelectorAll<HTMLElement>(".res-chip"));
   const cards = Array.from(document.querySelectorAll<HTMLElement>(".res-card"));
   const validFilters = ["all", "methods", "guides", "templates", "tools"];
@@ -198,7 +199,8 @@ const faqs = [
       c.classList.toggle("is-active", (c as HTMLElement).dataset.filter === safeFilter);
     });
     cards.forEach((card) => {
-      if (safeFilter === "all" || (card as HTMLElement).dataset.category === safeFilter) {
+      const categories = ((card as HTMLElement).dataset.category ?? "").split(" ");
+      if (safeFilter === "all" || categories.includes(safeFilter)) {
         card.classList.remove("is-hidden");
       } else {
         card.classList.add("is-hidden");
