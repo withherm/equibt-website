@@ -1,20 +1,15 @@
 ---
-import { getCollection } from "astro:content";
 import Footer from "../../components/Footer.astro";
+import InsightCard from "../../components/InsightCard.astro";
 import Icon from "../../components/icons/Icon.astro";
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import DocReport from "../../components/icons/glyphs/DocReport.astro";
+import { getPublishedInsights } from "../../lib/insights";
 import lmiLogo from "../../../brand/assets/logos/lmi/LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg";
 import "../../styles/insights.css";
 
-const posts = (await getCollection("insights", ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.order - a.data.order,
-);
-
-// Monochrome dotted kicker: "PLAN · MEASURE" (pillar always; phase if set). No colour.
-const kicker = (pillar: string, phase?: string) =>
-  phase ? `${pillar} · ${phase.toUpperCase()}` : pillar;
+const posts = await getPublishedInsights();
 
 // Filter pills (interim: working client-side filter, no six-colour coding — EQT-260 owns the rework).
 const pillars = ["FRAME", "PLAN", "SOLVE", "EVOLVE", "GOVERN", "SCALE"] as const;
@@ -50,23 +45,7 @@ const pillars = ["FRAME", "PLAN", "SOLVE", "EVOLVE", "GOVERN", "SCALE"] as const
     <section class="ins-list ins-reveal">
       <div class="ins-inner">
         <div class="ins-grid">
-          {posts.map((post) => {
-            const d = post.data;
-            return (
-              <a class="ins-card" href={`/insights/${post.id}/`} data-pillar={d.pillar.toLowerCase()}>
-                <div class="ins-card-top">
-                  {d.pillar && <span class="ins-card-glyph" aria-hidden="true"><Icon name={d.pillar.toLowerCase()} /></span>}
-                  <span class="eyebrow ins-kicker">{kicker(d.pillar, d.phase)}</span>
-                </div>
-                <h2 class="ins-card-title">{d.title}</h2>
-                <p class="ins-card-summary">{d.summary}</p>
-                <div class="ins-card-foot">
-                  {d.readTime && <span class="ins-card-time">{d.readTime}</span>}
-                  <span class="ins-card-arrow btn-text" aria-hidden="true"><span class="link-label">Read</span> <span class="ar">&rsaquo;</span></span>
-                </div>
-              </a>
-            );
-          })}
+          {posts.map((post) => <InsightCard post={post} />)}
         </div>
 
         <p class="ins-empty" hidden>No insights in this area yet.</p>

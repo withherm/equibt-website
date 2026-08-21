@@ -15,6 +15,7 @@ import Evidence from "./icons/glyphs/Evidence.astro";
 import FutureState from "./icons/glyphs/FutureState.astro";
 import Gauge from "./icons/glyphs/Gauge.astro";
 import Layout from "../layouts/Layout.astro";
+import InsightCard from "./InsightCard.astro";
 import Loop from "./icons/glyphs/Loop.astro";
 import Nav from "./Nav.astro";
 import Network from "./icons/glyphs/Network.astro";
@@ -22,6 +23,8 @@ import Roadmap from "./icons/glyphs/Roadmap.astro";
 import RootCause from "./icons/glyphs/RootCause.astro";
 import Standardise from "./icons/glyphs/Standardise.astro";
 import Transfer from "./icons/glyphs/Transfer.astro";
+import { getPublishedInsightsForPillar } from "../lib/insights";
+import "../styles/insights.css";
 import "../styles/services.css";
 
 const glyphs = {
@@ -130,6 +133,7 @@ interface Props {
 }
 
 const { data } = Astro.props;
+const relatedInsights = await getPublishedInsightsForPillar(data.pillar);
 const stations = [
   { key: "FRAME", x: 70, y: 100 },
   { key: "PLAN", x: 250, y: 97 },
@@ -385,6 +389,20 @@ const deliverablesCarouselId = `${data.pillar}-deliverables-carousel`;
         </div>
       </div>
     </section>
+
+    {relatedInsights.length > 0 && (
+      <section class="service-section beige service-reveal">
+        <div class="service-inner">
+          <div class="service-head">
+            <div class="eyebrow">• RELATED INSIGHTS</div>
+            <h2 class="service-title">The thinking behind this work.</h2>
+          </div>
+          <div class="ins-grid">
+            {relatedInsights.map((post) => <InsightCard post={post} />)}
+          </div>
+        </div>
+      </section>
+    )}
 
     <section class="service-cta-band service-reveal">
       <div class="service-inner">
