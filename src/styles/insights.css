@@ -200,7 +200,7 @@
    left edge (matches the "one thing to try" treatment), with an interim line-art light bulb on the body axis.
    Bespoke Affinity glyph swaps in later (artwork-authority, EQT-274/275). The left bleed is clipped by
    .ins-post-body overflow:hidden. */
-.ins-body p:has(> strong:only-child){
+.ins-body h2 + p:has(> strong:only-child){
   margin:12px 0 30px;
   margin-left:-100vw;
   padding:40px 34px 40px calc(100vw + 70px);
