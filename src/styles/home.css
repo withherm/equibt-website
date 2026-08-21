@@ -60,6 +60,9 @@
 .statement-row h3{margin:0;color:var(--navy);font-size:23px;font-weight:700;line-height:1.2;}
 .statement-row p{margin:0;color:var(--mid-grey);font-size:19px;}
 
+.home-insights{border-bottom:1px solid var(--hairline);}
+.home-insights-link{margin-top:var(--link-gap);}
+
 .svc-list{margin-top:20px;margin-left:110px;border-top:1px solid var(--hairline);}
 .svc-row{
   display:grid;
