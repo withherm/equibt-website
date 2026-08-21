@@ -6,8 +6,8 @@ summary: "AI proposed the matches. An accountant checked every one. That is a sa
 readTime: "5 min read"
 order: 31
 lede:
-  - "A CFO asked me how to best manage AI mistakes in finance applications. Her team had automated bank transaction matching and the tool was good. She wanted to know what happened when it was wrong."
-  - "The honest answer was that her workflow had one safeguard, and it was an accountant checking the output. That works until volume arrives. Then checking every transaction becomes the constraint the automation was bought to remove."
+  - "A finance team had automated bank transaction matching. The tool was good, and two thousand transactions a month ran through it. The obvious safeguard was already in place: an accountant approved every proposed match before it posted."
+  - "Its CFO asked a sharper question: what stops a wrong match when the accountant misses one? Checking every transaction works, right up to the point where it becomes the constraint the automation was bought to remove."
 aeo: "Every automated workflow has a point where a wrong output stops. Most teams have never identified theirs, because the answer is usually a person, and a person does not appear in a process map. Find that point and you know what the workflow depends on. If the answer is someone checking, the automation has moved the work rather than removed it."
 tldr:
   - "Most AI safeguards are a person checking the output. That is the weakest of six available options and the only one whose cost rises with every transaction."
@@ -47,9 +47,9 @@ We mapped the six ways a workflow can stop wrong output, then walked bank transa
 
 The initials spell SCALED, which is how the team remembered it a week later.
 
-Applied to her process, statement lines matched to open receivables, the six read like this. At Signal, the tool shows a confidence score beside each proposed match. At Check, AI proposes the matches and an accountant approves them before posting. At Apply, the ledger rejects matches that fail account, amount, date or tolerance rules. At Limit, AI prepares the batch but its account holds no posting permission. At Exchange, each customer pays through a unique virtual account number. At Design, payment closes the invoice and records settlement, so no matching task exists.
+Applied to that process, statement lines matched to open receivables, the six read like this. At Signal, the tool shows a confidence score beside each proposed match. At Check, AI proposes the matches and an accountant approves them before posting. At Apply, the ledger rejects matches that fail account, amount, date or tolerance rules. At Limit, AI prepares the batch but its account holds no posting permission. At Exchange, each customer pays through a unique virtual account number. At Design, payment closes the invoice and records settlement, so no matching task exists.
 
-Her workflow stopped at Check. Everything the tool produced was read by a person before it posted, and nothing else in the process would have caught a wrong match. Two thousand transactions a month, every one of them read by an accountant.
+The workflow stopped at Check. Everything the tool produced was read by a person before it posted, and nothing else in the process would have caught a wrong match. Two thousand transactions a month, every one of them read by an accountant.
 
 ## The pattern to avoid.
 
