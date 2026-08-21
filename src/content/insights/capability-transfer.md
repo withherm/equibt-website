@@ -5,6 +5,7 @@ phase: "Operate"
 summary: "A utilities company's senior operations coordinator resigned after 11 years. A thorough SOP folder existed. Within three weeks, three recurring situations had stalled: a system workaround, an escalation pathway, and a monthly reconciliation task. None were written down."
 readTime: "4 min read"
 order: 29
+publishedDate: 2026-06-12
 lede:
   - "Eleven years in the role. Then a resignation. A thorough SOP folder existed. The replacement was capable."
   - "Within three weeks, three recurring situations had stalled."

@@ -13,7 +13,9 @@ const insights = defineCollection({
       .optional(),
     summary: z.string(),
     readTime: z.string().optional(), // e.g. "4 min read"
-    // Sort key only. NEVER rendered as a public date (no dates/years in copy).
+    // Publication date. Drives sort order and datePublished in structured data. NEVER rendered to readers.
+    publishedDate: z.coerce.date(),
+    // Tiebreak only, for two entries sharing a publishedDate.
     order: z.number().default(0),
     lede: z.array(z.string()).optional(), // hook: 2-3 short punchy lines (no box)
     aeo: z.string().optional(), // AEO answer block: short italic, citable (BLOG_WRITING_STANDARDS_v1)

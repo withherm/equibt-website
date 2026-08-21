@@ -5,6 +5,7 @@ phase: "Analyse"
 summary: "A federal government agency ran an 18-month CI engagement. At month 12, team leads were running improvement cycles independently. At month 24, the teams had completed two further cycles without being asked."
 readTime: "5 min read"
 order: 16
+publishedDate: 2026-06-12
 lede:
   - "By month 12 of an 18-month engagement at a federal government agency, the team leads were running improvement cycles independently."
   - "The external team was in an advisory role only."

@@ -5,6 +5,7 @@ phase: "Measure"
 summary: "A government department closed an improvement programme and reported A$1.4 million in annual savings. An independent review found the baseline had never been measured. Re-run with consistent methodology: A$380,000."
 readTime: "4 min read"
 order: 5
+publishedDate: 2026-06-12
 lede:
   - "A government department closed an improvement programme and reported A$1.4 million in annual savings to the efficiency review board."
   - "Six months later, an independent review found the baseline had never been measured."

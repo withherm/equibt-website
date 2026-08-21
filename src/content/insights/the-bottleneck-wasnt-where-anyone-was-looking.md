@@ -5,6 +5,7 @@ phase: "Analyse"
 summary: "A federal government processing centre spent nine months improving assessment throughput. The backlog did not move. The constraint was intake classification, three steps earlier, misrouting 41 percent of cases."
 readTime: "5 min read"
 order: 20
+publishedDate: 2026-06-12
 lede:
   - "A federal government processing centre had 11,200 cases in backlog. Assessment was the most visible pain point: cases waiting 23 days on average for an assessor."
   - "Over nine months, the team redesigned workflows, introduced batch processing, and tightened triage. Assessment throughput increased 22 percent. The backlog went from 11,200 to 10,800."

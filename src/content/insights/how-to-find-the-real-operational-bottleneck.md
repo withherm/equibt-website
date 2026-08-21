@@ -5,6 +5,7 @@ phase: "Measure"
 summary: "A mid-tier Australian lender was running 23 days to approve a mortgage against a 14-day target. Everyone said credit was the bottleneck. Mapping revealed credit was receiving complete document packs only after 11 days. Fixing the upstream step cut total cycle to 15 days."
 readTime: "4 min read"
 order: 6
+publishedDate: 2026-06-12
 lede:
   - "A mid-tier Australian lender had been running 23 days to approve a mortgage against a 14-day target for two years."
   - "The credit team was the bottleneck. Everyone agreed."

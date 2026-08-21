@@ -5,6 +5,7 @@ phase: "Improve"
 summary: "A major bank piloted a new mortgage processing workflow. Turnaround dropped from 14 days to 5.6. Eight branches into national rollout, turnaround was averaging 11.2 days. The pilot worked. The conditions that made it work did not exist anywhere else."
 readTime: "5 min read"
 order: 24
+publishedDate: 2026-06-12
 lede:
   - "A major bank piloted a redesigned mortgage processing workflow in a single high-performing branch. Turnaround dropped from 14 days to 5.6 days. Error rates fell from 8.3 percent to 2.1 percent."
   - "The executive approved national rollout across 34 branches. Eight branches in, turnaround was averaging 11.2 days."

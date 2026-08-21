@@ -5,6 +5,7 @@ phase: "Analyse"
 summary: "A bank's mortgage discharge team ran four improvement cycles over three years. Cycle time moved from 45 days to 31. The market standard was 5 days. The design was the ceiling. Reengineering reached 7 days."
 readTime: "4 min read"
 order: 15
+publishedDate: 2026-06-12
 lede:
   - "A bank's mortgage discharge team had been improving the same process for three years. Cycle time moved from 45 days to 31 days across four improvement cycles."
   - "The market standard was 5 days."

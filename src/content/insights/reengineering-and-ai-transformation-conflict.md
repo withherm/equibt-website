@@ -5,6 +5,7 @@ phase: "Control"
 summary: "An energy retailer launched operational reengineering in March and an enterprise AI programme in May. By September both were behind schedule. Fourteen subject matter experts were committed to both simultaneously. Neither programme director knew."
 readTime: "5 min read"
 order: 27
+publishedDate: 2026-06-12
 lede:
   - "An energy retailer launched operational reengineering in March and an enterprise AI programme in May."
   - "By September, both were behind schedule and fighting over the same 14 subject matter experts. Neither programme director knew the other had booked the same people."

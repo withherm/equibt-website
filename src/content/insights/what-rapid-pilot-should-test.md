@@ -5,6 +5,7 @@ phase: "Improve"
 summary: "A utilities company piloted a new field service scheduling process in one region. Six weeks, every metric positive. Full rollout to four regions. Three months in, three of the four were significantly below pilot results."
 readTime: "4 min read"
 order: 22
+publishedDate: 2026-06-12
 lede:
   - "Six weeks. One region. Every metric positive. Full rollout across four regions."
   - "Three months in, three of the four were significantly below pilot results."

@@ -5,6 +5,7 @@ phase: "Measure"
 summary: "A state government agency redesigned their approvals process three times in four years. Cycle time never improved. The diagnostic found the process was sound. Sixty-two percent of applications arrived with incomplete or inconsistent data."
 readTime: "4 min read"
 order: 8
+publishedDate: 2026-06-12
 lede:
   - "A state government agency responsible for business licence approvals had redesigned their end-to-end process three times in recent years. Each time, the new process looked faster on paper. Each time, cycle time stayed between 28 and 34 days against a target of 15."
   - "The diagnostic mapped the process. Then it measured something the redesigns had not."

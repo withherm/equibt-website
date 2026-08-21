@@ -5,6 +5,7 @@ phase: "Analyse"
 summary: "A utilities company improved their complaint resolution process over 9 months. At 18 months, cycle time was back to 44 days. The post-mortem found three failure points: measurement ownership, improvement capability, and documentation, all design decisions made at the start."
 readTime: "4 min read"
 order: 18
+publishedDate: 2026-06-12
 lede:
   - "Cycle time from 52 days to 31. Backlog down 58 percent. Nine months of improvement work."
   - "At the 18-month review, cycle time was back to 44 days."
