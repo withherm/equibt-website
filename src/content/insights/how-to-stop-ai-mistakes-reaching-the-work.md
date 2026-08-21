@@ -7,7 +7,7 @@ readTime: "5 min read"
 order: 31
 lede:
   - "A finance team had automated bank transaction matching. The tool was good, and two thousand transactions a month ran through it. The obvious safeguard was already in place: an accountant approved every proposed match before it posted."
-  - "Its CFO asked a sharper question: what stops a wrong match when the accountant misses one? Checking every transaction works, right up to the point where it becomes the constraint the automation was bought to remove."
+  - "Its financial controller asked a sharper question: what stops a wrong match when the accountant misses one? Checking every transaction works, right up to the point where it becomes the constraint the automation was bought to remove."
 aeo: "Every automated workflow has a point where a wrong output stops. Most teams have never identified theirs, because the answer is usually a person, and a person does not appear in a process map. Find that point and you know what the workflow depends on. If the answer is someone checking, the automation has moved the work rather than removed it."
 tldr:
   - "Most AI safeguards are a person checking the output. That is the weakest of six available options and the only one whose cost rises with every transaction."
