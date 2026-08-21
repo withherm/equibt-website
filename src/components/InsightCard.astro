@@ -1,0 +1,27 @@
+---
+import type { InsightEntry } from "../lib/insights";
+import Icon from "./icons/Icon.astro";
+
+interface Props {
+  post: InsightEntry;
+}
+
+const { post } = Astro.props;
+const { data } = post;
+const kicker = data.phase
+  ? `${data.pillar} · ${data.phase.toUpperCase()}`
+  : data.pillar;
+---
+
+<a class="ins-card" href={`/insights/${post.id}/`} data-pillar={data.pillar.toLowerCase()}>
+  <div class="ins-card-top">
+    {data.pillar && <span class="ins-card-glyph" aria-hidden="true"><Icon name={data.pillar.toLowerCase()} /></span>}
+    <span class="eyebrow ins-kicker">{kicker}</span>
+  </div>
+  <h2 class="ins-card-title">{data.title}</h2>
+  <p class="ins-card-summary">{data.summary}</p>
+  <div class="ins-card-foot">
+    {data.readTime && <span class="ins-card-time">{data.readTime}</span>}
+    <span class="ins-card-arrow btn-text" aria-hidden="true"><span class="link-label">Read</span> <span class="ar">&rsaquo;</span></span>
+  </div>
+</a>
