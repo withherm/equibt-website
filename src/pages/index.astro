@@ -1,11 +1,14 @@
 ---
 import { getCollection } from "astro:content";
 import Footer from "../components/Footer.astro";
+import InsightCard from "../components/InsightCard.astro";
 import Icon from "../components/icons/Icon.astro";
 import AlignTarget from "../components/icons/glyphs/AlignTarget.astro";
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
+import { getPublishedInsights } from "../lib/insights";
 import "../styles/home.css";
+import "../styles/insights.css";
 
 // Published case studies for the "Proven in practice" carousel.
 const caseSectorIcons = {
@@ -38,6 +41,7 @@ const homeCases = (await getCollection("cases", ({ data }) => data.fullStudy && 
     (a.data.order - b.data.order) ||
     a.data.title.localeCompare(b.data.title)
   );
+const latestInsights = (await getPublishedInsights()).slice(0, 3);
 ---
 
 <Layout
@@ -150,6 +154,19 @@ const homeCases = (await getCollection("cases", ({ data }) => data.fullStudy && 
           <h3>We exit when the work is yours.</h3>
           <p>A successful engagement means less of us over time, not more. The project outcome is an operation that runs independently.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section beige home-insights">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="eyebrow">HOW WE THINK</div>
+        <h2 class="section-title">Findings from recent engagements.</h2>
+        <a href="/insights/" class="btn-text home-insights-link"><span class="link-label">Explore insights</span> <span class="ar">&rsaquo;</span></a>
+      </div>
+      <div class="ins-grid">
+        {latestInsights.map((post) => <InsightCard post={post} />)}
       </div>
     </div>
   </section>
