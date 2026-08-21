@@ -5,6 +5,7 @@ phase: "Measure"
 summary: "AI proposed the matches. An accountant checked every one. That is a safeguard right up until volume arrives."
 readTime: "5 min read"
 order: 31
+publishedDate: 2026-08-21
 lede:
   - "A finance team had automated bank transaction matching. The tool was good, and two thousand transactions a month ran through it. The obvious safeguard was already in place: an accountant approved every proposed match before it posted."
   - "Its financial controller asked a sharper question: what stops a wrong match when the accountant misses one? Checking every transaction works, right up to the point where it becomes the constraint the automation was bought to remove."

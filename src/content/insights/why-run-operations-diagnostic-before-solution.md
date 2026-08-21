@@ -5,6 +5,7 @@ phase: "Measure"
 summary: "A major health insurer had vendor locked, purchase order approved, implementation four weeks away. A three-week diagnostic showed the tool would automate a broken process, producing wrong outputs faster."
 readTime: "3 min read"
 order: 4
+publishedDate: 2026-06-12
 lede:
   - "A major health insurer had selected a workflow automation tool. The vendor was locked in. The purchase order was approved. Implementation was four weeks away."
   - "We asked for three weeks first."

@@ -5,6 +5,7 @@ phase: "Analyse"
 summary: "A bank's trade settlement team had run a 12 percent error rate for months despite more checking and training. A value stream map found six non-value-adding handoffs. Four were eliminated. Error rate dropped to 2.8 percent."
 readTime: "4 min read"
 order: 14
+publishedDate: 2026-06-12
 lede:
   - "A bank's trade settlement team had been running a 12 percent error rate. More checking, more training, and stricter controls had not changed it."
   - "This did not make sense unless training was not the constraint."

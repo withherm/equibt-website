@@ -5,6 +5,7 @@ phase: "Measure"
 summary: "Six weeks into a major systems transformation, a health insurer's programme paused for 14 weeks on a data quality problem a two-week readiness diagnostic would have found for A$35,000."
 readTime: "4 min read"
 order: 2
+publishedDate: 2026-06-12
 lede:
   - "Six weeks into a major systems transformation at a large health insurer, the programme paused. Core customer data was too inconsistent to migrate cleanly. The pause lasted 14 weeks."
   - "A two-week readiness diagnostic would have cost A$35,000. The delay cost A$1.2 million."

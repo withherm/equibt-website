@@ -5,6 +5,7 @@ phase: "Measure"
 summary: "Forty-seven issues. Six operational areas. The natural response was a 47-item project plan. The better one was smaller."
 readTime: "4 min read"
 order: 30
+publishedDate: 2026-06-12
 lede:
   - "An energy retailer's operations diagnostic came back with 47 issues across six areas. The obvious response was a 47-item project plan, resourced proportionally."
   - "Its leadership team asked a sharper question first: how many of those 47 were really symptoms of a much smaller set of causes?"

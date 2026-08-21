@@ -5,6 +5,7 @@ phase: "Analyse"
 summary: "A NSW utilities company's billing dispute process improved on every metric at three months. At nine months the metrics had drifted back. The team had learned to follow the new process. They had not learned to maintain it."
 readTime: "4 min read"
 order: 12
+publishedDate: 2026-06-12
 lede:
   - "At three months, a NSW utilities company's billing dispute process had improved on every metric. Cycle time down, rework reduced, complaints falling."
   - "At nine months, the metrics had drifted back. The team had been following the new process because the consultant was there. When variation crept in, nobody corrected it."

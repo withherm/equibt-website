@@ -5,6 +5,7 @@ phase: "Analyse"
 summary: "A state government agency's CI programme delivered strong results. Then the programme manager moved on. Six months later, cycle times had drifted back by 60 percent of the gains. The team had learned to participate in improvement. They had not learned to run it."
 readTime: "4 min read"
 order: 11
+publishedDate: 2026-06-12
 lede:
   - "Cycle times down 35 percent. Rework falling. Staff morale improving. A state government agency's continuous improvement programme was working."
   - "Then the programme manager moved on."

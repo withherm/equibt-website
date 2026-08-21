@@ -5,6 +5,7 @@ phase: "Control"
 summary: "A mid-tier insurer migrated from a legacy ERP to a cloud platform. The system integrator estimated 14 months of process redesign. The process architecture, built two years earlier and independent of any system, transferred in six weeks."
 readTime: "5 min read"
 order: 28
+publishedDate: 2026-06-12
 lede:
   - "A mid-tier insurer migrated from a legacy on-premise ERP to a cloud-based platform. The system integrator's scoping document estimated 14 months of process redesign work."
   - "The head of operations pushed back. Two years earlier, the insurer had built a process architecture with a deliberate constraint: it described what the business did, not how the system executed it."

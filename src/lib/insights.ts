@@ -3,6 +3,7 @@ import { getCollection, type CollectionEntry } from "astro:content";
 export type InsightEntry = CollectionEntry<"insights">;
 
 export const sortInsights = (a: InsightEntry, b: InsightEntry) =>
+  b.data.publishedDate.getTime() - a.data.publishedDate.getTime() ||
   b.data.order - a.data.order;
 
 export const getPublishedInsights = async () =>

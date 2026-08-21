@@ -5,6 +5,7 @@ phase: "Measure"
 summary: "A mid-tier bank scoped a 20-week operational reengineering across four teams. A three-week diagnostic found that 60 percent of the friction had a single cause, fixable in two weeks. The reengineering scope reduced by half."
 readTime: "5 min read"
 order: 7
+publishedDate: 2026-06-12
 lede:
   - "Twenty weeks. Four teams. New roles, new technology, new process design across a mid-tier bank's customer onboarding."
   - "A three-week diagnostic found that 60 percent of the friction had a single cause."

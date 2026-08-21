@@ -5,6 +5,7 @@ phase: "Define"
 summary: "A construction company had a backlog growing for months. The plan was to hire twelve coordinators. Framing the problem first showed most of the backlog was rework and duplication, not real work."
 readTime: "4 min read"
 order: 1
+publishedDate: 2026-06-12
 lede:
   - "A large construction company had a contract administration backlog that had been growing for months. The plan was already costed: twelve more coordinators and a new rostering system to push the work through faster."
   - "We asked to define the problem before they resourced it."

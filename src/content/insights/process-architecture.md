@@ -5,6 +5,7 @@ phase: "Control"
 summary: "A government regulator had thorough investigation SOPs. Two investigators were observed over four weeks. The first escalated 34 percent of matters. The second escalated 6 percent. Same SOPs, same matter types, same team leader."
 readTime: "4 min read"
 order: 26
+publishedDate: 2026-06-12
 lede:
   - "A government regulator had thorough SOPs for investigation processes. Two investigators were observed over four weeks."
   - "The first escalated 34 percent of matters. The second escalated 6 percent. Same SOPs, same matter types, same team leader."

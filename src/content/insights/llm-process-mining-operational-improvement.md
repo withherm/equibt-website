@@ -5,6 +5,7 @@ phase: "Measure"
 summary: "Analysis of a major Australian bank's home loan call centre interaction logs revealed 340 distinct process variants from a documented 40-step process. Three variants accounted for 18 percent of volume and 61 percent of total handling time."
 readTime: "4 min read"
 order: 3
+publishedDate: 2026-06-12
 lede:
   - "Three months into a diagnostic engagement at a major Australian bank, analysis of home loan call centre interaction logs revealed 340 distinct process variants from a documented process with 40 steps."
   - "Three variants accounted for 18 percent of volume and 61 percent of total handling time. Nobody had known they existed as a distinct pattern."

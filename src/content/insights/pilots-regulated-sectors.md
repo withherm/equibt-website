@@ -5,6 +5,7 @@ phase: "Improve"
 summary: "A health insurer piloted a new complaints handling process in one division. In week five, a specific complaint type was being categorised incorrectly, creating a PHI Ombudsman reporting obligation the team was unaware of. Fixed in the pilot."
 readTime: "4 min read"
 order: 23
+publishedDate: 2026-06-12
 lede:
   - "In week five of a complaints handling pilot at a health insurer, a categorisation error emerged that created a Private Health Insurance Ombudsman reporting obligation."
   - "The team was not aware of it. It was fixed in the pilot."

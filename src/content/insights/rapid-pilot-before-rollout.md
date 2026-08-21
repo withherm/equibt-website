@@ -5,6 +5,7 @@ phase: "Improve"
 summary: "An energy retailer was 48 hours from rolling out across 400 agents. Six weeks of pilot found two gaps the design workshops never anticipated. Full rollout ran clean."
 readTime: "4 min read"
 order: 10
+publishedDate: 2026-06-12
 lede:
   - "An energy retailer was 48 hours from rolling out a new retention model across 400 agents and three call centres. Six workshops, sound economics, board approval."
   - "We asked for six weeks first. Leadership was sceptical. The pilot was approved anyway."

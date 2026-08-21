@@ -5,6 +5,7 @@ phase: "Improve"
 summary: "A health insurer ran reengineering on claims handling while processing 2,200 claims per week. Parallel run: new claims on the new process, existing claims on the old. Cutover at week 8 when evidence was clear."
 readTime: "4 min read"
 order: 21
+publishedDate: 2026-06-12
 lede:
   - "Two thousand two hundred claims a week. The claims handling process needed to be reengineered."
   - "Stopping was not an option."

@@ -5,6 +5,7 @@ phase: "Control"
 summary: "A water utility had 400 SOPs covering every standard process. One team leader went on extended leave. Within three weeks, three operational areas had stalled. The SOPs described steps. They did not capture decisions."
 readTime: "4 min read"
 order: 25
+publishedDate: 2026-06-12
 lede:
   - "A water utility had 400 SOPs, three years of documentation work, every standard process described step by step, clear and accurate."
   - "Then a team leader with nine years in the role went on extended leave. Within three weeks, the operation degraded."

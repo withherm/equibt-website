@@ -5,6 +5,7 @@ phase: "Analyse"
 summary: "A federal department cut grants assessment cycle time from 47 days to 25. Twelve months later, the team could not answer clearly what the current cycle time was. The gains were real but undocumented as a standard."
 readTime: "4 min read"
 order: 13
+publishedDate: 2026-06-12
 lede:
   - "A federal department cut grants assessment cycle time from 47 days to 25. Rework from 34 percent to 8 percent."
   - "Twelve months later, the next efficiency review asked what the cycle time was. The team could not answer clearly."

@@ -5,6 +5,7 @@ phase: "Analyse"
 summary: "A major Australian insurer sent 14 people through an accredited Lean Green Belt programme. At 12 months, none had applied the methodology to a real problem. There were no application projects and no expectation of measurable outcomes."
 readTime: "5 min read"
 order: 17
+publishedDate: 2026-06-12
 lede:
   - "Fourteen people. Six months of accredited Lean Green Belt training."
   - "Twelve months after completion, fewer than three had applied the methodology to a real operational problem."

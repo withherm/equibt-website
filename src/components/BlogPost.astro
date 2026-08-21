@@ -11,6 +11,7 @@ interface InsightData {
   pillar: "FRAME" | "PLAN" | "SOLVE" | "EVOLVE" | "GOVERN" | "SCALE";
   phase?: string;
   summary: string;
+  publishedDate: Date;
   readTime?: string;
   lede?: string[];
   aeo?: string;
@@ -26,6 +27,15 @@ const kicker = data.phase ? `${data.pillar} · ${data.phase.toUpperCase()}` : da
 const cta = data.cta ?? {
   heading: "Put your hardest operational problem in front of us.",
   body: "Tell us where the operation is under strain. We will tell you straight whether it is a fixable process gap, and whether we are the right firm for it.",
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: data.title,
+  description: data.summary,
+  datePublished: data.publishedDate.toISOString(),
+  publisher: { "@type": "Organization", name: "EQUIBT" },
 };
 
 // DMAICO trainline: highlight this insight's pillar station (mirrors the Our Work case-study pathway).
@@ -44,6 +54,7 @@ const pointerD = currentIndex >= 0 ? `M${calloutX} 34 L${stations[currentIndex].
 ---
 
 <Layout title={`${data.title} | EQUIBT Insights`} description={data.summary}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <Nav />
   <main>
     <article class="ins-post">
