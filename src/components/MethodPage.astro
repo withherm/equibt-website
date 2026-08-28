@@ -3,6 +3,7 @@ import Footer from "./Footer.astro";
 import Icon from "./icons/Icon.astro";
 import Layout from "../layouts/Layout.astro";
 import Nav from "./Nav.astro";
+import LetterRing from "./LetterRing.astro";
 import lmiLogo from "../../brand/assets/logos/lmi/LMI-LOGO-702_MAIN-R1_TRANSPARENT.svg";
 import "../styles/services.css";
 import "../styles/our-work.css";
@@ -105,7 +106,7 @@ const whyLeanHookRest = _hookParts.slice(1).join(" ");
             <div class="method-framework-items">
               {data.cheatSheet.frameworkItems.map((item) => (
                 <div class="method-framework-item">
-                  <span class="method-framework-key">{item.key}</span>
+                  <LetterRing letter={item.key} />
                   <div>
                     <strong>{item.label}</strong>
                     {item.body && <p>{item.body}</p>}

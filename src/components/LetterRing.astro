@@ -1,0 +1,36 @@
+---
+interface Props {
+  letter: string;
+}
+
+const { letter } = Astro.props;
+---
+
+<span class="letter-ring" aria-hidden="true">{letter}</span>
+
+<style>
+  .letter-ring {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 2.5px solid currentColor;
+    border-radius: 50%;
+    color: var(--terracotta);
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+    flex: 0 0 48px;
+  }
+
+  @media (max-width: 760px) {
+    .letter-ring {
+      width: 42px;
+      height: 42px;
+      flex-basis: 42px;
+      font-size: 20px;
+    }
+  }
+</style>
